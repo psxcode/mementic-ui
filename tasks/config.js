@@ -13,7 +13,8 @@ var paths = null;
 		root: rootdir,
 		themes: thmdir,
 		source: srcdir,
-		sassMainFile: path.join(srcdir, 'main.scss')
+		sassMainFilepath: path.join(srcdir, 'main.scss'),
+		themeConfigFilename: 'theme.json'
 	};
 }());
 
@@ -56,33 +57,51 @@ var userConfig = {
 function srcPaths() {
 	var themePaths = resolveInjectThemePaths();
 
-	return globalsVars();
+	return [].concat(globalsVars(), globalMixins(), fonts());
 
 	function globalsVars() {
-		return filePaths('globals', '_vars.scss');
+		return filePaths('globals', 'vars.scss');
 	}
 
-	function filePaths(dirname, filename) {
+	function globalMixins() {
+		return filePaths('globals', 'mixins.scss');
+	}
+
+	function fonts() {
+		return filePaths('fonts', 'fonts.scss', function(paths, src, themePath) {
+			var config = readThemeConfig(themePath);
+			if(config && config['replaceFonts']) paths = [];
+			paths.push(src);
+			return paths;
+		});
+	}
+
+	function filePaths(dirname, filename, transform) {
 		var paths = [];
 		for (var i = 0; i < themePaths.length; ++i) {
 			var src = path.join(themePaths[i], dirname, filename);
 			if (fsxu.isFileSync(src)) {
-				paths.push(src);
+				paths = (transform || transformDefault)(paths, src, themePaths[i]);
 			}
 		}
 
 		return paths;
+
+		function transformDefault(paths, src) {
+			paths.push(src);
+			return paths;
+		}
 	}
 }
 
 function resolveInjectThemePaths() {
-	var nextPath = resolveUserThemePath();
+	var nextPath = resolveUserThemeDependency();
 
 	var themePaths = [];
 	//last theme is user theme
 	if (nextPath) themePaths.push(nextPath);
 
-	while (nextPath = resolveThemeDependencyPath(nextPath)) {
+	while (nextPath = resolveThemeDependency(nextPath)) {
 		//adding dependencies to front
 		if (nextPath) themePaths.unshift(nextPath);
 	}
@@ -92,21 +111,23 @@ function resolveInjectThemePaths() {
 
 	return themePaths;
 
-	function resolveUserThemePath() {
-		if (userConfig.site && typeof userConfig.site === 'string' && fsxu.isFileSync(path.join(userConfig.site, 'theme.json'))) {
+	function resolveUserThemeDependency() {
+		if (userConfig.site && typeof userConfig.site === 'string' && fsxu.isFileSync(path.join(userConfig.site, paths.themeConfigFilename))) {
 			return userConfig.site;
-		} else if (userConfig.theme && typeof userConfig.theme === 'string' && fsxu.isFileSync(path.join(userConfig.theme, 'theme.json'))) {
+		}
+		if (userConfig.theme && typeof userConfig.theme === 'string' && fsxu.isFileSync(path.join(paths.themes, userConfig.theme, paths.themeConfigFilename))) {
 			return path.join(paths.themes, userConfig.theme);
 		}
 		return null;
 	}
 
-	function resolveThemeDependencyPath(themePath) {
-		var themeConfig = null;
-		if (themePath) {
-			themeConfig = fsxu.readJsonSync(path.join(themePath, 'theme.json'));
-		}
+	function resolveThemeDependency(themePath) {
+		var themeConfig = themePath ? readThemeConfig(themePath) : null;
 
 		return themeConfig && themeConfig.theme ? path.join(paths.themes, themeConfig.theme) : null;
 	}
+}
+
+function readThemeConfig(themePath) {
+	return fsxu.readJsonSync(path.join(themePath, paths.themeConfigFilename));
 }

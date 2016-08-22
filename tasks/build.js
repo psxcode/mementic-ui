@@ -10,7 +10,7 @@ exports.streamCss = streamCss;
 function streamCss(userConfig) {
 	config(userConfig);
 
-	return gulp.src(config.paths.sassMainFile)
+	return gulp.src(config.paths.sassMainFilepath)
 		.pipe(inject(gulp.src(config.getInjectPaths(), {read: false}), config.injectOpts))
 		.pipe(sass());
 }

@@ -1,0 +1,5 @@
+.default-font {
+  color: red;
+  @include font-mixin;
+}
+
