@@ -1,0 +1,173 @@
+// Colors
+// -------------------------------
+
+@function color-bg($color) {
+  @return lighten($color, 40%);
+}
+
+@function color-light($color) {
+  @return lighten($color, 20%);
+}
+
+@function color-hover($color) {
+  @return saturate(darken($color, 5%), 10%);
+}
+
+@function color-focus($color) {
+  @return saturate(darken($color, 8%), 20%);
+}
+
+@function color-active($color) {
+  @return saturate(darken($color, 5%), 15%);
+}
+
+@function color-header($color) {
+  @return darken($color, 5%);
+}
+
+@function color-transparent($color, $transparency: 0.1) {
+  @return rgba($color, $transparency);
+}
+
+$color-light:                 #fff !default;
+$color-stable:                #f8f8f8 !default;
+$color-positive:              #387ef5 !default;
+$color-calm:                  #11c1f3 !default;
+$color-balanced:              #33cd5f !default;
+$color-energized:             #ffc900 !default;
+$color-assertive:             #ef473a !default;
+$color-royal:                 #886aea !default;
+$color-dark:                  #444 !default;
+
+$color-primary:           #8BC34A !default;
+$color-primary-dark:      #689F38 !default;
+$color-primary-light:     #DCEDC8 !default;
+$color-accent:            #FF9800 !default;
+$color-icons:             #212121 !default;
+$color-text-primary:      #212121 !default;
+$color-text-secondary:    #727272 !default;
+$color-text-inverted:     #fff !default;
+$color-divider:           #B6B6B6 !default;
+$color-bg:                #fff !default;
+
+$color-highlight:         $color-text-primary;
+$color-highlight-bg:      $color-text-inverted;
+
+$facebookColor   : #3B5998;
+$twitterColor    : #0084B4;
+$googlePlusColor : #DC4A38;
+$linkedInColor   : #1F88BE;
+$youtubeColor    : #CC181E;
+$instagramColor  : #49769C;
+$pinterestColor  : #00ACED;
+$vkColor         : #4D7198;
+
+
+// Base
+// -------------------------------
+$font-context:                14;
+
+@function em($px) {
+  @return ($px / $font-context) * 1em;
+}
+
+@function rem($px) {
+  @return ($px / $font-context) * 1rem;
+}
+
+$font-family-sans-serif:             '-apple-system', "Helvetica Neue", "Roboto", "Segoe UI", sans-serif !default;
+$font-family-sans-serif-light:       '-apple-system', "HelveticaNeue-Light", "Roboto-Light", "Segoe UI-Light", sans-serif-light !default;
+
+$font-family:                $font-family-sans-serif !default;
+
+
+$font-size:                  $font-context * 1px !default;
+$font-size-large:            1.2857 * $font-size !default;
+$font-size-small:            0.7857 * $font-size !default;
+
+$line-height:                1.428571429 !default; // 20/14
+$line-height-abs:       floor($line-height * $font-size) !default; // ~20px
+$line-height-large:          1.5 !default;
+$line-height-small:          1.33 !default;
+
+
+// Sizes
+// -------------------------------
+
+/*
+  Sizes are all expressed in terms of 14px/em (default em)
+  This ensures these "ratios" remain constant despite changes in EM
+*/
+
+$mini-size        : 0.7857; // 11/14
+$tiny-size        : 0.8571; // 12/14
+$small-size       : 0.9285; // 13/14
+$medium-size      : 1.0;
+$large-size       : 1.1428; // 16/14
+$big-size         : 1.2857; // 18/14
+$huge-size        : 1.4285; // 20/14
+$massive-size     : 1.7142; // 24/14
+
+$mini             : $mini-size * 1rem;
+$tiny             : $tiny-size * 1rem;
+$small            : $small-size * 1rem;
+$medium           : $medium-size * 1rem;
+$large            : $large-size * 1rem;
+$big              : $big-size * 1rem;
+$huge             : $huge-size * 1rem;
+$massive          : $massive-size * 1rem;
+
+$mini-rel         : $mini-size * 1em;
+$tiny-rel         : $tiny-size * 1em;
+$small-rel        : $small-size * 1em;
+$medium-rel       : $medium-size * 1em;
+$large-rel        : $large-size * 1em;
+$big-rel          : $big-size * 1em;
+$huge-rel         : $huge-size * 1em;
+$massive-rel      : $massive-size * 1em;
+
+$num-columns      : 16;
+
+@function wide($num) {
+  @return $num / $num-columns * 100%;
+}
+
+@function column($num) {
+  @return 1 / $num * 100%;
+}
+
+// Headings
+// -------------------------------
+$heading-font-family:            $font-family !default;
+$heading-font-weight:            500 !default;
+$heading-line-height:            1.2 !default;
+$heading-color:                  $color-text-primary;
+
+// Semantic sizes
+/*
+$h1 : 2rem;
+$h2 : 1.714rem;
+$h3 : 1.28rem;
+$h4 : 1.071rem;
+$h5 : 1rem;
+*/
+
+// Ionic sizes
+$h1 : 2.6rem;
+$h2 : 2.15rem;
+$h3 : 1.70rem;
+$h4 : 1.25rem;
+$h5 : 1rem;
+$h6 : 0.85rem;
+
+// Paragraphs
+// -------------------------------
+$paragraph-margin       : 0 0 ($line-height-abs / 2);
+$paragraph-line-height: $line-height;
+
+// Links
+// -------------------------------
+$link-color                   : $color-accent;
+$link-text-decoration         : none;
+$link-hover-color             : color-hover($color-accent);
+$link-hover-text-decoration   : none;

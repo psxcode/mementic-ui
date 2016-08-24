@@ -2,6 +2,7 @@
 
 var path = require('path');
 var fsxu = require('fsxu');
+var _ = require('lodash');
 
 //Paths
 var paths = null;
@@ -17,6 +18,9 @@ var paths = null;
 		themeConfigFilename: 'theme.json'
 	};
 }());
+
+var themeDepsPropName = 'deps';
+var defaultThemeName = 'default';
 
 //InjectConfig
 var injectConfig = null;
@@ -44,7 +48,7 @@ var userConfig = {
 //Exports
 (function () {
 	module.exports = function initConfig(config) {
-		if(config) userConfig = config;
+		if (config) userConfig = config;
 	};
 
 	module.exports.paths = paths;
@@ -57,7 +61,7 @@ var userConfig = {
 function srcPaths() {
 	var themePaths = resolveInjectThemePaths();
 
-	return [].concat(globalsVars(), globalMixins(), fonts());
+	return [].concat(globalsVars(), globalMixins(), fonts(), globalType());
 
 	function globalsVars() {
 		return filePaths('globals', 'vars.scss');
@@ -67,10 +71,14 @@ function srcPaths() {
 		return filePaths('globals', 'mixins.scss');
 	}
 
+	function globalType() {
+		return filePaths('globals', 'type.scss');
+	}
+
 	function fonts() {
-		return filePaths('fonts', 'fonts.scss', function(paths, src, themePath) {
+		return filePaths('fonts', 'fonts.scss', function (paths, src, themePath) {
 			var config = readThemeConfig(themePath);
-			if(config && config['replaceFonts']) paths = [];
+			if (config && config['replaceFonts']) paths = [];
 			paths.push(src);
 			return paths;
 		});
@@ -95,39 +103,60 @@ function srcPaths() {
 }
 
 function resolveInjectThemePaths() {
-	var nextPath = resolveUserThemeDependency();
+	var result = [];
+	var deps = userConfig[themeDepsPropName] || [];
+	if(!_.isArray(deps)) deps = [deps];
+	deps.unshift(defaultThemeName);
 
-	var themePaths = [];
-	//last theme is user theme
-	if (nextPath) themePaths.push(nextPath);
+	flattenThemeDepsTree(deps);
 
-	while (nextPath = resolveThemeDependency(nextPath)) {
-		//adding dependencies to front
-		if (nextPath) themePaths.unshift(nextPath);
-	}
+	return result;
 
-	//add source path as first theme
-	themePaths.unshift(paths.source);
+	function flattenThemeDepsTree(deps, parents) {
+		if(!_.isArray(parents)) parents = [];
 
-	return themePaths;
-
-	function resolveUserThemeDependency() {
-		if (userConfig.site && typeof userConfig.site === 'string' && fsxu.isFileSync(path.join(userConfig.site, paths.themeConfigFilename))) {
-			return userConfig.site;
+		if (_.isArray(deps)) {
+			deps = _.filter(deps, isDepValid);
+			_.forEach(deps, pushDep);
+		} else if (_.isString(deps)) {
+			isDepValid(deps) && pushDep(deps);
 		}
-		if (userConfig.theme && typeof userConfig.theme === 'string' && fsxu.isFileSync(path.join(paths.themes, userConfig.theme, paths.themeConfigFilename))) {
-			return path.join(paths.themes, userConfig.theme);
+
+		function pushDep(dep) {
+			dep = getThemePath(dep);
+
+			if(_.indexOf(result, dep) < 0) {
+				var themeConfig = readThemeConfig(dep) || {};
+				flattenThemeDepsTree(themeConfig[themeDepsPropName], _.concat(parents, dep));
+				result.push(dep);
+			}
 		}
-		return null;
-	}
 
-	function resolveThemeDependency(themePath) {
-		var themeConfig = themePath ? readThemeConfig(themePath) : null;
-
-		return themeConfig && themeConfig.theme ? path.join(paths.themes, themeConfig.theme) : null;
+		function isDepValid(dep) {
+			dep = getThemePath(dep);
+			return dep && _.indexOf(parents, dep) < 0;
+		}
 	}
+}
+
+function isThemeValid(themeNameOrPath) {
+	return !!getThemePath(themeNameOrPath);
+}
+
+function getThemePath(themeNameOrPath) {
+	if (!/\/|\\/.test(themeNameOrPath)) {
+		themeNameOrPath = path.join(paths.themes, themeNameOrPath);
+	}
+	return fsxu.isFileSync(path.join(themeNameOrPath, paths.themeConfigFilename)) ? themeNameOrPath : null;
 }
 
 function readThemeConfig(themePath) {
 	return fsxu.readJsonSync(path.join(themePath, paths.themeConfigFilename));
+}
+
+function requireThemeConfig(themePath) {
+	try {
+		return require(path.join(themePath, paths.themeConfigFilename));
+	} catch (e) {}
+	return null;
 }

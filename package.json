@@ -20,7 +20,8 @@
     "fsxu": "0.0.4",
     "gulp": "^3.9.1",
     "gulp-inject": "^4.1.0",
-    "gulp-sass": "^2.3.2"
+    "gulp-sass": "^2.3.2",
+    "lodash": "^4.15.0"
   },
   "peerDependencies": {
     "fsxu": "*",

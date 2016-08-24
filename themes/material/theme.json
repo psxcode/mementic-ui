@@ -1,3 +1,4 @@
 {
-  "replaceFonts": false
+  "replaceFonts": false,
+  "deps": ["glyphicons", "default"]
 }
