@@ -14,18 +14,15 @@ var paths = null;
 		root: rootdir,
 		themes: thmdir,
 		source: srcdir,
-		sassMainFilepath: path.join(srcdir, 'main.scss'),
+		sassModuleFilepath: path.join(srcdir, 'module.scss'),
 		themeConfigFilename: 'theme.json'
 	};
 }());
 
-var themeDepsPropName = 'deps';
-var defaultThemeName = 'default';
-
 //InjectConfig
-var injectConfig = null;
+var injectOpts = null;
 (function () {
-	injectConfig = {
+	injectOpts = {
 		relative: false,
 		starttag: '//begin-inject',
 		endtag: '//end-inject',
@@ -38,6 +35,15 @@ var injectConfig = null;
 	}
 }());
 
+//Modules
+var modules = [{
+	path: '',
+	names: ['globals']
+}, {
+	path: 'collections',
+	names: ['grid']
+}];
+
 //User Config (set in initConfig)
 var userConfig = {
 	site: '',
@@ -46,66 +52,99 @@ var userConfig = {
 };
 
 //Exports
+var themeDepsPaths = resolveThemeDepsPaths();
 (function () {
 	module.exports = function initConfig(config) {
-		if (config) userConfig = config;
+		if (config) {
+			userConfig = config;
+			themeDepsPaths = resolveThemeDepsPaths();
+		}
 	};
 
 	module.exports.paths = paths;
 	module.exports.userCfg = userConfig;
-	module.exports.getInjectPaths = srcPaths;
-	module.exports.injectOpts = injectConfig;
+	module.exports.getModulePaths = srcModulePaths;
+	module.exports.injectOpts = injectOpts;
+	module.exports.modules = modules;
 }());
 
+function srcModulePaths(moduleName, modulePathInTheme) {
 
-function srcPaths() {
-	var themePaths = resolveInjectThemePaths();
+	if (!modulePathInTheme) modulePathInTheme = '';
 
-	return [].concat(globalsVars(), globalMixins(), fonts(), globalType());
+	console.log('stream module: ', modulePathInTheme + '::' + moduleName);
 
-	function globalsVars() {
-		return filePaths('globals', 'vars.scss');
+	switch (moduleName) {
+		case 'globals':
+			return srcGlobalsPaths();
+		default:
+			return srcPaths(modulePathInTheme, moduleName);
 	}
 
-	function globalMixins() {
-		return filePaths('globals', 'mixins.scss');
+	function srcPaths(pathInSources, moduleName) {
+		var filename = moduleName + '.scss';
+
+		if (!fsxu.isFileSync(path.join(paths.source, pathInSources, filename))) {
+			pathInSources = path.join(pathInSources, moduleName);
+		}
+
+		return srcGlobalsVarsPaths().concat(
+			srcFilePaths(pathInSources, moduleName + '.scss')
+		);
 	}
 
-	function globalType() {
-		return filePaths('globals', 'type.scss');
-	}
+	function srcGlobalsPaths() {
+		var pathInSources = 'globals';
 
-	function fonts() {
-		return filePaths('fonts', 'fonts.scss', function (paths, src, themePath) {
+		return srcGlobalsVarsPaths().concat(
+			srcFilePaths(pathInSources, 'mixins.scss'),
+			srcFilePaths('fonts', 'fonts.scss', fontsPathPush),
+			srcFilePaths(pathInSources, 'reset.scss'),
+			srcFilePaths(pathInSources, 'type.scss')
+		);
+
+		function fontsPathPush(paths, src, themePath) {
 			var config = readThemeConfig(themePath);
 			if (config && config['replaceFonts']) paths = [];
 			paths.push(src);
 			return paths;
-		});
+		}
 	}
 
-	function filePaths(dirname, filename, transform) {
-		var paths = [];
-		for (var i = 0; i < themePaths.length; ++i) {
-			var src = path.join(themePaths[i], dirname, filename);
+	function srcGlobalsVarsPaths() {
+		return srcFilePaths('globals', 'vars.scss');
+	}
+
+	function srcFilePaths(pathInTheme, filename, pushPathFunc) {
+		var outPaths = [];
+
+		addFromTheme(paths.source);
+		_.forEach(themeDepsPaths, addFromTheme);
+
+		return outPaths;
+
+		function addFromTheme(themePath) {
+			var src = path.join(themePath, pathInTheme, filename);
 			if (fsxu.isFileSync(src)) {
-				paths = (transform || transformDefault)(paths, src, themePaths[i]);
+				outPaths = (pushPathFunc || pushPathDefault)(outPaths, src, themePath);
 			}
 		}
 
-		return paths;
-
-		function transformDefault(paths, src) {
+		function pushPathDefault(paths, src) {
 			paths.push(src);
 			return paths;
 		}
 	}
 }
 
-function resolveInjectThemePaths() {
+
+function resolveThemeDepsPaths() {
+	var themeDepsPropName = 'deps';
+	var defaultThemeName = 'default';
+
 	var result = [];
 	var deps = userConfig[themeDepsPropName] || [];
-	if(!_.isArray(deps)) deps = [deps];
+	if (!_.isArray(deps)) deps = [deps];
 	deps.unshift(defaultThemeName);
 
 	flattenThemeDepsTree(deps);
@@ -113,7 +152,7 @@ function resolveInjectThemePaths() {
 	return result;
 
 	function flattenThemeDepsTree(deps, parents) {
-		if(!_.isArray(parents)) parents = [];
+		if (!_.isArray(parents)) parents = [];
 
 		if (_.isArray(deps)) {
 			deps = _.filter(deps, isDepValid);
@@ -124,31 +163,29 @@ function resolveInjectThemePaths() {
 
 		function pushDep(dep) {
 			dep = getThemePath(dep);
-
-			if(_.indexOf(result, dep) < 0) {
-				var themeConfig = readThemeConfig(dep) || {};
-				flattenThemeDepsTree(themeConfig[themeDepsPropName], _.concat(parents, dep));
-				result.push(dep);
-			}
+			var themeConfig = readThemeConfig(dep) || {};
+			flattenThemeDepsTree(themeConfig[themeDepsPropName], _.concat(parents, dep));
+			result.push(dep);
 		}
 
 		function isDepValid(dep) {
 			dep = getThemePath(dep);
-			return dep && _.indexOf(parents, dep) < 0;
+			return dep && _.indexOf(parents, dep) < 0 && _.indexOf(result, dep) < 0;
 		}
 	}
-}
 
-function isThemeValid(themeNameOrPath) {
-	return !!getThemePath(themeNameOrPath);
-}
-
-function getThemePath(themeNameOrPath) {
-	if (!/\/|\\/.test(themeNameOrPath)) {
-		themeNameOrPath = path.join(paths.themes, themeNameOrPath);
+	function isThemeValid(themeNameOrPath) {
+		return !!getThemePath(themeNameOrPath);
 	}
-	return fsxu.isFileSync(path.join(themeNameOrPath, paths.themeConfigFilename)) ? themeNameOrPath : null;
+
+	function getThemePath(themeNameOrPath) {
+		if (!/\/|\\/.test(themeNameOrPath)) {
+			themeNameOrPath = path.join(paths.themes, themeNameOrPath);
+		}
+		return fsxu.isFileSync(path.join(themeNameOrPath, paths.themeConfigFilename)) ? themeNameOrPath : null;
+	}
 }
+
 
 function readThemeConfig(themePath) {
 	return fsxu.readJsonSync(path.join(themePath, paths.themeConfigFilename));

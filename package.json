@@ -19,14 +19,21 @@
   "dependencies": {
     "fsxu": "0.0.4",
     "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.12",
+    "gulp-concat": "^2.6.0",
     "gulp-inject": "^4.1.0",
     "gulp-sass": "^2.3.2",
-    "lodash": "^4.15.0"
+    "lodash": "^4.15.0",
+    "ordered-merge-stream": "^1.0.0"
   },
   "peerDependencies": {
     "fsxu": "*",
     "gulp": "*",
     "gulp-inject": "*",
-    "gulp-sass": "*"
+    "gulp-concat": "*",
+    "gulp-clean-css": "*",
+    "gulp-sass": "*",
+    "ordered-merge-stream": "*",
+    "lodash": "*"
   }
 }
