@@ -1,0 +1,146 @@
+// Element
+// -------------------------------
+
+$text-transform: none;
+$font-family: $heading-font-family;
+$font-weight: $heading-font-weight;
+$line-height: $heading-line-height;
+$line-height-offset: $heading-line-height-offset;
+
+$top-margin: $heading-top-margin;
+$bottom-margin: $heading-bottom-margin ;
+$margin: $top-margin 0 $bottom-margin;
+
+$first-margin: -$line-height-offset;
+$last-margin: 0em;
+$horizontal-padding: 0em;
+$vertical-padding: 0em;
+
+/* Sub Heading */
+$sub-heading-distance: em(2px);
+$sub-heading-font-size: size-tiny-abs();
+$sub-heading-font-weight: bold;
+$sub-heading-text-transform: uppercase;
+$sub-heading-color: '';
+
+$small-sub-heading-size: size-mini-abs();
+$large-sub-heading-size: size-small-abs();
+$huge-sub-heading-size: size-medium-abs();
+
+/* Sub Header */
+$sub-header-margin: 0em;
+$sub-header-line-height: 1.2em;
+$sub-header-color: color-text-primary-muted();
+
+/* Icon */
+$icon-opacity: 1;
+$icon-size: 1.5em;
+$icon-offset: $line-height-offset;
+$icon-margin: 0.75rem;
+$icon-alignment: middle;
+
+/* Image */
+$image-width: 2.5em;
+$image-height: auto;
+$image-offset: $line-height-offset;
+$image-margin: $icon-margin;
+$image-alignment: middle;
+
+/* Label */
+$label-size: '';
+$label-distance: 0.5rem;
+$label-vertical-align: middle;
+
+/* Content */
+$content-alignment: top;
+$content-icon-alignment: middle;
+$content-image-alignment: middle;
+
+/* Paragraph after Header */
+$next-paragraph-distance: 0em;
+
+/*-------------------
+      Variations
+--------------------*/
+
+/* Sizing */
+$huge-font-size   : size-h1-abs();
+$large-font-size  : size-h2-abs();
+$medium-font-size : size-h3-abs();
+$small-font-size  : size-h4-abs();
+$tiny-font-size   : size-h5-abs();
+
+/* Sub Header */
+$h1-sub-header-font-size: size-h2-abs();
+$h2-sub-header-font-size: size-h3-abs();
+$h3-sub-header-font-size: size-h4-abs();
+$h4-sub-header-font-size: size-h5-abs();
+$h5-sub-header-font-size: size-h6-abs();
+
+$huge-sub-header-font-size  : $h1-sub-header-font-size;
+$large-sub-header-font-size : $h2-sub-header-font-size;
+$sub-header-font-size       : $h3-sub-header-font-size;
+$small-sub-header-font-size : $h4-sub-header-font-size;
+$tiny-sub-header-font-size  : $h5-sub-header-font-size;
+
+/* Icon Header */
+$icon-header-size:            3em;
+$icon-header-opacity:         1;
+$icon-header-margin:          0.5rem;
+$circular-header-icon-size:   2em;
+$square-header-icon-size:     2em;
+
+/* No Line Height Offset */
+$iconHeaderTopMargin:       2rem;
+$iconHeaderBottomMargin:    $bottom-margin;
+$iconHeaderFirstMargin:     0em;
+
+/* Divided */
+$divided-border-width:            1px;
+$divided-border:                  $divided-border-width solid color-divider();
+$divided-colored-border-width:    2px;
+
+$divided-border-padding:        em(3px);
+$divided-sub-header-padding:    em(3px);
+$divided-icon-padding:          0em;
+
+/* Block */
+$block-background: $darkWhite;
+$block-box-shadow: none;
+$block-border-width: 1px;
+$block-border: $block-border-width solid color-divider-solid();
+$block-horizontal-padding: size-medium-abs();
+$block-vertical-padding: size-mini-abs();
+$block-border-radius: $default-border-radius;
+
+$tiny-block:     size-tiny-abs();
+$small-block:    size-small-abs();
+$medium-block:   size-medium-abs();
+$large-block:    size-large-abs();
+$huge-block:     size-huge-abs();
+
+/* Attached */
+$attached-offset: -1px;
+$attached-box-shadow: none;
+$attached-border: 1px solid color-divider-solid();
+$attached-vertical-padding: $blockVerticalPadding;
+$attached-horizontal-padding: $blockHorizontalPadding;
+$attached-background: white;
+$attached-border-radius: $blockBorderRadius;
+
+$tiny-attached-size: size-tiny-rel();
+$small-attached-size: size-small-rel();
+$medium-attached-size: size-medium-rel();
+$large-attached-size: size-large-rel();
+$big-attached-size: size-big-rel();
+$huge-attached-size: size-huge-rel();
+
+/* Inverted */
+$inverted-color: white;
+$inverted-sub-header-color: color-text-primary-inverted-muted();
+$inverted-divided-border-color: $white-border-color;
+$inverted-block-background: $lightBlack $subtleGradient;
+$inverted-attached-background: $inverted-block-background;
+
+/* Floated */
+$floatedMargin: 0.5em;

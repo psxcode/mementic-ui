@@ -82,25 +82,22 @@ function srcModulePaths(moduleName, modulePathInTheme) {
 	}
 
 	function srcPaths(pathInSources, moduleName) {
-		var filename = moduleName + '.scss';
-
-		if (!fsxu.isFileSync(path.join(paths.source, pathInSources, filename))) {
-			pathInSources = path.join(pathInSources, moduleName);
-		}
 
 		return srcGlobalsVarsPaths().concat(
-			srcFilePaths(pathInSources, moduleName + '.scss')
+			srcFilePaths(pathInSources, moduleName, 'vars.scss'),
+			srcFilePaths(pathInSources, moduleName, moduleName + '-vars.scss'),
+			srcFilePaths(pathInSources, moduleName, moduleName + '.scss')
 		);
 	}
 
 	function srcGlobalsPaths() {
-		var pathInSources = 'globals';
+		var moduleName = 'globals';
 
 		return srcGlobalsVarsPaths().concat(
-			srcFilePaths(pathInSources, 'mixins.scss'),
-			srcFilePaths('fonts', 'fonts.scss', fontsPathPush),
-			srcFilePaths(pathInSources, 'reset.scss'),
-			srcFilePaths(pathInSources, 'type.scss')
+			srcFilePaths(null, moduleName, 'mixins.scss'),
+			srcFilePaths(null, 'fonts', 'fonts.scss', fontsPathPush),
+			srcFilePaths(null, moduleName, 'reset.scss'),
+			srcFilePaths(null, moduleName, 'type.scss')
 		);
 
 		function fontsPathPush(paths, src, themePath) {
@@ -112,10 +109,14 @@ function srcModulePaths(moduleName, modulePathInTheme) {
 	}
 
 	function srcGlobalsVarsPaths() {
-		return srcFilePaths('globals', 'vars.scss');
+		return srcFilePaths('', 'globals', 'vars.scss');
 	}
 
-	function srcFilePaths(pathInTheme, filename, pushPathFunc) {
+	function srcFilePaths(pathInTheme, moduleName, filename, pushPathFunc) {
+		if(!pathInTheme) pathInTheme = '';
+		if(!moduleName) moduleName = '';
+		if(!pushPathFunc) pushPathFunc = pushPathDefault;
+
 		var outPaths = [];
 
 		addFromTheme(paths.source);
@@ -124,9 +125,16 @@ function srcModulePaths(moduleName, modulePathInTheme) {
 		return outPaths;
 
 		function addFromTheme(themePath) {
+
 			var src = path.join(themePath, pathInTheme, filename);
 			if (fsxu.isFileSync(src)) {
-				outPaths = (pushPathFunc || pushPathDefault)(outPaths, src, themePath);
+				outPaths = pushPathFunc(outPaths, src, themePath);
+				return;
+			}
+
+			src = path.join(themePath, pathInTheme, moduleName, filename);
+			if(fsxu.isFileSync(src)) {
+				outPaths = pushPathFunc(outPaths, src, themePath);
 			}
 		}
 

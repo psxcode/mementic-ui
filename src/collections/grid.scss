@@ -1,0 +1,110 @@
+$gutter-width-half: $gutter-width / 2;
+$row-spacing-half: $row-spacing / 2;
+
+.ui-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+  padding: 0;
+}
+
+.ui-grid {
+  margin-top: -$row-spacing-half;
+  margin-bottom: -$row-spacing-half;
+  margin-left: -$gutter-width-half;
+  margin-right: -$gutter-width-half;
+}
+
+/* Preserve Rows Spacing on Consecutive Grids */
+.ui-grid + .ui-grid {
+  margin-top: $consecutive-grid-distance;
+}
+
+// Columns
+// -------------------------------
+
+/* Standard 16 column */
+.ui-grid > .col:not(.row),
+.ui-grid > .row > .col {
+  position: relative;
+  display: inline-block;
+
+  width: wide(1);
+  padding-left: $gutter-width-half;
+  padding-right: $gutter-width-half;
+  vertical-align: top;
+}
+
+.ui-grid > * {
+  padding-left: $gutter-width-half;
+  padding-right: $gutter-width-half;
+}
+
+// Rows
+// -------------------------------
+
+.ui-grid > .row {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: inherit;
+  align-items: stretch;
+  width: 100% !important;
+  padding: $row-spacing-half 0 $row-spacing-half;
+}
+
+// Columns
+// -------------------------------
+
+/* Vertical padding when no rows */
+.ui-grid > .col:not(.row) {
+  padding-top: $row-spacing-half;
+  padding-bottom: $row-spacing-half;
+}
+.ui-grid > .row > .col {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+// Content
+// -------------------------------
+
+.ui-grid > .row > img,
+.ui-grid > .row > .col > img {
+  max-width: $column-max-image-width;
+}
+
+
+// Loose Coupling
+// -------------------------------
+
+/* Collapse Margin on Consecutive Grid */
+.ui-grid > .ui-grid:first-child {
+  margin-top: 0;
+}
+.ui-grid > .ui-grid:last-child {
+  margin-bottom: 0;
+}
+
+/* Segment inside Aligned Grid */
+.ui-grid .row-aligned > .col > .segment:not(.compact):not(.attached),
+.ui-grid-aligned .col > .segment:not(.compact):not(.attached) {
+  width: 100%;
+}
+
+/* Align Dividers with Gutter */
+.ui-grid .row + .ui-divider {
+  flex-grow: 1;
+  margin: $row-spacing-half $gutter-width-half;
+}
+.ui-grid .col + .ui-divider-vertical {
+  height: calc(50% - #{$row-spacing-half});
+}
+
+/* Remove Border on Last Horizontal Segment */
+.ui-grid > .row > .column:last-child > .segment-hor,
+.ui-grid > .col:last-child > .segment-hor {
+  box-shadow: none;
+}

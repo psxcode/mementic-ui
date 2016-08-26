@@ -1,0 +1,209 @@
+
+
+.ui.header {
+  border: none;
+  margin: $margin;
+  padding: $vertical-padding $horizontal-padding;
+  font-family: $font-family;
+  font-weight: $font-weight;
+  line-height: $line-height;
+  text-transform: $text-transform;
+  color: color-text-primary();
+}
+
+.ui.header:first-child {
+  margin-top: $first-margin;
+}
+.ui.header:last-child {
+  margin-bottom: $last-margin;
+}
+
+/*--------------
+   Sub Header
+---------------*/
+
+.ui.header .sub.header {
+  display: block;
+  font-weight: normal;
+  padding: 0;
+  margin: $sub-header-margin;
+  font-size: $sub-header-font-size;
+  line-height: $sub-header-line-height;
+  color: $sub-header-color;
+}
+
+/*--------------
+      Icon
+---------------*/
+
+.ui.header > .icon {
+  display: table-cell;
+  opacity: $icon-opacity;
+  font-size: $icon-size;
+  padding-top: $icon-offset;
+  vertical-align: $icon-alignment;
+}
+
+/* With Text Node */
+.ui.header .icon:only-child {
+  display: inline-block;
+  padding: 0;
+  margin-right: $icon-margin;
+}
+
+/*-------------------
+        Image
+--------------------*/
+
+.ui.header > .image,
+.ui.header > img {
+  display: inline-block;
+  margin-top: $image-offset;
+  width: $image-width;
+  height: $image-height;
+  vertical-align: $image-alignment;
+}
+.ui.header > .image:only-child,
+.ui.header > img:only-child {
+  margin-right: $image-margin;
+}
+
+/*--------------
+     Content
+---------------*/
+
+.ui.header .content {
+  display: inline-block;
+  vertical-align: $content-alignment;
+}
+
+/* After Image */
+.ui.header > img + .content,
+.ui.header > .image + .content {
+  padding-left: $image-margin;
+  vertical-align: $content-image-alignment;
+}
+
+/* After Icon */
+.ui.header > .icon + .content {
+  padding-left: $icon-margin;
+  display: table-cell;
+  vertical-align: $content-icon-alignment;
+}
+
+/*--------------
+ Loose Coupling
+---------------*/
+
+.ui.header .ui.label {
+  font-size: $label-size;
+  margin-left: $label-distance;
+  vertical-align: $label-vertical-align;
+}
+
+/* Positioning */
+.ui.header + p {
+  margin-top: $next-paragraph-distance;
+}
+
+/*--------------
+     Page
+---------------*/
+
+h1.ui.header {
+  font-size: size-h1-abs();
+}
+h2.ui.header {
+  font-size: size-h2-abs();
+}
+h3.ui.header {
+  font-size: size-h3-abs();
+}
+h4.ui.header {
+  font-size: size-h4-abs();
+}
+h5.ui.header {
+  font-size: size-h5-abs();
+}
+
+
+/* Sub Header */
+h1.ui.header .sub.header {
+  font-size: $h1-sub-header-font-size;
+}
+h2.ui.header .sub.header {
+  font-size: $h2-sub-header-font-size;
+}
+h3.ui.header .sub.header {
+  font-size: $h3-sub-header-font-size;
+}
+h4.ui.header .sub.header {
+  font-size: $h4-sub-header-font-size;
+}
+h5.ui.header .sub.header {
+  font-size: $h5-sub-header-font-size;
+}
+
+/*--------------
+ Content Heading
+---------------*/
+
+.ui.huge.header {
+  min-height: 1em;
+  font-size: $huge-font-size;
+}
+.ui.large.header {
+  font-size: $large-font-size;
+}
+.ui.medium.header {
+  font-size: $medium-font-size;
+}
+.ui.small.header {
+  font-size: $small-font-size;
+}
+.ui.tiny.header {
+  font-size: $tiny-font-size;
+}
+
+/* Sub Header */
+.ui.huge.header .sub.header {
+  font-size: $huge-sub-header-font-size;
+}
+.ui.large.header .sub.header {
+  font-size: $huge-sub-header-font-size;
+}
+.ui.header .sub.header {
+  font-size: $sub-header-font-size;
+}
+.ui.small.header .sub.header {
+  font-size: $small-sub-header-font-size;
+}
+.ui.tiny.header .sub.header {
+  font-size: $tiny-sub-header-font-size;
+}
+
+/*--------------
+   Sub Heading
+---------------*/
+
+.ui.sub.header {
+  padding: 0;
+  margin-bottom: $sub-heading-distance;
+  font-weight: $sub-heading-font-weight;
+  font-size: $sub-heading-font-size;
+  text-transform: $sub-heading-text-transform;
+  color: $sub-heading-color;
+}
+
+.ui.small.sub.header {
+  font-size: $small-sub-heading-size;
+}
+.ui.sub.header {
+  font-size: $sub-heading-font-size;
+}
+.ui.large.sub.header {
+  font-size: $large-sub-heading-size;
+}
+.ui.huge.sub.header {
+  font-size: $huge-sub-heading-size;
+}

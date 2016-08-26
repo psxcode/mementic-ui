@@ -1,0 +1,40 @@
+// Colors
+// -------------------------------
+
+$min-width: 320px;
+$gutter-width: 2rem;
+$row-spacing: 2rem;
+$column-max-image-width: 100%;
+$consecutive-grid-distance: ($row-spacing / 2);
+
+// Divided
+// -------------------------------
+
+$divided-border: -1px 0px 0px 0px color-divider();
+$vertically-divided-border: 0px -1px 0px 0px color-divider();
+
+$divided-inverted-border: -1px 0px 0px 0px color-divider-inverted();
+$vertically-divided-inverted-border: 0px -1px 0px 0px color-divider-inverted();
+
+// Celled
+// -------------------------------
+
+$celled-margin: 1em 0em;
+$celled-width: 1px;
+$celled-border-color: color-divider-solid();
+
+$celled-padding: 1em;
+$celled-relaxed-padding: 1.5em;
+$celled-very-relaxed-padding: 2em;
+
+$celled-grid-divider: 0px 0px 0px $celled-width $celled-border-color;
+$celled-row-divider: 0px (-$celled-width) 0px 0px $celled-border-color;
+$celled-column-divider: (-$celled-width) 0px 0px 0px $celled-border-color;
+
+// Stackable
+// -------------------------------
+
+$stackable-row-spacing: $row-spacing;
+$stackable-gutter: $gutter-width;
+$stackable-mobile-border: 1px solid color-divider();
+$stackable-inverted-mobile-border: 1px solid color-divider-inverted();

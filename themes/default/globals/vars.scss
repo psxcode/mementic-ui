@@ -1,5 +1,20 @@
+// Utility functions
+// -------------------------------
+
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@function clamp($value, $min: 0, $max: 1) {
+  @return if($value > $max, $max, if($value < $min, $min, $value));
+}
+
 // Colors
 // -------------------------------
+
+@function color-blend($color, $blend: 1, $blend-factor: 1) {
+  @return rgba($color, clamp($blend * $blend-factor));
+}
 
 @function color-bg($color) {
   @return lighten($color, 40%);
@@ -25,71 +40,315 @@
   @return darken($color, 5%);
 }
 
-@function color-transparent($color, $transparency: 0.1) {
-  @return rgba($color, $transparency);
+@function color-disabled($color) {
+  @return rgba($color, 0.5);
 }
 
-$color-light:                 #fff !default;
-$color-stable:                #f8f8f8 !default;
-$color-positive:              #387ef5 !default;
-$color-calm:                  #11c1f3 !default;
-$color-balanced:              #33cd5f !default;
-$color-energized:             #ffc900 !default;
-$color-assertive:             #ef473a !default;
-$color-royal:                 #886aea !default;
-$color-dark:                  #444 !default;
+// Ionic Color Names
+// -------------------------------
 
-$color-primary:           #8BC34A !default;
-$color-primary-dark:      #689F38 !default;
-$color-primary-light:     #DCEDC8 !default;
-$color-accent:            #FF9800 !default;
-$color-icons:             #212121 !default;
-$color-text-primary:      #212121 !default;
-$color-text-secondary:    #727272 !default;
-$color-text-inverted:     #fff !default;
-$color-divider:           #B6B6B6 !default;
-$color-bg:                #fff !default;
+$color-light: #fff !default;
+$color-stable: #f8f8f8 !default;
+$color-positive: #387ef5 !default;
+$color-calm: #11c1f3 !default;
+$color-balanced: #33cd5f !default;
+$color-energized: #ffc900 !default;
+$color-assertive: #ef473a !default;
+$color-royal: #886aea !default;
+$color-dark: #444 !default;
 
-$color-highlight:         $color-text-primary;
-$color-highlight-bg:      $color-text-inverted;
+// Google Material Color Names
+// -------------------------------
 
-$facebookColor   : #3B5998;
-$twitterColor    : #0084B4;
-$googlePlusColor : #DC4A38;
-$linkedInColor   : #1F88BE;
-$youtubeColor    : #CC181E;
-$instagramColor  : #49769C;
-$pinterestColor  : #00ACED;
-$vkColor         : #4D7198;
+$color-primary: #8BC34A !default;
+$color-primary-dark: #689F38 !default;
+$color-primary-light: #DCEDC8 !default;
+$color-accent: #FF9800 !default;
+$color-icons: #212121 !default;
+//$color-text-primary
+//$color-text-secondary
+//$color-text-inverted
+//$color-divider
+//$color-divider-inverted
 
+// Divider Colors
+// -------------------------------
+
+$color-divider: #202224 !default;
+$color-divider-blend: 0.15;
+
+$color-divider-solid-blend-factor: 5.0;
+$color-divider-strong-blend-factor: 2.0;
+$color-divider-internal-blend-factor: 0.65;
+$color-divider-internal-solid-blend-factor: 4.0;
+$color-divider-selected-blend-factor: 2.5;
+$color-divider-selected-solid-blend-factor: 4.0;
+$color-divider-selected-strong-blend-factor: 3.5;
+$color-divider-disabled-blend-factor: 3.5;
+
+@function color-divider($color: $color-divider) {
+  @return color-blend($color, $color-divider-blend);
+}
+
+@function color-divider-solid($color: $color-divider) {
+  @return color-blend($color, $color-divider-blend, $color-divider-solid-blend-factor);
+}
+
+@function color-divider-strong($color: $color-divider) {
+  @return color-blend($color, $color-divider-blend, $color-divider-strong-blend-factor);
+}
+
+@function color-divider-internal($color: $color-divider) {
+  @return color-blend($color, $color-divider-blend, $color-divider-internal-blend-factor);
+}
+
+@function color-divider-internal-solid($color: $color-divider) {
+  @return color-blend($color, $color-divider-blend, $color-divider-internal-solid-blend-factor);
+}
+
+@function color-divider-selected($color: $color-divider) {
+  @return color-blend($color, $color-divider-blend, $color-divider-selected-blend-factor);
+}
+
+@function color-divider-selected-solid($color: $color-divider) {
+  @return color-blend($color, $color-divider-blend, $color-divider-selected-solid-blend-factor);
+}
+
+@function color-divider-selected-strong($color: $color-divider) {
+  @return color-blend($color, $color-divider-blend, $color-divider-selected-strong-blend-factor);
+}
+
+@function color-divider-disabled($color: $color-divider) {
+  @return color-blend($color, $color-divider-blend, $color-divider-disabled-blend-factor);
+}
+
+$color-divider-inverted: #fff !default;
+$color-divider-inverted-blend: 0.5;
+
+$color-divider-inverted-solid-blend-factor: 5.0;
+$color-divider-inverted-strong-blend-factor: 2.0;
+$color-divider-inverted-internal-blend-factor: 0.65;
+$color-divider-inverted-selected-blend-factor: 2.5;
+$color-divider-inverted-selected-strong-blend-factor: 3.5;
+$color-divider-inverted-disabled-blend-factor: 3.5;
+
+@function color-divider-inverted() {
+  @return color-blend($color-divider-inverted, $color-divider-inverted-blend);
+}
+
+@function color-divider-inverted-solid() {
+  @return color-blend($color-divider-inverted, $color-divider-inverted-blend * $color-divider-inverted-solid-blend-factor);
+}
+
+@function color-divider-inverted-strong() {
+  @return color-blend($color-divider-inverted, $color-divider-inverted-blend * $color-divider-inverted-strong-blend-factor);
+}
+
+@function color-divider-inverted-internal() {
+  @return color-blend($color-divider-inverted, $color-divider-inverted-blend * $color-divider-inverted-internal-blend-factor);
+}
+
+@function color-divider-inverted-selected() {
+  @return color-blend($color-divider-inverted, $color-divider-inverted-blend * $color-divider-inverted-selected-blend-factor);
+}
+
+@function color-divider-inverted-selected-strong() {
+  @return color-blend($color-divider-inverted, $color-divider-inverted-blend * $color-divider-inverted-selected-strong-blend-factor);
+}
+
+@function color-divider-inverted-disabled() {
+  @return color-blend($color-divider-inverted, $color-divider-inverted-blend * $color-divider-inverted-disabled-blend-factor);
+}
+
+$whiteBorderColor: rgba(255, 255, 255, 0.1);
+$selectedWhiteBorderColor: rgba(255, 255, 255, 0.8);
+
+$solidWhiteBorderColor: #555555;
+$selectedSolidWhiteBorderColor: #999999;
+
+// Text Colors
+// -------------------------------
+
+$color-text-muted-blend-factor: 0.7 !default;
+$color-text-unselected-blend-factor: 0.5 !default;
+$color-text-hovered-blend-factor: 0.9 !default;
+$color-text-pressed-blend-factor: 1.05 !default;
+$color-text-selected-blend-factor: 1.12 !default;
+$color-text-disabled-blend-factor: 1.12 !default;
+
+@function color-text-muted($color-base, $blend-base) {
+  @return color-blend($color-base, $blend-base, $color-text-muted-blend-factor);
+}
+
+@function color-text-unselected($color-base, $blend-base) {
+  @return color-blend($color-base, $blend-base, $color-text-unselected-blend-factor);
+}
+
+@function color-text-hovered($color-base, $blend-base) {
+  @return color-blend($color-base, $blend-base, $color-text-hovered-blend-factor);
+}
+
+@function color-text-pressed($color-base, $blend-base) {
+  @return color-blend($color-base, $blend-base, $color-text-pressed-blend-factor);
+}
+
+@function color-text-selected($color-base, $blend-base) {
+  @return color-blend($color-base, $blend-base, $color-text-selected-blend-factor);
+}
+
+@function color-text-disabled($color-base, $blend-base) {
+  @return color-blend($color-base, $blend-base, $color-text-disabled-blend-factor);
+}
+
+$color-text-primary: #000 !default;
+$color-text-secondary: #000 !default;
+$color-text-primary-blend: 0.85 !default;
+$color-text-secondary-blend: 0.5 !default;
+
+@function color-text-primary() {
+  @return color-blend($color-text-primary, $color-text-primary-blend);
+}
+
+@function color-text-primary-muted() {
+  @return color-blend($color-text-primary, $color-text-primary-blend, $color-text-muted-blend-factor);
+}
+
+@function color-text-primary-unselected() {
+  @return color-blend($color-text-primary, $color-text-primary-blend, $color-text-unselected-blend-factor);
+}
+
+@function color-text-primary-hovered() {
+  @return color-blend($color-text-primary, $color-text-primary-blend, $color-text-hovered-blend-factor);
+}
+
+@function color-text-primary-pressed() {
+  @return color-blend($color-text-primary, $color-text-primary-blend, $color-text-pressed-blend-factor);
+}
+
+@function color-text-primary-selected() {
+  @return color-blend($color-text-primary, $color-text-primary-blend, $color-text-selected-blend-factor);
+}
+
+@function color-text-primary-disabled() {
+  @return color-blend($color-text-primary, $color-text-primary-blend, $color-text-disabled-blend-factor);
+}
+
+@function color-text-secondary() {
+  @return color-blend($color-text-secondary, $color-text-secondary-blend);
+}
+
+@function color-text-secondary-muted() {
+  @return color-blend($color-text-secondary, $color-text-secondary-blend, $color-text-muted-blend-factor);
+}
+
+@function color-text-secondary-unselected() {
+  @return color-blend($color-text-secondary, $color-text-secondary-blend, $color-text-unselected-blend-factor);
+}
+
+@function color-text-secondary-hovered() {
+  @return color-blend($color-text-secondary, $color-text-secondary-blend, $color-text-hovered-blend-factor);
+}
+
+@function color-text-secondary-pressed() {
+  @return color-blend($color-text-secondary, $color-text-secondary-blend, $color-text-pressed-blend-factor);
+}
+
+@function color-text-secondary-selected() {
+  @return color-blend($color-text-secondary, $color-text-secondary-blend, $color-text-selected-blend-factor);
+}
+
+@function color-text-secondary-disabled() {
+  @return color-blend($color-text-secondary, $color-text-secondary-blend, $color-text-disabled-blend-factor);
+}
+
+$color-text-primary-inverted: #fff !default;
+$color-text-secondary-inverted: #fff !default;
+$color-text-primary-inverted-blend: 0.9 !default;
+$color-text-secondary-inverted-blend: 0.7 !default;
+
+$color-text-inverted-muted-blend-factor: 0.9 !default;
+$color-text-inverted-unselected-blend-factor: 0.55 !default;
+$color-text-inverted-hovered-blend-factor: 1 !default;
+$color-text-inverted-pressed-blend-factor: 1 !default;
+$color-text-inverted-selected-blend-factor: 1 !default;
+$color-text-inverted-disabled-blend-factor: 0.2 !default;
+
+@function color-text-primary-inverted() {
+  @return color-blend($color-text-primary-inverted, $color-text-primary-inverted-blend);
+}
+
+@function color-text-primary-inverted-muted() {
+  @return color-blend($color-text-primary-inverted, $color-text-primary-inverted-blend, $color-text-inverted-muted-blend-factor);
+}
+
+@function color-text-primary-inverted-unselected() {
+  @return color-blend($color-text-primary-inverted, $color-text-primary-inverted-blend, $color-text-inverted-unselected-blend-factor);
+}
+
+@function color-text-primary-inverted-hovered() {
+  @return color-blend($color-text-primary-inverted, $color-text-primary-inverted-blend, $color-text-inverted-hovered-blend-factor);
+}
+
+@function color-text-primary-inverted-pressed() {
+  @return color-blend($color-text-primary-inverted, $color-text-primary-inverted-blend, $color-text-inverted-pressed-blend-factor);
+}
+
+@function color-text-primary-inverted-selected() {
+  @return color-blend($color-text-primary-inverted, $color-text-primary-inverted-blend, $color-text-inverted-selected-blend-factor);
+}
+
+@function color-text-primary-inverted-disabled() {
+  @return color-blend($color-text-primary-inverted, $color-text-primary-inverted-blend, $color-text-inverted-disabled-blend-factor);
+}
+
+$color-highlight: color-text-primary();
+$color-highlight-bg: color-text-primary-inverted();
+
+// Vendor Colors
+// -------------------------------
+
+$facebookColor: #3B5998;
+$twitterColor: #0084B4;
+$googlePlusColor: #DC4A38;
+$linkedInColor: #1F88BE;
+$youtubeColor: #CC181E;
+$instagramColor: #49769C;
+$pinterestColor: #00ACED;
+$vkColor: #4D7198;
 
 // Base
 // -------------------------------
-$font-context:                14;
+$font-context: 14;
+
+@function to-em($value) {
+  @return $value * 1em;
+}
+
+@function to-rem($value) {
+  @return $value * 1rem;
+}
 
 @function em($px) {
-  @return ($px / $font-context) * 1em;
+  @return (strip-unit($px) / $font-context) * 1em;
 }
 
 @function rem($px) {
-  @return ($px / $font-context) * 1rem;
+  @return (strip-unit($px) / $font-context) * 1rem;
 }
 
-$font-family-sans-serif:             '-apple-system', "Helvetica Neue", "Roboto", "Segoe UI", sans-serif !default;
-$font-family-sans-serif-light:       '-apple-system', "HelveticaNeue-Light", "Roboto-Light", "Segoe UI-Light", sans-serif-light !default;
+$font-family-sans-serif: '-apple-system', "Helvetica Neue", "Roboto", "Segoe UI", sans-serif !default;
+$font-family-sans-serif-light: '-apple-system', "HelveticaNeue-Light", "Roboto-Light", "Segoe UI-Light", sans-serif-light !default;
 
-$font-family:                $font-family-sans-serif !default;
+$font-family: $font-family-sans-serif !default;
 
+$font-size: $font-context * 1px !default;
+$font-size-large: 1.2857 * $font-size !default;
+$font-size-small: 0.7857 * $font-size !default;
 
-$font-size:                  $font-context * 1px !default;
-$font-size-large:            1.2857 * $font-size !default;
-$font-size-small:            0.7857 * $font-size !default;
-
-$line-height:                1.428571429 !default; // 20/14
-$line-height-abs:       floor($line-height * $font-size) !default; // ~20px
-$line-height-large:          1.5 !default;
-$line-height-small:          1.33 !default;
-
+$line-height: 1.428571429 !default; // 20/14
+$line-height-abs: floor($line-height * $font-size) !default; // ~20px
+$line-height-large: 1.5 !default;
+$line-height-small: 1.33 !default;
 
 // Sizes
 // -------------------------------
@@ -99,34 +358,80 @@ $line-height-small:          1.33 !default;
   This ensures these "ratios" remain constant despite changes in EM
 */
 
-$mini-size        : 0.7857; // 11/14
-$tiny-size        : 0.8571; // 12/14
-$small-size       : 0.9285; // 13/14
-$medium-size      : 1.0;
-$large-size       : 1.1428; // 16/14
-$big-size         : 1.2857; // 18/14
-$huge-size        : 1.4285; // 20/14
-$massive-size     : 1.7142; // 24/14
+$size-mini: 0.7857 !default; // 11/14
+$size-tiny: 0.8571 !default; // 12/14
+$size-small: 0.9285 !default; // 13/14
+$size-medium: 1.0 !default;
+$size-large: 1.1428 !default; // 16/14
+$size-big: 1.2857 !default; // 18/14
+$size-huge: 1.4285 !default; // 20/14
+$size-massive: 1.7142 !default; // 24/14
 
-$mini             : $mini-size * 1rem;
-$tiny             : $tiny-size * 1rem;
-$small            : $small-size * 1rem;
-$medium           : $medium-size * 1rem;
-$large            : $large-size * 1rem;
-$big              : $big-size * 1rem;
-$huge             : $huge-size * 1rem;
-$massive          : $massive-size * 1rem;
+@function size-mini-abs() {
+  @return to-rem($size-mini);
+}
 
-$mini-rel         : $mini-size * 1em;
-$tiny-rel         : $tiny-size * 1em;
-$small-rel        : $small-size * 1em;
-$medium-rel       : $medium-size * 1em;
-$large-rel        : $large-size * 1em;
-$big-rel          : $big-size * 1em;
-$huge-rel         : $huge-size * 1em;
-$massive-rel      : $massive-size * 1em;
+@function size-tiny-abs() {
+  @return to-rem($size-tiny);
+}
 
-$num-columns      : 16;
+@function size-small-abs() {
+  @return to-rem($size-small);
+}
+
+@function size-medium-abs() {
+  @return to-rem($size-medium);
+}
+
+@function size-large-abs() {
+  @return to-rem($size-large);
+}
+
+@function size-big-abs() {
+  @return to-rem($size-big);
+}
+
+@function size-huge-abs() {
+  @return to-rem($size-huge);
+}
+
+@function size-massive-abs() {
+  @return to-rem($size-massive);
+}
+
+@function size-mini-rel() {
+  @return to-em($size-mini);
+}
+
+@function size-tiny-rel() {
+  @return to-em($size-tiny);
+}
+
+@function size-small-rel() {
+  @return to-em($size-small);
+}
+
+@function size-medium-rel() {
+  @return to-em($size-medium);
+}
+
+@function size-large-rel() {
+  @return to-em($size-large);
+}
+
+@function size-big-rel() {
+  @return to-em($size-big);
+}
+
+@function size-huge-rel() {
+  @return to-em($size-huge);
+}
+
+@function size-massive-rel() {
+  @return to-em($size-massive);
+}
+
+$num-columns: 16;
 
 @function wide($num) {
   @return $num / $num-columns * 100%;
@@ -138,36 +443,106 @@ $num-columns      : 16;
 
 // Headings
 // -------------------------------
-$heading-font-family:            $font-family !default;
-$heading-font-weight:            500 !default;
-$heading-line-height:            1.2 !default;
-$heading-color:                  $color-text-primary;
+$heading-font-family: $font-family !default;
+$heading-font-weight: 500 !default;
+$heading-line-height: 1.2 !default;
+
+/* Used to match floats with text */
+$line-height-offset: (($line-height - 1em) / 2);
+$heading-line-height-offset: ($heading-line-height - 1em) / 2;
+
+/* Header Spacing */
+$heading-top-margin: "calc(2rem - #{$heading-line-height-offset})";
+$heading-bottom-margin: 1rem;
+$heading-margin: $heading-top-margin 0em $heading-bottom-margin;
 
 // Semantic sizes
 /*
-$h1 : 2rem;
-$h2 : 1.714rem;
-$h3 : 1.28rem;
-$h4 : 1.071rem;
-$h5 : 1rem;
+$h1 : 2;
+$h2 : 1.714;
+$h3 : 1.28;
+$h4 : 1.071;
+$h5 : 1;
 */
 
 // Ionic sizes
-$h1 : 2.6rem;
-$h2 : 2.15rem;
-$h3 : 1.70rem;
-$h4 : 1.25rem;
-$h5 : 1rem;
-$h6 : 0.85rem;
+$h1: 2.6;
+$h2: 2.15;
+$h3: 1.70;
+$h4: 1.25;
+$h5: 1;
+$h6: 0.85;
+
+@function size-h1-abs() {
+  @return to-rem($h1);
+}
+
+@function size-h2-abs() {
+  @return to-rem($h2);
+}
+
+@function size-h3-abs() {
+  @return to-rem($h3);
+}
+
+@function size-h4-abs() {
+  @return to-rem($h4);
+}
+
+@function size-h5-abs() {
+  @return to-rem($h5);
+}
+
+@function size-h6-abs() {
+  @return to-rem($h6);
+}
+
+@function size-h1-rel() {
+  @return to-em($h1);
+}
+
+@function size-h2-rel() {
+  @return to-em($h2);
+}
+
+@function size-h3-rel() {
+  @return to-em($h3);
+}
+
+@function size-h4-rel() {
+  @return to-em($h4);
+}
+
+@function size-h5-rel() {
+  @return to-em($h5);
+}
+
+@function size-h6-rel() {
+  @return to-em($h6);
+}
 
 // Paragraphs
 // -------------------------------
-$paragraph-margin       : 0 0 ($line-height-abs / 2);
+$paragraph-margin: 0 0 ($line-height-abs / 2);
 $paragraph-line-height: $line-height;
 
 // Links
 // -------------------------------
-$link-color                   : $color-accent;
-$link-text-decoration         : none;
-$link-hover-color             : color-hover($color-accent);
-$link-hover-text-decoration   : none;
+$link-color: $color-accent;
+$link-text-decoration: none;
+$link-hover-color: color-hover($color-accent);
+$link-hover-text-decoration: none;
+
+// Breakpoints
+// -------------------------------
+$breakpoint-mobile: 320px;
+$breakpoint-tablet: 768px;
+$breakpoint-computer: 992px;
+$breakpoint-large-monitor: 1200px;
+$breakpoint-widescreen-monitor: 1920px;
+
+/* Responsive */
+$largest-mobile-screen: ($breakpoint-tablet - 1px);
+$largest-tablet-screen: ($breakpoint-computer - 1px);
+$largest-small-monitor: ($breakpoint-large-monitor - 1px);
+$largest-large-monitor: ($breakpoint-widescreen-monitor - 1px);
