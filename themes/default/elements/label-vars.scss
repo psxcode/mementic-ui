@@ -1,0 +1,216 @@
+/*******************************
+             Label
+*******************************/
+
+/*-------------------
+       Element
+--------------------*/
+
+$vertical-align: baseline;
+$vertical-margin: 0;
+$horizontal-margin: px-em(2);
+$background-color: #E8E8E8;
+$color: color-text('primary', 'muted');
+$background-image: none;
+$vertical-padding: 0.5833em; /* medium is not $emSize custom value required */
+$horizontal-padding: 0.833em;
+$border-radius: unit-rem($default-border-radius);
+$text-transform: none;
+$font-weight: bold;
+$border-width: 1px;
+$border: 0px solid transparent;
+
+$line-height-offset: -($vertical-padding / 2);
+
+$label-transition-duration: $default-duration;
+$label-transition-easing: $default-easing;
+$transition: background $label-transition-duration $label-transition-easing;
+
+/* Group */
+$group-vertical-margin: 0.5em;
+$group-horizontal-margin: 0.5em;
+
+/*-------------------
+        Parts
+--------------------*/
+
+/* Link */
+$link-opacity: 0.5;
+$link-transition: $label-transition-duration opacity $label-transition-easing;
+
+/* Icon */
+$icon-distance: 0.75em;
+
+/* Image */
+$image-height: (1em + $vertical-padding * 2);
+
+/* Detail */
+$detail-font-weight: bold;
+$detail-opacity: 0.8;
+$detail-icon-distance: 0.25em;
+$detail-margin: 1em;
+
+/* Delete */
+$delete-opacity: $link-opacity;
+$delete-size: size('small', true);
+$delete-margin: 0.5em;
+$delete-transition: background $label-transition-duration $label-transition-easing;
+
+/*-------------------
+        Types
+--------------------*/
+
+/* Image Label */
+$image-label-background: $background-color;
+$image-label-vertical-padding: $vertical-padding;
+$image-label-horizontal-padding: $horizontal-padding;
+$image-label-text-distance: 0.5em;
+$image-label-detail-distance: $image-label-text-distance;
+$image-label-border-radius: $border-radius;
+$image-label-box-shadow: none;
+$image-label-padding: $image-label-vertical-padding $image-label-horizontal-padding $image-label-vertical-padding $image-label-text-distance;
+
+$image-label-image-margin: -$vertical-padding $image-label-text-distance -$vertical-padding -$image-label-text-distance;
+$image-label-image-border-radius: $image-label-border-radius 0em 0em $image-label-border-radius;
+$image-label-image-height: $image-height;
+
+$image-label-detail-background: color-transparent(color-grayscale('black'), 'strong');
+$image-label-detail-padding: $image-label-vertical-padding $image-label-horizontal-padding;
+$image-label-detail-margin: -$image-label-vertical-padding -$image-label-horizontal-padding -$image-label-vertical-padding $image-label-detail-distance;
+
+/*-------------------
+        States
+--------------------*/
+
+/* Hover */
+$label-hover-background-color: #E0E0E0;
+$label-hover-background-image: none;
+$label-hover-text-color: color-text('primary', 'hovered');
+
+/* Active */
+$label-active-background-color: #D0D0D0;
+$label-active-background-image: none;
+$label-active-text-color: color-text('primary', 'selected');
+
+/* Active Hover */
+$label-active-hover-background-color: #C8C8C8;
+$label-active-hover-background-image: none;
+$label-active-hover-text-color: color-text('primary', 'selected');
+
+/*-------------------
+      Variations
+--------------------*/
+
+/* Basic */
+$basic-background: none color-grayscale('white');
+$basic-border-width: 1px;
+$basic-border: $basic-border-width solid color-divider();
+$basic-color: color-text('primary');
+$basic-box-shadow: none;
+
+$basic-hover-background: $basic-background;
+$basic-hover-color: $link-hover-color;
+$basic-hover-border: $basic-border;
+$basic-hover-box-shadow: $basic-box-shadow;
+
+/* Tag */
+$tag-circle-color: color-grayscale('white');
+$tag-circle-size: 0.5em;
+$tag-horizontal-padding: 1.5em;
+$tag-circle-box-shadow: 0 -1px 1px 0 rgba(0, 0, 0, 0.3);
+$tag-triangle-right-offset: 100%;
+$tag-triangle-top-offset: 50%;
+$tag-triangle-size: 1.56em;
+$tag-triangle-background-image: none;
+$tag-transition: none; /* Avoids error with background: inherit; on animation */
+
+/* Ribbon */
+$ribbon-triangle-size: 1.2rem;
+$ribbon-shadow-color: rgba(0, 0, 0, 0.15);
+
+$ribbon-margin: 1rem;
+$ribbon-offset: calc(-#{$ribbon-margin} - #{$ribbon-triangle-size});
+$ribbon-distance: calc(#{$ribbon-margin} + #{$ribbon-triangle-size});
+$right-ribbon-offset: calc(100% + #{$ribbon-margin} + #{$ribbon-triangle-size});
+
+$ribbon-image-top-distance: 1rem;
+$ribbon-image-margin: 0.05em; /* Rounding Offset on Triangle */
+$ribbon-image-offset: calc(-#{$ribbon-image-margin} - #{$ribbon-triangle-size});
+$right-ribbon-image-offset: calc(100% + #{$ribbon-image-margin} + #{$ribbon-triangle-size});
+
+$ribbon-table-margin: size('mini', true); /* Rounding Offset on Triangle */
+$ribbon-table-offset: calc(-#{$ribbon-table-margin} - #{$ribbon-triangle-size});
+$right-ribbon-table-offset: calc(100% + #{$ribbon-table-margin} + #{$ribbon-triangle-size});
+
+/* Colors */
+$redTextColor: white;
+
+$redHoverTextColor: white;
+
+$redRibbonShadow: darken(red, 10);
+
+/* Attached */
+$attached-segment-padding: 2rem;
+$attached-vertical-padding: 0.75em;
+$attached-horizontal-padding: 1em;
+
+$attached-corner-border-radius: px-rem(3);
+$attached-border-radius: $border-radius;
+
+/* Corner */
+$corner-size-ratio: 1;
+$corner-transition: color $label-transition-duration $label-transition-easing;
+$corner-triangle-size: 4em;
+$corner-triangle-transition: border-color $label-transition-duration $label-transition-easing;
+$corner-triangle-z-index: 1;
+
+$corner-icon-size: size('large', true);
+$corner-icon-top-offset: px-em(9);
+$corner-icon-left-offset: px-em(11);
+
+/* Corner Text */
+$corner-text-width: 3em;
+$corner-text-weight: bold;
+$corner-text-size: 1em;
+
+/* Horizontal */
+$horizontal-label-min-width: 3em;
+$horizontal-label-margin: 0.5em;
+$horizontal-label-vertical-padding: 0.4em;
+
+/* Circular Padding */
+$circular-padding: 0.5em;
+$circular-min-size: 2em;
+$empty-circle-size: 0.5em;
+
+/* Pointing */
+$pointing-border-color: inherit;
+$pointing-border-width: $border-width;
+$pointing-vertical-distance: 1em;
+$pointing-triangle-size: 0.6666em;
+$pointing-horizontal-distance: $pointing-triangle-size;
+
+$pointing-triangle-transition: background $label-transition-duration $label-transition-easing;
+$pointing-triangle-z-index: 2;
+
+/* Basic Pointing */
+$basic-pointing-triangle-offset: -$pointing-border-width;
+
+/* Floating */
+$floating-top-offset: -1em;
+$floating-left-offset: -1.5em;
+$floating-z-index: 100;
+
+/*-------------------
+        Group
+--------------------*/
+
+/* Sizing */
+$mini: px-rem(9);
+$tiny: px-rem(10);
+$small: px-rem(11);
+$medium: px-rem(12);
+$large: size('medium');
+$big: size('big');
+$huge: size('huge');
+$massive: size('massive');

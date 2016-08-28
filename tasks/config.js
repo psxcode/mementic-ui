@@ -40,8 +40,8 @@ var modules = [{
 	path: '',
 	names: ['globals']
 }, {
-	path: 'collections',
-	names: ['grid']
+	path: 'elements',
+	names: ['header', 'label', 'segment', 'rail']
 }];
 
 //User Config (set in initConfig)

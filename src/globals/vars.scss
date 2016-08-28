@@ -1,0 +1,530 @@
+@import "sassy-cast";
+
+// Utility functions
+// -------------------------------
+
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@function clamp($value, $min: 0, $max: 1) {
+  @return if($value > $max, $max, if($value < $min, $min, $value));
+}
+
+@function to-string($value) {
+  @return "#{$value}";
+}
+
+// Colors
+// -------------------------------
+
+@function color-blend($color, $blend: 1, $blend-factor: 1) {
+  @return rgba($color, clamp($blend * $blend-factor));
+}
+
+@function color-bg($color) {
+  @return lighten($color, 40%);
+}
+
+@function color-light($color) {
+  @return lighten($color, 20%);
+}
+
+@function color-hover($color) {
+  @return saturate(darken($color, 5%), 10%);
+}
+
+@function color-focus($color) {
+  @return saturate(darken($color, 8%), 20%);
+}
+
+@function color-active($color) {
+  @return saturate(darken($color, 5%), 15%);
+}
+
+@function color-shadow($color) {
+  @return darken($color, 10%);
+}
+
+@function color-heading($color) {
+  @return darken($color, 5%);
+}
+
+$color-disabled-blend: 0.5;
+
+@function color-disabled($color) {
+  @return rgba($color, $color-disabled-blend);
+}
+
+// Ionic Color Names
+// -------------------------------
+
+/*
+$color-light: #fff !default;
+$color-stable: #f8f8f8 !default;
+$color-positive: #387ef5 !default;
+$color-calm: #11c1f3 !default;
+$color-balanced: #33cd5f !default;
+$color-energized: #ffc900 !default;
+$color-assertive: #ef473a !default;
+$color-royal: #886aea !default;
+$color-dark: #444 !default;
+*/
+
+$colors-ionic: (
+        'light': #fff,
+        'stable': #f8f8f8,
+        'positive': #387ef5,
+        'calm': #11c1f3,
+        'balanced': #33cd5f,
+        'energized': #ffc900,
+        'assertive': #ef473a,
+        'royal': #886aea,
+        'dark': #444
+) !default;
+
+@function color-ionic($variant) {
+  $variant: to-string($variant);
+  @if map-has_key($colors-ionic, $variant) {
+    @return map-get($colors-ionic, $variant);
+  } @else {
+    @error 'color-ionic: invalid $variant #{$variant}';
+  }
+}
+
+// Google Material Color Names
+// -------------------------------
+
+$colors-material: (
+        'primary': #8BC34A,
+        'primary-dark': #689F38,
+        'primary-light': #DCEDC8,
+        'accent': #FF9800,
+        'icons': #212121
+) !default;
+
+@function color-material($variant) {
+  $variant: to-string($variant);
+
+  @if not(map-has_key($colors-material, $variant)) {
+    @error 'color-material: invalid $variant #{$variant}';
+  }
+
+  @return map-get($colors-material, $variant);
+}
+
+// Semantic Color Names
+// -------------------------------
+
+$colors-semantic: (
+        'red': #DB2828,
+        'orange': #F2711C,
+        'yellow': #FBBD08,
+        'olive': #B5CC18,
+        'green': #21BA45,
+        'teal': #00B5AD,
+        'blue': #2185D0,
+        'violet': #6435C9,
+        'purple': #A333C8,
+        'pink': #E03997,
+        'brown': #A5673F,
+        'gray': #767676,
+        'black': #1B1C1D,
+) !default;
+
+@function color-semantic($variant) {
+  $variant: to-string($variant);
+
+  @if not(map-has_key($colors-semantic, $variant)) {
+    @error 'color-semantic: invalid $variant #{$variant}';
+  }
+
+  @return map-get($colors-semantic, $variant);
+}
+
+/*
+$color-primary: #8BC34A !default;
+$color-primary-dark: #689F38 !default;
+$color-primary-light: #DCEDC8 !default;
+$color-accent: #FF9800 !default;
+$color-icons: #212121 !default;
+*/
+//$color-text-primary
+//$color-text-secondary
+//$color-text-inverted
+//$color-divider
+//$color-divider-inverted
+
+// Grayscale colors
+// -------------------------------
+
+/*
+$color-black-full: #000000;
+$color-white-off: #F9FAFB;
+$color-white-dark: #F3F4F5;
+$color-white-mid: #DCDDDE;
+$color-white-full: #FFFFFF;
+*/
+
+$colors-grayscale: (
+        'black': #000,
+        'off': #F9FAFB,
+        'dark': #F3F4F5,
+        'mid': #DCDDDE,
+        'white': #fff
+) !default;
+
+@function color-grayscale($variant: 'white') {
+  $variant: to-string($variant);
+  @if map-has_key($colors-grayscale, $variant) {
+    @return map-get($colors-grayscale, $variant);
+  } @else {
+    @error 'color-grayscale: invalid $variant #{$variant}';
+  }
+}
+
+// Alpha colors
+// -------------------------------
+/*
+$color-transparent-blend: 0.07;
+$color-transparent-subtle-blend: 0.03;
+$color-transparent-strong-blend: 0.12;
+*/
+
+$colors-transparent-blend: ('default': 0.07, 'strong': 0.12, 'subtle': 0.03);
+
+@function color-transparent($color, $variant: 'default') {
+  $variant: to-string($variant);
+  @if map-has_key($colors-transparent-blend, $variant) {
+    @return rgba($color, map-get($colors-transparent-blend, $variant));
+  } @else {
+    @error 'color-transparent: invalid $variant #{$variant}';
+  }
+}
+
+// Divider Colors
+// -------------------------------
+
+$color-divider: (#202224, #fff) !default;
+$color-divider-blend: (0.15, 0.5);
+
+$colors-divider-blend-mult: (
+        'default': (1.0, 1.0),
+        'strong': (2.0, 2.0),
+        'solid': (5.0, 5.0),
+        'internal': (0.65, 0.65),
+        'solid-internal': (4.0, 4.0),
+        'selected': (2.5, 2.5),
+        'solid-selected': (4.0, 4.0),
+        'strong-selected': (3.5, 3.5),
+        'disabled': (3.5, 3.5)
+) !default;
+
+@function set-color-divider($color, $inverted: false) {
+  $inverted-index: if(to-bool($inverted), 2, 1);
+  $color-divider: set-nth($color-divider, $inverted-index, $color);
+}
+
+@function set-color-divider-blend($blend, $inverted: false) {
+  $inverted-index: if(to-bool($inverted), 2, 1);
+  $color-divider-blend: set-nth($color-divider-blend, $inverted-index, $blend);
+}
+
+@function set-color-divider-blend-mult($variant, $blend, $inverted: false) {
+  $variant: to-string($variant);
+  $inverted-index: if(to-bool($inverted), 2, 1);
+  @if map-has_key($colors-divider-blend-mult, $variant) {
+    $blend: map-get($colors-divider-blend-mult, $variant);
+    $blend: set-nth($blend, $inverted-index, $blend);
+    $colors-divider-blend-mult: map-merge($colors-divider-blend-mult, ($variant: $blend));
+  } @else {
+    @error 'set-color-divider-blend-mult: invalid $variant #{$variant}';
+  }
+}
+
+@function add-color-divider-blend-mult($variant, $blend-normal, $blend-inverted) {
+  $variant: to-string($variant);
+  $colors-divider-blend-mult: map-merge($colors-divider-blend-mult, ($variant: ($blend-normal, $blend-inverted)));
+}
+
+@function color-divider($variant: 'default', $inverted: false, $color-base: nth($color-divider, 1)) {
+  $variant: to-string($variant);
+  $index: if(to-bool($inverted), 2, 1);
+
+  @if map-has_key($colors-divider-blend-mult, $variant) {
+    @return color-blend($color-base, nth($color-divider-blend, $index), nth(map-get($colors-divider-blend-mult, $variant), $index));
+  } @else {
+    @error 'color-divider-inverted: invalid $variant #{$variant}';
+  }
+}
+
+// Accents
+// -------------------------------
+/* Differentiating Neutrals */
+$subtle-gradient: linear-gradient(transparent, color-transparent(color-grayscale('black')));
+
+/* Differentiating Layers */
+$subtle-shadow: 0px 1px 2px 0 color-divider();
+$floating-shadow: 0px 2px 4px 0px rgba(34, 36, 38, 0.12), 0px 2px 10px 0px rgba(34, 36, 38, 0.15);
+
+// Text Colors
+// -------------------------------
+
+$colors-text-blend-mult: (
+        'default': (1.0, 1.0),
+        'muted': (0.7, 0.9),
+        'selected': (1.12, 1.0),
+        'unselected': (0.5, 0.55),
+        'hovered': (0.9, 1.0),
+        'pressed': (1.05, 1.0),
+        'disabled': (0.5, 0.2)
+) !default;
+
+@function set-color-text-blend-mult($variant, $blend, $inverted: false) {
+  $variant: to-string($variant);
+  $inverted-index: if(to-bool($inverted), 2, 1);
+  @if map-has_key($colors-text-blend-mult, $variant) {
+    $blend: map-get($colors-text-blend-mult, $variant);
+    $blend: set-nth($blend, $inverted-index, $blend);
+    $colors-text-blend-mult: map-merge($colors-text-blend-mult, ($variant: $blend));
+  } @else {
+    @error 'set-color-text-blend-mult: invalid $variant #{$variant}';
+  }
+}
+
+@function add-color-text-blend-mult($variant, $blend-normal, $blend-inverted) {
+  $variant: to-string($variant);
+  $colors-text-blend-mult: map-merge($colors-text-blend-mult, ($variant: ($blend-normal, $blend-inverted)));
+}
+
+@function _color-text-blend($color, $blend-base: 0.85, $variant: 'default', $inverted: false) {
+  $variant: to-string($variant);
+  $inverted-index: if(to-bool($inverted), 2, 1);
+
+  @if not(map-has_key($colors-text-blend-mult, $variant)) {
+    @error 'color-text-blend: invalid $variant #{$variant}';
+  }
+
+  $blend-mult: nth(map-get($colors-text-blend-mult, $variant), $inverted-index);
+
+  @return color-blend($color, $blend-base, $blend-mult);
+}
+
+$colors-text: (
+        'primary': (#000, #fff),
+        'secondary': (#000, #fff)
+) !default;
+
+$colors-text-blend: (
+        'primary': (0.85, 0.9),
+        'secondary': (0.5, 0.7)
+) !default;
+
+@function color-text($text-variant, $blend-variant: 'default', $inverted: false) {
+  $text-variant: to-string($text-variant);
+  $inverted-index: if(to-bool($inverted), 2, 1);
+
+  @if not(map-has-key($colors-text, $text-variant)) {
+    @error 'color-text: invalid $text-variant #{$text-variant} for $colors-text';
+  }
+
+  @if not(map-has-key($colors-text-blend, $text-variant)) {
+    @error 'color-text: invalid $text-variant #{$text-variant} for $colors-text-blend';
+  }
+
+  $color: nth(map-get($colors-text, $text-variant), $inverted-index);
+  $blend: nth(map-get($colors-text-blend, $text-variant), $inverted-index);
+
+  @return _color-text-blend($color, $blend, $blend-variant, $inverted);
+}
+
+$colors-text-highlight: (
+        color-text('primary'),
+        color-text('primary', $inverted: true)
+) !default;
+
+@function color-text-highlight($bg: false) {
+  $index: if(to-bool($bg), 2, 1);
+  @return nth($colors-text-highlight, $index);
+}
+
+// Vendor Colors
+// -------------------------------
+
+$colors-vendor: (
+        'facebook': #3B5998,
+        'twitter': #0084B4,
+        'googleplus': #DC4A38,
+        'linkedin': #1F88BE,
+        'youtube': #CC181E,
+        'instagram': #49769C,
+        'pinterest': #00ACED,
+        'vk': #4D7198
+) !default;
+
+@function color-vendor($variant) {
+  @if not(map-has-key($colors-vendor, $variant)) {
+    @error 'color-vendor: invalid $variant #{$variant}';
+  }
+
+  @return map-get($colors-vendor, $variant);
+}
+
+// Base
+// -------------------------------
+$font-context: 14;
+
+@function unit-em($value) {
+  @return $value * 1em;
+}
+
+@function unit-rem($value) {
+  @return $value * 1rem;
+}
+
+@function px-em($px) {
+  @return (strip-unit($px) / $font-context) * 1em;
+}
+
+@function px-rem($px) {
+  @return (strip-unit($px) / $font-context) * 1rem;
+}
+
+$font-family-sans-serif: '-apple-system', "Helvetica Neue", "Roboto", "Segoe UI", sans-serif !default;
+$font-family-sans-serif-light: '-apple-system', "HelveticaNeue-Light", "Roboto-Light", "Segoe UI-Light", sans-serif-light !default;
+
+$font-family: $font-family-sans-serif !default;
+
+$font-size: $font-context * 1px !default;
+$font-size-large: 1.2857 * $font-size !default;
+$font-size-small: 0.7857 * $font-size !default;
+
+$line-height: 1.428571429 !default; // 20/14
+$line-height-abs: floor($line-height * $font-size) !default; // ~20px
+$line-height-large: 1.5 !default;
+$line-height-small: 1.33 !default;
+
+$default-border-radius: 0.2307;
+$default-duration : 0.1s;
+$default-easing   : ease;
+
+$circular-radius: 50%;
+
+// Sizes
+// -------------------------------
+
+/*
+  Sizes are all expressed in terms of 14px/em (default em)
+  This ensures these "ratios" remain constant despite changes in EM
+*/
+
+$sizes: (
+        'mini': 0.7857, // 11/14
+        'tiny': 0.8571, // 12/14
+        'small': 0.9285, // 13/14
+        'medium': 1.0,
+        'large': 1.1428, // 16/14
+        'big': 1.2857, // 18/14
+        'huge': 1.4285, // 20/14
+        'massive': 1.7142 // 24/14
+) !default;
+
+@function size($variant, $relative: false) {
+  $variant: to-string($variant);
+  $relative: to-bool($relative);
+
+  @if not(map-has-key($sizes, $variant)) {
+    @error 'size: invalid $variant #{$variant}';
+  }
+
+  $size: map-get($sizes, $variant);
+  @if $relative == true {
+    @return unit-em($size);
+  } @else {
+    @return unit-rem($size);
+  }
+}
+
+$num-columns: 16;
+
+//width as num-columns in default-column row
+@function wide($num) {
+  @return $num / $num-columns * 100%;
+}
+
+//width as 1-column in num-columns row
+@function column($num) {
+  @return 1 / $num * 100%;
+}
+
+// Headings
+// -------------------------------
+$heading-font-family: $font-family !default;
+$heading-font-weight: 500 !default;
+$heading-line-height: 1.2 !default;
+
+/* Used to match floats with text */
+$line-height-offset: unit-rem(($line-height - 1) / 2);
+$heading-line-height-offset: unit-rem($heading-line-height - 1) / 2;
+
+/* Header Spacing */
+$heading-top-margin: calc(2rem - #{$heading-line-height-offset});
+$heading-bottom-margin: 1rem;
+$heading-margin: $heading-top-margin 0 $heading-bottom-margin;
+
+// Semantic sizes
+//$heading-sizes: (2.0, 1.714, 1.28, 1.071, 1.0, 0.85);
+
+// Ionic sizes
+$heading-sizes: (2.6, 2.15, 1.70, 1.25, 1.0, 0.85);
+
+@function heading-size($index, $relative: false) {
+  $size: nth($heading-sizes, $index);
+
+  @if $relative == true {
+    @return unit-em($size);
+  } @else {
+    @return unit-rem($size);
+  }
+}
+
+// Paragraphs
+// -------------------------------
+$paragraph-margin: 0 0 unit-rem($line-height / 2);
+$paragraph-line-height: $line-height;
+
+// Links
+// -------------------------------
+$link-color: color-material('accent');
+$link-text-decoration: none;
+$link-hover-color: color-hover(color-material('accent'));
+$link-hover-text-decoration: none;
+
+// Breakpoints
+// -------------------------------
+$breakpoint-mobile: 320px;
+$breakpoint-tablet: 768px;
+$breakpoint-computer: 992px;
+$breakpoint-large-monitor: 1200px;
+$breakpoint-widescreen-monitor: 1920px;
+
+/* Responsive */
+$largest-mobile-screen: ($breakpoint-tablet - 1px);
+$largest-tablet-screen: ($breakpoint-computer - 1px);
+$largest-small-monitor: ($breakpoint-large-monitor - 1px);
+$largest-large-monitor: ($breakpoint-widescreen-monitor - 1px);
+
+// Loader
+// -------------------------------
+$loader-size              : size('big');
+$loader-speed             : 0.6s;
+$loader-line-width         : 0.2em;
+$loader-fill-color         : rgba(0, 0, 0, 0.1);
+$loader-line-color         : grey;
+
+$inverted-loader-fill-color : rgba(255, 255, 255, 0.15);
+$inverted-loader-line-color : white;
+
+/* Loaders Position Offset */
+$loader-offset : -($loader-size / 2);
+$loader-margin : $loader-offset 0 0 $loader-offset;

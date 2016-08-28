@@ -1,0 +1,634 @@
+
+.ui.segment {
+  position: relative;
+  background: $background;
+  box-shadow: $box-shadow;
+  margin: $margin;
+  padding: $padding;
+  border-radius: $border-radius;
+  border: $border;
+}
+
+.ui.segment:first-child {
+  margin-top: 0;
+}
+
+.ui.segment:last-child {
+  margin-bottom: 0;
+}
+
+/* Vertical */
+.ui.vertical.segment {
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+
+  background: none transparent;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+  border-bottom: $border-width solid color-divider();
+}
+
+.ui.vertical.segment:last-child {
+  border-bottom: none;
+}
+
+/*-------------------
+    Loose Coupling
+--------------------*/
+
+/* Header */
+.ui.inverted.segment > .ui.header {
+  color: color-grayscale('white');
+}
+
+/* Label */
+.ui[class*="bottom attached"].segment > [class*="top attached"].label {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.ui[class*="top attached"].segment > [class*="bottom attached"].label {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.ui.attached.segment:not(.top):not(.bottom) > [class*="top attached"].label {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.ui.attached.segment:not(.top):not(.bottom) > [class*="bottom attached"].label {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* Grid */
+.ui.page.grid.segment,
+.ui.grid > .row > .ui.segment.column,
+.ui.grid > .ui.segment.column {
+  padding-top: $page-grid-margin;
+  padding-bottom: $page-grid-margin;
+}
+
+.ui.grid.segment {
+  margin: $margin;
+  border-radius: $border-radius;
+}
+
+/* Table */
+.ui.basic.table.segment {
+  background: $background;
+  border: $border;
+  box-shadow: $box-shadow;
+}
+
+.ui[class*="very basic"].table.segment {
+  padding: $padding;
+}
+
+/*******************************
+             Types
+*******************************/
+
+/*-------------------
+        Piled
+--------------------*/
+
+.ui.piled.segments,
+.ui.piled.segment {
+  margin: $piled-margin 0;
+  box-shadow: $piled-box-shadow;
+  z-index: $piled-z-index;
+}
+
+.ui.piled.segment:first-child {
+  margin-top: 0;
+}
+
+.ui.piled.segment:last-child {
+  margin-bottom: 0;
+}
+
+.ui.piled.segments:after,
+.ui.piled.segments:before,
+.ui.piled.segment:after,
+.ui.piled.segment:before {
+  background-color: color-grayscale('white');
+  visibility: visible;
+  content: '';
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  border: $piled-border;
+  box-shadow: $piled-box-shadow;
+}
+
+.ui.piled.segments:before,
+.ui.piled.segment:before {
+  transform: rotate(-$piled-degrees);
+  top: 0;
+  z-index: -2;
+}
+
+.ui.piled.segments:after,
+.ui.piled.segment:after {
+  transform: rotate($piled-degrees);
+  top: 0;
+  z-index: -1;
+}
+
+/* Piled Attached */
+.ui[class*="top attached"].piled.segment {
+  margin-top: $piled-margin;
+  margin-bottom: 0;
+}
+
+.ui.piled.segment[class*="top attached"]:first-child {
+  margin-top: 0;
+}
+
+.ui.piled.segment[class*="bottom attached"] {
+  margin-top: 0;
+  margin-bottom: $piled-margin;
+}
+
+.ui.piled.segment[class*="bottom attached"]:last-child {
+  margin-bottom: 0;
+}
+
+/*-------------------
+       Stacked
+--------------------*/
+
+.ui.stacked.segment {
+  padding-bottom: $stacked-padding;
+}
+
+.ui.stacked.segments:before,
+.ui.stacked.segments:after,
+.ui.stacked.segment:before,
+.ui.stacked.segment:after {
+  content: '';
+  position: absolute;
+  bottom: -($stacked-height / 2);
+  left: 0;
+
+  border-top: 1px solid color-divider();
+  background: $stacked-page-background;
+
+  width: 100%;
+  height: $stacked-height;
+  visibility: visible;
+}
+
+.ui.stacked.segments:before,
+.ui.stacked.segment:before {
+  display: none;
+}
+
+/* Add additional page */
+.ui.tall.stacked.segments:before,
+.ui.tall.stacked.segment:before {
+  display: block;
+  bottom: 0;
+}
+
+/* Inverted */
+.ui.stacked.inverted.segments:before,
+.ui.stacked.inverted.segments:after,
+.ui.stacked.inverted.segment:before,
+.ui.stacked.inverted.segment:after {
+  background-color: color-transparent(color-grayscale('black'), 'subtle');
+  border-top: 1px solid color-divider('selected');
+}
+
+/*-------------------
+       Padded
+--------------------*/
+
+.ui.padded.segment {
+  padding: $padded-segment-padding;
+}
+
+.ui[class*="very padded"].segment {
+  padding: $very-padded-segment-padding;
+}
+
+/*-------------------
+       Compact
+--------------------*/
+
+.ui.compact.segment {
+  display: table;
+}
+
+/* Compact Group */
+.ui.compact.segments {
+  display: inline-flex;
+}
+
+.ui.compact.segments .segment,
+.ui.segments .compact.segment {
+  display: block;
+  flex: 0 1 auto;
+}
+
+/*-------------------
+       Circular
+--------------------*/
+
+.ui.circular.segment {
+  display: table-cell;
+  padding: $circular-padding;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 500em;
+}
+
+/*-------------------
+       Raised
+--------------------*/
+
+.ui.raised.segments,
+.ui.raised.segment {
+  box-shadow: $raised-box-shadow;
+}
+
+/*******************************
+            Groups
+*******************************/
+
+/* Group */
+.ui.segments {
+  flex-direction: column;
+  position: relative;
+  margin: $grouped-margin;
+  border: $grouped-border;
+  box-shadow: $grouped-box-shadow;
+  border-radius: $grouped-border-radius;
+}
+
+.ui.segments:first-child {
+  margin-top: 0;
+}
+
+.ui.segments:last-child {
+  margin-bottom: 0;
+}
+
+/* Nested Segment */
+.ui.segments > .segment {
+  top: 0;
+  bottom: 0;
+  border-radius: 0;
+  margin: $grouped-segment-margin;
+  width: $grouped-segment-width;
+  box-shadow: $grouped-segment-box-shadow;
+  border: $grouped-segment-border;
+  border-top: $grouped-segment-divider;
+}
+
+.ui.segments:not(.horizontal) > .segment:first-child {
+  border-top: none;
+  margin-top: 0;
+  margin-bottom: 0;
+  top: $attached-top-offset;
+  bottom: 0;
+  border-radius: $border-radius $border-radius 0 0;
+}
+
+/* Bottom */
+.ui.segments:not(.horizontal) > .segment:last-child {
+  top: $attached-bottom-offset;
+  bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  box-shadow: $attached-bottom-box-shadow;
+  border-radius: 0 0 $border-radius $border-radius;
+}
+
+/* Only */
+.ui.segments:not(.horizontal) > .segment:only-child {
+  border-radius: $border-radius;
+}
+
+/* Nested Group */
+.ui.segments > .ui.segments {
+  border-top: $grouped-segment-divider;
+  margin: $nested-group-margin;
+}
+
+.ui.segments > .segments:first-child {
+  border-top: none;
+}
+
+.ui.segments > .segment + .segments:not(.horizontal) {
+  margin-top: 0;
+}
+
+/* Horizontal Group */
+.ui.horizontal.segments {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  background-color: $background;
+  box-shadow: $box-shadow;
+  margin: $margin;
+  border-radius: $border-radius;
+  border: $border;
+}
+
+/* Nested Horizontal Group */
+.ui.segments > .horizontal.segments {
+  margin: 0;
+  background-color: transparent;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  border-top: $grouped-segment-divider;
+}
+
+/* Horizontal Segment */
+.ui.horizontal.segments > .segment {
+  flex: 1 1 auto;
+  -ms-flex: 1 1 0; /* Solves #2550 MS Flex */
+  margin: 0;
+  min-width: 0;
+  background-color: transparent;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  border-left: $border-width solid color-divider();
+}
+
+/* Border Fixes */
+.ui.segments > .horizontal.segments:first-child {
+  border-top: none;
+}
+
+.ui.horizontal.segments > .segment:first-child {
+  border-left: none;
+}
+
+/*******************************
+            States
+*******************************/
+
+/*--------------
+    Disabled
+---------------*/
+
+.ui.disabled.segment {
+  opacity: $color-disabled-blend;
+  color: color-text('primary', 'disabled');
+}
+
+/*--------------
+    Loading
+---------------*/
+
+.ui.loading.segment {
+  position: relative;
+  cursor: default;
+  pointer-events: none;
+  text-shadow: none !important;
+  color: transparent !important;
+  transition: all 0s linear;
+}
+
+.ui.loading.segment:before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  background: $loader-dimmer-color;
+  width: 100%;
+  height: 100%;
+  border-radius: $border-radius;
+  z-index: $loader-dimmer-z-index;
+}
+
+.ui.loading.segment:after {
+  position: absolute;
+  content: '';
+  top: 50%;
+  left: 50%;
+
+  margin: $loader-margin;
+  width: $loader-size;
+  height: $loader-size;
+
+  animation: segment-spin $loader-speed linear;
+  animation-iteration-count: infinite;
+
+  border-radius: $circular-radius;
+
+  border-color: $loader-line-color $loader-fill-color $loader-fill-color $loader-fill-color;
+  border-style: solid;
+  border-width: $loader-line-width;
+
+  box-shadow: 0 0 0 1px transparent;
+  visibility: visible;
+  z-index: $loader-line-z-index;
+}
+
+@keyframes segment-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/*******************************
+           Variations
+*******************************/
+
+/*-------------------
+       Basic
+--------------------*/
+
+.ui.basic.segment {
+  background: $basic-background;
+  box-shadow: $basic-box-shadow;
+  border: $basic-border;
+  border-radius: $basic-border-radius;
+}
+
+/*-------------------
+       Clearing
+--------------------*/
+
+.ui.clearing.segment:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/*-------------------
+       Colors
+--------------------*/
+
+@each $name, $color in $colors-semantic {
+
+  .ui.#{$name}.segment:not(.inverted) {
+    border-top: $colored-border-size solid $color;
+  }
+
+  .ui.inverted.red.segment {
+    background-color: $color !important;
+    color: color-grayscale('white') !important;
+  }
+}
+
+/*-------------------
+       Aligned
+--------------------*/
+
+.ui[class*="left aligned"].segment {
+  text-align: left;
+}
+
+.ui[class*="right aligned"].segment {
+  text-align: right;
+}
+
+.ui[class*="center aligned"].segment {
+  text-align: center;
+}
+
+/*-------------------
+       Floated
+--------------------*/
+
+.ui.floated.segment,
+.ui[class*="left floated"].segment {
+  float: left;
+  margin-right: $floated-distance;
+}
+
+.ui[class*="right floated"].segment {
+  float: right;
+  margin-left: $floated-distance;
+}
+
+/*-------------------
+      Inverted
+--------------------*/
+
+.ui.inverted.segment {
+  border: none;
+  box-shadow: none;
+}
+
+.ui.inverted.segment,
+.ui.primary.inverted.segment {
+  background: $inverted-background;
+  color: color-text('primary', $inverted: true);
+}
+
+/* Nested */
+.ui.inverted.segment .segment {
+  color: color-text('primary');
+}
+
+.ui.inverted.segment .inverted.segment {
+  color: color-text('primary', $inverted: true);
+}
+
+/* Attached */
+.ui.inverted.attached.segment {
+  border-color: color-divider('solid', $inverted: true);
+}
+
+/*-------------------
+     Emphasis
+--------------------*/
+
+/* Secondary */
+.ui.secondary.segment {
+  background: $secondary-background;
+  color: $secondary-color;
+}
+
+.ui.secondary.inverted.segment {
+  background: $secondary-inverted-background;
+  color: $secondaryInvertedColor;
+}
+
+/* Tertiary */
+.ui.tertiary.segment {
+  background: $tertiary-background;
+  color: $tertiary-color;
+}
+
+.ui.tertiary.inverted.segment {
+  background: $tertiary-inverted-background;
+  color: $tertiaryInvertedColor;
+}
+
+/*-------------------
+      Attached
+--------------------*/
+
+/* Middle */
+.ui.attached.segment {
+  top: 0;
+  bottom: 0;
+  border-radius: 0;
+  margin: 0 $attached-horizontal-offset;
+  width: $attached-width;
+  max-width: $attached-width;
+  box-shadow: $attached-box-shadow;
+  border: $attached-border;
+}
+
+.ui.attached:not(.message) + .ui.attached.segment:not(.top) {
+  border-top: none;
+}
+
+/* Top */
+.ui[class*="top attached"].segment {
+  bottom: 0;
+  margin-bottom: 0;
+  top: $attached-top-offset;
+  margin-top: $vertical-margin;
+  border-radius: $border-radius $border-radius 0 0;
+}
+
+.ui.segment[class*="top attached"]:first-child {
+  margin-top: 0;
+}
+
+/* Bottom */
+.ui.segment[class*="bottom attached"] {
+  bottom: 0;
+  margin-top: 0;
+  top: $attached-bottom-offset;
+  margin-bottom: $vertical-margin;
+  box-shadow: $attached-bottom-box-shadow;
+  border-radius: 0 0 $border-radius $border-radius;
+}
+
+.ui.segment[class*="bottom attached"]:last-child {
+  margin-bottom: 0;
+}
+
+/*-------------------
+        Size
+--------------------*/
+@each $name, $size in $sizes {
+
+  .ui.#{$name}.segments .segment,
+  .ui.#{$name}.segment {
+    font-size: size($name);
+  }
+
+}

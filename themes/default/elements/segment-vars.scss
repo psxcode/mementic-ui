@@ -1,0 +1,125 @@
+/*-------------------
+       Element
+--------------------*/
+
+$background: color-grayscale('white');
+$border-width: 1px;
+$border: $border-width solid color-divider();
+
+$box-shadow: $subtle-shadow;
+$vertical-padding: 1em;
+$horizontal-padding: 1em;
+$padding: $vertical-padding $horizontal-padding;
+
+$vertical-margin: 1rem;
+$horizontal-margin: 0;
+$margin: $vertical-margin $horizontal-margin;
+$border-radius: unit-rem($default-border-radius);
+
+/*-------------------
+       Group
+--------------------*/
+
+$grouped-margin: $margin;
+$grouped-border: $border;
+$grouped-box-shadow: $box-shadow;
+$grouped-border-radius: $border-radius;
+
+$nested-group-margin: $vertical-margin $vertical-margin;
+
+$grouped-segment-border: none;
+$grouped-segment-divider: $border;
+$grouped-segment-margin: 0;
+$grouped-segment-width: auto;
+$grouped-segment-box-shadow: none;
+
+/*-------------------
+       Coupling
+--------------------*/
+
+/* Page Grid Segment */
+$page-grid-margin: (2 * $vertical-padding);
+
+/*******************************
+            States
+*******************************/
+
+/* Loading Dimmer */
+$loader-dimmer-color: rgba(255, 255, 255, 0.8);
+$loader-dimmer-z-index: 100;
+
+/* Loading Spinner */
+$loader-size: 3em;
+$loader-line-z-index: 101;
+
+/*******************************
+            Variations
+*******************************/
+
+/* Piled */
+$piled-z-index: auto;
+$piled-margin: 3em;
+$piled-box-shadow: 0;
+$piled-degrees: 1.2deg;
+$piled-border: $border;
+
+/* Circular */
+$circular-padding: 2em;
+
+/* Stacked */
+$stacked-height: 6px;
+$stacked-page-background: color-transparent(color-grayscale('black'), 'subtle');
+$stacked-padding: $vertical-padding + (0.4em);
+$tall-stacked-padding: $vertical-padding + (0.8em);
+
+/* Raised */
+$raised-box-shadow: $floating-shadow;
+
+/* Padded */
+$padded-segment-padding: 1.5em;
+$very-padded-segment-padding: 3em;
+
+/* Attached */
+$attached-top-offset: 0;
+$attached-bottom-offset: 0;
+$attached-horizontal-offset: $border-width;
+$attached-width: calc(100% - (#{$attached-horizontal-offset} * 2));
+$attached-box-shadow: 0;
+$attached-border: $border-width solid color-divider('solid');
+$attached-bottom-box-shadow: $box-shadow, $attached-box-shadow;
+
+/* Inverted */
+$inverted-background: color-grayscale('black');
+
+/* Floated */
+$floated-distance: 1em;
+
+/* Basic */
+$basic-background: none transparent;
+$basic-border: none;
+$basic-box-shadow: none;
+$basic-border-radius: 0;
+
+/* Colors */
+$colored-border-size: 2px;
+
+/* Ordinality */
+$secondary-background: color-grayscale('dark');
+$secondary-color: color-text('primary', 'muted');
+
+$tertiary-background: color-grayscale('mid');
+$tertiary-color: color-text('primary', 'muted');
+
+$secondary-inverted-lightness: 0.2;
+$secondary-inverted-background: lighten(color-grayscale('black'), ($secondary-inverted-lightness * 100)) linear-gradient(
+                rgba(255, 255, 255, $secondary-inverted-lightness) 0%,
+                rgba(255, 255, 255, $secondary-inverted-lightness) 100%
+);
+$secondaryInvertedColor: color-text('primary', 'muted', $inverted: true);
+
+$tertiary-inverted-lightness: 0.35;
+$tertiary-inverted-background: lighten(color-grayscale('black'), ($tertiary-inverted-lightness * 100)) linear-gradient(
+                rgba(255, 255, 255, $tertiary-inverted-lightness) 0%,
+                rgba(255, 255, 255, $tertiary-inverted-lightness) 100%
+);
+$tertiaryInvertedColor: color-text('primary', 'muted', $inverted: true);

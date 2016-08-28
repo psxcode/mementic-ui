@@ -1,0 +1,30 @@
+/*-------------------
+       Element
+--------------------*/
+
+$width: px-rem(300);
+$height: 100%;
+
+$distance: 4rem;
+$split-distance: ($distance / 2);
+
+/*-------------------
+      Variations
+--------------------*/
+
+/* Close */
+$close-distance: 2em;
+$very-close-distance: 1em;
+
+$split-close-distance: ($close-distance / 2);
+$split-very-close-distance: ($very-close-distance / 2);
+
+$close-width: calc(#{$width} + #{$split-close-distance});
+$very-close-width: calc(#{$width} + #{$split-very-close-distance});
+
+/* Dividing */
+$dividing-border: 1px solid color-divider();
+$dividing-distance: 5rem;
+$split-dividing-distance: ($dividing-distance / 2);
+$dividing-width: $width + $split-dividing-distance;
+
