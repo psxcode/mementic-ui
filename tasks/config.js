@@ -41,7 +41,7 @@ var modules = [{
 	names: ['globals']
 }, {
 	path: 'elements',
-	names: ['header', 'label', 'segment', 'rail']
+	names: [/*'header', 'label', 'segment', 'rail', 'container', 'image', 'reveal'*/'divider']
 }];
 
 //User Config (set in initConfig)
@@ -52,7 +52,7 @@ var userConfig = {
 };
 
 //Exports
-var themeDepsPaths = resolveThemeDepsPaths();
+var themeDepsPaths = null;
 (function () {
 	module.exports = function initConfig(config) {
 		if (config) {
@@ -62,14 +62,13 @@ var themeDepsPaths = resolveThemeDepsPaths();
 	};
 
 	module.exports.paths = paths;
-	module.exports.userCfg = userConfig;
-	module.exports.getModulePaths = srcModulePaths;
+	module.exports.getModulePaths = getModulePaths;
 	module.exports.injectOpts = injectOpts;
 	module.exports.modules = modules;
 }());
 
-function srcModulePaths(moduleName, modulePathInTheme) {
-
+function getModulePaths(moduleName, modulePathInTheme) {
+	if (!themeDepsPaths) themeDepsPaths = resolveThemeDepsPaths();
 	if (!modulePathInTheme) modulePathInTheme = '';
 
 	console.log('stream module: ', modulePathInTheme + '::' + moduleName);
@@ -113,9 +112,9 @@ function srcModulePaths(moduleName, modulePathInTheme) {
 	}
 
 	function srcFilePaths(pathInTheme, moduleName, filename, pushPathFunc) {
-		if(!pathInTheme) pathInTheme = '';
-		if(!moduleName) moduleName = '';
-		if(!pushPathFunc) pushPathFunc = pushPathDefault;
+		if (!pathInTheme) pathInTheme = '';
+		if (!moduleName) moduleName = '';
+		if (!pushPathFunc) pushPathFunc = pushPathDefault;
 
 		var outPaths = [];
 
@@ -133,7 +132,7 @@ function srcModulePaths(moduleName, modulePathInTheme) {
 			}
 
 			src = path.join(themePath, pathInTheme, moduleName, filename);
-			if(fsxu.isFileSync(src)) {
+			if (fsxu.isFileSync(src)) {
 				outPaths = pushPathFunc(outPaths, src, themePath);
 			}
 		}
@@ -148,7 +147,7 @@ function srcModulePaths(moduleName, modulePathInTheme) {
 
 function resolveThemeDepsPaths() {
 	var themeDepsPropName = 'deps';
-	var defaultThemeName = 'default';
+	var defaultThemeName = '_default';
 
 	var result = [];
 	var deps = userConfig[themeDepsPropName] || [];
@@ -190,7 +189,13 @@ function resolveThemeDepsPaths() {
 		if (!/\/|\\/.test(themeNameOrPath)) {
 			themeNameOrPath = path.join(paths.themes, themeNameOrPath);
 		}
-		return fsxu.isFileSync(path.join(themeNameOrPath, paths.themeConfigFilename)) ? themeNameOrPath : null;
+		var themeConfigFileFound = fsxu.isFileSync(path.join(themeNameOrPath, paths.themeConfigFilename));
+
+		if (!themeConfigFileFound) {
+			console.log('Dependency is invalid: ', themeNameOrPath);
+		}
+
+		return themeConfigFileFound ? themeNameOrPath : null;
 	}
 }
 

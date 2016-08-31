@@ -1,0 +1,19 @@
+/* Text */
+$text-width: px-rem(700);
+$text-font-family: $font-family;
+$text-line-height: 1.5;
+$text-size: size('large');
+
+$max-width: 100%;
+
+@function map-breakpoints($names: (), $breakpoint-map: $breakpoints) {
+  $names: slice($names, $end: min(length($names), 3));
+
+  @if length($names) == 0 {
+    @return map-extract-by-indexes($breakpoint-map, (1, 2, 3));
+  } @else {
+    @return map-extract($breakpoint-map, $names);
+  }
+}
+
+$bps: map-breakpoints();

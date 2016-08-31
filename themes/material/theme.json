@@ -1,4 +1,4 @@
 {
   "replaceFonts": false,
-  "deps": ["glyphicons", "default"]
+  "deps": ["colors-material"]
 }

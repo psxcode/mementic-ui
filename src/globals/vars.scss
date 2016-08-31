@@ -1,4 +1,5 @@
 @import "sassy-cast";
+@import "extra-map-functions";
 
 // Utility functions
 // -------------------------------
@@ -15,8 +16,63 @@
   @return "#{$value}";
 }
 
+@function map-get-by-index($map, $index) {
+  $keys: map-keys($map);
+  $values: map-values($map);
+  @return if($index <= length($keys), (nth($keys, $index), nth($values, $index)), ());
+}
+
+@function map-extract($map, $keys) {
+  $result: ();
+
+  @for $i from 1 through length($keys) {
+    $key: nth($keys, $i);
+    @if map-has-key($map, $key) {
+      $result: map-merge($result, ($key: map-get($map, $key)));
+    }
+  }
+
+  @return $result;
+}
+
+@function map-extract-by-indexes($map, $indexes) {
+  $keys: map-keys($map);
+  $values: map-values($map);
+  $result: ();
+
+  @for $i from 1 through length($indexes) {
+    $index: nth($indexes, $i);
+    @if $index <= length($keys) {
+      $result: map-merge($result, (nth($keys, $index): nth($values, $index)));
+    }
+  }
+
+  @return $result;
+}
+
 // Colors
 // -------------------------------
+$colors-default: null;
+$colors-auto-include-default: true;
+
+@function define-color($color-map, $name, $color) {
+  $name: to-string($name);
+
+  @if type-of($color-map) != 'map' {
+    @error 'set-color-in-map: invalid $map #{$color-map}';
+  }
+
+  @if type-of($color) != 'color' {
+    @error 'set-color-in-map: invalid $color #{$color}';
+  }
+
+  //allow adding new colors
+  /*@if not(map-has_key($color-map, $name)) {
+    @error 'set-color-in-map: invalid $name #{$name} in #{$color-map}';
+  }*/
+
+  @return map-merge($color-map, ($name: $color));
+}
 
 @function color-blend($color, $blend: 1, $blend-factor: 1) {
   @return rgba($color, clamp($blend * $blend-factor));
@@ -56,105 +112,6 @@ $color-disabled-blend: 0.5;
   @return rgba($color, $color-disabled-blend);
 }
 
-// Ionic Color Names
-// -------------------------------
-
-/*
-$color-light: #fff !default;
-$color-stable: #f8f8f8 !default;
-$color-positive: #387ef5 !default;
-$color-calm: #11c1f3 !default;
-$color-balanced: #33cd5f !default;
-$color-energized: #ffc900 !default;
-$color-assertive: #ef473a !default;
-$color-royal: #886aea !default;
-$color-dark: #444 !default;
-*/
-
-$colors-ionic: (
-        'light': #fff,
-        'stable': #f8f8f8,
-        'positive': #387ef5,
-        'calm': #11c1f3,
-        'balanced': #33cd5f,
-        'energized': #ffc900,
-        'assertive': #ef473a,
-        'royal': #886aea,
-        'dark': #444
-) !default;
-
-@function color-ionic($variant) {
-  $variant: to-string($variant);
-  @if map-has_key($colors-ionic, $variant) {
-    @return map-get($colors-ionic, $variant);
-  } @else {
-    @error 'color-ionic: invalid $variant #{$variant}';
-  }
-}
-
-// Google Material Color Names
-// -------------------------------
-
-$colors-material: (
-        'primary': #8BC34A,
-        'primary-dark': #689F38,
-        'primary-light': #DCEDC8,
-        'accent': #FF9800,
-        'icons': #212121
-) !default;
-
-@function color-material($variant) {
-  $variant: to-string($variant);
-
-  @if not(map-has_key($colors-material, $variant)) {
-    @error 'color-material: invalid $variant #{$variant}';
-  }
-
-  @return map-get($colors-material, $variant);
-}
-
-// Semantic Color Names
-// -------------------------------
-
-$colors-semantic: (
-        'red': #DB2828,
-        'orange': #F2711C,
-        'yellow': #FBBD08,
-        'olive': #B5CC18,
-        'green': #21BA45,
-        'teal': #00B5AD,
-        'blue': #2185D0,
-        'violet': #6435C9,
-        'purple': #A333C8,
-        'pink': #E03997,
-        'brown': #A5673F,
-        'gray': #767676,
-        'black': #1B1C1D,
-) !default;
-
-@function color-semantic($variant) {
-  $variant: to-string($variant);
-
-  @if not(map-has_key($colors-semantic, $variant)) {
-    @error 'color-semantic: invalid $variant #{$variant}';
-  }
-
-  @return map-get($colors-semantic, $variant);
-}
-
-/*
-$color-primary: #8BC34A !default;
-$color-primary-dark: #689F38 !default;
-$color-primary-light: #DCEDC8 !default;
-$color-accent: #FF9800 !default;
-$color-icons: #212121 !default;
-*/
-//$color-text-primary
-//$color-text-secondary
-//$color-text-inverted
-//$color-divider
-//$color-divider-inverted
-
 // Grayscale colors
 // -------------------------------
 
@@ -185,11 +142,6 @@ $colors-grayscale: (
 
 // Alpha colors
 // -------------------------------
-/*
-$color-transparent-blend: 0.07;
-$color-transparent-subtle-blend: 0.03;
-$color-transparent-strong-blend: 0.12;
-*/
 
 $colors-transparent-blend: ('default': 0.07, 'strong': 0.12, 'subtle': 0.03);
 
@@ -348,28 +300,6 @@ $colors-text-highlight: (
   @return nth($colors-text-highlight, $index);
 }
 
-// Vendor Colors
-// -------------------------------
-
-$colors-vendor: (
-        'facebook': #3B5998,
-        'twitter': #0084B4,
-        'googleplus': #DC4A38,
-        'linkedin': #1F88BE,
-        'youtube': #CC181E,
-        'instagram': #49769C,
-        'pinterest': #00ACED,
-        'vk': #4D7198
-) !default;
-
-@function color-vendor($variant) {
-  @if not(map-has-key($colors-vendor, $variant)) {
-    @error 'color-vendor: invalid $variant #{$variant}';
-  }
-
-  @return map-get($colors-vendor, $variant);
-}
-
 // Base
 // -------------------------------
 $font-context: 14;
@@ -405,8 +335,8 @@ $line-height-large: 1.5 !default;
 $line-height-small: 1.33 !default;
 
 $default-border-radius: 0.2307;
-$default-duration : 0.1s;
-$default-easing   : ease;
+$default-duration: 0.1s;
+$default-easing: ease;
 
 $circular-radius: 50%;
 
@@ -443,6 +373,18 @@ $sizes: (
   } @else {
     @return unit-rem($size);
   }
+}
+
+@function define-size($name, $value-relative) {
+  $name: to-string($name);
+  $value-relative: strip-unit($value-relative);
+
+  @if type-of($value-relative) != 'number' {
+    @error 'define-size: invalid $value #{$value-relative}';
+  }
+
+  //allow adding new sizes
+  $sizes: map-merge($sizes, ($name: $value-relative));
 }
 
 $num-columns: 16;
@@ -495,36 +437,69 @@ $paragraph-line-height: $line-height;
 
 // Links
 // -------------------------------
-$link-color: color-material('accent');
+$link-color: color-text('primary');
 $link-text-decoration: none;
-$link-hover-color: color-hover(color-material('accent'));
+$link-hover-color: color-hover($link-color);
 $link-hover-text-decoration: none;
 
 // Breakpoints
 // -------------------------------
-$breakpoint-mobile: 320px;
-$breakpoint-tablet: 768px;
-$breakpoint-computer: 992px;
-$breakpoint-large-monitor: 1200px;
-$breakpoint-widescreen-monitor: 1920px;
+$breakpoints: (
+  /*'mobile': 320px,*/
+        'tablet': 48em, // 768px
+        'computer': 62em, // 992px
+        'large': 75em, // 1200px
+        'widescreen': 120em // 1920px
+) !default;
 
-/* Responsive */
-$largest-mobile-screen: ($breakpoint-tablet - 1px);
-$largest-tablet-screen: ($breakpoint-computer - 1px);
-$largest-small-monitor: ($breakpoint-large-monitor - 1px);
-$largest-large-monitor: ($breakpoint-widescreen-monitor - 1px);
+$media-expressions: (
+        'screen': 'screen',
+        'print': 'print',
+        'handheld': 'handheld',
+        'landscape': '(orientation: landscape)',
+        'portrait': '(orientation: portrait)',
+        'retina2x': '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)',
+        'retina3x': '(-webkit-min-device-pixel-ratio: 3), (min-resolution: 350dpi), (min-resolution: 3dppx)'
+) !default;
+
+@function breakpoint($name) {
+  $name: to-string($name);
+
+  @if not(map-has-key($breakpoints, $name)) {
+    @error 'breakpoint: invalid $name #{$name}';
+  }
+
+  @return map-get($breakpoints, $name);
+}
+
+@function breakpoint-by-index($index) {
+  @return map-get-by-index($breakpoints, $index);
+}
+
+@function breakpoint-collect($names) {
+  @return map-extract($breakpoints, $names);
+}
+
+@function breakpoint-collect-by-indexes($indexes) {
+  @return map-extract-by-indexes($breakpoints, $indexes);
+}
+
+@import "include-media";
 
 // Loader
 // -------------------------------
-$loader-size              : size('big');
-$loader-speed             : 0.6s;
-$loader-line-width         : 0.2em;
-$loader-fill-color         : rgba(0, 0, 0, 0.1);
-$loader-line-color         : grey;
+$loader-size: size('big');
+$loader-speed: 0.6s;
+$loader-line-width: 0.2em;
+$loader-fill-color: rgba(0, 0, 0, 0.1);
+$loader-line-color: grey;
 
-$inverted-loader-fill-color : rgba(255, 255, 255, 0.15);
-$inverted-loader-line-color : white;
+$inverted-loader-fill-color: rgba(255, 255, 255, 0.15);
+$inverted-loader-line-color: white;
 
 /* Loaders Position Offset */
-$loader-offset : -($loader-size / 2);
-$loader-margin : $loader-offset 0 0 $loader-offset;
+$loader-offset: -($loader-size / 2);
+$loader-margin: $loader-offset 0 0 $loader-offset;
+
+/* Rendered Scrollbar Width */
+$scrollbar-width: px-rem(17);

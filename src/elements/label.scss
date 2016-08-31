@@ -529,53 +529,6 @@ a.ui.active.label:before {
 *******************************/
 
 /*-------------------
-       Colors
---------------------*/
-
-@each $name, $color in $colors-semantic {
-  
-  .ui#{$name}.labels .label,
-  .ui#{$name}.label {
-    background-color: $color !important;
-    border-color: $color !important;
-    color: color-text('primary', $inverted: true) !important;
-  }
-  
-  /* Link */
-  .ui#{$name}.labels .label:hover,
-  a.ui#{$name}.label:hover {
-    background-color: color-hover($color) !important;
-    border-color: color-hover($color) !important;
-    color: color-text('primary', 'hovered', $inverted: true) !important;
-  }
-  
-  /* Corner */
-  .ui#{$name}.corner.label,
-  .ui#{$name}.corner.label:hover {
-    background-color: transparent !important;
-  }
-  
-  /* Ribbon */
-  .ui#{$name}.ribbon.label {
-    border-color: color-shadow($color) !important;
-  }
-  
-  /* Basic */
-  .ui.basic#{$name}.label {
-    background-color: color-grayscale('white') !important;
-    color: $color !important;
-    border-color: $color !important;
-  }
-  
-  .ui.basic#{$name}.labels a.label:hover,
-  a.ui.basic#{$name}.label:hover {
-    background-color: color-grayscale('white') !important;
-    color: color-hover($color) !important;
-    border-color: color-hover($color) !important;
-  }
-}
-
-/*-------------------
         Basic
 --------------------*/
 
@@ -800,9 +753,64 @@ a.ui.basic.label:hover {
   font-size: size('medium');
 }
 
-@each $name, $value in $sizes {
-  .ui.#{$name}.labels .label,
-  .ui.#{$name}.label {
-    font-size: size($name);
+@mixin sizes($size-map) {
+  @each $name, $value in $size-map {
+    .ui.#{$name}.labels .label,
+    .ui.#{$name}.label {
+      font-size: size($name);
+    }
+  }
+}
+
+@include sizes($sizes);
+
+/*-------------------
+       Colors
+--------------------*/
+
+@mixin colors($color-map) {
+
+  @each $name, $color in $color-map {
+
+    /* Color */
+    .ui.#{$name}.labels .label,
+    .ui.#{$name}.label {
+      background-color: $color !important;
+      border-color: $color !important;
+      color: color-text('primary', $inverted: true) !important;
+    }
+
+    /* Link */
+    .ui.#{$name}.labels .label:hover,
+    a.ui.#{$name}.label:hover {
+      background-color: color-hover($color) !important;
+      border-color: color-hover($color) !important;
+      color: color-text('primary', 'hovered', $inverted: true) !important;
+    }
+
+    /* Corner */
+    .ui.#{$name}.corner.label,
+    .ui.#{$name}.corner.label:hover {
+      background-color: transparent !important;
+    }
+
+    /* Ribbon */
+    .ui.#{$name}.ribbon.label {
+      border-color: color-shadow($color) !important;
+    }
+
+    /* Basic */
+    .ui.basic.#{$name}.label {
+      background-color: color-grayscale('white') !important;
+      color: $color !important;
+      border-color: $color !important;
+    }
+
+    .ui.basic.#{$name}.labels a.label:hover,
+    a.ui.basic.#{$name}.label:hover {
+      background-color: color-grayscale('white') !important;
+      color: color-hover($color) !important;
+      border-color: color-hover($color) !important;
+    }
   }
 }

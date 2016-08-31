@@ -1,0 +1,84 @@
+/* All Sizes */
+.ui.container {
+  display: block;
+  max-width: $max-width;
+
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+
+  &.grid {
+    width: auto;
+
+    &.relaxed {
+      width: auto;
+
+      &.very {
+        width: auto;
+      }
+    }
+  }
+
+  $i: 0;
+  @each $name, $bp in $bps {
+    $i: $i + 1;
+    $min-gutter: ($i - 1) + 1em;
+
+    @include media('screen', '>=#{$name}') {
+
+      $width: calc(#{$bp - $min-gutter} - #{$scrollbar-width});
+      width: $width;
+
+      &.grid {
+        width: calc(#{$width} + 2rem);
+
+        &.relaxed {
+          width: calc(#{$width} + 3rem);
+
+          &.very {
+            width: calc(#{$width} + 5rem);
+          }
+        }
+      }
+
+    }
+  }
+}
+
+/*******************************
+             Types
+*******************************/
+
+/* Text Container */
+.ui.text.container {
+  font-family: $text-font-family;
+  max-width: $text-width;
+  line-height: $text-line-height;
+  font-size: $text-size;
+}
+
+/* Fluid */
+.ui.fluid.container {
+  width: 100%;
+}
+
+/*******************************
+           Variations
+*******************************/
+
+.ui[class*="left aligned"].container {
+  text-align: left;
+}
+
+.ui[class*="center aligned"].container {
+  text-align: center;
+}
+
+.ui[class*="right aligned"].container {
+  text-align: right;
+}
+
+.ui.justified.container {
+  text-align: justify;
+  hyphens: auto;
+}

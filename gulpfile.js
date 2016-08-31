@@ -3,6 +3,6 @@ var path = require('path');
 
 gulp.task('default', function() {
 	return require('./tasks/build')
-		.streamCss({deps: 'material'})
+		.streamCss({deps: ['colors-semantic', 'material']})
 		.pipe(gulp.dest('build/'));
 });

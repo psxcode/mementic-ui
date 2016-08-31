@@ -1,0 +1,37 @@
+// Google Material Color Names
+// -------------------------------
+
+$colors-material: (
+        'mat-primary': #8BC34A,
+        'mat-primary-dark': #689F38,
+        'mat-primary-light': #DCEDC8,
+        'mat-accent': #FF9800,
+        'mat-icons': #212121
+) !default;
+
+@function color-material($variant) {
+  $variant: to-string($variant);
+
+  @if not(map-has_key($colors-material, $variant)) {
+    @error 'color-material: invalid $variant #{$variant}';
+  }
+
+  @return map-get($colors-material, $variant);
+}
+
+@function set-color-material($name, $color) {
+  $colors-material: define-color($colors-material, $name, $color);
+}
+
+/*
+$color-primary: #8BC34A !default;
+$color-primary-dark: #689F38 !default;
+$color-primary-light: #DCEDC8 !default;
+$color-accent: #FF9800 !default;
+$color-icons: #212121 !default;
+*/
+//$color-text-primary
+//$color-text-secondary
+//$color-text-inverted
+//$color-divider
+//$color-divider-inverted

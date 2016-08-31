@@ -1,0 +1,57 @@
+$margin: 1rem 0rem;
+
+$highlight-width: 1px;
+$highlight-color: color-divider($inverted: true);
+
+$shadow-width: 1px;
+$shadow-color: color-divider();
+
+/* Text */
+$letter-spacing: 0.05em;
+$font-weight: bold;
+$color: color-text('primary');
+$text-transform: uppercase;
+
+/*-------------------
+       Coupling
+--------------------*/
+
+/* Icon */
+$divider-icon-size: 1rem;
+$divider-icon-margin: 0rem;
+
+
+/*******************************
+         Variations
+*******************************/
+
+/* Horizontal / Vertical */
+$horizontal-margin: 0;
+$horizontal-divider-margin: 1em;
+$horizontal-ruler-offset: calc(-50% - (#{$horizontal-divider-margin}));
+
+$vertical-divider-margin: 1rem;
+$vertical-divider-height: calc(100% - (#{$vertical-divider-margin}));
+
+/* Inverted */
+$inverted-text-color: color-text('primary', $inverted: true);
+$inverted-highlight-color: rgba(255, 255, 255, 0.15);
+$inverted-shadow-color: color-divider();
+
+/* Section */
+$section-margin: 2rem;
+
+/* Sizes */
+$medium: 1rem;
+
+@function map-breakpoints($names: (), $breakpoint-map: $breakpoints) {
+  $names: slice($names, min(length($names), 1));
+
+  @if length($names) == 0 {
+    @return map-extract-by-indexes($breakpoint-map, (1));
+  } @else {
+    @return map-extract($breakpoint-map, $names);
+  }
+}
+
+$bps: map-breakpoints();

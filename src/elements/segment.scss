@@ -473,22 +473,6 @@
 }
 
 /*-------------------
-       Colors
---------------------*/
-
-@each $name, $color in $colors-semantic {
-
-  .ui.#{$name}.segment:not(.inverted) {
-    border-top: $colored-border-size solid $color;
-  }
-
-  .ui.inverted.red.segment {
-    background-color: $color !important;
-    color: color-grayscale('white') !important;
-  }
-}
-
-/*-------------------
        Aligned
 --------------------*/
 
@@ -624,11 +608,32 @@
 /*-------------------
         Size
 --------------------*/
-@each $name, $size in $sizes {
+@mixin sizes($size-map) {
+  @each $name, $size in $size-map {
 
-  .ui.#{$name}.segments .segment,
-  .ui.#{$name}.segment {
-    font-size: size($name);
+    .ui.#{$name}.segments .segment,
+    .ui.#{$name}.segment {
+      font-size: size($name);
+    }
+
   }
+}
 
+@include sizes($sizes);
+
+/*-------------------
+       Colors
+--------------------*/
+@mixin colors($color-map) {
+  @each $name, $color in $color-map {
+
+    .ui.#{$name}.segment:not(.inverted) {
+      border-top: $colored-border-size solid $color;
+    }
+
+    .ui.#{$name}.inverted.segment {
+      background-color: $color !important;
+      color: color-grayscale('white') !important;
+    }
+  }
 }

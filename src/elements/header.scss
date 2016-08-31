@@ -336,31 +336,6 @@ h5.ui.header .sub.header {
 }
 
 /*-------------------
-       Colors
---------------------*/
-
-@each $name, $color in $colors-semantic {
-  /*--- Red ---*/
-  .ui.#{$name}.header {
-    color: $color !important;
-  }
-  a.ui.#{$name}.header:hover {
-    color: color-hover($color) !important;
-  }
-  .ui.#{$name}.dividing.header {
-    border-bottom: $divided-colored-border-width solid $color;
-  }
-
-  /* Inverted */
-  .ui.inverted.#{$name}.header {
-    color: color-light($color) !important;
-  }
-  a.ui.inverted.#{$name}.header:hover {
-    color: color-light(color-hover($color)) !important;
-  }
-}
-
-/*-------------------
        Aligned
 --------------------*/
 
@@ -516,4 +491,35 @@ h5.ui.header .sub.header {
 
 .ui.huge.attached.header {
   font-size: $huge-attached-size;
+}
+
+/*-------------------
+       Colors
+--------------------*/
+
+@mixin colors($color-map) {
+  @each $name, $color in $color-map {
+    /* Color */
+    .ui.#{$name}.header {
+      color: $color !important;
+    }
+    a.ui.#{$name}.header:hover {
+      color: color-hover($color) !important;
+    }
+    .ui.#{$name}.dividing.header {
+      border-bottom: $divided-colored-border-width solid $color;
+    }
+
+    /* Inverted */
+    .ui.inverted.#{$name}.header {
+      color: color-light($color) !important;
+    }
+    a.ui.inverted.#{$name}.header:hover {
+      color: color-light(color-hover($color)) !important;
+    }
+  }
+}
+
+@if type-of($colors-default) == 'map' and $colors-auto-include-default == true {
+  @include colors($colors-default);
 }

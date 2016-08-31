@@ -1,0 +1,236 @@
+.ui.image {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 100%;
+  background-color: $placeholder-color;
+}
+
+img.ui.image {
+  display: block;
+}
+
+.ui.image svg,
+.ui.image img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/*******************************
+            States
+*******************************/
+
+.ui.hidden.images,
+.ui.hidden.image {
+  display: none;
+}
+
+.ui.hidden.transition.images,
+.ui.hidden.transition.image {
+  display: block;
+  visibility: hidden;
+}
+
+.ui.disabled.images,
+.ui.disabled.image {
+  cursor: default;
+  opacity: $color-disabled-blend;
+}
+
+/*******************************
+          Variations
+*******************************/
+
+/*--------------
+     Inline
+---------------*/
+
+.ui.inline.image,
+.ui.inline.image svg,
+.ui.inline.image img {
+  display: inline-block;
+}
+
+/*------------------
+  Vertical Aligned
+-------------------*/
+
+.ui.top.aligned.images .image,
+.ui.top.aligned.image,
+.ui.top.aligned.image svg,
+.ui.top.aligned.image img {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.ui.middle.aligned.images .image,
+.ui.middle.aligned.image,
+.ui.middle.aligned.image svg,
+.ui.middle.aligned.image img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.ui.bottom.aligned.images .image,
+.ui.bottom.aligned.image,
+.ui.bottom.aligned.image svg,
+.ui.bottom.aligned.image img {
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+/*--------------
+     Rounded
+---------------*/
+
+.ui.rounded.images .image,
+.ui.rounded.image,
+.ui.rounded.images .image > *,
+.ui.rounded.image > * {
+  border-radius: $rounded-border-radius;
+}
+
+/*--------------
+    Bordered
+---------------*/
+
+.ui.bordered.images .image,
+.ui.bordered.images img,
+.ui.bordered.images svg,
+.ui.bordered.image img,
+.ui.bordered.image svg,
+img.ui.bordered.image {
+  border: $image-border;
+}
+
+/*--------------
+    Circular
+---------------*/
+
+.ui.circular.images,
+.ui.circular.image {
+  overflow: hidden;
+}
+
+.ui.circular.images .image,
+.ui.circular.image,
+.ui.circular.images .image > *,
+.ui.circular.image > * {
+  border-radius: $circular-radius;
+}
+
+/*--------------
+     Fluid
+---------------*/
+
+.ui.fluid.images,
+.ui.fluid.image,
+.ui.fluid.images img,
+.ui.fluid.images svg,
+.ui.fluid.image svg,
+.ui.fluid.image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/*--------------
+     Avatar
+---------------*/
+
+.ui.avatar.images .image,
+.ui.avatar.images img,
+.ui.avatar.images svg,
+.ui.avatar.image img,
+.ui.avatar.image svg,
+.ui.avatar.image {
+  margin-right: $avatar-margin;
+
+  display: inline-block;
+  width: $avatar-size;
+  height: $avatar-size;
+
+  border-radius: $circular-radius;
+}
+
+/*-------------------
+       Spaced
+--------------------*/
+
+.ui.spaced.image {
+  display: inline-block !important;
+  margin-left: $spaced-distance;
+  margin-right: $spaced-distance;
+}
+
+.ui[class*="left spaced"].image {
+  margin-left: $spaced-distance;
+  margin-right: 0;
+}
+
+.ui[class*="right spaced"].image {
+  margin-left: 0;
+  margin-right: $spaced-distance;
+}
+
+/*-------------------
+       Floated
+--------------------*/
+
+.ui.floated.image,
+.ui.floated.images {
+  float: left;
+  margin-right: $floated-horizontal-margin;
+  margin-bottom: $floated-vertical-margin;
+}
+
+.ui.right.floated.images,
+.ui.right.floated.image {
+  float: right;
+  margin-right: 0;
+  margin-bottom: $floated-vertical-margin;
+  margin-left: $floated-horizontal-margin;
+}
+
+.ui.floated.images:last-child,
+.ui.floated.image:last-child {
+  margin-bottom: 0;
+}
+
+.ui.centered.images,
+.ui.centered.image {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*--------------
+     Sizes
+---------------*/
+
+@each $name, $size in $image-width {
+  .ui.mini.images .image,
+  .ui.mini.images img,
+  .ui.mini.images svg,
+  .ui.mini.image {
+    width: $size;
+    height: auto;
+    font-size: size($name);
+  }
+}
+
+/*******************************
+              Groups
+*******************************/
+
+.ui.images {
+  font-size: 0;
+  margin: 0 -$image-horizontal-margin 0;
+}
+
+.ui.images .image,
+.ui.images img,
+.ui.images svg {
+  display: inline-block;
+  margin: 0 $image-horizontal-margin $image-vertical-margin;
+}

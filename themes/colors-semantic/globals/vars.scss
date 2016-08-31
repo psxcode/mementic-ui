@@ -1,0 +1,32 @@
+// Semantic Color Names
+// -------------------------------
+
+$colors-semantic: (
+        'red': #DB2828,
+        'orange': #F2711C,
+        'yellow': #FBBD08,
+        'olive': #B5CC18,
+        'green': #21BA45,
+        'teal': #00B5AD,
+        'blue': #2185D0,
+        'violet': #6435C9,
+        'purple': #A333C8,
+        'pink': #E03997,
+        'brown': #A5673F,
+        'gray': #767676,
+        'black': #1B1C1D,
+) !default;
+
+@function color-semantic($variant) {
+  $variant: to-string($variant);
+
+  @if not(map-has_key($colors-semantic, $variant)) {
+    @error 'color-semantic: invalid $variant #{$variant}';
+  }
+
+  @return map-get($colors-semantic, $variant);
+}
+
+@function set-color-semantic($name, $color) {
+  $colors-semantic: define-color($colors-semantic, $name, $color);
+}

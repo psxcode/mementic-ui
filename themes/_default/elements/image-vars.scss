@@ -1,0 +1,47 @@
+/*-------------------
+       Element
+--------------------*/
+
+$placeholder-color: transparent;
+$rounded-border-radius: 0.3125em;
+
+$image-horizontal-margin: 0.25rem;
+$image-vertical-margin: 0.5rem;
+$image-border: 1px solid rgba(0, 0, 0, 0.1);
+
+/*-------------------
+       Types
+--------------------*/
+
+/* Avatar */
+$avatar-size: 2em;
+$avatar-margin: 0.25em;
+
+
+/*-------------------
+       Variations
+--------------------*/
+
+/* Spaced */
+$spaced-distance: 0.5em;
+
+/* Floated */
+$floated-horizontal-margin: 1em;
+$floated-vertical-margin: 1em;
+
+/* Size */
+$image-width: map-zip(map-keys($sizes), (
+        35px, //mini
+        80px, //tiny
+        150px, //small
+        300px, //medium
+        450px, //large
+        600px, //big
+        800px, //huge
+        960px //massive
+));
+
+@function image-width($variant) {
+  $variant: to-string($variant);
+  @return map-get($image-width, $variant);
+}
