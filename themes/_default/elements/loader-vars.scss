@@ -1,0 +1,73 @@
+/* Some global loader styles defined in site.variables */
+// @loaderSpeed
+// @loaderLineWidth
+// @loaderFillColor
+// @loaderLineColor
+// @invertedLoaderFillColor
+// @invertedLoaderLineColor
+
+/*-------------------
+      Standard
+--------------------*/
+
+$loader-top-offset: 50%;
+$loader-left-offset: 50%;
+
+$shape-border-color: $loader-line-color transparent transparent;
+$inverted-shape-border-color: $inverted-loader-line-color transparent transparent;
+
+/*-------------------
+        Types
+--------------------*/
+
+/* Text */
+$text-distance: size('mini');
+$loader-text-color: color-text('primary');
+$inverted-loader-text-color: color-text('primary', $inverted: true);
+
+/*-------------------
+        States
+--------------------*/
+
+$indeterminate-direction: reverse;
+$indeterminate-speed: (2 * $loader-speed);
+
+/*-------------------
+      Variations
+--------------------*/
+
+$inline-vertical-align: middle;
+$inline-margin: 0;
+
+/* Exact Sizes (Avoids Rounding Errors) */
+$loader-sizes: map-zip(map-keys($sizes), (
+        14px, // mini
+        16px, // tiny
+        24px, // small
+        32px, // medium
+        48px, // large
+        52px, // big
+        58px, // huge
+        64px // massive
+));
+
+@function loader-size($variant) {
+  $variant: to-string($variant);
+  @return map-get($loader-sizes, $variant);
+}
+
+$loader-offsets: map-zip(map-keys($sizes), (
+    0 0 0 -(loader-size('mini') / 2),
+    0 0 0 -(loader-size('tiny') / 2),
+    0 0 0 -(loader-size('small') / 2),
+    0 0 0 -(loader-size('medium') / 2),
+    0 0 0 -(loader-size('large') / 2),
+    0 0 0 -(loader-size('big') / 2),
+    0 0 0 -(loader-size('huge') / 2),
+    0 0 0 -(loader-size('massive') / 2),
+));
+
+@function loader-offset($variant) {
+  $variant: to-string($variant);
+  @return map-get($loader-offsets, $variant);
+}

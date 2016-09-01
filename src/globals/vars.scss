@@ -143,7 +143,11 @@ $colors-grayscale: (
 // Alpha colors
 // -------------------------------
 
-$colors-transparent-blend: ('default': 0.07, 'strong': 0.12, 'subtle': 0.03);
+$colors-transparent-blend: (
+        'subtle': 0.03,
+        'default': 0.07,
+        'strong': 0.12
+);
 
 @function color-transparent($color, $variant: 'default') {
   $variant: to-string($variant);

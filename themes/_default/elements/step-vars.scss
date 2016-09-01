@@ -1,0 +1,140 @@
+/*-------------------
+       Group
+--------------------*/
+
+$step-margin: 1em 0em;
+$steps-border-radius: $default-border-radius;
+$steps-background: '';
+$steps-box-shadow: none;
+$steps-border: 1px solid color-divider();
+
+/*-------------------
+      Element
+--------------------*/
+
+$vertical-margin: 0;
+$horizontal-margin: 0;
+
+$arrow-size: size('large');
+$vertical-padding: size('large');
+$horizontal-padding: 2em;
+
+$transition:
+background-color $default-duration $default-easing,
+opacity $default-duration $default-easing,
+color $default-duration $default-easing,
+box-shadow $default-duration $default-easing
+;
+$line-height: size('large');
+$align-items: center;
+$justify-content: center;
+$background-color: color-grayscale('white');
+$background: $background-color;
+$border-radius: 0;
+$border-width: 1px;
+$box-shadow: none;
+$border: none;
+$divider: $border-width solid color-divider();
+
+/* Icon */
+$icon-distance: 1rem;
+$icon-size: 2.5em;
+$icon-align: middle;
+
+/* Title */
+$title-font-family: $heading-font-family;
+$title-font-weight: bold;
+$title-font-size: size('large');
+$title-color: color-text('primary');
+
+/* Description */
+$description-distance: 0.25em;
+$description-font-size: size('small');
+$description-font-weight: normal;
+$description-color: color-text('primary');
+
+
+/* Arrow */
+$arrow-background-color: $background-color;
+$arrow-top-offset: 50%;
+$arrow-right-offset: 0;
+$arrow-border-width: 0 $border-width $border-width 0;
+
+$arrow-display: block;
+$last-arrow-display: none;
+
+$active-arrow-display: block;
+$active-last-arrow-display: none;
+
+/* Mobile */
+$mobile-icon-distance: $icon-distance;
+
+/*-------------------
+       Types
+--------------------*/
+
+/* Vertical */
+$vertical-divider: $divider;
+$vertical-arrow-top-offset: 50%;
+$vertical-arrow-right-offset: 0;
+$vertical-arrow-border-width: 0 $border-width $border-width 0;
+
+$vertical-arrow-display: none;
+$vertical-last-arrow-display: $vertical-arrow-display;
+
+$vertical-active-arrow-display: block;
+$vertical-active-last-arrow-display: block;
+
+/*-------------------
+      Variations
+--------------------*/
+
+$attached-horizontal-offset: $border-width;
+$attached-vertical-offset: 0;
+$attached-width: calc(100% - #{$attached-horizontal-offset * 2});
+
+$ordered-font-family: inherit;
+$ordered-font-weight: bold;
+
+/*-------------------
+       States
+--------------------*/
+
+/* Completed */
+$completed-color: color-text('primary');
+
+/* Hover */
+$hover-background: color-grayscale('off');
+$hover-color: color-text('primary', 'hovered');
+
+/* Down */
+$down-background: color-grayscale('dark');
+$down-color: color-text('primary', 'pressed');
+
+/* Active */
+$active-background: color-grayscale('dark');
+$active-color: $link-color;
+$active-icon-color: color-text('primary');
+
+/* Active + Hover */
+$active-hover-background: color-text('primary', $inverted: true);
+$active-hover-color: color-text('primary');
+
+
+/* Disabled */
+$disabled-background: $background;
+$disabled-color: color-text('primary', 'disabled');
+
+
+
+@function map-breakpoints($names: (), $breakpoint-map: $breakpoints) {
+  $names: slice($names, $end: min(length($names), 1));
+
+  @if length($names) == 0 {
+    @return map-extract-by-indexes($breakpoint-map, (3));
+  } @else {
+    @return map-extract($breakpoint-map, $names);
+  }
+}
+
+$bps: map-breakpoints();

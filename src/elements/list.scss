@@ -1,0 +1,880 @@
+ul.ui.list,
+ol.ui.list,
+.ui.list {
+  list-style-type: $list-style-type;
+  margin: $margin;
+  padding: $vertical-padding $horizontal-padding;
+}
+
+ul.ui.list:first-child,
+ol.ui.list:first-child,
+.ui.list:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+ul.ui.list:last-child,
+ol.ui.list:last-child,
+.ui.list:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/*******************************
+            Content
+*******************************/
+
+/* List Item */
+ul.ui.list li,
+ol.ui.list li,
+.ui.list > .item,
+.ui.list .list > .item {
+  display: list-item;
+  table-layout: fixed;
+  list-style-type: $list-style-type;
+  list-style-position: $list-style-position;
+
+  padding: $item-padding;
+  line-height: $item-line-height;
+}
+
+ul.ui.list > li:first-child:after,
+ol.ui.list > li:first-child:after,
+.ui.list > .list > .item,
+.ui.list > .item:after {
+  content: '';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+ul.ui.list li:first-child,
+ol.ui.list li:first-child,
+.ui.list .list > .item:first-child,
+.ui.list > .item:first-child {
+  padding-top: 0;
+}
+ul.ui.list li:last-child,
+ol.ui.list li:last-child,
+.ui.list .list > .item:last-child,
+.ui.list > .item:last-child {
+  padding-bottom: 0;
+}
+
+/* Child List */
+ul.ui.list ul,
+ol.ui.list ol,
+.ui.list .list {
+  clear: both;
+  margin: 0;
+  padding: $child-list-padding;
+}
+
+/* Child Item */
+ul.ui.list ul li,
+ol.ui.list ol li,
+.ui.list .list > .item {
+  padding: $child-item-padding;
+  line-height: $child-item-line-height;
+}
+
+
+/* Icon */
+.ui.list .list > .item > i.icon,
+.ui.list > .item > i.icon {
+  display: table-cell;
+  margin: 0;
+  padding-top: $icon-offset;
+  padding-right: $icon-distance;
+  vertical-align: $icon-content-vertical-align;
+  transition: $icon-transition;
+}
+.ui.list .list > .item > i.icon:only-child,
+.ui.list > .item > i.icon:only-child {
+  display: inline-block;
+  vertical-align: $icon-vertical-align;
+}
+
+
+/* Image */
+.ui.list .list > .item > .image,
+.ui.list > .item > .image {
+  display: table-cell;
+  background-color: transparent;
+  margin: 0;
+  vertical-align: $image-align;
+}
+.ui.list .list > .item > .image:not(:only-child):not(img),
+.ui.list > .item > .image:not(:only-child):not(img) {
+  padding-right: $image-distance;
+}
+.ui.list .list > .item > .image img,
+.ui.list > .item > .image img {
+  vertical-align: $image-align;
+}
+
+.ui.list .list > .item > img.image,
+.ui.list .list > .item > .image:only-child,
+.ui.list > .item > img.image,
+.ui.list > .item > .image:only-child {
+  display: inline-block;
+}
+
+/* Content */
+.ui.list .list > .item > .content,
+.ui.list > .item > .content {
+  line-height: $content-line-height;
+}
+.ui.list .list > .item > .image + .content,
+.ui.list .list > .item > .icon + .content,
+.ui.list > .item > .image + .content,
+.ui.list > .item > .icon + .content {
+  display: table-cell;
+  padding: 0 0 0 $content-distance;
+  vertical-align: $content-vertical-align;
+}
+.ui.list .list > .item > img.image + .content,
+.ui.list > .item > img.image + .content {
+  display: inline-block;
+}
+.ui.list .list > .item > .content > .list,
+.ui.list > .item > .content > .list {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+/* Header */
+.ui.list .list > .item .header,
+.ui.list > .item .header {
+  display: block;
+  margin: 0;
+  font-family: $item-header-font-family;
+  font-weight: $item-header-font-weight;
+  color: $item-header-color;
+}
+
+/* Description */
+.ui.list .list > .item .description,
+.ui.list > .item .description {
+  display: block;
+  color: $item-description-color;
+}
+
+/* Child Link */
+.ui.list > .item a,
+.ui.list .list > .item a {
+  cursor: pointer;
+}
+
+/* Linking Item */
+.ui.list .list > a.item,
+.ui.list > a.item {
+  cursor: pointer;
+  color: $item-link-color;
+}
+.ui.list .list > a.item:hover,
+.ui.list > a.item:hover {
+  color: $item-link-hover-color;
+}
+
+/* Linked Item Icons */
+.ui.list .list > a.item i.icon,
+.ui.list > a.item i.icon {
+  color: $item-link-icon-color;
+}
+
+/* Header Link */
+.ui.list .list > .item a.header,
+.ui.list > .item a.header {
+  cursor: pointer;
+  color: $item-header-link-color !important;
+}
+.ui.list .list > .item a.header:hover,
+.ui.list > .item a.header:hover {
+  color: $item-header-link-hover-color !important;
+}
+
+/* Floated Content */
+.ui[class*="left floated"].list {
+  float: left;
+}
+.ui[class*="right floated"].list {
+  float: right;
+}
+
+.ui.list .list > .item [class*="left floated"],
+.ui.list > .item [class*="left floated"] {
+  float: left;
+  margin: $left-float-margin;
+}
+.ui.list .list > .item [class*="right floated"],
+.ui.list > .item [class*="right floated"] {
+  float: right;
+  margin: $right-float-margin;
+}
+
+/*******************************
+            Coupling
+*******************************/
+
+.ui.menu .ui.list > .item,
+.ui.menu .ui.list .list > .item {
+  display: list-item;
+  table-layout: fixed;
+  background-color: transparent;
+
+  list-style-type: $list-style-type;
+  list-style-position: $list-style-position;
+
+  padding: $item-vertical-padding $item-horizontal-padding;
+  line-height: $item-line-height;
+}
+.ui.menu .ui.list .list > .item:before,
+.ui.menu .ui.list > .item:before {
+  border: none;
+  background: none;
+}
+.ui.menu .ui.list .list > .item:first-child,
+.ui.menu .ui.list > .item:first-child {
+  padding-top: 0;
+}
+.ui.menu .ui.list .list > .item:last-child,
+.ui.menu .ui.list > .item:last-child {
+  padding-bottom: 0;
+}
+
+
+/*******************************
+            Types
+*******************************/
+
+/*-------------------
+      Horizontal
+--------------------*/
+
+.ui.horizontal.list {
+  display: inline-block;
+  font-size: 0;
+}
+.ui.horizontal.list > .item {
+  display: inline-block;
+  margin-left: $horizontal-spacing;
+  font-size: 1rem;
+}
+.ui.horizontal.list:not(.celled) > .item:first-child {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+.ui.horizontal.list .list {
+  padding-left: 0;
+  padding-bottom: 0;
+}
+
+.ui.horizontal.list > .item > .image,
+.ui.horizontal.list .list > .item > .image,
+.ui.horizontal.list > .item > .icon,
+.ui.horizontal.list .list > .item > .icon,
+.ui.horizontal.list > .item > .content,
+.ui.horizontal.list .list > .item > .content {
+  vertical-align: $horizontal-vertical-align;
+}
+
+/* Padding on all elements */
+.ui.horizontal.list > .item:first-child,
+.ui.horizontal.list > .item:last-child {
+  padding-top: $item-vertical-padding;
+  padding-bottom: $item-vertical-padding;
+}
+
+/* Horizontal List */
+.ui.horizontal.list > .item > i.icon {
+  margin: 0;
+  padding: 0 $horizontal-icon-distance 0 0;
+}
+.ui.horizontal.list > .item > .icon,
+.ui.horizontal.list > .item > .icon + .content {
+  float: none;
+  display: inline-block;
+}
+
+
+/*******************************
+             States
+*******************************/
+
+/*-------------------
+       Disabled
+--------------------*/
+
+.ui.list .list > .disabled.item,
+.ui.list > .disabled.item {
+  pointer-events: none;
+  color: $disabled-color !important;
+}
+.ui.inverted.list .list > .disabled.item,
+.ui.inverted.list > .disabled.item {
+  color: $inverted-disabled-color !important;
+}
+
+/*-------------------
+        Hover
+--------------------*/
+
+.ui.list .list > a.item:hover .icon,
+.ui.list > a.item:hover .icon {
+  color: $item-link-icon-hover-color;
+}
+
+
+/*******************************
+           Variations
+*******************************/
+
+/*-------------------
+       Inverted
+--------------------*/
+
+.ui.inverted.list .list > a.item > .icon,
+.ui.inverted.list > a.item > .icon {
+  color: $inverted-icon-link-color;
+}
+.ui.inverted.list .list > .item .header,
+.ui.inverted.list > .item .header {
+  color: $inverted-header-color;
+}
+.ui.inverted.list .list > .item .description,
+.ui.inverted.list > .item .description {
+  color: $inverted-description-color;
+}
+
+/* Item Link */
+.ui.inverted.list .list > a.item,
+.ui.inverted.list > a.item {
+  cursor: pointer;
+  color: $inverted-item-link-color;
+}
+.ui.inverted.list .list > a.item:hover,
+.ui.inverted.list > a.item:hover {
+  color: $inverted-item-link-hover-color;
+}
+
+
+/* Linking Content */
+.ui.inverted.list .item a:not(.ui) {
+  color: $inverted-item-link-color !important;
+}
+.ui.inverted.list .item a:not(.ui):hover {
+  color: $inverted-item-link-hover-color !important;
+}
+
+/*-------------------
+       Aligned
+--------------------*/
+
+.ui.list[class*="top aligned"] .image,
+.ui.list[class*="top aligned"] .content,
+.ui.list [class*="top aligned"] {
+  vertical-align: top !important;
+}
+.ui.list[class*="middle aligned"] .image,
+.ui.list[class*="middle aligned"] .content,
+.ui.list [class*="middle aligned"] {
+  vertical-align: middle !important;
+}
+.ui.list[class*="bottom aligned"] .image,
+.ui.list[class*="bottom aligned"] .content,
+.ui.list [class*="bottom aligned"] {
+  vertical-align: bottom !important;
+}
+
+/*-------------------
+       Link
+--------------------*/
+
+.ui.link.list .item,
+.ui.link.list a.item,
+.ui.link.list .item a:not(.ui) {
+  color: $link-list-item-color;
+  transition: $link-list-transition;
+}
+.ui.link.list a.item:hover,
+.ui.link.list .item a:not(.ui):hover {
+  color: $link-list-item-hover-color;
+}
+.ui.link.list a.item:active,
+.ui.link.list .item a:not(.ui):active {
+  color: $link-list-item-down-color;
+}
+.ui.link.list .active.item,
+.ui.link.list .active.item a:not(.ui) {
+  color: $link-list-item-active-color;
+}
+
+/* Inverted */
+.ui.inverted.link.list .item,
+.ui.inverted.link.list a.item,
+.ui.inverted.link.list .item a:not(.ui) {
+  color: $inverted-link-list-item-color;
+}
+.ui.inverted.link.list a.item:hover,
+.ui.inverted.link.list .item a:not(.ui):hover {
+  color: $inverted-link-list-item-hover-color;
+}
+.ui.inverted.link.list a.item:active,
+.ui.inverted.link.list .item a:not(.ui):active {
+  color: $inverted-link-list-item-down-color;
+}
+.ui.inverted.link.list a.active.item,
+.ui.inverted.link.list .active.item a:not(.ui) {
+  color: $inverted-link-list-item-active-color;
+}
+
+/*-------------------
+      Selection
+--------------------*/
+
+.ui.selection.list .list > .item,
+.ui.selection.list > .item {
+  cursor: pointer;
+  background: $selection-list-background;
+  padding: $selection-list-item-vertical-padding $selection-list-item-horizontal-padding;
+  margin: $selection-list-item-margin;
+  color: $selection-list-color;
+  border-radius: $selection-list-item-border-radius;
+  transition: $selection-list-transition;
+}
+.ui.selection.list .list > .item:last-child,
+.ui.selection.list > .item:last-child {
+  margin-bottom: 0;
+}
+.ui.selection.list.list >  .item:hover,
+.ui.selection.list > .item:hover {
+  background: $selection-list-hover-background;
+  color: $selection-list-hover-color;
+}
+.ui.selection.list .list > .item:active,
+.ui.selection.list > .item:active {
+  background: $selection-list-down-background;
+  color: $selection-list-down-color;
+}
+.ui.selection.list .list > .item.active,
+.ui.selection.list > .item.active {
+  background: $selection-list-active-background;
+  color: $selection-list-active-color;
+}
+
+/* Inverted */
+.ui.inverted.selection.list > .item,
+.ui.inverted.selection.list > .item {
+  background: $inverted-selection-list-background;
+  color: $inverted-selection-list-color;
+}
+.ui.inverted.selection.list > .item:hover,
+.ui.inverted.selection.list > .item:hover {
+  background: $inverted-selection-list-hover-background;
+  color: $inverted-selection-list-hover-color;
+}
+.ui.inverted.selection.list > .item:active,
+.ui.inverted.selection.list > .item:active {
+  background: $inverted-selection-list-down-background;
+  color: $inverted-selection-list-down-color;
+}
+.ui.inverted.selection.list > .item.active,
+.ui.inverted.selection.list > .item.active {
+  background: $inverted-selection-list-active-background;
+  color: $inverted-selection-list-active-color;
+}
+
+/* Celled / Divided Selection List */
+.ui.celled.selection.list .list > .item,
+.ui.divided.selection.list .list > .item,
+.ui.celled.selection.list > .item,
+.ui.divided.selection.list > .item {
+  border-radius: 0;
+}
+
+/*-------------------
+       Animated
+--------------------*/
+
+.ui.animated.list > .item {
+  transition: $animated-list-transition;
+}
+.ui.animated.list:not(.horizontal) > .item:hover {
+  padding-left: $animated-list-indent;
+}
+
+/*-------------------
+       Fitted
+--------------------*/
+.ui.fitted.list:not(.selection) .list > .item,
+.ui.fitted.list:not(.selection) > .item {
+  padding-left: 0;
+  padding-right: 0;
+}
+.ui.fitted.selection.list .list > .item,
+.ui.fitted.selection.list > .item {
+  margin-left: -$selection-list-item-horizontal-padding;
+  margin-right: -$selection-list-item-horizontal-padding;
+}
+
+/*-------------------
+      Bulleted
+--------------------*/
+
+ul.ui.list,
+.ui.bulleted.list {
+  margin-left: $bullet-distance;
+}
+ul.ui.list li,
+.ui.bulleted.list .list > .item,
+.ui.bulleted.list > .item {
+  position: relative;
+}
+ul.ui.list li:before,
+.ui.bulleted.list .list > .item:before,
+.ui.bulleted.list > .item:before {
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: auto;
+  left: auto;
+  font-weight: normal;
+  margin-left: $bullet-offset;
+  content: $bullet-character;
+  opacity: $bullet-opacity;
+  color: $bullet-color;
+  vertical-align: $bullet-vertical-align;
+}
+
+ul.ui.list li:before,
+.ui.bulleted.list .list > a.item:before,
+.ui.bulleted.list > a.item:before {
+  color: $bullet-link-color;
+}
+
+ul.ui.list ul,
+.ui.bulleted.list .list {
+  padding-left: $bullet-child-distance;
+}
+
+/* Horizontal Bulleted */
+ul.ui.horizontal.bulleted.list,
+.ui.horizontal.bulleted.list {
+  margin-left: 0;
+}
+ul.ui.horizontal.bulleted.list li,
+.ui.horizontal.bulleted.list > .item {
+  margin-left: $horizontal-bullet-spacing;
+}
+ul.ui.horizontal.bulleted.list li:first-child,
+.ui.horizontal.bulleted.list > .item:first-child {
+  margin-left: 0;
+}
+ul.ui.horizontal.bulleted.list li::before,
+.ui.horizontal.bulleted.list > .item::before {
+  color: $horizontal-bullet-color;
+}
+ul.ui.horizontal.bulleted.list li:first-child::before,
+.ui.horizontal.bulleted.list > .item:first-child::before {
+  display: none;
+}
+
+/*-------------------
+       Ordered
+--------------------*/
+
+ol.ui.list,
+.ui.ordered.list,
+.ui.ordered.list .list,
+ol.ui.list ol {
+  counter-reset: ordered;
+  margin-left: $ordered-count-distance;
+  list-style-type: none;
+}
+ol.ui.list li,
+.ui.ordered.list .list > .item,
+.ui.ordered.list > .item {
+  list-style-type: none;
+  position: relative;
+}
+ol.ui.list li:before,
+.ui.ordered.list .list > .item:before,
+.ui.ordered.list > .item:before {
+  position: absolute;
+  top: auto;
+  left: auto;
+  user-select: none;
+  pointer-events: none;
+  margin-left: -($ordered-count-distance);
+  counter-increment: $ordered-count-name;
+  content: $ordered-count-content;
+  text-align: $ordered-count-text-align;
+  color: $ordered-count-color;
+  vertical-align: $ordered-count-vertical-align;
+  opacity: $ordered-count-opacity;
+}
+
+ol.ui.inverted.list li:before,
+.ui.ordered.inverted.list .list > .item:before,
+.ui.ordered.inverted.list > .item:before {
+  color: $ordered-inverted-count-color;
+}
+
+/* Value */
+.ui.ordered.list > .list > .item[data-value],
+.ui.ordered.list > .item[data-value] {
+  content: attr(data-value);
+}
+ol.ui.list li[value]:before {
+  content: attr(value);
+}
+
+/* Child Lists */
+ol.ui.list ol,
+.ui.ordered.list .list {
+  margin-left: $ordered-child-count-distance;
+}
+ol.ui.list ol li:before,
+.ui.ordered.list .list > .item:before {
+  margin-left: $ordered-child-count-offset;
+}
+
+/* Horizontal Ordered */
+ol.ui.horizontal.list,
+.ui.ordered.horizontal.list {
+  margin-left: 0;
+}
+ol.ui.horizontal.list li:before,
+.ui.ordered.horizontal.list .list > .item:before,
+.ui.ordered.horizontal.list > .item:before {
+  position: static;
+  margin: 0 $horizontal-ordered-count-distance 0 0;
+}
+
+/*-------------------
+       Divided
+--------------------*/
+
+.ui.divided.list > .item {
+  border-top: $divided-border;
+}
+.ui.divided.list .list > .item {
+  border-top: $divided-child-list-border;
+}
+.ui.divided.list .item .list > .item {
+  border-top: $divided-child-item-border;
+}
+.ui.divided.list .list > .item:first-child,
+.ui.divided.list > .item:first-child {
+  border-top: none;
+}
+
+/* Sub Menu */
+.ui.divided.list:not(.horizontal) .list > .item:first-child {
+  border-top-width: $divided-border-width;
+}
+
+/* Divided bulleted */
+.ui.divided.bulleted.list:not(.horizontal),
+.ui.divided.bulleted.list .list {
+  margin-left: 0;
+  padding-left: 0;
+}
+.ui.divided.bulleted.list > .item:not(.horizontal) {
+  padding-left: $bullet-distance;
+}
+
+/* Divided Ordered */
+.ui.divided.ordered.list {
+  margin-left: 0;
+}
+.ui.divided.ordered.list .list > .item,
+.ui.divided.ordered.list > .item {
+  padding-left: $ordered-count-distance;
+}
+.ui.divided.ordered.list .item .list {
+  margin-left: 0;
+  margin-right: 0;
+  padding-bottom: $item-vertical-padding;
+}
+.ui.divided.ordered.list .item .list > .item {
+  padding-left: $ordered-child-count-distance;
+}
+
+/* Divided Selection */
+.ui.divided.selection.list .list > .item,
+.ui.divided.selection.list > .item {
+  margin: 0;
+  border-radius: 0;
+}
+
+/* Divided horizontal */
+.ui.divided.horizontal.list {
+  margin-left: 0;
+}
+.ui.divided.horizontal.list > .item:not(:first-child) {
+  padding-left: $horizontal-divided-spacing;
+}
+.ui.divided.horizontal.list > .item:not(:last-child) {
+  padding-right: $horizontal-divided-spacing;
+}
+.ui.divided.horizontal.list > .item {
+  border-top: none;
+  border-left: $divided-border;
+  margin: 0;
+  line-height: $horizontal-divided-line-height;
+}
+.ui.horizontal.divided.list > .item:first-child {
+  border-left: none;
+}
+/* Inverted */
+.ui.divided.inverted.list > .item,
+.ui.divided.inverted.list > .list,
+.ui.divided.inverted.horizontal.list > .item {
+  border-color: $divided-inverted-border-color;
+}
+
+
+/*-------------------
+        Celled
+--------------------*/
+
+.ui.celled.list > .item,
+.ui.celled.list > .list {
+  border-top: $celled-border;
+  padding-left: $celled-horizontal-padding;
+  padding-right: $celled-horizontal-padding;
+}
+.ui.celled.list > .item:last-child {
+  border-bottom: $celled-border;
+}
+
+/* Padding on all elements */
+.ui.celled.list > .item:first-child,
+.ui.celled.list > .item:last-child {
+  padding-top: $item-vertical-padding;
+  padding-bottom: $item-vertical-padding;
+}
+
+/* Sub Menu */
+.ui.celled.list .item .list > .item {
+  border-width: 0;
+}
+.ui.celled.list .list > .item:first-child {
+  border-top-width: 0;
+}
+
+/* Celled Bulleted */
+.ui.celled.bulleted.list {
+  margin-left: 0;
+}
+.ui.celled.bulleted.list .list > .item,
+.ui.celled.bulleted.list > .item {
+  padding-left: ($bullet-distance);
+}
+.ui.celled.bulleted.list .item .list {
+  margin-left: -($bullet-distance);
+  margin-right: -($bullet-distance);
+  padding-bottom: $item-vertical-padding;
+}
+
+/* Celled Ordered */
+.ui.celled.ordered.list {
+  margin-left: 0;
+}
+.ui.celled.ordered.list .list > .item,
+.ui.celled.ordered.list > .item {
+  padding-left: $ordered-count-distance;
+}
+.ui.celled.ordered.list .item .list {
+  margin-left: 0;
+  margin-right: 0;
+  padding-bottom: $item-vertical-padding;
+}
+.ui.celled.ordered.list .list > .item {
+  padding-left: $ordered-child-count-distance;
+}
+
+/* Celled Horizontal */
+.ui.horizontal.celled.list {
+  margin-left: 0;
+}
+.ui.horizontal.celled.list .list > .item,
+.ui.horizontal.celled.list > .item {
+  border-top: none;
+  border-left: $celled-border;
+  margin: 0;
+  padding-left: $horizontal-celled-spacing;
+  padding-right: $horizontal-celled-spacing;
+
+  line-height: $horizontal-celled-line-height;
+}
+.ui.horizontal.celled.list .list > .item:last-child,
+.ui.horizontal.celled.list > .item:last-child {
+  border-bottom: none;
+  border-right: $celled-border;
+}
+
+/* Inverted */
+.ui.celled.inverted.list > .item,
+.ui.celled.inverted.list > .list {
+  border-color: $celled-inverted-border;
+}
+.ui.celled.inverted.horizontal.list .list > .item,
+.ui.celled.inverted.horizontal.list > .item {
+  border-color: $celled-inverted-border;
+}
+
+/*-------------------
+       Relaxed
+--------------------*/
+
+.ui.relaxed.list:not(.horizontal) > .item:not(:first-child) {
+  padding-top: $relaxed-item-vertical-padding;
+}
+.ui.relaxed.list:not(.horizontal) > .item:not(:last-child) {
+  padding-bottom: $relaxed-item-vertical-padding;
+}
+.ui.horizontal.relaxed.list .list > .item:not(:first-child),
+.ui.horizontal.relaxed.list > .item:not(:first-child) {
+  padding-left: $relaxed-horizontal-padding;
+}
+.ui.horizontal.relaxed.list .list > .item:not(:last-child),
+.ui.horizontal.relaxed.list > .item:not(:last-child) {
+  padding-right: $relaxed-horizontal-padding;
+}
+
+/* Very Relaxed */
+.ui[class*="very relaxed"].list:not(.horizontal) > .item:not(:first-child) {
+  padding-top: $very-relaxed-item-vertical-padding;
+}
+.ui[class*="very relaxed"].list:not(.horizontal) > .item:not(:last-child) {
+  padding-bottom: $very-relaxed-item-vertical-padding;
+}
+.ui.horizontal[class*="very relaxed"].list .list > .item:not(:first-child),
+.ui.horizontal[class*="very relaxed"].list > .item:not(:first-child) {
+  padding-left: $very-relaxed-horizontal-padding;
+}
+.ui.horizontal[class*="very relaxed"].list .list > .item:not(:last-child),
+.ui.horizontal[class*="very relaxed"].list > .item:not(:last-child) {
+  padding-right: $very-relaxed-horizontal-padding;
+}
+
+/*-------------------
+      Sizes
+--------------------*/
+
+@each $name, $size in $sizes {
+
+  .ui.#{$name}.list {
+    font-size: size($name);
+  }
+
+  .ui.#{$name}.horizontal.list .list > .item,
+  .ui.#{$name}.horizontal.list > .item {
+    font-size: size($name);
+  }
+
+}

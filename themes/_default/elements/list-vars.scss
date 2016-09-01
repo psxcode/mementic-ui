@@ -1,0 +1,217 @@
+/*-------------------
+         View
+--------------------*/
+
+/* List */
+$list-style-type: none;
+$list-style-position: outside;
+$margin: 1em 0em;
+$vertical-padding: 0em;
+$horizontal-padding: 0em;
+
+/* List Item */
+$item-vertical-padding: px-em(3);
+$item-horizontal-padding: 0em;
+$item-padding: $item-vertical-padding $item-horizontal-padding;
+$item-line-height: size('large');
+
+/* Sub List */
+$child-list-padding: 0.75em 0em 0.25em 0.5em;
+$child-list-indent: 1em;
+
+/* Sub List Item */
+$child-item-vertical-padding: px-em(2);
+$child-item-horizontal-padding: 0em;
+$child-item-padding: $child-item-vertical-padding $child-item-horizontal-padding;
+$child-item-line-height: inherit;
+
+/*-------------------
+      Elements
+--------------------*/
+
+/* Icon */
+$icon-distance: px-em(4);
+$icon-offset: (($item-line-height - 1rem) / 2);
+$icon-transition: color $default-duration $default-easing;
+$icon-vertical-align: top;
+$icon-content-vertical-align: top;
+
+/* Image */
+$image-distance: 0.5em;
+$image-align: top;
+
+/* Content */
+$content-distance: 0.5em;
+$content-line-height: $item-line-height;
+$content-line-height-offset: ($content-line-height - 1em) / 2;
+$content-vertical-align: top;
+
+/* Header */
+$item-header-font-family: $heading-font-family;
+$item-header-font-weight: bold;
+$item-header-color: color-text('primary');
+
+/* Description */
+$item-description-color: rgba(0, 0, 0, 0.7);
+
+/* Link */
+$item-link-color: $link-color;
+$item-link-hover-color: color-hover($link-color);
+
+/* Header Link */
+$item-header-link-color: $item-link-color;
+$item-header-link-hover-color: $item-link-hover-color;
+
+/* Linked Icon */
+$item-link-icon-color: color-light(color-text('primary'));
+$item-link-icon-hover-color: color-text('primary');
+$inverted-icon-link-color: color-light(color-text('primary', $inverted: true));
+
+/*-------------------
+        States
+--------------------*/
+
+$disabled-color: color-text('primary', 'disabled');
+$inverted-disabled-color: color-text('primary', 'disabled', true);
+
+/*-------------------
+      Variations
+--------------------*/
+
+/* Float */
+$float-distance: 1em;
+$left-float-margin: 0em $float-distance 0em 0em;
+$right-float-margin: 0em 0em 0em $float-distance;
+
+/* Horizontal */
+$horizontal-spacing: 1em;
+$horizontal-icon-distance: 0.25em;
+$horizontal-vertical-align: middle;
+
+/* Inverted */
+$inverted-list-icon-color: color-light(color-text('primary', $inverted: true));
+$inverted-header-color: color-text('primary', $inverted: true);
+$inverted-description-color: color-light(color-text('primary', $inverted: true));
+$inverted-item-link-color: color-text('primary', $inverted: true);
+$inverted-item-link-hover-color: color-hover($link-color);
+
+/* Link List */
+$link-list-item-color: color-text('primary', 'unselected');
+$link-list-item-hover-color: color-text('primary', 'hovered');
+$link-list-item-down-color: color-text('primary', 'pressed');
+$link-list-item-active-color: color-text('primary', 'selected');
+$link-list-transition: $default-duration color $default-easing
+;
+
+/* Inverted Link List */
+$inverted-link-list-item-color: color-text('primary', 'unselected', true);
+$inverted-link-list-item-hover-color: color-text('primary', 'hovered', true);
+$inverted-link-list-item-down-color: color-text('primary', 'pressed', true);
+$inverted-link-list-item-active-color: color-text('primary', 'selected', true);
+
+/* Selection List */
+$selection-list-item-margin: 0em;
+$selection-list-item-border-radius: 0.5em;
+$selection-list-item-vertical-padding: 0.5em;
+$selection-list-item-horizontal-padding: 0.5em;
+$selection-list-transition:
+$default-duration color $default-easing,
+$default-duration padding-left $default-easing,
+$default-duration background-color $default-easing;
+
+/* Selection List States */
+$selection-list-background: transparent;
+$selection-list-color: color-text('primary', 'unselected');
+$selection-list-hover-background: color-transparent(color-grayscale('black'), 'subtle');
+$selection-list-hover-color: color-text('primary', 'hovered');
+$selection-list-down-background: color-transparent(color-grayscale('black'));
+$selection-list-down-color: color-text('primary', 'pressed');
+$selection-list-active-background: color-transparent(color-grayscale('black'));
+$selection-list-active-color: color-text('primary', 'selected');
+
+/* Inverted Selection List */
+$inverted-selection-list-background: transparent;
+$inverted-selection-list-color: color-text('primary', 'unselected', true);
+$inverted-selection-list-hover-background: color-transparent(color-grayscale('white'), 'subtle');
+$inverted-selection-list-hover-color: color-text('primary', 'hovered', true);
+$inverted-selection-list-down-background: color-transparent(color-grayscale('white'));
+$inverted-selection-list-down-color: color-text('primary', 'pressed', true);
+$inverted-selection-list-active-background: color-transparent(color-grayscale('white'));
+$inverted-selection-list-active-color: color-text('primary', 'selected', true);
+
+/* Animated List */
+$animated-duration: 0.25s;
+$animated-delay: 0.1s;
+$animated-list-transition:
+$animated-duration color $default-easing $animated-delay,
+$animated-duration padding-left $default-easing $animated-delay,
+$animated-duration background-color $default-easing $animated-delay;
+$animated-list-indent: 1em;
+
+/* Bulleted */
+$bullet-distance: 1.25rem;
+$bullet-offset: -$bullet-distance;
+
+$bullet-opacity: 1;
+$bullet-character: '•';
+$bullet-color: inherit;
+$bullet-link-color: color-text('primary');
+$bullet-vertical-align: top;
+$bullet-child-distance: $bullet-distance;
+
+/* Horizontal Bullets */
+$horizontal-bullet-color: color-text('primary');
+$horizontal-bullet-spacing: $bullet-distance + 0.5em;
+
+/* Ordered List */
+$ordered-count-name: ordered;
+$ordered-count-content: counters(ordered, ".") " ";
+$ordered-count-color: color-text('primary');
+$ordered-count-distance: 1.25rem;
+$ordered-count-opacity: 0.8;
+$ordered-count-text-align: right;
+$ordered-count-vertical-align: middle;
+
+$ordered-child-count-distance: 1em;
+$ordered-child-count-offset: -2em;
+
+$ordered-inverted-count-color: color-light(color-text('primary', $inverted: true));
+
+/* Horizontal Ordered */
+$horizontal-ordered-count-distance: 0.5em;
+
+/* Divided */
+$divided-border-width: 1px;
+$divided-border: $divided-border-width solid color-divider();
+$divided-inverted-border-color: color-divider($inverted: true);
+$divided-child-list-border: none;
+$divided-child-item-border: none;
+
+/* Divided Horizontal */
+$horizontal-divided-spacing: ($horizontal-spacing / 2);
+$horizontal-divided-line-height: 0.6;
+
+/* Divided */
+$celled-border-width: 1px;
+$celled-border: $celled-border-width solid color-divider();
+$celled-inverted-border: $divided-border-width solid color-divider($inverted: true);
+$celled-horizontal-padding: 0.5em;
+$celled-child-list-border: none;
+$celled-child-item-border: none;
+
+/* Divided Horizontal */
+$horizontal-celled-spacing: ($horizontal-spacing / 2);
+$horizontal-celled-line-height: 0.6;
+
+/* Relaxed */
+$relaxed-item-vertical-padding: px-em(6);
+$relaxed-child-item-vertical-padding: px-em(3);
+$relaxed-header-margin: 0.25rem;
+$relaxed-horizontal-padding: 1rem;
+
+/* Very Relaxed */
+$very-relaxed-item-vertical-padding: px-em(12);
+$very-relaxed-child-item-vertical-padding: px-em(4);
+$very-relaxed-header-margin: 0.5rem;
+$very-relaxed-horizontal-padding: 1.5rem;
+

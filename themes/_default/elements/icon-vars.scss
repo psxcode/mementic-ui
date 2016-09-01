@@ -1,0 +1,65 @@
+/*******************************
+             Icon
+*******************************/
+
+/*-------------------
+   Icon Variables
+--------------------*/
+
+$font-name: 'icons';
+$fallback-src: url("#{$font-path}/#{$font-name}.eot");
+$src: url("#{$font-path}/#{$font-name}.eot?#iefix") format('embedded-opentype'),
+url("#{$font-path}/#{$font-name}.woff2") format('woff2'),
+url("#{$font-path}/#{$font-name}.woff") format('woff'),
+url("#{$font-path}/#{$font-name}.ttf") format('truetype'),
+url("#{$font-path}/#{$font-name}.svg#icons") format('svg');
+
+$opacity: 1;
+$width: 1.18em;
+$height: 1em;
+$distance-from-text: 0.25rem;
+
+/* Variations */
+
+$link-opacity: 0.8;
+$link-duration: 0.3s;
+$loading-duration: 2s;
+
+$circular-size: 2em;
+$circular-padding: 0.5em 0.5em;
+$circular-shadow: 0em 0em 0em 0.1em rgba(0, 0, 0, 0.1) inset;
+
+$bordered-size: 2em;
+$bordered-vertical-padding: (($bordered-size - $height) / 2);
+$bordered-horizontal-padding: (($bordered-size - $width) / 2);
+$bordered-shadow: 0em 0em 0em 0.1em rgba(0, 0, 0, 0.1) inset;
+
+$corner-icon-size: 0.45em;
+$corner-icon-stroke: 1px;
+
+$corner-icon-shadow: -$corner-icon-stroke -$corner-icon-stroke 0 color-grayscale('white'),
+$corner-icon-stroke -$corner-icon-stroke 0 color-grayscale('white'),
+-$corner-icon-stroke $corner-icon-stroke 0 color-grayscale('white'),
+$corner-icon-stroke $corner-icon-stroke 0 color-grayscale('white');
+
+$corner-icon-inverted-shadow: -$corner-icon-stroke -$corner-icon-stroke 0 color-grayscale('black'),
+$corner-icon-stroke -$corner-icon-stroke 0 color-grayscale('black'),
+-$corner-icon-stroke $corner-icon-stroke 0 color-grayscale('black'),
+$corner-icon-stroke $corner-icon-stroke 0 color-grayscale('black');
+
+/* Size */
+$icon-width: map-zip(map-keys($sizes), (
+        0.4em, // mini
+        0.5em, // tiny
+        0.75em, // small
+        1em, // medium
+        1.5em, // large
+        2em, // big
+        4em, //huge
+        8em // massive
+));
+
+@function icon-width($variant) {
+  $variant: to-string($variant);
+  @return map-get($icon-width, $variant);
+}

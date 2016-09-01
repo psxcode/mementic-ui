@@ -497,7 +497,7 @@ h5.ui.header .sub.header {
        Colors
 --------------------*/
 
-@mixin colors($color-map) {
+@mixin colors-header($color-map) {
   @each $name, $color in $color-map {
     /* Color */
     .ui.#{$name}.header {
@@ -521,5 +521,5 @@ h5.ui.header .sub.header {
 }
 
 @if type-of($colors-default) == 'map' and $colors-auto-include-default == true {
-  @include colors($colors-default);
+  @include colors-header($colors-default);
 }
