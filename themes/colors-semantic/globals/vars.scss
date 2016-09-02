@@ -30,3 +30,6 @@ $colors-semantic: (
 @function set-color-semantic($name, $color) {
   $colors-semantic: define-color($colors-semantic, $name, $color);
 }
+
+//should be overrided in button-vars.scss
+$colors-button-auto-include-main: false;

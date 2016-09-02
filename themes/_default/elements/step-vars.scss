@@ -3,8 +3,8 @@
 --------------------*/
 
 $step-margin: 1em 0em;
-$steps-border-radius: $default-border-radius;
-$steps-background: '';
+$steps-border-radius: unit-rem($default-border-radius);
+$steps-background: none;
 $steps-box-shadow: none;
 $steps-border: 1px solid color-divider();
 
@@ -28,7 +28,7 @@ box-shadow $default-duration $default-easing
 $line-height: size('large');
 $align-items: center;
 $justify-content: center;
-$background-color: color-grayscale('white');
+$background-color: color-main('light');
 $background: $background-color;
 $border-radius: 0;
 $border-width: 1px;
@@ -39,7 +39,7 @@ $divider: $border-width solid color-divider();
 /* Icon */
 $icon-distance: 1rem;
 $icon-size: 2.5em;
-$icon-align: middle;
+$icon-align: center;
 
 /* Title */
 $title-font-family: $heading-font-family;
@@ -104,15 +104,15 @@ $ordered-font-weight: bold;
 $completed-color: color-text('primary');
 
 /* Hover */
-$hover-background: color-grayscale('off');
+$hover-background: color-main('mid');
 $hover-color: color-text('primary', 'hovered');
 
 /* Down */
-$down-background: color-grayscale('dark');
+$down-background: color-main('mid');
 $down-color: color-text('primary', 'pressed');
 
 /* Active */
-$active-background: color-grayscale('dark');
+$active-background: color-main('mid');
 $active-color: $link-color;
 $active-icon-color: color-text('primary');
 

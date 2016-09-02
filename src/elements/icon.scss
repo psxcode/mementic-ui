@@ -73,7 +73,7 @@ i.emphasized.icon {
 }
 
 i.disabled.icon {
-  opacity: $color-disabled-blend !important;
+  opacity: $color-disabled-opacity !important;
 }
 
 /*******************************
@@ -177,12 +177,12 @@ i.bordered.inverted.icon {
 /* Inverted Shapes */
 i.inverted.bordered.icon,
 i.inverted.circular.icon {
-  background-color: color-grayscale('black') !important;
-  color: color-grayscale('white') !important;
+  background-color: color-main('dark') !important;
+  color: color-main('light') !important;
 }
 
 i.inverted.icon {
-  color: color-grayscale('white');
+  color: color-main('light');
 }
 
 /*-------------------
@@ -201,7 +201,7 @@ i.inverted.icon {
     i.inverted.bordered.#{$name}.icon,
     i.inverted.circular.#{$name}.icon {
       background-color: $color !important;
-      color: color-grayscale('white') !important;
+      color: color-main('light') !important;
     }
   }
 }

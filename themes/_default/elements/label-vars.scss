@@ -18,7 +18,7 @@ $border-radius: unit-rem($default-border-radius);
 $text-transform: none;
 $font-weight: bold;
 $border-width: 1px;
-$border: 0px solid transparent;
+$border: 0 solid transparent;
 
 $line-height-offset: -($vertical-padding / 2);
 
@@ -74,7 +74,7 @@ $image-label-image-margin: -$vertical-padding $image-label-text-distance -$verti
 $image-label-image-border-radius: $image-label-border-radius 0em 0em $image-label-border-radius;
 $image-label-image-height: $image-height;
 
-$image-label-detail-background: color-transparent(color-grayscale('black'), 'strong');
+$image-label-detail-background: color-transparent(color-main('dark'), 'strong');
 $image-label-detail-padding: $image-label-vertical-padding $image-label-horizontal-padding;
 $image-label-detail-margin: -$image-label-vertical-padding -$image-label-horizontal-padding -$image-label-vertical-padding $image-label-detail-distance;
 
@@ -102,7 +102,7 @@ $label-active-hover-text-color: color-text('primary', 'selected');
 --------------------*/
 
 /* Basic */
-$basic-background: none color-grayscale('white');
+$basic-background: none color-main('light');
 $basic-border-width: 1px;
 $basic-border: $basic-border-width solid color-divider();
 $basic-color: color-text('primary');
@@ -114,7 +114,7 @@ $basic-hover-border: $basic-border;
 $basic-hover-box-shadow: $basic-box-shadow;
 
 /* Tag */
-$tag-circle-color: color-grayscale('white');
+$tag-circle-color: color-main('light');
 $tag-circle-size: 0.5em;
 $tag-horizontal-padding: 1.5em;
 $tag-circle-box-shadow: 0 -1px 1px 0 rgba(0, 0, 0, 0.3);

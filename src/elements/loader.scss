@@ -153,7 +153,7 @@
   /* Text Loader */
   .ui.#{$name}.text.loader {
     min-width: $size;
-    padding-top: ($size + $text-distance);
+    padding-top: calc(#{$size} + #{$text-distance});
   }
 }
 

@@ -301,7 +301,7 @@ h5.ui.header .sub.header {
 *******************************/
 
 .ui.disabled.header {
-  opacity: $color-disabled-blend;
+  opacity: $color-disabled-opacity;
 }
 
 /*******************************
@@ -497,7 +497,7 @@ h5.ui.header .sub.header {
        Colors
 --------------------*/
 
-@mixin colors-header($color-map) {
+@mixin colors($color-map) {
   @each $name, $color in $color-map {
     /* Color */
     .ui.#{$name}.header {
@@ -521,5 +521,5 @@ h5.ui.header .sub.header {
 }
 
 @if type-of($colors-default) == 'map' and $colors-auto-include-default == true {
-  @include colors-header($colors-default);
+  @include colors($colors-default);
 }

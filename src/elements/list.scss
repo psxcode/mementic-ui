@@ -820,11 +820,11 @@ ol.ui.horizontal.list li:before,
 /* Inverted */
 .ui.celled.inverted.list > .item,
 .ui.celled.inverted.list > .list {
-  border-color: $celled-inverted-border;
+  border: $celled-inverted-border;
 }
 .ui.celled.inverted.horizontal.list .list > .item,
 .ui.celled.inverted.horizontal.list > .item {
-  border-color: $celled-inverted-border;
+  border: $celled-inverted-border;
 }
 
 /*-------------------

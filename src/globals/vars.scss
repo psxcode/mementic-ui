@@ -52,30 +52,25 @@
 
 // Colors
 // -------------------------------
-$colors-default: null;
-$colors-auto-include-default: true;
+$colors-default: null !default;
+$colors-auto-include-default: true !default;
 
 @function define-color($color-map, $name, $color) {
   $name: to-string($name);
 
   @if type-of($color-map) != 'map' {
-    @error 'set-color-in-map: invalid $map #{$color-map}';
+    @error 'define-color: invalid $map #{$color-map}';
   }
 
   @if type-of($color) != 'color' {
-    @error 'set-color-in-map: invalid $color #{$color}';
+    @error 'define-color: invalid $color #{$color}';
   }
-
-  //allow adding new colors
-  /*@if not(map-has_key($color-map, $name)) {
-    @error 'set-color-in-map: invalid $name #{$name} in #{$color-map}';
-  }*/
 
   @return map-merge($color-map, ($name: $color));
 }
 
-@function color-blend($color, $blend: 1, $blend-factor: 1) {
-  @return rgba($color, clamp($blend * $blend-factor));
+@function color-blend($color, $blend-base: 1, $blend-factor: 1) {
+  @return rgba($color, clamp($blend-base * $blend-factor));
 }
 
 @function color-bg($color) {
@@ -94,6 +89,10 @@ $colors-auto-include-default: true;
   @return saturate(darken($color, 8%), 20%);
 }
 
+@function color-down($color) {
+  @return saturate(darken($color, 5%), 15%);
+}
+
 @function color-active($color) {
   @return saturate(darken($color, 5%), 15%);
 }
@@ -106,63 +105,66 @@ $colors-auto-include-default: true;
   @return darken($color, 5%);
 }
 
-$color-disabled-blend: 0.5;
+$color-disabled-opacity: 0.5 !default;
 
 @function color-disabled($color) {
-  @return rgba($color, $color-disabled-blend);
+  @return rgba($color, $color-disabled-opacity);
 }
-
-// Grayscale colors
-// -------------------------------
-
-/*
-$color-black-full: #000000;
-$color-white-off: #F9FAFB;
-$color-white-dark: #F3F4F5;
-$color-white-mid: #DCDDDE;
-$color-white-full: #FFFFFF;
-*/
-
-$colors-grayscale: (
-        'black': #000,
-        'off': #F9FAFB,
-        'dark': #F3F4F5,
-        'mid': #DCDDDE,
-        'white': #fff
-) !default;
-
-@function color-grayscale($variant: 'white') {
-  $variant: to-string($variant);
-  @if map-has_key($colors-grayscale, $variant) {
-    @return map-get($colors-grayscale, $variant);
-  } @else {
-    @error 'color-grayscale: invalid $variant #{$variant}';
-  }
-}
-
-// Alpha colors
-// -------------------------------
 
 $colors-transparent-blend: (
         'subtle': 0.03,
         'default': 0.07,
         'strong': 0.12
-);
+) !default;
 
 @function color-transparent($color, $variant: 'default') {
   $variant: to-string($variant);
-  @if map-has_key($colors-transparent-blend, $variant) {
-    @return rgba($color, map-get($colors-transparent-blend, $variant));
-  } @else {
+
+  @if not(map-has_key($colors-transparent-blend, $variant)) {
     @error 'color-transparent: invalid $variant #{$variant}';
   }
+
+  @return rgba($color, map-get($colors-transparent-blend, $variant));
+}
+
+@function set-color-transparent-blend($variant, $blend-value) {
+  $variant: to-string($variant);
+  $blend-value: clamp($blend-value);
+
+  $colors-transparent-blend: map-merge($colors-transparent-blend, ($variant: $blend-value));
+}
+
+// Main colors
+// -------------------------------
+$colors-main: (
+        'light': #fff,
+        'mid': #444,
+        'dark': #000,
+        'positive': #387ef5,
+        'assertive': #ef473a,
+        'primary': #387ef5,
+        'secondary': #555
+) !default;
+
+@function color-main($variant) {
+  $variant: to-string($variant);
+
+  @if not(map-has-key($colors-main, $variant)) {
+    @error 'color-main: invalid $variant \'#{$variant}\'';
+  }
+
+  @return map-get($colors-main, $variant);
+}
+
+@function set-color-main($name, $color) {
+  $colors-main: define-color($colors-main, $name, $color);
 }
 
 // Divider Colors
 // -------------------------------
 
 $color-divider: (#202224, #fff) !default;
-$color-divider-blend: (0.15, 0.5);
+$color-divider-blend: (0.15, 0.5) !default;
 
 $colors-divider-blend-mult: (
         'default': (1.0, 1.0),
@@ -176,12 +178,23 @@ $colors-divider-blend-mult: (
         'disabled': (3.5, 3.5)
 ) !default;
 
+@function color-divider($variant: 'default', $inverted: false, $color: nth($color-divider, 1)) {
+  $variant: to-string($variant);
+  $index: if(to-bool($inverted), 2, 1);
+
+  @if not(map-has_key($colors-divider-blend-mult, $variant)) {
+    @error 'color-divider-inverted: invalid $variant #{$variant}';
+  }
+
+  @return color-blend($color, nth($color-divider-blend, $index), nth(map-get($colors-divider-blend-mult, $variant), $index));
+}
+
 @function set-color-divider($color, $inverted: false) {
   $inverted-index: if(to-bool($inverted), 2, 1);
   $color-divider: set-nth($color-divider, $inverted-index, $color);
 }
 
-@function set-color-divider-blend($blend, $inverted: false) {
+@function set-color-divider-blend-base($blend, $inverted: false) {
   $inverted-index: if(to-bool($inverted), 2, 1);
   $color-divider-blend: set-nth($color-divider-blend, $inverted-index, $blend);
 }
@@ -189,39 +202,20 @@ $colors-divider-blend-mult: (
 @function set-color-divider-blend-mult($variant, $blend, $inverted: false) {
   $variant: to-string($variant);
   $inverted-index: if(to-bool($inverted), 2, 1);
-  @if map-has_key($colors-divider-blend-mult, $variant) {
-    $blend: map-get($colors-divider-blend-mult, $variant);
-    $blend: set-nth($blend, $inverted-index, $blend);
-    $colors-divider-blend-mult: map-merge($colors-divider-blend-mult, ($variant: $blend));
-  } @else {
+
+  @if not(map-has_key($colors-divider-blend-mult, $variant)) {
     @error 'set-color-divider-blend-mult: invalid $variant #{$variant}';
   }
+
+  $blend: map-get($colors-divider-blend-mult, $variant);
+  $blend: set-nth($blend, $inverted-index, $blend);
+  $colors-divider-blend-mult: map-merge($colors-divider-blend-mult, ($variant: $blend));
 }
 
 @function add-color-divider-blend-mult($variant, $blend-normal, $blend-inverted) {
   $variant: to-string($variant);
   $colors-divider-blend-mult: map-merge($colors-divider-blend-mult, ($variant: ($blend-normal, $blend-inverted)));
 }
-
-@function color-divider($variant: 'default', $inverted: false, $color-base: nth($color-divider, 1)) {
-  $variant: to-string($variant);
-  $index: if(to-bool($inverted), 2, 1);
-
-  @if map-has_key($colors-divider-blend-mult, $variant) {
-    @return color-blend($color-base, nth($color-divider-blend, $index), nth(map-get($colors-divider-blend-mult, $variant), $index));
-  } @else {
-    @error 'color-divider-inverted: invalid $variant #{$variant}';
-  }
-}
-
-// Accents
-// -------------------------------
-/* Differentiating Neutrals */
-$subtle-gradient: linear-gradient(transparent, color-transparent(color-grayscale('black')));
-
-/* Differentiating Layers */
-$subtle-shadow: 0px 1px 2px 0 color-divider();
-$floating-shadow: 0px 2px 4px 0px rgba(34, 36, 38, 0.12), 0px 2px 10px 0px rgba(34, 36, 38, 0.15);
 
 // Text Colors
 // -------------------------------
@@ -239,13 +233,14 @@ $colors-text-blend-mult: (
 @function set-color-text-blend-mult($variant, $blend, $inverted: false) {
   $variant: to-string($variant);
   $inverted-index: if(to-bool($inverted), 2, 1);
-  @if map-has_key($colors-text-blend-mult, $variant) {
-    $blend: map-get($colors-text-blend-mult, $variant);
-    $blend: set-nth($blend, $inverted-index, $blend);
-    $colors-text-blend-mult: map-merge($colors-text-blend-mult, ($variant: $blend));
-  } @else {
+
+  @if not(map-has_key($colors-text-blend-mult, $variant)) {
     @error 'set-color-text-blend-mult: invalid $variant #{$variant}';
   }
+
+  $blend: map-get($colors-text-blend-mult, $variant);
+  $blend: set-nth($blend, $inverted-index, $blend);
+  $colors-text-blend-mult: map-merge($colors-text-blend-mult, ($variant: $blend));
 }
 
 @function add-color-text-blend-mult($variant, $blend-normal, $blend-inverted) {
@@ -294,6 +289,40 @@ $colors-text-blend: (
   @return _color-text-blend($color, $blend, $blend-variant, $inverted);
 }
 
+@function set-color-text($variant, $color, $inverted: false) {
+  $variant: to-string($variant);
+  $inverted-index: if(to-bool($inverted), 2, 1);
+
+  @if not(map-has_key($colors-text, $variant)) {
+    @error 'set-color-text: invalid $variant #{$variant}';
+  }
+
+  $colors: map-get($colors-text, $variant);
+  $colors: set-nth($colors, $inverted-index, $color);
+  $colors-text: map-merge($colors-text, ($variant: $colors));
+}
+
+@function add-color-text($variant, $color-normal, $color-inverted) {
+  $variant: to-string($variant);
+  $colors-text: map-merge($colors-text, ($variant: ($color-normal, $color-inverted)));
+}
+
+$colors-text-shadow: (
+        'primary': (none, none),
+        'secondary': (none, none)
+) !default;
+
+@function color-text-shadow($text-variant, $inverted: false) {
+  $text-variant: to-string($text-variant);
+  $inverted-index: if(to-bool($inverted), 2, 1);
+
+  @if not(map-has-key($colors-text-shadow, $text-variant)) {
+    @error 'color-text-shadow: invalid $variant #{$text-variant} for $colors-text-shadow';
+  }
+
+  @return nth(map-get($colors-text-shadow, $text-variant), $inverted-index);
+}
+
 $colors-text-highlight: (
         color-text('primary'),
         color-text('primary', $inverted: true)
@@ -303,6 +332,15 @@ $colors-text-highlight: (
   $index: if(to-bool($bg), 2, 1);
   @return nth($colors-text-highlight, $index);
 }
+
+// Accents
+// -------------------------------
+/* Differentiating Neutrals */
+$subtle-gradient: linear-gradient(transparent, color-transparent(color-main('dark')));
+
+/* Differentiating Layers */
+$subtle-shadow: 0 1px 2px 0 color-divider();
+$floating-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
 
 // Base
 // -------------------------------
@@ -507,3 +545,30 @@ $loader-margin: $loader-offset 0 0 $loader-offset;
 
 /* Rendered Scrollbar Width */
 $scrollbar-width: px-rem(17);
+
+/* Maximum Single Character Glyph Width, aka Capital "W" */
+$glyph-width: 1.1em;
+
+// Form Input
+// -------------------------------
+///* This adjusts the default form input across all elements */
+$input-background        : color-main('light');
+$input-vertical-padding   : px-em(11);
+$input-horizontal-padding : px-em(14);
+$input-padding           : $input-vertical-padding $input-horizontal-padding;
+
+/* Input Text Color */
+$input-color: color-text('primary');
+$input-placeholder-color: lighten($input-color, 75);
+$input-placeholder-focus-color: lighten($input-color, 45);
+
+/* Line Height Default For Inputs in Browser */
+$input-line-height: 1.2142;
+
+// Focused Input
+// -------------------------------
+/* Used on inputs, textarea etc */
+$focused-form-border-color: #85B7D9;
+
+/* Used on dropdowns, other larger blocks */
+$focused-form-muted-border-color: #96C8DA;

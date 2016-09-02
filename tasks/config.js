@@ -41,7 +41,7 @@ var modules = [{
 	names: ['globals']
 }, {
 	path: 'elements',
-	names: [/*'header', 'label', 'segment', 'rail', 'container', 'image', 'reveal'*/'divider']
+	names: ['button', 'container', 'divider', 'header', /*'icon',*/ 'image', 'input', 'label', 'list', 'loader', 'rail', 'reveal', 'segment', 'step']
 }];
 
 //User Config (set in initConfig)

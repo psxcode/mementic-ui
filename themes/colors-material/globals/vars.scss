@@ -1,3 +1,16 @@
+/*
+$color-primary: #8BC34A !default;
+$color-primary-dark: #689F38 !default;
+$color-primary-light: #DCEDC8 !default;
+$color-accent: #FF9800 !default;
+$color-icons: #212121 !default;
+*/
+//$color-text-primary
+//$color-text-secondary
+//$color-text-inverted
+//$color-divider
+//$color-divider-inverted
+
 // Google Material Color Names
 // -------------------------------
 
@@ -23,15 +36,5 @@ $colors-material: (
   $colors-material: define-color($colors-material, $name, $color);
 }
 
-/*
-$color-primary: #8BC34A !default;
-$color-primary-dark: #689F38 !default;
-$color-primary-light: #DCEDC8 !default;
-$color-accent: #FF9800 !default;
-$color-icons: #212121 !default;
-*/
-//$color-text-primary
-//$color-text-secondary
-//$color-text-inverted
-//$color-divider
-//$color-divider-inverted
+//should be overrided in button-vars.scss
+$colors-button-auto-include-main: false;

@@ -2,7 +2,7 @@
        Element
 --------------------*/
 
-$background: color-grayscale('white');
+$background: color-main('light');
 $border-width: 1px;
 $border: $border-width solid color-divider();
 
@@ -68,7 +68,7 @@ $circular-padding: 2em;
 
 /* Stacked */
 $stacked-height: 6px;
-$stacked-page-background: color-transparent(color-grayscale('black'), 'subtle');
+$stacked-page-background: color-transparent(color-main('dark'), 'subtle');
 $stacked-padding: $vertical-padding + (0.4em);
 $tall-stacked-padding: $vertical-padding + (0.8em);
 
@@ -89,7 +89,7 @@ $attached-border: $border-width solid color-divider('solid');
 $attached-bottom-box-shadow: $box-shadow, $attached-box-shadow;
 
 /* Inverted */
-$inverted-background: color-grayscale('black');
+$inverted-background: color-main('dark');
 
 /* Floated */
 $floated-distance: 1em;
@@ -104,21 +104,21 @@ $basic-border-radius: 0;
 $colored-border-size: 2px;
 
 /* Ordinality */
-$secondary-background: color-grayscale('dark');
+$secondary-background: color-main('mid');
 $secondary-color: color-text('primary', 'muted');
 
-$tertiary-background: color-grayscale('mid');
+$tertiary-background: color-main('mid');
 $tertiary-color: color-text('primary', 'muted');
 
 $secondary-inverted-lightness: 0.2;
-$secondary-inverted-background: lighten(color-grayscale('black'), ($secondary-inverted-lightness * 100)) linear-gradient(
+$secondary-inverted-background: lighten(color-main('dark'), ($secondary-inverted-lightness * 100)) linear-gradient(
                 rgba(255, 255, 255, $secondary-inverted-lightness) 0%,
                 rgba(255, 255, 255, $secondary-inverted-lightness) 100%
 );
 $secondaryInvertedColor: color-text('primary', 'muted', $inverted: true);
 
 $tertiary-inverted-lightness: 0.35;
-$tertiary-inverted-background: lighten(color-grayscale('black'), ($tertiary-inverted-lightness * 100)) linear-gradient(
+$tertiary-inverted-background: lighten(color-main('dark'), ($tertiary-inverted-lightness * 100)) linear-gradient(
                 rgba(255, 255, 255, $tertiary-inverted-lightness) 0%,
                 rgba(255, 255, 255, $tertiary-inverted-lightness) 100%
 );

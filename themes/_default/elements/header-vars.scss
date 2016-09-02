@@ -113,7 +113,7 @@ $divided-sub-header-padding:    px-em(3px);
 $divided-icon-padding:          0em;
 
 /* Block */
-$block-background: color-grayscale('dark');
+$block-background: color-main('mid');
 $block-box-shadow: none;
 $block-border-width: 1px;
 $block-border: $block-border-width solid color-divider('solid');
@@ -147,7 +147,7 @@ $huge-attached-size: size('huge', true);
 $inverted-color: color-text('primary', $inverted: true);
 $inverted-sub-header-color: color-text('primary', 'muted', true);
 $inverted-divided-border-color: color-divider($inverted: true);
-$inverted-block-background: color-light(color-grayscale('black')) $subtle-gradient;
+$inverted-block-background: color-light(color-main('dark')) $subtle-gradient;
 $inverted-attached-background: $inverted-block-background;
 
 /* Floated */

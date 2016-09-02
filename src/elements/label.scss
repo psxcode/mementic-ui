@@ -769,7 +769,6 @@ a.ui.basic.label:hover {
 --------------------*/
 
 @mixin colors($color-map) {
-
   @each $name, $color in $color-map {
 
     /* Color */
@@ -801,14 +800,14 @@ a.ui.basic.label:hover {
 
     /* Basic */
     .ui.basic.#{$name}.label {
-      background-color: color-grayscale('white') !important;
+      background-color: color-main('light') !important;
       color: $color !important;
       border-color: $color !important;
     }
 
     .ui.basic.#{$name}.labels a.label:hover,
     a.ui.basic.#{$name}.label:hover {
-      background-color: color-grayscale('white') !important;
+      background-color: color-main('light') !important;
       color: color-hover($color) !important;
       border-color: color-hover($color) !important;
     }

@@ -40,7 +40,7 @@
 
 /* Header */
 .ui.inverted.segment > .ui.header {
-  color: color-grayscale('white');
+  color: color-main('light');
 }
 
 /* Label */
@@ -115,7 +115,7 @@
 .ui.piled.segments:before,
 .ui.piled.segment:after,
 .ui.piled.segment:before {
-  background-color: color-grayscale('white');
+  background-color: color-main('light');
   visibility: visible;
   content: '';
   display: block;
@@ -202,7 +202,7 @@
 .ui.stacked.inverted.segments:after,
 .ui.stacked.inverted.segment:before,
 .ui.stacked.inverted.segment:after {
-  background-color: color-transparent(color-grayscale('black'), 'subtle');
+  background-color: color-transparent(color-main('dark'), 'subtle');
   border-top: 1px solid color-divider('selected');
 }
 
@@ -383,7 +383,7 @@
 ---------------*/
 
 .ui.disabled.segment {
-  opacity: $color-disabled-blend;
+  opacity: $color-disabled-opacity;
   color: color-text('primary', 'disabled');
 }
 
@@ -633,7 +633,7 @@
 
     .ui.#{$name}.inverted.segment {
       background-color: $color !important;
-      color: color-grayscale('white') !important;
+      color: color-main('light') !important;
     }
   }
 }

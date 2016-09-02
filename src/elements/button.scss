@@ -1,0 +1,1446 @@
+.ui.button {
+  cursor: pointer;
+  display: inline-block;
+
+  min-height: 1em;
+
+  outline: none;
+  border: none;
+  vertical-align: $vertical-align;
+  background: $background;
+  color: $text-color;
+
+  font-family: $font-family;
+
+  margin: 0 $horizontal-margin $vertical-margin 0;
+  padding: $vertical-padding $horizontal-padding ($vertical-padding + $shadow-offset);
+
+  text-transform: $text-transform;
+  text-shadow: $text-shadow;
+  font-weight: $font-weight;
+  line-height: $line-height;
+  font-style: normal;
+  text-align: center;
+  text-decoration: none;
+
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+
+  user-select: none;
+  transition: $transition;
+
+  -webkit-tap-highlight-color: $tap-color;
+}
+
+/*******************************
+            States
+*******************************/
+
+/*--------------
+      Hover
+---------------*/
+
+.ui.button:hover {
+  background-color: $hover-background-color;
+  background-image: $hover-background-image;
+  box-shadow: $hover-box-shadow;
+  color: $hover-color;
+}
+
+.ui.button:hover .icon {
+  opacity: $icon-hover-opacity;
+}
+
+/*--------------
+      Focus
+---------------*/
+
+.ui.button:focus {
+  background-color: $focus-background-color;
+  color: $focus-color;
+  background-image: $focus-background-image !important;
+  box-shadow: $focus-box-shadow !important;
+}
+
+.ui.button:focus .icon {
+  opacity: $icon-focus-opacity;
+}
+
+/*--------------
+      Down
+---------------*/
+
+.ui.button:active,
+.ui.active.button:active {
+  background-color: $down-background-color;
+  background-image: $down-background-image;
+  color: $down-color;
+  box-shadow: $down-box-shadow;
+}
+
+/*--------------
+     Active
+---------------*/
+
+.ui.active.button {
+  background-color: $active-background-color;
+  background-image: $active-background-image;
+  box-shadow: $active-box-shadow;
+  color: $active-color;
+}
+
+.ui.active.button:hover {
+  background-color: $active-hover-background-color;
+  background-image: $active-hover-background-image;
+  color: $active-hover-color;
+}
+
+.ui.active.button:active {
+  background-color: $active-background-color;
+  background-image: $active-background-image;
+}
+
+/*--------------
+    Loading
+---------------*/
+
+/* Specificity hack */
+.ui.loading.loading.loading.loading.loading.loading.button {
+  position: relative;
+  cursor: default;
+  text-shadow: none !important;
+  color: transparent !important;
+  opacity: $loading-opacity;
+  pointer-events: $loading-pointer-events;
+  transition: $loading-transition;
+}
+
+.ui.loading.button:before {
+  position: absolute;
+  content: '';
+  top: 50%;
+  left: 50%;
+
+  margin: $loader-margin;
+  width: $loader-size;
+  height: $loader-size;
+
+  border-radius: $circular-radius;
+  border: $loader-line-width solid $inverted-loader-fill-color;
+}
+
+.ui.loading.button:after {
+  position: absolute;
+  content: '';
+  top: 50%;
+  left: 50%;
+
+  margin: $loader-margin;
+  width: $loader-size;
+  height: $loader-size;
+
+  animation: button-spin $loader-speed linear;
+  animation-iteration-count: infinite;
+
+  border-radius: $circular-radius;
+
+  border-color: $inverted-loader-line-color transparent transparent;
+  border-style: solid;
+  border-width: $loader-line-width;
+
+  box-shadow: 0 0 0 1px transparent;
+}
+
+.ui.labeled.icon.loading.button .icon {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+@keyframes button-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ui.basic.loading.button:not(.inverted):before {
+  border-color: $loader-fill-color;
+}
+
+.ui.basic.loading.button:not(.inverted):after {
+  border-top-color: $loader-line-color;
+}
+
+/*-------------------
+      Disabled
+--------------------*/
+
+.ui.buttons .disabled.button,
+.ui.disabled.button,
+.ui.button:disabled,
+.ui.disabled.button:hover,
+.ui.disabled.active.button {
+  cursor: default;
+  opacity: $color-disabled-opacity !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  pointer-events: none !important;
+}
+
+/* Basic Group With Disabled */
+.ui.basic.buttons .ui.disabled.button {
+  border-color: color-divider('disabled');
+}
+
+/*******************************
+             Types
+*******************************/
+
+/*-------------------
+       Animated
+--------------------*/
+
+.ui.animated.button {
+  position: relative;
+  overflow: hidden;
+  padding-right: 0 !important;
+  vertical-align: $animated-vertical-align;
+  z-index: $animated-z-index;
+}
+
+.ui.animated.button .content {
+  will-change: transform, opacity;
+}
+
+.ui.animated.button .visible.content {
+  position: relative;
+  margin-right: $horizontal-padding;
+}
+
+.ui.animated.button .hidden.content {
+  position: absolute;
+  width: 100%;
+}
+
+/* Horizontal */
+.ui.animated.button .visible.content,
+.ui.animated.button .hidden.content {
+  transition: right $animation-duration $animation-easing 0s;
+}
+
+.ui.animated.button .visible.content {
+  left: auto;
+  right: 0;
+}
+
+.ui.animated.button .hidden.content {
+  top: 50%;
+  left: auto;
+  right: -100%;
+  margin-top: -(unit-rem($line-height / 2));
+}
+
+.ui.animated.button:focus .visible.content,
+.ui.animated.button:hover .visible.content {
+  left: auto;
+  right: 200%;
+}
+
+.ui.animated.button:focus .hidden.content,
+.ui.animated.button:hover .hidden.content {
+  left: auto;
+  right: 0;
+}
+
+/* Vertical */
+.ui.vertical.animated.button .visible.content,
+.ui.vertical.animated.button .hidden.content {
+  transition: top $animation-duration $animation-easing, transform $animation-duration $animation-easing;
+}
+
+.ui.vertical.animated.button .visible.content {
+  transform: translateY(0%);
+  right: auto;
+}
+
+.ui.vertical.animated.button .hidden.content {
+  top: -50%;
+  left: 0;
+  right: auto;
+}
+
+.ui.vertical.animated.button:focus .visible.content,
+.ui.vertical.animated.button:hover .visible.content {
+  transform: translateY(200%);
+  right: auto;
+}
+
+.ui.vertical.animated.button:focus .hidden.content,
+.ui.vertical.animated.button:hover .hidden.content {
+  top: 50%;
+  right: auto;
+}
+
+/* Fade */
+.ui.fade.animated.button .visible.content,
+.ui.fade.animated.button .hidden.content {
+  transition: opacity $animation-duration $animation-easing, transform $animation-duration $animation-easing;
+}
+
+.ui.fade.animated.button .visible.content {
+  left: auto;
+  right: auto;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.ui.fade.animated.button .hidden.content {
+  opacity: 0;
+  left: 0;
+  right: auto;
+  transform: scale($fade-scale-high);
+}
+
+.ui.fade.animated.button:focus .visible.content,
+.ui.fade.animated.button:hover .visible.content {
+  left: auto;
+  right: auto;
+  opacity: 0;
+  transform: scale($fade-scale-low);
+}
+
+.ui.fade.animated.button:focus .hidden.content,
+.ui.fade.animated.button:hover .hidden.content {
+  left: 0;
+  right: auto;
+  opacity: 1;
+  transform: scale(1);
+}
+
+/*-------------------
+       Inverted
+--------------------*/
+
+.ui.inverted.button {
+  box-shadow: 0 0 0 $inverted-border-size color-main('light') inset !important;
+  background: transparent none;
+  color: color-main('light');
+  text-shadow: none !important;
+}
+
+/* Group */
+.ui.inverted.buttons .button {
+  margin: $inverted-group-button-offset;
+}
+
+.ui.inverted.buttons .button:first-child {
+  margin-left: 0;
+}
+
+.ui.inverted.vertical.buttons .button {
+  margin: $inverted-vertical-group-button-offset;
+}
+
+.ui.inverted.vertical.buttons .button:first-child {
+  margin-top: 0;
+}
+
+/* States */
+
+/* Hover */
+.ui.inverted.button:hover {
+  background: color-main('light');
+  box-shadow: 0 0 0 $inverted-border-size color-main('light') inset !important;
+  color: $hover-color;
+}
+
+/* Active / Focus */
+.ui.inverted.button:focus,
+.ui.inverted.button.active {
+  background: color-main('light');
+  box-shadow: 0 0 0 $inverted-border-size color-main('light') inset !important;
+  color: $focus-color;
+}
+
+/* Active Focus */
+.ui.inverted.button.active:focus {
+  background: color-main('mid');
+  box-shadow: 0 0 0 $inverted-border-size color-main('mid') inset !important;
+  color: $focus-color;
+}
+
+/*-------------------
+    Labeled Button
+--------------------*/
+
+.ui.labeled.button:not(.icon) {
+  display: inline-flex;
+  flex-direction: row;
+  background: none !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.ui.labeled.button > .button {
+  margin: 0;
+}
+
+.ui.labeled.button > .label {
+  display: flex;
+  align-items: $labeled-label-align;
+  margin: 0 0 0 $labeled-label-border-offset !important;
+  font-size: $labeled-label-font-size;
+  padding: $labeled-label-padding;
+  border-color: $labeled-label-border-color;
+}
+
+/* Tag */
+.ui.labeled.button > .tag.label:before {
+  width: $labeled-tag-label-size;
+  height: $labeled-tag-label-size;
+}
+
+/* Right */
+.ui.labeled.button:not([class*="left labeled"]) > .button {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.ui.labeled.button:not([class*="left labeled"]) > .label {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* Left Side */
+.ui[class*="left labeled"].button > .button {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.ui[class*="left labeled"].button > .label {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/*--------------
+     Icon
+---------------*/
+
+.ui.button > .icon:not(.button) {
+  height: $icon-height;
+  opacity: $icon-opacity;
+  margin: $icon-margin;
+  transition: $icon-transition;
+  vertical-align: $icon-vertical-align;
+  color: $icon-color;
+}
+
+.ui.button:not(.icon) > .icon:not(.button):not(.dropdown) {
+  margin: $icon-margin;
+}
+
+.ui.button:not(.icon) > .right.icon:not(.button):not(.dropdown) {
+  margin: $right-icon-margin;
+}
+
+/*******************************
+           Variations
+*******************************/
+
+/*-------------------
+       Floated
+--------------------*/
+
+.ui[class*="left floated"].buttons,
+.ui[class*="left floated"].button {
+  float: left;
+  margin-left: 0;
+  margin-right: $floated-margin;
+}
+
+.ui[class*="right floated"].buttons,
+.ui[class*="right floated"].button {
+  float: right;
+  margin-right: 0;
+  margin-left: $floated-margin;
+}
+
+/*-------------------
+       Compact
+--------------------*/
+
+.ui.compact.buttons .button,
+.ui.compact.button {
+  padding: $compact-vertical-padding $compact-horizontal-padding ($compact-vertical-padding + $shadow-offset);
+}
+
+.ui.compact.icon.buttons .button,
+.ui.compact.icon.button {
+  padding: $compact-vertical-padding $compact-vertical-padding ($compact-vertical-padding + $shadow-offset);
+}
+
+.ui.compact.labeled.icon.buttons .button,
+.ui.compact.labeled.icon.button {
+  padding: $compact-vertical-padding ($compact-horizontal-padding + $labeled-icon-width) ($compact-vertical-padding + $shadow-offset);
+}
+
+/*-------------------
+        Sizes
+--------------------*/
+
+@each $name, $size in $sizes {
+
+  .ui.#{$name}.buttons .button,
+  .ui.#{$name}.buttons .or,
+  .ui.#{$name}.button {
+    font-size: unit-em($size);
+  }
+
+}
+
+/*--------------
+    Icon Only
+---------------*/
+
+.ui.icon.buttons .button,
+.ui.icon.button {
+  padding: $vertical-padding $vertical-padding ($vertical-padding + $shadow-offset);
+}
+
+.ui.icon.buttons .button > .icon,
+.ui.icon.button > .icon {
+  opacity: $icon-button-opacity;
+  margin: 0;
+  vertical-align: top;
+}
+
+/*-------------------
+        Basic
+--------------------*/
+
+.ui.basic.buttons .button,
+.ui.basic.button {
+  background: $basic-background !important;
+  color: $basic-text-color !important;
+  font-weight: $basic-font-weight;
+  border-radius: $basic-border-radius;
+  text-transform: $basic-text-transform;
+  text-shadow: none !important;
+  box-shadow: $basic-box-shadow;
+}
+
+.ui.basic.buttons {
+  box-shadow: $basic-group-box-shadow;
+  border: $basic-group-border;
+  border-radius: $border-radius;
+}
+
+.ui.basic.buttons .button {
+  border-radius: 0;
+}
+
+.ui.basic.buttons .button:hover,
+.ui.basic.button:hover {
+  background: $basic-hover-background !important;
+  color: $basic-hover-text-color !important;
+  box-shadow: $basic-hover-box-shadow;
+}
+
+.ui.basic.buttons .button:focus,
+.ui.basic.button:focus {
+  background: $basic-focus-background !important;
+  color: $basic-focus-text-color !important;
+  box-shadow: $basic-focus-box-shadow;
+}
+
+.ui.basic.buttons .button:active,
+.ui.basic.button:active {
+  background: $basic-down-background !important;
+  color: $basic-down-text-color !important;
+  box-shadow: $basic-down-box-shadow;
+}
+
+.ui.basic.buttons .active.button,
+.ui.basic.active.button {
+  background: $basic-active-background !important;
+  box-shadow: $basic-active-box-shadow !important;
+  color: $basic-active-text-color;
+}
+
+.ui.basic.buttons .active.button:hover,
+.ui.basic.active.button:hover {
+  background-color: color-transparent(color-main('dark'));
+}
+
+/* Vertical */
+.ui.basic.buttons .button:hover {
+  box-shadow: $basic-hover-box-shadow;
+}
+
+.ui.basic.buttons .button:active {
+  box-shadow: $basic-down-box-shadow;
+}
+
+.ui.basic.buttons .active.button {
+  box-shadow: $basic-active-box-shadow;
+}
+
+/* Standard Basic Inverted */
+.ui.basic.inverted.buttons .button,
+.ui.basic.inverted.button {
+  background-color: transparent !important;
+  color: color-main('mid') !important;
+  box-shadow: $basic-inverted-box-shadow !important;
+}
+
+.ui.basic.inverted.buttons .button:hover,
+.ui.basic.inverted.button:hover {
+  color: color-main('light') !important;
+  box-shadow: $basic-inverted-hover-box-shadow !important;
+}
+
+.ui.basic.inverted.buttons .button:focus,
+.ui.basic.inverted.button:focus {
+  color: color-main('light') !important;
+  box-shadow: $basic-inverted-focus-box-shadow !important;
+}
+
+.ui.basic.inverted.buttons .button:active,
+.ui.basic.inverted.button:active {
+  background-color: color-transparent(color-main('light')) !important;
+  color: color-main('light') !important;
+  box-shadow: $basic-inverted-down-box-shadow !important;
+}
+
+.ui.basic.inverted.buttons .active.button,
+.ui.basic.inverted.active.button {
+  background-color: color-transparent(color-main('light'));
+  color: color-text('primary', $inverted: true);
+  text-shadow: color-text-shadow('primary', $inverted: true);
+  box-shadow: $basic-inverted-active-box-shadow;
+}
+
+.ui.basic.inverted.buttons .active.button:hover,
+.ui.basic.inverted.active.button:hover {
+  background-color: color-transparent(color-main('light'), 'strong');
+  box-shadow: $basic-inverted-hover-box-shadow !important;
+}
+
+/* Basic Group */
+.ui.basic.buttons .button {
+  border-left: $basic-group-border;
+  box-shadow: none;
+}
+
+.ui.basic.vertical.buttons .button {
+  border-left: none;
+}
+
+.ui.basic.vertical.buttons .button {
+  border-left-width: 0;
+  border-top: $basic-group-border;
+}
+
+.ui.basic.vertical.buttons .button:first-child {
+  border-top-width: 0;
+}
+
+/*--------------
+  Labeled Icon
+---------------*/
+
+.ui.labeled.icon.buttons .button,
+.ui.labeled.icon.button {
+  position: relative;
+  padding-left: $labeled-icon-padding !important;
+  padding-right: $horizontal-padding !important;
+}
+
+/* Left Labeled */
+.ui.labeled.icon.buttons > .button > .icon,
+.ui.labeled.icon.button > .icon {
+  position: absolute;
+  height: 100%;
+  line-height: 1;
+  border-radius: 0;
+  border-top-left-radius: inherit;
+  border-bottom-left-radius: inherit;
+  text-align: center;
+
+  margin: $labeled-icon-margin;
+  width: $labeled-icon-width;
+  background-color: $labeled-icon-background-color;
+  color: $labeled-icon-color;
+  box-shadow: $labeled-icon-left-shadow;
+}
+
+/* Left Labeled */
+.ui.labeled.icon.buttons > .button > .icon,
+.ui.labeled.icon.button > .icon {
+  top: 0;
+  left: 0;
+}
+
+/* Right Labeled */
+.ui[class*="right labeled"].icon.button {
+  padding-right: $labeled-icon-padding !important;
+  padding-left: $horizontal-padding !important;
+}
+
+.ui[class*="right labeled"].icon.button > .icon {
+  left: auto;
+  right: 0;
+  border-radius: 0;
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: inherit;
+  box-shadow: $labeled-icon-right-shadow;
+}
+
+.ui.labeled.icon.buttons > .button > .icon:before,
+.ui.labeled.icon.button > .icon:before,
+.ui.labeled.icon.buttons > .button > .icon:after,
+.ui.labeled.icon.button > .icon:after {
+  display: block;
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  text-align: center;
+  transform: translateY(-50%);
+}
+
+.ui.labeled.icon.buttons .button > .icon {
+  border-radius: 0;
+}
+
+.ui.labeled.icon.buttons .button:first-child > .icon {
+  border-top-left-radius: $border-radius;
+  border-bottom-left-radius: $border-radius;
+}
+
+.ui.labeled.icon.buttons .button:last-child > .icon {
+  border-top-right-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+}
+
+.ui.vertical.labeled.icon.buttons .button:first-child > .icon {
+  border-radius: 0;
+  border-top-left-radius: $border-radius;
+}
+
+.ui.vertical.labeled.icon.buttons .button:last-child > .icon {
+  border-radius: 0;
+  border-bottom-left-radius: $border-radius;
+}
+
+/* Fluid Labeled */
+.ui.fluid[class*="left labeled"].icon.button,
+.ui.fluid[class*="right labeled"].icon.button {
+  padding-left: $horizontal-padding !important;
+  padding-right: $horizontal-padding !important;
+}
+
+/*--------------
+     Toggle
+---------------*/
+
+/* Toggle (Modifies active state to give affordances) */
+.ui.toggle.buttons .active.button,
+.ui.buttons .button.toggle.active,
+.ui.button.toggle.active {
+  background-color: color-main('positive') !important;
+  box-shadow: none !important;
+  text-shadow: color-text-shadow('primary', $inverted: true);
+  color: color-text('primary', $inverted: true) !important;
+}
+
+.ui.button.toggle.active:hover {
+  background-color: color-hover(color-main('positive')) !important;
+  text-shadow: color-text-shadow('primary', $inverted: true);
+  color: color-text('primary', $inverted: true) !important;
+}
+
+/*--------------
+    Circular
+---------------*/
+
+.ui.circular.button {
+  border-radius: 10em;
+}
+
+.ui.circular.button > .icon {
+  width: 1em;
+  vertical-align: baseline;
+}
+
+/*-------------------
+      Or Buttons
+--------------------*/
+
+.ui.buttons .or {
+  position: relative;
+  width: $or-gap;
+  height: $or-height;
+  z-index: $or-z-index;
+}
+
+.ui.buttons .or:before {
+  position: absolute;
+  text-align: center;
+  border-radius: $circular-radius;
+
+  content: $or-text;
+  top: 50%;
+  left: 50%;
+  background-color: $or-background-color;
+  text-shadow: $or-text-shadow;
+
+  margin-top: $or-vertical-offset;
+  margin-left: $or-horizontal-offset;
+
+  width: $or-circle-size;
+  height: $or-circle-size;
+
+  line-height: $or-line-height;
+  color: $or-text-color;
+
+  font-style: $or-text-style;
+  font-weight: $or-text-weight;
+
+  box-shadow: $or-box-shadow;
+}
+
+.ui.buttons .or[data-text]:before {
+  content: attr(data-text);
+}
+
+/* Fluid Or */
+.ui.fluid.buttons .or {
+  width: 0 !important;
+}
+
+.ui.fluid.buttons .or:after {
+  display: none;
+}
+
+/*-------------------
+       Attached
+--------------------*/
+
+/* Singular */
+.ui.attached.button {
+  position: relative;
+  display: block;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: $attached-box-shadow !important;
+}
+
+/* Top / Bottom */
+.ui.attached.top.button {
+  border-radius: $border-radius $border-radius 0 0;
+}
+
+.ui.attached.bottom.button {
+  border-radius: 0 0 $border-radius $border-radius;
+}
+
+/* Left / Right */
+.ui.left.attached.button {
+  display: inline-block;
+  border-left: none;
+  text-align: right;
+
+  padding-right: $attached-horizontal-padding;
+  border-radius: $border-radius 0 0 $border-radius;
+}
+
+.ui.right.attached.button {
+  display: inline-block;
+  text-align: left;
+  padding-left: $attached-horizontal-padding;
+  border-radius: 0 $border-radius $border-radius 0;
+}
+
+/* Plural */
+.ui.attached.buttons {
+  position: relative;
+  display: flex;
+  border-radius: 0;
+  width: auto !important;
+  z-index: $attached-z-index;
+  margin-left: $attached-offset;
+  margin-right: $attached-offset;
+}
+
+.ui.attached.buttons .button {
+  margin: 0;
+}
+
+.ui.attached.buttons .button:first-child {
+  border-radius: 0;
+}
+
+.ui.attached.buttons .button:last-child {
+  border-radius: 0;
+}
+
+/* Top / Bottom */
+.ui[class*="top attached"].buttons {
+  margin-bottom: $attached-offset;
+  border-radius: $border-radius $border-radius 0 0;
+}
+
+.ui[class*="top attached"].buttons .button:first-child {
+  border-radius: $border-radius 0 0 0;
+}
+
+.ui[class*="top attached"].buttons .button:last-child {
+  border-radius: 0 $border-radius 0 0;
+}
+
+.ui[class*="bottom attached"].buttons {
+  margin-top: $attached-offset;
+  border-radius: 0 0 $border-radius $border-radius;
+}
+
+.ui[class*="bottom attached"].buttons .button:first-child {
+  border-radius: 0 0 0 $border-radius;
+}
+
+.ui[class*="bottom attached"].buttons .button:last-child {
+  border-radius: 0 0 $border-radius 0;
+}
+
+/* Left / Right */
+.ui[class*="left attached"].buttons {
+  display: inline-flex;
+  margin-right: 0;
+  margin-left: $attached-offset;
+  border-radius: 0 $border-radius $border-radius 0;
+}
+
+.ui[class*="left attached"].buttons .button:first-child {
+  margin-left: $attached-offset;
+  border-radius: 0 $border-radius 0 0;
+}
+
+.ui[class*="left attached"].buttons .button:last-child {
+  margin-left: $attached-offset;
+  border-radius: 0 0 $border-radius 0;
+}
+
+.ui[class*="right attached"].buttons {
+  display: inline-flex;
+  margin-left: 0;
+  margin-right: $attached-offset;
+  border-radius: $border-radius 0 0 $border-radius;
+}
+
+.ui[class*="right attached"].buttons .button:first-child {
+  margin-left: $attached-offset;
+  border-radius: $border-radius 0 0 0;
+}
+
+.ui[class*="right attached"].buttons .button:last-child {
+  margin-left: $attached-offset;
+  border-radius: 0 0 0 $border-radius;
+}
+
+/*-------------------
+        Fluid
+--------------------*/
+
+.ui.fluid.buttons,
+.ui.fluid.button {
+  width: 100%;
+}
+
+.ui.fluid.button {
+  display: block;
+}
+
+.ui.two.buttons {
+  width: 100%;
+}
+
+.ui.two.buttons > .button {
+  width: 50%;
+}
+
+.ui.three.buttons {
+  width: 100%;
+}
+
+.ui.three.buttons > .button {
+  width: 33.333%;
+}
+
+.ui.four.buttons {
+  width: 100%;
+}
+
+.ui.four.buttons > .button {
+  width: 25%;
+}
+
+.ui.five.buttons {
+  width: 100%;
+}
+
+.ui.five.buttons > .button {
+  width: 20%;
+}
+
+.ui.six.buttons {
+  width: 100%;
+}
+
+.ui.six.buttons > .button {
+  width: 16.666%;
+}
+
+.ui.seven.buttons {
+  width: 100%;
+}
+
+.ui.seven.buttons > .button {
+  width: 14.285%;
+}
+
+.ui.eight.buttons {
+  width: 100%;
+}
+
+.ui.eight.buttons > .button {
+  width: 12.500%;
+}
+
+.ui.nine.buttons {
+  width: 100%;
+}
+
+.ui.nine.buttons > .button {
+  width: 11.11%;
+}
+
+.ui.ten.buttons {
+  width: 100%;
+}
+
+.ui.ten.buttons > .button {
+  width: 10%;
+}
+
+.ui.eleven.buttons {
+  width: 100%;
+}
+
+.ui.eleven.buttons > .button {
+  width: 9.09%;
+}
+
+.ui.twelve.buttons {
+  width: 100%;
+}
+
+.ui.twelve.buttons > .button {
+  width: 8.3333%;
+}
+
+/* Fluid Vertical Buttons */
+.ui.fluid.vertical.buttons,
+.ui.fluid.vertical.buttons > .button {
+  display: flex;
+  width: auto;
+}
+
+.ui.two.vertical.buttons > .button {
+  height: 50%;
+}
+
+.ui.three.vertical.buttons > .button {
+  height: 33.333%;
+}
+
+.ui.four.vertical.buttons > .button {
+  height: 25%;
+}
+
+.ui.five.vertical.buttons > .button {
+  height: 20%;
+}
+
+.ui.six.vertical.buttons > .button {
+  height: 16.666%;
+}
+
+.ui.seven.vertical.buttons > .button {
+  height: 14.285%;
+}
+
+.ui.eight.vertical.buttons > .button {
+  height: 12.500%;
+}
+
+.ui.nine.vertical.buttons > .button {
+  height: 11.11%;
+}
+
+.ui.ten.vertical.buttons > .button {
+  height: 10%;
+}
+
+.ui.eleven.vertical.buttons > .button {
+  height: 9.09%;
+}
+
+.ui.twelve.vertical.buttons > .button {
+  height: 8.3333%;
+}
+
+/*-------------------
+       Vendor
+--------------------*/
+
+@mixin colors-vendor($color-map) {
+  @each $name, $color in $color-map {
+
+    .ui.#{$name}.button {
+      background-color: $color;
+      color: color-text('primary', $inverted: true);
+      text-shadow: color-text-shadow('primary', $inverted: true);
+      background-image: $colored-background-image;
+      box-shadow: $colored-box-shadow;
+    }
+
+    .ui.#{$name}.button:hover {
+      background-color: color-hover($color);
+      color: color-text('primary', $inverted: true);
+      text-shadow: color-text-shadow('primary', $inverted: true);
+    }
+
+    .ui.#{$name}.button:active {
+      background-color: color-down($color);
+      color: color-text('primary', $inverted: true);
+      text-shadow: color-text-shadow('primary', $inverted: true);
+    }
+  }
+}
+
+/*-------------------
+       Colors
+--------------------*/
+
+@mixin colors($color-map) {
+  @each $name, $color in $color-map {
+
+    /*--- Standard ---*/
+    .ui.#{$name}.buttons .button,
+    .ui.#{$name}.button {
+      background-color: $color;
+      color: color-text('primary', $inverted: true);
+      text-shadow: color-text-shadow('primary', $inverted: true);
+      background-image: $colored-background-image;
+    }
+    .ui.#{$name}.button {
+      box-shadow: $colored-box-shadow;
+    }
+    .ui.#{$name}.buttons .button:hover,
+    .ui.#{$name}.button:hover {
+      background-color: color-hover($color);
+      color: color-text('primary', $inverted: true);
+      text-shadow: color-text-shadow('primary', $inverted: true);
+    }
+    .ui.#{$name}.buttons .button:focus,
+    .ui.#{$name}.button:focus {
+      background-color: color-focus($color);
+      color: color-text('primary', $inverted: true);
+      text-shadow: color-text-shadow('primary', $inverted: true);
+    }
+    .ui.#{$name}.buttons .button:active,
+    .ui.#{$name}.button:active {
+      background-color: color-down($color);
+      color: color-text('primary', $inverted: true);
+      text-shadow: color-text-shadow('primary', $inverted: true);
+    }
+    .ui.#{$name}.buttons .active.button,
+    .ui.#{$name}.buttons .active.button:active,
+    .ui.#{$name}.active.button,
+    .ui.#{$name}.button .active.button:active {
+      background-color: color-active($color);
+      color: color-text('primary', $inverted: true);
+      text-shadow: color-text-shadow('primary', $inverted: true);
+    }
+
+    /* Basic */
+    .ui.basic.#{$name}.buttons .button,
+    .ui.basic.#{$name}.button {
+      box-shadow: 0 0 0 $basic-border-size $color inset !important;
+      color: $color !important;
+    }
+    .ui.basic.#{$name}.buttons .button:hover,
+    .ui.basic.#{$name}.button:hover {
+      background: transparent !important;
+      box-shadow: 0 0 0 $basic-colored-border-size color-hover($color) inset !important;
+      color: color-hover($color) !important;
+    }
+    .ui.basic.#{$name}.buttons .button:focus,
+    .ui.basic.#{$name}.button:focus {
+      background: transparent !important;
+      box-shadow: 0 0 0 $basic-colored-border-size color-focus($color) inset !important;
+      color: color-hover($color) !important;
+    }
+    .ui.basic.#{$name}.buttons .active.button,
+    .ui.basic.#{$name}.active.button {
+      background: transparent !important;
+      box-shadow: 0 0 0 $basic-colored-border-size color-active($color) inset !important;
+      color: color-down($color) !important;
+    }
+    .ui.basic.#{$name}.buttons .button:active,
+    .ui.basic.#{$name}.button:active {
+      box-shadow: 0 0 0 $basic-colored-border-size color-down($color) inset !important;
+      color: color-down($color) !important;
+    }
+    .ui.buttons:not(.vertical) > .basic.#{$name}.button:not(:first-child) {
+      margin-left: -$basic-colored-border-size;
+    }
+
+    /* Inverted */
+    .ui.inverted.#{$name}.buttons .button,
+    .ui.inverted.#{$name}.button {
+      background-color: transparent;
+      box-shadow: 0 0 0 $inverted-border-size color-light($color) inset !important;
+      color: color-light($color);
+    }
+    .ui.inverted.#{$name}.buttons .button:hover,
+    .ui.inverted.#{$name}.button:hover,
+    .ui.inverted.#{$name}.buttons .button:focus,
+    .ui.inverted.#{$name}.button:focus,
+    .ui.inverted.#{$name}.buttons .button.active,
+    .ui.inverted.#{$name}.button.active,
+    .ui.inverted.#{$name}.buttons .button:active,
+    .ui.inverted.#{$name}.button:active {
+      box-shadow: none !important;
+      color: color-text('primary', $inverted: true);;
+    }
+    .ui.inverted.#{$name}.buttons .button:hover,
+    .ui.inverted.#{$name}.button:hover {
+      background-color: color-hover(color-light($color));
+    }
+    .ui.inverted.#{$name}.buttons .button:focus,
+    .ui.inverted.#{$name}.button:focus {
+      background-color: color-focus(color-light($color));
+    }
+    .ui.inverted.#{$name}.buttons .active.button,
+    .ui.inverted.#{$name}.active.button {
+      background-color: color-active(color-light($color));
+    }
+    .ui.inverted.#{$name}.buttons .button:active,
+    .ui.inverted.#{$name}.button:active {
+      background-color: color-down(color-light($color));
+    }
+
+    /* Inverted Basic */
+    .ui.inverted.#{$name}.basic.buttons .button,
+    .ui.inverted.#{$name}.buttons .basic.button,
+    .ui.inverted.#{$name}.basic.button {
+      background-color: transparent;
+      box-shadow: $basic-inverted-box-shadow !important;
+      color: color-main('light') !important;
+    }
+    .ui.inverted.#{$name}.basic.buttons .button:hover,
+    .ui.inverted.#{$name}.buttons .basic.button:hover,
+    .ui.inverted.#{$name}.basic.button:hover {
+      box-shadow: 0 0 0 $inverted-border-size color-hover(color-light($color)) inset !important;
+      color: color-light($color) !important;
+    }
+    .ui.inverted.#{$name}.basic.buttons .button:focus,
+    .ui.inverted.#{$name}.basic.buttons .button:focus,
+    .ui.inverted.#{$name}.basic.button:focus {
+      box-shadow: 0 0 0 $inverted-border-size color-focus(color-light($color)) inset !important;
+      color: color-light($color) !important;
+    }
+    .ui.inverted.#{$name}.basic.buttons .active.button,
+    .ui.inverted.#{$name}.buttons .basic.active.button,
+    .ui.inverted.#{$name}.basic.active.button {
+      box-shadow: 0 0 0 $inverted-border-size color-active(color-light($color)) inset !important;
+      color: color-light($color) !important;
+    }
+    .ui.inverted.#{$name}.basic.buttons .button:active,
+    .ui.inverted.#{$name}.buttons .basic.button:active,
+    .ui.inverted.#{$name}.basic.button:active {
+      box-shadow: 0 0 0 $inverted-border-size color-down(color-light($color)) inset !important;
+      color: color-light($color) !important;
+    }
+  }
+}
+
+@if type-of($colors-default) == 'map' and $colors-auto-include-default == true {
+  @include colors($colors-default);
+}
+
+/*-------------------
+       Main colors
+--------------------*/
+
+@mixin colors-main {
+  @each $name, $color in $colors-button-main {
+
+    /*--- Standard ---*/
+    .ui.#{$name}.buttons .button,
+    .ui.#{$name}.button {
+      background-color: $color;
+      color: color-text('primary');
+      text-shadow: color-text-shadow('primary');
+      background-image: $colored-background-image;
+    }
+    .ui.#{$name}.button {
+      box-shadow: $colored-box-shadow;
+    }
+    .ui.#{$name}.buttons .button:hover,
+    .ui.#{$name}.button:hover {
+      background-color: color-hover($color);
+      color: color-text('primary');
+      text-shadow: color-text-shadow('primary');
+    }
+    .ui.#{$name}.buttons .button:focus,
+    .ui.#{$name}.button:focus {
+      background-color: color-focus($color);
+      color: color-text('primary');
+      text-shadow: color-text-shadow('primary');
+    }
+    .ui.#{$name}.buttons .button:active,
+    .ui.#{$name}.button:active {
+      background-color: color-down($color);
+      color: color-text('primary');
+      text-shadow: color-text-shadow('primary');
+    }
+    .ui.#{$name}.buttons .active.button,
+    .ui.#{$name}.buttons .active.button:active,
+    .ui.#{$name}.active.button,
+    .ui.#{$name}.button .active.button:active {
+      background-color: color-active($color);
+      color: color-text('primary');
+      text-shadow: color-text-shadow('primary');
+    }
+
+    /* Basic */
+    .ui.basic.#{$name}.buttons .button,
+    .ui.basic.#{$name}.button {
+      box-shadow: 0 0 0 $basic-border-size $color inset !important;
+      color: $color !important;
+    }
+    .ui.basic.#{$name}.buttons .button:hover,
+    .ui.basic.#{$name}.button:hover {
+      background: transparent !important;
+      box-shadow: 0 0 0 $basic-colored-border-size color-hover($color) inset !important;
+      color: color-hover($color) !important;
+    }
+    .ui.basic.#{$name}.buttons .button:focus,
+    .ui.basic.#{$name}.button:focus {
+      background: transparent !important;
+      box-shadow: 0 0 0 $basic-colored-border-size color-focus($color) inset !important;
+      color: color-hover($color) !important;
+    }
+    .ui.basic.#{$name}.buttons .active.button,
+    .ui.basic.#{$name}.active.button {
+      background: transparent !important;
+      box-shadow: 0 0 0 $basic-colored-border-size color-active($color) inset !important;
+      color: color-down($color) !important;
+    }
+    .ui.basic.#{$name}.buttons .button:active,
+    .ui.basic.#{$name}.button:active {
+      box-shadow: 0 0 0 $basic-colored-border-size color-down($color) inset !important;
+      color: color-down($color) !important;
+    }
+    .ui.buttons:not(.vertical) > .basic.#{$name}.button:not(:first-child) {
+      margin-left: -$basic-colored-border-size;
+    }
+  }
+}
+
+@if $colors-button-auto-include-main == true {
+  @include colors-main;
+}
+
+/*******************************
+            Groups
+*******************************/
+
+.ui.buttons {
+  display: inline-flex;
+  flex-direction: row;
+  font-size: 0;
+  vertical-align: baseline;
+  margin: $vertical-margin $horizontal-margin 0 0;
+}
+
+.ui.buttons:not(.basic):not(.inverted) {
+  box-shadow: $group-box-shadow;
+}
+
+/* Clearfix */
+.ui.buttons:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* Standard Group */
+.ui.buttons .button {
+  flex: 1 0 auto;
+  border-radius: 0;
+  margin: $group-button-offset;
+}
+
+.ui.buttons > .ui.button:not(.basic):not(.inverted),
+.ui.buttons:not(.basic):not(.inverted) > .button {
+  box-shadow: $group-button-box-shadow;
+}
+
+.ui.buttons .button:first-child {
+  border-left: none;
+  margin-left: 0;
+  border-top-left-radius: $border-radius;
+  border-bottom-left-radius: $border-radius;
+}
+
+.ui.buttons .button:last-child {
+  border-top-right-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+}
+
+/* Vertical  Style */
+.ui.vertical.buttons {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.ui.vertical.buttons .button {
+  display: block;
+  float: none;
+  width: 100%;
+  margin: $vertical-group-offset;
+  box-shadow: $vertical-box-shadow;
+  border-radius: 0;
+}
+
+.ui.vertical.buttons .button:first-child {
+  border-top-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
+}
+
+.ui.vertical.buttons .button:last-child {
+  margin-bottom: 0;
+  border-bottom-left-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+}
+
+.ui.vertical.buttons .button:only-child {
+  border-radius: $border-radius;
+}

@@ -43,7 +43,7 @@ $image-align: top;
 /* Content */
 $content-distance: 0.5em;
 $content-line-height: $item-line-height;
-$content-line-height-offset: ($content-line-height - 1em) / 2;
+$content-line-height-offset: ($content-line-height - 1rem) / 2;
 $content-vertical-align: top;
 
 /* Header */
@@ -122,30 +122,30 @@ $default-duration background-color $default-easing;
 /* Selection List States */
 $selection-list-background: transparent;
 $selection-list-color: color-text('primary', 'unselected');
-$selection-list-hover-background: color-transparent(color-grayscale('black'), 'subtle');
+$selection-list-hover-background: color-transparent(color-main('dark'), 'subtle');
 $selection-list-hover-color: color-text('primary', 'hovered');
-$selection-list-down-background: color-transparent(color-grayscale('black'));
+$selection-list-down-background: color-transparent(color-main('dark'));
 $selection-list-down-color: color-text('primary', 'pressed');
-$selection-list-active-background: color-transparent(color-grayscale('black'));
+$selection-list-active-background: color-transparent(color-main('dark'));
 $selection-list-active-color: color-text('primary', 'selected');
 
 /* Inverted Selection List */
 $inverted-selection-list-background: transparent;
 $inverted-selection-list-color: color-text('primary', 'unselected', true);
-$inverted-selection-list-hover-background: color-transparent(color-grayscale('white'), 'subtle');
+$inverted-selection-list-hover-background: color-transparent(color-main('light'), 'subtle');
 $inverted-selection-list-hover-color: color-text('primary', 'hovered', true);
-$inverted-selection-list-down-background: color-transparent(color-grayscale('white'));
+$inverted-selection-list-down-background: color-transparent(color-main('light'));
 $inverted-selection-list-down-color: color-text('primary', 'pressed', true);
-$inverted-selection-list-active-background: color-transparent(color-grayscale('white'));
+$inverted-selection-list-active-background: color-transparent(color-main('light'));
 $inverted-selection-list-active-color: color-text('primary', 'selected', true);
 
 /* Animated List */
 $animated-duration: 0.25s;
 $animated-delay: 0.1s;
 $animated-list-transition:
-$animated-duration color $default-easing $animated-delay,
-$animated-duration padding-left $default-easing $animated-delay,
-$animated-duration background-color $default-easing $animated-delay;
+color $animated-duration $default-easing $animated-delay,
+padding-left $animated-duration $default-easing $animated-delay,
+background-color $animated-duration $default-easing $animated-delay;
 $animated-list-indent: 1em;
 
 /* Bulleted */
@@ -161,7 +161,7 @@ $bullet-child-distance: $bullet-distance;
 
 /* Horizontal Bullets */
 $horizontal-bullet-color: color-text('primary');
-$horizontal-bullet-spacing: $bullet-distance + 0.5em;
+$horizontal-bullet-spacing: $bullet-distance + 0.5rem;
 
 /* Ordered List */
 $ordered-count-name: ordered;

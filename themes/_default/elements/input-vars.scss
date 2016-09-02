@@ -1,0 +1,97 @@
+/*-------------------
+      Element
+--------------------*/
+
+$input-font: $font-family;
+$vertical-padding: $input-vertical-padding;
+$horizontal-padding: $input-horizontal-padding;
+
+$line-height: $input-line-height;
+$line-height-offset: (($line-height - 1em) / 2);
+
+$padding: ($vertical-padding - $line-height-offset) $horizontal-padding;
+
+$text-align: left;
+$background: $input-background;
+$border-width: 1px;
+$border: $border-width solid color-divider();
+$box-shadow: none;
+
+$border-radius: unit-rem($default-border-radius);
+$transition:
+box-shadow $default-duration $default-easing,
+border-color $default-duration $default-easing
+;
+
+/*-------------------
+        Types
+--------------------*/
+
+/* Icon Input */
+$icon-width: ($vertical-padding * 2) + $glyph-width;
+$icon-opacity: 0.5;
+$icon-focus-opacity: 1;
+$icon-offset: -0.5em;
+
+$icon-distance: 0;
+$icon-margin: $icon-width + $icon-distance;
+$icon-transition: opacity 0.3s $default-easing;
+
+$transparent-icon-width: $glyph-width;
+$transparent-icon-margin: 2em;
+
+/* Circular Icon Input */
+$circular-icon-vertical-offset: 0.35em;
+$circular-icon-horizontal-offset: 0.5em;
+
+/* Labeled Input */
+$label-corner-top: $border-width;
+$label-corner-right: $border-width;
+$label-corner-size: px-em(9);
+$label-size: 1em;
+$label-vertical-padding: ($vertical-padding - $line-height-offset);
+
+$labeled-margin: 2.5em;
+$labeled-icon-input-margin: 3.25em;
+$labeled-icon-margin: 1.25em;
+
+/*-------------------
+        States
+--------------------*/
+
+/* Placeholder */
+$placeholder-color: $input-placeholder-color;
+$placeholder-focus-color: $input-placeholder-focus-color;
+
+/* Down */
+$down-border-color: rgba(0, 0, 0, 0.3);
+$down-background: #FAFAFA;
+$down-color: color-text('primary', 'pressed');
+$down-box-shadow: none;
+
+/* Focus */
+$focus-border-color: $focused-form-border-color;
+$focus-background: $background;
+$focus-color: color-text('primary', 'selected');
+$focus-box-shadow: none;
+
+/* Error */
+$error-background: color-bg(color-main('assertive'));
+$error-color: color-main('assertive');
+$error-border: color-divider($color: color-main('assertive'));
+$error-box-shadow: none;
+
+$placeholder-error-color: lighten($error-color, 40);
+$placeholder-error-focus-color: lighten($error-color, 30);
+
+/* Loader */
+$inverted-loader-fill-color: rgba(0, 0, 0, 0.15);
+
+/*-------------------
+      Variations
+--------------------*/
+
+/* Inverted */
+$transparent-inverted-placeholder-color: color-text('primary', 'unselected', true);
+$transparent-inverted-color: color-text('primary', $inverted: true);
+

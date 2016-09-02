@@ -10,11 +10,11 @@ $consecutive-grid-distance: ($row-spacing / 2);
 // Divided
 // -------------------------------
 
-$divided-border: -1px 0px 0px 0px color-divider();
-$vertically-divided-border: 0px -1px 0px 0px color-divider();
+$divided-border: -1px 0 0 0 color-divider();
+$vertically-divided-border: 0 -1px 0 0 color-divider();
 
-$divided-inverted-border: -1px 0px 0px 0px color-divider-inverted();
-$vertically-divided-inverted-border: 0px -1px 0px 0px color-divider-inverted();
+$divided-inverted-border: -1px 0 0 0 color-divider-inverted();
+$vertically-divided-inverted-border: 0 -1px 0 0 color-divider-inverted();
 
 // Celled
 // -------------------------------
@@ -27,9 +27,9 @@ $celled-padding: 1em;
 $celled-relaxed-padding: 1.5em;
 $celled-very-relaxed-padding: 2em;
 
-$celled-grid-divider: 0px 0px 0px $celled-width $celled-border-color;
-$celled-row-divider: 0px (-$celled-width) 0px 0px $celled-border-color;
-$celled-column-divider: (-$celled-width) 0px 0px 0px $celled-border-color;
+$celled-grid-divider: 0 0 0 $celled-width $celled-border-color;
+$celled-row-divider: 0 (-$celled-width) 0 0 $celled-border-color;
+$celled-column-divider: (-$celled-width) 0 0 0 $celled-border-color;
 
 // Stackable
 // -------------------------------
