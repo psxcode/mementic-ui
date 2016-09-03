@@ -7,12 +7,6 @@
 --------------------*/
 
 $font-name: 'icons';
-$fallback-src: url("#{$font-path}/#{$font-name}.eot");
-$src: url("#{$font-path}/#{$font-name}.eot?#iefix") format('embedded-opentype'),
-url("#{$font-path}/#{$font-name}.woff2") format('woff2'),
-url("#{$font-path}/#{$font-name}.woff") format('woff'),
-url("#{$font-path}/#{$font-name}.ttf") format('truetype'),
-url("#{$font-path}/#{$font-name}.svg#icons") format('svg');
 
 $opacity: 1;
 $width: 1.18em;

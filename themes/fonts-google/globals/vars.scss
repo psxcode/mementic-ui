@@ -1,0 +1,66 @@
+$subset-cyrillic: unquote('cyrillic');
+
+$font-family-name-opensans: 'Open Sans';
+$font-request-opensans: ('Open+Sans', (400,), ($subset-cyrillic,));
+
+$font-family-name-opensanscondenced: 'Open Sans Condensed';
+$font-request-opensanscondenced: ('Open+Sans+Condensed', (400,), null);
+
+$font-family-name-roboto: 'Roboto';
+$font-request-roboto: ('Roboto', (400,), null);
+
+$font-family-name-lato: 'Lato';
+$font-request-lato: ('Lato', (400,), null);
+
+$font-family-name-oswald: 'Oswald';
+$font-request-oswald: ('Oswald', (400,), null);
+
+$font-family-name-raleway: 'Raleway';
+$font-request-raleway: ('Raleway', (400,), null);
+
+$fonts: ();
+
+@function get-fonts-request() {
+  $request: 'https://fonts.googleapis.com/css?family=';
+
+  $i: 0;
+  @each $name, $font in $fonts {
+    $i: $i + 1;
+
+    @if $i > 1 {
+      $request: $request + '|';
+    }
+
+    $request-name: nth($font, 1);
+    $weights: nth($font, 2);
+    $subsets: nth($font, 3);
+
+    $request: $request + $request-name;
+
+    @if type-of($weights) == 'list' and length($weights) > 0 {
+      $request: $request + ':' + join($weights, (), 'comma');
+    }
+
+    @if type-of($subsets) == 'list' and length($subsets) > 0 {
+      $request: $request + '&subset=' + join($subsets, (), 'comma');
+    }
+  }
+
+  $request: str-replace($request, '\"');
+  $request: str-replace($request, '\'');
+  $request: str-replace($request, ' ');
+
+  @debug $request;
+
+  @return $request;
+}
+
+@function add-font($name, $font) {
+  @return map-merge($fonts, ($name: $font));
+}
+
+@function compose-font($family-name, $name: $family-name, $weights: (400,), $subsets: ()) {
+  @return add-font($family-name, ('name': $name, 'weights':$weights, 'subsets': $subsets));
+}
+
+$fonts: add-font($font-family-name-opensans, $font-request-opensans);
