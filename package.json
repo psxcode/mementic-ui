@@ -1,5 +1,5 @@
 {
-  "name": "smt-ui",
+  "name": "mementic-ui",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -22,6 +22,7 @@
     "gulp-clean-css": "^2.0.12",
     "gulp-concat": "^2.6.0",
     "gulp-inject": "^4.1.0",
+    "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.2",
     "lodash": "^4.15.0",
     "ordered-merge-stream": "^1.0.0"
@@ -31,6 +32,7 @@
     "gulp": "*",
     "gulp-inject": "*",
     "gulp-concat": "*",
+    "gulp-rename": "*",
     "gulp-clean-css": "*",
     "gulp-sass": "*",
     "ordered-merge-stream": "*",

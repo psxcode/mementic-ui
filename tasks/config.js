@@ -12,10 +12,11 @@ var paths = null;
 	var thmdir = path.join(rootdir, 'themes');
 	paths = {
 		root: rootdir,
-		themes: thmdir,
+		depsDirs: [thmdir],
 		source: srcdir,
 		sassModuleFilepath: path.join(srcdir, 'module.scss'),
-		themeConfigFilename: 'theme.json'
+		themeConfigFilename: 'theme.json',
+		cssFilename: 'style.css'
 	};
 }());
 
@@ -41,13 +42,12 @@ var modules = [{
 	names: ['globals']
 }, {
 	path: 'elements',
-	names: ['button', 'container', 'divider', 'header', /*'icon',*/ 'image', 'input', 'label', 'list', 'loader', 'rail', 'reveal', 'segment', 'step']
+	names: ['button', 'container', 'divider', 'header', 'icon', 'image', 'input', 'label', 'list', 'loader', 'rail', 'reveal', 'segment', 'step']
 }];
 
 //User Config (set in initConfig)
 var userConfig = {
-	site: '',
-	theme: '',
+	deps: '',
 	output: 'build/'
 };
 
@@ -56,16 +56,54 @@ var themeDepsPaths = null;
 (function () {
 	module.exports = function initConfig(config) {
 		if (config) {
+			//set new config
 			userConfig = config;
+
+			//get css output filename
+			paths.cssFilename = userConfig.cssFilename || paths.cssFilename;
+
+			//get user dependency paths
+			var depsDirs = userConfig.depsDir || userConfig.depsDirs;
+			if (_.isArray(depsDirs)) {
+				depsDirs.forEach(pushThemeDir);
+			} else if (_.isString(depsDirs) && depsDirs.length > 0) {
+				pushThemeDir(depsDirs);
+			}
+
+			//resolve dependencies paths
 			themeDepsPaths = resolveThemeDepsPaths();
 		}
 	};
 
 	module.exports.paths = paths;
 	module.exports.getModulePaths = getModulePaths;
+	module.exports.getPublicPaths = getPublicPaths;
 	module.exports.injectOpts = injectOpts;
 	module.exports.modules = modules;
+
+	function pushThemeDir(dir) {
+		var dirAbs = path.resolve(dir);
+		if (!fsxu.isDirSync(dirAbs)) {
+			throw new Error('Theme Dir is invalid: ' + dir + '. resolved to: ' + dirAbs);
+		}
+		paths.depsDirs.push(dirAbs);
+	}
 }());
+
+function getPublicPaths() {
+	if (!themeDepsPaths) themeDepsPaths = resolveThemeDepsPaths();
+
+	var result = [];
+
+	_.forEach(themeDepsPaths, function (themePath) {
+		var pubPath = path.join(themePath, 'public');
+		if(fsxu.isDirSync(pubPath)) {
+			result.push(pubPath + '/**/**.*');
+		}
+	});
+
+	return result;
+}
 
 function getModulePaths(moduleName, modulePathInTheme) {
 	if (!themeDepsPaths) themeDepsPaths = resolveThemeDepsPaths();
@@ -181,18 +219,24 @@ function resolveThemeDepsPaths() {
 		}
 	}
 
-	function isThemeValid(themeNameOrPath) {
-		return !!getThemePath(themeNameOrPath);
-	}
-
 	function getThemePath(themeNameOrPath) {
+		var themeConfigFileFound = false;
+
 		if (!/\/|\\/.test(themeNameOrPath)) {
-			themeNameOrPath = path.join(paths.themes, themeNameOrPath);
+			for (var i = 0; i < paths.depsDirs.length; ++i) {
+				var themeDir = path.join(paths.depsDirs[i], themeNameOrPath);
+				themeConfigFileFound = fsxu.isFileSync(path.join(themeDir, paths.themeConfigFilename));
+				if (themeConfigFileFound) {
+					themeNameOrPath = themeDir;
+					break;
+				}
+			}
+		} else {
+			themeConfigFileFound = fsxu.isFileSync(path.join(themeNameOrPath, paths.themeConfigFilename));
 		}
-		var themeConfigFileFound = fsxu.isFileSync(path.join(themeNameOrPath, paths.themeConfigFilename));
 
 		if (!themeConfigFileFound) {
-			console.log('Dependency is invalid: ', themeNameOrPath);
+			throw new Error('Dependency is invalid: ' + themeNameOrPath);
 		}
 
 		return themeConfigFileFound ? themeNameOrPath : null;

@@ -1,24 +1,24 @@
-$subset-cyrillic: unquote('cyrillic');
+$subset-cyrillic: unquote('cyrillic') !default;
 
-$font-family-name-opensans: 'Open Sans';
-$font-request-opensans: ('Open+Sans', (400,), ($subset-cyrillic,));
+$font-family-name-opensans: 'Open Sans' !default;
+$font-request-opensans: ('Open+Sans', (400,), ($subset-cyrillic,)) !default;
 
-$font-family-name-opensanscondenced: 'Open Sans Condensed';
-$font-request-opensanscondenced: ('Open+Sans+Condensed', (400,), null);
+$font-family-name-opensanscondenced: 'Open Sans Condensed' !default;
+$font-request-opensanscondenced: ('Open+Sans+Condensed', (400,), null) !default;
 
-$font-family-name-roboto: 'Roboto';
-$font-request-roboto: ('Roboto', (400,), null);
+$font-family-name-roboto: 'Roboto' !default;
+$font-request-roboto: ('Roboto', (400,), null) !default;
 
-$font-family-name-lato: 'Lato';
-$font-request-lato: ('Lato', (400,), null);
+$font-family-name-lato: 'Lato' !default;
+$font-request-lato: ('Lato', (400,), null) !default;
 
-$font-family-name-oswald: 'Oswald';
-$font-request-oswald: ('Oswald', (400,), null);
+$font-family-name-oswald: 'Oswald' !default;
+$font-request-oswald: ('Oswald', (400,), null) !default;
 
-$font-family-name-raleway: 'Raleway';
-$font-request-raleway: ('Raleway', (400,), null);
+$font-family-name-raleway: 'Raleway' !default;
+$font-request-raleway: ('Raleway', (400,), null) !default;
 
-$fonts: ();
+$fonts: () !default;
 
 @function get-fonts-request() {
   $request: 'https://fonts.googleapis.com/css?family=';
