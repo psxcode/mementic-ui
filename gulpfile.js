@@ -4,10 +4,9 @@ var gulp = require('gulp');
 var path = require('path');
 
 gulp.task('default', function() {
-	return require('./tasks/build')
-		.build({
-			depsDir: null,
-			deps: []
-		})
-		.pipe(gulp.dest('build/'));
+	return require('./tasks/build')({
+		depsDir: null,
+		deps: [],
+		ignoreThemeDeps: false
+	}).streamCss().pipe(gulp.dest('./build'));
 });

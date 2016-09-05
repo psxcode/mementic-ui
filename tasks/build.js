@@ -10,36 +10,35 @@ var rename = require('gulp-rename');
 var config = require('./config');
 var _ = require('lodash');
 
-exports.build = build;
-
-function build(userConfig) {
+module.exports = function (userConfig) {
 	config(userConfig);
 
-	return merge([streamCss(), streamPublicFiles()]);
+	return module.exports;
+};
 
-	function streamCss() {
-		var streams = [];
+module.exports.streamCss = streamCss;
+module.exports.streamPublic = streamPublic;
+module.exports.isConfigured = config.isConfigured;
 
-		_.forEach(config.modules, function (obj) {
-			var path = obj.path;
-			_.forEach(obj.names, function (name) {
-				streams.push(streamModule(name, path));
-			});
-		});
+function streamCss() {
+	var streams = [];
 
-		return merge(streams).pipe(concat(config.paths.cssFilename));
-	}
+	config.getModules(streamModule);
 
-	function streamPublicFiles() {
-		return gulp.src(config.getPublicPaths());
-	}
+	return merge(streams).pipe(concat(config.paths.cssFilename));
 
 	function streamModule(moduleName, modulePathInTheme) {
-		return gulp.src(config.paths.sassModuleFilepath)
-			.pipe(inject(gulp.src(config.getModulePaths(moduleName, modulePathInTheme), {read: false}), config.injectOpts))
-			.pipe(sass())
+		var stream = gulp.src(config.paths.sassModuleFilepath)
+				.pipe(inject(gulp.src(config.getModulePaths(moduleName, modulePathInTheme), {read: false}), config.injectOpts))
+				.pipe(sass())
 			//.pipe(cleanCss({keepBreaks: true, advanced: false}))
 			;
+
+		streams.push(stream);
 	}
+}
+
+function streamPublic() {
+	return gulp.src(config.getPublicPaths());
 }
 

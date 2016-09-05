@@ -68,9 +68,6 @@
 
 // Colors
 // -------------------------------
-$colors-default: null !default;
-$colors-auto-include-default: true !default;
-
 @function define-color($color-map, $name, $color) {
   $name: to-string($name);
 
@@ -348,6 +345,9 @@ $colors-text-highlight: (
   $index: if(to-bool($bg), 2, 1);
   @return nth($colors-text-highlight, $index);
 }
+
+$colors-default: $colors-main !default;
+$colors-auto-include-default: true !default;
 
 // Accents
 // -------------------------------

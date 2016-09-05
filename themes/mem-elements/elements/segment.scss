@@ -637,3 +637,7 @@
     }
   }
 }
+
+@if type-of($colors-default) == 'map' and $colors-auto-include-default == true {
+  @include colors($colors-default);
+}

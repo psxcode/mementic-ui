@@ -8,15 +8,15 @@ var _ = require('lodash');
 var paths = null;
 (function () {
 	var rootdir = fsxu.findUpSync('package.json', __dirname);
-	var srcdir = path.join(rootdir, 'src');
-	var thmdir = path.join(rootdir, 'themes');
+	var srcdir = path.join(rootdir, 'themes');
 	paths = {
 		root: rootdir,
-		depsDirs: [thmdir],
+		depsDirs: [srcdir],
 		source: srcdir,
 		sassModuleFilepath: path.join(srcdir, 'module.scss'),
-		themeConfigFilename: 'theme.json',
-		cssFilename: 'style.css'
+		themeConfigFilename: 'config.js',
+		cssFilename: 'style.css',
+		globalsName: 'globals'
 	};
 }());
 
@@ -37,19 +37,12 @@ var injectOpts = null;
 }());
 
 //Modules
-var modules = [{
-	path: '',
-	names: ['globals']
-}, {
-	path: 'elements',
-	names: ['button', 'container', 'divider', 'header', 'icon', 'image', 'input', 'label', 'list', 'loader', 'rail', 'reveal', 'segment', 'step']
-}];
 
 //User Config (set in initConfig)
-var userConfig = {
-	deps: '',
-	output: 'build/'
+var userConfigDefault = {
+	deps: ''
 };
+var userConfig = null;
 
 //Exports
 var themeDepsPaths = null;
@@ -73,22 +66,36 @@ var themeDepsPaths = null;
 			//resolve dependencies paths
 			themeDepsPaths = resolveThemeDepsPaths();
 		}
+
+		function pushThemeDir(dir) {
+			var dirAbs = path.resolve(dir);
+			if (!fsxu.isDirSync(dirAbs)) {
+				throw new Error('Theme Dir is invalid: ' + dir + '. resolved to: ' + dirAbs);
+			}
+
+			if (checkDirAlreadyExists(dirAbs)) {
+				paths.depsDirs.push(dirAbs);
+			}
+		}
+
+		function checkDirAlreadyExists(dir) {
+			var exists = _.indexOf(paths.depsDirs, dir) >= 0;
+
+			return !exists;
+		}
 	};
 
 	module.exports.paths = paths;
 	module.exports.getModulePaths = getModulePaths;
 	module.exports.getPublicPaths = getPublicPaths;
+	module.exports.getModules = getModules;
+	module.exports.isConfigured = isConfigured;
 	module.exports.injectOpts = injectOpts;
-	module.exports.modules = modules;
-
-	function pushThemeDir(dir) {
-		var dirAbs = path.resolve(dir);
-		if (!fsxu.isDirSync(dirAbs)) {
-			throw new Error('Theme Dir is invalid: ' + dir + '. resolved to: ' + dirAbs);
-		}
-		paths.depsDirs.push(dirAbs);
-	}
 }());
+
+function isConfigured() {
+	return !!userConfig;
+}
 
 function getPublicPaths() {
 	if (!themeDepsPaths) themeDepsPaths = resolveThemeDepsPaths();
@@ -97,12 +104,59 @@ function getPublicPaths() {
 
 	_.forEach(themeDepsPaths, function (themePath) {
 		var pubPath = path.join(themePath, 'public');
-		if(fsxu.isDirSync(pubPath)) {
+		if (fsxu.isDirSync(pubPath)) {
 			result.push(pubPath + '/**/**.*');
 		}
 	});
 
 	return result;
+}
+
+function getModules(cb) {
+	if (!themeDepsPaths) themeDepsPaths = resolveThemeDepsPaths();
+
+	var modulesProcessed = [];
+
+	_.forEach(themeDepsPaths, function (themePath) {
+		var themeConfig = requireThemeConfig(themePath);
+
+		//check if modules are defined
+		if (themeConfig && _.isArray(themeConfig.modules)) {
+			//iterate modules
+			_.forEach(themeConfig.modules, function (mod) {
+				//get modules names property
+				var names = mod.names || mod.name;
+				//convert to array
+				if (_.isString(names) && names) names = [names];
+
+				//iterate names
+				if (_.isArray(names)) {
+					_.forEach(names, function (name) {
+						if (checkModuleAlreadyProcessed(name, mod.path)) {
+							cb(name, mod.path);
+						}
+					});
+				}
+			});
+		}
+	});
+
+	function checkModuleAlreadyProcessed(name, path) {
+		var modUniqueName = path + '::' + name;
+		var isProcessed = _.indexOf(modulesProcessed, modUniqueName) >= 0;
+
+		//debug log
+		if (isProcessed) {
+			console.log('module already processed: ' + modUniqueName);
+		}
+
+		//push module to processed list
+		if (!isProcessed) {
+			modulesProcessed.push(modUniqueName);
+		}
+
+		return !isProcessed;
+	}
 }
 
 function getModulePaths(moduleName, modulePathInTheme) {
@@ -112,7 +166,7 @@ function getModulePaths(moduleName, modulePathInTheme) {
 	console.log('stream module: ', modulePathInTheme + '::' + moduleName);
 
 	switch (moduleName) {
-		case 'globals':
+		case paths.globalsName:
 			return srcGlobalsPaths();
 		default:
 			return srcPaths(modulePathInTheme, moduleName);
@@ -128,17 +182,15 @@ function getModulePaths(moduleName, modulePathInTheme) {
 	}
 
 	function srcGlobalsPaths() {
-		var moduleName = 'globals';
+		var moduleName = paths.globalsName;
 
 		return srcGlobalsVarsPaths().concat(
-			srcFilePaths(null, moduleName, 'mixins.scss'),
 			srcFilePaths(null, 'fonts', 'fonts.scss', fontsPathPush),
-			srcFilePaths(null, moduleName, 'reset.scss'),
-			srcFilePaths(null, moduleName, 'type.scss')
+			srcFilePaths(null, moduleName, 'reset.scss')
 		);
 
 		function fontsPathPush(paths, src, themePath) {
-			var config = readThemeConfig(themePath);
+			var config = requireThemeConfig(themePath);
 			if (config && config['replaceFonts']) paths = [];
 			paths.push(src);
 			return paths;
@@ -146,7 +198,7 @@ function getModulePaths(moduleName, modulePathInTheme) {
 	}
 
 	function srcGlobalsVarsPaths() {
-		return srcFilePaths('', 'globals', 'vars.scss');
+		return srcFilePaths('', paths.globalsName, 'vars.scss');
 	}
 
 	function srcFilePaths(pathInTheme, moduleName, filename, pushPathFunc) {
@@ -186,37 +238,82 @@ function getModulePaths(moduleName, modulePathInTheme) {
 function resolveThemeDepsPaths() {
 	var themeDepsPropName = 'deps';
 	var defaultThemeName = '_default';
+	var user = userConfig || userConfigDefault;
 
-	var result = [];
-	var deps = userConfig[themeDepsPropName] || [];
+	var deps = user[themeDepsPropName] || [];
 	if (!_.isArray(deps)) deps = [deps];
 	deps.unshift(defaultThemeName);
 
-	flattenThemeDepsTree(deps);
+	var result = user.ignoreThemeDeps ? ignoreThemeDepsTree(deps) : flattenThemeDepsTree(deps);
+
+	//debug print
+	_.forEach(result, function (res) {
+		console.log('resolved path: ' + res);
+	});
 
 	return result;
 
-	function flattenThemeDepsTree(deps, parents) {
-		if (!_.isArray(parents)) parents = [];
+	function ignoreThemeDepsTree(deps, result) {
+		if (!_.isArray(result)) result = [];
 
 		if (_.isArray(deps)) {
-			deps = _.filter(deps, isDepValid);
 			_.forEach(deps, pushDep);
 		} else if (_.isString(deps)) {
-			isDepValid(deps) && pushDep(deps);
+			pushDep(deps);
 		}
 
 		function pushDep(dep) {
 			dep = getThemePath(dep);
-			var themeConfig = readThemeConfig(dep) || {};
-			flattenThemeDepsTree(themeConfig[themeDepsPropName], _.concat(parents, dep));
-			result.push(dep);
+
+			if (dep && checkAlreadyPushed(dep, result)) {
+				result.push(dep);
+			}
 		}
 
-		function isDepValid(dep) {
-			dep = getThemePath(dep);
-			return dep && _.indexOf(parents, dep) < 0 && _.indexOf(result, dep) < 0;
+		return result;
+	}
+
+	function flattenThemeDepsTree(deps, result, parents) {
+		if (!_.isArray(result)) result = [];
+		if (!_.isArray(parents)) parents = [];
+
+		if (_.isArray(deps)) {
+			_.forEach(deps, pushDep);
+		} else if (_.isString(deps)) {
+			pushDep(deps);
 		}
+
+		function pushDep(dep) {
+			dep = getThemePath(dep);
+
+			if (dep && checkCircularDep(dep, parents) && checkAlreadyPushed(dep, result)) {
+				var themeConfig = requireThemeConfig(dep) || {};
+				flattenThemeDepsTree(themeConfig[themeDepsPropName], result, _.concat(parents, dep));
+				result.push(dep);
+			}
+		}
+
+		return result;
+	}
+
+	function checkCircularDep(dep, parents) {
+		var isCircular = _.indexOf(parents, dep) >= 0;
+
+		if (isCircular) {
+			console.log('circular dep: ' + dep);
+		}
+
+		return !isCircular;
+	}
+
+	function checkAlreadyPushed(dep, result) {
+		var isPushed = _.indexOf(result, dep) >= 0;
+
+		if (isPushed) {
+			console.log('dep already exist: ' + dep);
+		}
+
+		return !isPushed;
 	}
 
 	function getThemePath(themeNameOrPath) {
@@ -243,14 +340,9 @@ function resolveThemeDepsPaths() {
 	}
 }
 
-
-function readThemeConfig(themePath) {
-	return fsxu.readJsonSync(path.join(themePath, paths.themeConfigFilename));
-}
-
 function requireThemeConfig(themePath) {
 	try {
-		return require(path.join(themePath, paths.themeConfigFilename));
+		return require(path.resolve(path.join(themePath, paths.themeConfigFilename)));
 	} catch (e) {}
 	return null;
 }

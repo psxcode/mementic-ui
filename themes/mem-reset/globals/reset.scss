@@ -475,3 +475,105 @@ td,
 th {
   padding: 0;
 }
+
+
+
+/**
+ * Typography
+ * --------------------------------------------------
+ */
+
+// Headings
+// -------------------------
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  color: color-text('primary');
+  font-weight: $heading-font-weight;
+  font-family: $heading-font-family;
+  line-height: $heading-line-height;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3 {
+  margin-top: $line-height-abs;
+  margin-bottom: ($line-height-abs / 2);
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  + h1, + .h1,
+  + h2, + .h2,
+  + h3, + .h3 {
+    margin-top: ($line-height-abs / 2);
+  }
+}
+
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  margin-top: ($line-height-abs / 2);
+  margin-bottom: ($line-height-abs / 2);
+}
+
+h1, .h1 {
+  font-size: heading-size(1);
+}
+
+h2, .h2 {
+  font-size: heading-size(1);
+}
+
+h3, .h3 {
+  font-size: heading-size(1);
+}
+
+h4, .h4 {
+  font-size: heading-size(1);
+}
+
+h5, .h5 {
+  font-size: heading-size(1);
+}
+
+h6, .h6 {
+  font-size: heading-size(1);
+}
+
+// Links
+// -------------------------
+a {
+  color: $link-color;
+  text-decoration: $link-text-decoration;
+
+  &:hover {
+    color: $link-hover-color;
+    text-decoration: $link-hover-text-decoration;
+  }
+}
+
+// Body text
+// -------------------------
+
+p {
+  margin: $paragraph-margin;
+  line-height: $paragraph-line-height;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Selection
+// -------------------------
+
+::selection {
+  color: color-text-highlight();
+  background-color: color-text-highlight($bg: true);
+}
