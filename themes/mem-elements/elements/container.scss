@@ -6,43 +6,34 @@
   width: auto;
   margin-left: auto;
   margin-right: auto;
+}
 
-  &.grid {
-    width: auto;
+$i: 0;
+@each $name, $bp in $bps {
+  $i: $i + 1;
+  $min-gutter: ($i - 1) + 1em;
 
-    &.relaxed {
-      width: auto;
+  @include media('screen', '>=#{$name}') {
 
-      &.very {
-        width: auto;
-      }
+    $width: calc(#{$bp - $min-gutter} - #{$scrollbar-width});
+    width: $width;
+
+    .ui.grid.container {
+      width: calc(#{$width} + 2rem);
+    }
+    .ui.relaxed.grid.container {
+      width: calc(#{$width} + 3rem);
+    }
+    .ui.very.relaxed.grid.container {
+      width: calc(#{$width} + 5rem);
     }
   }
+}
 
-  $i: 0;
-  @each $name, $bp in $bps {
-    $i: $i + 1;
-    $min-gutter: ($i - 1) + 1em;
-
-    @include media('screen', '>=#{$name}') {
-
-      $width: calc(#{$bp - $min-gutter} - #{$scrollbar-width});
-      width: $width;
-
-      &.grid {
-        width: calc(#{$width} + 2rem);
-
-        &.relaxed {
-          width: calc(#{$width} + 3rem);
-
-          &.very {
-            width: calc(#{$width} + 5rem);
-          }
-        }
-      }
-
-    }
-  }
+.ui.grid.container,
+.ui.relaxed.grid.container,
+.ui.very.relaxed.grid.container {
+  width: auto;
 }
 
 /*******************************

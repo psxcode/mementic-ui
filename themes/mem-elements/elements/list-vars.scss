@@ -49,7 +49,7 @@ $content-vertical-align: top;
 /* Header */
 $item-header-font-family: $heading-font-family;
 $item-header-font-weight: bold;
-$item-header-color: color-text('primary');
+$item-header-color: color-text();
 
 /* Description */
 $item-description-color: rgba(0, 0, 0, 0.7);
@@ -63,8 +63,8 @@ $item-header-link-color: $item-link-color;
 $item-header-link-hover-color: $item-link-hover-color;
 
 /* Linked Icon */
-$item-link-icon-color: color-light(color-text('primary'));
-$item-link-icon-hover-color: color-text('primary');
+$item-link-icon-color: color-light(color-text());
+$item-link-icon-hover-color: color-text();
 $inverted-icon-link-color: color-light(color-text('primary', $inverted: true));
 
 /*-------------------
@@ -155,18 +155,18 @@ $bullet-offset: -$bullet-distance;
 $bullet-opacity: 1;
 $bullet-character: '•';
 $bullet-color: inherit;
-$bullet-link-color: color-text('primary');
+$bullet-link-color: color-text();
 $bullet-vertical-align: top;
 $bullet-child-distance: $bullet-distance;
 
 /* Horizontal Bullets */
-$horizontal-bullet-color: color-text('primary');
+$horizontal-bullet-color: color-text();
 $horizontal-bullet-spacing: $bullet-distance + 0.5rem;
 
 /* Ordered List */
 $ordered-count-name: ordered;
 $ordered-count-content: counters(ordered, ".") " ";
-$ordered-count-color: color-text('primary');
+$ordered-count-color: color-text();
 $ordered-count-distance: 1.25rem;
 $ordered-count-opacity: 0.8;
 $ordered-count-text-align: right;

@@ -45,13 +45,13 @@ $icon-align: center;
 $title-font-family: $heading-font-family;
 $title-font-weight: bold;
 $title-font-size: size('large');
-$title-color: color-text('primary');
+$title-color: color-text();
 
 /* Description */
 $description-distance: 0.25em;
 $description-font-size: size('small');
 $description-font-weight: normal;
-$description-color: color-text('primary');
+$description-color: color-text();
 
 
 /* Arrow */
@@ -101,7 +101,7 @@ $ordered-font-weight: bold;
 --------------------*/
 
 /* Completed */
-$completed-color: color-text('primary');
+$completed-color: color-text();
 
 /* Hover */
 $hover-background: color-main('mid');
@@ -114,11 +114,11 @@ $down-color: color-text('primary', 'pressed');
 /* Active */
 $active-background: color-main('mid');
 $active-color: $link-color;
-$active-icon-color: color-text('primary');
+$active-icon-color: color-text();
 
 /* Active + Hover */
 $active-hover-background: color-text('primary', $inverted: true);
-$active-hover-color: color-text('primary');
+$active-hover-color: color-text();
 
 
 /* Disabled */

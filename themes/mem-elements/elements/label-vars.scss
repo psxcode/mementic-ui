@@ -105,7 +105,7 @@ $label-active-hover-text-color: color-text('primary', 'selected');
 $basic-background: none color-main('light');
 $basic-border-width: 1px;
 $basic-border: $basic-border-width solid color-divider();
-$basic-color: color-text('primary');
+$basic-color: color-text();
 $basic-box-shadow: none;
 
 $basic-hover-background: $basic-background;

@@ -144,7 +144,7 @@ $or-background-color: color-main('light');
 $or-text-shadow: $inverted-text-shadow;
 $or-text-style: normal;
 $or-text-weight: bold;
-$or-text-color: color-light(color-text('primary'));
+$or-text-color: color-light(color-text());
 
 
 $or-spacer-height: $vertical-padding;
@@ -184,7 +184,7 @@ $inverted-vertical-group-button-offset: 0 0 -($inverted-border-size) 0;
 /* Basic */
 $basic-border-radius: $border-radius;
 $basic-border-size: 1px;
-$basic-text-color: color-text('primary');
+$basic-text-color: color-text();
 $basic-colored-border-size: 1px;
 
 $basic-background: transparent none;

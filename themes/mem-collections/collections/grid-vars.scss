@@ -13,15 +13,15 @@ $consecutive-grid-distance: ($row-spacing / 2);
 $divided-border: -1px 0 0 0 color-divider();
 $vertically-divided-border: 0 -1px 0 0 color-divider();
 
-$divided-inverted-border: -1px 0 0 0 color-divider-inverted();
-$vertically-divided-inverted-border: 0 -1px 0 0 color-divider-inverted();
+$divided-inverted-border: -1px 0 0 0 color-divider($inverted: true);
+$vertically-divided-inverted-border: 0 -1px 0 0 color-divider($inverted: true);
 
 // Celled
 // -------------------------------
 
 $celled-margin: 1em 0em;
 $celled-width: 1px;
-$celled-border-color: color-divider-solid();
+$celled-border-color: color-divider('solid');
 
 $celled-padding: 1em;
 $celled-relaxed-padding: 1.5em;
@@ -37,4 +37,27 @@ $celled-column-divider: (-$celled-width) 0 0 0 $celled-border-color;
 $stackable-row-spacing: $row-spacing;
 $stackable-gutter: $gutter-width;
 $stackable-mobile-border: 1px solid color-divider();
-$stackable-inverted-mobile-border: 1px solid color-divider-inverted();
+$stackable-inverted-mobile-border: 1px solid color-divider($inverted: true);
+
+// Relaxed
+// -------------------------------
+
+$relaxed-gutter-width: 3rem;
+$very-relaxed-gutter-width: 5rem;
+
+// Breakpoints
+// -------------------------------
+
+$gutters: (2em, 3%, 15%, 23%);
+
+@function map-breakpoints($names: (), $breakpoint-map: $breakpoints) {
+  $names: slice($names, $end: min(length($names), 4));
+
+  @if length($names) == 0 {
+    @return map-extract-by-indexes($breakpoint-map, (1, 2, 3, 4));
+  } @else {
+    @return map-extract($breakpoint-map, $names);
+  }
+}
+
+$bps: map-breakpoints();

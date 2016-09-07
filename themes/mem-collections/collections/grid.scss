@@ -63,6 +63,7 @@ $row-spacing-half: $row-spacing / 2;
   padding-top: $row-spacing-half;
   padding-bottom: $row-spacing-half;
 }
+
 .ui-grid > .row > .col {
   margin-top: 0;
   margin-bottom: 0;
@@ -76,7 +77,6 @@ $row-spacing-half: $row-spacing / 2;
   max-width: $column-max-image-width;
 }
 
-
 // Loose Coupling
 // -------------------------------
 
@@ -84,6 +84,7 @@ $row-spacing-half: $row-spacing / 2;
 .ui-grid > .ui-grid:first-child {
   margin-top: 0;
 }
+
 .ui-grid > .ui-grid:last-child {
   margin-bottom: 0;
 }
@@ -99,6 +100,7 @@ $row-spacing-half: $row-spacing / 2;
   flex-grow: 1;
   margin: $row-spacing-half $gutter-width-half;
 }
+
 .ui-grid .col + .ui-divider-vertical {
   height: calc(50% - #{$row-spacing-half});
 }
@@ -107,4 +109,548 @@ $row-spacing-half: $row-spacing / 2;
 .ui-grid > .row > .column:last-child > .segment-hor,
 .ui-grid > .col:last-child > .segment-hor {
   box-shadow: none;
+}
+
+/*******************************
+           Variations
+*******************************/
+
+/*-----------------------
+       Page Grid
+-------------------------*/
+
+/* Mobile first */
+.ui.page.grid {
+  width: auto;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+$i: 0;
+@each $name, $bp in $bps {
+  $i: $i + 1;
+
+  @include media('screen', '>=#{$name}') {
+
+    /*-----------------------
+        Page Grid
+    -------------------------*/
+
+    .ui.page.grid {
+      padding-left: nth($gutters, $i);
+      padding-right: nth($gutters, $i);
+    }
+  }
+}
+
+/*-------------------
+     Column Count
+--------------------*/
+
+/* Assume full width with one column */
+.ui.grid > .column:only-child,
+.ui.grid > .row > .column:only-child {
+  width: column(1);
+}
+
+@for $i from 1 through $num-columns {
+
+  /* Grid Based */
+  .ui.#{nth($numbers, $i)}.column.grid {
+    > .row > .column,
+    > .column:not(.row) {
+      width: column($i);
+    }
+  }
+
+  /* Row Based Overrides */
+  .ui.grid > .#{nth($numbers, $i)}.column.row > .column {
+    width: column($i) !important;
+  }
+
+  /* Sizing Combinations */
+  .ui.grid > .row > .#{nth($numbers, $i)}.wide.column,
+  .ui.grid > .column.row > .#{nth($numbers, $i)}.wide.column,
+  .ui.grid > .#{nth($numbers, $i)}.wide.column,
+  .ui.grid.column > .#{nth($numbers, $i)}.wide.column {
+    width: wide($i) !important;
+  }
+}
+
+/* Celled Page */
+.ui.celled.page.grid {
+  box-shadow: none;
+}
+
+/*----------------------
+        Centered
+-----------------------*/
+
+.ui.centered.grid,
+.ui.centered.grid > .row,
+.ui.grid > .centered.row {
+  text-align: center;
+  justify-content: center;
+}
+
+.ui.centered.grid > .column:not(.aligned):not(.justified):not(.row),
+.ui.centered.grid > .row > .column:not(.aligned):not(.justified),
+.ui.grid .centered.row > .column:not(.aligned):not(.justified) {
+  text-align: left;
+}
+
+.ui.grid > .centered.column,
+.ui.grid > .row > .centered.column {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*----------------------
+        Relaxed
+-----------------------*/
+
+.ui.relaxed.grid > .column:not(.row),
+.ui.relaxed.grid > .row > .column,
+.ui.grid > .relaxed.row > .column {
+  padding-left: ($relaxed-gutter-width / 2);
+  padding-right: ($relaxed-gutter-width / 2);
+}
+
+.ui[class*="very relaxed"].grid > .column:not(.row),
+.ui[class*="very relaxed"].grid > .row > .column,
+.ui.grid > [class*="very relaxed"].row > .column {
+  padding-left: ($very-relaxed-gutter-width / 2);
+  padding-right: ($very-relaxed-gutter-width / 2);
+}
+
+/* Coupling with UI Divider */
+.ui.relaxed.grid .row + .ui.divider,
+.ui.grid .relaxed.row + .ui.divider {
+  margin-left: ($relaxed-gutter-width / 2);
+  margin-right: ($relaxed-gutter-width / 2);
+}
+
+.ui[class*="very relaxed"].grid .row + .ui.divider,
+.ui.grid [class*="very relaxed"].row + .ui.divider {
+  margin-left: ($very-relaxed-gutter-width / 2);
+  margin-right: ($very-relaxed-gutter-width / 2);
+}
+
+/*----------------------
+        Padded
+-----------------------*/
+
+.ui.padded.grid:not(.vertically):not(.horizontally) {
+  margin: 0 !important;
+}
+
+[class*="horizontally padded"].ui.grid {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+[class*="vertically padded"].ui.grid {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/*----------------------
+       "Floated"
+-----------------------*/
+
+.ui.grid [class*="left floated"].column {
+  margin-right: auto;
+}
+
+.ui.grid [class*="right floated"].column {
+  margin-left: auto;
+}
+
+/*----------------------
+        Divided
+-----------------------*/
+
+.ui.divided.grid:not(.vertically.divided) > .column:not(.row),
+.ui.divided.grid:not(.vertically.divided) > .row > .column {
+  box-shadow: $divided-border;
+}
+
+/* Swap from padding to margin on columns to have dividers align */
+.ui.vertically.divided.grid > .column:not(.row),
+.ui.vertically.divided.grid > .row > .column {
+  margin-top: ($row-spacing / 2);
+  margin-bottom: ($row-spacing / 2);
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.ui.vertically.divided.grid > .row {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* No divider on first column on row */
+.ui.divided.grid:not(.vertically.divided) > .column:first-child,
+.ui.divided.grid:not(.vertically.divided) > .row > .column:first-child {
+  box-shadow: none;
+}
+
+/* No space on top of first row */
+.ui.vertically.divided.grid > .row:first-child > .column {
+  margin-top: 0;
+}
+
+/* Divided Row */
+.ui.grid > .divided.row > .column {
+  box-shadow: $divided-border;
+}
+
+.ui.grid > .divided.row > .column:first-child {
+  box-shadow: none;
+}
+
+/* Vertically Divided */
+.ui.vertically.divided.grid > .row {
+  position: relative;
+}
+
+.ui.vertically.divided.grid > .row:before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+
+  width: calc(100% - #{$gutter-width});
+  height: 1px;
+
+  margin: 0 ($gutter-width / 2);
+  box-shadow: $vertically-divided-border;
+}
+
+/* Padded Horizontally Divided */
+[class*="horizontally padded"].ui.divided.grid,
+.ui.padded.divided.grid:not(.vertically):not(.horizontally) {
+  width: 100%;
+}
+
+/* First Row Vertically Divided */
+.ui.vertically.divided.grid > .row:first-child:before {
+  box-shadow: none;
+}
+
+/* Inverted Divided */
+.ui.inverted.divided.grid:not(.vertically.divided) > .column:not(.row),
+.ui.inverted.divided.grid:not(.vertically.divided) > .row > .column {
+  box-shadow: $divided-inverted-border;
+}
+
+.ui.inverted.divided.grid:not(.vertically.divided) > .column:not(.row):first-child,
+.ui.inverted.divided.grid:not(.vertically.divided) > .row > .column:first-child {
+  box-shadow: none;
+}
+
+.ui.inverted.vertically.divided.grid > .row:before {
+  box-shadow: $vertically-divided-inverted-border;
+}
+
+/* Relaxed */
+.ui.relaxed.vertically.divided.grid > .row:before {
+  margin-left: ($relaxed-gutter-width / 2);
+  margin-right: ($relaxed-gutter-width / 2);
+  width: calc(100% - #{$relaxed-gutter-width});
+}
+
+.ui[class*="very relaxed"].vertically.divided.grid > .row:before {
+  margin-left: $very-relaxed-gutter-width;
+  margin-right: $very-relaxed-gutter-width;
+  width: calc(100% - #{$very-relaxed-gutter-width});
+}
+
+/*----------------------
+         Celled
+-----------------------*/
+
+.ui.celled.grid {
+  width: 100%;
+  margin: $celled-margin;
+  box-shadow: $celled-grid-divider;
+}
+
+.ui.celled.grid > .row {
+  width: 100% !important;
+  margin: 0;
+  padding: 0;
+  box-shadow: $celled-row-divider;
+}
+
+.ui.celled.grid > .column:not(.row),
+.ui.celled.grid > .row > .column {
+  box-shadow: $celled-column-divider;
+}
+
+.ui.celled.grid > .column:first-child,
+.ui.celled.grid > .row > .column:first-child {
+  box-shadow: none;
+}
+
+.ui.celled.grid > .column:not(.row),
+.ui.celled.grid > .row > .column {
+  padding: $celled-padding;
+}
+
+.ui.relaxed.celled.grid > .column:not(.row),
+.ui.relaxed.celled.grid > .row > .column {
+  padding: $celled-relaxed-padding;
+}
+
+.ui[class*="very relaxed"].celled.grid > .column:not(.row),
+.ui[class*="very relaxed"].celled.grid > .row > .column {
+  padding: $celled-very-relaxed-padding;
+}
+
+/* Internally Celled */
+.ui[class*="internally celled"].grid {
+  box-shadow: none;
+  margin: 0;
+}
+
+.ui[class*="internally celled"].grid > .row:first-child {
+  box-shadow: none;
+}
+
+.ui[class*="internally celled"].grid > .row > .column:first-child {
+  box-shadow: none;
+}
+
+/*----------------------
+   Vertically Aligned
+-----------------------*/
+
+/* Top Aligned */
+.ui[class*="top aligned"].grid > .column:not(.row),
+.ui[class*="top aligned"].grid > .row > .column,
+.ui.grid > [class*="top aligned"].row > .column,
+.ui.grid > [class*="top aligned"].column:not(.row),
+.ui.grid > .row > [class*="top aligned"].column {
+  flex-direction: column;
+  vertical-align: top;
+  align-self: flex-start !important;
+}
+
+/* Middle Aligned */
+.ui[class*="middle aligned"].grid > .column:not(.row),
+.ui[class*="middle aligned"].grid > .row > .column,
+.ui.grid > [class*="middle aligned"].row > .column,
+.ui.grid > [class*="middle aligned"].column:not(.row),
+.ui.grid > .row > [class*="middle aligned"].column {
+  flex-direction: column;
+  vertical-align: middle;
+  align-self: center !important;
+}
+
+/* Bottom Aligned */
+.ui[class*="bottom aligned"].grid > .column:not(.row),
+.ui[class*="bottom aligned"].grid > .row > .column,
+.ui.grid > [class*="bottom aligned"].row > .column,
+.ui.grid > [class*="bottom aligned"].column:not(.row),
+.ui.grid > .row > [class*="bottom aligned"].column {
+  flex-direction: column;
+  vertical-align: bottom;
+  align-self: flex-end !important;
+}
+
+/* Stretched */
+.ui.stretched.grid > .row > .column,
+.ui.stretched.grid > .column,
+.ui.grid > .stretched.row > .column,
+.ui.grid > .stretched.column:not(.row),
+.ui.grid > .row > .stretched.column {
+  display: inline-flex !important;
+  align-self: stretch;
+  flex-direction: column;
+}
+
+.ui.stretched.grid > .row > .column > *,
+.ui.stretched.grid > .column > *,
+.ui.grid > .stretched.row > .column > *,
+.ui.grid > .stretched.column:not(.row) > *,
+.ui.grid > .row > .stretched.column > * {
+  flex-grow: 1;
+}
+
+/*----------------------
+  Horizontally Centered
+-----------------------*/
+
+/* Left Aligned */
+.ui[class*="left aligned"].grid > .column,
+.ui[class*="left aligned"].grid > .row > .column,
+.ui.grid > [class*="left aligned"].row > .column,
+.ui.grid > [class*="left aligned"].column.column,
+.ui.grid > .row > [class*="left aligned"].column.column {
+  text-align: left;
+  align-self: inherit;
+}
+
+/* Center Aligned */
+.ui[class*="center aligned"].grid > .column,
+.ui[class*="center aligned"].grid > .row > .column,
+.ui.grid > [class*="center aligned"].row > .column,
+.ui.grid > [class*="center aligned"].column.column,
+.ui.grid > .row > [class*="center aligned"].column.column {
+  text-align: center;
+  align-self: inherit;
+}
+
+.ui[class*="center aligned"].grid {
+  justify-content: center;
+}
+
+/* Right Aligned */
+.ui[class*="right aligned"].grid > .column,
+.ui[class*="right aligned"].grid > .row > .column,
+.ui.grid > [class*="right aligned"].row > .column,
+.ui.grid > [class*="right aligned"].column.column,
+.ui.grid > .row > [class*="right aligned"].column.column {
+  text-align: right;
+  align-self: inherit;
+}
+
+/* Justified */
+.ui.justified.grid > .column,
+.ui.justified.grid > .row > .column,
+.ui.grid > .justified.row > .column,
+.ui.grid > .justified.column.column,
+.ui.grid > .row > .justified.column.column {
+  text-align: justify;
+  hyphens: auto;
+}
+
+/*----------------------
+         Colored
+-----------------------*/
+
+@mixin colors($color-map) {
+
+  %color-column {
+    margin-top: -($row-spacing / 2);
+    margin-bottom: -($row-spacing / 2);
+    padding-top: ($row-spacing / 2);
+    padding-bottom: ($row-spacing / 2);
+  }
+
+  @each $name, $color in $color-map {
+
+    .ui.grid > .row > .#{$name}.column {
+      @extend %color-column;
+    }
+
+    .ui.grid > .#{$name}.row,
+    .ui.grid > .#{$name}.column,
+    .ui.grid > .row > .#{$name}.column {
+      background-color: $color !important;
+      color: color-text('primary', $inverted: true);
+    }
+
+  }
+}
+
+@if type-of($colors-default) == 'map' and $colors-auto-include-default == true {
+  @include colors($colors-default);
+}
+
+/*----------------------
+      Equal Width
+-----------------------*/
+
+.ui[class*="equal width"].grid > .column:not(.row),
+.ui[class*="equal width"].grid > .row > .column,
+.ui.grid > [class*="equal width"].row > .column {
+  display: inline-block;
+  flex-grow: 1;
+}
+
+.ui[class*="equal width"].grid > .wide.column,
+.ui[class*="equal width"].grid > .row > .wide.column,
+.ui.grid > [class*="equal width"].row > .wide.column {
+  flex-grow: 0;
+}
+
+/*----------------------
+        Reverse
+-----------------------*/
+
+.ui.reversed.grid,
+.ui.reversed.grid > .row,
+.ui.grid > .reversed.row {
+  flex-direction: row-reverse;
+}
+
+.ui.vertically.reversed.grid,
+.ui.stackable.reversed {
+  flex-direction: column-reverse;
+}
+
+/* Divided Reversed */
+.ui.reversed.divided.grid:not(.vertically.divided) > .column:first-child,
+.ui.reversed.divided.grid:not(.vertically.divided) > .row > .column:first-child {
+  box-shadow: $divided-border;
+}
+
+.ui.reversed.divided.grid:not(.vertically.divided) > .column:last-child,
+.ui.reversed.divided.grid:not(.vertically.divided) > .row > .column:last-child {
+  box-shadow: none;
+}
+
+/* Vertically Divided Reversed */
+.ui.grid.vertically.divided.vertically.reversed > .row:first-child:before {
+  box-shadow: $vertically-divided-border;
+}
+
+.ui.grid.vertically.divided.vertically.reversed > .row:last-child:before {
+  box-shadow: none;
+}
+
+/* Celled Reversed */
+.ui.reversed.celled.grid > .row > .column:first-child {
+  box-shadow: $celled-column-divider;
+}
+
+.ui.reversed.celled.grid > .row > .column:last-child {
+  box-shadow: none;
+}
+
+/*-------------------
+      Doubling
+--------------------*/
+
+.ui.doubling.grid {
+  width: auto;
+}
+
+.ui.grid > .doubling.row,
+.ui.doubling.grid > .row {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.ui.grid > .doubling.row > .column,
+.ui.doubling.grid > .row > .column {
+  display: inline-block !important;
+  padding-top: ($row-spacing / 2) !important;
+  padding-bottom: ($row-spacing / 2) !important;
+  box-shadow: none !important;
+  margin: 0;
+}
+
+@for $i from 1 through $num-columns {
+
+  .ui.#{nth($numbers, $i)}.column.doubling.grid > .row > .column,
+  .ui.#{nth($numbers, $i)}.column.doubling.grid > .column:not(.row),
+  .ui.grid > .#{nth($numbers, $i)}.column.doubling.row.row > .column {
+    width: ceil($i * 0.5);
+  }
 }

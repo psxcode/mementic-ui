@@ -128,7 +128,7 @@ body {
   font-family: $font-family;
   font-size: $font-size;
   line-height: $line-height;
-  color: color-text('primary');
+  color: color-text();
 }
 
 
@@ -488,7 +488,7 @@ th {
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  color: color-text('primary');
+  color: color-text();
   font-weight: $heading-font-weight;
   font-family: $heading-font-family;
   line-height: $heading-line-height;

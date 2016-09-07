@@ -4,7 +4,8 @@ module.exports = {
 	modules: [{
 		path: 'collections',
 		names: [
-			'grid'
+			'grid',
+		    'table'
 		]
 	}]
 };

@@ -459,6 +459,6 @@
 
 @each $name, $size in $sizes {
   .ui.#{$name}.input {
-    font-size: px-em($size);
+    font-size: size($name);
   }
 }

@@ -17,7 +17,7 @@
 
 
 module.exports = {
-	deps: ['mem-vars', 'mem-reset'],
+	deps: ['mem-vars', 'mem-reset', 'mem-elements', 'mem-collections'],
 	modules: [{
 		path: '',
 		name: 'globals'

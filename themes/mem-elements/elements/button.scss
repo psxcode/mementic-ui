@@ -496,7 +496,7 @@
   .ui.#{$name}.buttons .button,
   .ui.#{$name}.buttons .or,
   .ui.#{$name}.button {
-    font-size: unit-em($size);
+    font-size: size($name);
   }
 
 }
@@ -1293,7 +1293,7 @@
     .ui.#{$name}.buttons .button,
     .ui.#{$name}.button {
       background-color: $color;
-      color: color-text('primary');
+      color: color-text();
       text-shadow: color-text-shadow('primary');
       background-image: $colored-background-image;
     }
@@ -1303,19 +1303,19 @@
     .ui.#{$name}.buttons .button:hover,
     .ui.#{$name}.button:hover {
       background-color: color-hover($color);
-      color: color-text('primary');
+      color: color-text();
       text-shadow: color-text-shadow('primary');
     }
     .ui.#{$name}.buttons .button:focus,
     .ui.#{$name}.button:focus {
       background-color: color-focus($color);
-      color: color-text('primary');
+      color: color-text();
       text-shadow: color-text-shadow('primary');
     }
     .ui.#{$name}.buttons .button:active,
     .ui.#{$name}.button:active {
       background-color: color-down($color);
-      color: color-text('primary');
+      color: color-text();
       text-shadow: color-text-shadow('primary');
     }
     .ui.#{$name}.buttons .active.button,
@@ -1323,7 +1323,7 @@
     .ui.#{$name}.active.button,
     .ui.#{$name}.button .active.button:active {
       background-color: color-active($color);
-      color: color-text('primary');
+      color: color-text();
       text-shadow: color-text-shadow('primary');
     }
 

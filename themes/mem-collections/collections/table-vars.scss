@@ -1,0 +1,237 @@
+/*******************************
+             Table
+*******************************/
+
+/*-------------------
+       Element
+--------------------*/
+
+$vertical-margin: 1em;
+$horizontal-margin: 0;
+$margin: $vertical-margin $horizontal-margin;
+$border-collapse: separate;
+$border-spacing: 0;
+$border-radius: unit-rem($default-border-radius);
+$transition: background $default-duration $default-easing,
+color $default-duration $default-easing;
+$background: color-main('light');
+$color: color-text();
+$border-width: 1px;
+$border: $border-width solid color-divider();
+$box-shadow: none;
+$text-align: left;
+
+/*--------------
+     Parts
+---------------*/
+
+/* Table Row */
+$row-border: 1px solid color-divider('internal');
+
+/* Table Cell */
+$cell-vertical-padding: size('mini');
+$cell-horizontal-padding: size('mini');
+$cell-vertical-align: inherit;
+$cell-text-align: inherit;
+$cell-border: 1px solid color-divider('internal');
+
+/* Table Header */
+$header-border: 1px solid color-divider('internal');
+$header-divider: none;
+$header-background: color-main('mid');
+$header-align: inherit;
+$header-vertical-align: inherit;
+$header-color: color-text();
+$header-vertical-padding: size('small');
+$header-horizontal-padding: $cell-horizontal-padding;
+$header-font-style: none;
+$header-font-weight: bold;
+$header-text-transform: none;
+$header-box-shadow: none;
+
+/* Table Footer */
+$footer-box-shadow: none;
+$footer-border: 1px solid color-divider();
+$footer-divider: none;
+$footer-background: color-main('mid');
+$footer-align: inherit;
+$footer-vertical-align: middle;
+$footer-color: color-text();
+$footer-vertical-padding: $cell-vertical-padding;
+$footer-horizontal-padding: $cell-horizontal-padding;
+$footer-font-style: normal;
+$footer-font-weight: normal;
+$footer-text-transform: none;
+
+/* Responsive Size */
+$responsive-header-display: block;
+$responsive-footer-display: block;
+$responsive-row-vertical-padding: 1em;
+$responsive-row-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset !important;
+$responsive-cell-vertical-padding: 0.25em;
+$responsive-cell-horizontal-padding: 0.75em;
+$responsive-cell-box-shadow: none !important;
+
+/*-------------------
+       Types
+--------------------*/
+
+/* Definition */
+$definition-page-background: color-main('light');
+
+$definition-header-background: transparent;
+$definition-header-color: color-text('primary', 'unselected');
+$definition-header-font-weight: normal;
+
+$definition-footer-background: $definition-header-background;
+$definition-footer-color: $definition-header-color;
+$definition-footer-font-weight: $definition-header-font-weight;
+
+$definition-column-background: color-transparent(color-main('dark'), 'subtle');
+$definition-column-font-weight: bold;
+$definition-column-color: color-text('primary', 'selected');
+$definition-column-font-size: size('medium');
+$definition-column-text-transform: '';
+$definition-column-box-shadow: '';
+$definition-column-text-align: '';
+$definition-column-horizontal-padding: '';
+
+/*--------------
+    Couplings
+---------------*/
+
+$icon-vertical-align: baseline;
+
+/*--------------
+     States
+---------------*/
+
+$state-marker-width: 0;
+
+/* Positive */
+/*$positiveColor: $positiveTextColor;
+$positiveBoxShadow: $state-marker-width 0 0 $positiveBorderColor inset;
+$positiveBackgroundHover: darken($positiveBackgroundColor, 3);
+$positiveColorHover: darken($positiveColor, 3);*/
+
+/* Negative */
+/*$negativeColor: $negativeTextColor;
+$negativeBoxShadow: $stateMarkerWidth 0 0 $negativeBorderColor inset;
+$negativeBackgroundHover: darken($negativeBackgroundColor, 3);
+$negativeColorHover: darken($negativeColor, 3);*/
+
+/* Error */
+/*$errorColor: $errorTextColor;
+$errorBoxShadow: $stateMarkerWidth 0 0 $errorBorderColor inset;
+$errorBackgroundHover: darken($errorBackgroundColor, 3);
+$errorColorHover: darken($errorColor, 3);*/
+
+/* Warning */
+/*$warningColor: $warningTextColor;
+$warningBoxShadow: $stateMarkerWidth 0 0 $warningBorderColor inset;
+$warningBackgroundHover: darken($warningBackgroundColor, 3);
+$warningColorHover: darken($warningColor, 3);*/
+
+/* Active */
+/*$activeColor: $textColor;
+$activeBackgroundColor: #E0E0E0;
+$activeBoxShadow: $stateMarkerWidth 0 0 $activeColor inset;
+
+$activeBackgroundHover: #EFEFEF;
+$activeColorHover: $selectedTextColor;*/
+
+/*--------------
+     Types
+---------------*/
+
+/* Attached */
+$attached-top-offset: 0;
+$attached-bottom-offset: 0;
+$attached-horizontal-offset: -$border-width;
+$attached-width: calc(100% + #{$attached-horizontal-offset * -2});
+$attached-box-shadow: none;
+$attached-border: $border-width solid color-divider('solid');
+$attached-bottom-box-shadow: $box-shadow, $attached-box-shadow;
+
+/* Striped */
+$striped-background: rgba(0, 0, 50, 0.02);
+$inverted-striped-background: rgba(255, 255, 255, 0.05);
+
+/* Selectable */
+$selectable-background: color-transparent(color-main('dark'));
+$selectable-text-color: color-text('primary', 'selected');
+$selectable-inverted-background: color-transparent(color-main('light'));
+$selectable-inverted-text-color: color-text('primary', 'selected', $inverted: true);
+
+/* Sortable */
+$sortable-background: '';
+$sortable-color: color-text();
+
+$sortable-border: 1px solid color-divider();
+$sortable-icon-width: auto;
+$sortable-icon-distance: 0.5em;
+$sortable-icon-opacity: 0.8;
+$sortable-icon-font: 'Icons';
+$sortable-icon-ascending: '\f0d8';
+$sortable-icon-descending: '\f0d7';
+$sortable-disabled-color: color-text('primary', 'disabled');
+
+$sortable-hover-background: color-transparent(color-main('dark'));
+$sortable-hover-color: color-text('primary', 'hovered');
+
+$sortable-active-background: color-transparent(color-main('dark'));
+$sortable-active-color: color-text('primary', 'selected');
+
+$sortable-active-hover-background: color-transparent(color-main('dark'));
+$sortable-active-hover-color: color-text('primary', 'selected');
+
+$sortable-inverted-border-color: transparent;
+$sortable-inverted-hover-background: color-transparent(color-main('light')) $subtle-gradient;
+$sortable-inverted-hover-color: color-text('primary', 'hovered', $inverted: true);
+$sortable-inverted-active-background: color-transparent(color-main('light'), 'strong') $subtle-gradient;
+$sortable-inverted-active-color: color-text('primary', 'selected', $inverted: true);
+
+/* Colors */
+$colored-border-size: 0.2em;
+$colored-border-radius: 0 0 $border-radius $border-radius;
+
+/* Inverted */
+$inverted-background: #333333;
+$inverted-border: none;
+$inverted-cell-border-color: color-divider($inverted: true);
+$inverted-cell-color: color-text($inverted: true);
+
+$inverted-header-background: color-transparent(color-main('dark'), 'strong');
+$inverted-header-color: color-text($inverted: true);
+$inverted-header-border-color: $inverted-cell-border-color;
+
+$inverted-definition-column-background: color-transparent(color-main('light'), 'subtle');
+$inverted-definition-column-color: color-text('primary', 'selected', $inverted: true);
+$inverted-definition-column-font-weight: bold;
+
+/* Basic */
+$basic-table-background: transparent;
+$basic-table-border: $border-width solid color-divider();
+$basic-box-shadow: none;
+
+$basic-table-header-background: transparent;
+$basic-table-cell-background: transparent;
+$basic-table-header-divider: none;
+$basic-table-cell-border: 1px solid rgba(0, 0, 0, 0.1);
+$basic-table-cell-padding: '';
+$basic-table-striped-background: color-transparent(color-main('dark'));
+
+/* Padded */
+$padded-vertical-padding: 1em;
+$padded-horizontal-padding: 1em;
+$very-padded-vertical-padding: 1.5em;
+$very-padded-horizontal-padding: 1.5em;
+
+/* Compact */
+$compact-vertical-padding: 0.5em;
+$compact-horizontal-padding: 0.7em;
+$very-compact-vertical-padding: 0.4em;
+$very-compact-horizontal-padding: 0.6em;
+
+/* Sizes */
+$sizes: ('small': 0.9, 'medium': 1, 'large': 1.1);

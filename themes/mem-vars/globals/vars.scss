@@ -284,7 +284,7 @@ $colors-text-blend: (
         'secondary': (0.5, 0.7)
 ) !default;
 
-@function color-text($text-variant, $blend-variant: 'default', $inverted: false) {
+@function color-text($text-variant: 'primary', $blend-variant: 'default', $inverted: false) {
   $text-variant: to-string($text-variant);
   $inverted-index: if(to-bool($inverted), 2, 1);
 
@@ -337,7 +337,7 @@ $colors-text-shadow: (
 }
 
 $colors-text-highlight: (
-        color-text('primary'),
+        color-text(),
         color-text('primary', $inverted: true)
 ) !default;
 
@@ -446,6 +446,7 @@ $sizes: (
 }
 
 $num-columns: 16;
+$numbers: ('one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen');
 
 //width as num-columns in default-column row
 @function wide($num) {
@@ -495,7 +496,7 @@ $paragraph-line-height: $line-height;
 
 // Links
 // -------------------------------
-$link-color: color-text('primary');
+$link-color: color-text();
 $link-text-decoration: none;
 $link-hover-color: color-hover($link-color);
 $link-hover-text-decoration: none;
@@ -574,7 +575,7 @@ $input-horizontal-padding : px-em(14);
 $input-padding           : $input-vertical-padding $input-horizontal-padding;
 
 /* Input Text Color */
-$input-color: color-text('primary');
+$input-color: color-text();
 $input-placeholder-color: lighten($input-color, 75);
 $input-placeholder-focus-color: lighten($input-color, 45);
 

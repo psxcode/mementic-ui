@@ -22,7 +22,7 @@ $inverted-shape-border-color: $inverted-loader-line-color transparent transparen
 
 /* Text */
 $text-distance: size('mini');
-$loader-text-color: color-text('primary');
+$loader-text-color: color-text();
 $inverted-loader-text-color: color-text('primary', $inverted: true);
 
 /*-------------------

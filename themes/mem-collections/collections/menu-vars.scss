@@ -1,0 +1,438 @@
+/* Menu */
+$vertical-margin: size('medium');
+$horizontal-margin: 0;
+$margin: $vertical-margin $horizontal-margin;
+$background: #FFFFFF;
+//$font-family: $page-font;
+$item-background: none;
+$font-weight: normal;
+$border-width: 1px;
+$border: $borderWidth solid color-divider();
+$box-shadow: $subtle-shadow;
+$border-radius: unit-rem($default-border-radius);
+$min-height: ($item-vertical-padding * 2) + 1em;
+
+/* Menu Item */
+$item-vertical-padding: size('small');
+$item-horizontal-padding: size('large');
+$item-text-transform: none;
+$item-transition: background $default-duration $default-easing,
+box-shadow $default-duration $default-easing,
+color $default-duration $default-easing;
+$item-font-weight: normal;
+$item-text-color: color-text();
+
+/* Divider */
+$divider-size: 1px;
+$divider-background: color-divider('internal');
+
+/* Sub Menu */
+$sub-menu-distance: 0.5em;
+$sub-menu-margin: $sub-menu-distance -$item-horizontal-padding 0;
+$sub-menu-font-size: size('tiny');
+$sub-menu-text-color: rgba(0, 0, 0, 0.5);
+
+$sub-menu-indent: 0;
+$sub-menu-horizontal-padding: ($item-horizontal-padding / size('tiny')) + $sub-menu-indent;
+$sub-menu-vertical-padding: 0.5em;
+
+/* Text Item */
+$text-line-height: 1.3;
+
+/*--------------
+    Elements
+---------------*/
+
+/* Icon */
+$icon-float: none;
+$icon-margin: 0 px-em(5) 0 0;
+$icon-opacity: 0.9;
+
+/* Dropdown Icon */
+$dropdown-icon-float: right;
+$dropdown-icon-distance: 1em;
+
+/* Header */
+$header-background: '';
+$header-weight: bold;
+$header-text-transform: normal;
+
+/* Vertical Icon */
+$vertical-icon-float: right;
+$vertical-icon-margin: 0 0 0 0.5em;
+
+/* Vertical Header */
+$vertical-header-margin: 0 0 0.5em;
+$vertical-header-font-size: size('medium');
+$vertical-header-font-weight: bold;
+
+/* Pointing Arrow */
+$arrow-size: px-em(8);
+$arrow-border-width: 1px;
+$arrow-border: $arrow-border-width solid color-divider('solid');
+$arrow-transition: background $default-duration $default-easing;
+$arrow-z-index: 2;
+
+$arrow-hover-color: #F2F2F2;
+$arrow-active-color: $arrow-hover-color;
+$arrow-active-hover-color: $arrow-active-color;
+
+$arrow-vertical-hover-color: $arrow-hover-color;
+$arrow-vertical-active-color: $arrow-active-color;
+$arrow-vertical-sub-menu-color: color-main('light');
+
+/*--------------
+    Couplings
+---------------*/
+
+/* Button */
+$button-size: size('medium');
+$button-offset: 0;
+$button-margin: -0.5em 0;
+$button-vertical-padding: size('mini');
+
+/* Input */
+$input-size: size('medium');
+$input-vertical-margin: -0.5em;
+$input-offset: 0;
+$input-vertical-padding: px-em(8);
+
+/* Image */
+$image-margin: -0.3em 0;
+$image-width: 2.5em;
+$vertical-image-width: auto;
+
+/* Label */
+$label-offset: -0.15em;
+$label-background: #999999;
+$label-text-color: color-main('light');
+
+$label-text-margin: 1em;
+$label-vertical-padding: 0.3em;
+$label-horizontal-padding: size('mini');
+
+$label-and-icon-float: none;
+$label-and-icon-margin: 0 0.5em 0 0;
+
+/* Dropdown in Menu */
+$dropdown-menu-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+
+$dropdown-background: #FFFFFF;
+$dropdown-menu-distance: 0;
+$dropdown-menu-border-radius: $border-radius;
+
+$dropdown-item-font-size: size('medium');
+$dropdown-item-padding: size('mini') size('large');
+$dropdown-item-background: transparent;
+$dropdown-item-color: color-text();
+$dropdown-item-text-transform: none;
+$dropdown-item-font-weight: normal;
+$dropdown-item-box-shadow: none;
+$dropdown-item-transition: none;
+
+$dropdown-item-icon-float: none;
+$dropdown-item-icon-font-size: size('medium');
+$dropdown-item-icon-margin: 0 0.75em 0 0;
+
+$dropdown-hovered-item-background: color-transparent(color-main('dark'));
+$dropdown-hovered-item-color: color-text('primary', 'selected');
+
+/* Dropdown Variations */
+$dropdownVerticalMenuBoxShadow: 0 1px 3px 0px rgba(0, 0, 0, 0.08);
+$secondary-dropdown-menu-distance: px-em(5);
+$pointing-dropdown-menu-distance: 0.75em;
+$inverted-selection-dropdown-color: color-text($inverted: true);
+
+/*--------------
+     States
+---------------*/
+
+/* Hovered Item */
+$hover-item-background: color-transparent(color-main('dark'), 'subtle');
+$hover-item-text-color: color-text('primary', 'selected');
+
+/* Pressed Item */
+$pressed-item-background: color-transparent(color-main('dark'), 'subtle');
+$pressed-item-text-color: $hover-item-text-color;
+
+/* Active Item */
+$active-item-background: color-transparent(color-main('dark'));
+$active-item-text-color: color-text('primary', 'selected');
+$active-item-font-weight: normal;
+$active-icon-opacity: 1;
+$active-item-box-shadow: none;
+
+/* Active Hovered Item */
+$active-hover-item-background: color-transparent(color-main('dark'));
+$active-hover-item-color: color-text('primary', 'selected');
+
+/* Selected Dropdown */
+$dropdown-selected-item-background: color-transparent(color-main('dark'));
+$dropdown-selected-item-color: color-text('primary', 'selected');
+
+/* Active Dropdown */
+$dropdown-active-item-background: color-transparent(color-main('dark'), 'subtle');
+$dropdown-active-item-color: color-text('primary', 'selected');
+$dropdown-active-item-font-weight: bold;
+
+/* Active Sub Menu */
+$sub-menu-active-background: transparent;
+$sub-menu-active-text-color: $active-item-text-color;
+$sub-menu-active-font-weight: bold;
+
+/*--------------
+     Types
+---------------*/
+
+/* Vertical */
+$vertical-box-shadow: $box-shadow;
+$vertical-pointer-width: 2px;
+$vertical-background: #FFFFFF;
+$vertical-item-background: none;
+$vertical-divider-background: $divider-background;
+
+$verticalActiveBoxShadow: none;
+
+/* Secondary */
+$secondary-background: none;
+$secondary-margin: 0 -$secondary-item-spacing;
+$secondary-item-background: none;
+$secondary-item-spacing: px-em(5);
+$secondary-item-margin: 0 $secondary-item-spacing;
+$secondary-item-vertical-padding: $relative-mini;
+$secondary-item-horizontal-padding: $relative-small;
+$secondary-item-padding: $relative-mini $relative-small;
+$secondary-item-border-radius: $default-border-radius;
+$secondary-item-transition: color $default-duration $default-easing;
+$secondary-item-color: $unselected-text-color;
+
+$secondary-hover-item-background: color-transparent(color-main('dark'));
+$secondary-hover-item-color: color-text('primary', 'selected');
+
+$secondary-active-item-background: color-transparent(color-main('dark'));
+$secondary-active-item-color: color-text('primary', 'selected');
+$secondary-active-hover-item-background: color-transparent(color-main('dark'));
+$secondary-active-hover-item-color: color-text('primary', 'selected');
+
+$secondary-active-hovered-item-background: color-transparent(color-main('dark'));
+$secondary-active-hovered-item-color: color-text('primary', 'selected');
+
+$secondary-header-background: none transparent;
+$secondary-header-border: none;
+
+$secondary-item-vertical-spacing: $secondary-item-spacing;
+$secondary-vertical-item-margin: 0 0 $secondary-item-vertical-spacing;
+$secondary-vertical-item-border-radius: $default-border-radius;
+
+$secondary-menu-sub-menu-margin: 0 -$secondary-item-horizontal-padding;
+$secondary-menu-sub-menu-item-margin: 0;
+$secondary-sub-menu-horizontal-padding: ($item-horizontal-padding / $tiny-size) + $sub-menu-indent;
+$secondary-menu-sub-menu-item-padding: $relative7px $secondary-sub-menu-horizontal-padding;
+
+/* Pointing */
+$secondary-pointing-border-width: 2px;
+$secondary-pointing-border-color: $border-color;
+$secondary-pointing-item-vertical-padding: $relative-tiny;
+$secondary-pointing-item-horizontal-padding: $relative-large;
+
+$secondary-pointing-hover-text-color: $text-color;
+
+$secondary-pointing-active-border-color: $black;
+$secondary-pointing-active-text-color: color-text('primary', 'selected');
+$secondary-pointing-active-font-weight: bold;
+
+$secondary-pointing-active-dropdown-border-color: transparent;
+
+$secondary-pointing-active-hover-border-color: $secondary-pointing-active-border-color;
+$secondary-pointing-active-hover-text-color: $secondary-pointing-active-text-color;
+
+$secondary-pointing-header-color: $dark-text-color;
+$secondary-vertical-pointing-item-margin: 0 -$secondary-pointing-border-width 0 0;
+
+/* Inverted Secondary */
+$secondary-inverted-color: $inverted-light-text-color;
+
+$secondary-inverted-hover-background: $transparent-white;
+$secondary-inverted-hover-color: $inverted-selected-text-color;
+
+$secondary-inverted-active-background: $strong-transparent-white;
+$secondary-inverted-active-color: $inverted-selected-text-color;
+
+/* Inverted Pointing */
+$secondary-pointing-inverted-border-color: $white-border-color;
+$secondary-pointing-inverted-item-text-color: color-text($inverted: true);
+$secondary-pointing-inverted-item-header-color: $white;
+$secondary-pointing-inverted-item-hover-text-color: color-text('primary', 'selected');
+$secondary-pointing-inverted-active-border-color: $white;
+$secondary-pointing-inverted-active-color: $inverted-selected-text-color;
+
+/* Tiered */
+$tiered-active-item-background: #FCFCFC;
+$tiered-active-menu-background: #FCFCFC;
+
+$tiered-sub-menu-text-transform: normal;
+$tiered-sub-menu-font-weight: normal;
+
+$tiered-sub-menu-color: $light-text-color;
+
+$tiered-sub-menu-hover-background: none transparent;
+$tiered-sub-menu-hover-color: $hovered-text-color;
+
+$tiered-sub-menu-active-background: none transparent;
+$tiered-sub-menu-active-color: color-text('primary', 'selected');
+
+$tiered-inverted-sub-menu-background: rgba(0, 0, 0, 0.2);
+
+/* Icon */
+$icon-menu-text-align: center;
+$icon-menu-item-color: $black;
+$icon-menu-inverted-item-color: $white;
+
+/* Tabular */
+$tabular-border-color: $solid-border-color;
+$tabular-background-color: transparent;
+$tabular-background: none $tabular-background-color;
+$tabular-border-width: 1px;
+$tabular-opposite-border-width: $tabular-border-width + 1px;
+$tabular-vertical-padding: $item-vertical-padding;
+$tabular-horizontal-padding: $relative-huge;
+$tabular-border-radius: $default-border-radius;
+$tabular-text-color: $item-text-color;
+
+$tabular-hovered-text-color: $hovered-text-color;
+
+$tabular-vertical-background: none $tabular-background-color;
+
+$tabular-fluid-offset: 1px;
+$tabular-fluid-width: calc(100% + #{$tabular-fluid-offset * 2});
+
+$tabular-active-background: none $white;
+$tabular-active-color: color-text('primary', 'selected');
+$tabular-active-box-shadow: none;
+$tabular-active-weight: bold;
+
+/* Pagination */
+$pagination-min-width: 3em;
+$pagination-active-background: color-transparent(color-main('dark'));
+$pagination-active-text-color: color-text('primary', 'selected');
+
+/* Labeled Icon */
+$labeled-icon-item-horizontal-padding: $relative-massive;
+$labeled-icon-size: $relative-massive;
+$labeled-icon-min-width: 6em;
+$labeled-icon-text-margin: 0.5rem;
+
+/* Text */
+$text-menu-item-spacing: $relative7px;
+$text-menu-margin: size('medium') -($text-menu-item-spacing);
+$text-menu-item-color: $muted-text-color;
+$text-menu-item-font-weight: normal;
+$text-menu-item-margin: 0 0;
+$text-menu-item-padding: px-em(5) $text-menu-item-spacing;
+$text-menu-item-transition: opacity $default-duration $default-easing;
+
+$text-menu-sub-menu-margin: 0;
+$text-menu-sub-menu-item-margin: 0;
+$text-menu-sub-menu-item-padding: $relative7px 0;
+
+$text-menu-active-item-font-weight: normal;
+$text-menu-active-item-color: color-text('primary', 'selected');
+
+$text-menu-header-size: $relative-small;
+$text-menu-header-color: $dark-text-color;
+$text-menu-header-font-weight: bold;
+$text-menu-header-text-transform: uppercase;
+
+$text-vertical-menu-margin: size('medium') 0;
+$text-vertical-menu-header-margin: $relative8px 0 $relative10px;
+$text-vertical-menu-item-margin: $relative8px 0;
+
+$text-vertical-menu-icon-float: none;
+$text-vertical-menu-icon-margin: $icon-margin;
+
+/*--------------
+   Variations
+---------------*/
+
+/* Inverted */
+$inverted-background: $black;
+$inverted-box-shadow: none;
+$inverted-border: 0px solid transparent;
+$inverted-header-background: transparent;
+
+$inverted-item-background: transparent;
+$inverted-item-text-color: color-text($inverted: true);
+
+/* Inverted Sub Menu */
+$inverted-sub-menu-background: transparent;
+$inverted-sub-menu-color: $inverted-unselected-text-color;
+
+/* Inverted Hover */
+$inverted-hover-background: $transparent-white;
+$inverted-hover-color: $inverted-selected-text-color;
+
+$inverted-sub-menu-hover-background: transparent;
+$inverted-sub-menu-hover-color: $inverted-selected-text-color;
+
+/* Pressed */
+$inverted-menu-pressed-background: $transparent-white;
+$inverted-menu-pressed-color: $inverted-selected-text-color;
+
+/* Inverted Active */
+$inverted-active-background: $strong-transparent-white;
+$inverted-active-color: $inverted-selected-text-color;
+$inverted-arrow-active-color: #3-d3-e3-f;
+
+/* Inverted Active Hover  */
+$inverted-active-hover-background: $inverted-active-background;
+$inverted-active-hover-color: $white;
+$inverted-arrow-active-hover-color: $inverted-arrow-active-color;
+
+$inverted-sub-menu-active-background: transparent;
+$inverted-sub-menu-active-color: $white;
+
+/* Inverted Menu Divider */
+$inverted-divider-background: rgba(255, 255, 255, 0.08);
+$inverted-vertical-divider-background: $inverted-divider-background;
+
+/* Inverted Colored */
+$inverted-colored-divider-background: $divider-background;
+$inverted-colored-active-background: $strong-transparent-black;
+
+/* Fixed */
+$fixed-preceding-grid-margin: 2.75rem;
+
+/* Floated */
+$floated-distance: 0.5rem;
+
+/* Attached */
+$attached-top-offset: 0px;
+$attached-bottom-offset: 0px;
+$attached-horizontal-offset: -$border-width;
+$attached-width: calc(100% + #{$attached-horizontal-offset * -2});
+$attached-box-shadow: none;
+$attached-border: $border-width solid $solid-border-color;
+$attached-bottom-box-shadow: $box-shadow, $attached-box-shadow;
+
+/* Resize large sizes */
+$sizes: map-zip(map-keys($sizes), (
+        px-em(11),
+        px-em(12),
+        px-em(13),
+        px-em(14),
+        px-em(15),
+        px-em(16),
+        px-em(17),
+        px-em(18)
+));
+
+$widths: map-zip(map-keys($sizes), (
+        9rem,
+        11rem,
+        13rem,
+        15rem,
+        18rem,
+        20rem,
+        22rem,
+        25rem
+));
