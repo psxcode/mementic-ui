@@ -1,8 +1,3 @@
-/*******************************
-            Comments
-*******************************/
-
-
 /*-------------------
        View
 --------------------*/
@@ -81,10 +76,9 @@ $comment-reply-distance: $reply-distance;
 --------------------*/
 
 /* Threaded */
-$threaded-comment-margin: -1.5em 0 -1em  ($avatar-width / 2);
+$threaded-comment-margin: -1.5em 0 -1em ($avatar-width / 2);
 $threaded-comment-padding: 3em 0 2em 2.25em;
 $threaded-comment-box-shadow: -1px 0 0 color-divider();
-
 
 /* Minimal */
 $minimal-action-position: absolute;

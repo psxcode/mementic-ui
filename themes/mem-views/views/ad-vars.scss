@@ -9,6 +9,6 @@ $test-font-size: size('medium');
 $test-mobile-font-size: size('tiny');
 
 /* Breakpoints */
-$bp-default-indexes: (1, );
+$bp-default-indexes: (1,);
 $num-used-breakpoints: length($bp-default-indexes);
 $bps: map-breakpoints-indexes($bp-default-indexes);

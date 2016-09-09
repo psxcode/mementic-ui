@@ -158,12 +158,12 @@
 @for $i from 1 through 10 {
 
   .ui.#{nth($numbers, $i)}.statistics {
-    margin: $item-group-margin;
+	margin: $item-group-margin;
   }
 
   .ui.#{nth($numbers, $i)}.statistics .statistic {
-    min-width: column($i);
-    margin: $item-margin;
+	min-width: column($i);
+	margin: $item-margin;
   }
 
 }
@@ -226,11 +226,11 @@
 	  color: $color;
 	}
 
-    .ui.inverted.red.statistics .statistic > .value,
-    .ui.statistics .inverted.red.statistic > .value,
-    .ui.inverted.red.statistic > .value {
-      color: color-light($color);
-    }
+	.ui.inverted.red.statistics .statistic > .value,
+	.ui.statistics .inverted.red.statistic > .value,
+	.ui.inverted.red.statistic > .value {
+	  color: color-light($color);
+	}
   }
 }
 

@@ -1,0 +1,141 @@
+/*******************************
+             Feed
+*******************************/
+
+/*-------------------
+        Feed
+--------------------*/
+
+$margin: 1em 0;
+
+/*-------------------
+      Elements
+--------------------*/
+
+/* Event */
+$event-width: 100%;
+$event-padding: px-em(3) 0;
+$event-margin: 0;
+$event-background: none;
+$event-divider: none;
+
+/* Event Label */
+$label-width: 2.5em;
+$label-height: auto;
+$label-align-self: stretch;
+$label-text-align: left;
+
+/* Icon Label */
+$icon-label-opacity: 1;
+$icon-label-width: 100%;
+$icon-label-size: 1.5em;
+$icon-label-padding: 0.25em;
+$icon-label-background: none;
+$icon-label-border-radius: none;
+$icon-label-border: none;
+$icon-label-color: rgba(0, 0, 0, 0.6);
+
+/* Image Label */
+$image-label-width: 100%;
+$image-label-height: auto;
+$image-label-border-radius: $circular-radius;
+
+/* Content w/ Label */
+$labeled-content-margin: 0.5em 0 px-em(5) size('large');
+$last-labeled-content-padding: 0;
+
+/* Content */
+$content-align-self: stretch;
+$content-text-align: left;
+$content-word-wrap: break-word;
+
+/* Date */
+$date-margin: -0.5rem 0 0;
+$date-padding: 0;
+$date-color: color-light(color-text());
+$date-font-size: size('medium');
+$date-font-weight: normal;
+$date-font-style: normal;
+
+/* Summary */
+$summary-margin: 0;
+$summary-font-size: size('medium');
+$summary-font-weight: bold;
+$summary-color: color-text();
+
+/* Summary Image */
+$summary-image-width: auto;
+$summary-image-height: 10em;
+$summary-image-margin: -0.25em 0.25em 0 0;
+$summary-image-vertical-align: middle;
+$summary-image-border-radius: 0.25em;
+
+/* Summary Date */
+$summary-date-display: inline-block;
+$summary-date-float: none;
+$summary-date-margin: 0 0 0 0.5em;
+$summary-date-padding: 0;
+$summary-date-font-size: size('tiny');
+$summary-date-font-weight: $date-font-weight;
+$summary-date-font-style: $date-font-style;
+$summary-date-color: $date-color;
+
+/* User */
+$user-font-weight: bold;
+$user-distance: 0;
+$user-image-width: $summary-image-width;
+$user-image-height: $summary-image-height;
+$user-image-margin: $summary-image-margin;
+$user-image-vertical-align: $summary-image-vertical-align;
+
+/* Extra Summary Data */
+$extra-margin: 0.5em 0 0;
+$extra-background: none;
+$extra-padding: 0;
+$extra-color: color-text();
+
+/* Extra Images */
+$extra-image-margin: 0 0.25em 0 0;
+$extra-image-width: 6em;
+
+/* Extra Text */
+$extra-text-padding: 0;
+$extra-text-pointer: none;
+$extra-text-font-size: size('medium');
+$extra-text-line-height: $line-height;
+$extra-text-max-width: 500px;
+
+/* Metadata Group */
+$metadata-display: inline-block;
+$metadata-font-size: size('tiny');
+$metadata-margin: 0.5em 0 0;
+$metadata-background: none;
+$metadata-border: none;
+$metadata-border-radius: 0;
+$metadata-box-shadow: none;
+$metadata-padding: 0;
+$metadata-color: rgba(0, 0, 0, 0.6);
+
+$metadata-element-spacing: 0.75em;
+
+/* Like */
+$like-color: '';
+$like-hover-color: #FF2733;
+$like-active-color: #EF404A;
+$like-transition: 0.2s color ease;
+
+/* Metadata Divider */
+$metadata-divider: '';
+$metadata-divider-color: rgba(0, 0, 0, 0.2);
+$metadata-divider-offset: -1em;
+
+$metadata-action-cursor: pointer;
+$metadata-action-opacity: 1;
+$metadata-action-color: rgba(0, 0, 0, 0.5);
+$metadata-action-transition: color $default-duration $default-easing;
+
+$metadata-action-hover-color: color-text('primary', 'selected');
+
+/*-------------------
+      Variations
+--------------------*/

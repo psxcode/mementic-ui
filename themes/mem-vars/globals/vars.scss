@@ -438,7 +438,7 @@ $sizes: (
 		'massive': 1.7142 // 24/14
 ) !default;
 
-$num-used-sizes = length($sizes);
+$num-used-sizes: length($sizes);
 
 @function size($variant, $relative: false) {
   $variant: to-string($variant);
@@ -467,7 +467,6 @@ $num-used-sizes = length($sizes);
   //allow adding new sizes
   $sizes: map-merge($sizes, ($name: $value));
 }
-
 
 @function size-by-index($index) {
   @return map-get-by-index($sizes, $index);
@@ -711,5 +710,8 @@ $focused-form-border-color: #85B7D9;
 
 /* Used on dropdowns, other larger blocks */
 $focused-form-muted-border-color: #96C8DA;
+
+/*---  Shadows  ---*/
+$floating-shadow-hover: 0px 2px 4px 0px rgba(34, 36, 38, 0.15), 0px 2px 10px 0px rgba(34, 36, 38, 0.25);
 
 $public-dir: ''
