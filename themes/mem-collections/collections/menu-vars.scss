@@ -1,3 +1,37 @@
+/* Resize large sizes */
+$sizes: map-zip(map-keys($sizes), (
+		px-em(11),
+		px-em(12),
+		px-em(13),
+		px-em(14),
+		px-em(15),
+		px-em(16),
+		px-em(17),
+		px-em(18)
+));
+
+$widths: map-zip(map-keys($sizes), (
+		9rem,
+		11rem,
+		13rem,
+		15rem,
+		18rem,
+		20rem,
+		22rem,
+		25rem
+));
+
+@function menu-width($variant) {
+  $variant: to-string($variant);
+
+  @if not(map-has-key($widths, $variant)) {
+	@error 'menu-width: invalid $variant #{$variant}';
+  }
+
+  @return map-get($widths, $variant);
+}
+
+
 /* Menu */
 $vertical-margin: size('medium');
 $horizontal-margin: 0;
@@ -7,7 +41,7 @@ $background: #FFFFFF;
 $item-background: none;
 $font-weight: normal;
 $border-width: 1px;
-$border: $borderWidth solid color-divider();
+$border: $border-width solid color-divider();
 $box-shadow: $subtle-shadow;
 $border-radius: unit-rem($default-border-radius);
 $min-height: ($item-vertical-padding * 2) + 1em;
@@ -138,7 +172,7 @@ $dropdown-hovered-item-background: color-transparent(color-main('dark'));
 $dropdown-hovered-item-color: color-text('primary', 'selected');
 
 /* Dropdown Variations */
-$dropdownVerticalMenuBoxShadow: 0 1px 3px 0px rgba(0, 0, 0, 0.08);
+$dropdown-vertical-menu-box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.08);
 $secondary-dropdown-menu-distance: px-em(5);
 $pointing-dropdown-menu-distance: 0.75em;
 $inverted-selection-dropdown-color: color-text($inverted: true);
@@ -191,20 +225,20 @@ $vertical-background: #FFFFFF;
 $vertical-item-background: none;
 $vertical-divider-background: $divider-background;
 
-$verticalActiveBoxShadow: none;
+$vertical-active-box-shadow: none;
 
 /* Secondary */
+$secondary-item-spacing: px-em(5);
 $secondary-background: none;
 $secondary-margin: 0 -$secondary-item-spacing;
 $secondary-item-background: none;
-$secondary-item-spacing: px-em(5);
 $secondary-item-margin: 0 $secondary-item-spacing;
-$secondary-item-vertical-padding: $relative-mini;
-$secondary-item-horizontal-padding: $relative-small;
-$secondary-item-padding: $relative-mini $relative-small;
+$secondary-item-vertical-padding: size('mini');
+$secondary-item-horizontal-padding: size('small');
+$secondary-item-padding: size('mini') size('small');
 $secondary-item-border-radius: $default-border-radius;
 $secondary-item-transition: color $default-duration $default-easing;
-$secondary-item-color: $unselected-text-color;
+$secondary-item-color: color-text('primary', 'unselected');
 
 $secondary-hover-item-background: color-transparent(color-main('dark'));
 $secondary-hover-item-color: color-text('primary', 'selected');
@@ -226,18 +260,18 @@ $secondary-vertical-item-border-radius: $default-border-radius;
 
 $secondary-menu-sub-menu-margin: 0 -$secondary-item-horizontal-padding;
 $secondary-menu-sub-menu-item-margin: 0;
-$secondary-sub-menu-horizontal-padding: ($item-horizontal-padding / $tiny-size) + $sub-menu-indent;
-$secondary-menu-sub-menu-item-padding: $relative7px $secondary-sub-menu-horizontal-padding;
+$secondary-sub-menu-horizontal-padding: ($item-horizontal-padding / size('tiny')) + $sub-menu-indent;
+$secondary-menu-sub-menu-item-padding: px-em(7) $secondary-sub-menu-horizontal-padding;
 
 /* Pointing */
 $secondary-pointing-border-width: 2px;
-$secondary-pointing-border-color: $border-color;
-$secondary-pointing-item-vertical-padding: $relative-tiny;
-$secondary-pointing-item-horizontal-padding: $relative-large;
+$secondary-pointing-border-color: color-divider();
+$secondary-pointing-item-vertical-padding: size('tiny');
+$secondary-pointing-item-horizontal-padding: size('large');
 
 $secondary-pointing-hover-text-color: $text-color;
 
-$secondary-pointing-active-border-color: $black;
+$secondary-pointing-active-border-color: color-main('dark');
 $secondary-pointing-active-text-color: color-text('primary', 'selected');
 $secondary-pointing-active-font-weight: bold;
 
@@ -246,25 +280,25 @@ $secondary-pointing-active-dropdown-border-color: transparent;
 $secondary-pointing-active-hover-border-color: $secondary-pointing-active-border-color;
 $secondary-pointing-active-hover-text-color: $secondary-pointing-active-text-color;
 
-$secondary-pointing-header-color: $dark-text-color;
+$secondary-pointing-header-color: color-text();
 $secondary-vertical-pointing-item-margin: 0 -$secondary-pointing-border-width 0 0;
 
 /* Inverted Secondary */
-$secondary-inverted-color: $inverted-light-text-color;
+$secondary-inverted-color: color-text($inverted: true);
 
-$secondary-inverted-hover-background: $transparent-white;
-$secondary-inverted-hover-color: $inverted-selected-text-color;
+$secondary-inverted-hover-background: color-transparent(color-main('light'));
+$secondary-inverted-hover-color: color-text('primary', 'selected', $inverted: true);
 
-$secondary-inverted-active-background: $strong-transparent-white;
-$secondary-inverted-active-color: $inverted-selected-text-color;
+$secondary-inverted-active-background: color-transparent(color-main('light'), 'strong');
+$secondary-inverted-active-color: color-text('primary', 'selected', $inverted: true);
 
 /* Inverted Pointing */
-$secondary-pointing-inverted-border-color: $white-border-color;
+$secondary-pointing-inverted-border-color: color-divider($inverted: true);
 $secondary-pointing-inverted-item-text-color: color-text($inverted: true);
-$secondary-pointing-inverted-item-header-color: $white;
+$secondary-pointing-inverted-item-header-color: color-main('light');
 $secondary-pointing-inverted-item-hover-text-color: color-text('primary', 'selected');
-$secondary-pointing-inverted-active-border-color: $white;
-$secondary-pointing-inverted-active-color: $inverted-selected-text-color;
+$secondary-pointing-inverted-active-border-color: color-main('light');
+$secondary-pointing-inverted-active-color: color-text('primary', 'selected', $inverted: true);
 
 /* Tiered */
 $tiered-active-item-background: #FCFCFC;
@@ -273,10 +307,10 @@ $tiered-active-menu-background: #FCFCFC;
 $tiered-sub-menu-text-transform: normal;
 $tiered-sub-menu-font-weight: normal;
 
-$tiered-sub-menu-color: $light-text-color;
+$tiered-sub-menu-color: color-text();
 
 $tiered-sub-menu-hover-background: none transparent;
-$tiered-sub-menu-hover-color: $hovered-text-color;
+$tiered-sub-menu-hover-color: color-text('primary', 'hovered');
 
 $tiered-sub-menu-active-background: none transparent;
 $tiered-sub-menu-active-color: color-text('primary', 'selected');
@@ -285,28 +319,28 @@ $tiered-inverted-sub-menu-background: rgba(0, 0, 0, 0.2);
 
 /* Icon */
 $icon-menu-text-align: center;
-$icon-menu-item-color: $black;
-$icon-menu-inverted-item-color: $white;
+$icon-menu-item-color: color-main('dark');
+$icon-menu-inverted-item-color: color-main('light');
 
 /* Tabular */
-$tabular-border-color: $solid-border-color;
+$tabular-border-color: color-divider('solid');
 $tabular-background-color: transparent;
 $tabular-background: none $tabular-background-color;
 $tabular-border-width: 1px;
 $tabular-opposite-border-width: $tabular-border-width + 1px;
 $tabular-vertical-padding: $item-vertical-padding;
-$tabular-horizontal-padding: $relative-huge;
+$tabular-horizontal-padding: size('huge');
 $tabular-border-radius: $default-border-radius;
 $tabular-text-color: $item-text-color;
 
-$tabular-hovered-text-color: $hovered-text-color;
+$tabular-hovered-text-color: color-text('primary', 'hovered');
 
 $tabular-vertical-background: none $tabular-background-color;
 
 $tabular-fluid-offset: 1px;
 $tabular-fluid-width: calc(100% + #{$tabular-fluid-offset * 2});
 
-$tabular-active-background: none $white;
+$tabular-active-background: none color-main('light');
 $tabular-active-color: color-text('primary', 'selected');
 $tabular-active-box-shadow: none;
 $tabular-active-weight: bold;
@@ -317,15 +351,15 @@ $pagination-active-background: color-transparent(color-main('dark'));
 $pagination-active-text-color: color-text('primary', 'selected');
 
 /* Labeled Icon */
-$labeled-icon-item-horizontal-padding: $relative-massive;
-$labeled-icon-size: $relative-massive;
+$labeled-icon-item-horizontal-padding: size('massive');
+$labeled-icon-size: size('massive');
 $labeled-icon-min-width: 6em;
 $labeled-icon-text-margin: 0.5rem;
 
 /* Text */
-$text-menu-item-spacing: $relative7px;
+$text-menu-item-spacing: px-em(7);
 $text-menu-margin: size('medium') -($text-menu-item-spacing);
-$text-menu-item-color: $muted-text-color;
+$text-menu-item-color: color-text('primary', 'muted');
 $text-menu-item-font-weight: normal;
 $text-menu-item-margin: 0 0;
 $text-menu-item-padding: px-em(5) $text-menu-item-spacing;
@@ -333,19 +367,19 @@ $text-menu-item-transition: opacity $default-duration $default-easing;
 
 $text-menu-sub-menu-margin: 0;
 $text-menu-sub-menu-item-margin: 0;
-$text-menu-sub-menu-item-padding: $relative7px 0;
+$text-menu-sub-menu-item-padding: px-em(7) 0;
 
 $text-menu-active-item-font-weight: normal;
 $text-menu-active-item-color: color-text('primary', 'selected');
 
-$text-menu-header-size: $relative-small;
-$text-menu-header-color: $dark-text-color;
+$text-menu-header-size: size('small');
+$text-menu-header-color: color-text();
 $text-menu-header-font-weight: bold;
 $text-menu-header-text-transform: uppercase;
 
 $text-vertical-menu-margin: size('medium') 0;
-$text-vertical-menu-header-margin: $relative8px 0 $relative10px;
-$text-vertical-menu-item-margin: $relative8px 0;
+$text-vertical-menu-header-margin: px-em(8) 0 px-em(10);
+$text-vertical-menu-item-margin: px-em(8) 0;
 
 $text-vertical-menu-icon-float: none;
 $text-vertical-menu-icon-margin: $icon-margin;
@@ -355,7 +389,7 @@ $text-vertical-menu-icon-margin: $icon-margin;
 ---------------*/
 
 /* Inverted */
-$inverted-background: $black;
+$inverted-background: color-main('dark');
 $inverted-box-shadow: none;
 $inverted-border: 0px solid transparent;
 $inverted-header-background: transparent;
@@ -365,31 +399,31 @@ $inverted-item-text-color: color-text($inverted: true);
 
 /* Inverted Sub Menu */
 $inverted-sub-menu-background: transparent;
-$inverted-sub-menu-color: $inverted-unselected-text-color;
+$inverted-sub-menu-color: color-text('primary', 'unselected', $inverted: true);
 
 /* Inverted Hover */
-$inverted-hover-background: $transparent-white;
-$inverted-hover-color: $inverted-selected-text-color;
+$inverted-hover-background: color-transparent(color-main('light'));
+$inverted-hover-color: color-text('primary', 'selected', $inverted: true);
 
 $inverted-sub-menu-hover-background: transparent;
-$inverted-sub-menu-hover-color: $inverted-selected-text-color;
+$inverted-sub-menu-hover-color: color-text('primary', 'selected', $inverted: true);
 
 /* Pressed */
-$inverted-menu-pressed-background: $transparent-white;
-$inverted-menu-pressed-color: $inverted-selected-text-color;
+$inverted-menu-pressed-background: color-transparent(color-main('light'));
+$inverted-menu-pressed-color: color-text('primary', 'selected', $inverted: true);
 
 /* Inverted Active */
-$inverted-active-background: $strong-transparent-white;
-$inverted-active-color: $inverted-selected-text-color;
+$inverted-active-background: color-transparent(color-main('light'), 'strong');
+$inverted-active-color: color-text('primary', 'selected', $inverted: true);
 $inverted-arrow-active-color: #3-d3-e3-f;
 
 /* Inverted Active Hover  */
 $inverted-active-hover-background: $inverted-active-background;
-$inverted-active-hover-color: $white;
+$inverted-active-hover-color: color-main('light');
 $inverted-arrow-active-hover-color: $inverted-arrow-active-color;
 
 $inverted-sub-menu-active-background: transparent;
-$inverted-sub-menu-active-color: $white;
+$inverted-sub-menu-active-color: color-main('light');
 
 /* Inverted Menu Divider */
 $inverted-divider-background: rgba(255, 255, 255, 0.08);
@@ -397,7 +431,7 @@ $inverted-vertical-divider-background: $inverted-divider-background;
 
 /* Inverted Colored */
 $inverted-colored-divider-background: $divider-background;
-$inverted-colored-active-background: $strong-transparent-black;
+$inverted-colored-active-background: color-transparent(color-main('dark'), 'strong');
 
 /* Fixed */
 $fixed-preceding-grid-margin: 2.75rem;
@@ -411,28 +445,10 @@ $attached-bottom-offset: 0px;
 $attached-horizontal-offset: -$border-width;
 $attached-width: calc(100% + #{$attached-horizontal-offset * -2});
 $attached-box-shadow: none;
-$attached-border: $border-width solid $solid-border-color;
+$attached-border: $border-width solid color-divider('solid');
 $attached-bottom-box-shadow: $box-shadow, $attached-box-shadow;
 
-/* Resize large sizes */
-$sizes: map-zip(map-keys($sizes), (
-        px-em(11),
-        px-em(12),
-        px-em(13),
-        px-em(14),
-        px-em(15),
-        px-em(16),
-        px-em(17),
-        px-em(18)
-));
-
-$widths: map-zip(map-keys($sizes), (
-        9rem,
-        11rem,
-        13rem,
-        15rem,
-        18rem,
-        20rem,
-        22rem,
-        25rem
-));
+/* Breakpoints */
+$bp-default-indexes: (1, );
+$num-used-breakpoints: length($bp-default-indexes);
+$bps: map-breakpoints-indexes($bp-default-indexes);

@@ -1,0 +1,86 @@
+/*******************************
+            Message
+*******************************/
+
+// $textColor
+
+/*-------------------
+       Elements
+--------------------*/
+
+$vertical-margin: 1em;
+$vertical-padding: 1em;
+$horizontal-padding: 1.5em;
+$padding: $vertical-padding $horizontal-padding;
+$background: #-f8-f8-f9;
+$line-height-offset: (($line-height - 1em) / 2);
+
+$border-radius: $default-border-radius;
+$border-width: 1px;
+$border-shadow: 0 0 0 $border-width color-divider('strong') inset;
+$shadow-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+$box-shadow: $border-shadow, $shadow-shadow;
+
+$transition:
+opacity $default-duration $default-easing,
+color $default-duration $default-easing,
+background $default-duration $default-easing,
+box-shadow $default-duration $default-easing;
+
+/* Header */
+$header-font-size: size('large');
+$header-font-weight: bold;
+$header-display: block;
+$header-distance: 0;
+$header-margin: -$heading-line-height-offset 0 $header-distance 0;
+$header-paragraph-distance: 0.25em;
+
+/* Paragraph */
+$message-text-opacity: 0.85;
+$message-paragraph-margin: 0.75em;
+
+/* List */
+$list-opacity: 0.85;
+$list-style-position: inside;
+$list-margin: 0.5em;
+$list-item-indent: 1em;
+$list-item-margin: 0.3em;
+
+/* Icon */
+$icon-distance: 0.6em;
+
+/* Close Icon */
+$close-top-distance: $vertical-padding - $line-height-offset;
+$close-right-distance: 0.5em;
+$close-opacity: 0.7;
+$close-transition: opacity $default-duration $default-easing;
+
+
+/*-------------------
+        Types
+--------------------*/
+
+/* Icon Message */
+$icon-size: 3em;
+$icon-opacity: 0.8;
+$icon-content-distance: 0;
+$icon-vertical-align: middle;
+
+/* Attached */
+$attached-x-offset: -1px;
+$attached-y-offset: -1px;
+$attached-box-shadow: 0 0 0 $border-width color-divider() inset;
+$attached-bottom-box-shadow: $attached-box-shadow, $subtle-shadow;
+
+/* Floating */
+$floating-box-shadow: $border-shadow, $floating-shadow;
+
+/* Colors */
+
+/* Warning / Positive / Negative / Info */
+$positive-box-shadow: 0 0 0 $border-width $positive-border-color inset, $shadow-shadow;
+$negative-box-shadow: 0 0 0 $border-width $negative-border-color inset, $shadow-shadow;
+$info-box-shadow: 0 0 0 $border-width $info-border-color inset, $shadow-shadow;
+$warning-box-shadow: 0 0 0 $border-width $warning-border-color inset, $shadow-shadow;
+$error-box-shadow: 0 0 0 $border-width $error-border-color inset, $shadow-shadow;
+$success-box-shadow: 0 0 0 $border-width $success-border-color inset, $shadow-shadow;

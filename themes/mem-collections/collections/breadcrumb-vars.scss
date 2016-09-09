@@ -1,0 +1,33 @@
+/*******************************
+          Breadcrumb
+*******************************/
+
+/*-------------------
+     Breadcrumb
+--------------------*/
+
+$vertical-margin: 0;
+$display: inline-block;
+$vertical-align: middle;
+
+$divider-spacing: px-em(3);
+$divider-opacity: 0.7;
+$divider-color: color-light(color-text());
+
+$divider-size: size('small');
+$divider-vertical-align: baseline;
+
+$icon-divider-size: size('tiny');
+$icon-divider-vertical-align: baseline;
+
+$section-margin: 0;
+$section-padding: 0;
+
+/* Coupling */
+$segment-padding: size('mini') size('medium');
+
+/*-------------------
+       States
+--------------------*/
+
+$active-font-weight: bold;

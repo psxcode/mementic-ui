@@ -47,17 +47,8 @@ $very-relaxed-gutter-width: 5rem;
 
 // Breakpoints
 // -------------------------------
-
 $gutters: (2em, 3%, 15%, 23%);
 
-@function map-breakpoints($names: (), $breakpoint-map: $breakpoints) {
-  $names: slice($names, $end: min(length($names), 4));
-
-  @if length($names) == 0 {
-    @return map-extract-by-indexes($breakpoint-map, (1, 2, 3, 4));
-  } @else {
-    @return map-extract($breakpoint-map, $names);
-  }
-}
-
-$bps: map-breakpoints();
+$bp-default-indexes: (1, 2, 3, 4);
+$num-used-breakpoints: length($bp-default-indexes);
+$bps: map-breakpoints-indexes($bp-default-indexes);

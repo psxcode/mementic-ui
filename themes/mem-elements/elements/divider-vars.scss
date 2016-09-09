@@ -20,7 +20,6 @@ $text-transform: uppercase;
 $divider-icon-size: 1rem;
 $divider-icon-margin: 0rem;
 
-
 /*******************************
          Variations
 *******************************/
@@ -44,14 +43,7 @@ $section-margin: 2rem;
 /* Sizes */
 $medium: 1rem;
 
-@function map-breakpoints($names: (), $breakpoint-map: $breakpoints) {
-  $names: slice($names, min(length($names), 1));
-
-  @if length($names) == 0 {
-    @return map-extract-by-indexes($breakpoint-map, (1));
-  } @else {
-    @return map-extract($breakpoint-map, $names);
-  }
-}
-
-$bps: map-breakpoints();
+/* Breakpoints */
+$bp-default-indexes: (1, );
+$num-used-breakpoints: length($bp-default-indexes);
+$bps: map-breakpoints-indexes($bp-default-indexes);

@@ -1,0 +1,99 @@
+/*******************************
+            Comments
+*******************************/
+
+
+/*-------------------
+       View
+--------------------*/
+
+$max-width: 650px;
+$margin: 1.5em 0;
+
+/*-------------------
+      Elements
+--------------------*/
+
+/* Comment */
+$comment-background: none;
+$comment-margin: 0.5em 0 0;
+$comment-padding: 0.5em 0 0;
+$comment-divider: none;
+$comment-border: none;
+$comment-line-height: 1.2;
+$first-comment-margin: 0;
+$first-comment-padding: 0;
+
+/* Nested Comment */
+$nested-comments-margin: 0 0 0.5em 0.5em;
+$nested-comments-padding: 1em 0 1em 1em;
+
+$nested-comment-divider: none;
+$nested-comment-border: none;
+$nested-comment-background: none;
+
+/* Avatar */
+$avatar-display: block;
+$avatar-float: left;
+$avatar-width: 2.5em;
+$avatar-height: auto;
+$avatar-spacing: 1em;
+$avatar-margin: ($comment-line-height - 1em) 0 0;
+$avatar-border-radius: 0.25rem;
+
+/* Content */
+$content-margin: $avatar-width + $avatar-spacing;
+
+/* Author */
+$author-font-size: 1em;
+$author-color: color-text();
+$author-hover-color: $link-hover-color;
+$author-font-weight: bold;
+
+/* Metadata */
+$metadata-display: inline-block;
+$metadata-font-size: 0.875em;
+$metadata-spacing: 0.5em;
+$metadata-content-spacing: 0.5em;
+$metadata-color: color-light(color-text());
+
+/* Text */
+$text-font-size: 1em;
+$text-margin: 0.25em 0 0.5em;
+$text-word-wrap: break-word;
+$text-line-height: 1.3;
+
+/* Actions */
+$action-font-size: 0.875em;
+$action-content-distance: 0.75em;
+$action-link-color: color-text('primary', 'unselected');
+$action-link-hover-color: color-text('primary', 'hovered');
+
+/* Reply */
+$reply-distance: 1em;
+$reply-height: 12em;
+$reply-font-size: 1em;
+
+$comment-reply-distance: $reply-distance;
+
+/*-------------------
+      Variations
+--------------------*/
+
+/* Threaded */
+$threaded-comment-margin: -1.5em 0 -1em  ($avatar-width / 2);
+$threaded-comment-padding: 3em 0 2em 2.25em;
+$threaded-comment-box-shadow: -1px 0 0 color-divider();
+
+
+/* Minimal */
+$minimal-action-position: absolute;
+$minimal-action-top: 0;
+$minimal-action-right: 0;
+$minimal-action-left: auto;
+
+$minimal-transition-delay: 0.1s;
+$minimal-easing: $default-easing;
+$minimal-duration: 0.2s;
+$minimal-transition: opacity $minimal-duration $minimal-easing;
+

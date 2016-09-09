@@ -19,12 +19,10 @@ $arrow-size: size('large');
 $vertical-padding: size('large');
 $horizontal-padding: 2em;
 
-$transition:
-background-color $default-duration $default-easing,
+$transition: background-color $default-duration $default-easing,
 opacity $default-duration $default-easing,
 color $default-duration $default-easing,
-box-shadow $default-duration $default-easing
-;
+box-shadow $default-duration $default-easing;
 $line-height: size('large');
 $align-items: center;
 $justify-content: center;
@@ -52,7 +50,6 @@ $description-distance: 0.25em;
 $description-font-size: size('small');
 $description-font-weight: normal;
 $description-color: color-text();
-
 
 /* Arrow */
 $arrow-background-color: $background-color;
@@ -120,21 +117,11 @@ $active-icon-color: color-text();
 $active-hover-background: color-text('primary', $inverted: true);
 $active-hover-color: color-text();
 
-
 /* Disabled */
 $disabled-background: $background;
 $disabled-color: color-text('primary', 'disabled');
 
-
-
-@function map-breakpoints($names: (), $breakpoint-map: $breakpoints) {
-  $names: slice($names, $end: min(length($names), 1));
-
-  @if length($names) == 0 {
-    @return map-extract-by-indexes($breakpoint-map, (3));
-  } @else {
-    @return map-extract($breakpoint-map, $names);
-  }
-}
-
-$bps: map-breakpoints();
+/* Breakpoints */
+$bp-default-indexes: (1, 2);
+$num-used-breakpoints: length($bp-default-indexes);
+$bps: map-breakpoints-indexes($bp-default-indexes);

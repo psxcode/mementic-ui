@@ -59,6 +59,7 @@
 .ui.horizontal.divider:before {
   background-position: right $horizontal-divider-margin top 50%;
 }
+
 .ui.horizontal.divider:after {
   background-position: left $horizontal-divider-margin top 50%;
 }
@@ -100,54 +101,54 @@
 .ui.vertical.divider:before {
   top: -100%;
 }
+
 .ui.vertical.divider:after {
   top: auto;
   bottom: 0;
 }
 
 /* Inside grid */
-//@media only screen and (max-width : @largestMobileScreen)
-@each $name, $bp in $bps {
-  @include media('screen', '<#{$name}') {
 
-    .ui.stackable.grid .ui.vertical.divider,
-    .ui.grid .stackable.row .ui.vertical.divider {
-      display: table;
-      white-space: nowrap;
-      height: auto;
-      margin: $horizontal-margin;
-      overflow: hidden;
-      line-height: 1;
-      text-align: center;
-      position: static;
-      top: 0;
-      left: 0;
-      transform: none;
-    }
+$bp-largest-mobile: map-value-by-index($bps, 1);
+@include media('screen', '<#{$bp-largest-mobile}') {
 
-    .ui.stackable.grid .ui.vertical.divider:before,
-    .ui.grid .stackable.row .ui.vertical.divider:before,
-    .ui.stackable.grid .ui.vertical.divider:after,
-    .ui.grid .stackable.row .ui.vertical.divider:after {
-      left: 0;
-      border-left: none;
-      border-right: none;
-      content: '';
-      display: table-cell;
-      position: relative;
-      top: 50%;
-      width: 50%;
-      background-repeat: no-repeat;
-    }
+  .ui.stackable.grid .ui.vertical.divider,
+  .ui.grid .stackable.row .ui.vertical.divider {
+	display: table;
+	white-space: nowrap;
+	height: auto;
+	margin: $horizontal-margin;
+	overflow: hidden;
+	line-height: 1;
+	text-align: center;
+	position: static;
+	top: 0;
+	left: 0;
+	transform: none;
+  }
 
-    .ui.stackable.grid .ui.vertical.divider:before,
-    .ui.grid .stackable.row .ui.vertical.divider:before {
-      background-position: right $horizontal-divider-margin top 50%;
-    }
-    .ui.stackable.grid .ui.vertical.divider:after,
-    .ui.grid .stackable.row .ui.vertical.divider:after {
-      background-position: left $horizontal-divider-margin top 50%;
-    }
+  .ui.stackable.grid .ui.vertical.divider:before,
+  .ui.grid .stackable.row .ui.vertical.divider:before,
+  .ui.stackable.grid .ui.vertical.divider:after,
+  .ui.grid .stackable.row .ui.vertical.divider:after {
+	left: 0;
+	border-left: none;
+	border-right: none;
+	content: '';
+	display: table-cell;
+	position: relative;
+	top: 50%;
+	width: 50%;
+	background-repeat: no-repeat;
+  }
+
+  .ui.stackable.grid .ui.vertical.divider:before,
+  .ui.grid .stackable.row .ui.vertical.divider:before {
+	background-position: right $horizontal-divider-margin top 50%;
+  }
+  .ui.stackable.grid .ui.vertical.divider:after,
+  .ui.grid .stackable.row .ui.vertical.divider:after {
+	background-position: left $horizontal-divider-margin top 50%;
   }
 }
 
@@ -173,6 +174,7 @@
 .ui.hidden.divider {
   border-color: transparent !important;
 }
+
 .ui.hidden.divider:before,
 .ui.hidden.divider:after {
   display: none;
@@ -187,6 +189,7 @@
 .ui.horizontal.inverted.divider {
   color: $inverted-text-color;
 }
+
 .ui.divider.inverted,
 .ui.divider.inverted:after,
 .ui.divider.inverted:before {

@@ -1,0 +1,14 @@
+$margin: 1em 0;
+$overflow: hidden;
+
+$test-background: color-light(color-main('dark'));
+$test-color: color-main('light');
+$test-font-weight: bold;
+$test-text: 'Ad';
+$test-font-size: size('medium');
+$test-mobile-font-size: size('tiny');
+
+/* Breakpoints */
+$bp-default-indexes: (1, );
+$num-used-breakpoints: length($bp-default-indexes);
+$bps: map-breakpoints-indexes($bp-default-indexes);

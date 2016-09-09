@@ -1,0 +1,98 @@
+/*******************************
+           Statistic
+*******************************/
+
+/*-------------------
+         View
+--------------------*/
+
+$margin: 1em 0;
+$text-align: center;
+$max-width: auto;
+
+/* Group */
+$horizontal-spacing: 1.5em;
+$row-spacing: 2em;
+$group-margin: 1em -$horizontal-spacing -$row-spacing;
+
+/* Group Element */
+$element-margin: 0 $horizontal-spacing $row-spacing;
+$element-max-width: $max-width;
+
+/*-------------------
+       Content
+--------------------*/
+
+/* Value */
+$value-font: $font-family;
+$value-font-weight: normal;
+$value-line-height: 1em;
+$value-color: color-main('dark');
+$value-text-transform: uppercase;
+
+/* Label */
+$label-size: size('medium');
+$top-label-distance: 0;
+$bottom-label-distance: 0;
+$label-font: $heading-font-family;
+$label-font-weight: bold;
+$label-color: color-text();
+$label-line-height: size('large');
+$label-text-transform: uppercase;
+
+/* Text */
+$text-value-line-height: 1em;
+$text-value-min-height: 2em;
+$text-value-font-weight: bold;
+
+/* Label Image */
+$image-height: 3rem;
+$image-vertical-align: baseline;
+
+/*-------------------
+      Types
+--------------------*/
+
+$horizontal-group-element-margin: 1em 0;
+$horizontal-label-distance: 0.75em;
+
+/*-------------------
+      Variations
+--------------------*/
+
+/* Floated */
+$left-floated-margin: 0 2em 1em 0;
+$right-floated-margin: 0 0 1em 2em;
+
+/* Inverted */
+$inverted-value-color: color-main('light');
+$inverted-label-color: color-text($inverted: true);
+
+/* Item Width */
+$item-group-margin: 0 0 -$row-spacing;
+$item-margin: 0 0 $row-spacing;
+
+/* Size */
+$mini-text-value-size: 1rem;
+$mini-value-size: 1.5rem;
+$mini-horizontal-value-size: 1.5rem;
+
+$tiny-text-value-size: 1rem;
+$tiny-value-size: 2rem;
+$tiny-horizontal-value-size: 2rem;
+
+$small-text-value-size: 1rem;
+$small-value-size: 3rem;
+$small-horizontal-value-size: 2rem;
+
+$text-value-size: 2rem;
+$value-size: 4rem;
+$horizontal-value-size: 3rem;
+
+$large-text-value-size: 2.5rem;
+$large-value-size: 5rem;
+$large-horizontal-value-size: 4rem;
+
+$huge-text-value-size: 2.5rem;
+$huge-value-size: 6rem;
+$huge-horizontal-value-size: 5rem;
