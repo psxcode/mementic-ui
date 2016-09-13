@@ -20,7 +20,7 @@
   width: 100%;
   height: 100%;
 
-  border-radius: $circular-radius;
+  border-radius: $border-radius-circular;
   border: $loader-line-width solid $loader-fill-color;
 }
 
@@ -36,7 +36,7 @@
   animation: loader $loader-speed linear;
   animation-iteration-count: infinite;
 
-  border-radius: $circular-radius;
+  border-radius: $border-radius-circular;
 
   border-color: $shape-border-color;
   border-style: solid;

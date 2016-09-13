@@ -13,15 +13,15 @@ $consecutive-grid-distance: ($row-spacing / 2);
 $divided-border: -1px 0 0 0 color-divider();
 $vertically-divided-border: 0 -1px 0 0 color-divider();
 
-$divided-inverted-border: -1px 0 0 0 color-divider($inverted: true);
-$vertically-divided-inverted-border: 0 -1px 0 0 color-divider($inverted: true);
+$divided-inverted-border: -1px 0 0 0 color-divider($color-divider-inverted);
+$vertically-divided-inverted-border: 0 -1px 0 0 color-divider($color-divider-inverted);
 
 // Celled
 // -------------------------------
 
 $celled-margin: 1em 0em;
 $celled-width: 1px;
-$celled-border-color: color-divider('solid');
+$celled-border-color: color-divider-solid();
 
 $celled-padding: 1em;
 $celled-relaxed-padding: 1.5em;
@@ -37,7 +37,7 @@ $celled-column-divider: (-$celled-width) 0 0 0 $celled-border-color;
 $stackable-row-spacing: $row-spacing;
 $stackable-gutter: $gutter-width;
 $stackable-mobile-border: 1px solid color-divider();
-$stackable-inverted-mobile-border: 1px solid color-divider($inverted: true);
+$stackable-inverted-mobile-border: 1px solid color-divider($color-divider-inverted);
 
 // Relaxed
 // -------------------------------
@@ -50,5 +50,4 @@ $very-relaxed-gutter-width: 5rem;
 $gutters: (2em, 3%, 15%, 23%);
 
 $bp-default-indexes: (1, 2, 3, 4);
-$num-used-breakpoints: length($bp-default-indexes);
-$bps: map-breakpoints-indexes($bp-default-indexes);
+$bps: breakpoint-collect-by-indexes($bp-default-indexes);

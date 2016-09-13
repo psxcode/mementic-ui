@@ -22,9 +22,4 @@ $colors-ionic: (
   }
 }
 
-@function set-color-ionic($name, $color) {
-  $colors-ionic: define-color($colors-ionic, $name, $color);
-}
-
-//should be overrided in button-vars.scss
-$colors-button-auto-include-main: false;
+$auto-include-colors-main: false;

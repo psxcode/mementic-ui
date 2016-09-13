@@ -27,7 +27,7 @@ $element-max-width: $max-width;
 $value-font: $font-family;
 $value-font-weight: normal;
 $value-line-height: 1em;
-$value-color: color-main('dark');
+$value-color: $color-dark;
 $value-text-transform: uppercase;
 
 /* Label */
@@ -65,8 +65,8 @@ $left-floated-margin: 0 2em 1em 0;
 $right-floated-margin: 0 0 1em 2em;
 
 /* Inverted */
-$inverted-value-color: color-main('light');
-$inverted-label-color: color-text($inverted: true);
+$inverted-value-color: $color-light;
+$inverted-label-color: color-text($color-text-inverted);
 
 /* Item Width */
 $item-group-margin: 0 0 -$row-spacing;

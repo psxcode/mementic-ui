@@ -2,7 +2,7 @@
        Element
 --------------------*/
 
-$background: color-main('light');
+$background: $color-light;
 $border-width: 1px;
 $border: $border-width solid color-divider();
 
@@ -14,7 +14,7 @@ $padding: $vertical-padding $horizontal-padding;
 $vertical-margin: 1rem;
 $horizontal-margin: 0;
 $margin: $vertical-margin $horizontal-margin;
-$border-radius: unit-rem($default-border-radius);
+$border-radius: unit-rem($border-radius-default);
 
 /*-------------------
        Group
@@ -68,7 +68,7 @@ $circular-padding: 2em;
 
 /* Stacked */
 $stacked-height: 6px;
-$stacked-page-background: color-transparent(color-main('dark'), 'subtle');
+$stacked-page-background: color-transparent-subtle($color-dark);
 $stacked-padding: $vertical-padding + (0.4em);
 $tall-stacked-padding: $vertical-padding + (0.8em);
 
@@ -85,11 +85,11 @@ $attached-bottom-offset: 0;
 $attached-horizontal-offset: $border-width;
 $attached-width: calc(100% - (#{$attached-horizontal-offset} * 2));
 $attached-box-shadow: 0;
-$attached-border: $border-width solid color-divider('solid');
+$attached-border: $border-width solid color-divider-solid();
 $attached-bottom-box-shadow: $box-shadow, $attached-box-shadow;
 
 /* Inverted */
-$inverted-background: color-main('dark');
+$inverted-background: $color-dark;
 
 /* Floated */
 $floated-distance: 1em;
@@ -104,22 +104,22 @@ $basic-border-radius: 0;
 $colored-border-size: 2px;
 
 /* Ordinality */
-$secondary-background: color-main('mid');
-$secondary-color: color-text('primary', 'muted');
+$secondary-background: $color-mid;
+$secondary-color: color-text-muted();
 
-$tertiary-background: color-main('mid');
-$tertiary-color: color-text('primary', 'muted');
+$tertiary-background: $color-mid;
+$tertiary-color: color-text-muted();
 
 $secondary-inverted-lightness: 0.2;
-$secondary-inverted-background: lighten(color-main('dark'), ($secondary-inverted-lightness * 100)) linear-gradient(
+$secondary-inverted-background: lighten($color-dark, ($secondary-inverted-lightness * 100)) linear-gradient(
                 rgba(255, 255, 255, $secondary-inverted-lightness) 0%,
                 rgba(255, 255, 255, $secondary-inverted-lightness) 100%
 );
-$secondaryInvertedColor: color-text('primary', 'muted', $inverted: true);
+$secondaryInvertedColor: color-text-muted($color-text-inverted);
 
 $tertiary-inverted-lightness: 0.35;
-$tertiary-inverted-background: lighten(color-main('dark'), ($tertiary-inverted-lightness * 100)) linear-gradient(
+$tertiary-inverted-background: lighten($color-dark, ($tertiary-inverted-lightness * 100)) linear-gradient(
                 rgba(255, 255, 255, $tertiary-inverted-lightness) 0%,
                 rgba(255, 255, 255, $tertiary-inverted-lightness) 100%
 );
-$tertiaryInvertedColor: color-text('primary', 'muted', $inverted: true);
+$tertiaryInvertedColor: color-text-muted($color-text-inverted);

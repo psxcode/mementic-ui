@@ -3,13 +3,6 @@
 module.exports = {
 	modules: [{
 		path: 'collections',
-		names: [
-			'breadcrumb',
-			'form',
-			'grid',
-			'menu',
-			'message',
-		    'table'
-		]
+		names: ['breadcrumb', 'form', 'grid', 'menu', 'message', 'table']
 	}]
 };

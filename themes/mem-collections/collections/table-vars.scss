@@ -11,10 +11,10 @@ $horizontal-margin: 0;
 $margin: $vertical-margin $horizontal-margin;
 $border-collapse: separate;
 $border-spacing: 0;
-$border-radius: unit-rem($default-border-radius);
-$transition: background $default-duration $default-easing,
-color $default-duration $default-easing;
-$background: color-main('light');
+$border-radius: unit-rem($border-radius-default);
+$transition: background $duration-default $easing-default,
+color $duration-default $easing-default;
+$background: $color-light;
 $color: color-text();
 $border-width: 1px;
 $border: $border-width solid color-divider();
@@ -26,19 +26,19 @@ $text-align: left;
 ---------------*/
 
 /* Table Row */
-$row-border: 1px solid color-divider('internal');
+$row-border: 1px solid color-divider-internal();
 
 /* Table Cell */
 $cell-vertical-padding: size('mini');
 $cell-horizontal-padding: size('mini');
 $cell-vertical-align: inherit;
 $cell-text-align: inherit;
-$cell-border: 1px solid color-divider('internal');
+$cell-border: 1px solid color-divider-internal();
 
 /* Table Header */
-$header-border: 1px solid color-divider('internal');
+$header-border: 1px solid color-divider-internal();
 $header-divider: none;
-$header-background: color-main('mid');
+$header-background: $color-mid;
 $header-align: inherit;
 $header-vertical-align: inherit;
 $header-color: color-text();
@@ -53,7 +53,7 @@ $header-box-shadow: none;
 $footer-box-shadow: none;
 $footer-border: 1px solid color-divider();
 $footer-divider: none;
-$footer-background: color-main('mid');
+$footer-background: $color-mid;
 $footer-align: inherit;
 $footer-vertical-align: middle;
 $footer-color: color-text();
@@ -77,19 +77,19 @@ $responsive-cell-box-shadow: none !important;
 --------------------*/
 
 /* Definition */
-$definition-page-background: color-main('light');
+$definition-page-background: $color-light;
 
 $definition-header-background: transparent;
-$definition-header-color: color-text('primary', 'unselected');
+$definition-header-color: color-text-unselected();
 $definition-header-font-weight: normal;
 
 $definition-footer-background: $definition-header-background;
 $definition-footer-color: $definition-header-color;
 $definition-footer-font-weight: $definition-header-font-weight;
 
-$definition-column-background: color-transparent(color-main('dark'), 'subtle');
+$definition-column-background: color-transparent-subtle($color-dark);
 $definition-column-font-weight: bold;
-$definition-column-color: color-text('primary', 'selected');
+$definition-column-color: color-text-selected();
 $definition-column-font-size: size('medium');
 $definition-column-text-transform: '';
 $definition-column-box-shadow: '';
@@ -150,7 +150,7 @@ $attached-bottom-offset: 0;
 $attached-horizontal-offset: -$border-width;
 $attached-width: calc(100% + #{$attached-horizontal-offset * -2});
 $attached-box-shadow: none;
-$attached-border: $border-width solid color-divider('solid');
+$attached-border: $border-width solid color-divider-solid();
 $attached-bottom-box-shadow: $box-shadow, $attached-box-shadow;
 
 /* Striped */
@@ -158,10 +158,10 @@ $striped-background: rgba(0, 0, 50, 0.02);
 $inverted-striped-background: rgba(255, 255, 255, 0.05);
 
 /* Selectable */
-$selectable-background: color-transparent(color-main('dark'));
-$selectable-text-color: color-text('primary', 'selected');
-$selectable-inverted-background: color-transparent(color-main('light'));
-$selectable-inverted-text-color: color-text('primary', 'selected', $inverted: true);
+$selectable-background: color-transparent($color-dark);
+$selectable-text-color: color-text-selected();
+$selectable-inverted-background: color-transparent($color-light);
+$selectable-inverted-text-color: color-text-selected($color-text-inverted);
 
 /* Sortable */
 $sortable-background: '';
@@ -174,22 +174,22 @@ $sortable-icon-opacity: 0.8;
 $sortable-icon-font: 'Icons';
 $sortable-icon-ascending: '\f0d8';
 $sortable-icon-descending: '\f0d7';
-$sortable-disabled-color: color-text('primary', 'disabled');
+$sortable-disabled-color: color-text-disabled();
 
-$sortable-hover-background: color-transparent(color-main('dark'));
-$sortable-hover-color: color-text('primary', 'hovered');
+$sortable-hover-background: color-transparent($color-dark);
+$sortable-hover-color: color-text-hovered();
 
-$sortable-active-background: color-transparent(color-main('dark'));
-$sortable-active-color: color-text('primary', 'selected');
+$sortable-active-background: color-transparent($color-dark);
+$sortable-active-color: color-text-selected();
 
-$sortable-active-hover-background: color-transparent(color-main('dark'));
-$sortable-active-hover-color: color-text('primary', 'selected');
+$sortable-active-hover-background: color-transparent($color-dark);
+$sortable-active-hover-color: color-text-selected();
 
 $sortable-inverted-border-color: transparent;
-$sortable-inverted-hover-background: color-transparent(color-main('light')) $subtle-gradient;
-$sortable-inverted-hover-color: color-text('primary', 'hovered', $inverted: true);
-$sortable-inverted-active-background: color-transparent(color-main('light'), 'strong') $subtle-gradient;
-$sortable-inverted-active-color: color-text('primary', 'selected', $inverted: true);
+$sortable-inverted-hover-background: color-transparent($color-light) $subtle-gradient;
+$sortable-inverted-hover-color: color-text-hovered($color-text-inverted);
+$sortable-inverted-active-background: color-transparent-strong($color-light) $subtle-gradient;
+$sortable-inverted-active-color: color-text-selected($color-text-inverted);
 
 /* Colors */
 $colored-border-size: 0.2em;
@@ -198,15 +198,15 @@ $colored-border-radius: 0 0 $border-radius $border-radius;
 /* Inverted */
 $inverted-background: #333333;
 $inverted-border: none;
-$inverted-cell-border-color: color-divider($inverted: true);
-$inverted-cell-color: color-text($inverted: true);
+$inverted-cell-border-color: color-divider($color-divider-inverted);
+$inverted-cell-color: color-text($color-text-inverted);
 
-$inverted-header-background: color-transparent(color-main('dark'), 'strong');
-$inverted-header-color: color-text($inverted: true);
+$inverted-header-background: color-transparent-strong($color-dark);
+$inverted-header-color: color-text($color-text-inverted);
 $inverted-header-border-color: $inverted-cell-border-color;
 
-$inverted-definition-column-background: color-transparent(color-main('light'), 'subtle');
-$inverted-definition-column-color: color-text('primary', 'selected', $inverted: true);
+$inverted-definition-column-background: color-transparent-subtle($color-light);
+$inverted-definition-column-color: color-text-selected($color-text-inverted);
 $inverted-definition-column-font-weight: bold;
 
 /* Basic */
@@ -219,7 +219,7 @@ $basic-table-cell-background: transparent;
 $basic-table-header-divider: none;
 $basic-table-cell-border: 1px solid rgba(0, 0, 0, 0.1);
 $basic-table-cell-padding: '';
-$basic-table-striped-background: color-transparent(color-main('dark'));
+$basic-table-striped-background: color-transparent($color-dark);
 
 /* Padded */
 $padded-vertical-padding: 1em;

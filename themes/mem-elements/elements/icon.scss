@@ -43,10 +43,10 @@ i.icon.loading {
 
 @keyframes icon-loading {
   from {
-    transform: rotate(0deg);
+	transform: rotate(0deg);
   }
   to {
-    transform: rotate(360deg);
+	transform: rotate(360deg);
   }
 }
 
@@ -67,7 +67,7 @@ i.emphasized.icon {
 }
 
 i.disabled.icon {
-  opacity: $color-disabled-opacity !important;
+  opacity: $color-opacity-disabled !important;
 }
 
 /*******************************
@@ -90,7 +90,7 @@ i.fitted.icon {
 i.link.icon, i.link.icons {
   cursor: pointer;
   opacity: $link-opacity;
-  transition: opacity $default-duration $default-easing;
+  transition: opacity $duration-default $easing-default;
 }
 
 i.link.icon:hover, i.link.icons:hover {
@@ -171,37 +171,37 @@ i.bordered.inverted.icon {
 /* Inverted Shapes */
 i.inverted.bordered.icon,
 i.inverted.circular.icon {
-  background-color: color-main('dark') !important;
-  color: color-main('light') !important;
+  background-color: $color-dark !important;
+  color: $color-light !important;
 }
 
 i.inverted.icon {
-  color: color-main('light');
+  color: $color-light;
 }
 
 /*-------------------
        Colors
 --------------------*/
 
-@mixin colors-icon($color-map) {
+@mixin colors($color-map) {
   @each $name, $color in $color-map {
-    /* Color */
-    i.#{$name}.icon {
-      color: $color !important;
-    }
-    i.inverted.#{$name}.icon {
-      color: color-light($color) !important;
-    }
-    i.inverted.bordered.#{$name}.icon,
-    i.inverted.circular.#{$name}.icon {
-      background-color: $color !important;
-      color: color-main('light') !important;
-    }
+
+	i.#{$name}.icon {
+	  color: $color !important;
+	}
+	i.inverted.#{$name}.icon {
+	  color: color-light($color) !important;
+	}
+	i.inverted.bordered.#{$name}.icon,
+	i.inverted.circular.#{$name}.icon {
+	  background-color: $color !important;
+	  color: $color-light !important;
+	}
   }
 }
 
-@if type-of($colors-default) == 'map' and $colors-auto-include-default == true {
-  @include colors-icon($colors-default);
+@if $auto-include-colors-main == true {
+  @include colors($colors-main);
 }
 
 /*-------------------
@@ -212,8 +212,8 @@ i.inverted.icon {
 
   i.#{$name}.icon,
   i.#{$name}.icons {
-    line-height: 1;
-    font-size: $size;
+	line-height: 1;
+	font-size: $size;
   }
 }
 

@@ -301,7 +301,7 @@ h5.ui.header .sub.header {
 *******************************/
 
 .ui.disabled.header {
-  opacity: $color-disabled-opacity;
+  opacity: $color-opacity-disabled;
 }
 
 /*******************************
@@ -520,6 +520,6 @@ h5.ui.header .sub.header {
   }
 }
 
-@if type-of($colors-default) == 'map' and $colors-auto-include-default == true {
-  @include colors($colors-default);
+@if $auto-include-colors-main == true {
+  @include colors($colors-main);
 }

@@ -3,8 +3,6 @@
 module.exports = {
 	modules: [{
 		path: 'views',
-		names: [
-			'comment'
-		]
+		names: ['ad', 'card', 'comment', 'feed', 'item', 'statistic']
 	}]
 };

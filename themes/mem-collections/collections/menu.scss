@@ -459,7 +459,7 @@ $bp-tablet: map-value-by-index($bps, 1);
 .ui.menu .item.disabled:hover {
   cursor: default;
   background-color: transparent !important;
-  color: color-text('primary', 'disabled');
+  color: color-text-disabled();
 }
 
 /*******************************
@@ -859,7 +859,7 @@ Floated Menu / Item
 /* Inverted */
 .ui.secondary.inverted.menu .link.item,
 .ui.secondary.inverted.menu a.item {
-  color: $secondaryInvertedColor !important;
+  color: $secondary-inverted-color !important;
 }
 
 .ui.secondary.inverted.menu .dropdown.item:hover,
@@ -1322,7 +1322,7 @@ Floated Menu / Item
 /* Disabled */
 .ui.inverted.menu .item.disabled,
 .ui.inverted.menu .item.disabled:hover {
-  color: color-text('primary', 'disabled', $inverted: true);
+  color: color-text-disabled($color-text-inverted);
 }
 
 /*--- Hover ---*/

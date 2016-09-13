@@ -8,25 +8,25 @@
 
 /* Shadow */
 $shadow-distance: 1px;
-$shadow-box-shadow: 0 $shadow-distance 3px 0 color-divider('solid');
+$shadow-box-shadow: 0 $shadow-distance 3px 0 color-divider-solid();
 
 /* Card */
+$text-color: color-text();
 $font-family: $font-family;
 $display: flex;
-$background: color-main('light');
-$border-radius: $default-border-radius;
+$background: $color-light;
+$border-radius: $border-radius-default;
 $margin: 1em 0;
 $min-height: 0;
 $padding: 0;
 $width: 290px;
 $border-width: 1px;
-$border-shadow: 0 0 0 $border-width color-divider('solid');
+$border-shadow: 0 0 0 $border-width color-divider-solid();
 $box-shadow: $shadow-box-shadow, $border-shadow;
 $border: none;
-$z-index: '';
-$transition:
-box-shadow $default-duration $default-easing,
-transform $default-duration $default-easing;
+$z-index: 0;
+$transition: box-shadow $duration-default $easing-default,
+transform $duration-default $easing-default;
 
 /* Card Group */
 $horizontal-spacing: 1em;
@@ -46,16 +46,15 @@ $consecutive-group-distance: ($row-spacing / 2);
        Content
 --------------------*/
 
-
 /* Image */
-$image-background: color-transparent(color-main('dark'));
+$image-background: color-transparent($color-dark);
 $image-padding: 0;
 $image-border: none;
 $image-box-shadow: none;
 $image-border: none;
 
 /* Content */
-$content-divider: $border-width solid color-divider('internal');
+$content-divider: $border-width solid color-divider-internal();
 $content-margin: 0;
 $content-background: none;
 $content-padding: 1em 1em;
@@ -64,9 +63,8 @@ $content-border-radius: 0;
 $content-box-shadow: none;
 $content-border: none;
 
-
 /* Header */
-$header-margin: '';
+$header-margin: 0;
 $header-font-weight: bold;
 $header-font-size: size('big');
 $header-line-height-offset: -($line-height - 1em) / 2;
@@ -80,7 +78,7 @@ $meta-color: color-light(color-text());
 /* Icons */
 $action-opacity: 0.75;
 $action-hover-opacity: 1;
-$action-transition: color $default-duration $default-easing;
+$action-transition: color $duration-default $easing-default;
 
 $star-color: #FFB70A;
 $star-active-color: #FFE623;
@@ -89,9 +87,9 @@ $like-color: #FF2733;
 $like-active-color: #FF2733;
 
 /* Links */
-$content-link-color: '';
-$content-link-hover-color: '';
-$content-link-transition: color $default-duration $default-easing;
+$content-link-color: $link-color;
+$content-link-hover-color: $link-hover-color;
+$content-link-transition: color $duration-default $easing-default;
 
 $header-link-color: $header-color;
 $header-link-hover-color: $link-hover-color;
@@ -104,19 +102,19 @@ $description-distance: 0.5em;
 $description-color: rgba(0, 0, 0, 0.68);
 
 /* Content Image */
-$content-image-width: '';
+$content-image-width: auto;
 $content-image-vertical-align: middle;
 
 /* Avatar Image */
 $avatar-size: 2em;
-$avatar-border-radius: $circular-radius;
+$avatar-border-radius: $border-radius-circular;
 
 /* Paragraph */
 $paragraph-distance: 0.5em;
 
 /* Dimmer */
 $dimmer-z-index: 10;
-$dimmer-color: '';
+$dimmer-color: $color-mid;
 
 /* Additional Content */
 $extra-divider: 1px solid rgba(0, 0, 0, 0.05);
@@ -129,10 +127,10 @@ $extra-margin: 0 0;
 $extra-padding: 0.75em 1em;
 $extra-box-shadow: none;
 $extra-color: color-light(color-text());
-$extra-transition: color $default-duration $default-easing;
+$extra-transition: color $duration-default $easing-default;
 
 /* Extra Links */
-$extra-link-color: color-text('primary', 'unselected');
+$extra-link-color: color-text-unselected();
 $extra-link-hover-color: $link-hover-color;
 
 /* Buttons */
@@ -144,15 +142,14 @@ $button-width: calc(100% + #{$border-width * 2});
 --------------------*/
 
 /* Link */
-$link-hover-background: color-main('light');
+$link-hover-background: $color-light;
 $link-hover-border: $border;
 $link-hover-z-index: 5;
 $link-hover-raise-distance: 3px;
 $link-hover-transform: translateY(-$link-hover-raise-distance);
 
-$shadow-hover-box-shadow: 0 $shadow-distance $link-hover-raise-distance 0 color-divider('solid-selected');
+$shadow-hover-box-shadow: 0 $shadow-distance $link-hover-raise-distance 0 color-divider-solid-selected();
 $link-hover-box-shadow: $shadow-hover-box-shadow, $border-shadow;
-
 
 /* Raised */
 $raised-shadow: $border-shadow, $floating-shadow;
@@ -163,42 +160,33 @@ $wide-card-spacing: 1em;
 $card-spacing: 0.75em;
 $small-card-spacing: 0.5em;
 
-$one-card-spacing: 0;
-$two-card-spacing: $wide-card-spacing;
-$three-card-spacing: $wide-card-spacing;
-$four-card-spacing: $card-spacing;
-$five-card-spacing: $card-spacing;
-$six-card-spacing: $card-spacing;
-$seven-card-spacing: $small-card-spacing;
-$eight-card-spacing: $small-card-spacing;
-$nine-card-spacing: $small-card-spacing;
-$ten-card-spacing: $small-card-spacing;
+$card-spacings: (
+		0, // 1
+		$wide-card-spacing, // 2
+		$wide-card-spacing, // 3
+		$card-spacing, // 4
+		$card-spacing, // 5
+		$card-spacing, // 6
+		$small-card-spacing, // 7
+		$small-card-spacing, // 8
+		$small-card-spacing, // 9
+		$small-card-spacing, // 10
+);
 
-$one-card: column(1);
-$one-card-offset: 0;
-$two-card: calc($two-column - ($two-card-spacing * 2));
-$two-card-offset: -$two-card-spacing;
-$three-card: ~"calc("$three-column~" - "($three-card-spacing * 2)~")";
-$three-card-offset: -$three-card-spacing;
-$four-card: ~"calc("$four-column~" - "($four-card-spacing * 2)~")";
-$four-card-offset: -$four-card-spacing;
-$five-card: ~"calc("$five-column~" - "($five-card-spacing * 2)~")";
-$five-card-offset: -$five-card-spacing;
-$six-card: ~"calc("$six-column~" - "($six-card-spacing * 2)~")";
-$six-card-offset: -$six-card-spacing;
-$seven-card: ~"calc("$seven-column~" - "($seven-card-spacing * 2)~")";
-$seven-card-offset: -$seven-card-spacing;
-$eight-card: ~"calc("$eight-column~" - "($seven-card-spacing * 2)~")";
-$eight-card-offset: -$seven-card-spacing;
-$nine-card: ~"calc("$nine-column~" - "($nine-card-spacing * 2)~")";
-$nine-card-offset: -$nine-card-spacing;
-$ten-card: ~"calc("$ten-column~" - "($ten-card-spacing * 2)~")";
-$ten-card-offset: -$ten-card-spacing;
+$card-widths: (column(1),);
+
+@for $i from 2 through 10 {
+	$card-widths: append($card-widths, calc(#{column($i)} - #{nth($card-spacings, $i) * 2}), 'comma');
+}
 
 /* Stackable */
 $stackable-row-spacing: 1em;
 $stackable-card-spacing: 1em;
-$stackable-margin: ~"calc("$one-column~" - "($stackable-card-spacing * 2)~")";
+$stackable-margin: calc(#{column(1)} - #{$stackable-card-spacing * 2});
 
 /* Colored */
 $colored-shadow-distance: 2px;
+
+/* Breakpoints */
+$bp-default-indexes: (1,);
+$bps: breakpoint-collect-by-indexes($bp-default-indexes);

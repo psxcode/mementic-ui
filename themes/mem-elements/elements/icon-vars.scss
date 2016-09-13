@@ -31,15 +31,15 @@ $bordered-shadow: 0em 0em 0em 0.1em rgba(0, 0, 0, 0.1) inset;
 $corner-icon-size: 0.45em;
 $corner-icon-stroke: 1px;
 
-$corner-icon-shadow: -$corner-icon-stroke -$corner-icon-stroke 0 color-main('light'),
-$corner-icon-stroke -$corner-icon-stroke 0 color-main('light'),
--$corner-icon-stroke $corner-icon-stroke 0 color-main('light'),
-$corner-icon-stroke $corner-icon-stroke 0 color-main('light');
+$corner-icon-shadow: -$corner-icon-stroke -$corner-icon-stroke 0 $color-light,
+$corner-icon-stroke -$corner-icon-stroke 0 $color-light,
+-$corner-icon-stroke $corner-icon-stroke 0 $color-light,
+$corner-icon-stroke $corner-icon-stroke 0 $color-light;
 
-$corner-icon-inverted-shadow: -$corner-icon-stroke -$corner-icon-stroke 0 color-main('dark'),
-$corner-icon-stroke -$corner-icon-stroke 0 color-main('dark'),
--$corner-icon-stroke $corner-icon-stroke 0 color-main('dark'),
-$corner-icon-stroke $corner-icon-stroke 0 color-main('dark');
+$corner-icon-inverted-shadow: -$corner-icon-stroke -$corner-icon-stroke 0 $color-dark,
+$corner-icon-stroke -$corner-icon-stroke 0 $color-dark,
+-$corner-icon-stroke $corner-icon-stroke 0 $color-dark,
+$corner-icon-stroke $corner-icon-stroke 0 $color-dark;
 
 /* Size */
 $icon-width: map-zip(map-keys($sizes), (

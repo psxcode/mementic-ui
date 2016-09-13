@@ -1,7 +1,7 @@
 $margin: 1rem 0rem;
 
 $highlight-width: 1px;
-$highlight-color: color-divider($inverted: true);
+$highlight-color: color-divider($color-divider-inverted);
 
 $shadow-width: 1px;
 $shadow-color: color-divider();
@@ -33,7 +33,7 @@ $vertical-divider-margin: 1rem;
 $vertical-divider-height: calc(100% - (#{$vertical-divider-margin}));
 
 /* Inverted */
-$inverted-text-color: color-text('primary', $inverted: true);
+$inverted-text-color: color-text($color-text-inverted);
 $inverted-highlight-color: rgba(255, 255, 255, 0.15);
 $inverted-shadow-color: color-divider();
 
@@ -45,5 +45,4 @@ $medium: 1rem;
 
 /* Breakpoints */
 $bp-default-indexes: (1, );
-$num-used-breakpoints: length($bp-default-indexes);
-$bps: map-breakpoints-indexes($bp-default-indexes);
+$bps: breakpoint-collect-by-indexes($bp-default-indexes);

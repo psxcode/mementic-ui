@@ -8,7 +8,7 @@
   padding: $padding;
 
   border: $border;
-  border-radius: $border-radius;
+  border-radius: $border-radius-default;
   box-shadow: $box-shadow;
   transition: $transition;
   z-index: $z-index;
@@ -327,39 +327,39 @@ $bp-largest-tablet: map-value-by-index($bps, 2);
 
 /* Tablet Only */
 @include media('screen', '>=#{$bp-largest-mobile}', '<#{$bp-largest-tablet}') {
+
   .ui.items > .item {
-	margin: $tablet-item-spacing 0;
+    margin: $tablet-item-spacing 0;
   }
   .ui.items > .item > .image:not(.ui) {
-	width: $tablet-image-width;
+    width: $tablet-image-width;
   }
   .ui.items > .item > .image + .content {
-	display: block;
-	padding: 0 0 0 $tablet-content-image-distance;
+    display: block;
+    padding: 0 0 0 $tablet-content-image-distance;
   }
-
 }
 
 /* Mobile Only */
 @include media('screen', '<#{$bp-largest-mobile}') {
   .ui.items > .item {
-	flex-direction: column;
-	margin: $mobile-item-spacing 0;
+    flex-direction: column;
+    margin: $mobile-item-spacing 0;
   }
   .ui.items > .item > .image {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
   .ui.items > .item > .image,
   .ui.items > .item > .image > img {
-	max-width: 100% !important;
-	width: $mobile-image-width !important;
-	max-height: $mobile-image-max-height !important;
+    max-width: 100% !important;
+    width: $mobile-image-width !important;
+    max-height: $mobile-image-max-height !important;
   }
   .ui.items > .item > .image + .content {
-	display: block;
-	padding: $mobile-content-image-distance 0 0;
+    display: block;
+    padding: $mobile-content-image-distance 0 0;
   }
 
 }

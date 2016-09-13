@@ -22,7 +22,7 @@ $sub-heading-distance: px-em(2px);
 $sub-heading-font-size: size('tiny');
 $sub-heading-font-weight: bold;
 $sub-heading-text-transform: uppercase;
-$sub-heading-color: color-text('primary', 'muted');
+$sub-heading-color: color-text-muted();
 
 $small-sub-heading-size: size('mini');
 $large-sub-heading-size: size('small');
@@ -31,7 +31,7 @@ $huge-sub-heading-size: size('medium');
 /* Sub Header */
 $sub-header-margin: 0;
 $sub-header-line-height: 1.2em;
-$sub-header-color: color-text('primary', 'muted');
+$sub-header-color: color-text-muted();
 
 /* Icon */
 $icon-opacity: 1;
@@ -113,13 +113,13 @@ $divided-sub-header-padding:    px-em(3px);
 $divided-icon-padding:          0em;
 
 /* Block */
-$block-background: color-main('mid');
+$block-background: $color-mid;
 $block-box-shadow: none;
 $block-border-width: 1px;
-$block-border: $block-border-width solid color-divider('solid');
+$block-border: $block-border-width solid color-divider-solid();
 $block-horizontal-padding: size('medium');
 $block-vertical-padding: size('mini');
-$block-border-radius: unit-rem($default-border-radius);
+$block-border-radius: unit-rem($border-radius-default);
 
 $tiny-block:     size('tiny');
 $small-block:    size('small');
@@ -130,7 +130,7 @@ $huge-block:     size('huge');
 /* Attached */
 $attached-offset: -1px;
 $attached-box-shadow: none;
-$attached-border: 1px solid color-divider('solid');
+$attached-border: 1px solid color-divider-solid();
 $attached-vertical-padding: $block-vertical-padding;
 $attached-horizontal-padding: $block-horizontal-padding;
 $attached-background: white;
@@ -144,10 +144,10 @@ $big-attached-size: size('big', true);
 $huge-attached-size: size('huge', true);
 
 /* Inverted */
-$inverted-color: color-text('primary', $inverted: true);
-$inverted-sub-header-color: color-text('primary', 'muted', true);
-$inverted-divided-border-color: color-divider($inverted: true);
-$inverted-block-background: color-light(color-main('dark')) $subtle-gradient;
+$inverted-color: color-text($color-text-inverted);
+$inverted-sub-header-color: color-text-muted($color-text-inverted);
+$inverted-divided-border-color: color-divider($color-divider-inverted);
+$inverted-block-background: color-light($color-dark) $subtle-gradient;
 $inverted-attached-background: $inverted-block-background;
 
 /* Floated */

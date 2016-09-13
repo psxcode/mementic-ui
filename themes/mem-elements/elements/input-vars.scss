@@ -17,10 +17,10 @@ $border-width: 1px;
 $border: $border-width solid color-divider();
 $box-shadow: none;
 
-$border-radius: unit-rem($default-border-radius);
+$border-radius: unit-rem($border-radius-default);
 $transition:
-box-shadow $default-duration $default-easing,
-border-color $default-duration $default-easing
+box-shadow $duration-default $easing-default,
+border-color $duration-default $easing-default
 ;
 
 /*-------------------
@@ -35,7 +35,7 @@ $icon-offset: -0.5em;
 
 $icon-distance: 0;
 $icon-margin: $icon-width + $icon-distance;
-$icon-transition: opacity 0.3s $default-easing;
+$icon-transition: opacity 0.3s $easing-default;
 
 $transparent-icon-width: $glyph-width;
 $transparent-icon-margin: 2em;
@@ -66,19 +66,19 @@ $placeholder-focus-color: $input-placeholder-focus-color;
 /* Down */
 $down-border-color: rgba(0, 0, 0, 0.3);
 $down-background: #FAFAFA;
-$down-color: color-text('primary', 'pressed');
+$down-color: color-text-pressed();
 $down-box-shadow: none;
 
 /* Focus */
 $focus-border-color: $focused-form-border-color;
 $focus-background: $background;
-$focus-color: color-text('primary', 'selected');
+$focus-color: color-text-selected();
 $focus-box-shadow: none;
 
 /* Error */
-$error-background: color-bg(color-main('assertive'));
-$error-color: color-main('assertive');
-$error-border: color-divider($color: color-main('assertive'));
+$error-background: color-bg(color-main('error'));
+$error-color: color-main('error');
+$error-border: color-divider(color-main('error'));
 $error-box-shadow: none;
 
 $placeholder-error-color: lighten($error-color, 40);
@@ -92,6 +92,6 @@ $inverted-loader-fill-color: rgba(0, 0, 0, 0.15);
 --------------------*/
 
 /* Inverted */
-$transparent-inverted-placeholder-color: color-text('primary', 'unselected', true);
-$transparent-inverted-color: color-text('primary', $inverted: true);
+$transparent-inverted-placeholder-color: color-text-unselected($color-text-inverted);
+$transparent-inverted-color: color-text($color-text-inverted);
 

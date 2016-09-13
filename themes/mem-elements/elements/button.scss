@@ -125,7 +125,7 @@
   width: $loader-size;
   height: $loader-size;
 
-  border-radius: $circular-radius;
+  border-radius: $border-radius-circular;
   border: $loader-line-width solid $inverted-loader-fill-color;
 }
 
@@ -142,7 +142,7 @@
   animation: button-spin $loader-speed linear;
   animation-iteration-count: infinite;
 
-  border-radius: $circular-radius;
+  border-radius: $border-radius-circular;
 
   border-color: $inverted-loader-line-color transparent transparent;
   border-style: solid;
@@ -183,7 +183,7 @@
 .ui.disabled.button:hover,
 .ui.disabled.active.button {
   cursor: default;
-  opacity: $color-disabled-opacity !important;
+  opacity: $color-opacity-disabled !important;
   background-image: none !important;
   box-shadow: none !important;
   pointer-events: none !important;
@@ -191,7 +191,7 @@
 
 /* Basic Group With Disabled */
 .ui.basic.buttons .ui.disabled.button {
-  border-color: color-divider('disabled');
+  border-color: color-divider-disabled();
 }
 
 /*******************************
@@ -324,9 +324,9 @@
 --------------------*/
 
 .ui.inverted.button {
-  box-shadow: 0 0 0 $inverted-border-size color-main('light') inset !important;
+  box-shadow: 0 0 0 $inverted-border-size $color-light inset !important;
   background: transparent none;
-  color: color-main('light');
+  color: $color-light;
   text-shadow: none !important;
 }
 
@@ -351,23 +351,23 @@
 
 /* Hover */
 .ui.inverted.button:hover {
-  background: color-main('light');
-  box-shadow: 0 0 0 $inverted-border-size color-main('light') inset !important;
+  background: $color-light;
+  box-shadow: 0 0 0 $inverted-border-size $color-light inset !important;
   color: $hover-color;
 }
 
 /* Active / Focus */
 .ui.inverted.button:focus,
 .ui.inverted.button.active {
-  background: color-main('light');
-  box-shadow: 0 0 0 $inverted-border-size color-main('light') inset !important;
+  background: $color-light;
+  box-shadow: 0 0 0 $inverted-border-size $color-light inset !important;
   color: $focus-color;
 }
 
 /* Active Focus */
 .ui.inverted.button.active:focus {
-  background: color-main('mid');
-  box-shadow: 0 0 0 $inverted-border-size color-main('mid') inset !important;
+  background: $color-mid;
+  box-shadow: 0 0 0 $inverted-border-size $color-mid inset !important;
   color: $focus-color;
 }
 
@@ -572,7 +572,7 @@
 
 .ui.basic.buttons .active.button:hover,
 .ui.basic.active.button:hover {
-  background-color: color-transparent(color-main('dark'));
+  background-color: color-transparent($color-dark);
 }
 
 /* Vertical */
@@ -592,40 +592,40 @@
 .ui.basic.inverted.buttons .button,
 .ui.basic.inverted.button {
   background-color: transparent !important;
-  color: color-main('mid') !important;
+  color: $color-mid !important;
   box-shadow: $basic-inverted-box-shadow !important;
 }
 
 .ui.basic.inverted.buttons .button:hover,
 .ui.basic.inverted.button:hover {
-  color: color-main('light') !important;
+  color: $color-light !important;
   box-shadow: $basic-inverted-hover-box-shadow !important;
 }
 
 .ui.basic.inverted.buttons .button:focus,
 .ui.basic.inverted.button:focus {
-  color: color-main('light') !important;
+  color: $color-light !important;
   box-shadow: $basic-inverted-focus-box-shadow !important;
 }
 
 .ui.basic.inverted.buttons .button:active,
 .ui.basic.inverted.button:active {
-  background-color: color-transparent(color-main('light')) !important;
-  color: color-main('light') !important;
+  background-color: color-transparent($color-light) !important;
+  color: $color-light !important;
   box-shadow: $basic-inverted-down-box-shadow !important;
 }
 
 .ui.basic.inverted.buttons .active.button,
 .ui.basic.inverted.active.button {
-  background-color: color-transparent(color-main('light'));
-  color: color-text('primary', $inverted: true);
-  text-shadow: color-text-shadow('primary', $inverted: true);
+  background-color: color-transparent($color-light);
+  color: color-text($color-text-inverted);
+  text-shadow: color-shadow(color-text($color-text-inverted));
   box-shadow: $basic-inverted-active-box-shadow;
 }
 
 .ui.basic.inverted.buttons .active.button:hover,
 .ui.basic.inverted.active.button:hover {
-  background-color: color-transparent(color-main('light'), 'strong');
+  background-color: color-transparent-strong($color-light);
   box-shadow: $basic-inverted-hover-box-shadow !important;
 }
 
@@ -752,14 +752,14 @@
 .ui.button.toggle.active {
   background-color: color-main('positive') !important;
   box-shadow: none !important;
-  text-shadow: color-text-shadow('primary', $inverted: true);
-  color: color-text('primary', $inverted: true) !important;
+  text-shadow: color-shadow(color-text($color-text-inverted));
+  color: color-text($color-text-inverted) !important;
 }
 
 .ui.button.toggle.active:hover {
   background-color: color-hover(color-main('positive')) !important;
-  text-shadow: color-text-shadow('primary', $inverted: true);
-  color: color-text('primary', $inverted: true) !important;
+  text-shadow: color-shadow(color-text($color-text-inverted));
+  color: color-text($color-text-inverted) !important;
 }
 
 /*--------------
@@ -789,7 +789,7 @@
 .ui.buttons .or:before {
   position: absolute;
   text-align: center;
-  border-radius: $circular-radius;
+  border-radius: $border-radius-circular;
 
   content: $or-text;
   top: 50%;
@@ -1110,22 +1110,22 @@
 
     .ui.#{$name}.button {
       background-color: $color;
-      color: color-text('primary', $inverted: true);
-      text-shadow: color-text-shadow('primary', $inverted: true);
+      color: color-text($color-text-inverted);
+      text-shadow: color-shadow(color-text($color-text-inverted));
       background-image: $colored-background-image;
       box-shadow: $colored-box-shadow;
     }
 
     .ui.#{$name}.button:hover {
       background-color: color-hover($color);
-      color: color-text('primary', $inverted: true);
-      text-shadow: color-text-shadow('primary', $inverted: true);
+      color: color-text($color-text-inverted);
+      text-shadow: color-shadow(color-text($color-text-inverted));
     }
 
     .ui.#{$name}.button:active {
       background-color: color-down($color);
-      color: color-text('primary', $inverted: true);
-      text-shadow: color-text-shadow('primary', $inverted: true);
+      color: color-text($color-text-inverted);
+      text-shadow: color-shadow(color-text($color-text-inverted));
     }
   }
 }
@@ -1141,8 +1141,8 @@
     .ui.#{$name}.buttons .button,
     .ui.#{$name}.button {
       background-color: $color;
-      color: color-text('primary', $inverted: true);
-      text-shadow: color-text-shadow('primary', $inverted: true);
+      color: color-text($color-text-inverted);
+      text-shadow: color-shadow(color-text($color-text-inverted));
       background-image: $colored-background-image;
     }
     .ui.#{$name}.button {
@@ -1151,28 +1151,28 @@
     .ui.#{$name}.buttons .button:hover,
     .ui.#{$name}.button:hover {
       background-color: color-hover($color);
-      color: color-text('primary', $inverted: true);
-      text-shadow: color-text-shadow('primary', $inverted: true);
+      color: color-text($color-text-inverted);
+      text-shadow: color-shadow(color-text($color-text-inverted));
     }
     .ui.#{$name}.buttons .button:focus,
     .ui.#{$name}.button:focus {
       background-color: color-focus($color);
-      color: color-text('primary', $inverted: true);
-      text-shadow: color-text-shadow('primary', $inverted: true);
+      color: color-text($color-text-inverted);
+      text-shadow: color-shadow(color-text($color-text-inverted));
     }
     .ui.#{$name}.buttons .button:active,
     .ui.#{$name}.button:active {
       background-color: color-down($color);
-      color: color-text('primary', $inverted: true);
-      text-shadow: color-text-shadow('primary', $inverted: true);
+      color: color-text($color-text-inverted);
+      text-shadow: color-shadow(color-text($color-text-inverted));
     }
     .ui.#{$name}.buttons .active.button,
     .ui.#{$name}.buttons .active.button:active,
     .ui.#{$name}.active.button,
     .ui.#{$name}.button .active.button:active {
       background-color: color-active($color);
-      color: color-text('primary', $inverted: true);
-      text-shadow: color-text-shadow('primary', $inverted: true);
+      color: color-text($color-text-inverted);
+      text-shadow: color-shadow(color-text($color-text-inverted));
     }
 
     /* Basic */
@@ -1224,7 +1224,7 @@
     .ui.inverted.#{$name}.buttons .button:active,
     .ui.inverted.#{$name}.button:active {
       box-shadow: none !important;
-      color: color-text('primary', $inverted: true);;
+      color: color-text($color-text-inverted);;
     }
     .ui.inverted.#{$name}.buttons .button:hover,
     .ui.inverted.#{$name}.button:hover {
@@ -1249,7 +1249,7 @@
     .ui.inverted.#{$name}.basic.button {
       background-color: transparent;
       box-shadow: $basic-inverted-box-shadow !important;
-      color: color-main('light') !important;
+      color: $color-light !important;
     }
     .ui.inverted.#{$name}.basic.buttons .button:hover,
     .ui.inverted.#{$name}.buttons .basic.button:hover,
@@ -1278,8 +1278,8 @@
   }
 }
 
-@if type-of($colors-default) == 'map' and $colors-auto-include-default == true {
-  @include colors($colors-default);
+@if $auto-include-colors-main == true {
+  @include colors($colors-main);
 }
 
 /*-------------------
@@ -1294,7 +1294,7 @@
     .ui.#{$name}.button {
       background-color: $color;
       color: color-text();
-      text-shadow: color-text-shadow('primary');
+      text-shadow: color-shadow(color-text());
       background-image: $colored-background-image;
     }
     .ui.#{$name}.button {
@@ -1304,19 +1304,19 @@
     .ui.#{$name}.button:hover {
       background-color: color-hover($color);
       color: color-text();
-      text-shadow: color-text-shadow('primary');
+      text-shadow: color-shadow(color-text());
     }
     .ui.#{$name}.buttons .button:focus,
     .ui.#{$name}.button:focus {
       background-color: color-focus($color);
       color: color-text();
-      text-shadow: color-text-shadow('primary');
+      text-shadow: color-shadow(color-text());
     }
     .ui.#{$name}.buttons .button:active,
     .ui.#{$name}.button:active {
       background-color: color-down($color);
       color: color-text();
-      text-shadow: color-text-shadow('primary');
+      text-shadow: color-shadow(color-text());
     }
     .ui.#{$name}.buttons .active.button,
     .ui.#{$name}.buttons .active.button:active,
@@ -1324,7 +1324,7 @@
     .ui.#{$name}.button .active.button:active {
       background-color: color-active($color);
       color: color-text();
-      text-shadow: color-text-shadow('primary');
+      text-shadow: color-shadow(color-text());
     }
 
     /* Basic */
@@ -1362,7 +1362,7 @@
   }
 }
 
-@if $colors-button-auto-include-main == true {
+@if $auto-include-colors-main == true {
   @include colors-main;
 }
 

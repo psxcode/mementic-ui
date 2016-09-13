@@ -1,0 +1,48 @@
+// Sizes
+// -------------------------------
+$auto-include-sizes: true !default;
+
+$sizes: (
+		'mini': 0.7857, // 11/14
+		'tiny': 0.8571, // 12/14
+		'small': 0.9285, // 13/14
+		'medium': 1.0,
+		'large': 1.1428, // 16/14
+		'big': 1.2857, // 18/14
+		'huge': 1.4285, // 20/14
+		'massive': 1.7142 // 24/14
+) !default;
+
+@function size($variant, $relative: false) {
+  $variant: to-string($variant);
+  $relative: to-bool($relative);
+
+  @if not(map-has-key($sizes, $variant)) {
+	@error 'size: invalid $variant #{$variant}';
+  }
+
+  $size: map-get($sizes, $variant);
+  @if $relative == true {
+	@return unit-em($size);
+  } @else {
+	@return unit-rem($size);
+  }
+}
+
+@function size-by-index($index) {
+  @return map-get-by-index($sizes, $index);
+}
+
+// Columns
+// -------------------------------
+$num-columns: 16 !default;
+
+//width as num-columns in default-column row
+@function wide($num) {
+  @return $num / $num-columns * 100%;
+}
+
+//width as 1-column in num-columns row
+@function column($num) {
+  @return 1 / $num * 100%;
+}

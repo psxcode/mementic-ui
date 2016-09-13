@@ -8,5 +8,4 @@ $max-width: 100%;
 
 /* Breakpoints */
 $bp-default-indexes: (1, 2, 3);
-$num-used-breakpoints: length($bp-default-indexes);
-$bps: map-breakpoints-indexes($bp-default-indexes);
+$bps: breakpoint-collect-by-indexes($bp-default-indexes);

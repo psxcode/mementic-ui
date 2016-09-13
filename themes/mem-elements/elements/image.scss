@@ -35,7 +35,7 @@ img.ui.image {
 .ui.disabled.images,
 .ui.disabled.image {
   cursor: default;
-  opacity: $color-disabled-opacity;
+  opacity: $color-opacity-disabled;
 }
 
 /*******************************
@@ -117,7 +117,7 @@ img.ui.bordered.image {
 .ui.circular.image,
 .ui.circular.images .image > *,
 .ui.circular.image > * {
-  border-radius: $circular-radius;
+  border-radius: $border-radius-circular;
 }
 
 /*--------------
@@ -151,7 +151,7 @@ img.ui.bordered.image {
   width: $avatar-size;
   height: $avatar-size;
 
-  border-radius: $circular-radius;
+  border-radius: $border-radius-circular;
 }
 
 /*-------------------

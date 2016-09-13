@@ -10,6 +10,7 @@ $margin: 1.5em 0;
 --------------------*/
 
 /* Comment */
+$text-color: color-text();
 $comment-background: none;
 $comment-margin: 0.5em 0 0;
 $comment-padding: 0.5em 0 0;
@@ -61,8 +62,8 @@ $text-line-height: 1.3;
 /* Actions */
 $action-font-size: 0.875em;
 $action-content-distance: 0.75em;
-$action-link-color: color-text('primary', 'unselected');
-$action-link-hover-color: color-text('primary', 'hovered');
+$action-link-color: color-text-unselected();
+$action-link-hover-color: color-text-hovered();
 
 /* Reply */
 $reply-distance: 1em;
@@ -87,7 +88,7 @@ $minimal-action-right: 0;
 $minimal-action-left: auto;
 
 $minimal-transition-delay: 0.1s;
-$minimal-easing: $default-easing;
+$minimal-easing: $easing-default;
 $minimal-duration: 0.2s;
 $minimal-transition: opacity $minimal-duration $minimal-easing;
 

@@ -210,7 +210,7 @@ a.ui.label {
   height: $tag-circle-size;
 
   box-shadow: $tag-circle-box-shadow;
-  border-radius: $circular-radius;
+  border-radius: $border-radius-circular;
 }
 
 /*-------------------
@@ -568,7 +568,7 @@ a.ui.basic.label:hover {
 
 .ui.inverted.labels .label,
 .ui.inverted.label {
-  color: color-text('primary', $inverted: true) !important;
+  color: color-text($color-text-inverted) !important;
 }
 
 /*-------------------
@@ -597,7 +597,7 @@ a.ui.basic.label:hover {
 
   line-height: 1em;
   text-align: center;
-  border-radius: $circular-radius;
+  border-radius: $border-radius-circular;
 }
 
 .ui.empty.circular.labels .label,
@@ -776,7 +776,7 @@ a.ui.basic.label:hover {
     .ui.#{$name}.label {
       background-color: $color !important;
       border-color: $color !important;
-      color: color-text('primary', $inverted: true) !important;
+      color: color-text($color-text-inverted) !important;
     }
 
     /* Link */
@@ -784,7 +784,7 @@ a.ui.basic.label:hover {
     a.ui.#{$name}.label:hover {
       background-color: color-hover($color) !important;
       border-color: color-hover($color) !important;
-      color: color-text('primary', 'hovered', $inverted: true) !important;
+      color: color-text-hovered($color-text-inverted) !important;
     }
 
     /* Corner */
@@ -800,14 +800,14 @@ a.ui.basic.label:hover {
 
     /* Basic */
     .ui.basic.#{$name}.label {
-      background-color: color-main('light') !important;
+      background-color: $color-light !important;
       color: $color !important;
       border-color: $color !important;
     }
 
     .ui.basic.#{$name}.labels a.label:hover,
     a.ui.basic.#{$name}.label:hover {
-      background-color: color-main('light') !important;
+      background-color: $color-light !important;
       color: color-hover($color) !important;
       border-color: color-hover($color) !important;
     }

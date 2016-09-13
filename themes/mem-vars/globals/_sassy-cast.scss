@@ -1,3 +1,5 @@
+//https://github.com/HugoGiraudel/SassyCast
+
 /// Toggle strict mode, in which script will throw when not able to cast a value
 /// into a certain type (mostly color and number). In non-strict mode, it will
 /// return the default value from the given type.
@@ -21,21 +23,21 @@ $sc-non-strict-default-color: transparent !default;
 /// @access private
 /// @type Map
 $sc-non-strict-defaults: (
-        'number': $sc-non-strict-default-number,
-        'color': $sc-non-strict-default-color,
+		'number': $sc-non-strict-default-number,
+		'color': $sc-non-strict-default-color,
 );
 
 /// Internal constants map.
 /// @access private
 /// @type Map
 $sc-constants: (
-        'DECIMAL_SPACE': ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9'),
-        'HEXADECIMAL_SPACE': ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'),
-        'COLOR_KEYWORDS': (transparent, aliceblue, antiquewhite, aqua, aquamarine, azure, beige, bisque, black, blanchedalmond, blue, blueviolet, brown, burlywood, cadetblue, chartreuse, chocolate, coral, cornflowerblue, cornsilk, crimson, cyan, darkblue, darkcyan, darkgoldenrod, darkgray, darkgreen, darkgrey, darkkhaki, darkmagenta, darkolivegreen, darkorange, darkorchid, darkred, darksalmon, darkseagreen, darkslateblue, darkslategray, darkslategrey, darkturquoise, darkviolet, deeppink, deepskyblue, dimgray, dimgrey, dodgerblue, firebrick, floralwhite, forestgreen, fuchsia, gainsboro, ghostwhite, gold, goldenrod, gray, green, greenyellow, grey, honeydew, hotpink, indianred, indigo, ivory, khaki, lavender, lavenderblush, lawngreen, lemonchiffon, lightblue, lightcoral, lightcyan, lightgoldenrodyellow, lightgray, lightgreen, lightgrey, lightpink, lightsalmon, lightseagreen, lightskyblue, lightslategray, lightslategrey, lightsteelblue, lightyellow, lime, limegreen, linen, magenta, maroon, mediumaquamarine, mediumblue, mediumorchid, mediumpurple, mediumseagreen, mediumslateblue, mediumspringgreen, mediumturquoise, mediumvioletred, midnightblue, mintcream, mistyrose, moccasin, navajowhite, navy, oldlace, olive, olivedrab, orange, orangered, orchid, palegoldenrod, palegreen, paleturquoise, palevioletred, papayawhip, peachpuff, peru, pink, plum, powderblue, purple, rebeccapurple, red, rosybrown, royalblue, saddlebrown, salmon, sandybrown, seagreen, seashell, sienna, silver, skyblue, slateblue, slategray, slategrey, snow, springgreen, steelblue, tan, teal, thistle, tomato, turquoise, violet, wheat, white, whitesmoke, yellow, yellowgreen),
-        'STRINGIFIED_COLOR_KEYWORDS': ('transparent', 'aliceblue', 'antiquewhite', 'aqua', 'aquamarine', 'azure', 'beige', 'bisque', 'black', 'blanchedalmond', 'blue', 'blueviolet', 'brown', 'burlywood', 'cadetblue', 'chartreuse', 'chocolate', 'coral', 'cornflowerblue', 'cornsilk', 'crimson', 'cyan', 'darkblue', 'darkcyan', 'darkgoldenrod', 'darkgray', 'darkgreen', 'darkgrey', 'darkkhaki', 'darkmagenta', 'darkolivegreen', 'darkorange', 'darkorchid', 'darkred', 'darksalmon', 'darkseagreen', 'darkslateblue', 'darkslategray', 'darkslategrey', 'darkturquoise', 'darkviolet', 'deeppink', 'deepskyblue', 'dimgray', 'dimgrey', 'dodgerblue', 'firebrick', 'floralwhite', 'forestgreen', 'fuchsia', 'gainsboro', 'ghostwhite', 'gold', 'goldenrod', 'gray', 'green', 'greenyellow', 'grey', 'honeydew', 'hotpink', 'indianred', 'indigo', 'ivory', 'khaki', 'lavender', 'lavenderblush', 'lawngreen', 'lemonchiffon', 'lightblue', 'lightcoral', 'lightcyan', 'lightgoldenrodyellow', 'lightgray', 'lightgreen', 'lightgrey', 'lightpink', 'lightsalmon', 'lightseagreen', 'lightskyblue', 'lightslategray', 'lightslategrey', 'lightsteelblue', 'lightyellow', 'lime', 'limegreen', 'linen', 'magenta', 'maroon', 'mediumaquamarine', 'mediumblue', 'mediumorchid', 'mediumpurple', 'mediumseagreen', 'mediumslateblue', 'mediumspringgreen', 'mediumturquoise', 'mediumvioletred', 'midnightblue', 'mintcream', 'mistyrose', 'moccasin', 'navajowhite', 'navy', 'oldlace', 'olive', 'olivedrab', 'orange', 'orangered', 'orchid', 'palegoldenrod', 'palegreen', 'paleturquoise', 'palevioletred', 'papayawhip', 'peachpuff', 'peru', 'pink', 'plum', 'powderblue', 'purple', 'rebeccapurple', 'red', 'rosybrown', 'royalblue', 'saddlebrown', 'salmon', 'sandybrown', 'seagreen', 'seashell', 'sienna', 'silver', 'skyblue', 'slateblue', 'slategray', 'slategrey', 'snow', 'springgreen', 'steelblue', 'tan', 'teal', 'thistle', 'tomato', 'turquoise', 'violet', 'wheat', 'white', 'whitesmoke', 'yellow', 'yellowgreen'),
-        'UNITS': ('px', 'cm', 'mm', '%', 'ch', 'pc', 'in', 'em', 'rem', 'pt', 'ex', 'vw', 'vh', 'vmin', 'vmax', 'ms', 's', 'deg', 'rad', 'grad', 'turn', 'Hz', 'kHz', 'dpi', 'dpcm', 'dppx'),
-        'UNIT_VALUES': (1px, 1cm, 1mm, 1%, 1ch, 1pc, 1in, 1em, 1rem, 1pt, 1ex, 1vw, 1vh, 1vmin, 1vmax, 1ms, 1s, 1deg, 1rad, 1grad, 1turn, 1Hz, 1kHz, 1dpi, 1dpcm, 1dppx),
-        'FALSEY_VALUES': (false, null, '', 0),
+		'DECIMAL_SPACE': ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9'),
+		'HEXADECIMAL_SPACE': ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'),
+		'COLOR_KEYWORDS': (transparent, aliceblue, antiquewhite, aqua, aquamarine, azure, beige, bisque, black, blanchedalmond, blue, blueviolet, brown, burlywood, cadetblue, chartreuse, chocolate, coral, cornflowerblue, cornsilk, crimson, cyan, darkblue, darkcyan, darkgoldenrod, darkgray, darkgreen, darkgrey, darkkhaki, darkmagenta, darkolivegreen, darkorange, darkorchid, darkred, darksalmon, darkseagreen, darkslateblue, darkslategray, darkslategrey, darkturquoise, darkviolet, deeppink, deepskyblue, dimgray, dimgrey, dodgerblue, firebrick, floralwhite, forestgreen, fuchsia, gainsboro, ghostwhite, gold, goldenrod, gray, green, greenyellow, grey, honeydew, hotpink, indianred, indigo, ivory, khaki, lavender, lavenderblush, lawngreen, lemonchiffon, lightblue, lightcoral, lightcyan, lightgoldenrodyellow, lightgray, lightgreen, lightgrey, lightpink, lightsalmon, lightseagreen, lightskyblue, lightslategray, lightslategrey, lightsteelblue, lightyellow, lime, limegreen, linen, magenta, maroon, mediumaquamarine, mediumblue, mediumorchid, mediumpurple, mediumseagreen, mediumslateblue, mediumspringgreen, mediumturquoise, mediumvioletred, midnightblue, mintcream, mistyrose, moccasin, navajowhite, navy, oldlace, olive, olivedrab, orange, orangered, orchid, palegoldenrod, palegreen, paleturquoise, palevioletred, papayawhip, peachpuff, peru, pink, plum, powderblue, purple, rebeccapurple, red, rosybrown, royalblue, saddlebrown, salmon, sandybrown, seagreen, seashell, sienna, silver, skyblue, slateblue, slategray, slategrey, snow, springgreen, steelblue, tan, teal, thistle, tomato, turquoise, violet, wheat, white, whitesmoke, yellow, yellowgreen),
+		'STRINGIFIED_COLOR_KEYWORDS': ('transparent', 'aliceblue', 'antiquewhite', 'aqua', 'aquamarine', 'azure', 'beige', 'bisque', 'black', 'blanchedalmond', 'blue', 'blueviolet', 'brown', 'burlywood', 'cadetblue', 'chartreuse', 'chocolate', 'coral', 'cornflowerblue', 'cornsilk', 'crimson', 'cyan', 'darkblue', 'darkcyan', 'darkgoldenrod', 'darkgray', 'darkgreen', 'darkgrey', 'darkkhaki', 'darkmagenta', 'darkolivegreen', 'darkorange', 'darkorchid', 'darkred', 'darksalmon', 'darkseagreen', 'darkslateblue', 'darkslategray', 'darkslategrey', 'darkturquoise', 'darkviolet', 'deeppink', 'deepskyblue', 'dimgray', 'dimgrey', 'dodgerblue', 'firebrick', 'floralwhite', 'forestgreen', 'fuchsia', 'gainsboro', 'ghostwhite', 'gold', 'goldenrod', 'gray', 'green', 'greenyellow', 'grey', 'honeydew', 'hotpink', 'indianred', 'indigo', 'ivory', 'khaki', 'lavender', 'lavenderblush', 'lawngreen', 'lemonchiffon', 'lightblue', 'lightcoral', 'lightcyan', 'lightgoldenrodyellow', 'lightgray', 'lightgreen', 'lightgrey', 'lightpink', 'lightsalmon', 'lightseagreen', 'lightskyblue', 'lightslategray', 'lightslategrey', 'lightsteelblue', 'lightyellow', 'lime', 'limegreen', 'linen', 'magenta', 'maroon', 'mediumaquamarine', 'mediumblue', 'mediumorchid', 'mediumpurple', 'mediumseagreen', 'mediumslateblue', 'mediumspringgreen', 'mediumturquoise', 'mediumvioletred', 'midnightblue', 'mintcream', 'mistyrose', 'moccasin', 'navajowhite', 'navy', 'oldlace', 'olive', 'olivedrab', 'orange', 'orangered', 'orchid', 'palegoldenrod', 'palegreen', 'paleturquoise', 'palevioletred', 'papayawhip', 'peachpuff', 'peru', 'pink', 'plum', 'powderblue', 'purple', 'rebeccapurple', 'red', 'rosybrown', 'royalblue', 'saddlebrown', 'salmon', 'sandybrown', 'seagreen', 'seashell', 'sienna', 'silver', 'skyblue', 'slateblue', 'slategray', 'slategrey', 'snow', 'springgreen', 'steelblue', 'tan', 'teal', 'thistle', 'tomato', 'turquoise', 'violet', 'wheat', 'white', 'whitesmoke', 'yellow', 'yellowgreen'),
+		'UNITS': ('px', 'cm', 'mm', '%', 'ch', 'pc', 'in', 'em', 'rem', 'pt', 'ex', 'vw', 'vh', 'vmin', 'vmax', 'ms', 's', 'deg', 'rad', 'grad', 'turn', 'Hz', 'kHz', 'dpi', 'dpcm', 'dppx'),
+		'UNIT_VALUES': (1px, 1cm, 1mm, 1%, 1ch, 1pc, 1in, 1em, 1rem, 1pt, 1ex, 1vw, 1vh, 1vmin, 1vmax, 1ms, 1s, 1deg, 1rad, 1grad, 1turn, 1Hz, 1kHz, 1dpi, 1dpcm, 1dppx),
+		'FALSEY_VALUES': (false, null, '', 0),
 );
 
 /// Helper function to throw when running in strict mode, or warn and return
@@ -46,9 +48,9 @@ $sc-constants: (
   $return-value: map-get($sc-non-strict-defaults, $expected-type);
 
   @if $sc-strict-mode {
-    @error 'Could not cast `#{inspect($value)}` to #{$expected-type}.';
+	@error 'Could not cast `#{inspect($value)}` to #{$expected-type}.';
   } @else {
-    @warn 'Could not cast `#{inspect($value)}` to #{$expected-type}; returning `#{$return-value}`.';
+	@warn 'Could not cast `#{inspect($value)}` to #{$expected-type}; returning `#{$return-value}`.';
   }
 
   @return $return-value;
@@ -67,19 +69,19 @@ $sc-constants: (
   $runs: 1;
 
   @while ($pointer <= $length) {
-    $token: str-slice($source, $pointer, $pointer);
-    $index: index($numbers, $token);
+	$token: str-slice($source, $pointer, $pointer);
+	$index: index($numbers, $token);
 
-    @if ($token == '.') {
-      // @continue;
-    } @else if ($index and $index > 0) {
-      $runs: ($runs * 10);
-      $result: ($result * 10) + ($index - 1);
-    } @else {
-      @return $pointer, ($result / $runs);
-    }
+	@if ($token == '.') {
+	  // @continue;
+	} @else if ($index and $index > 0) {
+	  $runs: ($runs * 10);
+	  $result: ($result * 10) + ($index - 1);
+	} @else {
+	  @return $pointer, ($result / $runs);
+	}
 
-    $pointer: ($pointer + 1);
+	$pointer: ($pointer + 1);
   }
 
   @return $pointer, ($result / $runs);
@@ -97,18 +99,18 @@ $sc-constants: (
   $result: 0;
 
   @while ($pointer <= $length) {
-    $token: str-slice($source, $pointer, $pointer);
-    $index: index($numbers, $token);
+	$token: str-slice($source, $pointer, $pointer);
+	$index: index($numbers, $token);
 
-    @if ($token == '-') {
-      // @continue;
-    } @else if $index {
-      $result: ($result * 10) + ($index - 1);
-    } @else {
-      @return $pointer, $result;
-    }
+	@if ($token == '-') {
+	  // @continue;
+	} @else if $index {
+	  $result: ($result * 10) + ($index - 1);
+	} @else {
+	  @return $pointer, $result;
+	}
 
-    $pointer: ($pointer + 1);
+	$pointer: ($pointer + 1);
   }
 
   @return $pointer, $result;
@@ -123,13 +125,13 @@ $sc-constants: (
   $ret: 1;
 
   @if $n >= 0 {
-    @for $i from 1 through $n {
-      $ret: ($ret * $x);
-    }
+	@for $i from 1 through $n {
+	  $ret: ($ret * $x);
+	}
   } @else {
-    @for $i from $n to 0 {
-      $ret: ($ret / $x);
-    }
+	@for $i from $n to 0 {
+	  $ret: ($ret / $x);
+	}
   }
 
   @return $ret;
@@ -145,7 +147,7 @@ $sc-constants: (
   $index: index(map-get($sc-constants, 'UNITS'), $unit);
 
   @if not $index {
-    @return _sc-throw($number, 'number');
+	@return _sc-throw($number, 'number');
   }
 
   @return ($number * nth($units, $index));
@@ -163,9 +165,9 @@ $sc-constants: (
   $decimal: 0;
 
   @for $i from 1 through $length {
-    $factor: 1 + (length($hex) * ($length - $i));
-    $index: index($hex, str-slice($string, $i, $i));
-    $decimal: $decimal + $factor * ($index - 1);
+	$factor: 1 + (length($hex) * ($length - $i));
+	$index: index($hex, str-slice($string, $i, $i));
+	$decimal: $decimal + $factor * ($index - 1);
   }
 
   @return $decimal;
@@ -189,36 +191,36 @@ $sc-constants: (
   // hexadecimal triplet, therefore we warn and return the default color value
   // (or throw in strict mode).
   @if ($length != 4 and $length != 7) {
-    @return _sc-throw($string, 'color');
+	@return _sc-throw($string, 'color');
   }
 
   // Loop through the characters from the value, starting from the second one
   // to omit the initial hash.
   @for $i from 2 through $length {
-    $c: str-slice($string, $i, $i);
+	$c: str-slice($string, $i, $i);
 
-    // If the character is not part of the hexadecimal space, the color cannot
-    // be a valid hexadecimal triplet, therefore we warn and return the default
-    // color value (or throw in strict mode).
-    @if not index($hex, $c) {
-      @return _sc-throw($string, 'color');
-    }
+	// If the character is not part of the hexadecimal space, the color cannot
+	// be a valid hexadecimal triplet, therefore we warn and return the default
+	// color value (or throw in strict mode).
+	@if not index($hex, $c) {
+	  @return _sc-throw($string, 'color');
+	}
 
-    @if (str-length($r) < $max) {
-      $r: ($r + $c);
-    } @else if (str-length($g) < $max) {
-      $g: ($g + $c);
-    } @else if (str-length($b) < $max) {
-      $b: ($b + $c);
-    }
+	@if (str-length($r) < $max) {
+	  $r: ($r + $c);
+	} @else if (str-length($g) < $max) {
+	  $g: ($g + $c);
+	} @else if (str-length($b) < $max) {
+	  $b: ($b + $c);
+	}
   }
 
   // If the triplet is a short one, duplicated each found valud to compose a
   // long version, necessary for the _sc-hex-to-dec(..) calls.
   @if $length == 4 {
-    $r: $r + $r;
-    $g: $g + $g;
-    $b: $b + $b;
+	$r: $r + $r;
+	$g: $g + $g;
+	$b: $b + $b;
   }
 
   @return rgb(_sc-hex-to-dec($r), _sc-hex-to-dec($g), _sc-hex-to-dec($b));
@@ -232,23 +234,23 @@ $sc-constants: (
 
   // If the value is already a number, we can safely return it.
   @if ($type == 'number') {
-    @return $value;
+	@return $value;
   }
 
   // If the value is the `true` boolean, we return 1.
-  @if ($value == true)  {
-    @return 1;
+  @if ($value == true) {
+	@return 1;
   }
 
   // If the value is the `false` boolean, we return 0.
   @if ($value == false) {
-    @return 0;
+	@return 0;
   }
 
   // If the type is not a string, there is no way we can convert it to a number,
   // so we warn and return the default number value (or throw in strict mode).
   @if ($type != 'string') {
-    @return _sc-throw($value, 'number');
+	@return _sc-throw($value, 'number');
   }
 
   // At this point we have discarded all the edge cases so we can start trying
@@ -262,39 +264,39 @@ $sc-constants: (
   // nor a minus sign, it cannot be casted to a number. Therefore we warn and
   // return the default number value (or throw in strict mode).
   @if not index($allowed-first-character, $first-character) {
-    @return _sc-throw($value, 'number');
+	@return _sc-throw($value, 'number');
   }
 
   // In case the value starts with a dot, we assume it is a float and pad it
   // with a zero.
   @if ($first-character == '.') {
-    $value: '0' + $value;
+	$value: '0' + $value;
   }
 
   // We find the integer part of the value.
   $find-integer: _sc-find-integer($value, $pointer);
   $pointer: nth($find-integer, 1);
-  $result:  nth($find-integer, 2);
+  $result: nth($find-integer, 2);
 
   // If there still is a dot, it means we have to check for the digits part of
   // the value.
   @if (str-slice($value, $pointer, $pointer) == '.') {
-    $find-digits: _sc-find-digits($value, $pointer);
-    $pointer: nth($find-digits, 1);
-    $digits:  nth($find-digits, 2);
-    $result: ($result + $digits);
+	$find-digits: _sc-find-digits($value, $pointer);
+	$pointer: nth($find-digits, 1);
+	$digits: nth($find-digits, 2);
+	$result: ($result + $digits);
   }
 
   // If the first character is a minus symbol, it means the number is negative
   // so we can multiply it per -1.
   @if ($first-character == '-') {
-    $result: ($result * -1);
+	$result: ($result * -1);
   }
 
   // If we are still not done with the evaluation, it means there could be a CSS
   // unit, so we check for it.
   @if ($pointer <= str-length($value)) {
-    $result: _sc-unit($result, str-slice($value, $pointer));
+	$result: _sc-unit($result, str-slice($value, $pointer));
   }
 
   @return $result;
@@ -312,25 +314,25 @@ $sc-constants: (
   $discarded-characters: join($channel-keys, (' ', '(', ')'));
 
   @for $i from 1 through str-length($value) {
-    $character: str-slice($value, $i, $i);
+	$character: str-slice($value, $i, $i);
 
-    // If the character is neither the part of the function name, nor a space or
-    // a parenthese, we proceed further.
-    @if not index($discarded-characters, $character) {
-      // If the current character is a comma, it means we change the current
-      // channel to the next one.
-      @if ($character == ',') {
-        $current-channel-index: index($channel-keys, $current-channel);
-        $current-channel: nth($channel-keys, $current-channel-index + 1);
-      }
+	// If the character is neither the part of the function name, nor a space or
+	// a parenthese, we proceed further.
+	@if not index($discarded-characters, $character) {
+	  // If the current character is a comma, it means we change the current
+	  // channel to the next one.
+	  @if ($character == ',') {
+		$current-channel-index: index($channel-keys, $current-channel);
+		$current-channel: nth($channel-keys, $current-channel-index + 1);
+	  }
 
-        // If the current character is not a comma, it means it is part of the
-        // value for the current channel and therefore should be saved.
-      @else {
-        $current-channel-value: map-get($channels, $current-channel);
-        $channels: map-merge($channels, ($current-channel: $current-channel-value + $character));
-      }
-    }
+		// If the current character is not a comma, it means it is part of the
+		// value for the current channel and therefore should be saved.
+	  @else {
+		$current-channel-value: map-get($channels, $current-channel);
+		$channels: map-merge($channels, ($current-channel: $current-channel-value + $character));
+	  }
+	}
   }
 
   $hue: to-number(map-get($channels, 'h'));
@@ -340,7 +342,7 @@ $sc-constants: (
 
   // If there is no alpha channel registered, return a classic hsl(..) call.
   @if ($alpha == '') {
-    @return hsl($hue, $saturation, $lightness);
+	@return hsl($hue, $saturation, $lightness);
   }
 
   // If there is a registered alpha channel, return a hsla(..) call.
@@ -359,25 +361,25 @@ $sc-constants: (
   $discarded-characters: join($channel-keys, (' ', '(', ')'));
 
   @for $i from 1 through str-length($value) {
-    $character: str-slice($value, $i, $i);
+	$character: str-slice($value, $i, $i);
 
-    // If the character is neither the part of the function name, nor a space or
-    // a parenthese, we proceed further.
-    @if not index($discarded-characters, $character) {
-      // If the current character is a comma, it means we change the current
-      // channel to the next one.
-      @if ($character == ',') {
-        $current-channel-index: index($channel-keys, $current-channel);
-        $current-channel: nth($channel-keys, $current-channel-index + 1);
-      }
+	// If the character is neither the part of the function name, nor a space or
+	// a parenthese, we proceed further.
+	@if not index($discarded-characters, $character) {
+	  // If the current character is a comma, it means we change the current
+	  // channel to the next one.
+	  @if ($character == ',') {
+		$current-channel-index: index($channel-keys, $current-channel);
+		$current-channel: nth($channel-keys, $current-channel-index + 1);
+	  }
 
-        // If the current character is not a comma, it means it is part of the
-        // value for the current channel and therefore should be saved.
-      @else {
-        $current-channel-value: map-get($channels, $current-channel);
-        $channels: map-merge($channels, ($current-channel: $current-channel-value + $character));
-      }
-    }
+		// If the current character is not a comma, it means it is part of the
+		// value for the current channel and therefore should be saved.
+	  @else {
+		$current-channel-value: map-get($channels, $current-channel);
+		$channels: map-merge($channels, ($current-channel: $current-channel-value + $character));
+	  }
+	}
   }
 
   $red: to-number(map-get($channels, 'r'));
@@ -387,7 +389,7 @@ $sc-constants: (
 
   // If there is no alpha channel registered, return a classic hsl(..) call.
   @if ($alpha == '') {
-    @return rgb($red, $green, $blue);
+	@return rgb($red, $green, $blue);
   }
 
   // If there is a registered alpha channel, return a rgba(..) call.
@@ -406,7 +408,7 @@ $sc-constants: (
 /// @return {Bool}
 @function to-bool($value) {
   @if index(map-get($sc-constants, 'FALSEY_VALUES'), $value) {
-    @return false;
+	@return false;
   }
 
   @return true;
@@ -420,11 +422,11 @@ $sc-constants: (
 
   // If the value is already a string, we can safely return it.
   @if ($type == 'string') {
-    @return $value;
+	@return $value;
   }
 
   @if type-of($value) == 'color' {
-    @warn 'Beware! Sass does some color conversion. The resulting string may be different from the color input.';
+	@warn 'Beware! Sass does some color conversion. The resulting string may be different from the color input.';
   }
 
   @return inspect($value);
@@ -438,13 +440,13 @@ $sc-constants: (
 
   // If the value is already a color, we can safely return it.
   @if ($type == 'color') {
-    @return $value;
+	@return $value;
   }
 
   // If the type is not a string, there is no way we can convert it to a color,
   // so we warn and return the default color value (or throw in strict mode).
   @if ($type != 'string') {
-    @return _sc-throw($value, 'color');
+	@return _sc-throw($value, 'color');
   }
 
   $value-lower: to-lower-case($value);
@@ -452,30 +454,30 @@ $sc-constants: (
   // If the given value is a stringified color keyword, return the accurate
   // color keyword.
   $color-keyword-index: index(
-                  map-get($sc-constants, 'STRINGIFIED_COLOR_KEYWORDS'),
-                  $value-lower
+				  map-get($sc-constants, 'STRINGIFIED_COLOR_KEYWORDS'),
+				  $value-lower
   );
 
   @if $color-keyword-index {
-    @return nth(map-get($sc-constants, 'COLOR_KEYWORDS'), $color-keyword-index);
+	@return nth(map-get($sc-constants, 'COLOR_KEYWORDS'), $color-keyword-index);
   }
 
-    // If the color starts with a hash, assume it’s a hexadecimal color triplet
-    // and try to convert it to an actual color.
+	// If the color starts with a hash, assume it’s a hexadecimal color triplet
+	// and try to convert it to an actual color.
   @else if (str-slice($value-lower, 1, 1) == '#') {
-    @return _sc-from-hex($value);
+	@return _sc-from-hex($value);
   }
 
-    // If the color starts with `rgb`, assume it’s a rgb(..) function call and try
-    // to convert it to an actual color.
+	// If the color starts with `rgb`, assume it’s a rgb(..) function call and try
+	// to convert it to an actual color.
   @else if (str-slice($value-lower, 1, 3) == 'rgb') {
-    @return _sc-from-rgb($value);
+	@return _sc-from-rgb($value);
   }
 
-    // If the color starts with `hsl`, assume it’s a hsl(..) function call and try
-    // to convert it to an actual color.
+	// If the color starts with `hsl`, assume it’s a hsl(..) function call and try
+	// to convert it to an actual color.
   @else if (str-slice($value-lower, 1, 3) == 'hsl') {
-    @return _sc-from-hsl($value);
+	@return _sc-from-hsl($value);
   }
 
   // If everything has failed, arn and return the default color value (or throw
@@ -491,12 +493,12 @@ $sc-constants: (
 
   // If the value is already a list, we can safely return it.
   @if ($type == 'list') {
-    @return $value;
+	@return $value;
   }
 
   // If the value is a map, we return a zip of keys and values (aka a list-map).
   @if ($type == 'map') {
-    @return zip(map-keys($value), map-values($value));
+	@return zip(map-keys($value), map-values($value));
   }
 
   // Else we wrap the item in a single-item list.
@@ -511,25 +513,25 @@ $sc-constants: (
 
   // If the value is already a map, we can safely return it.
   @if ($type == 'map') {
-    @return $value;
+	@return $value;
   }
 
   // If the type is a list, we return an empty list if it has a no item or we
   // map each item to its index in the list.
   @if ($type == 'list') {
-    $length: length($value);
+	$length: length($value);
 
-    @if ($length == 0) {
-      @return ();
-    }
+	@if ($length == 0) {
+	  @return ();
+	}
 
-    $map: ();
+	$map: ();
 
-    @for $i from 1 through $length {
-      $map: map-merge($map, ($i: nth($value, $i)));
-    }
+	@for $i from 1 through $length {
+	  $map: map-merge($map, ($i: nth($value, $i)));
+	}
 
-    @return $map;
+	@return $map;
   }
 
   @return (1: $value);

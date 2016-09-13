@@ -1,394 +1,20 @@
+@import "math";
 @import "sassy-cast";
-@import "extra-map-functions";
-
-// Utility functions
-// -------------------------------
-
-@function strip-unit($value) {
-  @return $value / ($value * 0 + 1);
-}
-
-@function clamp($value, $min: 0, $max: 1) {
-  @return if($value > $max, $max, if($value < $min, $min, $value));
-}
-
-@function to-string($value) {
-  @return "#{$value}";
-}
-
-@function map-get-by-index($map, $index) {
-  $keys: map-keys($map);
-  $values: map-values($map);
-
-  @if $index > length($keys) {
-	@error 'map-get-by-index: invalid $index #{$index} of length #{length($keys)}'
-  }
-
-  @return (nth($keys, $index), nth($values, $index));
-}
-
-@function map-key-by-index($map, $index) {
-  @return nth(map-get-by-index($map, $index), 1);
-}
-
-@function map-value-by-index($map, $index) {
-  @return nth(map-get-by-index($map, $index), 2);
-}
-
-@function map-extract($map, $keys) {
-  $result: ();
-
-  @for $i from 1 through length($keys) {
-	$key: nth($keys, $i);
-	@if map-has-key($map, $key) {
-	  $result: map-merge($result, ($key: map-get($map, $key)));
-	}
-  }
-
-  @return $result;
-}
-
-@function map-extract-by-indexes($map, $indexes) {
-  $keys: map-keys($map);
-  $values: map-values($map);
-  $result: ();
-
-  @for $i from 1 through length($indexes) {
-	$index: nth($indexes, $i);
-	@if $index <= length($keys) {
-	  $result: map-merge($result, (nth($keys, $index): nth($values, $index)));
-	}
-  }
-
-  @return $result;
-}
-
-@function map-length($map) {
-  @if type-of($map) != 'map' {
-	@error 'map-length: $map is invalid #{$map}';
-  }
-
-  @return length(map-keys($map));
-}
-
-/// Replace `$search` with `$replace` in `$string`
-/// @author Hugo Giraudel
-/// @param {String} $string - Initial string
-/// @param {String} $search - Substring to replace
-/// @param {String} $replace ('') - New value
-/// @return {String} - Updated string
-@function str-replace($string, $search, $replace: '') {
-  $index: str-index($string, $search);
-
-  @if $index {
-	@return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
-  }
-
-  @return $string;
-}
-
-// Colors
-// -------------------------------
-@function define-color($color-map, $name, $color) {
-  $name: to-string($name);
-
-  @if type-of($color-map) != 'map' {
-	@error 'define-color: invalid $map #{$color-map}';
-  }
-
-  @if type-of($color) != 'color' {
-	@error 'define-color: invalid $color #{$color}';
-  }
-
-  @return map-merge($color-map, ($name: $color));
-}
-
-@function color-blend($color, $blend-base: 1, $blend-factor: 1) {
-  @return rgba($color, clamp($blend-base * $blend-factor));
-}
-
-@function color-bg($color) {
-  @return lighten($color, 40%);
-}
-
-@function color-light($color) {
-  @return lighten($color, 20%);
-}
-
-@function color-hover($color) {
-  @return saturate(darken($color, 5%), 10%);
-}
-
-@function color-focus($color) {
-  @return saturate(darken($color, 8%), 20%);
-}
-
-@function color-down($color) {
-  @return saturate(darken($color, 5%), 15%);
-}
-
-@function color-active($color) {
-  @return saturate(darken($color, 5%), 15%);
-}
-
-@function color-shadow($color) {
-  @return darken($color, 10%);
-}
-
-@function color-heading($color) {
-  @return darken($color, 5%);
-}
-
-$color-disabled-opacity: 0.5 !default;
-
-@function color-disabled($color) {
-  @return rgba($color, $color-disabled-opacity);
-}
-
-$colors-transparent-blend: (
-		'subtle': 0.03,
-		'default': 0.07,
-		'strong': 0.12
-) !default;
-
-@function color-transparent($color, $variant: 'default') {
-  $variant: to-string($variant);
-
-  @if not(map-has_key($colors-transparent-blend, $variant)) {
-	@error 'color-transparent: invalid $variant #{$variant}';
-  }
-
-  @return rgba($color, map-get($colors-transparent-blend, $variant));
-}
-
-@function set-color-transparent-blend($variant, $blend-value) {
-  $variant: to-string($variant);
-  $blend-value: clamp($blend-value);
-
-  $colors-transparent-blend: map-merge($colors-transparent-blend, ($variant: $blend-value));
-}
-
-// Main colors
-// -------------------------------
-$colors-main: (
-		'light': #fff,
-		'mid': #444,
-		'dark': #000,
-		'positive': #387ef5,
-		'assertive': #ef473a,
-		'primary': #387ef5,
-		'secondary': #555
-) !default;
-
-@function color-main($variant) {
-  $variant: to-string($variant);
-
-  @if not(map-has-key($colors-main, $variant)) {
-	@error 'color-main: invalid $variant \'#{$variant}\'';
-  }
-
-  @return map-get($colors-main, $variant);
-}
-
-@function set-color-main($name, $color) {
-  $colors-main: define-color($colors-main, $name, $color);
-}
-
-// Divider Colors
-// -------------------------------
-
-$color-divider: (#202224, #fff) !default;
-$color-divider-blend: (0.15, 0.5) !default;
-
-$colors-divider-blend-mult: (
-		'default': (1.0, 1.0),
-		'strong': (2.0, 2.0),
-		'solid': (5.0, 5.0),
-		'internal': (0.65, 0.65),
-		'solid-internal': (4.0, 4.0),
-		'selected': (2.5, 2.5),
-		'solid-selected': (4.0, 4.0),
-		'strong-selected': (3.5, 3.5),
-		'disabled': (3.5, 3.5)
-) !default;
-
-@function color-divider($variant: 'default', $inverted: false, $color: nth($color-divider, 1)) {
-  $variant: to-string($variant);
-  $index: if(to-bool($inverted), 2, 1);
-
-  @if not(map-has_key($colors-divider-blend-mult, $variant)) {
-	@error 'color-divider-inverted: invalid $variant #{$variant}';
-  }
-
-  @return color-blend($color, nth($color-divider-blend, $index), nth(map-get($colors-divider-blend-mult, $variant), $index));
-}
-
-@function set-color-divider($color, $inverted: false) {
-  $inverted-index: if(to-bool($inverted), 2, 1);
-  $color-divider: set-nth($color-divider, $inverted-index, $color);
-}
-
-@function set-color-divider-blend-base($blend, $inverted: false) {
-  $inverted-index: if(to-bool($inverted), 2, 1);
-  $color-divider-blend: set-nth($color-divider-blend, $inverted-index, $blend);
-}
-
-@function set-color-divider-blend-mult($variant, $blend, $inverted: false) {
-  $variant: to-string($variant);
-  $inverted-index: if(to-bool($inverted), 2, 1);
-
-  @if not(map-has_key($colors-divider-blend-mult, $variant)) {
-	@error 'set-color-divider-blend-mult: invalid $variant #{$variant}';
-  }
-
-  $blend: map-get($colors-divider-blend-mult, $variant);
-  $blend: set-nth($blend, $inverted-index, $blend);
-  $colors-divider-blend-mult: map-merge($colors-divider-blend-mult, ($variant: $blend));
-}
-
-@function add-color-divider-blend-mult($variant, $blend-normal, $blend-inverted) {
-  $variant: to-string($variant);
-  $colors-divider-blend-mult: map-merge($colors-divider-blend-mult, ($variant: ($blend-normal, $blend-inverted)));
-}
-
-// Text Colors
-// -------------------------------
-
-$colors-text-blend-mult: (
-		'default': (1.0, 1.0),
-		'muted': (0.7, 0.9),
-		'selected': (1.12, 1.0),
-		'unselected': (0.5, 0.55),
-		'hovered': (0.9, 1.0),
-		'pressed': (1.05, 1.0),
-		'disabled': (0.5, 0.2)
-) !default;
-
-@function set-color-text-blend-mult($variant, $blend, $inverted: false) {
-  $variant: to-string($variant);
-  $inverted-index: if(to-bool($inverted), 2, 1);
-
-  @if not(map-has_key($colors-text-blend-mult, $variant)) {
-	@error 'set-color-text-blend-mult: invalid $variant #{$variant}';
-  }
-
-  $blend: map-get($colors-text-blend-mult, $variant);
-  $blend: set-nth($blend, $inverted-index, $blend);
-  $colors-text-blend-mult: map-merge($colors-text-blend-mult, ($variant: $blend));
-}
-
-@function add-color-text-blend-mult($variant, $blend-normal, $blend-inverted) {
-  $variant: to-string($variant);
-  $colors-text-blend-mult: map-merge($colors-text-blend-mult, ($variant: ($blend-normal, $blend-inverted)));
-}
-
-@function colorize-text($color, $blend-base: 0.85, $variant: 'default', $inverted: false) {
-  $variant: to-string($variant);
-  $inverted-index: if(to-bool($inverted), 2, 1);
-
-  @if not(map-has_key($colors-text-blend-mult, $variant)) {
-	@error 'color-text-blend: invalid $variant #{$variant}';
-  }
-
-  $blend-mult: nth(map-get($colors-text-blend-mult, $variant), $inverted-index);
-
-  @return color-blend($color, $blend-base, $blend-mult);
-}
-
-$colors-text: (
-		'primary': (#000, #fff),
-		'secondary': (#000, #fff)
-) !default;
-
-$colors-text-blend: (
-		'primary': (0.85, 0.9),
-		'secondary': (0.5, 0.7)
-) !default;
-
-@function color-text($text-variant: 'primary', $blend-variant: 'default', $inverted: false) {
-  $text-variant: to-string($text-variant);
-  $inverted-index: if(to-bool($inverted), 2, 1);
-
-  @if not(map-has-key($colors-text, $text-variant)) {
-	@error 'color-text: invalid $text-variant #{$text-variant} for $colors-text';
-  }
-
-  @if not(map-has-key($colors-text-blend, $text-variant)) {
-	@error 'color-text: invalid $text-variant #{$text-variant} for $colors-text-blend';
-  }
-
-  $color: nth(map-get($colors-text, $text-variant), $inverted-index);
-  $blend: nth(map-get($colors-text-blend, $text-variant), $inverted-index);
-
-  @return colorize-text($color, $blend, $blend-variant, $inverted);
-}
-
-@function set-color-text($variant, $color, $inverted: false) {
-  $variant: to-string($variant);
-  $inverted-index: if(to-bool($inverted), 2, 1);
-
-  @if not(map-has_key($colors-text, $variant)) {
-	@error 'set-color-text: invalid $variant #{$variant}';
-  }
-
-  $colors: map-get($colors-text, $variant);
-  $colors: set-nth($colors, $inverted-index, $color);
-  $colors-text: map-merge($colors-text, ($variant: $colors));
-}
-
-@function add-color-text($variant, $color-normal, $color-inverted) {
-  $variant: to-string($variant);
-  $colors-text: map-merge($colors-text, ($variant: ($color-normal, $color-inverted)));
-}
-
-$colors-text-shadow: (
-		'primary': (none, none),
-		'secondary': (none, none)
-) !default;
-
-@function color-text-shadow($text-variant, $inverted: false) {
-  $text-variant: to-string($text-variant);
-  $inverted-index: if(to-bool($inverted), 2, 1);
-
-  @if not(map-has-key($colors-text-shadow, $text-variant)) {
-	@error 'color-text-shadow: invalid $variant #{$text-variant} for $colors-text-shadow';
-  }
-
-  @return nth(map-get($colors-text-shadow, $text-variant), $inverted-index);
-}
-
-$colors-text-highlight: (
-		color-text(),
-		color-text('primary', $inverted: true)
-) !default;
-
-@function color-text-highlight($bg: false) {
-  $index: if(to-bool($bg), 2, 1);
-  @return nth($colors-text-highlight, $index);
-}
-
-$colors-default: $colors-main !default;
-$colors-auto-include-default: true !default;
-
-// Accents
-// -------------------------------
-/* Differentiating Neutrals */
-$subtle-gradient: linear-gradient(transparent, color-transparent(color-main('dark')));
-
-/* Differentiating Layers */
-$subtle-shadow: 0 1px 2px 0 color-divider();
-$floating-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
+@import "functions";
+@import "colors";
+@import "sizes";
+@import "media";
 
 // Base
 // -------------------------------
 $font-context: 14;
 
 @function unit-em($value) {
-  @return $value * 1em;
+  @return strip-unit($value) * 1em;
 }
 
 @function unit-rem($value) {
-  @return $value * 1rem;
+  @return strip-unit($value) * 1rem;
 }
 
 @function px-em($px) {
@@ -400,140 +26,24 @@ $font-context: 14;
 }
 
 $font-family-sans-serif: '-apple-system', "Helvetica Neue", "Roboto", "Segoe UI", sans-serif !default;
-$font-family-sans-serif-light: '-apple-system', "HelveticaNeue-Light", "Roboto-Light", "Segoe UI-Light", sans-serif-light !default;
+$font-family-sans-serif-light: '-apple-system', "HelveticaNeue-Light", "Roboto-Light", "Segoe UI-Light", sans-serif-light, sans-serif !default;
 
 $font-family: $font-family-sans-serif !default;
 
 $font-size: $font-context * 1px !default;
-$font-size-large: 1.2857 * $font-size !default;
-$font-size-small: 0.7857 * $font-size !default;
+//$font-size-large: 1.2857 * $font-size !default;
+//$font-size-small: 0.7857 * $font-size !default;
 
 $line-height: 1.428571429 !default; // 20/14
 $line-height-abs: floor($line-height * $font-size) !default; // ~20px
-$line-height-large: 1.5 !default;
-$line-height-small: 1.33 !default;
+//$line-height-large: 1.5 !default;
+//$line-height-small: 1.33 !default;
+$line-height-offset: unit-rem(($line-height - 1) / 2) !default;
 
-$default-border-radius: 0.2307;
-$default-duration: 0.1s;
-$default-easing: ease;
-
-$circular-radius: 50%;
-
-// Sizes
+// Border
 // -------------------------------
-
-/*
-  Sizes are all expressed in terms of 14px/em (default em)
-  This ensures these "ratios" remain constant despite changes in EM
-*/
-
-$sizes: (
-		'mini': 0.7857, // 11/14
-		'tiny': 0.8571, // 12/14
-		'small': 0.9285, // 13/14
-		'medium': 1.0,
-		'large': 1.1428, // 16/14
-		'big': 1.2857, // 18/14
-		'huge': 1.4285, // 20/14
-		'massive': 1.7142 // 24/14
-) !default;
-
-$num-used-sizes: length($sizes);
-
-@function size($variant, $relative: false) {
-  $variant: to-string($variant);
-  $relative: to-bool($relative);
-
-  @if not(map-has-key($sizes, $variant)) {
-	@error 'size: invalid $variant #{$variant}';
-  }
-
-  $size: map-get($sizes, $variant);
-  @if $relative == true {
-	@return unit-em($size);
-  } @else {
-	@return unit-rem($size);
-  }
-}
-
-@function define-size($name, $value) {
-  $name: to-string($name);
-  $value: strip-unit($value);
-
-  @if type-of($value) != 'number' {
-	@error 'define-size: invalid $value #{$value}';
-  }
-
-  //allow adding new sizes
-  $sizes: map-merge($sizes, ($name: $value));
-}
-
-@function size-by-index($index) {
-  @return map-get-by-index($sizes, $index);
-}
-
-@function size-collect($names) {
-  @return map-extract($sizes, $names);
-}
-
-@function size-collect-by-indexes($indexes) {
-  @return map-extract-by-indexes($sizes, $indexes);
-}
-
-@function map-sizes($names: (), $size-map: $sizes) {
-
-  @if type-of($names) != 'list' {
-	@error 'map-sizes: $names list is invalid';
-  }
-
-  @if length($names) == 0 {
-	$names: map-keys($size-map);
-  }
-
-  @if (length($names) < $num-used-sizes) {
-	@error 'map-sizes: length($names): #{length($names)} < $num-used-sizes: #{$num-used-sizes}. Need all sizes defined';
-  }
-
-  @if length($names) > $num-used-sizes {
-	@warn 'map-sizes: length($names): #{length($names)} > $num-used-sizes: #{$num-used-sizes}. $names will be trimmed';
-  }
-
-  $names: slice($names, $end: min(min(length($names), map-length($size-map))), $num-used-sizes);
-
-  @return map-extract($size-map, $names);
-}
-
-@function map-sizes-indexes($indexes: (), $size-map: $sizes) {
-
-  @if type-of($indexes) != 'list' or length($indexes) == 0 {
-	@error 'map-sizes-indexes: $indexes list is invalid';
-  }
-
-  @if (length($indexes) < $num-used-sizes) {
-	@error 'map-sizes-indexes: length($indexes): #{length($indexes)} < $num-used-sizes: #{$num-used-sizes}. Need all sizes defined';
-  }
-
-  @if length($indexes) > $num-used-sizes {
-	@warn 'map-sizes: length($indexes): #{length($indexes)} > $num-used-sizes: #{$num-used-sizes}. $indexes will be trimmed';
-  }
-
-  $indexes: slice($indexes, $end: min(min(length($indexes), map-length($size-map))), $num-used-sizes);
-
-  @return map-extract-by-indexes($size-map, $indexes);
-}
-
-$num-columns: 16;
-$numbers: ('one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen');
-
-//width as num-columns in default-column row
-@function wide($num) {
-  @return $num / $num-columns * 100%;
-}
-
-//width as 1-column in num-columns row
-@function column($num) {
-  @return 1 / $num * 100%;
-}
+$border-radius-default: 0.2307;
+$border-radius-circular: 50%;
 
 // Headings
 // -------------------------------
@@ -542,19 +52,18 @@ $heading-font-weight: 500 !default;
 $heading-line-height: 1.2 !default;
 
 /* Used to match floats with text */
-$line-height-offset: unit-rem(($line-height - 1) / 2);
-$heading-line-height-offset: unit-rem($heading-line-height - 1) / 2;
+$heading-line-height-offset: unit-rem($heading-line-height - 1) / 2 !default;
 
 /* Header Spacing */
-$heading-top-margin: calc(2rem - #{$heading-line-height-offset});
-$heading-bottom-margin: 1rem;
-$heading-margin: $heading-top-margin 0 $heading-bottom-margin;
+$heading-top-margin: calc(2rem - #{$heading-line-height-offset}) !default;
+$heading-bottom-margin: 1rem !default;
+$heading-margin: $heading-top-margin 0 $heading-bottom-margin !default;
 
 // Semantic sizes
-//$heading-sizes: (2.0, 1.714, 1.28, 1.071, 1.0, 0.85);
+//$heading-sizes: (2.0, 1.714, 1.28, 1.071, 1.0, 0.85) !default;
 
 // Ionic sizes
-$heading-sizes: (2.6, 2.15, 1.70, 1.25, 1.0, 0.85);
+$heading-sizes: (2.6, 2.15, 1.70, 1.25, 1.0, 0.85) !default;
 
 @function heading-size($index, $relative: false) {
   $size: nth($heading-sizes, $index);
@@ -568,103 +77,15 @@ $heading-sizes: (2.6, 2.15, 1.70, 1.25, 1.0, 0.85);
 
 // Paragraphs
 // -------------------------------
-$paragraph-margin: 0 0 unit-rem($line-height / 2);
-$paragraph-line-height: $line-height;
+$paragraph-margin: 0 0 unit-rem($line-height / 2) !default;
+$paragraph-line-height: $line-height !default;
 
 // Links
 // -------------------------------
-$link-color: color-text();
-$link-text-decoration: none;
-$link-hover-color: color-hover($link-color);
-$link-hover-text-decoration: none;
-
-// Breakpoints
-// -------------------------------
-$breakpoints: (
-  /*'mobile': 320px,*/
-		'tablet': 48em, // 768px
-		'computer': 62em, // 992px
-		'large': 75em, // 1200px
-		'widescreen': 120em // 1920px
-) !default;
-
-$num-used-breakpoints: map-length($breakpoints);
-
-$media-expressions: (
-		'screen': 'screen',
-		'print': 'print',
-		'handheld': 'handheld',
-		'landscape': '(orientation: landscape)',
-		'portrait': '(orientation: portrait)',
-		'retina2x': '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)',
-		'retina3x': '(-webkit-min-device-pixel-ratio: 3), (min-resolution: 350dpi), (min-resolution: 3dppx)'
-) !default;
-
-@function breakpoint($name) {
-  $name: to-string($name);
-
-  @if not(map-has-key($breakpoints, $name)) {
-	@error 'breakpoint: invalid $name #{$name}';
-  }
-
-  @return map-get($breakpoints, $name);
-}
-
-@function breakpoint-by-index($index) {
-  @return map-get-by-index($breakpoints, $index);
-}
-
-@function breakpoint-collect($names) {
-  @return map-extract($breakpoints, $names);
-}
-
-@function breakpoint-collect-by-indexes($indexes) {
-  @return map-extract-by-indexes($breakpoints, $indexes);
-}
-
-@function map-breakpoints($names: (), $breakpoint-map: $breakpoints) {
-
-  @if type-of($names) != 'list' {
-	@error 'map-breakpoints-indexes: $names list is invalid';
-  }
-
-  @if length($names) == 0 {
-	$names: map-keys($breakpoint-map);
-  }
-
-  @if (length($names) < $num-used-breakpoints) {
-	@error 'map-breakpoints: length($names): #{length($names)} < $num-used-breakpoints: #{$num-used-breakpoints}. Need all breakpoints defined';
-  }
-
-  @if length($names) > $num-used-breakpoints {
-	@warn 'map-breakpoints: length($names): #{length($names)} > $num-used-breakpoints: #{$num-used-breakpoints}. $names will be trimmed';
-  }
-
-  $names: slice($names, $end: min(min(length($names), map-length($breakpoint-map))), $num-used-breakpoints);
-
-  @return map-extract($breakpoint-map, $names);
-}
-
-@function map-breakpoints-indexes($indexes: (), $breakpoint-map: $breakpoints) {
-
-  @if type-of($indexes) != 'list' or length($indexes) == 0 {
-	@error 'map-breakpoints-indexes: $indexes list is invalid';
-  }
-
-  @if (length($indexes) < $num-used-breakpoints) {
-	@error 'map-breakpoints-indexes: length($indexes): #{length($indexes)} < $num-used-breakpoints: #{$num-used-breakpoints}. Need all breakpoints defined';
-  }
-
-  @if length($indexes) > $num-used-breakpoints {
-	@warn 'map-breakpoints: length($indexes): #{length($indexes)} > $num-used-breakpoints: #{$num-used-breakpoints}. $indexes will be trimmed';
-  }
-
-  $indexes: slice($indexes, $end: min(min(length($indexes), map-length($breakpoint-map))), $num-used-breakpoints);
-
-  @return map-extract-by-indexes($breakpoint-map, $indexes);
-}
-
-@import "include-media";
+$link-color: color-text() !default;
+$link-text-decoration: none !default;
+$link-hover-color: color-hover($link-color) !default;
+$link-hover-text-decoration: none !default;
 
 // Loader
 // -------------------------------
@@ -687,10 +108,13 @@ $scrollbar-width: px-rem(17);
 /* Maximum Single Character Glyph Width, aka Capital "W" */
 $glyph-width: 1.1em;
 
+/* Maximum Glyph Width of Icon */
+$icon-width: 1.18em;
+
 // Form Input
 // -------------------------------
 ///* This adjusts the default form input across all elements */
-$input-background: color-main('light');
+$input-background: $color-light;
 $input-vertical-padding: px-em(11);
 $input-horizontal-padding: px-em(14);
 $input-padding: $input-vertical-padding $input-horizontal-padding;
@@ -699,8 +123,6 @@ $input-padding: $input-vertical-padding $input-horizontal-padding;
 $input-color: color-text();
 $input-placeholder-color: lighten($input-color, 75);
 $input-placeholder-focus-color: lighten($input-color, 45);
-
-/* Line Height Default For Inputs in Browser */
 $input-line-height: 1.2142;
 
 // Focused Input
@@ -711,7 +133,15 @@ $focused-form-border-color: #85B7D9;
 /* Used on dropdowns, other larger blocks */
 $focused-form-muted-border-color: #96C8DA;
 
-/*---  Shadows  ---*/
+// Accents
+// -------------------------------
+/* Differentiating Neutrals */
+$subtle-gradient: linear-gradient(transparent, color-transparent($color-dark));
+
+/* Differentiating Layers */
+$subtle-shadow: 0 1px 2px 0 color-divider();
+$floating-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
 $floating-shadow-hover: 0px 2px 4px 0px rgba(34, 36, 38, 0.15), 0px 2px 10px 0px rgba(34, 36, 38, 0.25);
 
-$public-dir: ''
+$duration-default: 0.1s;
+$easing-default: ease;

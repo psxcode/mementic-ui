@@ -26,7 +26,7 @@ $font-weight: bold;
 $text-color: rgba(0, 0, 0, 0.6);
 $text-shadow: none;
 $inverted-text-shadow: $text-shadow;
-$border-radius: unit-rem($default-border-radius);
+$border-radius: unit-rem($border-radius-default);
 $vertical-align: baseline;
 
 /* Internal Shadow */
@@ -44,9 +44,9 @@ $box-shadow: $border-box-shadow, $shadow-box-shadow;
 $icon-height: size('tiny');
 $icon-opacity: 0.8;
 $icon-distance: px-em(6);
-$icon-color: '';
-$icon-transition: opacity $default-duration $default-easing;
-$icon-vertical-align: '';
+$icon-color: $color-mid;
+$icon-transition: opacity $duration-default $easing-default;
+$icon-vertical-align: middle;
 
 $icon-margin: 0 $icon-distance 0 -($icon-distance / 2);
 $right-icon-margin: 0 -($icon-distance / 2) 0 $icon-distance;
@@ -55,11 +55,11 @@ $right-icon-margin: 0 -($icon-distance / 2) 0 $icon-distance;
 $inverted-loader-fill-color: rgba(0, 0, 0, 0.15);
 
 $transition:
-opacity $default-duration $default-easing,
-background-color $default-duration $default-easing,
-color $default-duration $default-easing,
-box-shadow $default-duration $default-easing,
-background $default-duration $default-easing
+opacity $duration-default $easing-default,
+background-color $duration-default $easing-default,
+color $duration-default $easing-default,
+box-shadow $duration-default $easing-default,
+background $duration-default $easing-default
 ;
 
 /*-------------------
@@ -80,14 +80,14 @@ $vertical-group-offset: 0 0 0 0;
 $hover-background-color: #CACBCD;
 $hover-background-image: $background-image;
 $hover-box-shadow: $box-shadow;
-$hover-color: color-text('primary', 'hovered');
+$hover-color: color-text-hovered();
 $icon-hover-opacity: 0.85;
 
 /* Focused */
 $focus-background-color: $hover-background-color;
 $focus-background-image: none;
 $focus-box-shadow: none;
-$focus-color: color-text('primary', 'hovered');
+$focus-color: color-text-hovered();
 $icon-focus-opacity: 0.85;
 
 /* Disabled */
@@ -99,12 +99,12 @@ $down-background-color: #BABBBC;
 $down-background-image: none;
 $down-pressed-shadow: none;
 $down-box-shadow: $border-box-shadow/*, $down-pressed-shadow*/;
-$down-color: color-text('primary', 'pressed');
+$down-color: color-text-pressed();
 
 /* Active */
 $active-background-color: #C0C1C2;
 $active-background-image: none;
-$active-color: color-text('primary', 'selected');
+$active-color: color-text-selected();
 $active-box-shadow: $border-box-shadow;
 
 /* Active + Hovered */
@@ -118,7 +118,7 @@ $loading-opacity: 1;
 $loading-pointer-events: auto;
 $loading-transition:
 all 0s linear,
-opacity $default-duration $default-easing
+opacity $duration-default $easing-default
 ;
 
 /*-------------------
@@ -140,7 +140,7 @@ $or-box-shadow: $border-box-shadow;
 $or-vertical-offset: -($or-circle-size / 2);
 $or-horizontal-offset: -($or-circle-size / 2);
 
-$or-background-color: color-main('light');
+$or-background-color: $color-light;
 $or-text-shadow: $inverted-text-shadow;
 $or-text-style: normal;
 $or-text-weight: bold;
@@ -168,7 +168,7 @@ $labeled-icon-width: 1em + ($vertical-padding * 2);
 $labeled-icon-background-color: rgba(0, 0, 0, 0.05);
 $labeled-icon-padding: ($horizontal-padding + $labeled-icon-width);
 $labeled-icon-border: transparent;
-$labeled-icon-color: '';
+$labeled-icon-color: $color-mid;
 
 $labeled-icon-left-shadow: -1px 0 0 0 $labeled-icon-border inset;
 $labeled-icon-right-shadow: 1px 0 0 0 $labeled-icon-border inset;
@@ -176,7 +176,7 @@ $labeled-icon-right-shadow: 1px 0 0 0 $labeled-icon-border inset;
 
 /* Inverted */
 $inverted-border-size: 2px;
-$inverted-text-color: color-text('primary', $inverted: true);
+$inverted-text-color: color-text($color-text-inverted);
 $inverted-text-hover-color: $hover-color;
 $inverted-group-button-offset: 0 0 0 -($inverted-border-size);
 $inverted-vertical-group-button-offset: 0 0 -($inverted-border-size) 0;
@@ -191,14 +191,14 @@ $basic-background: transparent none;
 $basic-font-weight: normal;
 $basic-border: 1px solid color-divider();
 $basic-box-shadow: 0 0 0 $basic-border-size color-divider() inset;
-$basic-loading-color: color-main('mid');
+$basic-loading-color: $color-mid;
 $basic-text-transform: none;
 
 /* Basic Hover */
 $basic-hover-background: #FFFFFF;
-$basic-hover-text-color: color-text('primary', 'hovered');
+$basic-hover-text-color: color-text-hovered();
 $basic-hover-box-shadow:
-0 0 0 $basic-border-size color-divider('selected') inset,
+0 0 0 $basic-border-size color-divider-selected() inset,
 0 0 0 0 color-divider() inset
 ;
 /* Basic Focus */
@@ -208,21 +208,21 @@ $basic-focus-box-shadow: $basic-hover-box-shadow;
 
 /* Basic Down */
 $basic-down-background: #F8F8F8;
-$basic-down-text-color: color-text('primary', 'pressed');
+$basic-down-text-color: color-text-pressed();
 $basic-down-box-shadow:
 0 0 0 $basic-border-size rgba(0, 0, 0, 0.15) inset,
 0 1px 4px 0 color-divider() inset
 ;
 /* Basic Active */
-$basic-active-background: color-transparent(color-main('dark'));
+$basic-active-background: color-transparent($color-dark);
 $basic-active-box-shadow: $basic-down-box-shadow;
-$basic-active-text-color: color-text('primary', 'selected');
+$basic-active-text-color: color-text-selected();
 
 /* Basic Inverted */
 $basic-inverted-background: transparent;
 $basic-inverted-focus-background: transparent;
-$basic-inverted-down-background: color-transparent(color-main('light'));
-$basic-inverted-active-background: color-transparent(color-main('light'));
+$basic-inverted-down-background: color-transparent($color-light);
+$basic-inverted-active-background: color-transparent($color-light);
 
 $basic-inverted-box-shadow: 0 0 0 $inverted-border-size rgba(255, 255, 255, 0.5) inset;
 $basic-inverted-hover-box-shadow: 0 0 0 $inverted-border-size rgba(255, 255, 255, 1) inset;
@@ -230,10 +230,10 @@ $basic-inverted-focus-box-shadow: 0 0 0 $inverted-border-size rgba(255, 255, 255
 $basic-inverted-down-box-shadow: 0 0 0 $inverted-border-size rgba(255, 255, 255, 0.9) inset;
 $basic-inverted-active-box-shadow: 0 0 0 $inverted-border-size rgba(255, 255, 255, 0.7) inset;
 
-$basic-inverted-color: color-main('mid');
-$basic-inverted-hover-color: color-hover(color-main('mid'));
-$basic-inverted-down-color: color-active(color-main('light'));
-$basic-inverted-active-color: color-text('primary', $inverted: true);
+$basic-inverted-color: $color-mid;
+$basic-inverted-hover-color: color-hover($color-mid);
+$basic-inverted-down-color: color-active($color-light);
+$basic-inverted-active-color: color-text($color-text-inverted);
 
 
 /* Basic Group */
@@ -251,32 +251,32 @@ $colored-background-image: none;
 $colored-box-shadow: $shadow-box-shadow;
 
 /* Colored */
-$color-text: color-text('primary', $inverted: true);
-$color-text-shadow: color-text-shadow('primary', $inverted: true);
+$color-text: color-text($color-text-inverted);
+$color-text-shadow: color-shadow(color-text($color-text-inverted));
 
 /* Inverted */
-$light-color-text: color-text('primary', $inverted: true);
-$light-color-text-shadow: color-text-shadow('primary', $inverted: true);
+$light-color-text: color-text($color-text-inverted);
+$light-color-text-shadow: color-shadow(color-text($color-text-inverted));
 
 /* Ordinality */
 $primary-background-image: $colored-background-image;
-$primary-text-color: color-text('primary', $inverted: true);
-$primary-text-shadow: color-text-shadow('primary', $inverted: true);
+$primary-text-color: color-text($color-text-inverted);
+$primary-text-shadow: color-shadow(color-text($color-text-inverted));
 $primary-box-shadow: $colored-box-shadow;
 
 $secondary-background-image: $colored-background-image;
-$secondary-text-color: color-text('secondary', $inverted: true);
-$secondary-text-shadow: color-text-shadow('secondary', $inverted: true);
+$secondary-text-color: color-text($color-text-inverted);
+$secondary-text-shadow: color-shadow($secondary-text-color);
 $secondary-box-shadow: $colored-box-shadow;
 
 $positive-background-image: $colored-background-image;
-$positive-text-color: color-text('primary', $inverted: true);
-$positive-text-shadow: color-text-shadow('primary', $inverted: true);
+$positive-text-color: color-text($color-text-inverted);
+$positive-text-shadow: color-shadow($positive-text-color);
 $positive-box-shadow: $colored-box-shadow;
 
 $negative-background-image: $colored-background-image;
-$negative-text-color: color-text('primary', $inverted: true);;
-$negative-text-shadow: color-text-shadow('primary', $inverted: true);
+$negative-text-color: color-text($color-text-inverted);
+$negative-text-shadow: color-shadow($negative-text-color);
 $negative-box-shadow: $colored-box-shadow;
 
 /* Compact */
@@ -302,4 +302,4 @@ $fade-scale-low: 0.75;
 
 
 
-$colors-button-auto-include-main: true;
+$auto-include-colors-main: true;

@@ -2,12 +2,12 @@
             Message
 *******************************/
 
-// $textColor
 
 /*-------------------
        Elements
 --------------------*/
 
+$text-color: color-text();
 $vertical-margin: 1em;
 $vertical-padding: 1em;
 $horizontal-padding: 1.5em;
@@ -15,17 +15,17 @@ $padding: $vertical-padding $horizontal-padding;
 $background: #-f8-f8-f9;
 $line-height-offset: (($line-height - 1em) / 2);
 
-$border-radius: $default-border-radius;
+$border-radius: $border-radius-default;
 $border-width: 1px;
-$border-shadow: 0 0 0 $border-width color-divider('strong') inset;
+$border-shadow: 0 0 0 $border-width color-divider-strong() inset;
 $shadow-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
 $box-shadow: $border-shadow, $shadow-shadow;
 
 $transition:
-opacity $default-duration $default-easing,
-color $default-duration $default-easing,
-background $default-duration $default-easing,
-box-shadow $default-duration $default-easing;
+opacity $duration-default $easing-default,
+color $duration-default $easing-default,
+background $duration-default $easing-default,
+box-shadow $duration-default $easing-default;
 
 /* Header */
 $header-font-size: size('large');
@@ -53,7 +53,7 @@ $icon-distance: 0.6em;
 $close-top-distance: $vertical-padding - $line-height-offset;
 $close-right-distance: 0.5em;
 $close-opacity: 0.7;
-$close-transition: opacity $default-duration $default-easing;
+$close-transition: opacity $duration-default $easing-default;
 
 
 /*-------------------
@@ -78,9 +78,9 @@ $floating-box-shadow: $border-shadow, $floating-shadow;
 /* Colors */
 
 /* Warning / Positive / Negative / Info */
-$positive-box-shadow: 0 0 0 $border-width $positive-border-color inset, $shadow-shadow;
-$negative-box-shadow: 0 0 0 $border-width $negative-border-color inset, $shadow-shadow;
-$info-box-shadow: 0 0 0 $border-width $info-border-color inset, $shadow-shadow;
-$warning-box-shadow: 0 0 0 $border-width $warning-border-color inset, $shadow-shadow;
-$error-box-shadow: 0 0 0 $border-width $error-border-color inset, $shadow-shadow;
-$success-box-shadow: 0 0 0 $border-width $success-border-color inset, $shadow-shadow;
+$positive-box-shadow: 0 0 0 $border-width color-main('positive') inset, $shadow-shadow;
+$negative-box-shadow: 0 0 0 $border-width color-main('negative') inset, $shadow-shadow;
+$info-box-shadow: 0 0 0 $border-width color-main('info') inset, $shadow-shadow;
+$warning-box-shadow: 0 0 0 $border-width color-main('warn') inset, $shadow-shadow;
+$error-box-shadow: 0 0 0 $border-width color-main('error') inset, $shadow-shadow;
+$success-box-shadow: 0 0 0 $border-width color-main('success') inset, $shadow-shadow;

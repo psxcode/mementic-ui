@@ -238,8 +238,8 @@
 
 /* Colors */
 .ui.inverted.message {
-  background-color: color-main('dark');
-  color: color-text($inverted: true);
+  background-color: $color-dark;
+  color: color-text($color-text-inverted);
 }
 
 @mixin colors($color-map) {

@@ -10,11 +10,11 @@ $vertical-align: baseline;
 $vertical-margin: 0;
 $horizontal-margin: px-em(2);
 $background-color: #E8E8E8;
-$color: color-text('primary', 'muted');
+$color: color-text-muted();
 $background-image: none;
 $vertical-padding: 0.5833em; /* medium is not $emSize custom value required */
 $horizontal-padding: 0.833em;
-$border-radius: unit-rem($default-border-radius);
+$border-radius: unit-rem($border-radius-default);
 $text-transform: none;
 $font-weight: bold;
 $border-width: 1px;
@@ -22,8 +22,8 @@ $border: 0 solid transparent;
 
 $line-height-offset: -($vertical-padding / 2);
 
-$label-transition-duration: $default-duration;
-$label-transition-easing: $default-easing;
+$label-transition-duration: $duration-default;
+$label-transition-easing: $easing-default;
 $transition: background $label-transition-duration $label-transition-easing;
 
 /* Group */
@@ -66,7 +66,7 @@ $image-label-vertical-padding: $vertical-padding;
 $image-label-horizontal-padding: $horizontal-padding;
 $image-label-text-distance: 0.5em;
 $image-label-detail-distance: $image-label-text-distance;
-$image-label-border-radius: $border-radius;
+$image-label-border-radius: $border-radius-default;
 $image-label-box-shadow: none;
 $image-label-padding: $image-label-vertical-padding $image-label-horizontal-padding $image-label-vertical-padding $image-label-text-distance;
 
@@ -74,7 +74,7 @@ $image-label-image-margin: -$vertical-padding $image-label-text-distance -$verti
 $image-label-image-border-radius: $image-label-border-radius 0em 0em $image-label-border-radius;
 $image-label-image-height: $image-height;
 
-$image-label-detail-background: color-transparent(color-main('dark'), 'strong');
+$image-label-detail-background: color-transparent-strong($color-dark);
 $image-label-detail-padding: $image-label-vertical-padding $image-label-horizontal-padding;
 $image-label-detail-margin: -$image-label-vertical-padding -$image-label-horizontal-padding -$image-label-vertical-padding $image-label-detail-distance;
 
@@ -85,24 +85,24 @@ $image-label-detail-margin: -$image-label-vertical-padding -$image-label-horizon
 /* Hover */
 $label-hover-background-color: #E0E0E0;
 $label-hover-background-image: none;
-$label-hover-text-color: color-text('primary', 'hovered');
+$label-hover-text-color: color-text-hovered();
 
 /* Active */
 $label-active-background-color: #D0D0D0;
 $label-active-background-image: none;
-$label-active-text-color: color-text('primary', 'selected');
+$label-active-text-color: color-text-selected();
 
 /* Active Hover */
 $label-active-hover-background-color: #C8C8C8;
 $label-active-hover-background-image: none;
-$label-active-hover-text-color: color-text('primary', 'selected');
+$label-active-hover-text-color: color-text-selected();
 
 /*-------------------
       Variations
 --------------------*/
 
 /* Basic */
-$basic-background: none color-main('light');
+$basic-background: none $color-light;
 $basic-border-width: 1px;
 $basic-border: $basic-border-width solid color-divider();
 $basic-color: color-text();
@@ -114,7 +114,7 @@ $basic-hover-border: $basic-border;
 $basic-hover-box-shadow: $basic-box-shadow;
 
 /* Tag */
-$tag-circle-color: color-main('light');
+$tag-circle-color: $color-light;
 $tag-circle-size: 0.5em;
 $tag-horizontal-padding: 1.5em;
 $tag-circle-box-shadow: 0 -1px 1px 0 rgba(0, 0, 0, 0.3);
@@ -155,7 +155,7 @@ $attached-vertical-padding: 0.75em;
 $attached-horizontal-padding: 1em;
 
 $attached-corner-border-radius: px-rem(3);
-$attached-border-radius: $border-radius;
+$attached-border-radius: $border-radius-default;
 
 /* Corner */
 $corner-size-ratio: 1;

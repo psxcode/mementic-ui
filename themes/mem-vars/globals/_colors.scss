@@ -1,0 +1,247 @@
+// Colors
+// -------------------------------
+@function color-bg($color) {
+  @return lighten($color, 40%);
+}
+
+@function color-light($color) {
+  @return lighten($color, 20%);
+}
+
+@function color-hover($color) {
+  @return saturate(darken($color, 5%), 10%);
+}
+
+@function color-focus($color) {
+  @return saturate(darken($color, 8%), 20%);
+}
+
+@function color-down($color) {
+  @return saturate(darken($color, 5%), 15%);
+}
+
+@function color-active($color) {
+  @return saturate(darken($color, 5%), 15%);
+}
+
+@function color-shadow($color) {
+  @return darken($color, 10%);
+}
+
+$color-opacity-disabled: 0.5 !default;
+$color-opacity-strong: 0.1 !default;
+$color-opacity-subtle: 0.05 !default;
+
+@function color-disabled($color) {
+  @return rgba($color, $color-opacity-disabled);
+}
+
+@function color-transparent($color) {
+  @return rgba($color, $color-opacity-strong);
+}
+
+@function color-transparent-strong($color) {
+  @return rgba($color, $color-opacity-strong);
+}
+
+@function color-transparent-subtle($color) {
+  @return rgba($color, $color-opacity-subtle);
+}
+
+// sRGB BT-709 BRIGHTNESS
+@function brightness($c) {
+  $rlin: log2lin(red($c)/255);
+  $glin: log2lin(green($c)/255);
+  $blin: log2lin(blue($c)/255);
+  @return lin2log(0.2126 * $rlin + 0.7152 * $glin + 0.0722 * $blin) * 100;
+}
+
+// Compares contrast of a given color to the light/dark arguments and returns whichever is most "contrasty"
+@function color-contrast($color, $dark: darken($color, 75%), $light: lighten($color, 75%)) {
+  @if $color == null {
+	@return null;
+  }
+
+  $color-brightness: brightness($color);
+  $light-brightness: brightness($light);
+  $dark-brightness: brightness($dark);
+
+  @return if(abs($color-brightness - $light-brightness) > abs($color-brightness - $dark-brightness), $light, $dark);
+}
+
+// Main colors
+// -------------------------------
+$colors-main: (
+  //user interaction
+		'positive': #387ef5,
+		'negative': #ef473a,
+		'success': #387ef5,
+		'fail': #ef473a,
+		'info': #94eeff,
+		'warn': #fff57a,
+		'error': #ef473a,
+  //theme
+		'primary': #387ef5,
+		'secondary': #555,
+		'accent': #fff57a,
+) !default;
+
+@function color-main($name) {
+  $name: to-string($name);
+
+  @if not(map-has-key($colors-main, $name)) {
+	@error 'color-main: invalid $name \'#{$name}\'';
+  }
+
+  @return map-get($colors-main, $name);
+}
+
+$auto-include-colors-main: true !default;
+
+// Colors greyscale
+// -------------------------------
+$color-light: #FFF;
+$color-dark: #202224;
+$color-mid: #444;
+
+// Divider Colors
+// -------------------------------
+$color-divider: #202020;
+$color-divider-inverted: #E0E0E0;
+
+$color-divider-blend: 0.15 !default;
+$color-divider-blend-inverted: 0.5 !default;
+
+$color-divider-states: (
+		'default',
+		'strong',
+		'solid',
+		'internal',
+		'solid-internal',
+		'selected',
+		'solid-selected',
+		'strong-selected',
+		'disabled'
+) !default;
+
+$_colors-divider-states-blend-mult: map-zip($color-divider-states, (
+		1.0, //default
+		2.0, //strong
+		5.0, //solid
+		0.65, //internal
+		4.0, //solid-intenal
+		2.5, //selected
+		4.0, //solid-selected
+		3.5, //strong-selected
+		3.5 //disabled
+)) !default;
+
+@function color-divider-state($color, $state) {
+  $blend: $color-divider-blend;
+  $mult: map-get($_colors-divider-states-blend-mult, $state);
+
+  @return rgba($color, clamp($blend * $mult));
+}
+
+@function color-divider($color: $color-divider) {
+  @return color-divider-state($color, 'default');
+}
+
+@function color-divider-strong($color: $color-divider) {
+  @return color-divider-state($color, 'strong');
+}
+
+@function color-divider-solid($color: $color-divider) {
+  @return color-divider-state($color, 'solid');
+}
+
+@function color-divider-internal($color: $color-divider) {
+  @return color-divider-state($color, 'internal');
+}
+
+@function color-divider-solid-internal($color: $color-divider) {
+  @return color-divider-state($color, 'solid-internal');
+}
+
+@function color-divider-selected($color: $color-divider) {
+  @return color-divider-state($color, 'selected');
+}
+
+@function color-divider-solid-selected($color: $color-divider) {
+  @return color-divider-state($color, 'solid-selected');
+}
+
+@function color-divider-strong-selected($color: $color-divider) {
+  @return color-divider-state($color, 'strong-selected');
+}
+
+@function color-divider-disabled($color: $color-divider) {
+  @return color-divider-state($color, 'disabled');
+}
+
+// Text Colors
+// -------------------------------
+$color-text: #202020;
+$color-text-inverted: #E0E0E0;
+
+$color-text-blend: 0.85;
+$color-text-blend-inverted: 0.9;
+
+$color-text-states: (
+		'default',
+		'muted',
+		'selected',
+		'unselected',
+		'hovered',
+		'pressed',
+		'disabled'
+);
+
+$_colors-text-states-blend-mult: map-zip($color-text-states, (
+		1.0, //default
+		0.7, //muted
+		1.12, //selected
+		0.5, //unselected
+		0.9, //hovered
+		1.05, //pressed
+		0.5 //disabled
+)) !default;
+
+@function color-text-state($color, $state) {
+  $blend: $color-text-blend;
+  $mult: map-get($_colors-text-states-blend-mult, $state);
+
+  @return rgba($color, clamp($blend * $mult));
+}
+
+@function color-text($color: $color-text) {
+  @return color-text-state($color, 'default');
+}
+
+@function color-text-muted($color: $color-text) {
+  @return color-text-state($color, 'muted');
+}
+
+@function color-text-selected($color: $color-text) {
+  @return color-text-state($color, 'selected');
+}
+
+@function color-text-unselected($color: $color-text) {
+  @return color-text-state($color, 'unselected');
+}
+
+@function color-text-hovered($color: $color-text) {
+  @return color-text-state($color, 'hovered');
+}
+
+@function color-text-pressed($color: $color-text) {
+  @return color-text-state($color, 'pressed');
+}
+
+@function color-text-disabled($color: $color-text) {
+  @return color-text-state($color, 'disabled');
+}
+
+@function color-text-heading($color: darken($color-text, 5%)) {
+  @return color-text-state($color, 'default');
+}

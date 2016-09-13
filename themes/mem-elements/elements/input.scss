@@ -58,7 +58,7 @@
 
 .ui.disabled.input,
 .ui.input input[disabled] {
-  opacity: $color-disabled-opacity;
+  opacity: $color-opacity-disabled;
 }
 
 .ui.disabled.input input,
@@ -92,7 +92,7 @@
   width: $loader-size;
   height: $loader-size;
 
-  border-radius: $circular-radius;
+  border-radius: $border-radius-circular;
   border: $loader-line-width solid $loader-fill-color;
 }
 .ui.loading.loading.input > i.icon:after {
@@ -108,7 +108,7 @@
   animation: button-spin $loader-speed linear;
   animation-iteration-count: infinite;
 
-  border-radius: $circular-radius;
+  border-radius: $border-radius-circular;
 
   border-color: $loader-line-color transparent transparent;
   border-style: solid;

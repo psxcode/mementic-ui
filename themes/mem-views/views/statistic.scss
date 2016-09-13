@@ -157,11 +157,11 @@
 
 @for $i from 1 through 10 {
 
-  .ui.#{nth($numbers, $i)}.statistics {
+  .ui.#{number-name($i)}.statistics {
 	margin: $item-group-margin;
   }
 
-  .ui.#{nth($numbers, $i)}.statistics .statistic {
+  .ui.#{number-name($i)}.statistics .statistic {
 	min-width: column($i);
 	margin: $item-margin;
   }

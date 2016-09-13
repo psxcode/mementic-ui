@@ -38,7 +38,7 @@ $icon-label-color: rgba(0, 0, 0, 0.6);
 /* Image Label */
 $image-label-width: 100%;
 $image-label-height: auto;
-$image-label-border-radius: $circular-radius;
+$image-label-border-radius: $border-radius-circular;
 
 /* Content w/ Label */
 $labeled-content-margin: 0.5em 0 px-em(5) size('large');
@@ -119,7 +119,7 @@ $metadata-color: rgba(0, 0, 0, 0.6);
 $metadata-element-spacing: 0.75em;
 
 /* Like */
-$like-color: '';
+$like-color: $color-mid;
 $like-hover-color: #FF2733;
 $like-active-color: #EF404A;
 $like-transition: 0.2s color ease;
@@ -132,9 +132,9 @@ $metadata-divider-offset: -1em;
 $metadata-action-cursor: pointer;
 $metadata-action-opacity: 1;
 $metadata-action-color: rgba(0, 0, 0, 0.5);
-$metadata-action-transition: color $default-duration $default-easing;
+$metadata-action-transition: color $duration-default $easing-default;
 
-$metadata-action-hover-color: color-text('primary', 'selected');
+$metadata-action-hover-color: color-text-selected();
 
 /*-------------------
       Variations

@@ -3,7 +3,7 @@
 --------------------*/
 
 /* Group */
-$groupMargin: 1.5em 0;
+$group-margin: 1.5em 0;
 
 /* Item */
 $display: flex;
@@ -14,8 +14,9 @@ $padding: 0;
 $width: 100%;
 $box-shadow: none;
 $border: none;
-$z-index: '';
-$transition: box-shadow $default-duration $default-easing;
+$z-index: 0;
+$transition: box-shadow $duration-default $easing-default;
+$text-color: color-text();
 
 /* Responsive */
 $item-spacing: 1em;
@@ -38,8 +39,8 @@ $mobile-content-image-distance: 1.5em;
 /* Image */
 $image-display: block;
 $image-float: none;
-$image-max-height: '';
-$image-vertical-align: top;
+$image-max-height: 100%;
+$image-vertical-align: flex-start;
 $image-margin: 0;
 $image-padding: 0;
 $image-border: none;
@@ -49,7 +50,7 @@ $image-border: none;
 
 /* Content */
 $content-display: block;
-$content-vertical-align: top;
+$content-vertical-align: flex-start;
 
 $content-width: auto;
 $content-offset: 0;
@@ -77,7 +78,7 @@ $meta-color: rgba(0, 0, 0, 0.6);
 /* Icons */
 $action-opacity: 0.75;
 $action-hover-opacity: 1;
-$action-transition: color $default-duration $default-easing;
+$action-transition: color $duration-default $easing-default;
 
 /* Actions */
 $favorite-color: #FFB70A;
@@ -90,24 +91,24 @@ $header-link-color: $header-color;
 $header-link-hover-color: $link-hover-color;
 $meta-link-color: color-light(color-text());
 $meta-link-hover-color: $text-color;
-$content-link-color: '';
-$content-link-hover-color: '';
-$content-link-transition: color $default-duration $default-easing;
+$content-link-color: $link-color;
+$content-link-hover-color: $link-hover-color;
+$content-link-transition: color $duration-default $easing-default;
 
 /* Description */
 $description-distance: 0.6em;
-$description-max-width: auto;
+$description-max-width: 100%;
 $description-font-size: 1em;
 $description-line-height: $line-height;
 $description-color: $text-color;
 
 /* Content Image */
-$content-image-width: '';
-$content-image-vertical-align: middle;
+$content-image-width: auto;
+$content-image-vertical-align: center;
 
 /* Avatar Image */
 $avatar-size: $content-image-width;
-$avatar-border-radius: $circular-radius;
+$avatar-border-radius: $border-radius-circular;
 
 /* Paragraph */
 $paragraph-distance: 0.5em;
@@ -127,7 +128,7 @@ $extra-width: 100%;
 $extra-padding: 0 0 0;
 $extra-box-shadow: none;
 $extra-color: color-light(color-text());
-$extra-transition: color $default-duration $default-easing;
+$extra-transition: color $duration-default $easing-default;
 
 /*-------------------
       Variations
@@ -147,5 +148,4 @@ $divided-first-last-padding: 0;
 
 /* Breakpoints */
 $bp-default-indexes: (1, 2);
-$num-used-breakpoints: length($bp-default-indexes);
-$bps: map-breakpoints-indexes($bp-default-indexes);
+$bps: breakpoint-collect-by-indexes($bp-default-indexes);

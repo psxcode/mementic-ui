@@ -40,7 +40,7 @@
 
 /* Header */
 .ui.inverted.segment > .ui.header {
-  color: color-main('light');
+  color: $color-light;
 }
 
 /* Label */
@@ -115,7 +115,7 @@
 .ui.piled.segments:before,
 .ui.piled.segment:after,
 .ui.piled.segment:before {
-  background-color: color-main('light');
+  background-color: $color-light;
   visibility: visible;
   content: '';
   display: block;
@@ -202,8 +202,8 @@
 .ui.stacked.inverted.segments:after,
 .ui.stacked.inverted.segment:before,
 .ui.stacked.inverted.segment:after {
-  background-color: color-transparent(color-main('dark'), 'subtle');
-  border-top: 1px solid color-divider('selected');
+  background-color: color-transparent-subtle($color-dark);
+  border-top: 1px solid color-divider-selected();
 }
 
 /*-------------------
@@ -383,8 +383,8 @@
 ---------------*/
 
 .ui.disabled.segment {
-  opacity: $color-disabled-opacity;
-  color: color-text('primary', 'disabled');
+  opacity: $color-opacity-disabled;
+  color: color-text-disabled();
 }
 
 /*--------------
@@ -425,7 +425,7 @@
   animation: segment-spin $loader-speed linear;
   animation-iteration-count: infinite;
 
-  border-radius: $circular-radius;
+  border-radius: $border-radius-circular;
 
   border-color: $loader-line-color $loader-fill-color $loader-fill-color $loader-fill-color;
   border-style: solid;
@@ -515,7 +515,7 @@
 .ui.inverted.segment,
 .ui.primary.inverted.segment {
   background: $inverted-background;
-  color: color-text('primary', $inverted: true);
+  color: color-text($color-text-inverted);
 }
 
 /* Nested */
@@ -524,12 +524,12 @@
 }
 
 .ui.inverted.segment .inverted.segment {
-  color: color-text('primary', $inverted: true);
+  color: color-text($color-text-inverted);
 }
 
 /* Attached */
 .ui.inverted.attached.segment {
-  border-color: color-divider('solid', $inverted: true);
+  border-color: color-divider-solid($color-divider-inverted);
 }
 
 /*-------------------
@@ -633,11 +633,11 @@
 
     .ui.#{$name}.inverted.segment {
       background-color: $color !important;
-      color: color-main('light') !important;
+      color: $color-light !important;
     }
   }
 }
 
-@if type-of($colors-default) == 'map' and $colors-auto-include-default == true {
-  @include colors($colors-default);
+@if $auto-include-colors-main == true {
+  @include colors($colors-main);
 }

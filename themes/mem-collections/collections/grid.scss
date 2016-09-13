@@ -158,7 +158,7 @@ $i: 0;
 @for $i from 1 through $num-columns {
 
   /* Grid Based */
-  .ui.#{nth($numbers, $i)}.column.grid {
+  .ui.#{number-name($i)}.column.grid {
     > .row > .column,
     > .column:not(.row) {
       width: column($i);
@@ -166,15 +166,15 @@ $i: 0;
   }
 
   /* Row Based Overrides */
-  .ui.grid > .#{nth($numbers, $i)}.column.row > .column {
+  .ui.grid > .#{number-name($i)}.column.row > .column {
     width: column($i) !important;
   }
 
   /* Sizing Combinations */
-  .ui.grid > .row > .#{nth($numbers, $i)}.wide.column,
-  .ui.grid > .column.row > .#{nth($numbers, $i)}.wide.column,
-  .ui.grid > .#{nth($numbers, $i)}.wide.column,
-  .ui.grid.column > .#{nth($numbers, $i)}.wide.column {
+  .ui.grid > .row > .#{number-name($i)}.wide.column,
+  .ui.grid > .column.row > .#{number-name($i)}.wide.column,
+  .ui.grid > .#{number-name($i)}.wide.column,
+  .ui.grid.column > .#{number-name($i)}.wide.column {
     width: wide($i) !important;
   }
 }
@@ -552,14 +552,13 @@ $i: 0;
     .ui.grid > .#{$name}.column,
     .ui.grid > .row > .#{$name}.column {
       background-color: $color !important;
-      color: color-text('primary', $inverted: true);
+      color: color-text($color-text-inverted);
     }
-
   }
 }
 
-@if type-of($colors-default) == 'map' and $colors-auto-include-default == true {
-  @include colors($colors-default);
+@if $auto-include-colors-main == true {
+  @include colors($colors-main);
 }
 
 /*----------------------
@@ -648,9 +647,9 @@ $i: 0;
 
 @for $i from 1 through $num-columns {
 
-  .ui.#{nth($numbers, $i)}.column.doubling.grid > .row > .column,
-  .ui.#{nth($numbers, $i)}.column.doubling.grid > .column:not(.row),
-  .ui.grid > .#{nth($numbers, $i)}.column.doubling.row.row > .column {
+  .ui.#{number-name($i)}.column.doubling.grid > .row > .column,
+  .ui.#{number-name($i)}.column.doubling.grid > .column:not(.row),
+  .ui.grid > .#{number-name($i)}.column.doubling.row.row > .column {
     width: ceil($i * 0.5);
   }
 }

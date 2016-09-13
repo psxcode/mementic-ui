@@ -124,7 +124,7 @@ body {
   padding: 0;
   overflow-x: hidden;
   //min-width: $pageMinWidth;
-  background: color-main('light');
+  background: $color-light;
   font-family: $font-family;
   font-size: $font-size;
   line-height: $line-height;
@@ -233,7 +233,7 @@ q {
  */
 
 small {
-  font-size: 80%;
+  font-size: 0.8em;
 }
 
 /**
@@ -253,7 +253,7 @@ sub,
 sup {
   position: relative;
   vertical-align: baseline;
-  font-size: 75%;
+  font-size: 0.75em;
   line-height: 0;
 }
 
@@ -488,7 +488,7 @@ th {
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  color: color-text();
+  color: color-text-heading();
   font-weight: $heading-font-weight;
   font-family: $heading-font-family;
   line-height: $heading-line-height;
@@ -523,23 +523,23 @@ h1, .h1 {
 }
 
 h2, .h2 {
-  font-size: heading-size(1);
+  font-size: heading-size(2);
 }
 
 h3, .h3 {
-  font-size: heading-size(1);
+  font-size: heading-size(3);
 }
 
 h4, .h4 {
-  font-size: heading-size(1);
+  font-size: heading-size(4);
 }
 
 h5, .h5 {
-  font-size: heading-size(1);
+  font-size: heading-size(5);
 }
 
 h6, .h6 {
-  font-size: heading-size(1);
+  font-size: heading-size(6);
 }
 
 // Links
@@ -574,6 +574,6 @@ p {
 // -------------------------
 
 ::selection {
-  color: color-text-highlight();
-  background-color: color-text-highlight($bg: true);
+  color: $color-light;
+  background-color: color-main('positive');
 }

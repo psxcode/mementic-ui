@@ -365,7 +365,7 @@
 .ui.table tr.disabled:hover,
 .ui.table tr:hover td.disabled {
   pointer-events: none;
-  color: color-text('primary', 'disabled');
+  color: color-text-disabled();
 }
 
 /*******************************
@@ -634,7 +634,7 @@
     }
     .ui.inverted.#{$name}.table {
       background-color: $color !important;
-      color: color-text($inverted: true) !important;
+      color: color-text($color-text-inverted) !important;
     }
   }
 }
@@ -646,12 +646,12 @@
 @for $i from 1 through $num-columns {
 
   /* Grid Based */
-  .ui.#{nth($numbers, $i)}.column.table td {
+  .ui.#{number-name($i)}.column.table td {
     width: column($i);
   }
   /* Column Width */
-  .ui.table th.#{nth($numbers, $i)}.wide,
-  .ui.table td.#{nth($numbers, $i)}.wide {
+  .ui.table th.#{number-name($i)}.wide,
+  .ui.table td.#{number-name($i)}.wide {
     width: wide($i);
   }
 }
@@ -766,7 +766,7 @@
 .ui.inverted.table tr.disabled:hover td,
 .ui.inverted.table tr:hover td.disabled {
   pointer-events: none;
-  color: color-text('primary', 'disabled', $inverted: true);
+  color: color-text-disabled($color-text-inverted);
 }
 
 /* Definition */

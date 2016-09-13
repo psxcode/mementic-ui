@@ -431,7 +431,7 @@
 .ui.form .fields.error .field .corner.label,
 .ui.form .field.error .corner.label {
   border-color: $form-error-color;
-  color: color-main('light');
+  color: $color-light;
 }
 
 .ui.form .fields.error .field textarea,
@@ -582,7 +582,7 @@
 .ui.form .disabled.field,
 .ui.form .field :disabled {
   pointer-events: none;
-  opacity: $color-disabled-opacity;
+  opacity: $color-opacity-disabled;
 }
 
 .ui.form .field.disabled > label,
@@ -628,7 +628,7 @@
   animation: form-spin $loader-speed linear;
   animation-iteration-count: infinite;
 
-  border-radius: $circular-radius;
+  border-radius: $border-radius-circular;
 
   border-color: $loader-line-color $loader-fill-color $loader-fill-color $loader-fill-color;
   border-style: solid;
@@ -774,8 +774,8 @@
 
 @for $i from 2 through 10 {
   /* Other Combinations */
-  .ui.form .#{nth($numbers, $i)}.fields > .fields,
-  .ui.form .#{nth($numbers, $i)}.fields > .field {
+  .ui.form .#{number-name($i)}.fields > .fields,
+  .ui.form .#{number-name($i)}.fields > .field {
 	width: column($i);
   }
 }
@@ -823,7 +823,7 @@ $bp-tablet: map-value-by-index($bps, 1);
 
 @for $i from 1 through $num-columns {
 
-  .ui.form .#{nth($numbers, $i)}.wide.field {
+  .ui.form .#{number-name($i)}.wide.field {
 	width: wide($i) !important;
   }
 }

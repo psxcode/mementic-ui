@@ -28,20 +28,20 @@ $label-text-transform: none;
 $label-color: color-text();
 
 /* Input */
-$input-font: $page-font;
+$input-font: $font-family;
 $input-width: 100%;
 $input-font-size: 1em;
 $input-padding: ($input-vertical-padding + ((1em - $input-line-height) / 2)) $input-horizontal-padding;
 $input-border: 1px solid color-divider();
-$input-border-radius: $absolute-border-radius;
+$input-border-radius: $border-radius-default;
 $input-color: color-text();
 $input-transition:
-color $default-duration $default-easing,
-border-color $default-duration $default-easing;
+color $duration-default $easing-default,
+border-color $duration-default $easing-default;
 $input-box-shadow: 0 0 0 0 transparent inset;
 
 /* Select */
-$select-background: color-main('light');
+$select-background: $color-light;
 $select-border-radius: $input-border-radius;
 $select-border: $input-border;
 $select-padding: 0.62em $input-horizontal-padding;
@@ -67,10 +67,10 @@ $checkbox-label-font-size: 1em;
 $checkbox-label-text-transform: $label-text-transform;
 
 /* Inline Validation Prompt */
-$prompt-background: color-main('light');
-$prompt-border-color: $form-error-border;
+$prompt-background: $color-light;
+$prompt-border-color: color-divider(color-main('error'));
 $prompt-border: 1px solid $prompt-border-color;
-$prompt-text-color: $form-error-color;
+$prompt-text-color: color-text(color-main('error'));
 $inline-prompt-margin: -0.25em 0 -0.5em 0.5em;
 $inline-prompt-border-width: 1px;
 
@@ -84,7 +84,7 @@ $input-focus-pointer-size: 0;
 /* Input Focus */
 $input-focus-background: $input-background;
 $input-focus-border-color: $focused-form-border-color;
-$input-focus-color: color-text('primary', 'selected');
+$input-focus-color: color-text-selected();
 $input-focus-box-shadow: $input-focus-pointer-size 0 0 0 color-active(color-divider()) inset;
 $input-focus-border-radius: $input-border-radius;
 
@@ -96,12 +96,12 @@ $text-area-focus-box-shadow: $input-focus-box-shadow;
 $text-area-focus-border-radius: $input-focus-border-radius;
 
 /* Disabled */
-$disabled-label-opacity: $color-disabled-opacity;
+$disabled-label-opacity: $color-opacity-disabled;
 
 /* Errored Input */
-$form-error-color: $negative-text-color;
-$form-error-border: color-divider($inverted: true);
-$form-error-background: $negative-background-color;
+$form-error-color: color-text(color-main('error'));
+$form-error-border: color-divider($color-divider-inverted);
+$form-error-background: color-bg(color-main('error'));
 
 /* AutoFill */
 $input-auto-fill-background: #FFFFF0;
@@ -113,20 +113,20 @@ $input-auto-fill-error-border: #E0B4B4;
 
 
 /* Input Error */
-$inputErrorBorderRadius: '';
-$inputErrorBoxShadow: none;
+$input-error-border-radius: $border-radius-default;
+$input-error-box-shadow: none;
 
 /* Dropdown Error */
 $dropdown-error-hover-background: #FBE7E7;
 $dropdown-error-selected-background: $dropdown-error-hover-background;
 $dropdown-error-active-background: #FDCFCF;
 $dropdown-error-label-background: #EACBCB;
-$dropdown-error-label-color: $error-text-color;
+$dropdown-error-label-color: color-text(color-main('error'));
 
 /* Focused Error */
-$input-error-focus-background: $negative-background-color;
-$input-error-focus-color: $negative-text-color;
-$input-error-focus-border: $negative-border-color;
+$input-error-focus-background: color-bg(color-main('error'));
+$input-error-focus-color: color-text(color-main('error'));
+$input-error-focus-border: color-divider(color-main('error'));
 $input-error-focus-box-shadow: none;
 
 /* Placeholder Error */
@@ -147,17 +147,17 @@ $loader-line-z-index: 101;
 
 /* Required */
 $required-content: '*';
-$required-color: $negative-color;
+$required-color: color-main('error');
 $required-vertical-offset: -0.2em;
 $required-distance: 0.2em;
 $required-margin: $required-vertical-offset 0 0 $required-distance;
 
 /* Inverted */
 $inverted-input-background: $input-background;
-$inverted-input-border-color: $white-border-color;
+$inverted-input-border-color: color-divider($color-divider-inverted);
 $inverted-input-box-shadow: $input-box-shadow;
 $inverted-input-color: $input-color;
-$inverted-label-color: $inverted-text-color;
+$inverted-label-color: color-text($color-text-inverted);
 $inverted-input-box-shadow: none;
 
 /*-------------------
@@ -177,9 +177,9 @@ $grouped-label-text-transform: $label-text-transform;
 
 
 /* Inline */
-$inline-input-size: $relative-medium;
+$inline-input-size: size('medium');
 
-$inline-label-distance: $relative-tiny;
+$inline-label-distance: size('tiny');
 $inline-label-color: $label-color;
 $inline-label-font-size: $label-font-size;
 $inline-label-font-weight: $label-font-weight;
@@ -196,5 +196,4 @@ $inline-fields-margin: 0 1em 0 0;
 
 /* Breakpoints */
 $bp-default-indexes: (1, );
-$num-used-breakpoints: length($bp-default-indexes);
-$bps: map-breakpoints-indexes($bp-default-indexes);
+$bps: breakpoint-collect-by-indexes($bp-default-indexes);

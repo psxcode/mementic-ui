@@ -36,33 +36,34 @@ $widths: map-zip(map-keys($sizes), (
 $vertical-margin: size('medium');
 $horizontal-margin: 0;
 $margin: $vertical-margin $horizontal-margin;
+$item-vertical-padding: size('small');
+$item-horizontal-padding: size('large');
 $background: #FFFFFF;
 //$font-family: $page-font;
+$text-color: color-text();
 $item-background: none;
 $font-weight: normal;
 $border-width: 1px;
 $border: $border-width solid color-divider();
 $box-shadow: $subtle-shadow;
-$border-radius: unit-rem($default-border-radius);
-$min-height: ($item-vertical-padding * 2) + 1em;
+$border-radius: unit-rem($border-radius-default);
+$min-height: ($item-vertical-padding * 2) + 1rem;
 
 /* Menu Item */
-$item-vertical-padding: size('small');
-$item-horizontal-padding: size('large');
 $item-text-transform: none;
-$item-transition: background $default-duration $default-easing,
-box-shadow $default-duration $default-easing,
-color $default-duration $default-easing;
+$item-transition: background $duration-default $easing-default,
+box-shadow $duration-default $easing-default,
+color $duration-default $easing-default;
 $item-font-weight: normal;
 $item-text-color: color-text();
 
 /* Divider */
 $divider-size: 1px;
-$divider-background: color-divider('internal');
+$divider-background: color-divider-internal();
 
 /* Sub Menu */
 $sub-menu-distance: 0.5em;
-$sub-menu-margin: $sub-menu-distance -$item-horizontal-padding 0;
+$sub-menu-margin: $sub-menu-distance (-$item-horizontal-padding) 0;
 $sub-menu-font-size: size('tiny');
 $sub-menu-text-color: rgba(0, 0, 0, 0.5);
 
@@ -103,8 +104,8 @@ $vertical-header-font-weight: bold;
 /* Pointing Arrow */
 $arrow-size: px-em(8);
 $arrow-border-width: 1px;
-$arrow-border: $arrow-border-width solid color-divider('solid');
-$arrow-transition: background $default-duration $default-easing;
+$arrow-border: $arrow-border-width solid color-divider-solid();
+$arrow-transition: background $duration-default $easing-default;
 $arrow-z-index: 2;
 
 $arrow-hover-color: #F2F2F2;
@@ -113,7 +114,7 @@ $arrow-active-hover-color: $arrow-active-color;
 
 $arrow-vertical-hover-color: $arrow-hover-color;
 $arrow-vertical-active-color: $arrow-active-color;
-$arrow-vertical-sub-menu-color: color-main('light');
+$arrow-vertical-sub-menu-color: $color-light;
 
 /*--------------
     Couplings
@@ -139,7 +140,7 @@ $vertical-image-width: auto;
 /* Label */
 $label-offset: -0.15em;
 $label-background: #999999;
-$label-text-color: color-main('light');
+$label-text-color: $color-light;
 
 $label-text-margin: 1em;
 $label-vertical-padding: 0.3em;
@@ -168,45 +169,45 @@ $dropdown-item-icon-float: none;
 $dropdown-item-icon-font-size: size('medium');
 $dropdown-item-icon-margin: 0 0.75em 0 0;
 
-$dropdown-hovered-item-background: color-transparent(color-main('dark'));
-$dropdown-hovered-item-color: color-text('primary', 'selected');
+$dropdown-hovered-item-background: color-transparent($color-dark);
+$dropdown-hovered-item-color: color-text-selected();
 
 /* Dropdown Variations */
 $dropdown-vertical-menu-box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.08);
 $secondary-dropdown-menu-distance: px-em(5);
 $pointing-dropdown-menu-distance: 0.75em;
-$inverted-selection-dropdown-color: color-text($inverted: true);
+$inverted-selection-dropdown-color: color-text($color-text-inverted);
 
 /*--------------
      States
 ---------------*/
 
 /* Hovered Item */
-$hover-item-background: color-transparent(color-main('dark'), 'subtle');
-$hover-item-text-color: color-text('primary', 'selected');
+$hover-item-background: color-transparent-subtle($color-dark);
+$hover-item-text-color: color-text-selected();
 
 /* Pressed Item */
-$pressed-item-background: color-transparent(color-main('dark'), 'subtle');
+$pressed-item-background: color-transparent-subtle($color-dark);
 $pressed-item-text-color: $hover-item-text-color;
 
 /* Active Item */
-$active-item-background: color-transparent(color-main('dark'));
-$active-item-text-color: color-text('primary', 'selected');
+$active-item-background: color-transparent($color-dark);
+$active-item-text-color: color-text-selected();
 $active-item-font-weight: normal;
 $active-icon-opacity: 1;
 $active-item-box-shadow: none;
 
 /* Active Hovered Item */
-$active-hover-item-background: color-transparent(color-main('dark'));
-$active-hover-item-color: color-text('primary', 'selected');
+$active-hover-item-background: color-transparent($color-dark);
+$active-hover-item-color: color-text-selected();
 
 /* Selected Dropdown */
-$dropdown-selected-item-background: color-transparent(color-main('dark'));
-$dropdown-selected-item-color: color-text('primary', 'selected');
+$dropdown-selected-item-background: color-transparent($color-dark);
+$dropdown-selected-item-color: color-text-selected();
 
 /* Active Dropdown */
-$dropdown-active-item-background: color-transparent(color-main('dark'), 'subtle');
-$dropdown-active-item-color: color-text('primary', 'selected');
+$dropdown-active-item-background: color-transparent-subtle($color-dark);
+$dropdown-active-item-color: color-text-selected();
 $dropdown-active-item-font-weight: bold;
 
 /* Active Sub Menu */
@@ -236,27 +237,27 @@ $secondary-item-margin: 0 $secondary-item-spacing;
 $secondary-item-vertical-padding: size('mini');
 $secondary-item-horizontal-padding: size('small');
 $secondary-item-padding: size('mini') size('small');
-$secondary-item-border-radius: $default-border-radius;
-$secondary-item-transition: color $default-duration $default-easing;
-$secondary-item-color: color-text('primary', 'unselected');
+$secondary-item-border-radius: $border-radius-default;
+$secondary-item-transition: color $duration-default $easing-default;
+$secondary-item-color: color-text-unselected();
 
-$secondary-hover-item-background: color-transparent(color-main('dark'));
-$secondary-hover-item-color: color-text('primary', 'selected');
+$secondary-hover-item-background: color-transparent($color-dark);
+$secondary-hover-item-color: color-text-selected();
 
-$secondary-active-item-background: color-transparent(color-main('dark'));
-$secondary-active-item-color: color-text('primary', 'selected');
-$secondary-active-hover-item-background: color-transparent(color-main('dark'));
-$secondary-active-hover-item-color: color-text('primary', 'selected');
+$secondary-active-item-background: color-transparent($color-dark);
+$secondary-active-item-color: color-text-selected();
+$secondary-active-hover-item-background: color-transparent($color-dark);
+$secondary-active-hover-item-color: color-text-selected();
 
-$secondary-active-hovered-item-background: color-transparent(color-main('dark'));
-$secondary-active-hovered-item-color: color-text('primary', 'selected');
+$secondary-active-hovered-item-background: color-transparent($color-dark);
+$secondary-active-hovered-item-color: color-text-selected();
 
 $secondary-header-background: none transparent;
 $secondary-header-border: none;
 
 $secondary-item-vertical-spacing: $secondary-item-spacing;
 $secondary-vertical-item-margin: 0 0 $secondary-item-vertical-spacing;
-$secondary-vertical-item-border-radius: $default-border-radius;
+$secondary-vertical-item-border-radius: $border-radius-default;
 
 $secondary-menu-sub-menu-margin: 0 -$secondary-item-horizontal-padding;
 $secondary-menu-sub-menu-item-margin: 0;
@@ -271,8 +272,8 @@ $secondary-pointing-item-horizontal-padding: size('large');
 
 $secondary-pointing-hover-text-color: $text-color;
 
-$secondary-pointing-active-border-color: color-main('dark');
-$secondary-pointing-active-text-color: color-text('primary', 'selected');
+$secondary-pointing-active-border-color: $color-dark;
+$secondary-pointing-active-text-color: color-text-selected();
 $secondary-pointing-active-font-weight: bold;
 
 $secondary-pointing-active-dropdown-border-color: transparent;
@@ -284,21 +285,21 @@ $secondary-pointing-header-color: color-text();
 $secondary-vertical-pointing-item-margin: 0 -$secondary-pointing-border-width 0 0;
 
 /* Inverted Secondary */
-$secondary-inverted-color: color-text($inverted: true);
+$secondary-inverted-color: color-text($color-text-inverted);
 
-$secondary-inverted-hover-background: color-transparent(color-main('light'));
-$secondary-inverted-hover-color: color-text('primary', 'selected', $inverted: true);
+$secondary-inverted-hover-background: color-transparent($color-light);
+$secondary-inverted-hover-color: color-text-selected($color-text-inverted);
 
-$secondary-inverted-active-background: color-transparent(color-main('light'), 'strong');
-$secondary-inverted-active-color: color-text('primary', 'selected', $inverted: true);
+$secondary-inverted-active-background: color-transparent-strong($color-light);
+$secondary-inverted-active-color: color-text-selected($color-text-inverted);
 
 /* Inverted Pointing */
-$secondary-pointing-inverted-border-color: color-divider($inverted: true);
-$secondary-pointing-inverted-item-text-color: color-text($inverted: true);
-$secondary-pointing-inverted-item-header-color: color-main('light');
-$secondary-pointing-inverted-item-hover-text-color: color-text('primary', 'selected');
-$secondary-pointing-inverted-active-border-color: color-main('light');
-$secondary-pointing-inverted-active-color: color-text('primary', 'selected', $inverted: true);
+$secondary-pointing-inverted-border-color: color-divider($color-divider-inverted);
+$secondary-pointing-inverted-item-text-color: color-text($color-text-inverted);
+$secondary-pointing-inverted-item-header-color: $color-light;
+$secondary-pointing-inverted-item-hover-text-color: color-text-selected();
+$secondary-pointing-inverted-active-border-color: $color-light;
+$secondary-pointing-inverted-active-color: color-text-selected($color-text-inverted);
 
 /* Tiered */
 $tiered-active-item-background: #FCFCFC;
@@ -310,45 +311,45 @@ $tiered-sub-menu-font-weight: normal;
 $tiered-sub-menu-color: color-text();
 
 $tiered-sub-menu-hover-background: none transparent;
-$tiered-sub-menu-hover-color: color-text('primary', 'hovered');
+$tiered-sub-menu-hover-color: color-text-hovered();
 
 $tiered-sub-menu-active-background: none transparent;
-$tiered-sub-menu-active-color: color-text('primary', 'selected');
+$tiered-sub-menu-active-color: color-text-selected();
 
 $tiered-inverted-sub-menu-background: rgba(0, 0, 0, 0.2);
 
 /* Icon */
 $icon-menu-text-align: center;
-$icon-menu-item-color: color-main('dark');
-$icon-menu-inverted-item-color: color-main('light');
+$icon-menu-item-color: $color-dark;
+$icon-menu-inverted-item-color: $color-light;
 
 /* Tabular */
-$tabular-border-color: color-divider('solid');
+$tabular-border-color: color-divider-solid();
 $tabular-background-color: transparent;
 $tabular-background: none $tabular-background-color;
 $tabular-border-width: 1px;
 $tabular-opposite-border-width: $tabular-border-width + 1px;
 $tabular-vertical-padding: $item-vertical-padding;
 $tabular-horizontal-padding: size('huge');
-$tabular-border-radius: $default-border-radius;
+$tabular-border-radius: $border-radius-default;
 $tabular-text-color: $item-text-color;
 
-$tabular-hovered-text-color: color-text('primary', 'hovered');
+$tabular-hovered-text-color: color-text-hovered();
 
 $tabular-vertical-background: none $tabular-background-color;
 
 $tabular-fluid-offset: 1px;
 $tabular-fluid-width: calc(100% + #{$tabular-fluid-offset * 2});
 
-$tabular-active-background: none color-main('light');
-$tabular-active-color: color-text('primary', 'selected');
+$tabular-active-background: none $color-light;
+$tabular-active-color: color-text-selected();
 $tabular-active-box-shadow: none;
 $tabular-active-weight: bold;
 
 /* Pagination */
 $pagination-min-width: 3em;
-$pagination-active-background: color-transparent(color-main('dark'));
-$pagination-active-text-color: color-text('primary', 'selected');
+$pagination-active-background: color-transparent($color-dark);
+$pagination-active-text-color: color-text-selected();
 
 /* Labeled Icon */
 $labeled-icon-item-horizontal-padding: size('massive');
@@ -358,19 +359,19 @@ $labeled-icon-text-margin: 0.5rem;
 
 /* Text */
 $text-menu-item-spacing: px-em(7);
-$text-menu-margin: size('medium') -($text-menu-item-spacing);
-$text-menu-item-color: color-text('primary', 'muted');
+$text-menu-margin: size('medium') (-$text-menu-item-spacing);
+$text-menu-item-color: color-text-muted();
 $text-menu-item-font-weight: normal;
 $text-menu-item-margin: 0 0;
 $text-menu-item-padding: px-em(5) $text-menu-item-spacing;
-$text-menu-item-transition: opacity $default-duration $default-easing;
+$text-menu-item-transition: opacity $duration-default $easing-default;
 
 $text-menu-sub-menu-margin: 0;
 $text-menu-sub-menu-item-margin: 0;
 $text-menu-sub-menu-item-padding: px-em(7) 0;
 
 $text-menu-active-item-font-weight: normal;
-$text-menu-active-item-color: color-text('primary', 'selected');
+$text-menu-active-item-color: color-text-selected();
 
 $text-menu-header-size: size('small');
 $text-menu-header-color: color-text();
@@ -389,41 +390,41 @@ $text-vertical-menu-icon-margin: $icon-margin;
 ---------------*/
 
 /* Inverted */
-$inverted-background: color-main('dark');
+$inverted-background: $color-dark;
 $inverted-box-shadow: none;
 $inverted-border: 0px solid transparent;
 $inverted-header-background: transparent;
 
 $inverted-item-background: transparent;
-$inverted-item-text-color: color-text($inverted: true);
+$inverted-item-text-color: color-text($color-text-inverted);
 
 /* Inverted Sub Menu */
 $inverted-sub-menu-background: transparent;
-$inverted-sub-menu-color: color-text('primary', 'unselected', $inverted: true);
+$inverted-sub-menu-color: color-text-unselected($color-text-inverted);
 
 /* Inverted Hover */
-$inverted-hover-background: color-transparent(color-main('light'));
-$inverted-hover-color: color-text('primary', 'selected', $inverted: true);
+$inverted-hover-background: color-transparent($color-light);
+$inverted-hover-color: color-text-selected($color-text-inverted);
 
 $inverted-sub-menu-hover-background: transparent;
-$inverted-sub-menu-hover-color: color-text('primary', 'selected', $inverted: true);
+$inverted-sub-menu-hover-color: color-text-selected($color-text-inverted);
 
 /* Pressed */
-$inverted-menu-pressed-background: color-transparent(color-main('light'));
-$inverted-menu-pressed-color: color-text('primary', 'selected', $inverted: true);
+$inverted-menu-pressed-background: color-transparent($color-light);
+$inverted-menu-pressed-color: color-text-selected($color-text-inverted);
 
 /* Inverted Active */
-$inverted-active-background: color-transparent(color-main('light'), 'strong');
-$inverted-active-color: color-text('primary', 'selected', $inverted: true);
-$inverted-arrow-active-color: #3-d3-e3-f;
+$inverted-active-background: color-transparent-strong($color-light);
+$inverted-active-color: color-text-selected($color-text-inverted);
+$inverted-arrow-active-color: #3D3E3F;
 
 /* Inverted Active Hover  */
 $inverted-active-hover-background: $inverted-active-background;
-$inverted-active-hover-color: color-main('light');
+$inverted-active-hover-color: $color-light;
 $inverted-arrow-active-hover-color: $inverted-arrow-active-color;
 
 $inverted-sub-menu-active-background: transparent;
-$inverted-sub-menu-active-color: color-main('light');
+$inverted-sub-menu-active-color: $color-light;
 
 /* Inverted Menu Divider */
 $inverted-divider-background: rgba(255, 255, 255, 0.08);
@@ -431,7 +432,7 @@ $inverted-vertical-divider-background: $inverted-divider-background;
 
 /* Inverted Colored */
 $inverted-colored-divider-background: $divider-background;
-$inverted-colored-active-background: color-transparent(color-main('dark'), 'strong');
+$inverted-colored-active-background: color-transparent-strong($color-dark);
 
 /* Fixed */
 $fixed-preceding-grid-margin: 2.75rem;
@@ -445,10 +446,9 @@ $attached-bottom-offset: 0px;
 $attached-horizontal-offset: -$border-width;
 $attached-width: calc(100% + #{$attached-horizontal-offset * -2});
 $attached-box-shadow: none;
-$attached-border: $border-width solid color-divider('solid');
+$attached-border: $border-width solid color-divider-solid();
 $attached-bottom-box-shadow: $box-shadow, $attached-box-shadow;
 
 /* Breakpoints */
 $bp-default-indexes: (1, );
-$num-used-breakpoints: length($bp-default-indexes);
-$bps: map-breakpoints-indexes($bp-default-indexes);
+$bps: breakpoint-collect-by-indexes($bp-default-indexes);

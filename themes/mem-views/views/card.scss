@@ -16,6 +16,7 @@
   transition: $transition;
   z-index: $z-index;
 }
+
 .ui.card {
   margin: $margin;
 }
@@ -28,6 +29,7 @@
 .ui.card:first-child {
   margin-top: 0;
 }
+
 .ui.card:last-child {
   margin-bottom: 0;
 }
@@ -59,12 +61,10 @@
   visibility: hidden;
 }
 
-
 /* Consecutive Card Groups Preserve Row Spacing */
 .ui.cards ~ .ui.cards {
   margin-top: $consecutive-group-distance;
 }
-
 
 /*--------------
   Rounded Edges
@@ -98,6 +98,7 @@
   padding: $image-padding;
   background: $image-background;
 }
+
 .ui.cards > .card > .image > img,
 .ui.card > .image > img {
   display: block;
@@ -105,6 +106,7 @@
   height: auto;
   border-radius: inherit;
 }
+
 .ui.cards > .card > .image:not(.ui) > img,
 .ui.card > .image:not(.ui) > img {
   border: $image-border;
@@ -157,7 +159,7 @@
 .ui.cards > .card > .content > .meta + .description,
 .ui.cards > .card > .content > .header + .description,
 .ui.card > .content > .meta + .description,
-.ui.card > .content > .header + .description  {
+.ui.card > .content > .header + .description {
   margin-top: $description-distance;
 }
 
@@ -165,10 +167,11 @@
  Floated Content
 -----------------*/
 
-.ui.cards > .card  [class*="left floated"],
+.ui.cards > .card [class*="left floated"],
 .ui.card [class*="left floated"] {
   float: left;
 }
+
 .ui.cards > .card [class*="right floated"],
 .ui.card [class*="right floated"] {
   float: right;
@@ -178,19 +181,20 @@
      Aligned
 ---------------*/
 
-.ui.cards > .card  [class*="left aligned"],
+.ui.cards > .card [class*="left aligned"],
 .ui.card [class*="left aligned"] {
   text-align: left;
 }
+
 .ui.cards > .card [class*="center aligned"],
 .ui.card [class*="center aligned"] {
   text-align: center;
 }
+
 .ui.cards > .card [class*="right aligned"],
 .ui.card [class*="right aligned"] {
   text-align: right;
 }
-
 
 /*--------------
   Content Image
@@ -202,6 +206,7 @@
   vertical-align: $content-image-vertical-align;
   width: $content-image-width;
 }
+
 .ui.cards > .card img.avatar,
 .ui.cards > .card .avatar img,
 .ui.card img.avatar,
@@ -210,7 +215,6 @@
   height: $avatar-size;
   border-radius: $avatar-border-radius;
 }
-
 
 /*--------------
    Description
@@ -230,6 +234,7 @@
 .ui.card > .content p {
   margin: 0 0 $paragraph-distance;
 }
+
 .ui.cards > .card > .content p:last-child,
 .ui.card > .content p:last-child {
   margin-bottom: 0;
@@ -244,10 +249,12 @@
   font-size: $meta-font-size;
   color: $meta-color;
 }
+
 .ui.cards > .card .meta *,
 .ui.card .meta * {
   margin-right: $meta-spacing;
 }
+
 .ui.cards > .card .meta :last-child,
 .ui.card .meta :last-child {
   margin-right: 0;
@@ -269,6 +276,7 @@
   color: $content-link-color;
   transition: $content-link-transition;
 }
+
 .ui.cards > .card > .content a:not(.ui):hover,
 .ui.card > .content a:not(.ui):hover {
   color: $content-link-hover-color;
@@ -279,6 +287,7 @@
 .ui.card > .content > a.header {
   color: $header-link-color;
 }
+
 .ui.cards > .card > .content > a.header:hover,
 .ui.card > .content > a.header:hover {
   color: $header-link-hover-color;
@@ -289,6 +298,7 @@
 .ui.card .meta > a:not(.ui) {
   color: $meta-link-color;
 }
+
 .ui.cards > .card .meta > a:not(.ui):hover,
 .ui.card .meta > a:not(.ui):hover {
   color: $meta-link-hover-color;
@@ -329,11 +339,13 @@
   opacity: $action-opacity;
   transition: $action-transition;
 }
+
 .ui.cards > .card > .content .star.icon:hover,
 .ui.card > .content .star.icon:hover {
   opacity: $action-hover-opacity;
   color: $star-color;
 }
+
 .ui.cards > .card > .content .active.star.icon,
 .ui.card > .content .active.star.icon {
   color: $star-active-color;
@@ -348,11 +360,13 @@
   opacity: $action-opacity;
   transition: $action-transition;
 }
+
 .ui.cards > .card > .content .like.icon:hover,
 .ui.card > .content .like.icon:hover {
   opacity: $action-hover-opacity;
   color: $like-color;
 }
+
 .ui.cards > .card > .content .active.like.icon,
 .ui.card > .content .active.like.icon {
   color: $like-active-color;
@@ -379,15 +393,16 @@
   box-shadow: $extra-box-shadow;
   transition: $extra-transition;
 }
+
 .ui.cards > .card > .extra a:not(.ui),
 .ui.card > .extra a:not(.ui) {
   color: $extra-link-color;
 }
+
 .ui.cards > .card > .extra a:not(.ui):hover,
 .ui.card > .extra a:not(.ui):hover {
   color: $extra-link-hover-color;
 }
-
 
 /*******************************
            Variations
@@ -401,6 +416,7 @@
 .ui.raised.card {
   box-shadow: $raised-shadow;
 }
+
 .ui.raised.cards a.card:hover,
 .ui.link.cards .raised.card:hover,
 a.ui.raised.card:hover,
@@ -412,6 +428,7 @@ a.ui.raised.card:hover,
 .ui.raised.card {
   box-shadow: $raised-shadow;
 }
+
 /*-------------------
        Centered
 --------------------*/
@@ -419,6 +436,7 @@ a.ui.raised.card:hover,
 .ui.centered.cards {
   justify-content: center;
 }
+
 .ui.centered.card {
   margin-left: auto;
   margin-right: auto;
@@ -444,7 +462,6 @@ a.ui.card,
   transform: none;
 }
 
-
 .ui.cards a.card:hover,
 .ui.link.cards .card:hover,
 a.ui.card:hover,
@@ -461,231 +478,76 @@ a.ui.card:hover,
        Colors
 --------------------*/
 
-/* Red */
-.ui.red.cards > .card,
-.ui.cards > .red.card,
-.ui.red.card {
-  box-shadow:
-  $border-shadow,
-  0 $colored-shadow-distance 0 0 $red,
-  $shadow-box-shadow
-;
-}
-.ui.red.cards > .card:hover,
-.ui.cards > .red.card:hover,
-.ui.red.card:hover {
-  box-shadow:
-  $border-shadow,
-  0 $colored-shadow-distance 0 0 $red-hover,
-  $shadow-hover-box-shadow
-;
+@mixin colors($color-map) {
+
+  @each $name, $color in $color-map {
+
+    .ui.#{$name}.cards > .card,
+    .ui.cards > .#{$name}.card,
+    .ui.#{$name}.card {
+      box-shadow: $border-shadow,
+      0 $colored-shadow-distance 0 0 $color,
+      $shadow-box-shadow;
+    }
+
+    .ui.#{$name}.cards > .card:hover,
+    .ui.cards > .#{$name}.card:hover,
+    .ui.#{$name}.card:hover {
+      box-shadow: $border-shadow,
+      0 $colored-shadow-distance 0 0 color-hover($color),
+      $shadow-hover-box-shadow;
+    }
+  }
 }
 
 /*--------------
    Card Count
 ---------------*/
+@for $i from 1 through 10 {
 
-.ui.one.cards {
-  margin-left: $oneCardOffset;
-  margin-right: $oneCardOffset;
-}
-.ui.one.cards > .card {
-  width: $oneCard;
-}
+  $cardOffset: -(nth($card-spacings, $i));
 
+  .ui.#{number-name($i)}.cards {
+    margin-left: $cardOffset;
+    margin-right: $cardOffset;
+  }
+  .ui.#{number-name($i)}.cards > .card {
+    width: nth($card-widths, $i);
+  }
+}
 
 /*-------------------
       Doubling
 --------------------*/
+@mixin doubling-card($doubling-value: 0.5) {
+  @for $i from 2 through length($card-widths) {
+
+    $card-width: nth($card-widths, ceil($i * $doubling-value));
+    $card-spacing: nth($card-spacings, ceil($i * $doubling-value));
+
+    .ui.#{number-name($i)}.doubling.cards {
+      margin-left: -$card-spacing;
+      margin-right: -$card-spacing;
+    }
+    .ui.#{number-name($i)}.doubling.cards .card {
+      width: $card-width;
+      margin-left: $card-spacing;
+      margin-right: $card-spacing;
+    }
+  }
+}
+
+/* Mobile Default */
+@include doubling-card(0.3);
+
+$bp-largest-mobile: map-value-by-index($bps, 1);
+@include media('screen', '>=#{$bp-largest-mobile}') {
+  @include doubling-card();
+}
 
 /* Mobile Only */
-@media only screen and (max-width : $largestMobileScreen) {
-  .ui.two.doubling.cards {
-    margin-left: $oneCardOffset;
-    margin-right: $oneCardOffset;
-  }
-  .ui.two.doubling.cards .card {
-    width: $oneCard;
-    margin-left: $oneCardSpacing;
-    margin-right: $oneCardSpacing;
-  }
-  .ui.three.doubling.cards {
-    margin-left: $twoCardOffset;
-    margin-right: $twoCardOffset;
-  }
-  .ui.three.doubling.cards .card {
-    width: $twoCard;
-    margin-left: $twoCardSpacing;
-    margin-right: $twoCardSpacing;
-  }
-  .ui.four.doubling.cards {
-    margin-left: $twoCardOffset;
-    margin-right: $twoCardOffset;
-  }
-  .ui.four.doubling.cards .card {
-    width: $twoCard;
-    margin-left: $twoCardSpacing;
-    margin-right: $twoCardSpacing;
-  }
-  .ui.five.doubling.cards {
-    margin-left: $twoCardOffset;
-    margin-right: $twoCardOffset;
-  }
-  .ui.five.doubling.cards .card {
-    width: $twoCard;
-    margin-left: $twoCardSpacing;
-    margin-right: $twoCardSpacing;
-  }
-  .ui.six.doubling.cards {
-    margin-left: $twoCardOffset;
-    margin-right: $twoCardOffset;
-  }
-  .ui.six.doubling.cards .card {
-    width: $twoCard;
-    margin-left: $twoCardSpacing;
-    margin-right: $twoCardSpacing;
-  }
-  .ui.seven.doubling.cards {
-    margin-left: $threeCardOffset;
-    margin-right: $threeCardOffset;
-  }
-  .ui.seven.doubling.cards .card {
-    width: $threeCard;
-    margin-left: $threeCardSpacing;
-    margin-right: $threeCardSpacing;
-  }
-  .ui.eight.doubling.cards {
-    margin-left: $threeCardOffset;
-    margin-right: $threeCardOffset;
-  }
-  .ui.eight.doubling.cards .card {
-    width: $threeCard;
-    margin-left: $threeCardSpacing;
-    margin-right: $threeCardSpacing;
-  }
-  .ui.nine.doubling.cards {
-    margin-left: $threeCardOffset;
-    margin-right: $threeCardOffset;
-  }
-  .ui.nine.doubling.cards .card {
-    width: $threeCard;
-    margin-left: $threeCardSpacing;
-    margin-right: $threeCardSpacing;
-  }
-  .ui.ten.doubling.cards {
-    margin-left: $threeCardOffset;
-    margin-right: $threeCardOffset;
-  }
-  .ui.ten.doubling.cards .card {
-    width: $threeCard;
-    margin-left: $threeCardSpacing;
-    margin-right: $threeCardSpacing;
-  }
-}
+@include media('screen', '<#{$bp-largest-mobile}') {
 
-/* Tablet Only */
-@media only screen and (min-width : $tabletBreakpoint) and (max-width : $largestTabletScreen) {
-  @for $i from 2 through 10 {
-
-	.ui.#{nth($numbers, $i)}.doubling.cards {
-	  margin-left: $oneCardOffset;
-	  margin-right: $oneCardOffset;
-	}
-	.ui.#{nth($numbers, $i)}.doubling.cards .card {
-	  width: $oneCard;
-	  margin-left: $oneCardSpacing;
-	  margin-right: $oneCardSpacing;
-	}
-  }
-
-  .ui.two.doubling.cards {
-    margin-left: $oneCardOffset;
-    margin-right: $oneCardOffset;
-  }
-  .ui.two.doubling.cards .card {
-    width: $oneCard;
-    margin-left: $oneCardSpacing;
-    margin-right: $oneCardSpacing;
-  }
-  .ui.three.doubling.cards {
-    margin-left: $twoCardOffset;
-    margin-right: $twoCardOffset;
-  }
-  .ui.three.doubling.cards .card {
-    width: $twoCard;
-    margin-left: $twoCardSpacing;
-    margin-right: $twoCardSpacing;
-  }
-  .ui.four.doubling.cards {
-    margin-left: $twoCardOffset;
-    margin-right: $twoCardOffset;
-  }
-  .ui.four.doubling.cards .card {
-    width: $twoCard;
-    margin-left: $twoCardSpacing;
-    margin-right: $twoCardSpacing;
-  }
-  .ui.five.doubling.cards {
-    margin-left: $threeCardOffset;
-    margin-right: $threeCardOffset;
-  }
-  .ui.five.doubling.cards .card {
-    width: $threeCard;
-    margin-left: $threeCardSpacing;
-    margin-right: $threeCardSpacing;
-  }
-  .ui.six.doubling.cards {
-    margin-left: $threeCardOffset;
-    margin-right: $threeCardOffset;
-  }
-  .ui.six.doubling.cards .card {
-    width: $threeCard;
-    margin-left: $threeCardSpacing;
-    margin-right: $threeCardSpacing;
-  }
-  .ui.eight.doubling.cards {
-    margin-left: $threeCardOffset;
-    margin-right: $threeCardOffset;
-  }
-  .ui.eight.doubling.cards .card {
-    width: $threeCard;
-    margin-left: $threeCardSpacing;
-    margin-right: $threeCardSpacing;
-  }
-  .ui.eight.doubling.cards {
-    margin-left: $fourCardOffset;
-    margin-right: $fourCardOffset;
-  }
-  .ui.eight.doubling.cards .card {
-    width: $fourCard;
-    margin-left: $fourCardSpacing;
-    margin-right: $fourCardSpacing;
-  }
-  .ui.nine.doubling.cards {
-    margin-left: $fourCardOffset;
-    margin-right: $fourCardOffset;
-  }
-  .ui.nine.doubling.cards .card {
-    width: $fourCard;
-    margin-left: $fourCardSpacing;
-    margin-right: $fourCardSpacing;
-  }
-  .ui.ten.doubling.cards {
-    margin-left: $fiveCardOffset;
-    margin-right: $fiveCardOffset;
-  }
-  .ui.ten.doubling.cards .card {
-    width: $fiveCard;
-    margin-left: $fiveCardSpacing;
-    margin-right: $fiveCardSpacing;
-  }
-}
-
-/*-------------------
-      Stackable
---------------------*/
-
-@media only screen and (max-width : $largestMobileScreen) {
   .ui.stackable.cards {
     display: block !important;
   }
@@ -700,7 +562,6 @@ a.ui.card:hover,
     width: $stackable-margin !important;
   }
 }
-
 
 /*--------------
       Size

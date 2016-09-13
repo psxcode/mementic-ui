@@ -3,7 +3,7 @@
 --------------------*/
 
 $step-margin: 1em 0em;
-$steps-border-radius: unit-rem($default-border-radius);
+$steps-border-radius: unit-rem($border-radius-default);
 $steps-background: none;
 $steps-box-shadow: none;
 $steps-border: 1px solid color-divider();
@@ -19,14 +19,14 @@ $arrow-size: size('large');
 $vertical-padding: size('large');
 $horizontal-padding: 2em;
 
-$transition: background-color $default-duration $default-easing,
-opacity $default-duration $default-easing,
-color $default-duration $default-easing,
-box-shadow $default-duration $default-easing;
+$transition: background-color $duration-default $easing-default,
+opacity $duration-default $easing-default,
+color $duration-default $easing-default,
+box-shadow $duration-default $easing-default;
 $line-height: size('large');
 $align-items: center;
 $justify-content: center;
-$background-color: color-main('light');
+$background-color: $color-light;
 $background: $background-color;
 $border-radius: 0;
 $border-width: 1px;
@@ -101,27 +101,26 @@ $ordered-font-weight: bold;
 $completed-color: color-text();
 
 /* Hover */
-$hover-background: color-main('mid');
-$hover-color: color-text('primary', 'hovered');
+$hover-background: $color-mid;
+$hover-color: color-text-hovered();
 
 /* Down */
-$down-background: color-main('mid');
-$down-color: color-text('primary', 'pressed');
+$down-background: $color-mid;
+$down-color: color-text-pressed();
 
 /* Active */
-$active-background: color-main('mid');
+$active-background: $color-mid;
 $active-color: $link-color;
 $active-icon-color: color-text();
 
 /* Active + Hover */
-$active-hover-background: color-text('primary', $inverted: true);
+$active-hover-background: color-text($color-text-inverted);
 $active-hover-color: color-text();
 
 /* Disabled */
 $disabled-background: $background;
-$disabled-color: color-text('primary', 'disabled');
+$disabled-color: color-text-disabled();
 
 /* Breakpoints */
 $bp-default-indexes: (1, 2);
-$num-used-breakpoints: length($bp-default-indexes);
-$bps: map-breakpoints-indexes($bp-default-indexes);
+$bps: breakpoint-collect-by-indexes($bp-default-indexes);

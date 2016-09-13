@@ -15,26 +15,27 @@ $color-icons: #212121 !default;
 // -------------------------------
 
 $colors-material: (
-        'mat-primary': #8BC34A,
-        'mat-primary-dark': #689F38,
-        'mat-primary-light': #DCEDC8,
-        'mat-accent': #FF9800,
-        'mat-icons': #212121
+		'primary': #8BC34A,
+		'primary-dark': #689F38,
+		'primary-light': #DCEDC8,
+		'accent': #FF9800,
+		'icons': #212121,
+		'text-primary': #212121,
+		'text-secondary': #414141,
+		'text-inverted': #DCEDC8,
+		'divider': #212121,
+		'divider-inverted': #DCEDC8
 ) !default;
 
 @function color-material($variant) {
   $variant: to-string($variant);
 
   @if not(map-has_key($colors-material, $variant)) {
-    @error 'color-material: invalid $variant #{$variant}';
+	@error 'color-material: invalid $variant #{$variant}';
   }
 
   @return map-get($colors-material, $variant);
 }
 
-@function set-color-material($name, $color) {
-  $colors-material: define-color($colors-material, $name, $color);
-}
-
 //should be overrided in button-vars.scss
-$colors-button-auto-include-main: false;
+$auto-include-colors-main: false;
