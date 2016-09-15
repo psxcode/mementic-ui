@@ -12,7 +12,7 @@ var paths = null;
 	paths = {
 		root: rootdir,
 		depsDirs: [srcdir],
-		source: srcdir,
+		sourceDir: srcdir,
 		sassModuleFilepath: path.join(srcdir, 'module.scss'),
 		themeConfigFilename: 'config.js',
 		cssFilename: 'style.css',
@@ -44,8 +44,10 @@ var userConfigDefault = {
 };
 var userConfig = null;
 
-//Exports
 var themeDepsPaths = null;
+var themeModules = null;
+
+//Exports
 (function () {
 	module.exports = function initConfig(config) {
 		if (config) {
@@ -64,7 +66,7 @@ var themeDepsPaths = null;
 			}
 
 			//resolve dependencies paths
-			themeDepsPaths = resolveThemeDepsPaths();
+			resolveThemeDepsPaths();
 		}
 
 		function pushThemeDir(dir) {
@@ -88,7 +90,7 @@ var themeDepsPaths = null;
 	module.exports.paths = paths;
 	module.exports.getModulePaths = getModulePaths;
 	module.exports.getPublicPaths = getPublicPaths;
-	module.exports.getModules = getModules;
+	module.exports.getAllThemesModules = getThemeModules;
 	module.exports.isConfigured = isConfigured;
 	module.exports.injectOpts = injectOpts;
 }());
@@ -98,7 +100,7 @@ function isConfigured() {
 }
 
 function getPublicPaths() {
-	if (!themeDepsPaths) themeDepsPaths = resolveThemeDepsPaths();
+	if (!themeDepsPaths) resolveThemeDepsPaths();
 
 	var result = [];
 
@@ -112,55 +114,16 @@ function getPublicPaths() {
 	return result;
 }
 
-function getModules(cb) {
-	if (!themeDepsPaths) themeDepsPaths = resolveThemeDepsPaths();
+function getThemeModules(collector) {
+	if (!themeDepsPaths) resolveThemeDepsPaths();
 
-	var modulesProcessed = [];
-
-	_.forEach(themeDepsPaths, function (themePath) {
-		var themeConfig = requireThemeConfig(themePath);
-
-		//check if modules are defined
-		if (themeConfig && _.isArray(themeConfig.modules)) {
-			//iterate modules
-			_.forEach(themeConfig.modules, function (mod) {
-				//get modules names property
-				var names = mod.names || mod.name;
-				//convert to array
-				if (_.isString(names) && names) names = [names];
-
-				//iterate names
-				if (_.isArray(names)) {
-					_.forEach(names, function (name) {
-						if (checkModuleAlreadyProcessed(name, mod.path)) {
-							cb(name, mod.path);
-						}
-					});
-				}
-			});
-		}
+	_.forEach(themeModules, function (mod) {
+		collector(mod.name, mod.path);
 	});
-
-	function checkModuleAlreadyProcessed(name, path) {
-		var modUniqueName = path + '::' + name;
-		var isProcessed = _.indexOf(modulesProcessed, modUniqueName) >= 0;
-
-		//debug log
-		if (isProcessed) {
-			console.log('module already processed: ' + modUniqueName);
-		}
-
-		//push module to processed list
-		if (!isProcessed) {
-			modulesProcessed.push(modUniqueName);
-		}
-
-		return !isProcessed;
-	}
 }
 
 function getModulePaths(moduleName, modulePathInTheme) {
-	if (!themeDepsPaths) themeDepsPaths = resolveThemeDepsPaths();
+	if (!themeDepsPaths) resolveThemeDepsPaths();
 	if (!modulePathInTheme) modulePathInTheme = '';
 
 	console.log('stream module: ', modulePathInTheme + '::' + moduleName);
@@ -173,7 +136,6 @@ function getModulePaths(moduleName, modulePathInTheme) {
 	}
 
 	function srcPaths(pathInSources, moduleName) {
-
 		return srcGlobalsVarsPaths().concat(
 			srcFilePaths(pathInSources, moduleName, 'vars.scss'),
 			srcFilePaths(pathInSources, moduleName, moduleName + '-vars.scss'),
@@ -182,33 +144,23 @@ function getModulePaths(moduleName, modulePathInTheme) {
 	}
 
 	function srcGlobalsPaths() {
-		var moduleName = paths.globalsName;
-
 		return srcGlobalsVarsPaths().concat(
-			srcFilePaths(null, 'fonts', 'fonts.scss', fontsPathPush),
-			srcFilePaths(null, moduleName, 'reset.scss')
+			srcFilePaths(null, paths.globalsName, 'fonts.scss'),
+			srcFilePaths(null, paths.globalsName, 'reset.scss')
 		);
-
-		function fontsPathPush(paths, src, themePath) {
-			var config = requireThemeConfig(themePath);
-			if (config && config['replaceFonts']) paths = [];
-			paths.push(src);
-			return paths;
-		}
 	}
 
 	function srcGlobalsVarsPaths() {
 		return srcFilePaths('', paths.globalsName, 'vars.scss');
 	}
 
-	function srcFilePaths(pathInTheme, moduleName, filename, pushPathFunc) {
+	function srcFilePaths(pathInTheme, moduleName, filename) {
 		if (!pathInTheme) pathInTheme = '';
 		if (!moduleName) moduleName = '';
-		if (!pushPathFunc) pushPathFunc = pushPathDefault;
 
 		var outPaths = [];
 
-		addFromTheme(paths.source);
+		addFromTheme(paths.sourceDir);
 		_.forEach(themeDepsPaths, addFromTheme);
 
 		return outPaths;
@@ -217,64 +169,39 @@ function getModulePaths(moduleName, modulePathInTheme) {
 
 			var src = path.join(themePath, pathInTheme, filename);
 			if (fsxu.isFileSync(src)) {
-				outPaths = pushPathFunc(outPaths, src, themePath);
+				outPaths.push(src);
 				return;
 			}
 
 			src = path.join(themePath, pathInTheme, moduleName, filename);
 			if (fsxu.isFileSync(src)) {
-				outPaths = pushPathFunc(outPaths, src, themePath);
+				outPaths.push(src);
 			}
-		}
-
-		function pushPathDefault(paths, src) {
-			paths.push(src);
-			return paths;
 		}
 	}
 }
 
 
 function resolveThemeDepsPaths() {
-	var themeDepsPropName = 'deps';
-	var defaultThemeName = '_default';
 	var user = userConfig || userConfigDefault;
 
-	var deps = user[themeDepsPropName] || [];
+	var deps = user.deps || [];
 	if (!_.isArray(deps)) deps = [deps];
-	deps.unshift(defaultThemeName);
 
-	var result = user.ignoreThemeDeps ? ignoreThemeDepsTree(deps) : flattenThemeDepsTree(deps);
+	//always include _default theme
+	deps.unshift('_default');
+
+	var flattenResult = flattenThemeDepsTree(deps);
+	themeDepsPaths = flattenResult.paths;
+	themeModules = flattenResult.modules;
 
 	//debug print
-	_.forEach(result, function (res) {
+	_.forEach(themeDepsPaths, function (res) {
 		console.log('resolved path: ' + res);
 	});
 
-	return result;
-
-	function ignoreThemeDepsTree(deps, result) {
-		if (!_.isArray(result)) result = [];
-
-		if (_.isArray(deps)) {
-			_.forEach(deps, pushDep);
-		} else if (_.isString(deps)) {
-			pushDep(deps);
-		}
-
-		function pushDep(dep) {
-			dep = getThemePath(dep);
-
-			if (dep && checkAlreadyPushed(dep, result)) {
-				result.push(dep);
-			}
-		}
-
-		return result;
-	}
-
 	function flattenThemeDepsTree(deps, result, parents) {
-		if (!_.isArray(result)) result = [];
+		if (!result) result = {paths: [], modules: []};
 		if (!_.isArray(parents)) parents = [];
 
 		if (_.isArray(deps)) {
@@ -284,59 +211,216 @@ function resolveThemeDepsPaths() {
 		}
 
 		function pushDep(dep) {
-			dep = getThemePath(dep);
+			var depName = getDepName(dep);
+			var depPath = getThemePath(depName);
 
-			if (dep && checkCircularDep(dep, parents) && checkAlreadyPushed(dep, result)) {
-				var themeConfig = requireThemeConfig(dep) || {};
-				flattenThemeDepsTree(themeConfig[themeDepsPropName], result, _.concat(parents, dep));
-				result.push(dep);
+			if (depPath && checkCircularDep(depPath)) {
+				var themeConfig = requireThemeConfig(depPath) || {};
+				var themeModules = getThemeModuleDefinitions(themeConfig);
+				var depModules = getDepModuleDefinitions(dep);
+				var pushModules = themeModules;
+
+				if (depModules.length > 0) {
+					//check if modules are in ignore mode
+					if (depModules[0].ignore) {
+						pushModules = _.filter(themeModules, function (themeMod) {
+							//using for to early interrupt loop
+							for (var i = 0; i < depModules.length; ++i) {
+								var depMod = depModules[i];
+								if (themeMod.name !== depMod.name) continue;
+
+								if (_.isString(depMod.path) && themeMod.path !== depMod.path) continue;
+
+								return false;
+							}
+							return true;
+						})
+					} else {
+						pushModules = [];
+
+						_.forEach(depModules, function (mod) {
+							if (_.isString(mod.path)) {
+								pushModules.push({
+									path: mod.path || '',
+									name: mod.name
+								})
+							} else {
+								//add all modules with name from themeModules
+								_.forEach(themeModules, function (themeMod) {
+									if (mod.name === themeMod.name) {
+										pushModules.push({
+											path: themeMod.path,
+											name: themeMod.name
+										});
+									}
+								});
+							}
+						})
+					}
+				}
+
+				//check module already added
+				pushModules = _.filter(pushModules, function (mod) {
+					for (var i = 0; i < result.modules.length; ++i) {
+						if (mod.name === result.modules[i].name && mod.path === result.modules[i].path) {
+							return false;
+						}
+					}
+
+					return true;
+				});
+
+				if (pushModules.length > 0) {
+					//add dep modules
+					Array.prototype.push.apply(result.modules, pushModules);
+				}
+
+				//do not add same dep path
+				if (checkDepPathAlreadyPushed(depPath)) {
+					//recursive call
+					flattenThemeDepsTree(themeConfig.deps, result, _.concat(parents, depPath));
+
+					//add dep path
+					result.paths.push(depPath);
+				}
 			}
 		}
 
 		return result;
-	}
 
-	function checkCircularDep(dep, parents) {
-		var isCircular = _.indexOf(parents, dep) >= 0;
+		function checkCircularDep(dep) {
+			var isCircular = _.indexOf(parents, dep) >= 0;
 
-		if (isCircular) {
-			console.log('circular dep: ' + dep);
+			if (isCircular) {
+				throw new Error('circular dependency: ' + dep);
+			}
+
+			return !isCircular;
 		}
 
-		return !isCircular;
-	}
+		function checkDepPathAlreadyPushed(dep) {
+			var isPushed = _.indexOf(result.paths, dep) >= 0;
 
-	function checkAlreadyPushed(dep, result) {
-		var isPushed = _.indexOf(result, dep) >= 0;
+			if (isPushed) {
+				console.log('dep already exist: ' + dep);
+			}
 
-		if (isPushed) {
-			console.log('dep already exist: ' + dep);
+			return !isPushed;
 		}
 
-		return !isPushed;
+		function getDepName(dep) {
+			return _.isObject(dep) ? Object.keys(dep)[0] : dep;
+		}
+
+		function getThemeModuleDefinitions(themeConfig) {
+			var modules = [];
+
+			//get modules property
+			var themeModules = themeConfig.modules || themeConfig.module || [];
+			//convert to array if necessary
+			if (!_.isArray(themeModules)) themeModules = [themeModules];
+
+			//iterate modules
+			_.forEach(themeModules, function (mod) {
+				//get modules names property
+				var names = mod.names || mod.name;
+				var modPath = mod.path || '';
+
+				//convert to array
+				if (!_.isArray(names)) names = [names];
+
+				//remove invalid names
+				names = _.filter(names, function (name) {
+					return name && _.isString(name);
+				});
+
+				//return converted names
+				Array.prototype.push.apply(modules, _.map(names, function (name) {
+					return {
+						path: modPath,
+						name: name
+					};
+				}));
+			});
+
+			return modules;
+		}
+
+		function getDepModuleDefinitions(dep) {
+			var modules = _.isObject(dep) ? dep[getDepName(dep)] : [];
+			var ignoredOnce = false;
+			if (!_.isArray(modules)) modules = [modules];
+
+			//filter invalid module definitions
+			modules = _.filter(modules, function (mod) {
+				return mod && _.isString(mod);
+			});
+
+			modules = _.map(modules, function (mod) {
+				var path = null;
+				var name = mod;
+				var ignore = false;
+
+				checkIgnore();
+
+				var pathElements = mod.split('/');
+				if (pathElements.length > 1) {
+					name = pathElements.pop();
+					path = pathElements.join('/');
+
+					checkIgnore();
+				}
+
+				return {
+					path: path,
+					name: name,
+					ignore: ignore
+				};
+
+				function checkIgnore() {
+					if (name[0] === '!') {
+						ignore = ignoredOnce = true;
+						name = name.substring(1);
+					}
+				}
+			});
+
+			modules = _.filter(modules, function (mod) {
+				return ignoredOnce ? mod.ignore : !mod.ignore;
+			});
+
+			return modules;
+		}
 	}
+
 
 	function getThemePath(themeNameOrPath) {
 		var themeConfigFileFound = false;
 
-		if (!/\/|\\/.test(themeNameOrPath)) {
-			for (var i = 0; i < paths.depsDirs.length; ++i) {
-				var themeDir = path.join(paths.depsDirs[i], themeNameOrPath);
-				themeConfigFileFound = fsxu.isFileSync(path.join(themeDir, paths.themeConfigFilename));
-				if (themeConfigFileFound) {
-					themeNameOrPath = themeDir;
-					break;
+		if (themeNameOrPath && _.isString(themeNameOrPath)) {
+			if (/\/|\\/.test(themeNameOrPath)) {
+				//theme path provided
+				themeConfigFileFound = fsxu.isFileSync(path.join(themeNameOrPath, paths.themeConfigFilename));
+			} else {
+				//theme name provided
+
+				//iterate all theme dirs
+				for (var i = 0; i < paths.depsDirs.length; ++i) {
+					var themeDir = path.join(paths.depsDirs[i], themeNameOrPath);
+					themeConfigFileFound = fsxu.isFileSync(path.join(themeDir, paths.themeConfigFilename));
+					if (themeConfigFileFound) {
+						themeNameOrPath = themeDir;
+						break;
+					}
 				}
 			}
-		} else {
-			themeConfigFileFound = fsxu.isFileSync(path.join(themeNameOrPath, paths.themeConfigFilename));
 		}
 
 		if (!themeConfigFileFound) {
 			throw new Error('Dependency is invalid: ' + themeNameOrPath);
 		}
 
-		return themeConfigFileFound ? themeNameOrPath : null;
+		return themeNameOrPath;
 	}
 }
 

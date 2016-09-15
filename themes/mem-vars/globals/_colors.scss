@@ -112,7 +112,7 @@ $color-divider-inverted: #E0E0E0;
 $color-divider-blend: 0.15 !default;
 $color-divider-blend-inverted: 0.5 !default;
 
-$color-divider-states: (
+$color-divider-state-names: (
 		'default',
 		'strong',
 		'solid',
@@ -124,7 +124,7 @@ $color-divider-states: (
 		'disabled'
 ) !default;
 
-$_colors-divider-states-blend-mult: map-zip($color-divider-states, (
+$_colors-divider-states-blend-mult: map-zip($color-divider-state-names, (
 		1.0, //default
 		2.0, //strong
 		5.0, //solid
@@ -187,7 +187,7 @@ $color-text-inverted: #E0E0E0;
 $color-text-blend: 0.85;
 $color-text-blend-inverted: 0.9;
 
-$color-text-states: (
+$color-text-state-names: (
 		'default',
 		'muted',
 		'selected',
@@ -197,7 +197,7 @@ $color-text-states: (
 		'disabled'
 );
 
-$_colors-text-states-blend-mult: map-zip($color-text-states, (
+$_colors-text-states-blend-mult: map-zip($color-text-state-names, (
 		1.0, //default
 		0.7, //muted
 		1.12, //selected

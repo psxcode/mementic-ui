@@ -23,18 +23,20 @@ module.exports.isConfigured = config.isConfigured;
 function streamCss() {
 	var streams = [];
 
-	config.getModules(streamModule);
+	config.getAllThemesModules(collectStreams);
 
 	return merge(streams).pipe(concat(config.paths.cssFilename));
 
+	function collectStreams(moduleName, modulePathInTheme) {
+		streams.push(streamModule(moduleName, modulePathInTheme));
+	}
+
 	function streamModule(moduleName, modulePathInTheme) {
-		var stream = gulp.src(config.paths.sassModuleFilepath)
+		return gulp.src(config.paths.sassModuleFilepath)
 				.pipe(inject(gulp.src(config.getModulePaths(moduleName, modulePathInTheme), {read: false}), config.injectOpts))
 				.pipe(sass())
 			//.pipe(cleanCss({keepBreaks: true, advanced: false}))
 			;
-
-		streams.push(stream);
 	}
 }
 
