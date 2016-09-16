@@ -161,7 +161,7 @@ $inverted-striped-background: rgba(255, 255, 255, 0.05);
 $selectable-background: color-transparent($color-dark);
 $selectable-text-color: color-text-selected();
 $selectable-inverted-background: color-transparent($color-light);
-$selectable-inverted-text-color: color-text-selected($color-text-inverted);
+$selectable-inverted-text-color: color-text-selected($inverted: true);
 
 /* Sortable */
 $sortable-background: '';
@@ -187,9 +187,9 @@ $sortable-active-hover-color: color-text-selected();
 
 $sortable-inverted-border-color: transparent;
 $sortable-inverted-hover-background: color-transparent($color-light) $subtle-gradient;
-$sortable-inverted-hover-color: color-text-hovered($color-text-inverted);
+$sortable-inverted-hover-color: color-text-hovered($inverted: true);
 $sortable-inverted-active-background: color-transparent-strong($color-light) $subtle-gradient;
-$sortable-inverted-active-color: color-text-selected($color-text-inverted);
+$sortable-inverted-active-color: color-text-selected($inverted: true);
 
 /* Colors */
 $colored-border-size: 0.2em;
@@ -198,15 +198,15 @@ $colored-border-radius: 0 0 $border-radius $border-radius;
 /* Inverted */
 $inverted-background: #333333;
 $inverted-border: none;
-$inverted-cell-border-color: color-divider($color-divider-inverted);
-$inverted-cell-color: color-text($color-text-inverted);
+$inverted-cell-border-color: color-divider($inverted: true);
+$inverted-cell-color: color-text($inverted: true);
 
 $inverted-header-background: color-transparent-strong($color-dark);
-$inverted-header-color: color-text($color-text-inverted);
+$inverted-header-color: color-text($inverted: true);
 $inverted-header-border-color: $inverted-cell-border-color;
 
 $inverted-definition-column-background: color-transparent-subtle($color-light);
-$inverted-definition-column-color: color-text-selected($color-text-inverted);
+$inverted-definition-column-color: color-text-selected($inverted: true);
 $inverted-definition-column-font-weight: bold;
 
 /* Basic */

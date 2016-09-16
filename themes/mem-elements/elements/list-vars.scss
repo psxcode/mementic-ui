@@ -65,14 +65,14 @@ $item-header-link-hover-color: $item-link-hover-color;
 /* Linked Icon */
 $item-link-icon-color: color-light(color-text());
 $item-link-icon-hover-color: color-text();
-$inverted-icon-link-color: color-light(color-text($color-text-inverted));
+$inverted-icon-link-color: color-light(color-text($inverted: true));
 
 /*-------------------
         States
 --------------------*/
 
 $disabled-color: color-text-disabled();
-$inverted-disabled-color: color-text-disabled($color-text-inverted);
+$inverted-disabled-color: color-text-disabled($inverted: true);
 
 /*-------------------
       Variations
@@ -89,10 +89,10 @@ $horizontal-icon-distance: 0.25em;
 $horizontal-vertical-align: middle;
 
 /* Inverted */
-$inverted-list-icon-color: color-light(color-text($color-text-inverted));
-$inverted-header-color: color-text($color-text-inverted);
-$inverted-description-color: color-light(color-text($color-text-inverted));
-$inverted-item-link-color: color-text($color-text-inverted);
+$inverted-list-icon-color: color-light(color-text($inverted: true));
+$inverted-header-color: color-text($inverted: true);
+$inverted-description-color: color-light(color-text($inverted: true));
+$inverted-item-link-color: color-text($inverted: true);
 $inverted-item-link-hover-color: color-hover($link-color);
 
 /* Link List */
@@ -104,10 +104,10 @@ $link-list-transition: $duration-default color $easing-default
 ;
 
 /* Inverted Link List */
-$inverted-link-list-item-color: color-text-unselected($color-text-inverted);
-$inverted-link-list-item-hover-color: color-text-hovered($color-text-inverted);
-$inverted-link-list-item-down-color: color-text-pressed($color-text-inverted);
-$inverted-link-list-item-active-color: color-text-selected($color-text-inverted);
+$inverted-link-list-item-color: color-text-unselected($inverted: true);
+$inverted-link-list-item-hover-color: color-text-hovered($inverted: true);
+$inverted-link-list-item-down-color: color-text-pressed($inverted: true);
+$inverted-link-list-item-active-color: color-text-selected($inverted: true);
 
 /* Selection List */
 $selection-list-item-margin: 0em;
@@ -131,13 +131,13 @@ $selection-list-active-color: color-text-selected();
 
 /* Inverted Selection List */
 $inverted-selection-list-background: transparent;
-$inverted-selection-list-color: color-text-unselected($color-text-inverted);
+$inverted-selection-list-color: color-text-unselected($inverted: true);
 $inverted-selection-list-hover-background: color-transparent-subtle($color-light);
-$inverted-selection-list-hover-color: color-text-hovered($color-text-inverted);
+$inverted-selection-list-hover-color: color-text-hovered($inverted: true);
 $inverted-selection-list-down-background: color-transparent($color-light);
-$inverted-selection-list-down-color: color-text-pressed($color-text-inverted);
+$inverted-selection-list-down-color: color-text-pressed($inverted: true);
 $inverted-selection-list-active-background: color-transparent($color-light);
-$inverted-selection-list-active-color: color-text-selected($color-text-inverted);
+$inverted-selection-list-active-color: color-text-selected($inverted: true);
 
 /* Animated List */
 $animated-duration: 0.25s;
@@ -175,7 +175,7 @@ $ordered-count-vertical-align: middle;
 $ordered-child-count-distance: 1em;
 $ordered-child-count-offset: -2em;
 
-$ordered-inverted-count-color: color-light(color-text($color-text-inverted));
+$ordered-inverted-count-color: color-light(color-text($inverted: true));
 
 /* Horizontal Ordered */
 $horizontal-ordered-count-distance: 0.5em;
@@ -183,7 +183,7 @@ $horizontal-ordered-count-distance: 0.5em;
 /* Divided */
 $divided-border-width: 1px;
 $divided-border: $divided-border-width solid color-divider();
-$divided-inverted-border-color: color-divider($color-divider-inverted);
+$divided-inverted-border-color: color-divider($inverted: true);
 $divided-child-list-border: none;
 $divided-child-item-border: none;
 
@@ -194,7 +194,7 @@ $horizontal-divided-line-height: 0.6;
 /* Divided */
 $celled-border-width: 1px;
 $celled-border: $celled-border-width solid color-divider();
-$celled-inverted-border: $divided-border-width solid color-divider($color-divider-inverted);
+$celled-inverted-border: $divided-border-width solid color-divider($inverted: true);
 $celled-horizontal-padding: 0.5em;
 $celled-child-list-border: none;
 $celled-child-item-border: none;

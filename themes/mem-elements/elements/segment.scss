@@ -383,7 +383,7 @@
 ---------------*/
 
 .ui.disabled.segment {
-  opacity: $color-opacity-disabled;
+  opacity: $opacity-disabled;
   color: color-text-disabled();
 }
 
@@ -515,7 +515,7 @@
 .ui.inverted.segment,
 .ui.primary.inverted.segment {
   background: $inverted-background;
-  color: color-text($color-text-inverted);
+  color: color-text($inverted: true);
 }
 
 /* Nested */
@@ -524,12 +524,12 @@
 }
 
 .ui.inverted.segment .inverted.segment {
-  color: color-text($color-text-inverted);
+  color: color-text($inverted: true);
 }
 
 /* Attached */
 .ui.inverted.attached.segment {
-  border-color: color-divider-solid($color-divider-inverted);
+  border-color: color-divider-solid($inverted: true);
 }
 
 /*-------------------
@@ -638,6 +638,6 @@
   }
 }
 
-@if $auto-include-colors-main == true {
-  @include colors($colors-main);
+@if $auto-include-colors-info == true {
+  @include colors($colors-info);
 }

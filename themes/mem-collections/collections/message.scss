@@ -239,7 +239,7 @@
 /* Colors */
 .ui.inverted.message {
   background-color: $color-dark;
-  color: color-text($color-text-inverted);
+  color: color-text($inverted: true);
 }
 
 @mixin colors($color-map) {

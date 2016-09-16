@@ -115,11 +115,11 @@ $secondary-inverted-background: lighten($color-dark, ($secondary-inverted-lightn
                 rgba(255, 255, 255, $secondary-inverted-lightness) 0%,
                 rgba(255, 255, 255, $secondary-inverted-lightness) 100%
 );
-$secondaryInvertedColor: color-text-muted($color-text-inverted);
+$secondaryInvertedColor: color-text-muted($inverted: true);
 
 $tertiary-inverted-lightness: 0.35;
 $tertiary-inverted-background: lighten($color-dark, ($tertiary-inverted-lightness * 100)) linear-gradient(
                 rgba(255, 255, 255, $tertiary-inverted-lightness) 0%,
                 rgba(255, 255, 255, $tertiary-inverted-lightness) 100%
 );
-$tertiaryInvertedColor: color-text-muted($color-text-inverted);
+$tertiaryInvertedColor: color-text-muted($inverted: true);

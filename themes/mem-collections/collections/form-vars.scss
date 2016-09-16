@@ -68,9 +68,9 @@ $checkbox-label-text-transform: $label-text-transform;
 
 /* Inline Validation Prompt */
 $prompt-background: $color-light;
-$prompt-border-color: color-divider(color-main('error'));
+$prompt-border-color: colorize-divider(color-info('error'));
 $prompt-border: 1px solid $prompt-border-color;
-$prompt-text-color: color-text(color-main('error'));
+$prompt-text-color: colorize-text(color-info('error'));
 $inline-prompt-margin: -0.25em 0 -0.5em 0.5em;
 $inline-prompt-border-width: 1px;
 
@@ -96,12 +96,12 @@ $text-area-focus-box-shadow: $input-focus-box-shadow;
 $text-area-focus-border-radius: $input-focus-border-radius;
 
 /* Disabled */
-$disabled-label-opacity: $color-opacity-disabled;
+$disabled-label-opacity: $opacity-disabled;
 
 /* Errored Input */
-$form-error-color: color-text(color-main('error'));
-$form-error-border: color-divider($color-divider-inverted);
-$form-error-background: color-bg(color-main('error'));
+$form-error-color: colorize-text(color-info('error'));
+$form-error-border: color-divider($inverted: true);
+$form-error-background: color-bg(color-info('error'));
 
 /* AutoFill */
 $input-auto-fill-background: #FFFFF0;
@@ -121,12 +121,12 @@ $dropdown-error-hover-background: #FBE7E7;
 $dropdown-error-selected-background: $dropdown-error-hover-background;
 $dropdown-error-active-background: #FDCFCF;
 $dropdown-error-label-background: #EACBCB;
-$dropdown-error-label-color: color-text(color-main('error'));
+$dropdown-error-label-color: colorize-text(color-info('error'));
 
 /* Focused Error */
-$input-error-focus-background: color-bg(color-main('error'));
-$input-error-focus-color: color-text(color-main('error'));
-$input-error-focus-border: color-divider(color-main('error'));
+$input-error-focus-background: color-bg(color-info('error'));
+$input-error-focus-color: colorize-text(color-info('error'));
+$input-error-focus-border: colorize-divider(color-info('error'));
 $input-error-focus-box-shadow: none;
 
 /* Placeholder Error */
@@ -147,17 +147,17 @@ $loader-line-z-index: 101;
 
 /* Required */
 $required-content: '*';
-$required-color: color-main('error');
+$required-color: color-info('error');
 $required-vertical-offset: -0.2em;
 $required-distance: 0.2em;
 $required-margin: $required-vertical-offset 0 0 $required-distance;
 
 /* Inverted */
 $inverted-input-background: $input-background;
-$inverted-input-border-color: color-divider($color-divider-inverted);
+$inverted-input-border-color: color-divider($inverted: true);
 $inverted-input-box-shadow: $input-box-shadow;
 $inverted-input-color: $input-color;
-$inverted-label-color: color-text($color-text-inverted);
+$inverted-label-color: color-text($inverted: true);
 $inverted-input-box-shadow: none;
 
 /*-------------------

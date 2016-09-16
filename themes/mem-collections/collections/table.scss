@@ -634,7 +634,7 @@
     }
     .ui.inverted.#{$name}.table {
       background-color: $color !important;
-      color: color-text($color-text-inverted) !important;
+      color: color-text($inverted: true) !important;
     }
   }
 }
@@ -766,7 +766,7 @@
 .ui.inverted.table tr.disabled:hover td,
 .ui.inverted.table tr:hover td.disabled {
   pointer-events: none;
-  color: color-text-disabled($color-text-inverted);
+  color: color-text-disabled($inverted: true);
 }
 
 /* Definition */

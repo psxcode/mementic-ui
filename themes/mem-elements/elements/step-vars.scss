@@ -114,7 +114,7 @@ $active-color: $link-color;
 $active-icon-color: color-text();
 
 /* Active + Hover */
-$active-hover-background: color-text($color-text-inverted);
+$active-hover-background: color-text($inverted: true);
 $active-hover-color: color-text();
 
 /* Disabled */

@@ -66,7 +66,7 @@ $right-floated-margin: 0 0 1em 2em;
 
 /* Inverted */
 $inverted-value-color: $color-light;
-$inverted-label-color: color-text($color-text-inverted);
+$inverted-label-color: color-text($inverted: true);
 
 /* Item Width */
 $item-group-margin: 0 0 -$row-spacing;

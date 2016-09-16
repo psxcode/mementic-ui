@@ -23,7 +23,7 @@ $inverted-shape-border-color: $inverted-loader-line-color transparent transparen
 /* Text */
 $text-distance: size('mini');
 $loader-text-color: color-text();
-$inverted-loader-text-color: color-text($color-text-inverted);
+$inverted-loader-text-color: color-text($inverted: true);
 
 /*-------------------
         States

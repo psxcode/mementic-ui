@@ -183,7 +183,7 @@
 .ui.disabled.button:hover,
 .ui.disabled.active.button {
   cursor: default;
-  opacity: $color-opacity-disabled !important;
+  opacity: $opacity-disabled !important;
   background-image: none !important;
   box-shadow: none !important;
   pointer-events: none !important;
@@ -618,8 +618,8 @@
 .ui.basic.inverted.buttons .active.button,
 .ui.basic.inverted.active.button {
   background-color: color-transparent($color-light);
-  color: color-text($color-text-inverted);
-  text-shadow: color-shadow(color-text($color-text-inverted));
+  color: color-text($inverted: true);
+  text-shadow: color-shadow(color-text($inverted: true));
   box-shadow: $basic-inverted-active-box-shadow;
 }
 
@@ -750,16 +750,16 @@
 .ui.toggle.buttons .active.button,
 .ui.buttons .button.toggle.active,
 .ui.button.toggle.active {
-  background-color: color-main('positive') !important;
+  background-color: color-info('positive') !important;
   box-shadow: none !important;
-  text-shadow: color-shadow(color-text($color-text-inverted));
-  color: color-text($color-text-inverted) !important;
+  text-shadow: color-shadow(color-text($inverted: true));
+  color: color-text($inverted: true) !important;
 }
 
 .ui.button.toggle.active:hover {
-  background-color: color-hover(color-main('positive')) !important;
-  text-shadow: color-shadow(color-text($color-text-inverted));
-  color: color-text($color-text-inverted) !important;
+  background-color: color-hover(color-info('positive')) !important;
+  text-shadow: color-shadow(color-text($inverted: true));
+  color: color-text($inverted: true) !important;
 }
 
 /*--------------
@@ -1110,22 +1110,22 @@
 
     .ui.#{$name}.button {
       background-color: $color;
-      color: color-text($color-text-inverted);
-      text-shadow: color-shadow(color-text($color-text-inverted));
+      color: color-text($inverted: true);
+      text-shadow: color-shadow(color-text($inverted: true));
       background-image: $colored-background-image;
       box-shadow: $colored-box-shadow;
     }
 
     .ui.#{$name}.button:hover {
       background-color: color-hover($color);
-      color: color-text($color-text-inverted);
-      text-shadow: color-shadow(color-text($color-text-inverted));
+      color: color-text($inverted: true);
+      text-shadow: color-shadow(color-text($inverted: true));
     }
 
     .ui.#{$name}.button:active {
       background-color: color-down($color);
-      color: color-text($color-text-inverted);
-      text-shadow: color-shadow(color-text($color-text-inverted));
+      color: color-text($inverted: true);
+      text-shadow: color-shadow(color-text($inverted: true));
     }
   }
 }
@@ -1141,8 +1141,8 @@
     .ui.#{$name}.buttons .button,
     .ui.#{$name}.button {
       background-color: $color;
-      color: color-text($color-text-inverted);
-      text-shadow: color-shadow(color-text($color-text-inverted));
+      color: color-text($inverted: true);
+      text-shadow: color-shadow(color-text($inverted: true));
       background-image: $colored-background-image;
     }
     .ui.#{$name}.button {
@@ -1151,28 +1151,28 @@
     .ui.#{$name}.buttons .button:hover,
     .ui.#{$name}.button:hover {
       background-color: color-hover($color);
-      color: color-text($color-text-inverted);
-      text-shadow: color-shadow(color-text($color-text-inverted));
+      color: color-text($inverted: true);
+      text-shadow: color-shadow(color-text($inverted: true));
     }
     .ui.#{$name}.buttons .button:focus,
     .ui.#{$name}.button:focus {
       background-color: color-focus($color);
-      color: color-text($color-text-inverted);
-      text-shadow: color-shadow(color-text($color-text-inverted));
+      color: color-text($inverted: true);
+      text-shadow: color-shadow(color-text($inverted: true));
     }
     .ui.#{$name}.buttons .button:active,
     .ui.#{$name}.button:active {
       background-color: color-down($color);
-      color: color-text($color-text-inverted);
-      text-shadow: color-shadow(color-text($color-text-inverted));
+      color: color-text($inverted: true);
+      text-shadow: color-shadow(color-text($inverted: true));
     }
     .ui.#{$name}.buttons .active.button,
     .ui.#{$name}.buttons .active.button:active,
     .ui.#{$name}.active.button,
     .ui.#{$name}.button .active.button:active {
       background-color: color-active($color);
-      color: color-text($color-text-inverted);
-      text-shadow: color-shadow(color-text($color-text-inverted));
+      color: color-text($inverted: true);
+      text-shadow: color-shadow(color-text($inverted: true));
     }
 
     /* Basic */
@@ -1224,7 +1224,7 @@
     .ui.inverted.#{$name}.buttons .button:active,
     .ui.inverted.#{$name}.button:active {
       box-shadow: none !important;
-      color: color-text($color-text-inverted);;
+      color: color-text($inverted: true);;
     }
     .ui.inverted.#{$name}.buttons .button:hover,
     .ui.inverted.#{$name}.button:hover {
@@ -1278,8 +1278,8 @@
   }
 }
 
-@if $auto-include-colors-main == true {
-  @include colors($colors-main);
+@if $auto-include-colors-info == true {
+  @include colors($colors-info);
 }
 
 /*-------------------
@@ -1362,7 +1362,7 @@
   }
 }
 
-@if $auto-include-colors-main == true {
+@if $auto-include-colors-info == true {
   @include colors-main;
 }
 

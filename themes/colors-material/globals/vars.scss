@@ -37,5 +37,5 @@ $colors-material: (
   @return map-get($colors-material, $variant);
 }
 
-$auto-include-colors-main: false;
+$auto-include-colors-info: false;
 $auto-include-colors-material: true;

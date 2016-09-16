@@ -28,24 +28,20 @@
   @return darken($color, 10%);
 }
 
-$color-opacity-disabled: 0.5 !default;
-$color-opacity-strong: 0.1 !default;
-$color-opacity-subtle: 0.05 !default;
-
 @function color-disabled($color) {
-  @return rgba($color, $color-opacity-disabled);
+  @return rgba($color, 0.5);
 }
 
 @function color-transparent($color) {
-  @return rgba($color, $color-opacity-strong);
+  @return rgba($color, 0.1);
 }
 
 @function color-transparent-strong($color) {
-  @return rgba($color, $color-opacity-strong);
+  @return rgba($color, 0.1);
 }
 
 @function color-transparent-subtle($color) {
-  @return rgba($color, $color-opacity-subtle);
+  @return rgba($color, 0.05);
 }
 
 // sRGB BT-709 BRIGHTNESS
@@ -71,46 +67,43 @@ $color-opacity-subtle: 0.05 !default;
 
 // Main colors
 // -------------------------------
-$colors-main: (
-  //user interaction
+$colors-info: (
 		'positive': #387ef5,
 		'negative': #ef473a,
 		'success': #387ef5,
 		'fail': #ef473a,
 		'info': #94eeff,
 		'warning': #fff57a,
-		'error': #ef473a,
-  //theme
-		'primary': #387ef5,
-		'secondary': #555,
-		'accent': #fff57a,
+		'error': #ef473a
 ) !default;
 
-@function color-main($name) {
+@function color-info($name) {
   $name: to-string($name);
 
-  @if not(map-has-key($colors-main, $name)) {
-	@error 'color-main: invalid $name \'#{$name}\'';
+  @if not(map-has-key($colors-info, $name)) {
+	@error 'color-info: invalid $name \'#{$name}\'';
   }
 
-  @return map-get($colors-main, $name);
+  @return map-get($colors-info, $name);
 }
 
-$auto-include-colors-main: true !default;
+$auto-include-colors-info: true !default;
 
 // Colors greyscale
 // -------------------------------
-$color-light: #FFF;
-$color-dark: #202224;
-$color-mid: #444;
+$color-darker: #202224;
+$color-dark: #505761;
+$color-mid: #888;
+$color-light: #d3d6db;
+$color-lighter: #f5f7fa;
 
 // Divider Colors
 // -------------------------------
-$color-divider: #202020;
-$color-divider-inverted: #E0E0E0;
+$_color-divider: #202020;
+$_color-divider-inverted: #E0E0E0;
 
-$color-divider-blend: 0.15 !default;
-$color-divider-blend-inverted: 0.5 !default;
+$_color-divider-blend: 0.15 !default;
+$_color-divider-blend-inverted: 0.5 !default;
 
 $color-divider-state-names: (
 		'default',
@@ -136,56 +129,92 @@ $_colors-divider-states-blend-mult: map-zip($color-divider-state-names, (
 		3.5 //disabled
 )) !default;
 
-@function color-divider-state($color, $state) {
-  $blend: $color-divider-blend;
+@function _colorize-divider-state($color, $state) {
+  $blend: $_color-divider-blend;
   $mult: map-get($_colors-divider-states-blend-mult, $state);
 
   @return rgba($color, clamp($blend * $mult));
 }
 
-@function color-divider($color: $color-divider) {
-  @return color-divider-state($color, 'default');
+@function colorize-divider($color) {
+  @return _colorize-divider-state($color, 'default');
 }
 
-@function color-divider-strong($color: $color-divider) {
-  @return color-divider-state($color, 'strong');
+@function color-divider($inverted: false) {
+  @return colorize-divider(if(to-bool($inverted), $_color-divider-inverted, $_color-divider));
 }
 
-@function color-divider-solid($color: $color-divider) {
-  @return color-divider-state($color, 'solid');
+@function colorize-divider-strong($color) {
+  @return _colorize-divider-state($color, 'strong');
 }
 
-@function color-divider-internal($color: $color-divider) {
-  @return color-divider-state($color, 'internal');
+@function color-divider-strong($inverted: false) {
+  @return colorize-divider-strong(if(to-bool($inverted), $_color-divider-inverted, $_color-divider));
 }
 
-@function color-divider-solid-internal($color: $color-divider) {
-  @return color-divider-state($color, 'solid-internal');
+@function colorize-divider-solid($color) {
+  @return _colorize-divider-state($color, 'solid');
 }
 
-@function color-divider-selected($color: $color-divider) {
-  @return color-divider-state($color, 'selected');
+@function color-divider-solid($inverted: false) {
+  @return colorize-divider-solid(if(to-bool($inverted), $_color-divider-inverted, $_color-divider));
 }
 
-@function color-divider-solid-selected($color: $color-divider) {
-  @return color-divider-state($color, 'solid-selected');
+@function colorize-divider-internal($color) {
+  @return _colorize-divider-state($color, 'internal');
 }
 
-@function color-divider-strong-selected($color: $color-divider) {
-  @return color-divider-state($color, 'strong-selected');
+@function color-divider-internal($inverted: false) {
+  @return colorize-divider-internal(if(to-bool($inverted), $_color-divider-inverted, $_color-divider));
 }
 
-@function color-divider-disabled($color: $color-divider) {
-  @return color-divider-state($color, 'disabled');
+@function colorize-divider-solid-internal($color) {
+  @return _colorize-divider-state($color, 'solid-internal');
+}
+
+@function color-divider-solid-internal($inverted: false) {
+  @return colorize-divider-solid-internal(if(to-bool($inverted), $_color-divider-inverted, $_color-divider));
+}
+
+@function colorize-divider-selected($color) {
+  @return _colorize-divider-state($color, 'selected');
+}
+
+@function color-divider-selected($inverted: false) {
+  @return colorize-divider-selected(if(to-bool($inverted), $_color-divider-inverted, $_color-divider));
+}
+
+@function colorize-divider-solid-selected($color) {
+  @return _colorize-divider-state($color, 'solid-selected');
+}
+
+@function color-divider-solid-selected($inverted: false) {
+  @return colorize-divider-solid-selected(if(to-bool($inverted), $_color-divider-inverted, $_color-divider));
+}
+
+@function colorize-divider-strong-selected($color) {
+  @return _colorize-divider-state($color, 'strong-selected');
+}
+
+@function color-divider-strong-selected($inverted: false) {
+  @return colorize-divider-strong-selected(if(to-bool($inverted), $_color-divider-inverted, $_color-divider));
+}
+
+@function colorize-divider-disabled($color) {
+  @return _colorize-divider-state($color, 'disabled');
+}
+
+@function color-divider-disabled($inverted: false) {
+  @return colorize-divider-disabled(if(to-bool($inverted), $_color-divider-inverted, $_color-divider));
 }
 
 // Text Colors
 // -------------------------------
-$color-text: #202020;
-$color-text-inverted: #E0E0E0;
+$_color-text: #202020;
+$_color-text-inverted: #E0E0E0;
 
-$color-text-blend: 0.85;
-$color-text-blend-inverted: 0.9;
+$_color-text-blend: 0.85;
+$_color-text-blend-inverted: 0.9;
 
 $color-text-state-names: (
 		'default',
@@ -207,41 +236,73 @@ $_colors-text-states-blend-mult: map-zip($color-text-state-names, (
 		0.5 //disabled
 )) !default;
 
-@function color-text-state($color, $state) {
-  $blend: $color-text-blend;
+@function _colorize-text-state($color, $state) {
+  $blend: $_color-text-blend;
   $mult: map-get($_colors-text-states-blend-mult, $state);
 
   @return rgba($color, clamp($blend * $mult));
 }
 
-@function color-text($color: $color-text) {
-  @return color-text-state($color, 'default');
+@function colorize-text($color) {
+  @return _colorize-text-state($color, 'default');
 }
 
-@function color-text-muted($color: $color-text) {
-  @return color-text-state($color, 'muted');
+@function color-text($inverted: false) {
+  @return colorize-text(if(to-bool($inverted), $_color-text-inverted, $_color-text));
 }
 
-@function color-text-selected($color: $color-text) {
-  @return color-text-state($color, 'selected');
+@function colorize-text-muted($color) {
+  @return _colorize-text-state($color, 'muted');
 }
 
-@function color-text-unselected($color: $color-text) {
-  @return color-text-state($color, 'unselected');
+@function color-text-muted($inverted: false) {
+  @return colorize-text-muted(if(to-bool($inverted), $_color-text-inverted, $_color-text));
 }
 
-@function color-text-hovered($color: $color-text) {
-  @return color-text-state($color, 'hovered');
+@function colorize-text-selected($color) {
+  @return _colorize-text-state($color, 'selected');
 }
 
-@function color-text-pressed($color: $color-text) {
-  @return color-text-state($color, 'pressed');
+@function color-text-selected($inverted: false) {
+  @return colorize-text-selected(if(to-bool($inverted), $_color-text-inverted, $_color-text));
 }
 
-@function color-text-disabled($color: $color-text) {
-  @return color-text-state($color, 'disabled');
+@function colorize-text-unselected($color) {
+  @return _colorize-text-state($color, 'unselected');
 }
 
-@function color-text-heading($color: darken($color-text, 5%)) {
-  @return color-text-state($color, 'default');
+@function color-text-unselected($inverted: false) {
+  @return colorize-text-unselected(if(to-bool($inverted), $_color-text-inverted, $_color-text));
+}
+
+@function colorize-text-hovered($color) {
+  @return _colorize-text-state($color, 'hovered');
+}
+
+@function color-text-hovered($inverted: false) {
+  @return colorize-text-hovered(if(to-bool($inverted), $_color-text-inverted, $_color-text));
+}
+
+@function colorize-text-pressed($color) {
+  @return _colorize-text-state($color, 'pressed');
+}
+
+@function color-text-pressed($inverted: false) {
+  @return colorize-text-pressed(if(to-bool($inverted), $_color-text-inverted, $_color-text));
+}
+
+@function colorize-text-disabled($color) {
+  @return _colorize-text-state($color, 'disabled');
+}
+
+@function color-text-disabled($inverted: false) {
+  @return colorize-text-disabled(if(to-bool($inverted), $_color-text-inverted, $_color-text));
+}
+
+@function colorize-text-heading($color) {
+  @return _colorize-text-state(darken($color, 5%), 'default');
+}
+
+@function color-text-heading($inverted: false) {
+  @return colorize-text-heading(if(to-bool($inverted), $_color-text-inverted, $_color-text));
 }

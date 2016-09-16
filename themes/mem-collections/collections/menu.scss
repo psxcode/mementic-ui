@@ -1322,7 +1322,7 @@ Floated Menu / Item
 /* Disabled */
 .ui.inverted.menu .item.disabled,
 .ui.inverted.menu .item.disabled:hover {
-  color: color-text-disabled($color-text-inverted);
+  color: color-text-disabled($inverted: true);
 }
 
 /*--- Hover ---*/

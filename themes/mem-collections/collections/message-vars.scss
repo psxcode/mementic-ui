@@ -78,9 +78,9 @@ $floating-box-shadow: $border-shadow, $floating-shadow;
 /* Colors */
 
 /* Warning / Positive / Negative / Info */
-$positive-box-shadow: 0 0 0 $border-width color-main('positive') inset, $shadow-shadow;
-$negative-box-shadow: 0 0 0 $border-width color-main('negative') inset, $shadow-shadow;
-$info-box-shadow: 0 0 0 $border-width color-main('info') inset, $shadow-shadow;
-$warning-box-shadow: 0 0 0 $border-width color-main('warn') inset, $shadow-shadow;
-$error-box-shadow: 0 0 0 $border-width color-main('error') inset, $shadow-shadow;
-$success-box-shadow: 0 0 0 $border-width color-main('success') inset, $shadow-shadow;
+$positive-box-shadow: 0 0 0 $border-width color-info('positive') inset, $shadow-shadow;
+$negative-box-shadow: 0 0 0 $border-width color-info('negative') inset, $shadow-shadow;
+$info-box-shadow: 0 0 0 $border-width color-info('info') inset, $shadow-shadow;
+$warning-box-shadow: 0 0 0 $border-width color-info('warn') inset, $shadow-shadow;
+$error-box-shadow: 0 0 0 $border-width color-info('error') inset, $shadow-shadow;
+$success-box-shadow: 0 0 0 $border-width color-info('success') inset, $shadow-shadow;

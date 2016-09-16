@@ -176,7 +176,7 @@ $labeled-icon-right-shadow: 1px 0 0 0 $labeled-icon-border inset;
 
 /* Inverted */
 $inverted-border-size: 2px;
-$inverted-text-color: color-text($color-text-inverted);
+$inverted-text-color: color-text($inverted: true);
 $inverted-text-hover-color: $hover-color;
 $inverted-group-button-offset: 0 0 0 -($inverted-border-size);
 $inverted-vertical-group-button-offset: 0 0 -($inverted-border-size) 0;
@@ -233,7 +233,7 @@ $basic-inverted-active-box-shadow: 0 0 0 $inverted-border-size rgba(255, 255, 25
 $basic-inverted-color: $color-mid;
 $basic-inverted-hover-color: color-hover($color-mid);
 $basic-inverted-down-color: color-active($color-light);
-$basic-inverted-active-color: color-text($color-text-inverted);
+$basic-inverted-active-color: color-text($inverted: true);
 
 
 /* Basic Group */
@@ -244,38 +244,38 @@ $basic-group-box-shadow: none;
       Variations
 --------------------*/
 
-$colors-button-main: map-extract($colors-main, ('primary', 'secondary', 'positive', 'assertive'));
+$colors-button-main: map-extract($colors-info, ('primary', 'secondary', 'positive', 'assertive'));
 
 /* Colors */
 $colored-background-image: none;
 $colored-box-shadow: $shadow-box-shadow;
 
 /* Colored */
-$color-text: color-text($color-text-inverted);
-$color-text-shadow: color-shadow(color-text($color-text-inverted));
+$color-text: color-text($inverted: true);
+$color-text-shadow: color-shadow(color-text($inverted: true));
 
 /* Inverted */
-$light-color-text: color-text($color-text-inverted);
-$light-color-text-shadow: color-shadow(color-text($color-text-inverted));
+$light-color-text: color-text($inverted: true);
+$light-color-text-shadow: color-shadow(color-text($inverted: true));
 
 /* Ordinality */
 $primary-background-image: $colored-background-image;
-$primary-text-color: color-text($color-text-inverted);
-$primary-text-shadow: color-shadow(color-text($color-text-inverted));
+$primary-text-color: color-text($inverted: true);
+$primary-text-shadow: color-shadow(color-text($inverted: true));
 $primary-box-shadow: $colored-box-shadow;
 
 $secondary-background-image: $colored-background-image;
-$secondary-text-color: color-text($color-text-inverted);
+$secondary-text-color: color-text($inverted: true);
 $secondary-text-shadow: color-shadow($secondary-text-color);
 $secondary-box-shadow: $colored-box-shadow;
 
 $positive-background-image: $colored-background-image;
-$positive-text-color: color-text($color-text-inverted);
+$positive-text-color: color-text($inverted: true);
 $positive-text-shadow: color-shadow($positive-text-color);
 $positive-box-shadow: $colored-box-shadow;
 
 $negative-background-image: $colored-background-image;
-$negative-text-color: color-text($color-text-inverted);
+$negative-text-color: color-text($inverted: true);
 $negative-text-shadow: color-shadow($negative-text-color);
 $negative-box-shadow: $colored-box-shadow;
 
@@ -302,4 +302,4 @@ $fade-scale-low: 0.75;
 
 
 
-$auto-include-colors-main: true;
+$auto-include-colors-info: true;

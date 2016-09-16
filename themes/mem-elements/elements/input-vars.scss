@@ -76,9 +76,9 @@ $focus-color: color-text-selected();
 $focus-box-shadow: none;
 
 /* Error */
-$error-background: color-bg(color-main('error'));
-$error-color: color-main('error');
-$error-border: color-divider(color-main('error'));
+$error-background: color-bg(color-info('error'));
+$error-color: color-info('error');
+$error-border: colorize-divider(color-info('error'));
 $error-box-shadow: none;
 
 $placeholder-error-color: lighten($error-color, 40);
@@ -92,6 +92,6 @@ $inverted-loader-fill-color: rgba(0, 0, 0, 0.15);
 --------------------*/
 
 /* Inverted */
-$transparent-inverted-placeholder-color: color-text-unselected($color-text-inverted);
-$transparent-inverted-color: color-text($color-text-inverted);
+$transparent-inverted-placeholder-color: color-text-unselected($inverted: true);
+$transparent-inverted-color: color-text($inverted: true);
 

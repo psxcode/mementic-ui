@@ -1,7 +1,7 @@
 $margin: 1rem 0rem;
 
 $highlight-width: 1px;
-$highlight-color: color-divider($color-divider-inverted);
+$highlight-color: color-divider($inverted: true);
 
 $shadow-width: 1px;
 $shadow-color: color-divider();
@@ -33,7 +33,7 @@ $vertical-divider-margin: 1rem;
 $vertical-divider-height: calc(100% - (#{$vertical-divider-margin}));
 
 /* Inverted */
-$inverted-text-color: color-text($color-text-inverted);
+$inverted-text-color: color-text($inverted: true);
 $inverted-highlight-color: rgba(255, 255, 255, 0.15);
 $inverted-shadow-color: color-divider();
 

@@ -144,9 +144,9 @@ $big-attached-size: size('big', true);
 $huge-attached-size: size('huge', true);
 
 /* Inverted */
-$inverted-color: color-text($color-text-inverted);
-$inverted-sub-header-color: color-text-muted($color-text-inverted);
-$inverted-divided-border-color: color-divider($color-divider-inverted);
+$inverted-color: color-text($inverted: true);
+$inverted-sub-header-color: color-text-muted($inverted: true);
+$inverted-divided-border-color: color-divider($inverted: true);
 $inverted-block-background: color-light($color-dark) $subtle-gradient;
 $inverted-attached-background: $inverted-block-background;
 

@@ -568,7 +568,7 @@ a.ui.basic.label:hover {
 
 .ui.inverted.labels .label,
 .ui.inverted.label {
-  color: color-text($color-text-inverted) !important;
+  color: color-text($inverted: true) !important;
 }
 
 /*-------------------
@@ -776,7 +776,7 @@ a.ui.basic.label:hover {
     .ui.#{$name}.label {
       background-color: $color !important;
       border-color: $color !important;
-      color: color-text($color-text-inverted) !important;
+      color: color-text($inverted: true) !important;
     }
 
     /* Link */
@@ -784,7 +784,7 @@ a.ui.basic.label:hover {
     a.ui.#{$name}.label:hover {
       background-color: color-hover($color) !important;
       border-color: color-hover($color) !important;
-      color: color-text-hovered($color-text-inverted) !important;
+      color: color-text-hovered($inverted: true) !important;
     }
 
     /* Corner */

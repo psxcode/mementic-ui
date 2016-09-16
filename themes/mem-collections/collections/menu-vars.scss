@@ -176,7 +176,7 @@ $dropdown-hovered-item-color: color-text-selected();
 $dropdown-vertical-menu-box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.08);
 $secondary-dropdown-menu-distance: px-em(5);
 $pointing-dropdown-menu-distance: 0.75em;
-$inverted-selection-dropdown-color: color-text($color-text-inverted);
+$inverted-selection-dropdown-color: color-text($inverted: true);
 
 /*--------------
      States
@@ -285,21 +285,21 @@ $secondary-pointing-header-color: color-text();
 $secondary-vertical-pointing-item-margin: 0 -$secondary-pointing-border-width 0 0;
 
 /* Inverted Secondary */
-$secondary-inverted-color: color-text($color-text-inverted);
+$secondary-inverted-color: color-text($inverted: true);
 
 $secondary-inverted-hover-background: color-transparent($color-light);
-$secondary-inverted-hover-color: color-text-selected($color-text-inverted);
+$secondary-inverted-hover-color: color-text-selected($inverted: true);
 
 $secondary-inverted-active-background: color-transparent-strong($color-light);
-$secondary-inverted-active-color: color-text-selected($color-text-inverted);
+$secondary-inverted-active-color: color-text-selected($inverted: true);
 
 /* Inverted Pointing */
-$secondary-pointing-inverted-border-color: color-divider($color-divider-inverted);
-$secondary-pointing-inverted-item-text-color: color-text($color-text-inverted);
+$secondary-pointing-inverted-border-color: color-divider($inverted: true);
+$secondary-pointing-inverted-item-text-color: color-text($inverted: true);
 $secondary-pointing-inverted-item-header-color: $color-light;
 $secondary-pointing-inverted-item-hover-text-color: color-text-selected();
 $secondary-pointing-inverted-active-border-color: $color-light;
-$secondary-pointing-inverted-active-color: color-text-selected($color-text-inverted);
+$secondary-pointing-inverted-active-color: color-text-selected($inverted: true);
 
 /* Tiered */
 $tiered-active-item-background: #FCFCFC;
@@ -396,26 +396,26 @@ $inverted-border: 0px solid transparent;
 $inverted-header-background: transparent;
 
 $inverted-item-background: transparent;
-$inverted-item-text-color: color-text($color-text-inverted);
+$inverted-item-text-color: color-text($inverted: true);
 
 /* Inverted Sub Menu */
 $inverted-sub-menu-background: transparent;
-$inverted-sub-menu-color: color-text-unselected($color-text-inverted);
+$inverted-sub-menu-color: color-text-unselected($inverted: true);
 
 /* Inverted Hover */
 $inverted-hover-background: color-transparent($color-light);
-$inverted-hover-color: color-text-selected($color-text-inverted);
+$inverted-hover-color: color-text-selected($inverted: true);
 
 $inverted-sub-menu-hover-background: transparent;
-$inverted-sub-menu-hover-color: color-text-selected($color-text-inverted);
+$inverted-sub-menu-hover-color: color-text-selected($inverted: true);
 
 /* Pressed */
 $inverted-menu-pressed-background: color-transparent($color-light);
-$inverted-menu-pressed-color: color-text-selected($color-text-inverted);
+$inverted-menu-pressed-color: color-text-selected($inverted: true);
 
 /* Inverted Active */
 $inverted-active-background: color-transparent-strong($color-light);
-$inverted-active-color: color-text-selected($color-text-inverted);
+$inverted-active-color: color-text-selected($inverted: true);
 $inverted-arrow-active-color: #3D3E3F;
 
 /* Inverted Active Hover  */
