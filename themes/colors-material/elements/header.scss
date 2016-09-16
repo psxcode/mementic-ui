@@ -1,1 +1,3 @@
-@include colors($colors-material);
+@if $auto-include-colors-material == true {
+  @include colors($colors-material);
+}

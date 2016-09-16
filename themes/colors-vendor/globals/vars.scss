@@ -2,20 +2,23 @@
 // -------------------------------
 
 $colors-vendor: (
-        'facebook': #3B5998,
-        'twitter': #0084B4,
-        'googleplus': #DC4A38,
-        'linkedin': #1F88BE,
-        'youtube': #CC181E,
-        'instagram': #49769C,
-        'pinterest': #00ACED,
-        'vk': #4D7198
+		'facebook': #3B5998,
+		'twitter': #0084B4,
+		'googleplus': #DC4A38,
+		'linkedin': #1F88BE,
+		'youtube': #CC181E,
+		'instagram': #49769C,
+		'pinterest': #00ACED,
+		'vk': #4D7198
 ) !default;
 
 @function color-vendor($variant) {
   @if not(map-has-key($colors-vendor, $variant)) {
-    @error 'color-vendor: invalid $variant #{$variant}';
+	@error 'color-vendor: invalid $variant #{$variant}';
   }
 
   @return map-get($colors-vendor, $variant);
 }
+
+$auto-include-colors-main: false;
+$auto-include-colors-vendor: true;

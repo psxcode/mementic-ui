@@ -1,1 +1,3 @@
-@include colors($colors-semantic);
+@if $auto-include-colors-semantic == true {
+  @include colors($colors-semantic);
+}

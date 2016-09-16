@@ -2,24 +2,25 @@
 // -------------------------------
 
 $colors-ionic: (
-        'light': #fff,
-        'stable': #f8f8f8,
-        'positive': #387ef5,
-        'calm': #11c1f3,
-        'balanced': #33cd5f,
-        'energized': #ffc900,
-        'assertive': #ef473a,
-        'royal': #886aea,
-        'dark': #444
+		'light': #fff,
+		'stable': #f8f8f8,
+		'positive': #387ef5,
+		'calm': #11c1f3,
+		'balanced': #33cd5f,
+		'energized': #ffc900,
+		'assertive': #ef473a,
+		'royal': #886aea,
+		'dark': #444
 ) !default;
 
 @function color-ionic($variant) {
   $variant: to-string($variant);
   @if map-has_key($colors-ionic, $variant) {
-    @return map-get($colors-ionic, $variant);
+	@return map-get($colors-ionic, $variant);
   } @else {
-    @error 'color-ionic: invalid $variant #{$variant}';
+	@error 'color-ionic: invalid $variant #{$variant}';
   }
 }
 
 $auto-include-colors-main: false;
+$auto-include-colors-ionic: true;

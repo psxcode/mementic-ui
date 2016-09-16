@@ -1,1 +1,3 @@
-@include colors($colors-vendor);
+@if $auto-include-colors-vendor == true {
+  @include colors($colors-vendor);
+}

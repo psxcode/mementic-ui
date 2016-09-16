@@ -189,7 +189,7 @@ function resolveThemeDepsPaths() {
 	if (!_.isArray(deps)) deps = [deps];
 
 	//always include _default theme
-	deps.unshift('_default');
+	deps.unshift('_globals');
 
 	var flattenResult = flattenThemeDepsTree(deps);
 	themeDepsPaths = flattenResult.paths;

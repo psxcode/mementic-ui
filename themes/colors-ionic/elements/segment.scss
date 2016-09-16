@@ -1,1 +1,3 @@
-@include colors($colors-ionic);
+@if $auto-include-colors-ionic == true {
+  @include colors($colors-ionic);
+}

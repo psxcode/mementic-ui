@@ -17,7 +17,6 @@
 
 
 module.exports = {
-	deps: ['mem-vars', {'mem-elements': 'button'}, {'mem-collections': 'grid'}],
 	modules: [{
 		path: '',
 		name: 'globals'
