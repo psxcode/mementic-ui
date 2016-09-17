@@ -1,0 +1,194 @@
+/*-------------------
+  Labeled Button
+--------------------*/
+
+/* Shortcuts */
+$left-labeled: "[class*='#{$c-left} #{$c-labeled}']";
+$right-labeled: "[class*='#{$c-right} #{$c-labeled}']";
+
+
+#{$ui-button} {
+
+  &.#{$c-labeled}:not(.#{$c-icon}) {
+	display: inline-flex;
+	flex-direction: row;
+	background: none !important;
+	padding: 0 !important;
+	border: none !important;
+	box-shadow: none !important;
+  }
+
+  &.#{$c-labeled} > .#{$c-button} {
+	margin: 0;
+  }
+
+  &.#{$c-labeled} > .#{$c-label} {
+	display: flex;
+	align-items: $labeled-label-align;
+	margin: 0 0 0 $labeled-label-border-offset !important;
+	font-size: $labeled-label-font-size;
+	padding: $labeled-label-padding;
+	border-color: $labeled-label-border-color;
+  }
+
+  /* Tag */
+  &.#{$c-labeled} > .tag.#{$c-label}:before {
+	width: $labeled-tag-label-size;
+	height: $labeled-tag-label-size;
+  }
+
+  /* Right */
+  &.#{$c-labeled}:not(#{$left-labeled}) > .#{$c-button} {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+  }
+
+  &.#{$c-labeled}:not(#{$left-labeled}) > .#{$c-label} {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+  }
+
+  /* Left Side */
+  &#{$left-labeled} > .#{$c-button} {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+  }
+
+  &#{$left-labeled} > .#{$c-label} {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+  }
+}
+
+/*--------------
+   Icon
+---------------*/
+#{$ui-button} {
+
+  & > .#{$c-icon}:not(.#{$c-button}) {
+	height: $icon-height;
+	opacity: $icon-opacity;
+	margin: $icon-margin;
+	transition: $icon-transition;
+	vertical-align: $icon-vertical-align;
+	color: $icon-color;
+  }
+
+  &:not(.#{$c-icon}) > .#{$c-icon}:not(.#{$c-button}):not(.dropdown) {
+	margin: $icon-margin;
+  }
+
+  &:not(.#{$c-icon}) > .right.#{$c-icon}:not(.#{$c-button}):not(.dropdown) {
+	margin: $right-icon-margin;
+  }
+}
+
+/*--------------
+    Icon Only
+---------------*/
+
+#{$ui-button-group}.#{$c-icon} .#{$c-button},
+#{$ui-button}.#{$c-icon} {
+  padding: $vertical-padding $vertical-padding ($vertical-padding + $shadow-offset);
+}
+
+#{$ui-button-group}.#{$c-icon} .#{$c-button} > .#{$c-icon},
+#{$ui-button}.#{$c-icon} > .#{$c-icon} {
+  opacity: $icon-button-opacity;
+  margin: 0;
+  vertical-align: top;
+}
+
+/*--------------
+  Labeled Icon
+---------------*/
+
+#{$ui-button-group}.#{$c-labeled}.#{$c-icon} .#{$c-button},
+#{$ui-button}.#{$c-labeled}.#{$c-icon} {
+  position: relative;
+  padding-left: $labeled-icon-padding !important;
+  padding-right: $horizontal-padding !important;
+}
+
+/* Left Labeled */
+#{$ui-button-group}.#{$c-labeled}.#{$c-icon} > .#{$c-button} > .#{$c-icon},
+#{$ui-button}.#{$c-labeled}.#{$c-icon} > .#{$c-icon} {
+  position: absolute;
+  height: 100%;
+  line-height: 1;
+  border-radius: 0;
+  border-top-left-radius: inherit;
+  border-bottom-left-radius: inherit;
+  text-align: center;
+
+  margin: $labeled-icon-margin;
+  width: $labeled-icon-width;
+  background-color: $labeled-icon-background-color;
+  color: $labeled-icon-color;
+  box-shadow: $labeled-icon-left-shadow;
+}
+
+/* Left Labeled */
+#{$ui-button-group}.#{$c-labeled}.#{$c-icon} > .#{$c-button} > .#{$c-icon},
+#{$ui-button}.#{$c-labeled}.#{$c-icon} > .#{$c-icon} {
+  top: 0;
+  left: 0;
+}
+
+/* Right Labeled */
+#{$ui-button}#{$right-labeled}.#{$c-icon} {
+  padding-right: $labeled-icon-padding !important;
+  padding-left: $horizontal-padding !important;
+}
+
+#{$ui-button}#{$right-labeled}.#{$c-icon} > .#{$c-icon} {
+  left: auto;
+  right: 0;
+  border-radius: 0;
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: inherit;
+  box-shadow: $labeled-icon-right-shadow;
+}
+
+#{$ui-button-group}.#{$c-labeled}.#{$c-icon} > .#{$c-button} > .#{$c-icon}:before,
+#{$ui-button}.#{$c-labeled}.#{$c-icon} > .#{$c-icon}:before,
+#{$ui-button-group}.#{$c-labeled}.#{$c-icon} > .#{$c-button} > .#{$c-icon}:after,
+#{$ui-button}.#{$c-labeled}.#{$c-icon} > .#{$c-icon}:after {
+  display: block;
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  text-align: center;
+  transform: translateY(-50%);
+}
+
+#{$ui-button-group}.#{$c-labeled}.#{$c-icon} .#{$c-button} > .#{$c-icon} {
+  border-radius: 0;
+}
+
+#{$ui-button-group}.#{$c-labeled}.#{$c-icon} .#{$c-button}:first-child > .#{$c-icon} {
+  border-top-left-radius: $border-radius;
+  border-bottom-left-radius: $border-radius;
+}
+
+#{$ui-button-group}.#{$c-labeled}.#{$c-icon} .#{$c-button}:last-child > .#{$c-icon} {
+  border-top-right-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+}
+
+#{$ui-button-group}.#{$c-vertical}.#{$c-labeled}.#{$c-icon} .#{$c-button}:first-child > .#{$c-icon} {
+  border-radius: 0;
+  border-top-left-radius: $border-radius;
+}
+
+#{$ui-button-group}.#{$c-vertical}.#{$c-labeled}.#{$c-icon} .#{$c-button}:last-child > .#{$c-icon} {
+  border-radius: 0;
+  border-bottom-left-radius: $border-radius;
+}
+
+/* Fluid Labeled */
+#{$ui-button}#{$left-labeled}.#{$c-fluid}.#{$c-icon},
+#{$ui-button}#{$right-labeled}.#{$c-fluid}.#{$c-icon} {
+  padding-left: $horizontal-padding !important;
+  padding-right: $horizontal-padding !important;
+}

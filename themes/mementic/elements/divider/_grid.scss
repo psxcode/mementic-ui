@@ -1,0 +1,62 @@
+
+/* Shortcuts */
+$ui-grid: '.#{$c-ui}.#{$c-grid}';
+$ui-divider-vertical: '.#{$c-ui}.#{$c-divider}.#{$c-vertical}';
+$stackable-row : '.#{$c-stackable}.#{$c-row}';
+
+#{$ui-grid} {
+
+  /*--------------
+	Coupling
+---------------*/
+
+  /* Allow divider between each column row */
+  & > .#{$c-column} + .#{$c-divider},
+  & > .#{$c-row} > .#{$c-column} + .#{$c-divider} {
+	left: auto;
+  }
+
+  /* Inside grid */
+  $bp-largest-mobile: map-value-by-index($bps, 1);
+  @include media('screen', '<#{$bp-largest-mobile}') {
+
+	&.#{$c-stackable} #{$ui-divider-vertical},
+	& #{$stackable-row} #{$ui-divider-vertical} {
+	  display: table;
+	  white-space: nowrap;
+	  height: auto;
+	  margin: $horizontal-margin;
+	  overflow: hidden;
+	  line-height: 1;
+	  text-align: center;
+	  position: static;
+	  top: 0;
+	  left: 0;
+	  transform: none;
+	}
+
+	&.#{$c-stackable} #{$ui-divider-vertical}:before,
+	& #{$stackable-row} #{$ui-divider-vertical}:before,
+	&.#{$c-stackable} #{$ui-divider-vertical}:after,
+	& #{$stackable-row} #{$ui-divider-vertical}:after {
+	  left: 0;
+	  border-left: none;
+	  border-right: none;
+	  content: '';
+	  display: table-cell;
+	  position: relative;
+	  top: 50%;
+	  width: 50%;
+	  background-repeat: no-repeat;
+	}
+
+	&.#{$c-stackable} #{$ui-divider-vertical}:before,
+	& #{$stackable-row} #{$ui-divider-vertical}:before {
+	  background-position: right $horizontal-divider-margin top 50%;
+	}
+	&.#{$c-stackable} #{$ui-divider-vertical}:after,
+	& #{$stackable-row} #{$ui-divider-vertical}:after {
+	  background-position: left $horizontal-divider-margin top 50%;
+	}
+  }
+}

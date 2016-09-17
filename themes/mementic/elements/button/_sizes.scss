@@ -1,0 +1,13 @@
+/*-------------------
+        Sizes
+--------------------*/
+
+@each $name, $size in $sizes {
+
+  #{$ui-button-group}.#{$name} .#{$c-button},
+  #{$ui-button-group}.#{$name} .#{$c-button-or},
+  #{$ui-button}.#{$name} {
+	font-size: size($name);
+  }
+
+}

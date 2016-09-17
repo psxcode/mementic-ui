@@ -1,0 +1,229 @@
+/* Shortcuts */
+$ui-button: '.#{$c-ui}.#{$c-button}';
+$ui-button-group: '.#{$c-ui}.#{$c-button-group}';
+
+#{$ui-button} {
+
+  cursor: pointer;
+  display: inline-block;
+
+  min-height: 1em;
+
+  outline: none;
+  border: none;
+  vertical-align: $vertical-align;
+  background: $background;
+  color: $text-color;
+
+  font-family: $font-family;
+
+  margin: 0 $horizontal-margin $vertical-margin 0;
+  padding: $vertical-padding $horizontal-padding ($vertical-padding + $shadow-offset);
+
+  text-transform: $text-transform;
+  text-shadow: $text-shadow;
+  font-weight: $font-weight;
+  line-height: $line-height;
+  font-style: normal;
+  text-align: center;
+  text-decoration: none;
+
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+
+  user-select: none;
+  transition: $transition;
+
+  -webkit-tap-highlight-color: $tap-color;
+
+  /*--------------
+      Hover
+---------------*/
+
+  &:hover {
+	background-color: $hover-background-color;
+	background-image: $hover-background-image;
+	box-shadow: $hover-box-shadow;
+	color: $hover-color;
+  }
+
+  &:hover .#{$c-icon} {
+	opacity: $icon-hover-opacity;
+  }
+
+  /*--------------
+		Focus
+  ---------------*/
+
+  &:focus {
+	background-color: $focus-background-color;
+	color: $focus-color;
+	background-image: $focus-background-image !important;
+	box-shadow: $focus-box-shadow !important;
+  }
+
+  &:focus .#{$c-icon} {
+	opacity: $icon-focus-opacity;
+  }
+
+  /*--------------
+      Down
+---------------*/
+
+  &:active,
+  &.#{$c-active}:active {
+	background-color: $down-background-color;
+	background-image: $down-background-image;
+	color: $down-color;
+	box-shadow: $down-box-shadow;
+  }
+
+  /*--------------
+     Active
+---------------*/
+
+  &.#{$c-active} {
+	background-color: $active-background-color;
+	background-image: $active-background-image;
+	box-shadow: $active-box-shadow;
+	color: $active-color;
+  }
+
+  &.#{$c-active}:hover {
+	background-color: $active-hover-background-color;
+	background-image: $active-hover-background-image;
+	color: $active-hover-color;
+  }
+
+  &.#{$c-active}:active {
+	background-color: $active-background-color;
+	background-image: $active-background-image;
+  }
+}
+
+/*-------------------
+	Group
+--------------------*/
+#{$ui-button-group} {
+
+  display: inline-flex;
+  flex-direction: row;
+  font-size: 0;
+  vertical-align: baseline;
+  margin: $vertical-margin $horizontal-margin 0 0;
+
+  &:not(.#{$c-basic}):not(.#{$c-inverted}) {
+	box-shadow: $group-box-shadow;
+  }
+
+  /* Clearfix */
+  &:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+  }
+
+  /* Standard Group */
+  .#{$c-button} {
+	flex: 1 0 auto;
+	border-radius: 0;
+	margin: $group-button-offset;
+  }
+
+  .#{$c-button}:first-child {
+	border-left: none;
+	margin-left: 0;
+	border-top-left-radius: $border-radius;
+	border-bottom-left-radius: $border-radius;
+  }
+
+  .#{$c-button}:last-child {
+	border-top-right-radius: $border-radius;
+	border-bottom-right-radius: $border-radius;
+  }
+
+  /* Basic Group With Disabled */
+  &.#{$c-basic} .#{$c-button}.#{$c-disabled} {
+	border-color: color-divider-disabled();
+  }
+
+  & > .#{$c-button}:not(.#{$c-basic}):not(.#{$c-inverted}),
+  &:not(.#{$c-basic}):not(.#{$c-inverted}) > .#{$c-button} {
+	box-shadow: $group-button-box-shadow;
+  }
+}
+
+/* Vertical  Style */
+#{$ui-button-group} {
+  &.#{$c-vertical} {
+	display: inline-flex;
+	flex-direction: column;
+  }
+
+  &.#{$c-vertical} .#{$c-button} {
+	display: block;
+	float: none;
+	width: 100%;
+	margin: $vertical-group-offset;
+	box-shadow: $vertical-box-shadow;
+	border-radius: 0;
+  }
+
+  &.#{$c-vertical} .#{$c-button}:first-child {
+	border-top-left-radius: $border-radius;
+	border-top-right-radius: $border-radius;
+  }
+
+  &.#{$c-vertical} .#{$c-button}:last-child {
+	margin-bottom: 0;
+	border-bottom-left-radius: $border-radius;
+	border-bottom-right-radius: $border-radius;
+  }
+
+  &.#{$c-vertical} .#{$c-button}:only-child {
+	border-radius: $border-radius;
+  }
+}
+
+/* Numbers */
+#{$ui-button-group} {
+  @for $i from 2 through 12 {
+
+	&.#{number-name($i)} {
+	  width: 100%;
+	}
+
+	&.#{number-name($i)} > .#{$c-button} {
+	  width: (100% / $i);
+	}
+
+	&.#{number-name($i)}.#{$c-vertical} > .#{$c-button} {
+	  height: (100% / $i);
+	}
+  }
+}
+
+//@import "animated";
+//@import "attached";
+//@import "basic";
+//@import "circular";
+//@import "colors";
+//@import "compact";
+//@import "disabled";
+//@import "floated";
+//@import "fluid";
+//@import "icon-labeled";
+//@import "inverted";
+//@import "loading";
+//@import "or";
+//@import "sizes";
+//@import "toggle";
+
+
+
+
+
+
+

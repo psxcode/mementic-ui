@@ -1,0 +1,74 @@
+/* Shortcuts */
+$ui-container: '.#{$c-ui}.#{$c-container}';
+$left-aligned: "[class*='#{$c-left} #{$c-aligned}']";
+$right-aligned: "[class*='#{$c-right} #{$c-aligned}']";
+$center-aligned: "[class*='#{$c-center} #{$c-aligned}']";
+
+#{$ui-container} {
+
+  display: block;
+  max-width: $max-width;
+
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+
+  $i: 0;
+  @each $name, $bp in $bps {
+	$i: $i + 1;
+	$min-gutter: ($i - 1) + 1em;
+
+	@include media('screen', '>=#{$name}') {
+
+	  $width: calc(#{$bp - $min-gutter} - #{$scrollbar-width});
+	  width: $width;
+
+	  &.#{$c-grid} {
+		width: calc(#{$width} + 2rem);
+	  }
+	  &.relaxed.#{$c-grid} {
+		width: calc(#{$width} + 3rem);
+	  }
+	  &.very.relaxed.#{$c-grid} {
+		width: calc(#{$width} + 5rem);
+	  }
+	}
+  }
+
+  &.#{$c-grid},
+  &.relaxed.#{$c-grid},
+  &.very.relaxed.#{$c-grid} {
+	width: auto;
+  }
+
+  /* Text Container */
+  &.text {
+	font-family: $text-font-family;
+	max-width: $text-width;
+	line-height: $text-line-height;
+	font-size: $text-size;
+  }
+
+  /* Fluid */
+  &.#{$c-fluid} {
+	width: 100%;
+  }
+
+  &#{$left-aligned} {
+	text-align: left;
+  }
+  
+  &#{$right-aligned} {
+	text-align: right;
+  }
+
+  &#{$center-aligned} {
+	text-align: center;
+  }
+
+  &.justified {
+	text-align: justify;
+	hyphens: auto;
+  }
+}
+

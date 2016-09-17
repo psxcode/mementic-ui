@@ -1,3 +1,32 @@
+/*-------------------
+       Vendor
+--------------------*/
+
+@mixin colors-vendor($color-map) {
+  @each $name, $color in $color-map {
+
+	#{$ui-button}.#{$name} {
+	  background-color: $color;
+	  color: color-text($inverted: true);
+	  text-shadow: color-shadow(color-text($inverted: true));
+	  background-image: $colored-background-image;
+	  box-shadow: $colored-box-shadow;
+	}
+
+	#{$ui-button}.#{$name}:hover {
+	  background-color: color-hover($color);
+	  color: color-text($inverted: true);
+	  text-shadow: color-shadow(color-text($inverted: true));
+	}
+
+	#{$ui-button}.#{$name}:active {
+	  background-color: color-down($color);
+	  color: color-text($inverted: true);
+	  text-shadow: color-shadow(color-text($inverted: true));
+	}
+  }
+}
+
 @if $auto-include-colors-vendor == true {
-  @include colors($colors-vendor);
+  @include colors-vendor($colors-vendor);
 }

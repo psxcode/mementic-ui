@@ -1,0 +1,15 @@
+/*-------------------
+	Disabled
+--------------------*/
+
+#{$ui-button-group} .#{$c-button}.#{$c-disabled},
+#{$ui-button}.#{$c-disabled},
+#{$ui-button}:disabled,
+#{$ui-button}.#{$c-disabled}:hover,
+#{$ui-button}.#{$c-disabled}.#{$c-active} {
+  cursor: default;
+  opacity: $opacity-disabled !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  pointer-events: none !important;
+}

@@ -1,0 +1,19 @@
+/*-------------------
+        Fluid
+--------------------*/
+
+#{$ui-button-group}.#{$c-fluid},
+#{$ui-button}.#{$c-fluid} {
+  width: 100%;
+}
+
+#{$ui-button}.#{$c-fluid} {
+  display: block;
+}
+
+/* Fluid Vertical Buttons */
+#{$ui-button-group}.#{$c-fluid}.#{$c-vertical},
+#{$ui-button-group}.#{$c-fluid}.#{$c-vertical} > .#{$c-button} {
+  display: flex;
+  width: auto;
+}

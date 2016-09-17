@@ -5,8 +5,6 @@ var path = require('path');
 
 gulp.task('default', function() {
 	return require('./tasks/build')({
-		depsDir: null,
-		deps: [{'mem-elements': 'segment'}],
-		ignoreThemeDeps: false
+		deps: [{'mementic': 'divider'}]
 	}).streamCss().pipe(gulp.dest('./build'));
 });

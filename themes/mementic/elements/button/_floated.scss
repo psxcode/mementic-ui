@@ -1,0 +1,21 @@
+/*-------------------
+       Floated
+--------------------*/
+
+/* Shortcuts */
+$left-floated: "[class*='#{$c-left} #{$c-floated}']";
+$right-floated: "[class*='#{$c-right} #{$c-floated}']";
+
+#{$ui-button-group}#{$left-floated},
+#{$ui-button}#{$left-floated} {
+  float: left;
+  margin-left: 0;
+  margin-right: $floated-margin;
+}
+
+#{$ui-button-group}#{$right-floated},
+#{$ui-button}#{$right-floated} {
+  float: right;
+  margin-right: 0;
+  margin-left: $floated-margin;
+}

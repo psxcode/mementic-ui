@@ -1,4 +1,5 @@
-$margin: 1rem 0rem;
+
+$margin: 1rem 0;
 
 $highlight-width: 1px;
 $highlight-color: color-divider($inverted: true);
@@ -39,9 +40,6 @@ $inverted-shadow-color: color-divider();
 
 /* Section */
 $section-margin: 2rem;
-
-/* Sizes */
-$medium: 1rem;
 
 /* Breakpoints */
 $bp-default-indexes: (1, );

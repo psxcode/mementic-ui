@@ -1,0 +1,128 @@
+/*-------------------
+       Animated
+--------------------*/
+
+
+/* Shortcuts */
+$visible-content: '.#{$c-visible}.#{$c-content}';
+$hidden-content: '.#{$c-hidden}.#{$c-content}';
+
+#{$ui-button} {
+
+  &.#{$c-animated} {
+	position: relative;
+	overflow: hidden;
+	padding-right: 0 !important;
+	vertical-align: $animated-vertical-align;
+	z-index: $animated-z-index;
+  }
+
+  &.#{$c-animated} .#{$c-content} {
+	will-change: transform, opacity;
+  }
+
+  &.#{$c-animated} #{$visible-content} {
+	position: relative;
+	margin-right: $horizontal-padding;
+  }
+
+  &.#{$c-animated} #{$hidden-content} {
+	position: absolute;
+	width: 100%;
+  }
+
+  /* Horizontal */
+  &.#{$c-animated} #{$visible-content},
+  &.#{$c-animated} #{$hidden-content} {
+	transition: right $animation-duration $animation-easing 0s;
+  }
+
+  &.#{$c-animated} #{$visible-content} {
+	left: auto;
+	right: 0;
+  }
+
+  &.#{$c-animated} #{$hidden-content} {
+	top: 50%;
+	left: auto;
+	right: -100%;
+	margin-top: -(unit-rem($line-height / 2));
+  }
+
+  &.#{$c-animated}:focus #{$visible-content},
+  &.#{$c-animated}:hover #{$visible-content} {
+	left: auto;
+	right: 200%;
+  }
+
+  &.#{$c-animated}:focus #{$hidden-content},
+  &.#{$c-animated}:hover #{$hidden-content} {
+	left: auto;
+	right: 0;
+  }
+
+  /* Vertical */
+  &.#{$c-vertical}.#{$c-animated} #{$visible-content},
+  &.#{$c-vertical}.#{$c-animated} #{$hidden-content} {
+	transition: top $animation-duration $animation-easing, transform $animation-duration $animation-easing;
+  }
+
+  &.#{$c-vertical}.#{$c-animated} #{$visible-content} {
+	transform: translateY(0%);
+	right: auto;
+  }
+
+  &.#{$c-vertical}.#{$c-animated} #{$hidden-content} {
+	top: -50%;
+	left: 0;
+	right: auto;
+  }
+
+  &.#{$c-vertical}.#{$c-animated}:focus #{$visible-content},
+  &.#{$c-vertical}.#{$c-animated}:hover #{$visible-content} {
+	transform: translateY(200%);
+	right: auto;
+  }
+
+  &.#{$c-vertical}.#{$c-animated}:focus #{$hidden-content},
+  &.#{$c-vertical}.#{$c-animated}:hover #{$hidden-content} {
+	top: 50%;
+	right: auto;
+  }
+
+  /* Fade */
+  &.fade.#{$c-animated} #{$visible-content},
+  &.fade.#{$c-animated} #{$hidden-content} {
+	transition: opacity $animation-duration $animation-easing, transform $animation-duration $animation-easing;
+  }
+
+  &.fade.#{$c-animated} #{$visible-content} {
+	left: auto;
+	right: auto;
+	opacity: 1;
+	transform: scale(1);
+  }
+
+  &.fade.#{$c-animated} #{$hidden-content} {
+	opacity: 0;
+	left: 0;
+	right: auto;
+	transform: scale($fade-scale-high);
+  }
+
+  &.fade.#{$c-animated}:focus #{$visible-content},
+  &.fade.#{$c-animated}:hover #{$visible-content} {
+	left: auto;
+	right: auto;
+	opacity: 0;
+	transform: scale($fade-scale-low);
+  }
+
+  &.fade.#{$c-animated}:focus #{$hidden-content},
+  &.fade.#{$c-animated}:hover #{$hidden-content} {
+	left: 0;
+	right: auto;
+	opacity: 1;
+	transform: scale(1);
+  }
+}

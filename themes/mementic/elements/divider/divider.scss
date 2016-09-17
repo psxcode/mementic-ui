@@ -1,0 +1,176 @@
+/* Shortcuts */
+$ui-divider: '.#{$c-ui}.#{$c-divider}';
+
+/* Divider */
+#{$ui-divider} {
+
+  margin: $margin;
+
+  line-height: 1;
+  height: 0;
+
+  font-size: size('medium');
+  font-weight: $font-weight;
+  text-transform: $text-transform;
+  letter-spacing: $letter-spacing;
+  color: $color;
+
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/*--------------
+  	Hidden
+---------------*/
+$ui-divider-hidden: '.#{$c-ui}.#{$c-divider}.#{$c-hidden}';
+
+#{$ui-divider-hidden} {
+
+  border-color: transparent !important;
+
+  &:before,
+  &:after {
+	display: none;
+  }
+}
+
+/*--------------
+   Horizontal
+---------------*/
+$ui-divider-horizontal: '.#{$c-ui}.#{$c-divider}.#{$c-horizontal}';
+
+#{$ui-divider-horizontal} {
+
+  display: table;
+  white-space: nowrap;
+
+  height: auto;
+  margin: $horizontal-margin;
+  line-height: 1;
+  text-align: center;
+
+  &:before,
+  &:after {
+	content: '';
+	display: table-cell;
+	position: relative;
+	top: 50%;
+	width: 50%;
+	background-repeat: no-repeat;
+  }
+
+  &:before {
+	background-position: right $horizontal-divider-margin top 50%;
+  }
+
+  &:after {
+	background-position: left $horizontal-divider-margin top 50%;
+  }
+}
+
+/*--------------
+	Vertical
+---------------*/
+$ui-divider-vertical: '.#{$c-ui}.#{$c-divider}.#{$c-vertical}';
+
+#{$ui-divider-vertical} {
+
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+
+  margin: 0;
+  padding: 0;
+  width: auto;
+  height: 50%;
+
+  line-height: 0;
+  text-align: center;
+  transform: translateX(-50%);
+
+  &:before,
+  &:after {
+	position: absolute;
+	left: 50%;
+	content: '';
+	z-index: 3;
+
+	border-left: $shadow-width solid $shadow-color;
+	border-right: $highlight-width solid $highlight-color;
+
+	width: 0;
+	height: $vertical-divider-height;
+  }
+
+  &:before {
+	top: -100%;
+  }
+
+  &:after {
+	top: auto;
+	bottom: 0;
+  }
+}
+
+#{$ui-divider}:not(.#{$c-vertical}):not(.#{$c-horizontal}) {
+  border-top: $shadow-width solid $shadow-color;
+  border-bottom: $highlight-width solid $highlight-color;
+}
+
+/*--------------
+	Inverted
+---------------*/
+$ui-divider-inverted: '.#{$c-ui}.#{$c-divider}.#{$c-inverted}';
+
+#{$ui-divider-inverted} {
+
+  color: $inverted-text-color;
+
+  &,
+  &:after,
+  &:before {
+	border-top-color: $inverted-shadow-color !important;
+	border-left-color: $inverted-shadow-color !important;
+	border-bottom-color: $inverted-highlight-color !important;
+	border-right-color: $inverted-highlight-color !important;
+  }
+}
+
+/*--------------
+	Icon
+---------------*/
+
+#{$ui-divider} > .#{$c-icon} {
+  margin: $divider-icon-margin;
+  font-size: $divider-icon-size;
+  height: 1em;
+  vertical-align: middle;
+}
+
+/*--------------
+	Section
+---------------*/
+
+#{$ui-divider}.#{$c-section} {
+  margin-top: $section-margin;
+  margin-bottom: $section-margin;
+}
+
+/*--------------
+  	Fitted
+---------------*/
+
+#{$ui-divider}.fitted {
+  margin: 0;
+}
+
+/*--------------
+	Clearing
+---------------*/
+
+#{$ui-divider}.clearing {
+  clear: both;
+}
+
+@import "grid";

@@ -1,0 +1,19 @@
+/*--------------
+     Toggle
+---------------*/
+
+/* Toggle (Modifies active state to give affordances) */
+#{$ui-button-group}.#{$c-toggle} .#{$c-button}.#{$c-active},
+#{$ui-button-group} .#{$c-button}.#{$c-toggle}.#{$c-active},
+#{$ui-button}.#{$c-toggle}.#{$c-active} {
+  background-color: color-info('positive') !important;
+  box-shadow: none !important;
+  text-shadow: color-shadow(color-text($inverted: true));
+  color: color-text($inverted: true) !important;
+}
+
+#{$ui-button}.#{$c-toggle}.#{$c-active}:hover {
+  background-color: color-hover(color-info('positive')) !important;
+  text-shadow: color-shadow(color-text($inverted: true));
+  color: color-text($inverted: true) !important;
+}

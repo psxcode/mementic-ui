@@ -1,0 +1,14 @@
+/*--------------
+   Circular
+---------------*/
+#{$ui-button} {
+
+  &.circular {
+	border-radius: 10em;
+  }
+
+  &.circular > .#{$c-icon} {
+	width: 1em;
+	vertical-align: baseline;
+  }
+}
