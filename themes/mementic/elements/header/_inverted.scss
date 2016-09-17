@@ -1,0 +1,26 @@
+/*-------------------
+      Inverted
+--------------------*/
+
+/* Shortcuts */
+$ui-inverted-header: '.#{$c-ui}.#{$c-header}.#{$c-inverted}';
+
+#{$ui-inverted-header} {
+  color: $inverted-color;
+
+  .sub.header {
+	color: $inverted-sub-header-color;
+  }
+
+  &.#{$c-attached} {
+	background: $inverted-attached-background;
+	box-shadow: none;
+	border-color: transparent;
+  }
+
+  &.block {
+	background: $inverted-block-background;
+	box-shadow: none;
+  	border-bottom: none;
+  }
+}

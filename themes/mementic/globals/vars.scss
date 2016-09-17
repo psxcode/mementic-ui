@@ -7,6 +7,7 @@ $c-button-or: 'or';
 $c-container: 'container';
 $c-divider: 'divider';
 $c-header: 'header';
+$c-header-sub: 'sub.header';
 $c-icon: 'icon';
 $c-image: 'image';
 $c-input: 'input';
@@ -43,6 +44,7 @@ $c-section: 'section';
 /* Types */
 $c-stackable: 'stackable';
 $c-doubling: 'doubling';
+$c-dividing: 'dividing';
 $c-basic: 'basic';
 $c-compact: 'compact';
 $c-animated: 'animated';
@@ -54,6 +56,9 @@ $c-attached: 'attached';
 $c-aligned: 'aligned';
 $c-fluid: 'fluid';
 $c-toggle: 'toggle';
+$c-circular: 'circular';
+$c-square: 'square';
+$c-block: 'block';
 
 /* States */
 $c-visible: 'visible';

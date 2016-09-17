@@ -1,0 +1,41 @@
+/*-------------------
+       Attached
+--------------------*/
+
+/* Shortcuts */
+$ui-attached-header: '.#{$c-ui}.#{$c-header}.#{$c-attached}';
+
+#{$ui-attached-header} {
+  background: $attached-background;
+  padding: $attached-vertical-padding $attached-horizontal-padding;
+  margin-left: $attached-offset;
+  margin-right: $attached-offset;
+  box-shadow: $attached-box-shadow;
+  border: $attached-border;
+
+  &:not(.#{$c-top}):not(.#{$c-bottom}) {
+	margin-top: 0;
+	margin-bottom: 0;
+	border-top: none;
+	border-radius: 0;
+  }
+
+  &.#{$c-top} {
+	margin-bottom: 0;
+	border-radius: $attached-border-radius $attached-border-radius 0 0;
+  }
+
+  &.#{$c-bottom} {
+	margin-top: 0;
+	border-top: none;
+	border-radius: 0 0 $attached-border-radius $attached-border-radius;
+  }
+
+  &:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
+	font-size: $medium-attached-size;
+  }
+
+  &.block {
+	background: $block-background;
+  }
+}

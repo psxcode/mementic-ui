@@ -1,13 +1,15 @@
 /*--------------
    Circular
 ---------------*/
-#{$ui-button} {
 
-  &.circular {
-	border-radius: 10em;
-  }
+/* Shortcuts */
+$ui-circular-button: '.#{$c-ui}.#{$c-button}.#{$c-circular}';
 
-  &.circular > .#{$c-icon} {
+#{$ui-circular-button} {
+
+  border-radius: 10em;
+
+  > .#{$c-icon} {
 	width: 1em;
 	vertical-align: baseline;
   }

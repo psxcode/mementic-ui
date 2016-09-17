@@ -1,0 +1,65 @@
+/*-------------------
+        Icon
+--------------------*/
+
+/* Shortcuts */
+$ui-icon-header: '.#{$c-ui}.#{$c-header}.#{$c-icon}';
+
+#{$ui-icon-header} {
+
+  display: inline-block;
+  text-align: center;
+  margin: $icon-header-top-margin 0 $icon-header-bottom-margin;
+
+  &:after {
+	content: '';
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+  }
+
+  &:first-child {
+	margin-top: $icon-header-first-margin;
+  }
+
+  .#{$c-icon} {
+	float: none;
+	display: block;
+	width: auto;
+	height: auto;
+	line-height: 1;
+	padding: 0;
+	font-size: $icon-header-size;
+	margin: 0 auto $icon-header-margin;
+	opacity: $icon-header-opacity;
+  }
+
+  .#{$c-circular}.#{$c-icon} {
+	font-size: $circular-header-icon-size;
+  }
+
+  .#{$c-square}.#{$c-icon} {
+	font-size: $square-header-icon-size;
+  }
+
+  &.#{$c-block} .#{$c-icon} {
+	margin-bottom: 0;
+  }
+
+  .#{$c-content} {
+	display: block;
+	padding: 0;
+  }
+
+  &.#{$c-aligned} {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+  }
+}
+
+
+
+
+

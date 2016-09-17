@@ -1,0 +1,32 @@
+/*-------------------
+       Colors
+--------------------*/
+
+@mixin colors($color-map) {
+  @each $name, $color in $color-map {
+
+	#{$ui-header} {
+	  &.#{$name} {
+		color: $color !important;
+	  }
+	  &a.#{$name}:hover {
+		color: color-hover($color) !important;
+	  }
+	  &.#{$name}.#{$c-dividing} {
+		border-bottom: $divided-colored-border-width solid $color;
+	  }
+
+	  /* Inverted */
+	  &.#{$c-inverted}.#{$name} {
+		color: color-light($color) !important;
+	  }
+	  &a.#{$c-inverted}.#{$name}:hover {
+		color: color-light(color-hover($color)) !important;
+	  }
+	}
+  }
+}
+
+@if $auto-include-colors-info == true {
+  @include colors($colors-info);
+}
