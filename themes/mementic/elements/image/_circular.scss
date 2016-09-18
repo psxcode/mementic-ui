@@ -1,0 +1,18 @@
+/*--------------
+    Circular
+---------------*/
+
+$ui-circular-image: '#{$ui-image}.#{$c-circular}';
+$ui-circular-image-group: '#{$ui-image-group}.#{$c-circular}';
+
+#{$ui-circular-image-group},
+#{$ui-circular-image} {
+  overflow: hidden;
+}
+
+#{$ui-circular-image-group} .#{$c-image},
+#{$ui-circular-image-group} .#{$c-image} > *,
+#{$ui-circular-image},
+#{$ui-circular-image} > * {
+  border-radius: $border-radius-circular;
+}

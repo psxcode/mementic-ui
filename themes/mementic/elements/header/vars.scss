@@ -71,25 +71,12 @@ $h3-header-font-size: heading-size(3);
 $h4-header-font-size: heading-size(4);
 $h5-header-font-size: heading-size(5);
 
-/* Sizing */
-$huge-font-size   : $h1-header-font-size;
-$large-font-size  : $h2-header-font-size;
-$medium-font-size : $h3-header-font-size;
-$small-font-size  : $h4-header-font-size;
-$tiny-font-size   : $h5-header-font-size;
-
 /* Sub Header */
 $h1-sub-header-font-size: heading-size(2);
 $h2-sub-header-font-size: heading-size(3);
 $h3-sub-header-font-size: heading-size(4);
 $h4-sub-header-font-size: heading-size(5);
 $h5-sub-header-font-size: heading-size(6);
-
-$huge-sub-header-font-size  : $h1-sub-header-font-size;
-$large-sub-header-font-size : $h2-sub-header-font-size;
-$sub-header-font-size       : $h3-sub-header-font-size;
-$small-sub-header-font-size : $h4-sub-header-font-size;
-$tiny-sub-header-font-size  : $h5-sub-header-font-size;
 
 /* Icon Header */
 $icon-header-size:            3em;

@@ -9,7 +9,9 @@ $c-divider: 'divider';
 $c-header: 'header';
 $c-header-sub: 'sub.header';
 $c-icon: 'icon';
+$c-icon-group: 'icons';
 $c-image: 'image';
+$c-image-group: 'images';
 $c-input: 'input';
 $c-label: 'label';
 $c-list: 'list';
@@ -44,25 +46,37 @@ $c-section: 'section';
 /* Types */
 $c-stackable: 'stackable';
 $c-doubling: 'doubling';
-$c-dividing: 'dividing';
-$c-basic: 'basic';
-$c-compact: 'compact';
+$c-dividing: 'dividing'; //header
+$c-basic: 'basic'; //button
+$c-compact: 'compact'; //button
 $c-animated: 'animated';
 $c-inverted: 'inverted';
-$c-loading: 'loading';
-$c-labeled: 'labeled';
-$c-floated: 'floated';
+$c-loading: 'loading'; // button
+$c-labeled: 'labeled'; // button
+$c-floated: 'floated'; // image
+$c-fitted: 'fitted';
+$c-flipped: 'flipped'; // icon
+$c-rotated: 'rotated'; // icon
 $c-attached: 'attached';
-$c-aligned: 'aligned';
-$c-fluid: 'fluid';
-$c-toggle: 'toggle';
-$c-circular: 'circular';
+$c-aligned: 'aligned'; // header, image
+$c-justified: 'justified'; // header
+$c-centered: 'centered'; // image
+$c-fluid: 'fluid'; // image
+$c-toggle: 'toggle'; // button
+$c-circular: 'circular'; // image, icon
 $c-square: 'square';
 $c-block: 'block';
+$c-bordered: 'bordered'; // image, icon
+$c-inline: 'inline';
+$c-avatar: 'avatar'; // image
+$c-spaced: 'spaced'; // image
+$c-rounded: 'rounded'; // image
 
 /* States */
 $c-visible: 'visible';
 $c-hidden: 'hidden';
+$c-hover: 'hover';
+$c-focus: 'focus';
 $c-active: 'active';
 $c-disabled: 'disabled';
 

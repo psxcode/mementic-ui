@@ -1,0 +1,27 @@
+/*-------------------
+       Colors
+--------------------*/
+
+@mixin colors($color-map) {
+  @each $name, $color in $color-map {
+
+	#{$ui-icon}.#{$name} {
+
+	  color: $color !important;
+
+	  &.#{$c-inverted} {
+		color: color-light($color) !important;
+
+		&.#{$c-bordered},
+		&.#{$c-circular} {
+		  background-color: $color !important;
+		  color: $color-light !important;
+		}
+	  }
+	}
+  }
+}
+
+@if $auto-include-colors-info == true {
+  @include colors($colors-info);
+}

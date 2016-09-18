@@ -1,0 +1,19 @@
+/*--------------
+     Fluid
+---------------*/
+
+/* Shortcuts */
+$ui-fluid-image: '#{$ui-image}.#{$c-fluid}';
+$ui-fluid-image-group: '#{$ui-image-group}.#{$c-fluid}';
+
+#{$ui-fluid-image-group},
+#{$ui-fluid-image-group} img,
+#{$ui-fluid-image-group} svg,
+#{$ui-fluid-image},
+#{$ui-fluid-image} svg,
+#{$ui-fluid-image} img {
+
+  display: block;
+  width: 100%;
+  height: auto;
+}

@@ -1,0 +1,22 @@
+/*--------------
+    Loading
+---------------*/
+
+@keyframes icon-loading {
+  from {
+	transform: rotate(0deg);
+  }
+  to {
+	transform: rotate(360deg);
+  }
+}
+
+/* Shortcuts */
+$ui-loading-icon: '#{$ui-icon}.#{$c-loading}';
+
+#{$ui-loading-icon} {
+
+  height: 1em;
+  line-height: 1;
+  animation: icon-loading $loading-duration linear infinite;
+}

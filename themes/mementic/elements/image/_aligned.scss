@@ -1,0 +1,35 @@
+/*------------------
+  Vertical Aligned
+-------------------*/
+
+/* Shortcuts */
+$ui-aligned-image: '#{$ui-image}.#{$c-aligned}';
+$ui-aligned-image-group: '#{$ui-image-group}.#{$c-aligned}';
+$ui-top-aligned-image: "#{$ui-image}[class*='#{$c-top} #{$c-aligned}']";
+$ui-top-aligned-image-group: "#{$ui-image-group}[class*='#{$c-top} #{$c-aligned}']";
+$ui-bottom-aligned-image: "#{$ui-image}[class*='#{$c-bottom} #{$c-aligned}']";
+$ui-bottom-aligned-image-group: "#{$ui-image-group}[class*='#{$c-bottom} #{$c-aligned}']";
+
+#{$ui-aligned-image-group} .#{$c-image},
+#{$ui-aligned-image},
+#{$ui-aligned-image} svg,
+#{$ui-aligned-image} img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#{$ui-top-aligned-image-group} .#{$c-image},
+#{$ui-top-aligned-image},
+#{$ui-top-aligned-image} svg,
+#{$ui-top-aligned-image} img {
+  display: inline-block;
+  vertical-align: top;
+}
+
+#{$ui-bottom-aligned-image-group} .#{$c-image},
+#{$ui-bottom-aligned-image},
+#{$ui-bottom-aligned-image} svg,
+#{$ui-bottom-aligned-image} img {
+  display: inline-block;
+  vertical-align: bottom;
+}

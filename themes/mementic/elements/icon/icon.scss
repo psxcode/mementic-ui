@@ -1,0 +1,180 @@
+/* Shortcuts */
+$ui-icon: 'i.#{$c-icon}';
+$ui-icon-group: 'i.#{$c-icon-group}';
+
+#{$ui-icon} {
+
+  display: inline-block;
+  opacity: $opacity;
+
+  margin: 0 $distance-from-text 0 0;
+
+  width: $width;
+  height: $height;
+  line-height: 1;
+  text-align: center;
+
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  text-decoration: inherit;
+  text-rendering: auto;
+  speak: none;
+
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &:before {
+	background: none !important;
+  }
+
+  &.#{$c-hover} {
+	opacity: 1 !important;
+  }
+
+  &.#{$c-active} {
+	opacity: 1 !important;
+  }
+
+  &.emphasized {
+	opacity: 1 !important;
+  }
+
+  &.#{$c-disabled} {
+	opacity: $opacity-disabled !important;
+  }
+}
+
+/*-------------------
+        Fitted
+--------------------*/
+
+$ui-fitted-icon: '#{$ui-icon}.#{$c-fitted}';
+
+#{$ui-fitted-icon} {
+  width: auto;
+  margin: 0;
+}
+
+/*-------------------
+         Link
+--------------------*/
+
+i.link.icon, i.link.icons {
+  cursor: pointer;
+  opacity: $link-opacity;
+  transition: opacity $duration-default $easing-default;
+}
+
+i.link.icon:hover, i.link.icons:hover {
+  opacity: 1 !important;
+}
+
+/*-------------------
+      Circular
+--------------------*/
+
+$ui-circular-icon: '#{$ui-icon}.#{$c-circular}';
+
+#{$ui-circular-icon} {
+
+  border-radius: 500em !important;
+
+  padding: $circular-padding !important;
+  box-shadow: $circular-shadow;
+
+  width: $circular-size !important;
+  height: $circular-size !important;
+
+  &.#{$c-inverted} {
+	border: none;
+	box-shadow: none;
+  }
+}
+
+/*-------------------
+      Bordered
+--------------------*/
+
+$ui-bordered-icon: '#{$ui-icon}.#{$c-bordered}';
+
+#{$ui-bordered-icon} {
+
+  vertical-align: baseline;
+
+  width: $bordered-size;
+  height: $bordered-size;
+  padding: $bordered-vertical-padding $bordered-horizontal-padding !important;
+  box-shadow: $bordered-shadow;
+
+  &.#{$c-inverted} {
+	border: none;
+	box-shadow: none;
+  }
+}
+
+/*-------------------
+      Inverted
+--------------------*/
+
+$ui-inverted-icon: '#{$ui-icon}.#{$c-inverted}';
+
+#{$ui-inverted-icon} {
+
+  color: $color-light;
+
+  /* Inverted Shapes */
+  &.#{$c-bordered},
+  &.#{$c-circular} {
+	background-color: $color-dark !important;
+	color: $color-light !important;
+  }
+}
+
+/*-------------------
+      Group
+--------------------*/
+
+#{$ui-icon-group} {
+  display: inline-block;
+  position: relative;
+  line-height: 1;
+
+  .#{$c-icon} {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	margin: 0;
+  }
+
+  .#{$c-icon}:first-child {
+	position: static;
+	width: auto;
+	height: auto;
+	vertical-align: top;
+	transform: none;
+	margin-right: $distance-from-text;
+  }
+
+  /* Corner Icon */
+  .#{$c-icon}.corner {
+	top: auto;
+	left: auto;
+	right: 0;
+	bottom: 0;
+	transform: none;
+	font-size: $corner-icon-size;
+	text-shadow: $corner-icon-shadow;
+
+	&.#{$c-inverted} {
+	  text-shadow: $corner-icon-inverted-shadow;
+	}
+  }
+}
+
+
+
+

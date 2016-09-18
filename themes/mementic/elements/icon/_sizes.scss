@@ -1,0 +1,13 @@
+/*-------------------
+        Sizes
+--------------------*/
+
+@each $name, $size in $icon-width {
+
+  #{$ui-icon}.#{$name},
+  #{$ui-icon-group}.#{$name} {
+
+	line-height: 1;
+	font-size: $size;
+  }
+}

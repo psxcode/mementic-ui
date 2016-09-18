@@ -1,0 +1,23 @@
+/*--------------
+     Avatar
+---------------*/
+
+/* Shortcuts */
+$ui-avatar-image: '#{$ui-image}.#{$c-avatar}';
+$ui-avatar-image-group: '#{$ui-image-group}.#{$c-avatar}';
+
+#{$ui-avatar-image-group} .#{$c-image},
+#{$ui-avatar-image-group} img,
+#{$ui-avatar-image-group} svg,
+#{$ui-avatar-image} img,
+#{$ui-avatar-image} svg,
+#{$ui-avatar-image} {
+
+  margin-right: $avatar-margin;
+
+  display: inline-block;
+  width: $avatar-size;
+  height: $avatar-size;
+
+  border-radius: $border-radius-circular;
+}

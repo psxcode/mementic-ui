@@ -1,0 +1,13 @@
+/*--------------
+     Inline
+---------------*/
+
+/* Shortcuts */
+$ui-inline-image: '#{$ui-image}.#{$c-inline}';
+
+#{$ui-inline-image} {
+
+  &, svg, img {
+	display: inline-block;
+  }
+}

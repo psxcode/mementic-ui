@@ -1,0 +1,14 @@
+/*--------------
+   	Sizes
+  ---------------*/
+
+@for $i from 1 through 5 {
+  h#{$i}#{$ui-header},
+  .h#{$i}#{$ui-header} {
+	font-size: heading-size($i);
+
+	.#{$c-header-sub} {
+	  font-size: heading-size($i + 1);
+	}
+  }
+}

@@ -1,0 +1,52 @@
+/* Shortcuts */
+$ui-image: '.#{$c-ui}.#{$c-image}';
+$ui-image-group: '.#{$c-ui}.#{$c-image-group}';
+
+#{$ui-image} {
+
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 100%;
+  background-color: $placeholder-color;
+
+  svg,
+  img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+  }
+
+  @at-root img#{&} {
+	display: block;
+  }
+}
+
+#{$ui-image-group} {
+
+  font-size: 0;
+  margin: 0 -$image-horizontal-margin 0;
+
+  .#{$c-image}, img, svg {
+	display: inline-block;
+	margin: 0 $image-horizontal-margin $image-vertical-margin;
+  }
+}
+
+
+#{$ui-image-group}.#{$c-hidden},
+#{$ui-image}.#{$c-hidden} {
+  display: none;
+
+  &.transition {
+	display: block;
+	visibility: hidden;
+  }
+}
+
+#{$ui-image-group}.#{$c-disabled},
+#{$ui-image}.#{$c-disabled} {
+  cursor: default;
+  opacity: $opacity-disabled;
+}
+

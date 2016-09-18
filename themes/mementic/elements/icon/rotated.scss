@@ -1,0 +1,35 @@
+/*-------------------
+      Flipped
+--------------------*/
+
+$ui-flipped-icon: '#{$ui-icon}.#{$c-flipped}';
+
+#{$ui-flipped-icon} {
+
+  &,
+  &.#{$c-horizontal} {
+	transform: scale(-1, 1);
+  }
+
+  &.#{$c-vertical} {
+	transform: scale(1, -1);
+  }
+}
+
+/*-------------------
+      Rotated
+--------------------*/
+
+$ui-rotated-icon: '#{$ui-icon}.#{$c-rotated}';
+
+#{$ui-rotated-icon} {
+
+  &,
+  &.#{$c-right} {
+	transform: rotate(90deg);
+  }
+
+  &.#{$c-left} {
+	transform: rotate(-90deg);
+  }
+}

@@ -1,0 +1,16 @@
+/*--------------
+    Bordered
+---------------*/
+
+/* Shortcuts */
+$ui-bordered-image: '#{$ui-image}.#{$c-bordered}';
+$ui-bordered-image-group: '#{$ui-image-group}.#{$c-bordered}';
+
+#{$ui-bordered-image-group} .#{$c-image},
+#{$ui-bordered-image-group} img,
+#{$ui-bordered-image-group} svg,
+#{$ui-bordered-image} img,
+#{$ui-bordered-image} svg,
+img#{$ui-bordered-image} {
+  border: $image-border;
+}
