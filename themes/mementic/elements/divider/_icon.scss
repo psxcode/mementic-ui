@@ -1,0 +1,13 @@
+/*--------------
+	Icon
+---------------*/
+
+#{$ui-divider} {
+
+  > .#{$c-icon} {
+	margin: $divider-icon-margin;
+	font-size: $divider-icon-size;
+	height: 1em;
+	vertical-align: middle;
+  }
+}

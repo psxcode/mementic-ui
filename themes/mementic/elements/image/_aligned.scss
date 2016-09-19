@@ -5,10 +5,8 @@
 /* Shortcuts */
 $ui-aligned-image: '#{$ui-image}.#{$c-aligned}';
 $ui-aligned-image-group: '#{$ui-image-group}.#{$c-aligned}';
-$ui-top-aligned-image: "#{$ui-image}[class*='#{$c-top} #{$c-aligned}']";
-$ui-top-aligned-image-group: "#{$ui-image-group}[class*='#{$c-top} #{$c-aligned}']";
-$ui-bottom-aligned-image: "#{$ui-image}[class*='#{$c-bottom} #{$c-aligned}']";
-$ui-bottom-aligned-image-group: "#{$ui-image-group}[class*='#{$c-bottom} #{$c-aligned}']";
+$top-aligned: "[class*='#{$c-top} #{$c-aligned}']";
+$bottom-aligned: "[class*='#{$c-bottom} #{$c-aligned}']";
 
 #{$ui-aligned-image-group} .#{$c-image},
 #{$ui-aligned-image},
@@ -18,18 +16,16 @@ $ui-bottom-aligned-image-group: "#{$ui-image-group}[class*='#{$c-bottom} #{$c-al
   vertical-align: middle;
 }
 
-#{$ui-top-aligned-image-group} .#{$c-image},
-#{$ui-top-aligned-image},
-#{$ui-top-aligned-image} svg,
-#{$ui-top-aligned-image} img {
-  display: inline-block;
+#{$ui-image-group}#{$top-aligned} .#{$c-image},
+#{$ui-image}#{$top-aligned},
+#{$ui-image}#{$top-aligned} svg,
+#{$ui-image}#{$top-aligned} img {
   vertical-align: top;
 }
 
-#{$ui-bottom-aligned-image-group} .#{$c-image},
-#{$ui-bottom-aligned-image},
-#{$ui-bottom-aligned-image} svg,
-#{$ui-bottom-aligned-image} img {
-  display: inline-block;
+#{$ui-image-group}#{$bottom-aligned} .#{$c-image},
+#{$ui-image}#{$bottom-aligned},
+#{$ui-image}#{$bottom-aligned} svg,
+#{$ui-image}#{$bottom-aligned} img {
   vertical-align: bottom;
 }

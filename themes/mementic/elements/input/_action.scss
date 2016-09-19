@@ -1,0 +1,76 @@
+/*--------------------
+        Action
+---------------------*/
+
+/* Shortcuts */
+$ui-action-input: '#{$ui-input}.#{$c-action}';
+$left-action: '[class*="#{$c-left} #{$c-action}"]';
+
+#{$ui-action-input} {
+
+  > .#{$c-button},
+  > .#{$c-button-group} {
+	display: flex;
+	align-items: center;
+	flex: 0 0 auto;
+  }
+
+  > .#{$c-button},
+  > .#{$c-button-group} > .#{$c-button} {
+	padding-top: $vertical-padding;
+	padding-bottom: $vertical-padding;
+	margin: 0;
+  }
+}
+
+/* Button on Right */
+#{$ui-action-input}:not(#{$left-action}) {
+
+  > input {
+	border-top-right-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
+	border-right-color: transparent !important;
+
+	&:focus {
+	  border-right-color: $focus-border-color !important;
+	}
+  }
+
+  > .dropdown:not(:first-child),
+  > .#{$c-button}:not(:first-child),
+  > .#{$c-button-group}:not(:first-child) > .#{$c-button} {
+	border-radius: 0;
+  }
+
+  > .dropdown:last-child,
+  > .#{$c-button}:last-child,
+  > .#{$c-button-group}:last-child > .#{$c-button} {
+	border-radius: 0 $border-radius $border-radius 0;
+  }
+}
+
+/* Button on Left */
+#{$ui-input}#{$left-action} {
+
+  > input {
+	border-top-left-radius: 0 !important;
+	border-bottom-left-radius: 0 !important;
+	border-left-color: transparent !important;
+
+	&:focus {
+	  border-left-color: $focus-border-color !important;
+	}
+  }
+
+  > .dropdown,
+  > .#{$c-button},
+  > .#{$c-button-group} > .#{$c-button} {
+	border-radius: 0;
+  }
+
+  > .dropdown:first-child,
+  > .#{$c-button}:first-child,
+  > .#{$c-button-group}:first-child > .#{$c-button} {
+	border-radius: $border-radius 0 0 $border-radius;
+  }
+}

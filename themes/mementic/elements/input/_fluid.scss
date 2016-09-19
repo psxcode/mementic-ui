@@ -1,0 +1,15 @@
+/*--------------------
+        Fluid
+---------------------*/
+
+/* Shortcuts */
+$ui-fluid-input: '#{$ui-input}.#{$c-fluid}';
+
+#{$ui-fluid-input} {
+
+  display: flex;
+
+  > input {
+	width: 0 !important;
+  }
+}

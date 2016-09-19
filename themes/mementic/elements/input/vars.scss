@@ -75,15 +75,6 @@ $focus-background: $background;
 $focus-color: color-text-selected();
 $focus-box-shadow: none;
 
-/* Error */
-$error-background: color-bg(color-info('error'));
-$error-color: color-info('error');
-$error-border: colorize-divider(color-info('error'));
-$error-box-shadow: none;
-
-$placeholder-error-color: lighten($error-color, 40);
-$placeholder-error-focus-color: lighten($error-color, 30);
-
 /* Loader */
 $inverted-loader-fill-color: rgba(0, 0, 0, 0.15);
 

@@ -1,0 +1,12 @@
+/*--------------
+	Section
+---------------*/
+
+/* Shortcuts */
+$ui-section-divider: '#{$ui-divider}.#{$c-section}';
+
+#{$ui-section-divider} {
+
+  margin-top: $section-margin;
+  margin-bottom: $section-margin;
+}

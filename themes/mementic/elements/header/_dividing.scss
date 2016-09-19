@@ -1,0 +1,22 @@
+/*-------------------
+      Dividing
+--------------------*/
+$ui-dividing-header: '#{$ui-header}.#{$c-dividing}';
+
+#{$ui-dividing-header} {
+
+  padding-bottom: $divided-border-padding;
+  border-bottom: $divided-border;
+
+  .#{$c-header-sub} {
+	padding-bottom: $divided-sub-header-padding;
+  }
+
+  .#{$c-icon} {
+	margin-bottom: $divided-icon-padding;
+  }
+
+  &.#{$c-inverted} {
+	border-bottom-color: $inverted-divided-border-color;
+  }
+}

@@ -1,0 +1,23 @@
+/*-------------------
+      Circular
+--------------------*/
+
+/* Shortcuts */
+$ui-circular-icon: '#{$ui-icon}.#{$c-circular}';
+
+#{$ui-circular-icon} {
+
+  border-radius: 500em !important;
+
+  padding: $circular-padding !important;
+  box-shadow: $circular-shadow;
+
+  width: $circular-size !important;
+  height: $circular-size !important;
+
+  /* Inverted */
+  &.#{$c-inverted} {
+	border: none;
+	box-shadow: none;
+  }
+}

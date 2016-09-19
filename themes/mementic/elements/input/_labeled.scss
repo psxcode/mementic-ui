@@ -1,0 +1,124 @@
+/*--------------------
+        Labeled
+---------------------*/
+
+/* Shortcuts */
+$ui-labeled-input: '#{$ui-input}.#{$c-labeled}';
+$right-labeled: '[class*="#{$c-right} #{$c-labeled}"]';
+$corner-labeled: '[class*="#{$c-corner} #{$c-labeled}"]';
+$left-corner: '[class*="#{$c-left} #{$c-corner}"]';
+$left-corner-labeled: '[class*="#{$c-left} #{$c-corner} #{$c-labeled}"]';
+
+/* Adjacent Label */
+#{$ui-labeled-input} {
+
+  > .#{$c-label} {
+	flex: 0 0 auto;
+	margin: 0;
+	font-size: size('medium');
+
+	//TODO check selector
+	&:not(.#{$c-corner}) {
+	  padding-top: $vertical-padding;
+	  padding-bottom: $vertical-padding;
+	}
+
+	&.#{$c-corner} {
+	  top: $label-corner-top;
+	  right: $label-corner-right;
+	  font-size: $label-corner-size;
+	  border-radius: 0 $border-radius 0 0;
+	}
+  }
+
+}
+
+/* Regular Label on Left */
+#{$ui-labeled-input} {
+
+  > .#{$c-label}:first-child {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+  }
+
+  // label is before input
+  > .#{$c-label}:first-child + input {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	border-left-color: transparent;
+
+	&:focus {
+	  border-left-color: $focus-border-color;
+	}
+  }
+}
+
+/* Regular Label on Right */
+#{$ui-input}#{$right-labeled} {
+
+  input {
+	border-top-right-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
+	border-right-color: transparent !important;
+
+	&:focus {
+	  border-right-color: $focus-border-color !important;
+	}
+  }
+
+  // label is after input
+  input + .#{$c-label} {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+  }
+}
+
+/* Spacing with corner label */
+#{$ui-input}#{$corner-labeled} {
+
+  input {
+	padding-right: $labeled-margin !important;
+  }
+
+  &.#{$c-icon} {
+	> input {
+	  padding-right: $labeled-icon-input-margin !important;
+	}
+
+	> .#{$c-icon} {
+	  margin-right: $labeled-icon-margin;
+	}
+  }
+}
+
+/* Left Labeled */
+#{$ui-input}#{$left-corner-labeled} {
+
+  input {
+	padding-left: $labeled-margin !important;
+  }
+
+  &.#{$c-icon} {
+	> input {
+	  padding-left: $labeled-icon-input-margin !important;
+	}
+
+	> .#{$c-icon} {
+	  margin-left: $labeled-icon-margin;
+	}
+  }
+}
+
+/* Corner Label Position  */
+#{$ui-input} > #{$ui-label} {
+
+  &.#{$c-corner} {
+	top: $border-width;
+	right: $border-width;
+  }
+
+  &#{$left-corner} {
+	right: auto;
+	left: $border-width;
+  }
+}

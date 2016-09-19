@@ -1,0 +1,31 @@
+/*-------------------
+       Circular
+--------------------*/
+
+/* Shortcuts */
+$ui-circular-label: '#{$ui-label}.#{$c-circular}';
+$ui-circular-label-group: '#{$ui-label-group}.#{$c-circular}';
+
+#{$ui-circular-label-group} .#{$c-label},
+#{$ui-circular-label} {
+
+  min-width: $circular-min-size;
+  min-height: $circular-min-size;
+
+  padding: $circular-padding !important;
+
+  line-height: 1em;
+  text-align: center;
+  border-radius: $border-radius-circular;
+}
+
+#{$ui-circular-label-group} .#{$c-label},
+#{$ui-circular-label} {
+
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  width: $empty-circle-size;
+  height: $empty-circle-size;
+  vertical-align: baseline;
+}

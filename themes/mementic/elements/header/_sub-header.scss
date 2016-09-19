@@ -1,0 +1,26 @@
+/*--------------
+   Sub Heading
+---------------*/
+
+$ui-sub-header: ui-header-sub();
+
+#{$ui-header} .#{$c-header-sub} {
+
+  display: block;
+  font-weight: normal;
+  padding: 0;
+  margin: $sub-header-margin;
+  line-height: $sub-header-line-height;
+  font-size: heading-size(4);
+  color: $sub-header-color;
+}
+
+#{$ui-sub-header} {
+
+  padding: 0;
+  margin-bottom: $sub-heading-distance;
+  font-weight: $sub-heading-font-weight;
+  font-size: $sub-heading-font-size;
+  text-transform: $sub-heading-text-transform;
+  color: $sub-heading-color;
+}

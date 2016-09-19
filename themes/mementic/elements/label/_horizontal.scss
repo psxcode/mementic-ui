@@ -1,0 +1,17 @@
+/*-------------------
+     Horizontal
+--------------------*/
+
+/* Shortcuts */
+$ui-horizontal-label: '#{$ui-label}.#{$c-horizontal}';
+$ui-horizontal-label-group: '#{$ui-label-group}.#{$c-horizontal}';
+
+#{$ui-horizontal-label-group} .#{$c-label},
+#{$ui-horizontal-label} {
+
+  margin: 0 $horizontal-label-margin 0 0;
+
+  padding: $horizontal-label-vertical-padding $horizontal-padding;
+  min-width: $horizontal-label-min-width;
+  text-align: center;
+}

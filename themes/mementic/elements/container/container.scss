@@ -1,5 +1,5 @@
 /* Shortcuts */
-$ui-container: '.#{$c-ui}.#{$c-container}';
+$ui-container: ui-container();
 $left-aligned: "[class*='#{$c-left} #{$c-aligned}']";
 $right-aligned: "[class*='#{$c-right} #{$c-aligned}']";
 $center-aligned: "[class*='#{$c-center} #{$c-aligned}']";

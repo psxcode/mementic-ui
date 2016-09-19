@@ -14,6 +14,8 @@ $c-image: 'image';
 $c-image-group: 'images';
 $c-input: 'input';
 $c-label: 'label';
+$c-label-group: 'labels';
+$c-link: 'link';
 $c-list: 'list';
 $c-loader: 'loader';
 $c-rail: 'rail';
@@ -44,33 +46,37 @@ $c-column: 'col';
 $c-section: 'section';
 
 /* Types */
-$c-stackable: 'stackable';
-$c-doubling: 'doubling';
-$c-dividing: 'dividing'; //header
-$c-basic: 'basic'; //button
-$c-compact: 'compact'; //button
-$c-animated: 'animated';
-$c-inverted: 'inverted';
-$c-loading: 'loading'; // button
-$c-labeled: 'labeled'; // button
-$c-floated: 'floated'; // image
-$c-fitted: 'fitted';
-$c-flipped: 'flipped'; // icon
-$c-rotated: 'rotated'; // icon
-$c-attached: 'attached';
+$c-action: 'action';
 $c-aligned: 'aligned'; // header, image
-$c-justified: 'justified'; // header
-$c-centered: 'centered'; // image
-$c-fluid: 'fluid'; // image
-$c-toggle: 'toggle'; // button
-$c-circular: 'circular'; // image, icon
-$c-square: 'square';
+$c-attached: 'attached';
+$c-avatar: 'avatar'; // image
+$c-animated: 'animated'; // button
+$c-basic: 'basic'; // button
 $c-block: 'block';
 $c-bordered: 'bordered'; // image, icon
+$c-centered: 'centered'; // image
+$c-circular: 'circular'; // button, image, icon
+$c-clearing: 'clearing'; // divider
+$c-compact: 'compact'; // button
+$c-dividing: 'dividing'; // header
+$c-doubling: 'doubling';
+$c-fitted: 'fitted'; // header, divider
+$c-flipped: 'flipped'; // icon
+$c-floated: 'floated'; // button image
+$c-fluid: 'fluid'; // button image
 $c-inline: 'inline';
-$c-avatar: 'avatar'; // image
-$c-spaced: 'spaced'; // image
+$c-inverted: 'inverted'; // button icon
+$c-justified: 'justified'; // header
+$c-labeled: 'labeled'; // button
+$c-pointing: 'pointing'; // label
+$c-ribbon: 'ribbon'; // label
+$c-rotated: 'rotated'; // icon
 $c-rounded: 'rounded'; // image
+$c-spaced: 'spaced'; // image
+$c-stackable: 'stackable';
+$c-square: 'square';
+$c-tag: 'tag'; // label
+$c-toggle: 'toggle'; // button
 
 /* States */
 $c-visible: 'visible';
@@ -79,6 +85,7 @@ $c-hover: 'hover';
 $c-focus: 'focus';
 $c-active: 'active';
 $c-disabled: 'disabled';
+$c-loading: 'loading';
 
 /* Directions */
 $c-vertical: 'vertical';
@@ -90,3 +97,103 @@ $c-down: 'down';
 $c-top: 'top';
 $c-bottom: 'bottom';
 $c-center: 'center';
+$c-corner: 'corner';
+
+/* Element Selectors */
+@function ui-button() {
+  @return '.#{$c-ui}.#{$c-button}';
+}
+@function ui-button-group() {
+  @return '.#{$c-ui}.#{$c-button-group}';
+}
+@function ui-container() {
+  @return '.#{$c-ui}.#{$c-container}';
+}
+@function ui-divider() {
+  @return '.#{$c-ui}.#{$c-divider}';
+}
+@function ui-header() {
+  @return '.#{$c-ui}.#{$c-header}';
+}
+@function ui-header-sub() {
+  @return '.#{$c-ui}.#{$c-header-sub}';
+}
+@function ui-icon() {
+  @return 'i.#{$c-icon}';
+}
+@function ui-icon-group() {
+  @return 'i.#{$c-icon-group}';
+}
+@function ui-image() {
+  @return '.#{$c-ui}.#{$c-image}';
+}
+@function ui-image-group() {
+  @return '.#{$c-ui}.#{$c-image-group}';
+}
+@function ui-input() {
+  @return '.#{$c-ui}.#{$c-input}';
+}
+@function ui-label() {
+  @return '.#{$c-ui}.#{$c-label}';
+}
+@function ui-label-group() {
+  @return '.#{$c-ui}.#{$c-label}';
+}
+@function ui-list() {
+  @return '.#{$c-ui}.#{$c-list}';
+}
+@function ui-loader() {
+  @return '.#{$c-ui}.#{$c-loader}';
+}
+@function ui-rail() {
+  @return '.#{$c-ui}.#{$c-rail}';
+}
+@function ui-reveal() {
+  @return '.#{$c-ui}.#{$c-reveal}';
+}
+@function ui-segment() {
+  @return '.#{$c-ui}.#{$c-segment}';
+}
+@function ui-step() {
+  @return '.#{$c-ui}.#{$c-step}';
+}
+
+/* Collections Selectors */
+@function ui-breadcrumb() {
+  @return '.#{$c-ui}.#{$c-breadcrumb}';
+}
+@function ui-form() {
+  @return '.#{$c-ui}.#{$c-form}';
+}
+@function ui-grid() {
+  @return '.#{$c-ui}.#{$c-grid}';
+}
+@function ui-menu() {
+  @return '.#{$c-ui}.#{$c-menu}';
+}
+@function ui-message() {
+  @return '.#{$c-ui}.#{$c-message}';
+}
+@function ui-table() {
+  @return '.#{$c-ui}.#{$c-table}';
+}
+
+/* Views */
+@function ui-ad() {
+  @return '.#{$c-ui}.#{$c-ad}';
+}
+@function ui-card() {
+  @return '.#{$c-ui}.#{$c-card}';
+}
+@function ui-comment() {
+  @return '.#{$c-ui}.#{$c-comment}';
+}
+@function ui-feed() {
+  @return '.#{$c-ui}.#{$c-feed}';
+}
+@function ui-item() {
+  @return '.#{$c-ui}.#{$c-item}';
+}
+@function ui-statistic() {
+  @return '.#{$c-ui}.#{$c-statistic}';
+}

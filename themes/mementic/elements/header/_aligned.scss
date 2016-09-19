@@ -1,0 +1,32 @@
+/*-------------------
+       Aligned
+--------------------*/
+
+$left-aligned: "[class*='#{$c-left} #{$c-aligned}']";
+$right-aligned: "[class*='#{$c-right} #{$c-aligned}']";
+$center-aligned: "[class*='#{$c-center} #{$c-aligned}']";
+
+#{$ui-header} {
+
+  &#{$left-aligned} {
+  	text-align: left;
+  }
+
+  &#{$right-aligned} {
+  	text-align: right;
+  }
+
+  &#{$center-aligned} {
+  	text-align: center;
+  }
+
+  &.#{$c-justified} {
+	text-align: justify;
+
+	&:after {
+	  display: inline-block;
+	  content: '';
+	  width: 100%;
+	}
+  }
+}

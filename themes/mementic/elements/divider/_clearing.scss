@@ -1,0 +1,12 @@
+/*--------------
+	Clearing
+---------------*/
+
+/* Shortcuts */
+$ui-clearing-divider: '#{$ui-divider}.#{$c-clearing}';
+
+#{$ui-clearing-divider} {
+
+  display: block;
+  clear: both;
+}

@@ -1,0 +1,42 @@
+/*--------------------
+       Loading
+---------------------*/
+
+#{$ui-input}.#{$c-loading}.#{$c-loading} > #{ui-icon()} {
+
+  &::before {
+	position: absolute;
+	content: '';
+	top: 50%;
+	left: 50%;
+
+	margin: $loader-margin;
+	width: $loader-size;
+	height: $loader-size;
+
+	border-radius: $border-radius-circular;
+	border: $loader-line-width solid $loader-fill-color;
+  }
+
+  &::after {
+	position: absolute;
+	content: '';
+	top: 50%;
+	left: 50%;
+
+	margin: $loader-margin;
+	width: $loader-size;
+	height: $loader-size;
+
+	animation: button-spin $loader-speed linear;
+	animation-iteration-count: infinite;
+
+	border-radius: $border-radius-circular;
+
+	border-color: $loader-line-color transparent transparent;
+	border-style: solid;
+	border-width: $loader-line-width;
+
+	box-shadow: 0 0 0 1px transparent;
+  }
+}

@@ -10,5 +10,6 @@ $ui-rounded-image-group: '#{$ui-image-group}.#{$c-rounded}';
 #{$ui-rounded-image-group} .#{$c-image} > *,
 #{$ui-rounded-image},
 #{$ui-rounded-image} > * {
+
   border-radius: $rounded-border-radius;
 }

@@ -12,5 +12,6 @@ $ui-bordered-image-group: '#{$ui-image-group}.#{$c-bordered}';
 #{$ui-bordered-image} img,
 #{$ui-bordered-image} svg,
 img#{$ui-bordered-image} {
+
   border: $image-border;
 }

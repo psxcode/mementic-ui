@@ -1,0 +1,10 @@
+/*--------------------
+        Size
+---------------------*/
+
+@each $name, $size in $sizes {
+
+  #{$ui-input}.#{$name} {
+	font-size: size($name);
+  }
+}

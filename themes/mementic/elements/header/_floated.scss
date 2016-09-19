@@ -1,0 +1,21 @@
+/*-------------------
+       Floated
+--------------------*/
+
+/* Shortcuts */
+$right-floated: "[class*='#{$c-right} #{$c-floated}']";
+
+#{$ui-header} {
+
+  &.#{$c-floated} {
+	margin-top: 0;
+	margin-right: $floated-margin;
+
+	// float left by default
+	float: left;
+  }
+
+  &#{$right-floated} {
+	float: right;
+  }
+}

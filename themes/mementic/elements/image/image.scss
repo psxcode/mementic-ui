@@ -1,6 +1,6 @@
 /* Shortcuts */
-$ui-image: '.#{$c-ui}.#{$c-image}';
-$ui-image-group: '.#{$c-ui}.#{$c-image-group}';
+$ui-image: ui-image();
+$ui-image-group: ui-image-group();
 
 #{$ui-image} {
 

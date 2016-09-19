@@ -1,0 +1,51 @@
+/*--------------------
+      Transparent
+---------------------*/
+
+/* Shortcuts */
+$ui-transparent-input: '#{$ui-input}.transparent';
+$left-icon: "";
+
+#{$ui-transparent-input} {
+
+  input {
+	border-color: transparent !important;
+	background-color: transparent !important;
+	padding: 0 !important;
+	box-shadow: none !important;
+  }
+
+  /* Transparent Icon */
+  &.#{$c-icon} > ui-icon() {
+	width: $transparent-icon-width;
+  }
+  &.#{$c-icon} > input {
+	padding-left: 0 !important;
+	padding-right: $transparent-icon-margin !important;
+  }
+  &[class*="left icon"] > input {
+	padding-left: $transparent-icon-margin !important;
+	padding-right: 0 !important;
+  }
+}
+
+/* Transparent Inverted */
+.ui.transparent.inverted.input {
+  color: $transparent-inverted-color;
+}
+
+.ui.transparent.inverted.input input {
+  color: inherit;
+}
+
+.ui.transparent.inverted.input input::-webkit-input-placeholder {
+  color: $transparent-inverted-placeholder-color;
+}
+
+.ui.transparent.inverted.input input::-moz-placeholder {
+  color: $transparent-inverted-placeholder-color;
+}
+
+.ui.transparent.inverted.input input:-ms-input-placeholder {
+  color: $transparent-inverted-placeholder-color;
+}

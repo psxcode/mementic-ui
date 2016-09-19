@@ -1,0 +1,15 @@
+/*-------------------
+        Block
+--------------------*/
+
+/* Shortcuts */
+$ui-block-header: '#{$ui-header}.#{$c-block}';
+
+#{$ui-block-header} {
+
+  background: $block-background;
+  padding: $block-vertical-padding $block-horizontal-padding;
+  box-shadow: $block-box-shadow;
+  border: $block-border;
+  border-radius: $block-border-radius;
+}

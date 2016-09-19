@@ -1,7 +1,7 @@
-$ui-header: '.#{$c-ui}.#{$c-header}';
-$ui-dividing-header: '.#{$c-ui}.#{$c-header}.#{$c-dividing}';
+$ui-header: ui-header();
 
 #{$ui-header} {
+
   border: none;
   margin: $margin;
   padding: $vertical-padding $horizontal-padding;
@@ -18,80 +18,6 @@ $ui-dividing-header: '.#{$c-ui}.#{$c-header}.#{$c-dividing}';
 
   &:last-child {
 	margin-bottom: $last-margin;
-  }
-
-  /*--------------
-	 Sub Header
-  ---------------*/
-
-  .#{$c-header-sub} {
-	display: block;
-	font-weight: normal;
-	padding: 0;
-	margin: $sub-header-margin;
-	line-height: $sub-header-line-height;
-	font-size: heading-size(4);
-	color: $sub-header-color;
-  }
-
-  /*-------------------
-		  Image
-  --------------------*/
-
-  > .#{$c-image},
-  > img {
-	display: inline-block;
-	margin-top: $image-offset;
-	width: $image-width;
-	height: $image-height;
-	vertical-align: $image-alignment;
-  }
-
-  > .#{$c-image}:only-child,
-  > img:only-child {
-	margin-right: $image-margin;
-  }
-
-  /*-------------------
-        Icon
-	--------------------*/
-
-  > .#{$c-icon} {
-	display: table-cell;
-	opacity: $icon-opacity;
-	font-size: $icon-size;
-	padding-top: $icon-offset;
-	vertical-align: $icon-alignment;
-  }
-
-  /* With Text Node */
-  .#{$c-icon}:only-child {
-	display: inline-block;
-	padding: 0;
-	margin-right: $icon-margin;
-  }
-
-  /*--------------
-	   Content
-  ---------------*/
-
-  .#{$c-content} {
-	display: inline-block;
-	vertical-align: $content-alignment;
-  }
-
-  /* After Image */
-  > img + .#{$c-content},
-  > .#{$c-image} + .#{$c-content} {
-	padding-left: $image-margin;
-	vertical-align: $content-image-alignment;
-  }
-
-  /* After Icon */
-  > .#{$c-icon} + .#{$c-content} {
-	padding-left: $icon-margin;
-	display: table-cell;
-	vertical-align: $content-icon-alignment;
   }
 
   /*--------------
@@ -118,114 +44,17 @@ $ui-dividing-header: '.#{$c-ui}.#{$c-header}.#{$c-dividing}';
   }
 }
 
-/*--------------
-   Sub Heading
----------------*/
-
-$ui-sub-header: '.#{$c-ui}.#{$c-header-sub}';
-
-#{$ui-sub-header} {
-  padding: 0;
-  margin-bottom: $sub-heading-distance;
-  font-weight: $sub-heading-font-weight;
-  font-size: $sub-heading-font-size;
-  text-transform: $sub-heading-text-transform;
-  color: $sub-heading-color;
-}
-
-/*-------------------
-       Aligned
---------------------*/
-
-$ui-left-aligned-header: ".#{$c-ui}.#{$c-header}[class*='#{$c-left} #{$c-aligned}']";
-$ui-right-aligned-header: ".#{$c-ui}.#{$c-header}[class*='#{$c-right} #{$c-aligned}']";
-$ui-center-aligned-header: ".#{$c-ui}.#{$c-header}[class*='#{$c-center} #{$c-aligned}']";
-$ui-justified-header: ".#{$c-ui}.#{$c-header}.#{$c-justified}";
-
-#{$ui-left-aligned-header} {
-  text-align: left;
-}
-
-#{$ui-right-aligned-header} {
-  text-align: right;
-}
-
-#{$ui-center-aligned-header} {
-  text-align: center;
-}
-
-#{$ui-justified-header} {
-  text-align: justify;
-
-  &:after {
-	display: inline-block;
-	content: '';
-	width: 100%;
-  }
-}
-
-/*-------------------
-       Floated
---------------------*/
-
-#{$ui-header}.#{$c-floated} {
-  float: left;
-  margin-top: 0;
-  margin-right: $floated-margin;
-}
-
-#{$ui-header}.#{$c-floated}.#{$c-right} {
-  float: right;
-}
-
-/*-------------------
-       Fitted
---------------------*/
-
-#{$ui-header}.#{$c-fitted} {
-  padding: 0;
-}
-
-/*-------------------
-      Dividing
---------------------*/
-
-$ui-dividing-header: '.#{$c-ui}.#{$c-header}.#{$c-dividing}';
-
-#{$ui-dividing-header} {
-  padding-bottom: $divided-border-padding;
-  border-bottom: $divided-border;
-
-  .#{$c-header-sub} {
-	padding-bottom: $divided-sub-header-padding;
-  }
-
-  .#{$c-icon} {
-	margin-bottom: $divided-icon-padding;
-  }
-
-  &.#{$c-inverted} {
-	border-bottom-color: $inverted-divided-border-color;
-  }
-}
-
-/*-------------------
-        Block
---------------------*/
-
-$ui-block-header: '.#{$c-ui}.#{$c-header}.#{$c-block}';
-
-#{$ui-block-header} {
-  background: $block-background;
-  padding: $block-vertical-padding $block-horizontal-padding;
-  box-shadow: $block-box-shadow;
-  border: $block-border;
-  border-radius: $block-border-radius;
-}
-
-@import "attached";
-@import "colors";
-@import "icon";
-@import "inverted";
-@import "sizes";
+//@import "aligned";
+//@import "attached";
+//@import "block";
+//@import "colors";
+//@import "content";
+//@import "dividing";
+//@import "fitted";
+//@import "floated";
+//@import "icon";
+//@import "image";
+//@import "inverted";
+//@import "sizes";
+//@import "sub-header";
 

@@ -3,10 +3,12 @@
 ---------------*/
 
 @each $name, $size in $image-width {
+
   #{$ui-image-group}.#{$name} .#{$c-image},
   #{$ui-image-group}.#{$name} img,
   #{$ui-image-group}.#{$name} svg,
   #{$ui-image}.#{$name} {
+
 	width: $size;
 	height: auto;
 	font-size: size($name);

@@ -1,7 +1,7 @@
 
 /* Shortcuts */
-$ui-grid: '.#{$c-ui}.#{$c-grid}';
-$ui-divider-vertical: '.#{$c-ui}.#{$c-divider}.#{$c-vertical}';
+$ui-grid: ui-grid();
+$ui-divider-vertical: '#{$ui-divider}.#{$c-vertical}';
 $stackable-row : '.#{$c-stackable}.#{$c-row}';
 
 #{$ui-grid} {

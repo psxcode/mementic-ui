@@ -1,0 +1,44 @@
+/*--------------
+	Vertical
+---------------*/
+$ui-vertical-divider: '#{$ui-divider}.#{$c-vertical}';
+
+#{$ui-vertical-divider} {
+
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+
+  margin: 0;
+  padding: 0;
+  width: auto;
+  height: 50%;
+
+  line-height: 0;
+  text-align: center;
+  transform: translateX(-50%);
+
+  &:before,
+  &:after {
+	position: absolute;
+	left: 50%;
+	content: '';
+	z-index: 3;
+
+	border-left: $shadow-width solid $shadow-color;
+	border-right: $highlight-width solid $highlight-color;
+
+	width: 0;
+	height: $vertical-divider-height;
+  }
+
+  &:before {
+	top: -100%;
+  }
+
+  &:after {
+	top: auto;
+	bottom: 0;
+  }
+}

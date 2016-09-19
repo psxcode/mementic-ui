@@ -3,12 +3,12 @@
 --------------------*/
 
 /* Shortcuts */
-$ui-inverted-header: '.#{$c-ui}.#{$c-header}.#{$c-inverted}';
+$ui-inverted-header: '#{$ui-header}.#{$c-inverted}';
 
 #{$ui-inverted-header} {
   color: $inverted-color;
 
-  .sub.header {
+  .#{$c-header-sub} {
 	color: $inverted-sub-header-color;
   }
 
@@ -18,7 +18,7 @@ $ui-inverted-header: '.#{$c-ui}.#{$c-header}.#{$c-inverted}';
 	border-color: transparent;
   }
 
-  &.block {
+  &.#{$c-block} {
 	background: $inverted-block-background;
 	box-shadow: none;
   	border-bottom: none;

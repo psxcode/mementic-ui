@@ -1,0 +1,47 @@
+/*--------------------
+        Colors
+---------------------*/
+
+@mixin colors($color-map) {
+  @each $name, $color in $color-map {
+
+	$placeholder-color: lighten($color, 40);
+	$placeholder-focus-color : lighten($color, 30);
+
+	#{$ui-input}.#{$name} {
+
+	  input {
+		background-color: color-bg($color);
+		border-color: color-divider($color);
+		color: $color;
+		box-shadow: none;
+	  }
+
+	  /* Error Placeholder */
+	  input::-webkit-input-placeholder {
+		color: $placeholder-color;
+	  }
+	  input::-moz-placeholder {
+		color: $placeholder-color;
+	  }
+	  input:-ms-input-placeholder {
+		color: $placeholder-color !important;
+	  }
+
+	  /* Focused Error Placeholder */
+	  input:focus::-webkit-input-placeholder {
+		color: $placeholder-focus-color;
+	  }
+	  input:focus::-moz-placeholder {
+		color: $placeholder-focus-color;
+	  }
+	  input:focus:-ms-input-placeholder {
+		color: $placeholder-focus-color !important;
+	  }
+	}
+  }
+}
+
+@if $auto-include-colors-info {
+  @include colors($colors-info);
+}

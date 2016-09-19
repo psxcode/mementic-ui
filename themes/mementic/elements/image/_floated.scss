@@ -4,31 +4,34 @@
 
 $ui-floated-image: '#{$ui-image}.#{$c-floated}';
 $ui-floated-image-group: '#{$ui-image-group}.#{$c-floated}';
-$ui-right-floated-image: "#{$ui-image}[class*='#{$c-right} #{$c-floated}']";
-$ui-right-floated-image-group: "#{$ui-image-group}[class*='#{$c-right} #{$c-floated}']";
+$right-floated: "[class*='#{$c-right} #{$c-floated}']";
 $ui-centered-image: '#{$ui-image}.#{$c-centered}';
 $ui-centered-image-group: '#{$ui-image-group}.#{$c-centered}';
 
 #{$ui-floated-image-group},
 #{$ui-floated-image} {
+
+  // default float
   float: left;
+
   margin-right: $floated-horizontal-margin;
   margin-bottom: $floated-vertical-margin;
 
   &:last-child {
 	margin-bottom: 0;
   }
-}
 
-#{$ui-right-floated-image-group},
-#{$ui-right-floated-image} {
-  float: right;
-  margin-right: 0;
-  margin-left: $floated-horizontal-margin;
+  &#{$right-floated} {
+	float: right;
+
+	margin-left: $floated-horizontal-margin;
+	margin-right: 0;
+  }
 }
 
 #{$ui-centered-image-group},
 #{$ui-centered-image} {
+
   margin-left: auto;
   margin-right: auto;
 }

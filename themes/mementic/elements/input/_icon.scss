@@ -1,0 +1,79 @@
+/*--------------------
+         Icon
+---------------------*/
+
+$ui-icon-input: '#{$ui-input}.#{$c-icon}';
+$ui-icon: ui-icon();
+$left-icon: "[class*='#{$c-left} #{$c-icon}']";
+
+#{$ui-icon-input} {
+
+  > input {
+	padding-right: $icon-margin !important;
+
+	/* Focus */
+	&:focus ~ #{$ui-icon} {
+	  opacity: 1;
+	}
+  }
+
+  > #{$ui-icon} {
+	cursor: default;
+	position: absolute;
+	line-height: 1;
+	text-align: center;
+	top: 0;
+	right: 0;
+	margin: 0;
+	height: 100%;
+
+	width: $icon-width;
+	opacity: $icon-opacity;
+	border-radius: 0 $border-radius $border-radius 0;
+	transition: $icon-transition;
+
+	&::before,
+	&::after {
+	  left: 0;
+	  position: absolute;
+	  text-align: center;
+	  top: 50%;
+	  width: 100%;
+	  margin-top: $icon-offset;
+	}
+
+	//TODO can be removed
+	&:not(.#{$c-link}) {
+	  pointer-events: none;
+	}
+
+	&.#{$c-link} {
+	  cursor: pointer;
+	}
+
+	&.#{$c-circular} {
+	  top: $circular-icon-vertical-offset;
+	  right: $circular-icon-horizontal-offset;
+	}
+  }
+}
+
+/* Left Icon Input */
+#{$ui-input}#{$left-icon} {
+
+  > input {
+	padding-left: $icon-margin !important;
+	padding-right: $horizontal-padding !important;
+  }
+
+  > #{$ui-icon} {
+	right: auto;
+	left: $border-width;
+	border-radius: $border-radius 0 0 $border-radius;
+
+	&.#{$c-circular} {
+	  right: auto;
+	  left: $circular-icon-horizontal-offset;
+	}
+  }
+}

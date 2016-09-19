@@ -1,0 +1,33 @@
+/*--------------
+   Horizontal
+---------------*/
+$ui-horizontal-divider: '#{$ui-divider}.#{$c-horizontal}';
+
+#{$ui-horizontal-divider} {
+
+  display: table;
+  white-space: nowrap;
+
+  height: auto;
+  margin: $horizontal-margin;
+  line-height: 1;
+  text-align: center;
+
+  &:before,
+  &:after {
+	content: '';
+	display: table-cell;
+	position: relative;
+	top: 50%;
+	width: 50%;
+	background-repeat: no-repeat;
+  }
+
+  &:before {
+	background-position: right $horizontal-divider-margin top 50%;
+  }
+
+  &:after {
+	background-position: left $horizontal-divider-margin top 50%;
+  }
+}

@@ -4,21 +4,20 @@
 
 /* Shortcuts */
 $ui-spaced-image: '#{$ui-image}.#{$c-spaced}';
-$ui-left-spaced-image: "#{$ui-image}[class*='#{$c-left} #{$c-spaced}']";
-$ui-right-spaced-image: "#{$ui-image}[class*='#{$c-right} #{$c-spaced}']";
+$left-spaced: "[class*='#{$c-left} #{$c-spaced}']";
+$right-spaced: "[class*='#{$c-right} #{$c-spaced}']";
 
 #{$ui-spaced-image} {
+
   display: inline-block !important;
   margin-left: $spaced-distance;
   margin-right: $spaced-distance;
-}
 
-#{$ui-left-spaced-image} {
-  margin-left: $spaced-distance;
-  margin-right: 0;
-}
+  &#{$left-spaced} {
+	margin-right: 0;
+  }
 
-#{$ui-right-spaced-image} {
-  margin-left: 0;
-  margin-right: $spaced-distance;
+  &#{$right-spaced} {
+	margin-left: 0;
+  }
 }

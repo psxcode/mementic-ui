@@ -3,9 +3,10 @@
 --------------------*/
 
 /* Shortcuts */
-$ui-attached-header: '.#{$c-ui}.#{$c-header}.#{$c-attached}';
+$ui-attached-header: '#{$ui-header}.#{$c-attached}';
 
 #{$ui-attached-header} {
+
   background: $attached-background;
   padding: $attached-vertical-padding $attached-horizontal-padding;
   margin-left: $attached-offset;
@@ -13,6 +14,12 @@ $ui-attached-header: '.#{$c-ui}.#{$c-header}.#{$c-attached}';
   box-shadow: $attached-box-shadow;
   border: $attached-border;
 
+  //TODO check if can remove selector
+  &:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
+	font-size: $medium-attached-size;
+  }
+
+  //TODO check if can remove selector
   &:not(.#{$c-top}):not(.#{$c-bottom}) {
 	margin-top: 0;
 	margin-bottom: 0;
@@ -31,11 +38,7 @@ $ui-attached-header: '.#{$c-ui}.#{$c-header}.#{$c-attached}';
 	border-radius: 0 0 $attached-border-radius $attached-border-radius;
   }
 
-  &:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
-	font-size: $medium-attached-size;
-  }
-
-  &.block {
+  &.#{$c-block} {
 	background: $block-background;
   }
 }

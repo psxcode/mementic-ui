@@ -1,0 +1,18 @@
+/*-------------------
+      Inverted
+--------------------*/
+
+/* Shortcuts */
+$ui-inverted-icon: '#{$ui-icon}.#{$c-inverted}';
+
+#{$ui-inverted-icon} {
+
+  color: $color-light;
+
+  /* Inverted Shapes */
+  &.#{$c-bordered},
+  &.#{$c-circular} {
+	background-color: $color-dark !important;
+	color: $color-light !important;
+  }
+}

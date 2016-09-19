@@ -1,0 +1,62 @@
+/*-------------------
+      Attached
+--------------------*/
+
+/* Shortcuts */
+$top-attached: '[class*="#{$c-top} #{$c-attached}"]';
+$bottom-attached: '[class*="#{$c-bottom} #{$c-attached}"]';
+$top-left-attached: '[class*="#{$c-top} #{$c-left} #{$c-attached}"]';
+$top-right-attached: '[class*="#{$c-top} #{$c-right} #{$c-attached}"]';
+$bottom-left-attached: '[class*="#{$c-bottom} #{$c-left} #{$c-attached}"]';
+$bottom-right-attached: '[class*="#{$c-bottom} #{$c-right} #{$c-attached}"]';
+
+#{$ui-label} {
+
+  &.#{$c-attached},
+  &#{$top-attached} {
+	width: 100%;
+	position: absolute;
+	margin: 0;
+	top: 0;
+	left: 0;
+
+	padding: $attached-vertical-padding $attached-horizontal-padding;
+
+	border-radius: $attached-corner-border-radius $attached-corner-border-radius 0 0;
+  }
+
+  &#{$bottom-attached} {
+	top: auto;
+	bottom: 0;
+	border-radius: 0 0 $attached-corner-border-radius $attached-corner-border-radius;
+  }
+
+  &#{$top-left-attached} {
+	width: auto;
+	margin-top: 0 !important;
+	border-radius: $attached-corner-border-radius 0 $attached-border-radius 0;
+  }
+
+  &#{$top-right-attached} {
+	width: auto;
+	left: auto;
+	right: 0;
+	border-radius: 0 $attached-corner-border-radius 0 $attached-border-radius;
+  }
+
+  &#{$bottom-left-attached} {
+	width: auto;
+	top: auto;
+	bottom: 0;
+	border-radius: 0 $attached-border-radius 0 $attached-corner-border-radius;
+  }
+
+  &#{$bottom-right-attached} {
+	top: auto;
+	bottom: 0;
+	left: auto;
+	right: 0;
+	width: auto;
+	border-radius: $attached-border-radius 0 $attached-corner-border-radius 0;
+  }
+}

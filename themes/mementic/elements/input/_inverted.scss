@@ -1,0 +1,13 @@
+/*--------------------
+       Inverted
+---------------------*/
+
+/* Shortcuts */
+$ui-inverted-input: '#{$ui-input}.#{$c-inverted}';
+
+#{$ui-inverted-input} {
+
+  input {
+	border: none;
+  }
+}

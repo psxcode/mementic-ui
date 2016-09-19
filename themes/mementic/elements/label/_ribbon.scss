@@ -1,0 +1,93 @@
+/*-------------------
+       Ribbon
+--------------------*/
+
+/* Shortcuts */
+$ui-ribbon-label: '#{$ui-label}.#{$c-ribbon}';
+$ribbon-label: '#{$c-label}.#{$c-ribbon}';
+$right-ribbon: '[class*="#{$c-right} #{$c-ribbon}"]';
+$ui-image: ui-image();
+$ui-card: ui-card();
+$ui-table: ui-table();
+
+#{$ui-ribbon-label} {
+
+  position: relative;
+  margin: 0;
+  min-width: max-content;
+  border-radius: 0 $border-radius $border-radius 0;
+  border-color: $ribbon-shadow-color;
+
+  &::after {
+	position: absolute;
+	content: '';
+
+	top: 100%;
+	left: 0;
+	background-color: transparent !important;
+
+	border-style: solid;
+	border-width: 0 $ribbon-triangle-size $ribbon-triangle-size 0;
+	border-color: transparent;
+	border-right-color: inherit;
+
+	width: 0;
+	height: 0;
+  }
+}
+
+/* Positioning */
+#{$ui-ribbon-label} {
+  left: $ribbon-offset;
+  margin-right: - $ribbon-triangle-size;
+  padding-left: $ribbon-distance;
+  padding-right: $ribbon-triangle-size;
+}
+
+#{$ui-label}#{$right-ribbon} {
+  left: $right-ribbon-offset;
+  padding-left: $ribbon-triangle-size;
+  padding-right: $ribbon-distance;
+}
+
+/* Right Ribbon */
+#{$ui-label}#{$right-ribbon} {
+  text-align: left;
+  transform: translateX(-100%);
+  border-radius: $border-radius 0 0 $border-radius;
+
+  &::after {
+	left: auto;
+	right: 0;
+
+	border-style: solid;
+	border-width: $ribbon-triangle-size $ribbon-triangle-size 0 0;
+	border-color: transparent;
+	border-top-color: inherit;
+  }
+}
+
+/* Inside Table */
+#{$ui-image} > #{$ribbon-label},
+#{$ui-card} .#{$c-image} > #{$ribbon-label} {
+  position: absolute;
+  top: $ribbon-image-top-distance;
+
+  left: $ribbon-image-offset;
+}
+
+#{$ui-image} > #{$right-ribbon}#{$c-label},
+#{$ui-card} .#{$c-image} > #{$right-ribbon}#{$c-label} {
+  left: $right-ribbon-image-offset;
+  padding-left: $horizontal-padding;
+}
+
+/* Inside Table */
+#{$ui-table} td > #{$ribbon-label} {
+  left: $ribbon-table-offset;
+}
+
+#{$ui-table} td > #{$right-ribbon}#{$c-label} {
+  left: $right-ribbon-table-offset;
+  padding-left: $horizontal-padding;
+}

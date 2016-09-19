@@ -1,0 +1,19 @@
+/*-------------------
+         Link
+--------------------*/
+
+/* Shortcuts */
+$ui-link-icon: '#{$ui-icon}.#{$c-link}';
+$ui-link-icon-group: '#{$ui-icon-group}.#{$c-link}';
+
+#{$ui-link-icon}, #{$ui-link-icon-group} {
+
+  cursor: pointer;
+  opacity: $link-opacity;
+  transition: opacity $duration-default $easing-default;
+
+  &:hover {
+	opacity: 1 !important;
+  }
+}
+

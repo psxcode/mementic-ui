@@ -9,7 +9,9 @@
 
 	  color: $color !important;
 
+	  /* Inverted */
 	  &.#{$c-inverted} {
+
 		color: color-light($color) !important;
 
 		&.#{$c-bordered},

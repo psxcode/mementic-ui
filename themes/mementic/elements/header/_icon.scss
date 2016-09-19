@@ -3,7 +3,25 @@
 --------------------*/
 
 /* Shortcuts */
-$ui-icon-header: '.#{$c-ui}.#{$c-header}.#{$c-icon}';
+$ui-icon-header: '#{$ui-header}.#{$c-icon}';
+
+#{$ui-header} {
+
+  > .#{$c-icon} {
+	display: table-cell;
+	opacity: $icon-opacity;
+	font-size: $icon-size;
+	padding-top: $icon-offset;
+	vertical-align: $icon-alignment;
+  }
+
+  /* With Text Node */
+  .#{$c-icon}:only-child {
+	display: inline-block;
+	padding: 0;
+	margin-right: $icon-margin;
+  }
+}
 
 #{$ui-icon-header} {
 

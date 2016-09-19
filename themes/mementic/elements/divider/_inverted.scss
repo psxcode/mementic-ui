@@ -1,0 +1,20 @@
+/*--------------
+	Inverted
+---------------*/
+
+/* Shortcuts */
+$ui-inverted-divider: '#{$ui-divider}.#{$c-inverted}';
+
+#{$ui-inverted-divider} {
+
+  color: $inverted-text-color;
+
+  &,
+  &:after,
+  &:before {
+	border-top-color: $inverted-shadow-color !important;
+	border-left-color: $inverted-shadow-color !important;
+	border-bottom-color: $inverted-highlight-color !important;
+	border-right-color: $inverted-highlight-color !important;
+  }
+}

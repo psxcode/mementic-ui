@@ -1,0 +1,27 @@
+/*-------------------
+        Basic
+--------------------*/
+
+/* Shortcuts */
+$ui-basic-label: '#{$ui-label}.#{$c-basic}';
+
+#{$ui-basic-label} {
+
+  background: $basic-background;
+  border: $basic-border;
+  color: $basic-color;
+  box-shadow: $basic-box-shadow;
+
+  /* Link */
+  @at-root a#{&}:hover {
+	text-decoration: none;
+	background: $basic-hover-background;
+	color: $basic-hover-color;
+	box-shadow: $basic-hover-border;
+  }
+
+  /* Pointing */
+  &.#{$c-pointing} {
+	border-color: inherit;
+  }
+}

@@ -1,5 +1,8 @@
+/* Shortcuts */
+$ui-label: ui-label();
+$ui-label-group: ui-label-group();
 
-.ui.label {
+#{$ui-label} {
   display: inline-block;
   line-height: 1;
   vertical-align: $vertical-align;
@@ -17,14 +20,14 @@
   border: $border;
   border-radius: $border-radius;
   transition: $transition;
-}
 
-.ui.label:first-child {
-  margin-left: 0;
-}
+  &:first-child {
+	margin-left: 0;
+  }
 
-.ui.label:last-child {
-  margin-right: 0;
+  &:last-child {
+	margin-right: 0;
+  }
 }
 
 /* Link */
@@ -298,145 +301,9 @@ a.ui.label {
   left: -1px;
 }
 
-/*-------------------
-       Ribbon
---------------------*/
 
-.ui.ribbon.label {
-  position: relative;
-  margin: 0;
-  min-width: max-content;
-  border-radius: 0 $border-radius $border-radius 0;
-  border-color: $ribbon-shadow-color;
-}
 
-.ui.ribbon.label:after {
-  position: absolute;
-  content: '';
 
-  top: 100%;
-  left: 0;
-  background-color: transparent !important;
-
-  border-style: solid;
-  border-width: 0 $ribbon-triangle-size $ribbon-triangle-size 0;
-  border-color: transparent;
-  border-right-color: inherit;
-
-  width: 0;
-  height: 0;
-}
-
-/* Positioning */
-.ui.ribbon.label {
-  left: $ribbon-offset;
-  margin-right: - $ribbon-triangle-size;
-  padding-left: $ribbon-distance;
-  padding-right: $ribbon-triangle-size;
-}
-
-.ui[class*="right ribbon"].label {
-  left: $right-ribbon-offset;
-  padding-left: $ribbon-triangle-size;
-  padding-right: $ribbon-distance;
-}
-
-/* Right Ribbon */
-.ui[class*="right ribbon"].label {
-  text-align: left;
-  transform: translateX(-100%);
-  border-radius: $border-radius 0 0 $border-radius;
-}
-
-.ui[class*="right ribbon"].label:after {
-  left: auto;
-  right: 0%;
-
-  border-style: solid;
-  border-width: $ribbon-triangle-size $ribbon-triangle-size 0 0;
-  border-color: transparent;
-  border-top-color: inherit;
-}
-
-/* Inside Table */
-.ui.image > .ribbon.label,
-.ui.card .image > .ribbon.label {
-  position: absolute;
-  top: $ribbon-image-top-distance;
-}
-
-.ui.card .image > .ui.ribbon.label,
-.ui.image > .ui.ribbon.label {
-  left: $ribbon-image-offset;
-}
-
-.ui.card .image > .ui[class*="right ribbon"].label,
-.ui.image > .ui[class*="right ribbon"].label {
-  left: $right-ribbon-image-offset;
-  padding-left: $horizontal-padding;
-}
-
-/* Inside Table */
-.ui.table td > .ui.ribbon.label {
-  left: $ribbon-table-offset;
-}
-
-.ui.table td > .ui[class*="right ribbon"].label {
-  left: $right-ribbon-table-offset;
-  padding-left: $horizontal-padding;
-}
-
-/*-------------------
-      Attached
---------------------*/
-
-.ui[class*="top attached"].label,
-.ui.attached.label {
-  width: 100%;
-  position: absolute;
-  margin: 0;
-  top: 0;
-  left: 0;
-
-  padding: $attached-vertical-padding $attached-horizontal-padding;
-
-  border-radius: $attached-corner-border-radius $attached-corner-border-radius 0 0;
-}
-
-.ui[class*="bottom attached"].label {
-  top: auto;
-  bottom: 0;
-  border-radius: 0 0 $attached-corner-border-radius $attached-corner-border-radius;
-}
-
-.ui[class*="top left attached"].label {
-  width: auto;
-  margin-top: 0 !important;
-  border-radius: $attached-corner-border-radius 0 $attached-border-radius 0;
-}
-
-.ui[class*="top right attached"].label {
-  width: auto;
-  left: auto;
-  right: 0;
-  border-radius: 0 $attached-corner-border-radius 0 $attached-border-radius;
-}
-
-.ui[class*="bottom left attached"].label {
-  width: auto;
-  top: auto;
-  bottom: 0;
-  border-radius: 0 $attached-border-radius 0 $attached-corner-border-radius;
-}
-
-.ui[class*="bottom right attached"].label {
-  top: auto;
-  bottom: 0;
-  left: auto;
-  right: 0;
-  width: auto;
-  border-radius: $attached-border-radius 0 $attached-corner-border-radius 0;
-}
 
 /*******************************
              States
@@ -528,29 +395,7 @@ a.ui.active.label:before {
            Variations
 *******************************/
 
-/*-------------------
-        Basic
---------------------*/
 
-.ui.basic.label {
-  background: $basic-background;
-  border: $basic-border;
-  color: $basic-color;
-  box-shadow: $basic-box-shadow;
-}
-
-/* Link */
-a.ui.basic.label:hover {
-  text-decoration: none;
-  background: $basic-hover-background;
-  color: $basic-hover-color;
-  box-shadow: $basic-hover-border;
-}
-
-/* Pointing */
-.ui.basic.pointing.label:before {
-  border-color: inherit;
-}
 
 /*-------------------
        Fluid
@@ -571,166 +416,10 @@ a.ui.basic.label:hover {
   color: color-text($inverted: true) !important;
 }
 
-/*-------------------
-     Horizontal
---------------------*/
 
-.ui.horizontal.labels .label,
-.ui.horizontal.label {
-  margin: 0 $horizontal-label-margin 0 0;
 
-  padding: $horizontal-label-vertical-padding $horizontal-padding;
-  min-width: $horizontal-label-min-width;
-  text-align: center;
-}
 
-/*-------------------
-       Circular
---------------------*/
 
-.ui.circular.labels .label,
-.ui.circular.label {
-  min-width: $circular-min-size;
-  min-height: $circular-min-size;
-
-  padding: $circular-padding !important;
-
-  line-height: 1em;
-  text-align: center;
-  border-radius: $border-radius-circular;
-}
-
-.ui.empty.circular.labels .label,
-.ui.empty.circular.label {
-  min-width: 0;
-  min-height: 0;
-  overflow: hidden;
-  width: $empty-circle-size;
-  height: $empty-circle-size;
-  vertical-align: baseline;
-}
-
-/*-------------------
-       Pointing
---------------------*/
-
-.ui.pointing.label {
-  position: relative;
-}
-
-.ui.attached.pointing.label {
-  position: absolute;
-}
-
-.ui.pointing.label:before {
-  background-color: inherit;
-  background-image: inherit;
-  border-width: 0;
-  border-style: solid;
-  border-color: $pointing-border-color;
-}
-
-/* Arrow */
-.ui.pointing.label:before {
-  position: absolute;
-  content: '';
-  transform: rotate(45deg);
-  background-image: none;
-
-  z-index: $pointing-triangle-z-index;
-  width: $pointing-triangle-size;
-  height: $pointing-triangle-size;
-  transition: $pointing-triangle-transition;
-}
-
-/*--- Above ---*/
-.ui.pointing.label,
-.ui[class*="pointing above"].label {
-  margin-top: $pointing-vertical-distance;
-}
-
-.ui.pointing.label:before,
-.ui[class*="pointing above"].label:before {
-  border-width: $border-width 0 0 $border-width;
-  transform: translateX(-50%) translateY(-50%) rotate(45deg);
-  top: 0;
-  left: 50%;
-}
-
-/*--- Below ---*/
-.ui[class*="bottom pointing"].label,
-.ui[class*="pointing below"].label {
-  margin-top: 0;
-  margin-bottom: $pointing-vertical-distance;
-}
-
-.ui[class*="bottom pointing"].label:before,
-.ui[class*="pointing below"].label:before {
-  border-width: 0 $border-width $border-width 0;
-  top: auto;
-  right: auto;
-  transform: translateX(-50%) translateY(-50%) rotate(45deg);
-  top: 100%;
-  left: 50%;
-}
-
-/*--- Left ---*/
-.ui[class*="left pointing"].label {
-  margin-top: 0;
-  margin-left: $pointing-horizontal-distance;
-}
-
-.ui[class*="left pointing"].label:before {
-  border-width: 0 0 $border-width $border-width;
-  transform: translateX(-50%) translateY(-50%) rotate(45deg);
-  bottom: auto;
-  right: auto;
-  top: 50%;
-  left: 0;
-}
-
-/*--- Right ---*/
-.ui[class*="right pointing"].label {
-  margin-top: 0;
-  margin-right: $pointing-horizontal-distance;
-}
-
-.ui[class*="right pointing"].label:before {
-  border-width: $border-width $border-width 0 0;
-  transform: translateX(50%) translateY(-50%) rotate(45deg);
-  top: 50%;
-  right: 0;
-  bottom: auto;
-  left: auto;
-}
-
-/* Basic Pointing */
-
-/*--- Above ---*/
-.ui.basic.pointing.label:before,
-.ui.basic[class*="pointing above"].label:before {
-  margin-top: $basic-pointing-triangle-offset;
-}
-
-/*--- Below ---*/
-.ui.basic[class*="bottom pointing"].label:before,
-.ui.basic[class*="pointing below"].label:before {
-  bottom: auto;
-  top: 100%;
-  margin-top: - $basic-pointing-triangle-offset;
-}
-
-/*--- Left ---*/
-.ui.basic[class*="left pointing"].label:before {
-  top: 50%;
-  left: $basic-pointing-triangle-offset;
-}
-
-/*--- Right ---*/
-.ui.basic[class*="right pointing"].label:before {
-  top: 50%;
-  right: $basic-pointing-triangle-offset;
-}
 
 /*------------------
    Floating Label
@@ -755,10 +444,10 @@ a.ui.basic.label:hover {
 
 @mixin sizes($size-map) {
   @each $name, $value in $size-map {
-    .ui.#{$name}.labels .label,
-    .ui.#{$name}.label {
-      font-size: size($name);
-    }
+	.ui.#{$name}.labels .label,
+	.ui.#{$name}.label {
+	  font-size: size($name);
+	}
   }
 }
 
@@ -771,45 +460,45 @@ a.ui.basic.label:hover {
 @mixin colors($color-map) {
   @each $name, $color in $color-map {
 
-    /* Color */
-    .ui.#{$name}.labels .label,
-    .ui.#{$name}.label {
-      background-color: $color !important;
-      border-color: $color !important;
-      color: color-text($inverted: true) !important;
-    }
+	/* Color */
+	.ui.#{$name}.labels .label,
+	.ui.#{$name}.label {
+	  background-color: $color !important;
+	  border-color: $color !important;
+	  color: color-text($inverted: true) !important;
+	}
 
-    /* Link */
-    .ui.#{$name}.labels .label:hover,
-    a.ui.#{$name}.label:hover {
-      background-color: color-hover($color) !important;
-      border-color: color-hover($color) !important;
-      color: color-text-hovered($inverted: true) !important;
-    }
+	/* Link */
+	.ui.#{$name}.labels .label:hover,
+	a.ui.#{$name}.label:hover {
+	  background-color: color-hover($color) !important;
+	  border-color: color-hover($color) !important;
+	  color: color-text-hovered($inverted: true) !important;
+	}
 
-    /* Corner */
-    .ui.#{$name}.corner.label,
-    .ui.#{$name}.corner.label:hover {
-      background-color: transparent !important;
-    }
+	/* Corner */
+	.ui.#{$name}.corner.label,
+	.ui.#{$name}.corner.label:hover {
+	  background-color: transparent !important;
+	}
 
-    /* Ribbon */
-    .ui.#{$name}.ribbon.label {
-      border-color: color-shadow($color) !important;
-    }
+	/* Ribbon */
+	.ui.#{$name}.ribbon.label {
+	  border-color: color-shadow($color) !important;
+	}
 
-    /* Basic */
-    .ui.basic.#{$name}.label {
-      background-color: $color-light !important;
-      color: $color !important;
-      border-color: $color !important;
-    }
+	/* Basic */
+	.ui.basic.#{$name}.label {
+	  background-color: $color-light !important;
+	  color: $color !important;
+	  border-color: $color !important;
+	}
 
-    .ui.basic.#{$name}.labels a.label:hover,
-    a.ui.basic.#{$name}.label:hover {
-      background-color: $color-light !important;
-      color: color-hover($color) !important;
-      border-color: color-hover($color) !important;
-    }
+	.ui.basic.#{$name}.labels a.label:hover,
+	a.ui.basic.#{$name}.label:hover {
+	  background-color: $color-light !important;
+	  color: color-hover($color) !important;
+	  border-color: color-hover($color) !important;
+	}
   }
 }
