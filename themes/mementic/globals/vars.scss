@@ -41,6 +41,7 @@ $c-statistic: 'statistic';
 
 /* Sub Elements */
 $c-content: 'content';
+$c-detail: 'detail';
 $c-row: 'row';
 $c-column: 'col';
 $c-section: 'section';
@@ -48,10 +49,10 @@ $c-section: 'section';
 /* Types */
 $c-action: 'action';
 $c-aligned: 'aligned'; // header, image
-$c-attached: 'attached';
+$c-attached: 'attached'; // label
 $c-avatar: 'avatar'; // image
 $c-animated: 'animated'; // button
-$c-basic: 'basic'; // button
+$c-basic: 'basic'; // button label
 $c-block: 'block';
 $c-bordered: 'bordered'; // image, icon
 $c-centered: 'centered'; // image
@@ -63,7 +64,8 @@ $c-doubling: 'doubling';
 $c-fitted: 'fitted'; // header, divider
 $c-flipped: 'flipped'; // icon
 $c-floated: 'floated'; // button image
-$c-fluid: 'fluid'; // button image
+$c-floating: 'floating'; // label
+$c-fluid: 'fluid'; // button image label
 $c-inline: 'inline';
 $c-inverted: 'inverted'; // button icon
 $c-justified: 'justified'; // header
@@ -74,7 +76,7 @@ $c-rotated: 'rotated'; // icon
 $c-rounded: 'rounded'; // image
 $c-spaced: 'spaced'; // image
 $c-stackable: 'stackable';
-$c-square: 'square';
+$c-square: 'square'; // icon
 $c-tag: 'tag'; // label
 $c-toggle: 'toggle'; // button
 
@@ -103,57 +105,75 @@ $c-corner: 'corner';
 @function ui-button() {
   @return '.#{$c-ui}.#{$c-button}';
 }
+
 @function ui-button-group() {
   @return '.#{$c-ui}.#{$c-button-group}';
 }
+
 @function ui-container() {
   @return '.#{$c-ui}.#{$c-container}';
 }
+
 @function ui-divider() {
   @return '.#{$c-ui}.#{$c-divider}';
 }
+
 @function ui-header() {
   @return '.#{$c-ui}.#{$c-header}';
 }
+
 @function ui-header-sub() {
   @return '.#{$c-ui}.#{$c-header-sub}';
 }
+
 @function ui-icon() {
   @return 'i.#{$c-icon}';
 }
+
 @function ui-icon-group() {
   @return 'i.#{$c-icon-group}';
 }
+
 @function ui-image() {
   @return '.#{$c-ui}.#{$c-image}';
 }
+
 @function ui-image-group() {
   @return '.#{$c-ui}.#{$c-image-group}';
 }
+
 @function ui-input() {
   @return '.#{$c-ui}.#{$c-input}';
 }
+
 @function ui-label() {
   @return '.#{$c-ui}.#{$c-label}';
 }
+
 @function ui-label-group() {
   @return '.#{$c-ui}.#{$c-label}';
 }
+
 @function ui-list() {
   @return '.#{$c-ui}.#{$c-list}';
 }
+
 @function ui-loader() {
   @return '.#{$c-ui}.#{$c-loader}';
 }
+
 @function ui-rail() {
   @return '.#{$c-ui}.#{$c-rail}';
 }
+
 @function ui-reveal() {
   @return '.#{$c-ui}.#{$c-reveal}';
 }
+
 @function ui-segment() {
   @return '.#{$c-ui}.#{$c-segment}';
 }
+
 @function ui-step() {
   @return '.#{$c-ui}.#{$c-step}';
 }
@@ -162,18 +182,23 @@ $c-corner: 'corner';
 @function ui-breadcrumb() {
   @return '.#{$c-ui}.#{$c-breadcrumb}';
 }
+
 @function ui-form() {
   @return '.#{$c-ui}.#{$c-form}';
 }
+
 @function ui-grid() {
   @return '.#{$c-ui}.#{$c-grid}';
 }
+
 @function ui-menu() {
   @return '.#{$c-ui}.#{$c-menu}';
 }
+
 @function ui-message() {
   @return '.#{$c-ui}.#{$c-message}';
 }
+
 @function ui-table() {
   @return '.#{$c-ui}.#{$c-table}';
 }
@@ -182,18 +207,23 @@ $c-corner: 'corner';
 @function ui-ad() {
   @return '.#{$c-ui}.#{$c-ad}';
 }
+
 @function ui-card() {
   @return '.#{$c-ui}.#{$c-card}';
 }
+
 @function ui-comment() {
   @return '.#{$c-ui}.#{$c-comment}';
 }
+
 @function ui-feed() {
   @return '.#{$c-ui}.#{$c-feed}';
 }
+
 @function ui-item() {
   @return '.#{$c-ui}.#{$c-item}';
 }
+
 @function ui-statistic() {
   @return '.#{$c-ui}.#{$c-statistic}';
 }

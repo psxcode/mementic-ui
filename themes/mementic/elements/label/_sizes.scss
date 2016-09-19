@@ -1,0 +1,20 @@
+/*-------------------
+        Sizes
+--------------------*/
+
+#{$ui-label-group} .#{$c-label},
+#{$ui-label} {
+  font-size: size('medium');
+}
+
+@mixin sizes($size-map) {
+  @each $name, $value in $size-map {
+
+	#{$ui-label-group}.#{$name} .#{$c-label},
+	#{$ui-label}.#{$name} {
+	  font-size: size($name);
+	}
+  }
+}
+
+@include sizes($sizes);

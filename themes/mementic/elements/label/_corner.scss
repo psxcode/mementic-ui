@@ -1,0 +1,94 @@
+/*-------------------
+    Corner Label
+--------------------*/
+
+/* Shortcuts */
+$ui-corner-label: '#{$ui-label}.#{$c-corner}';
+$left-corner: '[class*="#{$c-left} #{$c-corner}"]';
+$ui-segment: ui-segment();
+
+#{$ui-corner-label} {
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+
+  border-color: $background-color;
+
+  width: $corner-triangle-size;
+  height: $corner-triangle-size;
+  z-index: $corner-triangle-z-index;
+  transition: $corner-triangle-transition;
+
+  /* Icon Label */
+  background-color: transparent !important;
+
+  &::after {
+	position: absolute;
+	content: "";
+	right: 0;
+	top: 0;
+	z-index: -1;
+
+	width: 0;
+	height: 0;
+	background-color: transparent !important;
+
+	border-top: 0 solid transparent;
+	border-right: $corner-triangle-size solid transparent;
+	border-bottom: $corner-triangle-size solid transparent;
+	border-left: 0 solid transparent;
+
+	border-right-color: inherit;
+	transition: $corner-triangle-transition;
+  }
+
+  .#{$c-icon} {
+	cursor: default;
+	position: relative;
+	top: $corner-icon-top-offset;
+	left: $corner-icon-left-offset;
+	font-size: $corner-icon-size;
+	margin: 0;
+  }
+}
+
+/* Left Corner */
+#{$ui-label}#{$left-corner} {
+
+  &, &::after {
+	right: auto;
+	left: 0;
+  }
+
+  &::after {
+	border-top: $corner-triangle-size solid transparent;
+	border-right: $corner-triangle-size solid transparent;
+	border-bottom: 0 solid transparent;
+	border-left: 0 solid transparent;
+
+	border-top-color: inherit;
+  }
+
+  .#{$c-icon} {
+	left: - $corner-icon-left-offset;
+  }
+}
+
+/* Segment */
+#{$ui-segment} {
+
+  > #{$ui-corner-label} {
+	top: -1px;
+	right: -1px;
+  }
+
+  > #{$ui-label}#{$left-corner} {
+	right: auto;
+	left: -1px;
+  }
+}
+

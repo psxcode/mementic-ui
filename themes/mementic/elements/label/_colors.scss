@@ -1,0 +1,53 @@
+/*-------------------
+       Colors
+--------------------*/
+
+@mixin colors($color-map) {
+  @each $name, $color in $color-map {
+
+	/* Color */
+	#{$ui-label-group}.#{$name} .#{$c-label},
+	#{$ui-label}.#{$name} {
+	  background-color: $color !important;
+	  border-color: $color !important;
+	  color: color-text($inverted: true) !important;
+	}
+
+	/* Link */
+	#{$ui-label-group}.#{$name} a.#{$c-label}:hover,
+	a.#{$name}#{$ui-label}:hover {
+	  background-color: color-hover($color) !important;
+	  border-color: color-hover($color) !important;
+	  color: color-text-hovered($inverted: true) !important;
+	}
+
+	/* Corner */
+	.ui.#{$name}.corner.label,
+	.ui.#{$name}.corner.label:hover {
+	  background-color: transparent !important;
+	}
+
+	/* Ribbon */
+	.ui.#{$name}.ribbon.label {
+	  border-color: color-shadow($color) !important;
+	}
+
+	/* Basic */
+	.ui.basic.#{$name}.label {
+	  background-color: $color-light !important;
+	  color: $color !important;
+	  border-color: $color !important;
+	}
+
+	.ui.basic.#{$name}.labels a.label:hover,
+	a.ui.basic.#{$name}.label:hover {
+	  background-color: $color-light !important;
+	  color: color-hover($color) !important;
+	  border-color: color-hover($color) !important;
+	}
+  }
+}
+
+@if $auto-include-colors-info {
+  @include colors($colors-info);
+}

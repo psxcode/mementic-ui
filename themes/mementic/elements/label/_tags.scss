@@ -1,0 +1,50 @@
+/*-------------------
+         Tag
+--------------------*/
+
+/* Shortcuts */
+$ui-tag-label: '#{$ui-label}.#{$c-tag}';
+$ui-tag-label-group: '#{$ui-label-group}.#{$c-tag}';
+
+#{$ui-tag-label-group} .#{$c-label},
+#{$ui-tag-label} {
+
+  margin-left: 1em;
+  position: relative;
+  padding-left: $tag-horizontal-padding;
+  padding-right: $tag-horizontal-padding;
+
+  border-radius: 0 $border-radius $border-radius 0;
+  transition: $tag-transition;
+
+  &::before {
+	position: absolute;
+	transform: translateY(-50%) translateX(50%) rotate(-45deg);
+
+	top: $tag-triangle-top-offset;
+	right: $tag-triangle-right-offset;
+	content: '';
+
+	background-color: inherit;
+	background-image: $tag-triangle-background-image;
+
+	width: $tag-triangle-size;
+	height: $tag-triangle-size;
+	transition: $tag-transition;
+  }
+
+  &::after {
+	position: absolute;
+	content: '';
+	top: 50%;
+	left: -($tag-circle-size / 2);
+
+	margin-top: -($tag-circle-size / 2);
+	background-color: $tag-circle-color !important;
+	width: $tag-circle-size;
+	height: $tag-circle-size;
+
+	box-shadow: $tag-circle-box-shadow;
+	border-radius: $border-radius-circular;
+  }
+}

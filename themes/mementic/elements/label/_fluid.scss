@@ -1,0 +1,14 @@
+/*-------------------
+       Fluid
+--------------------*/
+
+/* Shortcuts */
+$ui-fluid-label: '#{$ui-label}.#{$c-fluid}';
+$ui-fluid-label-group: '#{$ui-label-group}.#{$c-fluid}';
+
+#{$ui-fluid-label-group} > .#{$c-label},
+#{$ui-fluid-label} {
+
+  width: 100%;
+  box-sizing: border-box;
+}

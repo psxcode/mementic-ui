@@ -1,0 +1,39 @@
+/*-------------------
+         Image
+--------------------*/
+
+/* Shortcuts */
+$ui-image-label: '#{$ui-label}.#{$c-image}';
+
+#{$ui-image-label} {
+
+  width: auto !important;
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 9999px;
+  vertical-align: baseline;
+  text-transform: none;
+
+  background: $image-label-background;
+  padding: $image-label-padding;
+  border-radius: $image-label-border-radius;
+  box-shadow: $image-label-box-shadow;
+
+  img {
+	display: inline-block;
+	vertical-align: top;
+
+	height: $image-label-image-height;
+	margin: $image-label-image-margin;
+	border-radius: $image-label-image-border-radius;
+  }
+
+  .#{$c-detail} {
+	background: $image-label-detail-background;
+	margin: $image-label-detail-margin;
+	padding: $image-label-detail-padding;
+	border-radius: 0 $image-label-border-radius $image-label-border-radius 0;
+  }
+}
+
+
