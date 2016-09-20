@@ -3,12 +3,12 @@
 --------------------*/
 
 /* Shortcuts */
-$top-attached: '[class*="#{$c-top} #{$c-attached}"]';
-$bottom-attached: '[class*="#{$c-bottom} #{$c-attached}"]';
-$top-left-attached: '[class*="#{$c-top} #{$c-left} #{$c-attached}"]';
-$top-right-attached: '[class*="#{$c-top} #{$c-right} #{$c-attached}"]';
-$bottom-left-attached: '[class*="#{$c-bottom} #{$c-left} #{$c-attached}"]';
-$bottom-right-attached: '[class*="#{$c-bottom} #{$c-right} #{$c-attached}"]';
+$top-attached: c-top-attached();
+$bottom-attached: c-bottom-attached();
+$top-left-attached: c-top-left-attached();
+$top-right-attached: c-top-right-attached();
+$bottom-left-attached: c-bottom-left-attached();
+$bottom-right-attached: c-bottom-right-attached();
 
 #{$ui-label} {
 

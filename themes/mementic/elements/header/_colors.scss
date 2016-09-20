@@ -5,17 +5,16 @@
 @mixin colors($color-map) {
   @each $name, $color in $color-map {
 
-	#{$ui-header} {
+	#{$ui-header}.#{$name} {
 
-	  &.#{$name} {
-		color: $color !important;
-	  }
-	  &.#{$name}.#{$c-dividing} {
+	  color: $color !important;
+
+	  &.#{$c-dividing} {
 		border-bottom: $divided-colored-border-width solid $color;
 	  }
 
 	  /* Inverted */
-	  &.#{$c-inverted}.#{$name} {
+	  &.#{$c-inverted} {
 		color: color-light($color) !important;
 	  }
 

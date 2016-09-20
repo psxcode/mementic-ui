@@ -1,0 +1,20 @@
+/*-------------------
+       Animated
+--------------------*/
+
+/* Shortcuts */
+$ui-animated-list: '#{$ui-list}.#{$c-animated}';
+
+#{$ui-animated-list} {
+
+  > .#{$c-item} {
+	transition: $animated-list-transition;
+  }
+
+  &:not(.#{$c-horizontal}) > .#{$c-item} {
+
+	&:hover {
+	  padding-left: $animated-list-indent;
+	}
+  }
+}

@@ -1,0 +1,102 @@
+/*-------------------
+        Celled
+--------------------*/
+
+/* Shortcuts */
+$ui-celled-list: '#{$ui-list}.#{$c-celled}';
+
+#{$ui-celled-list} {
+
+  > .#{$c-item},
+  > .#{$c-list} {
+	border-top: $celled-border;
+	padding-left: $celled-horizontal-padding;
+	padding-right: $celled-horizontal-padding;
+  }
+
+  > .#{$c-item}:last-child {
+	border-bottom: $celled-border;
+  }
+
+  /* Padding on all elements */
+  > .#{$c-item}:first-child,
+  > .#{$c-item}:last-child {
+	padding-top: $item-vertical-padding;
+	padding-bottom: $item-vertical-padding;
+  }
+
+  /* Sub Menu */
+  .#{$c-item} .#{$c-list} > .#{$c-item} {
+	border-width: 0;
+  }
+
+  .#{$c-list} > .#{$c-item}:first-child {
+	border-top-width: 0;
+  }
+
+  /* Celled Bulleted */
+  &.#{$c-bulleted} {
+	margin-left: 0;
+
+	.#{$c-list} > .#{$c-item},
+	> .#{$c-item} {
+	  padding-left: ($bullet-distance);
+	}
+
+	.#{$c-item} .#{$c-list} {
+	  margin-left: -($bullet-distance);
+	  margin-right: -($bullet-distance);
+	  padding-bottom: $item-vertical-padding;
+	}
+  }
+
+  /* Celled Ordered */
+  &.#{$c-ordered} {
+	margin-left: 0;
+
+	.#{$c-list} > .#{$c-item},
+	> .#{$c-item} {
+	  padding-left: $ordered-count-distance;
+	}
+
+	.#{$c-list} > .#{$c-item} {
+	  padding-left: $ordered-child-count-distance;
+	}
+
+	.#{$c-item} .#{$c-list} {
+	  margin-left: 0;
+	  margin-right: 0;
+	  padding-bottom: $item-vertical-padding;
+	}
+  }
+
+  /* Celled Horizontal */
+  &.#{$c-horizontal} {
+	margin-left: 0;
+
+	.#{$c-list} > .#{$c-item},
+	> .#{$c-item} {
+	  border-top: none;
+	  border-left: $celled-border;
+	  margin: 0;
+	  padding-left: $horizontal-celled-spacing;
+	  padding-right: $horizontal-celled-spacing;
+
+	  line-height: $horizontal-celled-line-height;
+
+	  &:last-child {
+		border-bottom: none;
+		border-right: $celled-border;
+	  }
+	}
+  }
+
+  /* Inverted */
+  &.#{$c-inverted} {
+
+	.#{$c-list} > .#{$c-item},
+	> .#{$c-item} {
+	  border: $celled-inverted-border;
+	}
+  }
+}

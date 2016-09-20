@@ -1,0 +1,19 @@
+/*-------------------
+      Sizes
+--------------------*/
+
+@each $name, $size in $sizes {
+
+  #{$ui-list}.#{$name} {
+
+	font-size: size($name);
+
+	.#{$c-horizontal} {
+
+	  .#{$c-list} > .#{$c-item},
+	  > .#{$c-item} {
+		font-size: size($name);
+	  }
+	}
+  }
+}

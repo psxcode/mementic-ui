@@ -1,0 +1,61 @@
+/*-------------------
+       Coupling
+--------------------*/
+
+/* Shortcuts */
+$ui-header: ui-header();
+$ui-segment: ui-segment();
+$attached: '.#{$c-attached}';
+$top-attached: c-top-attached();
+$bottom-attached: c-bottom-attached();
+$top-left-attached: c-top-left-attached();
+$top-right-attached: c-top-right-attached();
+$bottom-left-attached: c-bottom-left-attached();
+$bottom-right-attached: c-bottom-right-attached();
+$right-floated: c-right-floated();
+
+/* Header */
+#{$ui-header} > #{$ui-label} {
+  margin-top: $line-height-offset;
+}
+
+/* Segment */
+#{$ui-segment} {
+
+  /* Remove border radius on attached segment */
+  #{$attached},
+  #{$bottom-attached} {
+	> .#{$c-label}#{$top-left-attached} {
+	  border-top-left-radius: 0;
+	}
+
+	> .#{$c-label}#{$top-right-attached} {
+	  border-top-right-radius: 0;
+	}
+  }
+
+  #{$top-attached} {
+	> .#{$c-label}#{$bottom-left-attached} {
+	  border-bottom-left-radius: 0;
+	}
+
+	> .#{$c-label}#{$bottom-right-attached} {
+	  border-bottom-right-radius: 0;
+	}
+  }
+
+}
+
+#{$ui-label} {
+
+  /* Padding on next content after a label */
+  &#{$top-attached}:first-child + :not(#{$c-attached}),
+  &#{$top-attached} + #{$right-floated} {
+	margin-top: $attached-segment-padding !important;
+  }
+
+  &#{$bottom-attached}:first-child ~ :last-child:not(.#{$c-attached}) {
+	margin-top: 0;
+	margin-bottom: $attached-segment-padding !important;
+  }
+}

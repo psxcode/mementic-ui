@@ -1,0 +1,32 @@
+/*******************************
+            Coupling
+*******************************/
+
+/* Shortcuts */
+$ui-menu: ui-menu();
+
+#{$ui-menu} #{$ui-list} > .#{$c-item},
+#{$ui-menu} #{$ui-list} .#{$c-list} > .#{$c-item} {
+  display: list-item;
+  table-layout: fixed;
+  background-color: transparent;
+
+  list-style-type: $list-style-type;
+  list-style-position: $list-style-position;
+
+  padding: $item-vertical-padding $item-horizontal-padding;
+  line-height: $item-line-height;
+
+  &::before {
+	border: none;
+	background: none;
+  }
+
+  &:first-child {
+	padding-top: 0;
+  }
+
+  &:last-child {
+	padding-bottom: 0;
+  }
+}

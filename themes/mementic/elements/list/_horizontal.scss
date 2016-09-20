@@ -1,0 +1,61 @@
+/*-------------------
+      Horizontal
+--------------------*/
+
+/* Shortcuts */
+$ui-horizontal-list: '#{$ui-list}.#{$c-horizontal}';
+
+#{$ui-horizontal-list} {
+
+  display: inline-block;
+  font-size: 0;
+
+  /* Item */
+  > .#{$c-item} {
+	display: inline-block;
+	margin-left: $horizontal-spacing;
+	font-size: 1rem;
+
+	/* Padding on all elements */
+	&:first-child,
+	&:last-child {
+	  padding-top: $item-vertical-padding;
+	  padding-bottom: $item-vertical-padding;
+	}
+
+	/* Icon */
+	> .#{$c-icon} {
+	  margin: 0;
+	  padding: 0 $horizontal-icon-distance 0 0;
+
+	  /* Icon and Content after */
+	  &,
+	  & + .#{$c-content} {
+		float: none;
+		display: inline-block;
+	  }
+	}
+  }
+
+  &:not(.celled) > .#{$c-item}:first-child {
+	margin-left: 0 !important;
+	padding-left: 0 !important;
+  }
+
+  /* Child List */
+  .#{$c-list} {
+	padding-left: 0;
+	padding-bottom: 0;
+  }
+
+  /* Align content in Items */
+  .#{$c-list} > .#{$c-item},
+  > .#{$c-item} {
+
+	> .#{$c-image},
+	> .#{$c-icon},
+	> .#{$c-content} {
+	  vertical-align: $horizontal-vertical-align;
+	}
+  }
+}

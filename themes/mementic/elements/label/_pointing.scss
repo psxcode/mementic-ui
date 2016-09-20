@@ -3,122 +3,119 @@
 --------------------*/
 
 /* Shortcuts */
-$ui-pointing-label: '#{$ui-label}.#{$c-pointing}';
+$up-pointing: c-up-pointing();
+$down-pointing: c-down-pointing();
+$left-pointing: c-left-pointing();
+$right-pointing: c-right-pointing();
 
-#{$ui-pointing-label} {
-  position: relative;
+#{$ui-label} {
 
-  &::before {
-	background-color: inherit;
-	background-image: inherit;
-	border-width: 0;
-	border-style: solid;
-	border-color: $pointing-border-color;
+  /* Pointing */
+  &.#{$c-pointing} {
+	position: relative;
+
+	&::before {
+	  background-color: inherit;
+	  background-image: inherit;
+	  border-width: 0;
+	  border-style: solid;
+	  border-color: $pointing-border-color;
+	}
+
+	/* Attached */
+	&.#{$c-attached} {
+	  position: absolute;
+	}
+
+	/* Arrow */
+	&::before {
+	  position: absolute;
+	  content: '';
+	  transform: rotate(45deg);
+	  background-image: none;
+
+	  z-index: $pointing-triangle-z-index;
+	  width: $pointing-triangle-size;
+	  height: $pointing-triangle-size;
+	  transition: $pointing-triangle-transition;
+	}
   }
-}
 
-.ui.attached.pointing.label {
-  position: absolute;
-}
+  /*--- Above ---*/
+  &.#{$c-pointing},
+  &#{$down-pointing} {
+	margin-top: $pointing-vertical-distance;
 
-/* Arrow */
-.ui.pointing.label:before {
-  position: absolute;
-  content: '';
-  transform: rotate(45deg);
-  background-image: none;
+	&::before {
+	  border-width: $border-width 0 0 $border-width;
+	  transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	  top: 0;
+	  left: 50%;
+	}
 
-  z-index: $pointing-triangle-z-index;
-  width: $pointing-triangle-size;
-  height: $pointing-triangle-size;
-  transition: $pointing-triangle-transition;
-}
+	/* Basic */
+	&.#{$c-basic}::before {
+	  margin-top: $basic-pointing-triangle-offset;
+	}
+  }
 
-/*--- Above ---*/
-.ui.pointing.label,
-.ui[class*="pointing above"].label {
-  margin-top: $pointing-vertical-distance;
-}
+  /*--- Below ---*/
+  &#{$up-pointing} {
+	margin-top: 0;
+	margin-bottom: $pointing-vertical-distance;
 
-.ui.pointing.label:before,
-.ui[class*="pointing above"].label:before {
-  border-width: $border-width 0 0 $border-width;
-  transform: translateX(-50%) translateY(-50%) rotate(45deg);
-  top: 0;
-  left: 50%;
-}
+	&::before {
+	  border-width: 0 $border-width $border-width 0;
+	  bottom: auto;
+	  right: auto;
+	  transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	  top: 100%;
+	  left: 50%;
+	}
 
-/*--- Below ---*/
-.ui[class*="bottom pointing"].label,
-.ui[class*="pointing below"].label {
-  margin-top: 0;
-  margin-bottom: $pointing-vertical-distance;
-}
+	/* Basic */
+	&.#{$c-basic}::before {
+	  margin-top: - $basic-pointing-triangle-offset;
+	}
+  }
 
-.ui[class*="bottom pointing"].label:before,
-.ui[class*="pointing below"].label:before {
-  border-width: 0 $border-width $border-width 0;
-  top: auto;
-  right: auto;
-  transform: translateX(-50%) translateY(-50%) rotate(45deg);
-  top: 100%;
-  left: 50%;
-}
+  /*--- Left ---*/
+  &#{$left-pointing} {
+	margin-top: 0;
+	margin-left: $pointing-horizontal-distance;
 
-/*--- Left ---*/
-.ui[class*="left pointing"].label {
-  margin-top: 0;
-  margin-left: $pointing-horizontal-distance;
-}
+	&::before {
+	  border-width: 0 0 $border-width $border-width;
+	  transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	  bottom: auto;
+	  right: auto;
+	  top: 50%;
+	  left: 0;
+	}
 
-.ui[class*="left pointing"].label:before {
-  border-width: 0 0 $border-width $border-width;
-  transform: translateX(-50%) translateY(-50%) rotate(45deg);
-  bottom: auto;
-  right: auto;
-  top: 50%;
-  left: 0;
-}
+	/* Basic */
+	&.#{$c-basic}::before {
+	  left: $basic-pointing-triangle-offset;
+	}
+  }
 
-/*--- Right ---*/
-.ui[class*="right pointing"].label {
-  margin-top: 0;
-  margin-right: $pointing-horizontal-distance;
-}
+  /*--- Right ---*/
+  #{$right-pointing} {
+	margin-top: 0;
+	margin-right: $pointing-horizontal-distance;
 
-.ui[class*="right pointing"].label:before {
-  border-width: $border-width $border-width 0 0;
-  transform: translateX(50%) translateY(-50%) rotate(45deg);
-  top: 50%;
-  right: 0;
-  bottom: auto;
-  left: auto;
-}
+	&::before {
+	  border-width: $border-width $border-width 0 0;
+	  transform: translateX(50%) translateY(-50%) rotate(45deg);
+	  top: 50%;
+	  right: 0;
+	  bottom: auto;
+	  left: auto;
+	}
 
-/* Basic Pointing */
-
-/*--- Above ---*/
-.ui.basic.pointing.label:before,
-.ui.basic[class*="pointing above"].label:before {
-  margin-top: $basic-pointing-triangle-offset;
-}
-
-/*--- Below ---*/
-.ui.basic[class*="bottom pointing"].label:before,
-.ui.basic[class*="pointing below"].label:before {
-  bottom: auto;
-  top: 100%;
-  margin-top: - $basic-pointing-triangle-offset;
-}
-
-/*--- Left ---*/
-.ui.basic[class*="left pointing"].label:before {
-  top: 50%;
-  left: $basic-pointing-triangle-offset;
-}
-
-/*--- Right ---*/
-.ui.basic[class*="right pointing"].label:before {
-  top: 50%;
-  right: $basic-pointing-triangle-offset;
+	/* Basic */
+	&.#{$c-basic}::before {
+	  right: $basic-pointing-triangle-offset;
+	}
+  }
 }

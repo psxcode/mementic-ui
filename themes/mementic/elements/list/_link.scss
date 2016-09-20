@@ -1,0 +1,59 @@
+/*-------------------
+       Link
+--------------------*/
+
+/* Shortcuts */
+$ui-link-list: '#{$ui-list}.#{$c-link}';
+
+#{$ui-link-list} {
+
+  /* Link Item */
+  a.#{$c-item},
+  .#{$c-item} a:not(.#{$c-ui}) {
+	color: $link-list-item-color;
+	transition: $link-list-transition;
+
+	&:hover {
+	  color: $link-list-item-hover-color;
+	}
+
+	&:active {
+	  color: $link-list-item-down-color;
+	}
+  }
+
+  /* Active Item */
+  .#{$c-active}.#{$c-item} {
+	&,
+	a:not(.#{$c-ui}) {
+	  color: $link-list-item-active-color;
+	}
+  }
+
+  /* Inverted */
+  &.#{$c-inverted} {
+
+	.#{$c-item},
+	a.#{$c-item},
+	.#{$c-item} a:not(.#{$c-ui}) {
+	  color: $inverted-link-list-item-color;
+	}
+
+	a.#{$c-item},
+	.#{$c-item} a:not(.#{$c-ui}) {
+
+	  &:hover {
+		color: $inverted-link-list-item-hover-color;
+	  }
+
+	  &:active {
+		color: $inverted-link-list-item-down-color;
+	  }
+	}
+
+	a.#{$c-item}.#{$c-active},
+	.#{$c-item}.#{$c-active} a:not(.#{$c-ui}) {
+	  color: $inverted-link-list-item-active-color;
+	}
+  }
+}

@@ -2,9 +2,9 @@
        Aligned
 --------------------*/
 
-$left-aligned: "[class*='#{$c-left} #{$c-aligned}']";
-$right-aligned: "[class*='#{$c-right} #{$c-aligned}']";
-$center-aligned: "[class*='#{$c-center} #{$c-aligned}']";
+$left-aligned: c-left-aligned();
+$right-aligned: c-right-aligned();
+$center-aligned: c-center-aligned();
 
 #{$ui-header} {
 

@@ -1,0 +1,70 @@
+/*-------------------
+      Bulleted
+--------------------*/
+
+/* Shortcuts */
+$ui-bulleted-list: '#{$ui-list}.#{$c-bulleted}';
+
+#{$ui-ul-list},
+#{$ui-bulleted-list} {
+  margin-left: $bullet-distance;
+}
+
+/* List Item */
+#{$ui-ul-list} li,
+#{$ui-bulleted-list} .#{$c-list} > .#{$c-item},
+#{$ui-bulleted-list} > .#{$c-item} {
+  position: relative;
+
+  /* Bullet */
+  &::before {
+	user-select: none;
+	pointer-events: none;
+	position: absolute;
+	top: auto;
+	left: auto;
+	font-weight: normal;
+	margin-left: $bullet-offset;
+	content: $bullet-character;
+	opacity: $bullet-opacity;
+	color: $bullet-color;
+	vertical-align: $bullet-vertical-align;
+  }
+}
+
+/* Link Item */
+#{$ui-ul-list} li:before,
+#{$ui-bulleted-list} .#{$c-list} > a.#{$c-item}:before,
+#{$ui-bulleted-list} > a.#{$c-item}:before {
+  color: $bullet-link-color;
+}
+
+/* Child List */
+#{$ui-ul-list} ul,
+#{$ui-bulleted-list} .#{$c-list} {
+  padding-left: $bullet-child-distance;
+}
+
+/* Horizontal Bulleted */
+ul#{$ui-bulleted-list}.#{$c-horizontal},
+#{$ui-bulleted-list}.#{$c-horizontal} {
+  margin-left: 0;
+}
+
+/* Horizontal List Item */
+ul#{$ui-bulleted-list}.#{$c-horizontal} li,
+#{$ui-bulleted-list}.#{$c-horizontal} > .#{$c-item} {
+  margin-left: $horizontal-bullet-spacing;
+
+  &::before {
+	color: $horizontal-bullet-color;
+  }
+
+  &:first-child {
+	margin-left: 0;
+
+	&::before {
+	  display: none;
+	}
+  }
+}

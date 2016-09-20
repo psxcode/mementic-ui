@@ -4,7 +4,7 @@
 
 $ui-icon-input: '#{$ui-input}.#{$c-icon}';
 $ui-icon: ui-icon();
-$left-icon: "[class*='#{$c-left} #{$c-icon}']";
+$left-icon: c-strict-order($c-left, $c-icon);
 
 #{$ui-icon-input} {
 

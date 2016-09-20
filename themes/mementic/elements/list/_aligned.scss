@@ -1,0 +1,26 @@
+/*-------------------
+       Aligned
+--------------------*/
+
+/* Shortcuts */
+$top-aligned: c-top-aligned();
+$middle-aligned: c-middle-aligned();
+$bottom-aligned: c-bottom-aligned();
+
+#{$ui-list}#{$top-aligned} .#{$c-image},
+#{$ui-list}#{$top-aligned} .#{$c-content},
+#{$ui-list} #{$top-aligned} {
+  vertical-align: top !important;
+}
+
+#{$ui-list}#{$middle-aligned} .#{$c-image},
+#{$ui-list}#{$middle-aligned} .#{$c-content},
+#{$ui-list} #{$middle-aligned} {
+  vertical-align: middle !important;
+}
+
+#{$ui-list}#{$bottom-aligned} .#{$c-image},
+#{$ui-list}#{$bottom-aligned} .#{$c-content},
+#{$ui-list} #{$bottom-aligned} {
+  vertical-align: bottom !important;
+}

@@ -4,10 +4,10 @@
 
 /* Shortcuts */
 $ui-labeled-input: '#{$ui-input}.#{$c-labeled}';
-$right-labeled: '[class*="#{$c-right} #{$c-labeled}"]';
-$corner-labeled: '[class*="#{$c-corner} #{$c-labeled}"]';
-$left-corner: '[class*="#{$c-left} #{$c-corner}"]';
-$left-corner-labeled: '[class*="#{$c-left} #{$c-corner} #{$c-labeled}"]';
+$right-labeled: c-right-labeled();
+$corner-labeled: c-corner-labeled();
+$left-corner: c-left-corner();
+$left-corner-labeled: c-left-corner-labeled();
 
 /* Adjacent Label */
 #{$ui-labeled-input} {

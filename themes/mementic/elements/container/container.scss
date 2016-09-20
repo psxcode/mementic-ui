@@ -1,8 +1,9 @@
 /* Shortcuts */
 $ui-container: ui-container();
-$left-aligned: "[class*='#{$c-left} #{$c-aligned}']";
-$right-aligned: "[class*='#{$c-right} #{$c-aligned}']";
-$center-aligned: "[class*='#{$c-center} #{$c-aligned}']";
+$left-aligned: c-left-aligned();
+$right-aligned: c-right-aligned();
+$center-aligned: c-center-aligned();
+$very-relaxed: c-very-relaxed();
 
 #{$ui-container} {
 
@@ -12,6 +13,16 @@ $center-aligned: "[class*='#{$c-center} #{$c-aligned}']";
   width: auto;
   margin-left: auto;
   margin-right: auto;
+
+  /* Grid Container */
+  &.#{$c-grid} {
+
+	&,
+	&.#{$c-relaxed},
+	&#{$very-relaxed} {
+	  width: auto;
+	}
+  }
 
   $i: 0;
   @each $name, $bp in $bps {
@@ -23,26 +34,22 @@ $center-aligned: "[class*='#{$c-center} #{$c-aligned}']";
 	  $width: calc(#{$bp - $min-gutter} - #{$scrollbar-width});
 	  width: $width;
 
+	  /* Grid Container */
 	  &.#{$c-grid} {
 		width: calc(#{$width} + 2rem);
-	  }
-	  &.relaxed.#{$c-grid} {
-		width: calc(#{$width} + 3rem);
-	  }
-	  &.very.relaxed.#{$c-grid} {
-		width: calc(#{$width} + 5rem);
+
+		.#{$c-relaxed} {
+		  width: calc(#{$width} + 3rem);
+		}
+		#{$very-relaxed} {
+		  width: calc(#{$width} + 5rem);
+		}
 	  }
 	}
   }
 
-  &.#{$c-grid},
-  &.relaxed.#{$c-grid},
-  &.very.relaxed.#{$c-grid} {
-	width: auto;
-  }
-
   /* Text Container */
-  &.text {
+  &.#{$c-text} {
 	font-family: $text-font-family;
 	max-width: $text-width;
 	line-height: $text-line-height;
@@ -57,7 +64,7 @@ $center-aligned: "[class*='#{$c-center} #{$c-aligned}']";
   &#{$left-aligned} {
 	text-align: left;
   }
-  
+
   &#{$right-aligned} {
 	text-align: right;
   }
@@ -66,7 +73,7 @@ $center-aligned: "[class*='#{$c-center} #{$c-aligned}']";
 	text-align: center;
   }
 
-  &.justified {
+  &.#{$c-justified} {
 	text-align: justify;
 	hyphens: auto;
   }

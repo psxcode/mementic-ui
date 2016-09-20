@@ -1,0 +1,19 @@
+/* Link */
+#{$ui-label} {
+
+  @at-root a#{&} {
+	cursor: pointer;
+  }
+
+  /* Inside Link */
+  > a {
+	cursor: pointer;
+	color: inherit;
+	opacity: $link-opacity;
+	transition: $link-transition;
+
+	&:hover {
+	  opacity: 1;
+	}
+  }
+}

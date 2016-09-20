@@ -4,8 +4,8 @@
 
 /* Shortcuts */
 $ui-spaced-image: '#{$ui-image}.#{$c-spaced}';
-$left-spaced: "[class*='#{$c-left} #{$c-spaced}']";
-$right-spaced: "[class*='#{$c-right} #{$c-spaced}']";
+$left-spaced: c-left-spaced();
+$right-spaced: c-right-spaced();
 
 #{$ui-spaced-image} {
 

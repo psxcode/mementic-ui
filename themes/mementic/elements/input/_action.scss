@@ -4,7 +4,7 @@
 
 /* Shortcuts */
 $ui-action-input: '#{$ui-input}.#{$c-action}';
-$left-action: '[class*="#{$c-left} #{$c-action}"]';
+$left-action: c-left-action();
 
 #{$ui-action-input} {
 

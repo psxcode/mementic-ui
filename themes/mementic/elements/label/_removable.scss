@@ -1,0 +1,17 @@
+/* Removable label */
+#{$ui-label} {
+
+  > .close.#{$c-icon},
+  > .delete.#{$c-icon} {
+	cursor: pointer;
+	margin-right: 0;
+	margin-left: $delete-margin;
+	font-size: $delete-size;
+	opacity: $delete-opacity;
+	transition: $delete-transition;
+
+	&:hover {
+	  opacity: 1;
+	}
+  }
+}

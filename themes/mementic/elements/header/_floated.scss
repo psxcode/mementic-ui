@@ -3,7 +3,7 @@
 --------------------*/
 
 /* Shortcuts */
-$right-floated: "[class*='#{$c-right} #{$c-floated}']";
+$right-floated: c-right-floated();
 
 #{$ui-header} {
 

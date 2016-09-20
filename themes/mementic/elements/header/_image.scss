@@ -11,10 +11,9 @@
 	width: $image-width;
 	height: $image-height;
 	vertical-align: $image-alignment;
-  }
 
-  > .#{$c-image}:only-child,
-  > img:only-child {
-	margin-right: $image-margin;
+	&:only-child {
+	  margin-right: $image-margin;
+	}
   }
 }

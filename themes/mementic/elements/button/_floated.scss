@@ -3,8 +3,8 @@
 --------------------*/
 
 /* Shortcuts */
-$left-floated: "[class*='#{$c-left} #{$c-floated}']";
-$right-floated: "[class*='#{$c-right} #{$c-floated}']";
+$left-floated: c-left-floated();
+$right-floated: c-right-floated();
 
 #{$ui-button-group}#{$left-floated},
 #{$ui-button}#{$left-floated} {

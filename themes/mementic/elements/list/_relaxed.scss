@@ -1,0 +1,64 @@
+/*-------------------
+       Relaxed
+--------------------*/
+
+/* Shortcuts */
+$ui-relaxed-list: '#{$ui-list}.#{$c-relaxed}';
+$very-relaxed: c-very-relaxed();
+
+#{$ui-relaxed-list} {
+
+  &:not(.#{$c-horizontal}) > .#{$c-item} {
+
+	&:not(:first-child) {
+	  padding-top: $relaxed-item-vertical-padding;
+	}
+	&:not(:last-child) {
+	  padding-bottom: $relaxed-item-vertical-padding;
+	}
+  }
+
+  &.#{$c-horizontal} {
+
+	.#{$c-list} > .#{$c-item},
+	> .#{$c-item} {
+
+	  &:not(:first-child) {
+		padding-left: $relaxed-horizontal-padding;
+	  }
+
+	  &:not(:last-child) {
+		padding-right: $relaxed-horizontal-padding;
+	  }
+	}
+  }
+}
+
+/* Very Relaxed */
+#{$ui-list}#{$very-relaxed} {
+
+  &:not(.#{$c-horizontal}) > .#{$c-item} {
+
+	&:not(:first-child) {
+	  padding-top: $very-relaxed-item-vertical-padding;
+	}
+	&:not(:last-child) {
+	  padding-bottom: $very-relaxed-item-vertical-padding;
+	}
+  }
+
+  .#{$c-horizontal} {
+
+	.#{$c-list} > .#{$c-item},
+	> .#{$c-item} {
+
+	  &:not(:first-child) {
+		padding-left: $very-relaxed-horizontal-padding;
+	  }
+
+	  &:not(:last-child) {
+		padding-right: $very-relaxed-horizontal-padding;
+	  }
+	}
+  }
+}

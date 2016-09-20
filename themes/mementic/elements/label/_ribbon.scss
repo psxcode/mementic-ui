@@ -5,7 +5,7 @@
 /* Shortcuts */
 $ui-ribbon-label: '#{$ui-label}.#{$c-ribbon}';
 $ribbon-label: '#{$c-label}.#{$c-ribbon}';
-$right-ribbon: '[class*="#{$c-right} #{$c-ribbon}"]';
+$right-ribbon: c-right-ribbon();
 $ui-image: ui-image();
 $ui-card: ui-card();
 $ui-table: ui-table();

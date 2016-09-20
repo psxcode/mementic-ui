@@ -1,0 +1,45 @@
+/*-------------------
+       Inverted
+--------------------*/
+
+/* Shortcuts */
+$ui-inverted-list: '#{$ui-list}.#{$c-inverted}';
+
+#{$ui-inverted-list} {
+
+  .#{$c-list} > a.#{$c-item},
+  > a.#{$c-item} {
+
+	> .#{$c-icon} {
+	  color: $inverted-icon-link-color;
+	}
+
+	.#{$c-header} {
+	  color: $inverted-header-color;
+	}
+
+	.description {
+	  color: $inverted-description-color;
+	}
+  }
+
+  /* Item Link */
+  .#{$c-list} > a.#{$c-item},
+  > a.#{$c-item} {
+	cursor: pointer;
+	color: $inverted-item-link-color;
+
+	&:hover {
+	  color: $inverted-item-link-hover-color;
+	}
+  }
+
+  /* Linking Content */
+  .#{$c-item} a:not(.#{$c-ui}) {
+	color: $inverted-item-link-color !important;
+
+	&:hover {
+	  color: $inverted-item-link-hover-color !important;
+	}
+  }
+}

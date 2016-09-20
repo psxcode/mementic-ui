@@ -1,0 +1,117 @@
+/*-------------------
+       Divided
+--------------------*/
+
+/* Shortcuts */
+$ui-divided-list: '#{$ui-list}.#{$c-divided}';
+
+#{$ui-divided-list} {
+
+  > .#{$c-item} {
+	border-top: $divided-border;
+  }
+
+  .#{$c-list} > .#{$c-item} {
+	border-top: $divided-child-list-border;
+  }
+
+  .#{$c-item} .#{$c-list} > .#{$c-item} {
+	border-top: $divided-child-item-border;
+  }
+
+  .#{$c-list} > .#{$c-item},
+  > .#{$c-item} {
+
+	&:first-child {
+	  border-top: none;
+	}
+  }
+
+  /* Sub Menu */
+  &:not(.#{$c-horizontal}) .#{$c-list} > .#{$c-item} {
+
+	&:first-child {
+	  border-top-width: $divided-border-width;
+	}
+  }
+
+  /* Divided bulleted */
+  &.#{$c-bulleted} {
+
+	&:not(.#{$c-horizontal}),
+	.#{$c-list} {
+	  margin-left: 0;
+	  padding-left: 0;
+	}
+
+	> .#{$c-item}:not(.#{$c-horizontal}) {
+	  padding-left: $bullet-distance;
+	}
+  }
+
+  /* Divided Ordered */
+  &.#{$c-ordered} {
+	margin-left: 0;
+
+	.#{$c-list} > .#{$c-item},
+	> .#{$c-item} {
+	  padding-left: $ordered-count-distance;
+	}
+
+	.#{$c-item} .#{$c-list} {
+	  margin-left: 0;
+	  margin-right: 0;
+	  padding-bottom: $item-vertical-padding;
+	}
+
+	.#{$c-item} .#{$c-list} > .#{$c-item} {
+	  padding-left: $ordered-child-count-distance;
+	}
+  }
+
+  /* Divided Selection */
+  &.#{$c-selection} {
+
+	.#{$c-list} > .#{$c-item},
+	> .#{$c-item} {
+	  margin: 0;
+	  border-radius: 0;
+	}
+  }
+
+  /* Divided horizontal */
+  &.#{$c-horizontal} {
+	margin-left: 0;
+
+	> .#{$c-item} {
+
+	  border-top: none;
+	  border-left: $divided-border;
+	  margin: 0;
+	  line-height: $horizontal-divided-line-height;
+
+	  &:first-child {
+		border-left: none;
+	  }
+
+	  &:not(:first-child) {
+		padding-left: $horizontal-divided-spacing;
+	  }
+
+	  &:not(:last-child) {
+		padding-right: $horizontal-divided-spacing;
+	  }
+	}
+  }
+
+  /* Inverted */
+  &.#{$c-inverted} {
+
+	> .#{$c-item},
+	> .#{$c-list},
+	.#{$c-horizontal} > .#{$c-item} {
+	  border-color: $divided-inverted-border-color;
+	}
+  }
+}
+

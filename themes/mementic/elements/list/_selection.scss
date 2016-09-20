@@ -1,0 +1,77 @@
+/*-------------------
+      Selection
+--------------------*/
+
+/* Shortcuts */
+$ui-selection-list: '#{$ui-list}.#{$c-selection}';
+
+#{$ui-selection-list} {
+
+  /* Item */
+  .#{$c-list} > .#{$c-item},
+  > .#{$c-item} {
+	cursor: pointer;
+	background: $selection-list-background;
+	padding: $selection-list-item-vertical-padding $selection-list-item-horizontal-padding;
+	margin: $selection-list-item-margin;
+	color: $selection-list-color;
+	border-radius: $selection-list-item-border-radius;
+	transition: $selection-list-transition;
+
+	&:last-child {
+	  margin-bottom: 0;
+	}
+
+	&:hover {
+	  background: $selection-list-hover-background;
+	  color: $selection-list-hover-color;
+	}
+
+	&:active {
+	  background: $selection-list-down-background;
+	  color: $selection-list-down-color;
+	}
+
+	&.#{$c-active} {
+	  background: $selection-list-active-background;
+	  color: $selection-list-active-color;
+	}
+  }
+
+  /* Inverted */
+  &.#{$c-inverted} {
+
+	/* Item */
+	.#{$c-list} > .#{$c-item},
+	> .#{$c-item} {
+	  background: $inverted-selection-list-background;
+	  color: $inverted-selection-list-color;
+
+	  &:hover {
+		background: $inverted-selection-list-hover-background;
+		color: $inverted-selection-list-hover-color;
+	  }
+
+	  &:active {
+		background: $inverted-selection-list-down-background;
+		color: $inverted-selection-list-down-color;
+	  }
+
+	  &.#{$c-active} {
+		background: $inverted-selection-list-active-background;
+		color: $inverted-selection-list-active-color;
+	  }
+	}
+  }
+
+  /* Celled / Divided Selection List */
+  &.#{$c-celled},
+  &.#{$c-divided} {
+
+	/* Item */
+	.#{$c-list} > .#{$c-item},
+	> .#{$c-item} {
+	  border-radius: 0;
+	}
+  }
+}

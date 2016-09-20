@@ -13,14 +13,15 @@ $ui-icon-header: '#{$ui-header}.#{$c-icon}';
 	font-size: $icon-size;
 	padding-top: $icon-offset;
 	vertical-align: $icon-alignment;
+
+	/* With Text Node */
+	&:only-child {
+	  display: inline-block;
+	  padding: 0;
+	  margin-right: $icon-margin;
+	}
   }
 
-  /* With Text Node */
-  .#{$c-icon}:only-child {
-	display: inline-block;
-	padding: 0;
-	margin-right: $icon-margin;
-  }
 }
 
 #{$ui-icon-header} {
@@ -41,7 +42,7 @@ $ui-icon-header: '#{$ui-header}.#{$c-icon}';
 	margin-top: $icon-header-first-margin;
   }
 
-  .#{$c-icon} {
+  > .#{$c-icon} {
 	float: none;
 	display: block;
 	width: auto;
@@ -51,25 +52,27 @@ $ui-icon-header: '#{$ui-header}.#{$c-icon}';
 	font-size: $icon-header-size;
 	margin: 0 auto $icon-header-margin;
 	opacity: $icon-header-opacity;
+
+	&.#{$c-circular} {
+	  font-size: $circular-header-icon-size;
+	}
+	&.#{$c-square} {
+	  font-size: $square-header-icon-size;
+	}
   }
 
-  .#{$c-circular}.#{$c-icon} {
-	font-size: $circular-header-icon-size;
-  }
-
-  .#{$c-square}.#{$c-icon} {
-	font-size: $square-header-icon-size;
-  }
-
-  &.#{$c-block} .#{$c-icon} {
-	margin-bottom: 0;
-  }
-
+  /* Icon Header Content */
   .#{$c-content} {
 	display: block;
 	padding: 0;
   }
 
+  /* Block Icon Header */
+  &.#{$c-block} > .#{$c-icon} {
+	margin-bottom: 0;
+  }
+
+  /* Aligned Icon Header */
   &.#{$c-aligned} {
 	margin-left: auto;
 	margin-right: auto;

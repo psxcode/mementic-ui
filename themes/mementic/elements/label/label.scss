@@ -29,195 +29,76 @@ $ui-label-group: ui-label-group();
   &:last-child {
 	margin-right: 0;
   }
-
-  /* Link */
-  @at-root a#{&} {
-	cursor: pointer;
-  }
-
-  /* Inside Link */
-  > a {
-	cursor: pointer;
-	color: inherit;
-	opacity: $link-opacity;
-	transition: $link-transition;
-
-	&:hover {
-	  opacity: 1;
-	}
-  }
-
-  /* Image */
-  > img {
-	width: auto !important;
-	vertical-align: middle;
-	height: $image-height !important;
-  }
-
-  /* Icon */
-  > .#{$c-icon} {
-	width: auto;
-	margin: 0 $icon-distance 0 0;
-  }
-
-  /* Detail */
-  > .detail {
-	display: inline-block;
-	vertical-align: top;
-	font-weight: $detail-font-weight;
-	margin-left: $detail-margin;
-	opacity: $detail-opacity;
-
-	.#{$c-icon} {
-	  margin: 0 $detail-icon-distance 0 0;
-	}
-  }
-
-  /* Removable label */
-  > .close.#{$c-icon},
-  > .delete.#{$c-icon} {
-	cursor: pointer;
-	margin-right: 0;
-	margin-left: $delete-margin;
-	font-size: $delete-size;
-	opacity: $delete-opacity;
-	transition: $delete-transition;
-
-	&:hover {
-	  opacity: 1;
-	}
-  }
-
-
 }
 
 /*-------------------
        Group
 --------------------*/
 
-.ui.labels > .label {
+#{$ui-label-group} > .#{$c-label} {
   margin: 0 $group-horizontal-margin $group-vertical-margin 0;
-}
-
-/*-------------------
-       Coupling
---------------------*/
-
-.ui.header > .ui.label {
-  margin-top: $line-height-offset;
-}
-
-/* Remove border radius on attached segment */
-.ui.attached.segment > .ui.top.left.attached.label,
-.ui.bottom.attached.segment > .ui.top.left.attached.label {
-  border-top-left-radius: 0;
-}
-
-.ui.attached.segment > .ui.top.right.attached.label,
-.ui.bottom.attached.segment > .ui.top.right.attached.label {
-  border-top-right-radius: 0;
-}
-
-.ui.top.attached.segment > .ui.bottom.left.attached.label {
-  border-bottom-left-radius: 0;
-}
-
-.ui.top.attached.segment > .ui.bottom.right.attached.label {
-  border-bottom-right-radius: 0;
-}
-
-/* Padding on next content after a label */
-.ui.top.attached.label:first-child + :not(.attached),
-.ui.top.attached.label + [class*="right floated"] + * {
-  margin-top: $attached-segment-padding !important;
-}
-
-.ui.bottom.attached.label:first-child ~ :last-child:not(.attached) {
-  margin-top: 0;
-  margin-bottom: $attached-segment-padding !important;
-}
-
-/*******************************
-             Types
-*******************************/
-
-
-
-
-/*******************************
-             States
-*******************************/
-
-/*-------------------
-      Disabled
---------------------*/
-
-.ui.label.disabled {
-  opacity: 0.5;
 }
 
 /*-------------------
         Hover
 --------------------*/
 
-a.ui.labels .label:hover,
-a.ui.label:hover {
+#{$ui-label-group} a.#{$c-label}:hover,
+a#{$ui-label}:hover {
   background-color: $label-hover-background-color;
   border-color: $label-hover-background-color;
 
   background-image: $label-hover-background-image;
   color: $label-hover-text-color;
-}
 
-.ui.labels a.label:hover:before,
-a.ui.label:hover:before {
-  color: $label-hover-text-color;
+  &::before {
+	color: $label-hover-text-color;
+  }
 }
 
 /*-------------------
         Active
 --------------------*/
 
-.ui.active.label {
+#{$ui-label}.#{$c-active} {
   background-color: $label-active-background-color;
   border-color: $label-active-background-color;
 
   background-image: $label-active-background-image;
   color: $label-active-text-color;
-}
 
-.ui.active.label:before {
-  background-color: $label-active-background-color;
-  background-image: $label-active-background-image;
-  color: $label-active-text-color;
+  &::before {
+	background-color: $label-active-background-color;
+	background-image: $label-active-background-image;
+	color: $label-active-text-color;
+  }
 }
 
 /*-------------------
      Active Hover
 --------------------*/
 
-a.ui.labels .active.label:hover,
-a.ui.active.label:hover {
+#{$ui-label-group} a.#{$c-label}.#{$c-active}:hover,
+a#{$ui-label}.#{$c-active}:hover {
   background-color: $label-active-hover-background-color;
   border-color: $label-active-hover-background-color;
 
   background-image: $label-active-hover-background-image;
   color: $label-active-hover-text-color;
-}
 
-.ui.labels a.active.label:before,
-a.ui.active.label:before {
-  background-color: $label-active-hover-background-color;
-  background-image: $label-active-hover-background-image;
-  color: $label-active-hover-text-color;
+  &::before {
+	background-color: $label-active-hover-background-color;
+	background-image: $label-active-hover-background-image;
+	color: $label-active-hover-text-color;
+  }
 }
 
 /*-------------------
       Visible
 --------------------*/
 
-.ui.labels.visible .label,
-.ui.label.visible {
+#{$ui-label-group}.#{$c-visible} .#{$c-label},
+#{$ui-label}.#{$c-visible} {
   display: inline-block !important;
 }
 
@@ -225,21 +106,23 @@ a.ui.active.label:before {
       Hidden
 --------------------*/
 
-.ui.labels.hidden .label,
-.ui.label.hidden {
+#{$ui-label-group}.#{$c-hidden} .#{$c-label},
+#{$ui-label}.#{$c-hidden} {
   display: none !important;
 }
-
-/*******************************
-           Variations
-*******************************/
 
 /*-------------------
        Inverted
 --------------------*/
 
-.ui.inverted.labels .label,
-.ui.inverted.label {
+#{$ui-label-group}.#{$c-inverted} .#{$c-label},
+#{$ui-label}.#{$c-inverted} {
   color: color-text($inverted: true) !important;
 }
 
+/*-------------------
+       Disabled
+--------------------*/
+#{$ui-label}.#{$c-disabled} {
+  opacity: 0.5;
+}

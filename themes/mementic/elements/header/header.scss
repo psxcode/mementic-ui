@@ -20,10 +20,7 @@ $ui-header: ui-header();
 	margin-bottom: $last-margin;
   }
 
-  /*--------------
-   Loose Coupling
-  ---------------*/
-
+  /* Label */
   .#{$c-label} {
 	font-size: $label-size;
 	margin-left: $label-distance;
@@ -35,10 +32,7 @@ $ui-header: ui-header();
 	margin-top: $next-paragraph-distance;
   }
 
-  /*--------------
-   	Disabled
-  ---------------*/
-
+  /* Disabled */
   &.#{$c-disabled} {
 	opacity: $opacity-disabled;
   }

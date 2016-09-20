@@ -1,0 +1,89 @@
+/*-------------------
+       Ordered
+--------------------*/
+
+/* Shortcuts */
+$ui-ordered-list: '#{$ui-list}.#{$c-ordered}';
+
+#{$ui-ol-list},
+#{$ui-ordered-list},
+#{$ui-ordered-list} .#{$c-list},
+#{$ui-ol-list} ol {
+  counter-reset: ordered;
+  margin-left: $ordered-count-distance;
+  list-style-type: none;
+}
+
+/* List Item */
+#{$ui-ol-list} > li,
+#{$ui-ordered-list} .#{$c-list} > .#{$c-item},
+#{$ui-ordered-list} > .#{$c-item} {
+  list-style-type: none;
+  position: relative;
+
+  &::before {
+	position: absolute;
+	top: auto;
+	left: auto;
+	user-select: none;
+	pointer-events: none;
+	margin-left: -($ordered-count-distance);
+	counter-increment: $ordered-count-name;
+	content: $ordered-count-content;
+	text-align: $ordered-count-text-align;
+	color: $ordered-count-color;
+	vertical-align: $ordered-count-vertical-align;
+	opacity: $ordered-count-opacity;
+  }
+}
+
+#{$ui-ol-list}.#{$c-inverted} > li,
+#{$ui-ordered-list}.#{$c-inverted} .#{$c-list} > .#{$c-item},
+#{$ui-ordered-list}.#{$c-inverted} > .#{$c-item} {
+
+  &::before {
+	color: $ordered-inverted-count-color;
+  }
+}
+
+/* Child Lists */
+#{$ui-ol-list} ol,
+#{$ui-ordered-list} .#{$c-list} {
+  margin-left: $ordered-child-count-distance;
+}
+
+/* Child Lists Items */
+#{$ui-ol-list} ol > li,
+#{$ui-ordered-list} .#{$c-list} > .#{$c-item} {
+
+  &::before {
+	margin-left: $ordered-child-count-offset;
+  }
+}
+
+/* Horizontal Ordered */
+#{$ui-ol-list}.#{$c-horizontal},
+#{$ui-ordered-list}.#{$c-horizontal} {
+  margin-left: 0;
+}
+
+/* Horizontal Ordered Items */
+#{$ui-ol-list}.#{$c-horizontal} > li,
+#{$ui-ordered-list}.#{$c-horizontal} .#{$c-list} > .#{$c-item},
+#{$ui-ordered-list}.#{$c-horizontal} > .#{$c-item} {
+
+  &::before {
+	position: static;
+	margin: 0 $horizontal-ordered-count-distance 0 0;
+  }
+}
+
+/* Value */
+#{$ui-ordered-list} > .#{$c-list} > .#{$c-item}[data-value],
+#{$ui-ordered-list} > .#{$c-item}[data-value] {
+  content: attr(data-value);
+}
+
+#{$ui-ol-list} > li[value]:before {
+  content: attr(value);
+}

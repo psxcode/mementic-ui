@@ -5,6 +5,16 @@
 /* Shortcuts */
 $ui-image-label: '#{$ui-label}.#{$c-image}';
 
+#{$ui-label} {
+
+  /* Image */
+  > img {
+	width: auto !important;
+	vertical-align: middle;
+	height: $image-height !important;
+  }
+}
+
 #{$ui-image-label} {
 
   width: auto !important;

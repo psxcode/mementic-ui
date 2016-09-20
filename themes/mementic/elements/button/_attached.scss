@@ -3,10 +3,10 @@
 --------------------*/
 
 /* Shortcuts */
-$left-attached: "[class*='#{$c-left} #{$c-attached}']";
-$right-attached: "[class*='#{$c-right} #{$c-attached}']";
-$top-attached: "[class*='#{$c-top} #{$c-attached}']";
-$bottom-attached: "[class*='#{$c-bottom} #{$c-attached}']";
+$left-attached: c-left-attached();
+$right-attached: c-right-attached();
+$top-attached: c-top-attached();
+$bottom-attached: c-bottom-attached();
 
 /* Singular */
 #{$ui-button} {

@@ -4,7 +4,7 @@
 
 $ui-floated-image: '#{$ui-image}.#{$c-floated}';
 $ui-floated-image-group: '#{$ui-image-group}.#{$c-floated}';
-$right-floated: "[class*='#{$c-right} #{$c-floated}']";
+$right-floated: c-right-floated();
 $ui-centered-image: '#{$ui-image}.#{$c-centered}';
 $ui-centered-image-group: '#{$ui-image-group}.#{$c-centered}';
 

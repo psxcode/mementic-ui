@@ -1,0 +1,29 @@
+/*-------------------
+       Fitted
+--------------------*/
+
+/* Shortcuts */
+$ui-fitted-list: '#{$ui-list}.#{$c-fitted}';
+
+#{$ui-fitted-list} {
+
+  :not(.selection) {
+	/* Item */
+	.#{$c-list} > .#{$c-item},
+	> .#{$c-item} {
+	  padding-left: 0;
+	  padding-right: 0;
+	}
+  }
+
+  &.#{$c-selection} {
+
+	/* Item */
+	.#{$c-list} > .#{$c-item},
+	> .#{$c-item} {
+	  margin-left: -$selection-list-item-horizontal-padding;
+	  margin-right: -$selection-list-item-horizontal-padding;
+	}
+  }
+}
+

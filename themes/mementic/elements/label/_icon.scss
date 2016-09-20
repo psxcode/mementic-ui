@@ -1,0 +1,8 @@
+/* Icon */
+#{$ui-label} {
+
+  > .#{$c-icon} {
+	width: auto;
+	margin: 0 $icon-distance 0 0;
+  }
+}

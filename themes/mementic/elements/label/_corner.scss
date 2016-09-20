@@ -4,7 +4,7 @@
 
 /* Shortcuts */
 $ui-corner-label: '#{$ui-label}.#{$c-corner}';
-$left-corner: '[class*="#{$c-left} #{$c-corner}"]';
+$left-corner: c-left-corner();
 $ui-segment: ui-segment();
 
 #{$ui-corner-label} {
