@@ -1,0 +1,67 @@
+/*--------------------
+    Standard Inputs
+---------------------*/
+
+#{$ui-form} {
+
+  input:not([type]),
+  input[type="date"],
+  input[type="datetime-local"],
+  input[type="email"],
+  input[type="number"],
+  input[type="password"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="time"],
+  input[type="text"],
+  input[type="file"],
+  input[type="url"] {
+	width: $input-width;
+	vertical-align: top;
+
+	font-family: $input-font;
+	margin: 0;
+	outline: none;
+	-webkit-appearance: none;
+	//tap-highlight-color: rgba(255, 255, 255, 0);
+
+	line-height: $input-line-height;
+	padding: $input-padding;
+	font-size: $input-font-size;
+
+	background: $input-background;
+	border: $input-border;
+	color: $input-color;
+	border-radius: $input-border-radius;
+	box-shadow: $input-box-shadow;
+	transition: $input-transition;
+
+	&:focus {
+	  color: $input-focus-color;
+	  border-color: $input-focus-border-color;
+	  border-radius: $input-focus-border-radius;
+	  background: $input-focus-background;
+	  box-shadow: $input-focus-box-shadow;
+	}
+  }
+
+  input[type="checkbox"] {
+	vertical-align: $checkbox-vertical-align;
+  }
+
+  /* Set max height on unusual input */
+  ::-webkit-inner-spin-button {
+	height: $input-line-height;
+  }
+
+  /*--------------------------
+	Input w/ attached Button
+  ---------------------------*/
+
+  input.#{$c-attached} {
+	width: auto;
+  }
+}
+
+
+

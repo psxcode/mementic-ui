@@ -1,0 +1,63 @@
+/*--------------
+    Vertical
+---------------*/
+
+/* Shortcuts */
+$ui-vertical-step-group: '#{$ui-step-group}.#{$c-vertical}';
+
+#{$ui-vertical-step-group} {
+
+  display: inline-flex;
+  flex-direction: column;
+  overflow: visible;
+
+  .#{$c-step} {
+	justify-content: flex-start;
+	border-radius: $border-radius;
+	padding: $vertical-padding $horizontal-padding;
+	border-right: none;
+	border-bottom: $vertical-divider;
+
+	/* Arrow */
+	&::after {
+	  display: $vertical-arrow-display;
+	  top: $vertical-arrow-top-offset;
+	  right: $vertical-arrow-right-offset;
+	  border-width: $vertical-arrow-border-width;
+	}
+
+	&:first-child {
+	  padding: $vertical-padding $horizontal-padding;
+	  border-radius: $steps-border-radius $steps-border-radius 0 0;
+	}
+
+	&:last-child {
+	  border-bottom: none;
+	  border-radius: 0 0 $steps-border-radius $steps-border-radius;
+
+	  /* Arrow */
+	  &::after {
+		display: $vertical-last-arrow-display;
+	  }
+	}
+
+	&:only-child {
+	  border-radius: $steps-border-radius;
+	}
+
+	&.#{$c-active} {
+
+	  /* Arrow */
+	  &::after {
+		display: $vertical-active-arrow-display;
+	  }
+
+	  &:last-child {
+		/* Arrow */
+		&::after {
+		  display: $vertical-active-last-arrow-display;
+		}
+	  }
+	}
+  }
+}

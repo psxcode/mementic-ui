@@ -1,0 +1,58 @@
+/* Title inside Step */
+#{$ui-step-group} .#{$c-step} {
+
+  .#{$c-title} {
+	font-family: $title-font-family;
+	font-size: $title-font-size;
+	font-weight: $title-font-weight;
+  }
+
+  > .#{$c-title} {
+	width: 100%;
+  }
+}
+
+/* Description inside Step */
+#{$ui-step-group} .#{$c-step} {
+
+  .#{$c-description} {
+	font-weight: $description-font-weight;
+	font-size: $description-font-size;
+	color: $description-color;
+  }
+
+  > .#{$c-description} {
+	width: 100%;
+  }
+
+  ~ .#{$c-description} {
+	margin-top: $description-distance;
+  }
+}
+
+/* Icon inside Step */
+#{$ui-step-group} .#{$c-step} {
+
+  > .#{$c-icon} {
+	display: block;
+	line-height: 1;
+	font-size: $icon-size;
+	margin: 0 $icon-distance 0 0;
+	flex: 0 1 auto;
+	align-self: $icon-align;
+
+	~ .#{$c-content} {
+	  display: block;
+	  flex: 1 0 auto;
+	  align-self: $icon-align;
+	}
+  }
+}
+
+/* Horizontal Icon inside Step */
+#{$ui-step-group}:not(.#{$c-vertical}) .#{$c-step} {
+
+  > .#{$c-icon} {
+	width: auto;
+  }
+}

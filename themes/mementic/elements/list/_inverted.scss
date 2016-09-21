@@ -18,7 +18,7 @@ $ui-inverted-list: '#{$ui-list}.#{$c-inverted}';
 	  color: $inverted-header-color;
 	}
 
-	.description {
+	.#{$c-description} {
 	  color: $inverted-description-color;
 	}
   }

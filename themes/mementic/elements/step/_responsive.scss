@@ -1,0 +1,62 @@
+/*---------------
+    Responsive
+----------------*/
+
+/* Shortcuts */
+$bp-largest-mobile: map-value-by-index($bps, 1);
+
+/* Mobile (Default) */
+@include media('screen', '<#{$bp-largest-mobile}') {
+
+  #{$ui-step-group} {
+
+	display: inline-flex;
+	overflow: visible;
+	flex-direction: column;
+
+	/* nested Step */
+	.#{$c-step} {
+	  width: 100% !important;
+	  flex-direction: column;
+	  border-radius: $border-radius;
+	  padding: $vertical-padding $horizontal-padding;
+
+	  /* Arrow */
+	  &::after {
+		display: none !important;
+	  }
+
+	  &:first-child {
+		padding: $vertical-padding $horizontal-padding;
+		border-radius: $steps-border-radius $steps-border-radius 0 0;
+	  }
+
+	  &:last-child {
+		border-radius: 0 0 $steps-border-radius $steps-border-radius;
+	  }
+
+	  /* Content inside Step */
+	  .#{$c-content} {
+		text-align: center;
+	  }
+
+	  /* Icon inside Step */
+	  .#{$c-icon} {
+		margin: 0 0 $mobile-icon-distance 0;
+	  }
+	}
+
+	/* Ordered Step Group */
+	&.#{$c-ordered} {
+
+	  /* nested Step */
+	  .#{$c-step} {
+
+		/* Icon */
+		&::before {
+		  margin: 0 0 $mobile-icon-distance 0;
+		}
+	  }
+	}
+  }
+}

@@ -1,0 +1,31 @@
+/*--------------------
+      Placeholder
+---------------------*/
+
+/* browsers require these rules separate */
+#{$ui-form} {
+
+  ::-webkit-input-placeholder {
+	color: $input-placeholder-color;
+  }
+
+  :-ms-input-placeholder {
+	color: $input-placeholder-color;
+  }
+
+  ::-moz-placeholder {
+	color: $input-placeholder-color;
+  }
+
+  :focus::-webkit-input-placeholder {
+	color: $input-placeholder-focus-color;
+  }
+
+  :focus:-ms-input-placeholder {
+	color: $input-placeholder-focus-color;
+  }
+
+  :focus::-moz-placeholder {
+	color: $input-placeholder-focus-color;
+  }
+}

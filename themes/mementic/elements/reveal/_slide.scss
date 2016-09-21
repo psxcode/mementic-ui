@@ -1,0 +1,101 @@
+/*--------------
+      Slide
+---------------*/
+
+/* Shortcuts */
+$ui-slide-reveal: '#{$ui-reveal}.#{$c-slide}';
+
+#{$ui-slide-reveal} {
+  position: relative !important;
+  overflow: hidden !important;
+  white-space: nowrap;
+
+  > .#{$c-content} {
+	display: block;
+	width: 100%;
+	float: left;
+
+	margin: 0;
+	transition: $slide-transition;
+  }
+
+  /* Left by default */
+  > #{$visible-content} {
+	position: relative !important;
+  }
+
+  > #{$hidden-content} {
+	position: absolute !important;
+	left: 0 !important;
+	width: 100% !important;
+	transform: translateX(100%) !important;
+  }
+
+  /* Left by default */
+  &.#{$c-active},
+  &:hover {
+	> #{$visible-content} {
+	  transform: translateX(-100%) !important;
+	}
+	> #{$hidden-content} {
+	  transform: translateX(0) !important;
+	}
+  }
+
+  /* Right */
+  &.#{$c-right} {
+
+	> #{$visible-content} {
+	  transform: translateX(0) !important;
+	}
+	> #{$hidden-content} {
+	  transform: translateX(-100%) !important;
+	}
+
+	&.#{$c-active},
+	&:hover {
+	  > #{$visible-content} {
+		transform: translateX(100%) !important;
+	  }
+	  > #{$hidden-content} {
+		transform: translateX(0) !important;
+	  }
+	}
+  }
+
+  /* Up */
+  &.#{$c-up} {
+
+	> #{$hidden-content} {
+	  transform: translateY(100%) !important;
+	}
+
+	&.#{$c-active},
+	&:hover {
+	  > #{$visible-content} {
+		transform: translateY(-100%) !important;
+	  }
+	  > #{$hidden-content} {
+		transform: translateY(0) !important;
+	  }
+	}
+  }
+
+  /* Down */
+  &.#{$c-down} {
+
+	> #{$hidden-content} {
+	  transform: translateY(-100%) !important;
+	}
+
+	&.#{$c-active},
+	&:hover {
+	  > #{$visible-content} {
+		transform: translateY(100%) !important;
+	  }
+	  > #{$hidden-content} {
+		transform: translateY(0) !important;
+	  }
+	}
+  }
+}

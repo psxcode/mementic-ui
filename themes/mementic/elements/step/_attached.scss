@@ -1,0 +1,47 @@
+/*--------------
+    Attached
+---------------*/
+
+/* Shortcuts */
+$top-attached: c-top-attached();
+$bottom-attached: c-bottom-attached();
+
+/* Top */
+#{$ui-step-group} {
+
+  &.#{$c-attached} {
+	width: $attached-width !important;
+	max-width: $attached-width;
+  }
+
+  /* Top by default */
+  &.#{$c-attached},
+  &#{$top-attached} {
+	margin: 0 $attached-horizontal-offset $attached-vertical-offset;
+	border-radius: $steps-border-radius $steps-border-radius 0 0;
+
+	.#{$c-step} {
+	  &:first-child {
+		border-radius: $steps-border-radius 0 0 0;
+	  }
+	  &:last-child {
+		border-radius: 0 $steps-border-radius 0 0;
+	  }
+	}
+  }
+
+  /* Bottom */
+  &#{$bottom-attached} {
+	margin: $attached-vertical-offset $attached-horizontal-offset 0;
+	border-radius: 0 0 $steps-border-radius $steps-border-radius;
+
+	.#{$c-step} {
+	  &:first-child {
+		border-radius: 0 0 0 $steps-border-radius;
+	  }
+	  &:last-child {
+		border-radius: 0 0 $steps-border-radius 0;
+	  }
+	}
+  }
+}

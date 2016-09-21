@@ -1,0 +1,23 @@
+/*--------------
+     Internal
+---------------*/
+
+/* Shortcuts */
+$ui-internal-rail: '#{$ui-rail}.#{$c-internal}';
+
+#{$ui-internal-rail} {
+
+  &.#{$c-left} {
+	left: 0;
+	right: auto;
+	padding: 0 0 0 $split-distance;
+	margin: 0 0 0 $split-distance;
+  }
+
+  &.#{$c-right} {
+	left: auto;
+	right: 0;
+	padding: 0 $split-distance 0 0;
+	margin: 0 $split-distance 0 0;
+  }
+}

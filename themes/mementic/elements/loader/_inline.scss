@@ -1,0 +1,32 @@
+/*-------------------
+       Inline
+--------------------*/
+
+/* Shortcuts */
+$ui-inline-loader: '#{$ui-loader}.#{$c-inline}';
+
+#{$ui-inline-loader} {
+
+  position: relative;
+  vertical-align: $inline-vertical-align;
+  margin: $inline-margin;
+  left: 0;
+  top: 0;
+  transform: none;
+
+  &.#{$c-active},
+  &.#{$c-visible} {
+  	display: inline-block;
+  }
+
+	/* Centered Inline */
+  &.#{$c-centered} {
+
+	&.#{$c-active},
+	&.#{$c-visible} {
+	  display: block;
+	  margin-left: auto;
+	  margin-right: auto;
+	}
+  }
+}

@@ -21,7 +21,9 @@ $c-loader: 'loader';
 $c-rail: 'rail';
 $c-reveal: 'reveal';
 $c-segment: 'segment';
+$c-segment-group: 'segments';
 $c-step: 'step';
+$c-step-group: 'steps';
 
 /* Collections */
 $c-breadcrumb: 'breadcrumb';
@@ -39,19 +41,28 @@ $c-feed: 'feed';
 $c-item: 'item';
 $c-statistic: 'statistic';
 
+/* Modules */
+$c-dimmer: 'dimmer';
+$c-dropdown: 'dropdown';
+
 /* Sub Elements */
 $c-column: 'col';
 $c-content: 'content';
+$c-description: 'description';
 $c-detail: 'detail';
+$c-field: 'field';
+$c-field-group: 'fields';
 $c-item: 'item';
 $c-row: 'row';
+$c-row-group: 'rows';
 $c-section: 'section';
 $c-text: 'text';
+$c-title: 'title';
 
 /* Types */
 $c-action: 'action';
 $c-aligned: 'aligned'; // header, image
-$c-attached: 'attached'; // label
+$c-attached: 'attached'; // label, step
 $c-avatar: 'avatar'; // image
 $c-animated: 'animated'; // button list
 $c-basic: 'basic'; // button label
@@ -60,33 +71,47 @@ $c-bordered: 'bordered'; // image, icon
 $c-bulleted: 'bulleted'; // list
 $c-celled: 'celled'; // list
 $c-centered: 'centered'; // image
-$c-circular: 'circular'; // button, image, icon
+$c-circular: 'circular'; // button, image, icon, segment
 $c-clearing: 'clearing'; // divider
 $c-compact: 'compact'; // button
+$c-completed: 'completed'; // step
 $c-divided: 'divided'; // list
 $c-dividing: 'dividing'; // header
 $c-doubling: 'doubling';
+$c-fade: 'fade'; // reveal
 $c-fitted: 'fitted'; // header, divider, list
 $c-flipped: 'flipped'; // icon
 $c-floated: 'floated'; // button image list
 $c-floating: 'floating'; // label
-$c-fluid: 'fluid'; // button image label
-$c-inline: 'inline';
-$c-inverted: 'inverted'; // button icon
+$c-fluid: 'fluid'; // button image label step
+$c-inline: 'inline'; // loader
+$c-indeterminate: 'indeterminate'; // loader
+$c-internal: 'internal'; // rail
+$c-instant: 'instant'; // reveal
+$c-inverted: 'inverted';
 $c-justified: 'justified'; // header
 $c-labeled: 'labeled'; // button
-$c-ordered: 'ordered'; // list
+$c-move: 'move'; // reveal
+$c-ordered: 'ordered'; // list, step
+$c-padded: 'padded'; // segment
+$c-pilled: 'pilled'; // segment
 $c-pointing: 'pointing'; // label
+$c-raised: 'raised'; // segment
 $c-relaxed: 'relaxed'; // list
 $c-ribbon: 'ribbon'; // label
+$c-rotate: 'rotate'; // reveal
 $c-rotated: 'rotated'; // icon
 $c-rounded: 'rounded'; // image
 $c-selection: 'selection'; // list
+$c-slide: 'slide'; // reveal
 $c-spaced: 'spaced'; // image
-$c-stackable: 'stackable';
+$c-stackable: 'stackable'; // step
+$c-stacked: 'stacked'; // segment
 $c-square: 'square'; // icon
 $c-tag: 'tag'; // label
-$c-toggle: 'toggle'; // button
+$c-tall: 'tall'; // segment
+$c-toggle: 'toggle'; // button,
+$c-wide: 'wide'; // form
 
 /* States */
 $c-visible: 'visible';
@@ -107,6 +132,7 @@ $c-down: 'down';
 $c-top: 'top';
 $c-bottom: 'bottom';
 $c-center: 'center';
+$c-close: 'close';
 $c-corner: 'corner';
 
 @function c-strict-order($classes...) {
@@ -197,8 +223,16 @@ $c-corner: 'corner';
   @return '.#{$c-ui}.#{$c-segment}';
 }
 
+@function ui-segment-group() {
+  @return '.#{$c-ui}.#{$c-segment-group}';
+}
+
 @function ui-step() {
   @return '.#{$c-ui}.#{$c-step}';
+}
+
+@function ui-step-group() {
+  @return '.#{$c-ui}.#{$c-step-group}';
 }
 
 /* Collections Selectors */
@@ -249,6 +283,10 @@ $c-corner: 'corner';
 
 @function ui-statistic() {
   @return '.#{$c-ui}.#{$c-statistic}';
+}
+
+@function ui-dimmer() {
+  @return '.#{$c-ui}.#{$c-dimmer}';
 }
 
 /* Directions */
@@ -368,14 +406,27 @@ $c-corner: 'corner';
   @return c-strict-order($c-right, $c-spaced);
 }
 
-@function c-very-relaxed() {
-  @return c-strict-order('very', $c-relaxed);
-}
-
 @function c-left-action() {
   @return c-strict-order($c-left, $c-action);
 }
 
 @function c-right-ribbon() {
   @return c-strict-order($c-right, $c-ribbon);
+}
+
+/* VERY */
+@function c-very-relaxed() {
+  @return c-strict-order('very', $c-relaxed);
+}
+
+@function c-very-close() {
+  @return c-strict-order('very', $c-close);
+}
+
+@function c-very-basic() {
+  @return c-strict-order('very', $c-basic);
+}
+
+@function c-very-padded() {
+  @return c-strict-order('very', $c-padded);
 }

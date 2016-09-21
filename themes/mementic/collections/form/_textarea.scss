@@ -1,0 +1,40 @@
+
+/* Text Area */
+#{$ui-form} {
+
+  textarea {
+	width: $input-width;
+	vertical-align: top;
+
+	margin: 0;
+	-webkit-appearance: none;
+	//tap-highlight-color: rgba(255, 255, 255, 0);
+
+	padding: $text-area-padding;
+	font-size: $text-area-font-size;
+	background: $text-area-background;
+	border: $text-area-border;
+	outline: none;
+	color: $input-color;
+	border-radius: $input-border-radius;
+	box-shadow: $input-box-shadow;
+	transition: $text-area-transition;
+	line-height: $text-area-line-height;
+	resize: $text-area-resize;
+
+	&:focus {
+	  color: $text-area-focus-color;
+	  border-color: $text-area-focus-border-color;
+	  border-radius: $text-area-focus-border-radius;
+	  background: $text-area-focus-background;
+	  box-shadow: $text-area-focus-box-shadow;
+	  -webkit-appearance: none;
+	}
+  }
+
+  textarea:not([#{$c-row-group}]) {
+	height: $text-area-height;
+	min-height: $text-area-min-height;
+	max-height: $text-area-max-height;
+  }
+}

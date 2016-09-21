@@ -1,0 +1,47 @@
+/*--------------------
+       UI Input
+---------------------*/
+
+#{$ui-form} {
+
+  /* Block */
+  .#{$c-field-group} .#{$c-field},
+  .#{$c-field}.#{$c-wide},
+  .#{$c-field} {
+	.#{$c-input} {
+	  width: 100%;
+	}
+  }
+
+  /* Inline  */
+  .#{$c-inline} {
+	&.#{$c-field-group} .#{$c-field}:not(.#{$c-wide}),
+	&.#{$c-field}:not(.#{$c-wide}) {
+
+	  .#{$c-input} {
+		width: auto;
+		vertical-align: middle;
+	  }
+	}
+  }
+
+  /* Auto Input */
+  .#{$c-field-group} .#{$c-field},
+  .#{$c-field} {
+
+	.#{$c-input} input {
+	  width: auto;
+	}
+  }
+
+  /* Full Width Input */
+  @for $i from 1 through 10 {
+	.#{$c-field-group}.#{number-name($i)} {
+
+	  .#{$c-input} input {
+		flex: 1 0 auto;
+		width: 0;
+	  }
+	}
+  }
+}

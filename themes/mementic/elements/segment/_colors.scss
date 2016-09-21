@@ -1,0 +1,23 @@
+/*-------------------
+       Colors
+--------------------*/
+@mixin colors($color-map) {
+  @each $name, $color in $color-map {
+
+	#{$ui-segment}.#{$name} {
+
+	  &:not(.#{$c-inverted}) {
+		border-top: $colored-border-size solid $color;
+	  }
+
+	  &.#{$c-inverted} {
+		background-color: $color !important;
+		color: $color-light !important;
+	  }
+	}
+  }
+}
+
+@if $auto-include-colors-info == true {
+  @include colors($colors-info);
+}

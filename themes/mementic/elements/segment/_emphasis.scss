@@ -1,0 +1,28 @@
+/*-------------------
+     Emphasis
+--------------------*/
+
+#{$ui-segment} {
+
+  /* Secondary */
+  &.secondary {
+	background: $secondary-background;
+	color: $secondary-color;
+
+	&.#{$c-inverted} {
+	  background: $secondary-inverted-background;
+	  color: $secondaryInvertedColor;
+	}
+  }
+
+  /* Tertiary */
+  &.tertiary {
+	background: $tertiary-background;
+	color: $tertiary-color;
+
+	&.#{$c-inverted} {
+	  background: $tertiary-inverted-background;
+	  color: $tertiaryInvertedColor;
+	}
+  }
+}

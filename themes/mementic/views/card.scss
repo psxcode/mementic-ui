@@ -156,10 +156,10 @@
   line-height: $heading-line-height;
 }
 
-.ui.cards > .card > .content > .meta + .description,
-.ui.cards > .card > .content > .header + .description,
-.ui.card > .content > .meta + .description,
-.ui.card > .content > .header + .description {
+.ui.cards > .card > .content > .meta + .#{$c-description},
+.ui.cards > .card > .content > .header + .#{$c-description},
+.ui.card > .content > .meta + .#{$c-description},
+.ui.card > .content > .header + .#{$c-description} {
   margin-top: $description-distance;
 }
 
@@ -220,8 +220,8 @@
    Description
 ---------------*/
 
-.ui.cards > .card > .content > .description,
-.ui.card > .content > .description {
+.ui.cards > .card > .content > .#{$c-description},
+.ui.card > .content > .#{$c-description} {
   clear: both;
   color: $description-color;
 }

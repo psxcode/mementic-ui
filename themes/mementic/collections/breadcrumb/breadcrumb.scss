@@ -1,0 +1,69 @@
+/* Shortcuts */
+$ui-breadcrumb: ui-breadcrumb();
+
+#{$ui-breadcrumb} {
+  line-height: 1;
+  display: $display;
+  margin: $vertical-margin 0;
+  vertical-align: $vertical-align;
+
+  &:first-child {
+	margin-top: 0;
+  }
+  &:last-child {
+	margin-bottom: 0;
+  }
+}
+
+/* Divider */
+#{$ui-breadcrumb} {
+
+  .#{$c-divider} {
+	display: inline-block;
+	opacity: $divider-opacity;
+	margin: 0 $divider-spacing 0;
+
+	font-size: $divider-size;
+	color: $divider-color;
+	vertical-align: $divider-vertical-align;
+  }
+
+  /* Icon Divider */
+  .#{$c-divider}.#{$c-icon} {
+	font-size: $icon-divider-size;
+	vertical-align: $icon-divider-vertical-align;
+  }
+}
+
+/* Link */
+#{$ui-breadcrumb} a {
+  color: $link-color;
+
+  &:hover {
+	color: $link-hover-color;
+  }
+}
+
+/* Section */
+#{$ui-breadcrumb} {
+
+  a.#{$c-section} {
+	cursor: pointer;
+  }
+
+  .#{$c-section} {
+	display: inline-block;
+	margin: $section-margin;
+	padding: $section-padding;
+  }
+
+  .#{$c-section}.#{$c-active} {
+	font-weight: $active-font-weight;
+  }
+}
+
+/* Segment */
+#{$ui-breadcrumb}.#{$c-segment} {
+  display: inline-block;
+  padding: $segment-padding;
+}

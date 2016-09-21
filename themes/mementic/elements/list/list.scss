@@ -160,7 +160,7 @@ $ui-icon: ui-icon();
 	}
 
 	/* Item Description */
-	.description {
+	.#{$c-description} {
 	  display: block;
 	  color: $item-description-color;
 	}

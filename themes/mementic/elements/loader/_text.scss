@@ -1,0 +1,13 @@
+/*-------------------
+        Text
+--------------------*/
+
+/* Shortcuts */
+$ui-text-loader: '#{$ui-loader}.#{$c-text}';
+
+#{$ui-text-loader} {
+  width: auto !important;
+  height: auto !important;
+  text-align: center;
+  font-style: normal;
+}

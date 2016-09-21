@@ -1,0 +1,22 @@
+/*-------------------
+      Vertical
+--------------------*/
+
+/* Shortcuts */
+$ui-vertical-segment: '#{$ui-segment}.#{$c-vertical}';
+
+#{$ui-vertical-segment} {
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+
+  background: none transparent;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+  border-bottom: $border-width solid color-divider();
+
+  &:last-child {
+	border-bottom: none;
+  }
+}

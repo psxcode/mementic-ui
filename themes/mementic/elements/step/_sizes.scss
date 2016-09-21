@@ -1,0 +1,11 @@
+/*-------------------
+       Sizes
+--------------------*/
+
+@each $name, $size in $sizes {
+
+  #{$ui-step-group}#{$name} .#{$c-step},
+  #{$ui-step}#{$name} {
+	font-size: size($name);
+  }
+}

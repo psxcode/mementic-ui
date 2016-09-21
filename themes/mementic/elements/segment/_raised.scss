@@ -1,0 +1,12 @@
+/*-------------------
+       Raised
+--------------------*/
+
+/* Shortcuts */
+$ui-raised-segment: '#{$ui-segment}.#{$c-raised}';
+$ui-raised-segment-group: '#{$ui-segment-group}.#{$c-raised}';
+
+#{$ui-raised-segment-group},
+#{$ui-raised-segment} {
+  box-shadow: $raised-box-shadow;
+}

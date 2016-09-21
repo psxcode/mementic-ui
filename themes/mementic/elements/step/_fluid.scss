@@ -1,0 +1,11 @@
+/*--------------
+      Fluid
+---------------*/
+
+#{$ui-step-group} {
+
+  &.#{$c-fluid} {
+	display: flex;
+	width: 100%;
+  }
+}

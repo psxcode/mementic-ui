@@ -1,0 +1,22 @@
+/*-------------------
+       Floated
+--------------------*/
+
+/* Shortcuts */
+$left-floated: c-left-floated();
+$right-floated: c-right-floated();
+
+#{$ui-segment} {
+
+  /* Left by default */
+  &.#{$c-floated},
+  &#{$left-floated} {
+	float: left;
+	margin-right: $floated-distance;
+  }
+
+  &#{$right-floated} {
+	float: right;
+	margin-left: $floated-distance;
+  }
+}

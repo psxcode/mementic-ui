@@ -1,0 +1,60 @@
+@keyframes segment-spin {
+  from {
+	transform: rotate(0deg);
+  }
+  to {
+	transform: rotate(360deg);
+  }
+}
+
+/*--------------
+    Loading
+---------------*/
+
+/* Shortcuts */
+$ui-loading-segment: '#{$ui-segment}.#{$c-loading}';
+
+#{$ui-loading-segment} {
+  position: relative;
+  cursor: default;
+  pointer-events: none;
+  text-shadow: none !important;
+  color: transparent !important;
+  transition: all 0s linear;
+
+  &::before {
+	position: absolute;
+	content: '';
+	top: 0;
+	left: 0;
+	background: $loader-dimmer-color;
+	width: 100%;
+	height: 100%;
+	border-radius: $border-radius;
+	z-index: $loader-dimmer-z-index;
+  }
+
+  &::after {
+	position: absolute;
+	content: '';
+	top: 50%;
+	left: 50%;
+
+	margin: $loader-margin;
+	width: $loader-size;
+	height: $loader-size;
+
+	animation: segment-spin $loader-speed linear;
+	animation-iteration-count: infinite;
+
+	border-radius: $border-radius-circular;
+
+	border-color: $loader-line-color $loader-fill-color $loader-fill-color $loader-fill-color;
+	border-style: solid;
+	border-width: $loader-line-width;
+
+	box-shadow: 0 0 0 1px transparent;
+	visibility: visible;
+	z-index: $loader-line-z-index;
+  }
+}

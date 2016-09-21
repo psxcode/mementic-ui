@@ -1,0 +1,31 @@
+/*-------------------
+        Sizes
+--------------------*/
+
+/* Shortcuts */
+$ui-dimmer: ui-dimmer();
+$ui-text-loader: '#{$ui-loader}.#{$c-text}';
+
+@each $name, $size in $loader-sizes {
+
+  /* Loader */
+  #{$ui-loader}.#{$name} {
+
+	width: $size;
+	height: $size;
+	font-size: size($name);
+
+	&::before,
+	&::after {
+	  width: $size;
+	  height: $size;
+	  margin: loader-offset($name);
+	}
+  }
+
+  /* Text Loader */
+  #{$ui-text-loader}.#{$name} {
+	min-width: $size;
+	padding-top: calc(#{$size} + #{$text-distance});
+  }
+}

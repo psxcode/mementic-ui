@@ -1,0 +1,148 @@
+/* Shortcuts */
+$ui-segment: ui-segment();
+$ui-segment-group: ui-segment-group();
+
+#{$ui-segment} {
+  position: relative;
+  background: $background;
+  box-shadow: $box-shadow;
+  margin: $margin;
+  padding: $padding;
+  border-radius: $border-radius;
+  border: $border;
+
+  &:first-child {
+	margin-top: 0;
+  }
+
+  &:last-child {
+	margin-bottom: 0;
+  }
+
+  /* Disabled */
+  &.#{$c-disabled} {
+	opacity: $opacity-disabled;
+	color: color-text-disabled();
+  }
+}
+
+/* Group */
+#{$ui-segment-group} {
+
+  flex-direction: column;
+  position: relative;
+  margin: $grouped-margin;
+  border: $grouped-border;
+  box-shadow: $grouped-box-shadow;
+  border-radius: $grouped-border-radius;
+
+  &:first-child {
+	margin-top: 0;
+  }
+  &:last-child {
+	margin-bottom: 0;
+  }
+
+  /* Nested Segment */
+  > .#{$c-segment} {
+	top: 0;
+	bottom: 0;
+	border-radius: 0;
+	margin: $grouped-segment-margin;
+	width: $grouped-segment-width;
+	box-shadow: $grouped-segment-box-shadow;
+	border: $grouped-segment-border;
+	border-top: $grouped-segment-divider;
+  }
+
+  &:not(.#{$c-horizontal}) {
+	/* Nested Segment */
+	> .#{$c-segment} {
+
+	  &:first-child {
+		border-top: none;
+		margin-top: 0;
+		margin-bottom: 0;
+		top: $attached-top-offset;
+		bottom: 0;
+		border-radius: $border-radius $border-radius 0 0;
+	  }
+
+	  &:last-child {
+		top: $attached-bottom-offset;
+		bottom: 0;
+		margin-top: 0;
+		margin-bottom: 0;
+		box-shadow: $attached-bottom-box-shadow;
+		border-radius: 0 0 $border-radius $border-radius;
+	  }
+
+	  &:only-child {
+		border-radius: $border-radius;
+	  }
+	}
+  }
+
+  /* Nested Group */
+  > .#{$c-segment-group} {
+	border-top: $grouped-segment-divider;
+	margin: $nested-group-margin;
+
+	&:first-child {
+	  border-top: none;
+	}
+  }
+
+  /* Nested Group After Segment */
+  > .#{$c-segment} + .#{$c-segment-group} {
+
+	&:not(.#{$c-horizontal}) {
+	  margin-top: 0;
+	}
+  }
+
+  /* Horizontal Group */
+  &.#{$c-horizontal} {
+	display: flex;
+	flex-direction: row;
+	padding: 0;
+	background-color: $background;
+	box-shadow: $box-shadow;
+	margin: $margin;
+	border-radius: $border-radius;
+	border: $border;
+
+	/* Horizontal Segment */
+	> .#{$c-segment} {
+	  flex: 1 1 auto;
+	  -ms-flex: 1 1 0; /* Solves #2550 MS Flex */
+	  margin: 0;
+	  min-width: 0;
+	  background-color: transparent;
+	  border-radius: 0;
+	  border: none;
+	  box-shadow: none;
+	  border-left: $border-width solid color-divider();
+
+	  /* Border Fixes */
+	  &:first-child {
+		border-left: none;
+	  }
+	}
+  }
+
+  /* Nested Horizontal Group */
+  > .#{$c-segment-group}.#{$c-horizontal} {
+	margin: 0;
+	background-color: transparent;
+	border-radius: 0;
+	border: none;
+	box-shadow: none;
+	border-top: $grouped-segment-divider;
+
+	/* Border Fixes */
+	&:first-child {
+	  border-top: none;
+	}
+  }
+}

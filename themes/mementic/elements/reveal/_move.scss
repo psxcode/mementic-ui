@@ -1,0 +1,71 @@
+/*--------------
+	  Move
+---------------*/
+
+/* Shortcuts */
+$ui-move-reveal: '#{$ui-reveal}.#{$c-move}';
+
+#{$ui-move-reveal} {
+  position: relative !important;
+  overflow: hidden !important;
+  white-space: nowrap;
+
+  > .#{$c-content} {
+	display: block;
+	float: left;
+
+	margin: 0;
+	transition: $move-transition;
+  }
+
+  > #{$visible-content} {
+	position: relative !important;
+  }
+
+  > #{$hidden-content} {
+	position: absolute !important;
+	left: 0 !important;
+	width: 100% !important;
+  }
+
+  /* Left by default */
+  &,
+  &.#{$c-left} {
+	&.#{$c-active},
+	&:hover {
+	  > #{$visible-content} {
+		transform: translateX(-100%) !important;
+	  }
+	}
+  }
+
+  /* Right */
+  &.#{$c-right} {
+	&.#{$c-active},
+	&:hover {
+	  > #{$visible-content} {
+		transform: translateX(100%) !important;
+	  }
+	}
+  }
+
+  /* Up */
+  &.#{$c-up} {
+	&.#{$c-active},
+	&:hover {
+	  > #{$visible-content} {
+		transform: translateY(-100%) !important;
+	  }
+	}
+  }
+
+  /* Down */
+  &.#{$c-down} {
+	&.#{$c-active},
+	&:hover {
+	  > #{$visible-content} {
+		transform: translateY(100%) !important;
+	  }
+	}
+  }
+}

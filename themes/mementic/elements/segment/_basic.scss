@@ -1,0 +1,13 @@
+/*-------------------
+       Basic
+--------------------*/
+
+/* Shortcuts */
+$ui-basic-segment: '#{$ui-segment}.#{$c-basic}';
+
+#{$ui-basic-segment} {
+  background: $basic-background;
+  box-shadow: $basic-box-shadow;
+  border: $basic-border;
+  border-radius: $basic-border-radius;
+}

@@ -1,0 +1,87 @@
+/*-------------------
+    Loose Coupling
+--------------------*/
+
+/* Shortcuts */
+$top-attached: c-top-attached();
+$bottom-attached: c-bottom-attached();
+$very-basic: c-very-basic();
+$ui-grid: ui-grid();
+$ui-table: ui-table();
+
+#{$ui-segment} {
+
+  &.#{$c-inverted} {
+
+	/* Header */
+	> .#{$c-header} {
+	  color: $color-light;
+	}
+  }
+
+  &#{$top-attached} {
+
+	/* Label */
+	> .#{$c-label}#{$bottom-attached} {
+	  border-bottom-left-radius: 0;
+	  border-bottom-right-radius: 0;
+	}
+  }
+
+  &#{$bottom-attached} {
+
+	/* Label */
+	> .#{$c-label}#{$top-attached} {
+	  border-top-left-radius: 0;
+	  border-top-right-radius: 0;
+	}
+  }
+
+  &.#{$c-attached} {
+
+	&:not(.#{$c-top}):not(.#{$c-bottom}) {
+	  > .#{$c-label}#{$top-attached} {
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+	  }
+
+	  > .#{$c-label}#{$bottom-attached} {
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+	  }
+	}
+  }
+}
+
+/* Grid */
+#{$ui-grid} {
+
+  &.page.#{$c-segment},
+  > .#{$c-row} > .#{$c-segment}.#{$c-column},
+  > .#{$c-segment}.#{$c-column} {
+	padding-top: $page-grid-margin;
+	padding-bottom: $page-grid-margin;
+  }
+
+  &.#{$c-segment} {
+	margin: $margin;
+	border-radius: $border-radius;
+  }
+}
+
+/* Table */
+#{$ui-table} {
+
+  &.#{$c-segment} {
+
+	&.#{$c-basic} {
+	  background: $background;
+	  border: $border;
+	  box-shadow: $box-shadow;
+	}
+
+	&#{$very-basic} {
+	  padding: $padding;
+	}
+  }
+}

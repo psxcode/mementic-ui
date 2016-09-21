@@ -1,0 +1,37 @@
+@mixin colors($color-map) {
+
+  @each $name, $color in $color-map {
+
+	/* Color Placeholder */
+	#{$ui-form} .#{$name} {
+
+	  ::-webkit-input-placeholder {
+		color: $color;
+	  }
+
+	  :-ms-input-placeholder {
+		color: $color !important;
+	  }
+
+	  ::-moz-placeholder {
+		color: $color;
+	  }
+
+	  :focus::-webkit-input-placeholder {
+		color: color-focus($color);
+	  }
+
+	  :focus:-ms-input-placeholder {
+		color: color-focus($color) !important;
+	  }
+
+	  :focus::-moz-placeholder {
+		color: color-focus($color);
+	  }
+	}
+  }
+}
+
+@if $auto-include-colors-info {
+  @include colors($colors-info);
+}

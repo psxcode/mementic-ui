@@ -1,0 +1,67 @@
+/* Shortcuts */
+$ui-reveal: ui-reveal();
+$visible-content: '.#{$c-visible}.#{$c-content}';
+$hidden-content: '.#{$c-hidden}.#{$c-content}';
+
+#{$ui-reveal} {
+
+  display: inherit;
+  position: relative !important;
+  font-size: 0 !important;
+
+  /* Content */
+  > #{$visible-content} {
+	position: absolute !important;
+	top: 0 !important;
+	left: 0 !important;
+	z-index: $top-z-index !important;
+	transition: $transition;
+  }
+
+  > #{$hidden-content} {
+	position: relative !important;
+	z-index: $bottom-z-index !important;
+  }
+
+  /* Make sure hovered element is on top of other reveal */
+  &.#{$c-active},
+  &:hover {
+	> #{$visible-content} {
+	  z-index: $active-z-index !important;
+	}
+  }
+
+  /* Disabled */
+  &.#{$c-disabled} {
+
+	&:hover {
+	  > #{$visible-content} {
+		position: static !important;
+		display: block !important;
+		opacity: 1 !important;
+		top: 0 !important;
+		left: 0 !important;
+		right: auto !important;
+		bottom: auto !important;
+		transform: none !important;
+	  }
+
+	  > #{$hidden-content} {
+		display: none !important;
+	  }
+	}
+  }
+
+  /* Visible */
+  &.#{$c-visible} {
+	overflow: visible;
+  }
+
+  /* Instant */
+  &.#{$c-instant} {
+
+	> .#{$c-content} {
+	  transition-delay: 0s !important;
+	}
+  }
+}

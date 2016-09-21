@@ -1,0 +1,51 @@
+/*-------------------
+       Stacked
+--------------------*/
+
+/* Shortcuts */
+$ui-stacked-segment: '#{$ui-segment}.#{$c-stacked}';
+$ui-stacked-segment-group: '#{$ui-segment-group}.#{$c-stacked}';
+
+#{$ui-stacked-segment-group},
+#{$ui-stacked-segment} {
+
+  &::before,
+  &::after {
+	content: '';
+	position: absolute;
+	bottom: -($stacked-height / 2);
+	left: 0;
+
+	border-top: 1px solid color-divider();
+	background: $stacked-page-background;
+
+	width: 100%;
+	height: $stacked-height;
+	visibility: visible;
+  }
+
+  &::before {
+	display: none;
+  }
+
+  /* Add additional page */
+  &.#{$c-tall} {
+	&::before {
+	  display: block;
+	  bottom: 0;
+	}
+  }
+
+  /* Inverted */
+  &.#{$c-inverted} {
+	&::before,
+	&::after {
+	  background-color: color-transparent-subtle($color-dark);
+	  border-top: 1px solid color-divider-selected();
+	}
+  }
+}
+
+#{$ui-stacked-segment} {
+  padding-bottom: $stacked-padding;
+}

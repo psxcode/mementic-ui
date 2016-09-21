@@ -1,0 +1,47 @@
+/*--------------
+     Ordered
+---------------*/
+
+/* Shortcuts */
+$ui-ordered-step-group: '#{$ui-step-group}.#{$c-ordered}';
+
+#{$ui-ordered-step-group} {
+  counter-reset: ordered;
+
+  .#{$c-step} {
+
+	::before {
+	  display: block;
+	  position: static;
+	  text-align: center;
+	  content: counters(ordered, ".");
+	  align-self: $icon-align;
+	  margin-right: $icon-distance;
+	  font-size: $icon-size;
+	  counter-increment: ordered;
+	  font-family: $ordered-font-family;
+	  font-weight: $ordered-font-weight;
+	}
+
+	> * {
+	  display: block;
+	  align-self: $icon-align;
+	}
+  }
+
+  /* Active Step */
+  .#{$c-step}.#{$c-active} {
+
+	&::before {
+	  color: $active-icon-color;
+	}
+  }
+
+  /* Completed Step */
+  .#{$c-step}.#{$c-completed} {
+
+	&::before {
+	  color: $completed-color;
+	}
+  }
+}

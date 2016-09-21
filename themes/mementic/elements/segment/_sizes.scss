@@ -1,0 +1,16 @@
+/*-------------------
+        Size
+--------------------*/
+
+@mixin sizes($size-map) {
+  @each $name, $size in $size-map {
+
+	#{$ui-segment-group}.#{$name} .#{$c-segment},
+	#{$ui-segment}.#{$name} {
+	  font-size: size($name);
+	}
+
+  }
+}
+
+@include sizes($sizes);

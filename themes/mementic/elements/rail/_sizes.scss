@@ -1,0 +1,10 @@
+/*--------------
+	Sizing
+---------------*/
+
+@each $name, $value in $sizes {
+
+  #{$ui-rail}.#{$name} {
+	font-size: size($name);
+  }
+}

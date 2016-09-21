@@ -1,0 +1,21 @@
+/*--------------
+	  Fade
+---------------*/
+
+/* Shortcuts */
+$ui-fade-reveal: '#{$ui-reveal}.#{$c-fade}';
+
+#{$ui-fade-reveal} {
+
+  > #{$visible-content} {
+	opacity: 1;
+  }
+
+  &.#{$c-active},
+  &:hover {
+
+	> #{$visible-content} {
+	  opacity: 0;
+	}
+  }
+}

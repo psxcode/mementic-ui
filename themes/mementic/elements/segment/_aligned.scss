@@ -1,0 +1,23 @@
+/*-------------------
+       Aligned
+--------------------*/
+
+/* Shortcuts */
+$left-aligned: c-left-aligned();
+$right-aligned: c-right-aligned();
+$center-aligned: c-center-aligned();
+
+#{$ui-segment} {
+
+  &#{$left-aligned} {
+	text-align: left;
+  }
+
+  &#{$right-aligned} {
+	text-align: right;
+  }
+
+  &#{$center-aligned} {
+	text-align: center;
+  }
+}

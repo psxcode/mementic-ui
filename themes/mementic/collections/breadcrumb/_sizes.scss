@@ -1,0 +1,5 @@
+@each $name, $size in $sizes {
+  #{$ui-breadcrumb}.#{$name} {
+	font-size: size($name);
+  }
+}

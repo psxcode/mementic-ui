@@ -1,0 +1,33 @@
+/*--------------------
+       Dropdown
+---------------------*/
+
+#{$ui-form} {
+
+  /* Block */
+  .#{$c-field} > .selection.#{$c-dropdown} {
+	width: 100%;
+
+	> .#{$c-dropdown}.#{$c-icon} {
+	  float: right;
+	}
+  }
+
+  /* Inline */
+  .#{$c-inline} {
+
+	/* Inline Block */
+	&.#{$c-field-group} .#{$c-field},
+	&.#{$c-field} {
+
+	  > .selection.#{$c-dropdown} {
+		width: auto;
+
+		> .#{$c-dropdown}.#{$c-icon} {
+		  float: none;
+		}
+	  }
+
+	}
+  }
+}

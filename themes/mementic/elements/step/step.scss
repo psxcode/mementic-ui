@@ -1,0 +1,212 @@
+/* Shortcuts */
+$ui-step-group: ui-step-group();
+$ui-step: ui-step();
+
+/*-------------------
+    	Group
+--------------------*/
+#{$ui-step-group} {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: stretch;
+  margin: $step-margin;
+  background: $steps-background;
+  box-shadow: $steps-box-shadow;
+  line-height: $line-height;
+  border-radius: $steps-border-radius;
+  border: $steps-border;
+
+  &:first-child {
+	margin-top: 0;
+  }
+
+  &:last-child {
+	margin-bottom: 0;
+  }
+}
+
+/*-------------------
+    	Step
+--------------------*/
+#{$ui-step-group} .#{$c-step} {
+  position: relative;
+  display: flex;
+  flex: 1 0 auto;
+  flex-wrap: wrap;
+  flex-direction: row;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: $justify-content;
+
+  margin: $vertical-margin $horizontal-margin;
+  padding: $vertical-padding $horizontal-padding;
+  background: $background;
+  color: color-text();
+  box-shadow: $box-shadow;
+  border-radius: $border-radius;
+  border: $border;
+  border-right: $divider;
+  transition: $transition;
+
+  /* Arrow */
+  &::after {
+	display: $arrow-display;
+	position: absolute;
+	z-index: 2;
+	content: '';
+	top: $arrow-top-offset;
+	right: $arrow-right-offset;
+	background-color: $arrow-background-color;
+	width: $arrow-size;
+	height: $arrow-size;
+
+	border-style: solid;
+	border-color: color-divider();
+	border-width: $arrow-border-width;
+
+	transition: $transition;
+	transform: translateY(-50%) translateX(50%) rotate(-45deg);
+  }
+
+  /* First Step */
+  &:first-child {
+	padding-left: $horizontal-padding;
+	border-radius: $steps-border-radius 0 0 $steps-border-radius;
+  }
+  /* Last Step */
+  &:last-child {
+	border-radius: 0 $steps-border-radius $steps-border-radius 0;
+	border-right: none;
+	margin-right: 0;
+
+	/* Arrow */
+	&::after {
+	  display: $last-arrow-display;
+	}
+  }
+  /* Only Step */
+  &:only-child {
+	border-radius: $steps-border-radius;
+  }
+}
+
+/*-------------------
+      Link Step
+--------------------*/
+#{$ui-step-group} {
+
+  .#{$c-step}.#{$c-link},
+  a.#{$c-step} {
+	cursor: pointer;
+
+	/* Link Hover */
+	&:hover,
+	&:hover::after {
+	  background: $hover-background;
+	  color: $hover-color;
+	}
+
+	/* Link Down */
+	&:active,
+	&:active::after {
+	  background: $down-background;
+	  color: $down-color;
+	}
+
+	/* Active Link Step */
+	&.#{$c-active} {
+
+	  /* Active Link Step Hover */
+	  &:hover,
+	  &:hover::after {
+		cursor: pointer;
+		background: $active-hover-background;
+		color: $active-hover-color;
+	  }
+	}
+  }
+}
+
+/*-------------------
+     Active Step
+--------------------*/
+
+#{$ui-step-group} .#{$c-step}.#{$c-active} {
+  cursor: auto;
+  background: $active-background;
+
+  /* Arrow */
+  &::after {
+	display: $active-arrow-display;
+	background: $active-background;
+  }
+
+  &::before {
+	color: $active-icon-color;
+  }
+
+  &:last-child {
+	/* Last Step Arrow */
+	&::before {
+	  display: $active-last-arrow-display;
+	}
+  }
+
+  /* Icon */
+  .#{$c-icon} {
+	color: $active-icon-color;
+  }
+
+  /* Title */
+  .#{$c-title} {
+	color: $active-color;
+  }
+}
+
+/*-------------------
+  	Completed Step
+--------------------*/
+
+#{$ui-step-group} .#{$c-step}.#{$c-completed} {
+
+  /* Icon */
+  .#{$c-icon} {
+	color: $completed-color;
+  }
+}
+
+/*-------------------
+    Disabled Step
+--------------------*/
+
+#{$ui-step-group} .#{$c-step}.#{$c-disabled} {
+  cursor: auto;
+  background: $disabled-background;
+  pointer-events: none;
+
+  &::after {
+	background: $disabled-background;
+  }
+
+  &,
+  .#{$c-title},
+  .#{$c-description} {
+	color: $disabled-color;
+  }
+}
+
+/*-------------------
+    Evenly Divided
+--------------------*/
+
+@for $i from 1 through 8 {
+
+  #{$ui-step-group}.#{number-name($i)} {
+	width: 100%;
+
+	> .#{$c-step} {
+	  flex-wrap: nowrap;
+	  width: (100% / $i);
+	}
+  }
+}

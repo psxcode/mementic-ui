@@ -161,7 +161,7 @@
    Description
 ---------------*/
 
-.ui.items > .item > .content > .description {
+.ui.items > .item > .content > .#{$c-description} {
   margin-top: $description-distance;
   max-width: $description-max-width;
   font-size: $description-font-size;

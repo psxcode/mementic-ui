@@ -1,0 +1,15 @@
+/*--------------
+    Attached
+---------------*/
+
+/* Shortcuts */
+$ui-attached-rail: '#{$ui-rail}.#{$c-attached}';
+
+#{$ui-attached-rail} {
+
+  &.#{$c-left},
+  &.#{$c-right} {
+	padding: 0;
+	margin: 0;
+  }
+}

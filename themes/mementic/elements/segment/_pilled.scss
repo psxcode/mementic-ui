@@ -1,0 +1,71 @@
+/*-------------------
+        Piled
+--------------------*/
+
+/* Shortcuts */
+$ui-pilled-segment: '#{$ui-segment}.#{$c-pilled}';
+$ui-pilled-segment-group: '#{$ui-segment-group}.#{$c-pilled}';
+$top-attached: c-top-attached();
+$bottom-attached: c-bottom-attached();
+
+#{$ui-pilled-segment-group},
+#{$ui-pilled-segment} {
+  margin: $piled-margin 0;
+  box-shadow: $piled-box-shadow;
+  z-index: $piled-z-index;
+
+  &::before,
+  &::after {
+	background-color: $color-light;
+	visibility: visible;
+	content: '';
+	display: block;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	width: 100%;
+	border: $piled-border;
+	box-shadow: $piled-box-shadow;
+  }
+
+  &::before {
+	transform: rotate(-$piled-degrees);
+	top: 0;
+	z-index: -2;
+  }
+
+  &::after {
+	transform: rotate($piled-degrees);
+	top: 0;
+	z-index: -1;
+  }
+}
+
+#{$ui-pilled-segment} {
+
+  &:first-child {
+	margin-top: 0;
+  }
+  &:last-child {
+	margin-bottom: 0;
+  }
+
+  /* Piled Attached */
+  &#{$top-attached} {
+	margin-top: $piled-margin;
+	margin-bottom: 0;
+
+	&:first-child {
+	  margin-top: 0;
+	}
+  }
+
+  &#{$bottom-attached} {
+	margin-top: 0;
+	margin-bottom: $piled-margin;
+
+	&:first-child {
+	  margin-bottom: 0;
+	}
+  }
+}

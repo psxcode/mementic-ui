@@ -1,0 +1,93 @@
+/* Active Animation */
+@keyframes loader {
+  from {
+	transform: rotate(0deg);
+  }
+  to {
+	transform: rotate(360deg);
+  }
+}
+
+/* Shortcuts */
+$ui-loader: ui-loader();
+
+/* Standard Size */
+#{$ui-loader} {
+
+  // Hidden by default
+  display: none;
+  position: absolute;
+  top: $loader-top-offset;
+  left: $loader-left-offset;
+  margin: 0;
+  text-align: center;
+  z-index: 1000;
+  transform: translateX(-50%) translateY(-50%);
+
+  /* Static Shape */
+  &::before {
+	position: absolute;
+	content: '';
+	top: 0;
+	left: 50%;
+	width: 100%;
+	height: 100%;
+
+	border-radius: $border-radius-circular;
+	border: $loader-line-width solid $loader-fill-color;
+  }
+
+  /* Active Shape */
+  &::after {
+	position: absolute;
+	content: '';
+	top: 0;
+	left: 50%;
+	width: 100%;
+	height: 100%;
+
+	animation: loader $loader-speed linear;
+	animation-iteration-count: infinite;
+
+	border-radius: $border-radius-circular;
+
+	border-color: $shape-border-color;
+	border-style: solid;
+	border-width: $loader-line-width;
+
+	box-shadow: 0 0 0 1px transparent;
+  }
+
+  /* Inverted */
+  &.#{$c-inverted} {
+	color: $inverted-loader-text-color;
+
+	&::before {
+	  border-color: $inverted-loader-fill-color;
+	}
+	&::after {
+	  border-top-color: $inverted-loader-line-color;
+	}
+  }
+
+  /* Active Visible */
+  &.#{$c-active},
+  &.#{$c-visible} {
+	display: block;
+  }
+
+  /* Disabled Hidden */
+  &.#{$c-disabled},
+  &.#{$c-hidden} {
+	display: none;
+  }
+
+  /* Indeterminate */
+  &.#{$c-indeterminate} {
+
+	&::after {
+	  animation-direction: $indeterminate-direction;
+	  animation-duration: $indeterminate-speed;
+	}
+  }
+}

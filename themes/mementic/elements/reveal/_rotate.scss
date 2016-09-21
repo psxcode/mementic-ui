@@ -1,0 +1,50 @@
+/*--------------
+     Rotate
+---------------*/
+
+/* Shortcuts */
+$ui-rotate-reveal: '#{$ui-reveal}.#{$c-rotate}';
+
+#{$ui-rotate-reveal} {
+
+  > #{$visible-content} {
+	transition-duration: $transition-duration;
+	transform: rotate(0deg);
+  }
+
+  /* Right by default */
+  &,
+  &.#{$c-right} {
+
+	> #{$visible-content} {
+	  transform-origin: bottom right;
+	}
+
+	&.#{$c-active},
+	&:hover {
+	  > #{$visible-content} {
+		transform: rotate($rotate-degrees);
+	  }
+	}
+  }
+
+  &.#{$c-left} {
+
+	> #{$visible-content} {
+	  transform-origin: bottom left;
+	}
+
+	&.#{$c-active},
+	&:hover {
+	  > #{$visible-content} {
+		transform: rotate(-$rotate-degrees);
+	  }
+	}
+  }
+
+}
+
+
+
+
+

@@ -1,0 +1,60 @@
+/*--------------
+   Stackable
+---------------*/
+
+/* Shortcuts */
+$ui-stackable-step-group: '#{$ui-step-group}.#{$c-stackable}';
+$bp-largest-tablet: map-value-by-index($bps, 2);
+$bp-largest-tablet-name: map-key-by-index($bps, 2);
+
+/* Tablet Or Below */
+@include media('screen', '<#{$bp-largest-tablet}') {
+
+  #{$ui-stackable-step-group}.#{$bp-largest-tablet-name} {
+	display: inline-flex;
+	overflow: visible;
+	flex-direction: column;
+
+	/* Steps */
+	.#{$c-step} {
+	  flex-direction: column;
+	  border-radius: $border-radius;
+	  padding: $vertical-padding $horizontal-padding;
+
+	  /* Arrow */
+	  &::after {
+		display: none !important;
+	  }
+
+	  &:first-child {
+		padding: $vertical-padding $horizontal-padding;
+		border-radius: $steps-border-radius $steps-border-radius 0 0;
+	  }
+
+	  &:last-child {
+		border-radius: 0 0 $steps-border-radius $steps-border-radius;
+	  }
+
+	  /* Content */
+	  .#{$c-content} {
+		text-align: center;
+	  }
+
+	  /* Icon */
+	  .#{$c-icon} {
+		margin: 0 0 $mobile-icon-distance 0;
+	  }
+	}
+
+	/* Ordered Steps */
+	&.#{$c-ordered} {
+
+	  /* Step */
+	  .#{$c-step} {
+		&::before {
+		  margin: 0 0 $mobile-icon-distance 0;
+		}
+	  }
+	}
+  }
+}

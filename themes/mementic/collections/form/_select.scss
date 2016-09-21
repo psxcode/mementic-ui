@@ -1,0 +1,19 @@
+/*--------------------
+     Basic Select
+---------------------*/
+
+#{$ui-form} {
+
+  select {
+	display: block;
+	height: auto;
+	width: 100%;
+	background: $select-background;
+	border: $select-border;
+	border-radius: $select-border-radius;
+	box-shadow: $select-box-shadow;
+	padding: $select-padding;
+	color: $select-color;
+	transition: $select-transition;
+  }
+}
