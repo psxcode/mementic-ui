@@ -1,0 +1,29 @@
+/*----------------------
+         Colored
+-----------------------*/
+
+@mixin colors($color-map) {
+  @each $name, $color in $color-map {
+
+	#{$ui-grid} {
+
+	  > .#{$c-row} > .#{$name}.#{$c-column} {
+		margin-top: -($row-spacing / 2);
+		margin-bottom: -($row-spacing / 2);
+		padding-top: ($row-spacing / 2);
+		padding-bottom: ($row-spacing / 2);
+	  }
+
+	  > .#{$name}.#{$c-row},
+	  > .#{$name}.#{$c-column},
+	  > .#{$c-row} > .#{$name}.#{$c-column} {
+		background-color: $color !important;
+		color: color-text($inverted: true);
+	  }
+	}
+  }
+}
+
+@if $auto-include-colors-info == true {
+  @include colors($colors-info);
+}

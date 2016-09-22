@@ -1,0 +1,44 @@
+.ui.message {
+  position: relative;
+  min-height: 1em;
+  margin: $vertical-margin 0;
+  background: $background;
+  padding: $padding;
+  line-height: $line-height;
+  color: $text-color;
+  transition: $transition;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+}
+
+.ui.message:first-child {
+  margin-top: 0;
+}
+
+.ui.message:last-child {
+  margin-bottom: 0;
+}
+
+/*******************************
+            States
+*******************************/
+
+/*--------------
+    Visible
+---------------*/
+
+.ui.visible.visible.visible.visible.message {
+  display: block;
+}
+
+.ui.icon.visible.visible.visible.visible.message {
+  display: flex;
+}
+
+/*--------------
+     Hidden
+---------------*/
+
+.ui.hidden.hidden.hidden.hidden.message {
+  display: none;
+}

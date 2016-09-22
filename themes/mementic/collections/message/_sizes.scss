@@ -1,0 +1,9 @@
+/*--------------
+     Sizes
+---------------*/
+
+@each $name, $size in $sizes {
+  .ui.#{$name}.message {
+	font-size: size($name);
+  }
+}

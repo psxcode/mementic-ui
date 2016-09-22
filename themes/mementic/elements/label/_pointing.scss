@@ -3,10 +3,10 @@
 --------------------*/
 
 /* Shortcuts */
-$up-pointing: c-up-pointing();
-$down-pointing: c-down-pointing();
-$left-pointing: c-left-pointing();
-$right-pointing: c-right-pointing();
+$up-pointing: selector-top-pointing();
+$down-pointing: selector-bottom-pointing();
+$left-pointing: selector-left-pointing();
+$right-pointing: selector-right-pointing();
 
 #{$ui-label} {
 

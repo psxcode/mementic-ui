@@ -1,0 +1,149 @@
+/*--------------
+     Tabular
+---------------*/
+
+.ui.tabular.menu {
+  border-radius: 0;
+  box-shadow: none !important;
+  border: none;
+  background: $tabular-background;
+  border-bottom: $tabular-border-width solid $tabular-border-color;
+}
+
+.ui.tabular.fluid.menu {
+  width: $tabular-fluid-width !important;
+}
+
+.ui.tabular.menu .#{$c-item} {
+  background: transparent;
+  border-bottom: none;
+
+  border-left: $tabular-border-width solid transparent;
+  border-right: $tabular-border-width solid transparent;
+  border-top: $tabular-opposite-border-width solid transparent;
+  padding: $tabular-vertical-padding $tabular-horizontal-padding;
+  color: $tabular-text-color;
+}
+
+.ui.tabular.menu .#{$c-item}:before {
+  display: none;
+}
+
+/* Hover */
+.ui.tabular.menu .#{$c-item}:hover {
+  background-color: transparent;
+  color: $tabular-hovered-text-color;
+}
+
+/* Active */
+.ui.tabular.menu .#{$c-active}.#{$c-item} {
+  background: $tabular-active-background;
+  color: $tabular-active-color;
+  border-top-width: $tabular-border-width;
+  border-color: $tabular-border-color;
+  font-weight: $tabular-active-weight;
+  margin-bottom: -$tabular-border-width;
+  box-shadow: $tabular-active-box-shadow;
+  border-radius: $tabular-border-radius $tabular-border-radius 0 0 !important;
+}
+
+/* Coupling with segment for attachment */
+.ui.tabular.menu + .attached:not(.top).segment,
+.ui.tabular.menu + .attached:not(.top).segment + .attached:not(.top).segment {
+  border-top: none;
+  margin-left: 0;
+  margin-top: 0;
+  margin-right: 0;
+  width: 100%;
+}
+
+.top.attached.segment + .ui.bottom.tabular.menu {
+  position: relative;
+  width: $tabular-fluid-width;
+  left: -$tabular-fluid-offset;
+}
+
+/* Bottom Vertical Tabular */
+.ui.bottom.tabular.menu {
+  background: $tabular-background;
+  border-radius: 0;
+  box-shadow: none !important;
+  border-bottom: none;
+  border-top: $tabular-border-width solid $tabular-border-color;
+}
+
+.ui.bottom.tabular.menu .#{$c-item} {
+  background: none;
+  border-left: $tabular-border-width solid transparent;
+  border-right: $tabular-border-width solid transparent;
+  border-bottom: $tabular-border-width solid transparent;
+  border-top: none;
+}
+
+.ui.bottom.tabular.menu .#{$c-active}.#{$c-item} {
+  background: $tabular-active-background;
+  color: $tabular-active-color;
+  border-color: $tabular-border-color;
+  margin: -$tabular-border-width 0 0 0;
+  border-radius: 0 0 $tabular-border-radius $tabular-border-radius !important;
+}
+
+/* Vertical Tabular (Left) */
+.ui.#{$c-vertical}.tabular.menu {
+  background: $tabular-vertical-background;
+  border-radius: 0;
+  box-shadow: none !important;
+  border-bottom: none;
+  border-right: $tabular-border-width solid $tabular-border-color;
+}
+
+.ui.#{$c-vertical}.tabular.menu .#{$c-item} {
+  background: none;
+  border-left: $tabular-border-width solid transparent;
+  border-bottom: $tabular-border-width solid transparent;
+  border-top: $tabular-border-width solid transparent;
+  border-right: none;
+}
+
+.ui.#{$c-vertical}.tabular.menu .#{$c-active}.#{$c-item} {
+  background: $tabular-active-background;
+  color: $tabular-active-color;
+  border-color: $tabular-border-color;
+  margin: 0 -$tabular-border-width 0 0;
+  border-radius: $tabular-border-radius 0 0 $tabular-border-radius !important;
+}
+
+/* Vertical Right Tabular */
+.ui.#{$c-vertical}.right.tabular.menu {
+  background: $tabular-vertical-background;
+  border-radius: 0;
+  box-shadow: none !important;
+  border-bottom: none;
+  border-right: none;
+  border-left: $tabular-border-width solid $tabular-border-color;
+}
+
+.ui.#{$c-vertical}.right.tabular.menu .#{$c-item} {
+  background: none;
+  border-right: $tabular-border-width solid transparent;
+  border-bottom: $tabular-border-width solid transparent;
+  border-top: $tabular-border-width solid transparent;
+  border-left: none;
+}
+
+.ui.#{$c-vertical}.right.tabular.menu .#{$c-active}.#{$c-item} {
+  background: $tabular-active-background;
+  color: $tabular-active-color;
+  border-color: $tabular-border-color;
+  margin: 0 0 0 -$tabular-border-width;
+  border-radius: 0 $tabular-border-radius $tabular-border-radius 0 !important;
+}
+
+/* Dropdown */
+.ui.tabular.menu .#{$c-active}.#{$c-dropdown}.#{$c-item} {
+  margin-bottom: 0;
+  border-left: $tabular-border-width solid transparent;
+  border-right: $tabular-border-width solid transparent;
+  border-top: $tabular-opposite-border-width solid transparent;
+  border-bottom: none;
+}

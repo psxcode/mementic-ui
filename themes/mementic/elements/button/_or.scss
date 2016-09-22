@@ -3,49 +3,50 @@
 --------------------*/
 #{$ui-button-group} {
 
-  & .#{$c-button-or} {
+  .#{$c-button-or} {
+
 	position: relative;
 	width: $or-gap;
 	height: $or-height;
 	z-index: $or-z-index;
+
+	&::before {
+	  position: absolute;
+	  text-align: center;
+	  border-radius: $border-radius-circular;
+
+	  content: $or-text;
+	  top: 50%;
+	  left: 50%;
+	  background-color: $or-background-color;
+	  text-shadow: $or-text-shadow;
+
+	  margin-top: $or-vertical-offset;
+	  margin-left: $or-horizontal-offset;
+
+	  width: $or-circle-size;
+	  height: $or-circle-size;
+
+	  line-height: $or-line-height;
+	  color: $or-text-color;
+
+	  font-style: $or-text-style;
+	  font-weight: $or-text-weight;
+
+	  box-shadow: $or-box-shadow;
+	}
   }
 
-  & .#{$c-button-or}:before {
-	position: absolute;
-	text-align: center;
-	border-radius: $border-radius-circular;
-
-	content: $or-text;
-	top: 50%;
-	left: 50%;
-	background-color: $or-background-color;
-	text-shadow: $or-text-shadow;
-
-	margin-top: $or-vertical-offset;
-	margin-left: $or-horizontal-offset;
-
-	width: $or-circle-size;
-	height: $or-circle-size;
-
-	line-height: $or-line-height;
-	color: $or-text-color;
-
-	font-style: $or-text-style;
-	font-weight: $or-text-weight;
-
-	box-shadow: $or-box-shadow;
-  }
-
-  & .#{$c-button-or}[data-text]:before {
+  .#{$c-button-or}[data-text]::before {
 	content: attr(data-text);
   }
 
   /* Fluid Or */
   &.#{$c-fluid} .#{$c-button-or} {
 	width: 0 !important;
-  }
 
-  &.#{$c-fluid} .#{$c-button-or}:after {
-	display: none;
+	&::after {
+	  display: none;
+	}
   }
 }

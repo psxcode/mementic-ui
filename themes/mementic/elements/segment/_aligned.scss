@@ -3,9 +3,9 @@
 --------------------*/
 
 /* Shortcuts */
-$left-aligned: c-left-aligned();
-$right-aligned: c-right-aligned();
-$center-aligned: c-center-aligned();
+$left-aligned: selector-left-aligned();
+$right-aligned: selector-right-aligned();
+$center-aligned: selector-center-aligned();
 
 #{$ui-segment} {
 

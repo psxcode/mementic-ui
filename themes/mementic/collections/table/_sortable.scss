@@ -1,0 +1,83 @@
+/*--------------
+    Sortable
+---------------*/
+
+.ui.sortable.table thead th {
+  cursor: pointer;
+  white-space: nowrap;
+  border-left: $sortable-border;
+  color: $sortable-color;
+}
+
+.ui.sortable.table thead th:first-child {
+  border-left: none;
+}
+
+.ui.sortable.table thead th.sorted,
+.ui.sortable.table thead th.sorted:hover {
+  user-select: none;
+}
+
+.ui.sortable.table thead th:after {
+  display: none;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  content: '';
+  height: 1em;
+  width: $sortable-icon-width;
+  opacity: $sortable-icon-opacity;
+  margin: 0 0 0 $sortable-icon-distance;
+  font-family: $sortable-icon-font;
+}
+
+.ui.sortable.table thead th.ascending:after {
+  content: $sortable-icon-ascending;
+}
+
+.ui.sortable.table thead th.descending:after {
+  content: $sortable-icon-descending;
+}
+
+/* Hover */
+.ui.sortable.table th.disabled:hover {
+  cursor: auto;
+  color: $sortable-disabled-color;
+}
+
+.ui.sortable.table thead th:hover {
+  background: $sortable-hover-background;
+  color: $sortable-hover-color;
+}
+
+/* Sorted */
+.ui.sortable.table thead th.sorted {
+  background: $sortable-active-background;
+  color: $sortable-active-color;
+}
+
+.ui.sortable.table thead th.sorted:after {
+  display: inline-block;
+}
+
+/* Sorted Hover */
+.ui.sortable.table thead th.sorted:hover {
+  background: $sortable-active-hover-background;
+  color: $sortable-active-hover-color;
+}
+
+/* Inverted */
+.ui.inverted.sortable.table thead th.sorted {
+  background: $sortable-inverted-active-background;
+  color: $sortable-inverted-active-color;
+}
+
+.ui.inverted.sortable.table thead th:hover {
+  background: $sortable-inverted-hover-background;
+  color: $sortable-inverted-hover-color;
+}
+
+.ui.inverted.sortable.table thead th {
+  border-left-color: $sortable-inverted-border-color;
+  border-right-color: $sortable-inverted-border-color;
+}

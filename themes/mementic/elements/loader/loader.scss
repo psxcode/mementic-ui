@@ -9,7 +9,7 @@
 }
 
 /* Shortcuts */
-$ui-loader: ui-loader();
+$ui-loader: selector-ui-loader();
 
 /* Standard Size */
 #{$ui-loader} {

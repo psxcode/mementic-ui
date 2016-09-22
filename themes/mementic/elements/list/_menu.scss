@@ -3,7 +3,7 @@
 *******************************/
 
 /* Shortcuts */
-$ui-menu: ui-menu();
+$ui-menu: selector-ui-menu();
 
 #{$ui-menu} #{$ui-list} > .#{$c-item},
 #{$ui-menu} #{$ui-list} .#{$c-list} > .#{$c-item} {

@@ -1,0 +1,37 @@
+/*--------------------
+     Required Field
+---------------------*/
+
+#{$ui-form} {
+
+  /* Required */
+  .#{$c-required} {
+	&.#{$c-field-group}:not(.#{$c-grouped}) > .#{$c-field},
+	&.#{$c-field-group}.#{$c-grouped},
+	&.#{$c-field} {
+
+	  > label::after {
+		display: inline-block;
+		vertical-align: top;
+
+		margin: $required-margin;
+		content: $required-content;
+		color: $required-color;
+	  }
+	}
+
+	&.#{$c-field-group}:not(.#{$c-grouped}) > .#{$c-field},
+	&.#{$c-field} {
+
+	  > .#{$c-checkbox}::after {
+		position: absolute;
+		top: 0;
+		left: 100%;
+
+		margin: $required-margin;
+		content: $required-content;
+		color: $required-color;
+	  }
+	}
+  }
+}

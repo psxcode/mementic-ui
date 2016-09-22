@@ -1,6 +1,6 @@
 /* Shortcuts */
-$ui-button: ui-button();
-$ui-button-group: ui-button-group();
+$ui-button: selector-ui-button();
+$ui-button-group: selector-ui-button-group();
 
 #{$ui-button} {
 

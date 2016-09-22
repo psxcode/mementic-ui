@@ -1,0 +1,23 @@
+/*--------------------
+       Disabled
+---------------------*/
+
+#{$ui-form} {
+  .#{$c-field-group}.#{$c-disabled} .#{$c-field},
+  .#{$c-field}.#{$c-disabled},
+  .#{$c-field} :disabled {
+	pointer-events: none;
+	opacity: $opacity-disabled;
+  }
+
+  .#{$c-field}.#{$c-disabled},
+  .#{$c-field-group}.#{$c-disabled} {
+	> label {
+	  opacity: $disabled-label-opacity;
+	}
+  }
+
+  .#{$c-field}.#{$c-disabled} :disabled {
+	opacity: 1;
+  }
+}

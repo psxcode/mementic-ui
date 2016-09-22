@@ -1,0 +1,30 @@
+/*--------------
+    Attached
+---------------*/
+
+.ui.attached.message {
+  margin-bottom: $attached-y-offset;
+  border-radius: $border-radius $border-radius 0 0;
+  box-shadow: $attached-box-shadow;
+  margin-left: $attached-x-offset;
+  margin-right: $attached-x-offset;
+}
+
+.ui.attached + .ui.attached.message:not(.top):not(.bottom) {
+  margin-top: $attached-y-offset;
+  border-radius: 0;
+}
+
+.ui.bottom.attached.message {
+  margin-top: $attached-y-offset;
+  border-radius: 0 0 $border-radius $border-radius;
+  box-shadow: $attached-bottom-box-shadow;
+}
+
+.ui.bottom.attached.message:not(:last-child) {
+  margin-bottom: $vertical-margin;
+}
+
+.ui.attached.icon.message {
+  width: auto;
+}

@@ -1,9 +1,9 @@
 /* Shortcuts */
-$ui-container: ui-container();
-$left-aligned: c-left-aligned();
-$right-aligned: c-right-aligned();
-$center-aligned: c-center-aligned();
-$very-relaxed: c-very-relaxed();
+$ui-container: selector-ui-container();
+$left-aligned: selector-left-aligned();
+$right-aligned: selector-right-aligned();
+$center-aligned: selector-center-aligned();
+$very-relaxed: selector-very-relaxed();
 
 #{$ui-container} {
 

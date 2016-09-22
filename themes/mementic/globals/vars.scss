@@ -44,8 +44,11 @@ $c-statistic: 'statistic';
 /* Modules */
 $c-dimmer: 'dimmer';
 $c-dropdown: 'dropdown';
+$c-checkbox: 'checkbox';
+$c-sidebar: 'sidebar';
 
 /* Sub Elements */
+$c-box: 'box';
 $c-column: 'col';
 $c-content: 'content';
 $c-description: 'description';
@@ -69,21 +72,24 @@ $c-basic: 'basic'; // button label
 $c-block: 'block';
 $c-bordered: 'bordered'; // image, icon
 $c-bulleted: 'bulleted'; // list
-$c-celled: 'celled'; // list
-$c-centered: 'centered'; // image
+$c-celled: 'celled'; // list grid
+$c-centered: 'centered'; // image grid
 $c-circular: 'circular'; // button, image, icon, segment
 $c-clearing: 'clearing'; // divider
 $c-compact: 'compact'; // button
 $c-completed: 'completed'; // step
 $c-divided: 'divided'; // list
 $c-dividing: 'dividing'; // header
-$c-doubling: 'doubling';
+$c-doubling: 'doubling'; // grid
+$c-equal: 'equal'; //grid
 $c-fade: 'fade'; // reveal
 $c-fitted: 'fitted'; // header, divider, list
+$c-fixed: 'fixed'; // menu
 $c-flipped: 'flipped'; // icon
-$c-floated: 'floated'; // button image list
+$c-floated: 'floated'; // button image list grid
 $c-floating: 'floating'; // label
 $c-fluid: 'fluid'; // button image label step
+$c-grouped: 'grouped'; // form
 $c-inline: 'inline'; // loader
 $c-indeterminate: 'indeterminate'; // loader
 $c-internal: 'internal'; // rail
@@ -93,21 +99,28 @@ $c-justified: 'justified'; // header
 $c-labeled: 'labeled'; // button
 $c-move: 'move'; // reveal
 $c-ordered: 'ordered'; // list, step
-$c-padded: 'padded'; // segment
+$c-padded: 'padded'; // segment grid
+$c-page: 'page'; // grid
 $c-pilled: 'pilled'; // segment
 $c-pointing: 'pointing'; // label
+$c-prompt: 'prompt'; // form
 $c-raised: 'raised'; // segment
 $c-relaxed: 'relaxed'; // list
 $c-ribbon: 'ribbon'; // label
+$c-required: 'required'; // form
+$c-reversed: 'reversed'; // grid
 $c-rotate: 'rotate'; // reveal
 $c-rotated: 'rotated'; // icon
 $c-rounded: 'rounded'; // image
+$c-selected: 'selected'; // list
 $c-selection: 'selection'; // list
 $c-slide: 'slide'; // reveal
 $c-spaced: 'spaced'; // image
 $c-stackable: 'stackable'; // step
 $c-stacked: 'stacked'; // segment
+$c-stretched: 'stretched'; // grid
 $c-square: 'square'; // icon
+$c-tabular: 'tabular'; // menu
 $c-tag: 'tag'; // label
 $c-tall: 'tall'; // segment
 $c-toggle: 'toggle'; // button,
@@ -123,8 +136,10 @@ $c-disabled: 'disabled';
 $c-loading: 'loading';
 
 /* Directions */
-$c-vertical: 'vertical';
 $c-horizontal: 'horizontal';
+$c-vertical: 'vertical';
+$c-horizontally: 'horizontally';
+$c-vertically: 'vertically';
 $c-left: 'left';
 $c-right: 'right';
 $c-up: 'up';
@@ -132,10 +147,11 @@ $c-down: 'down';
 $c-top: 'top';
 $c-bottom: 'bottom';
 $c-center: 'center';
+$c-middle: 'middle';
 $c-close: 'close';
 $c-corner: 'corner';
 
-@function c-strict-order($classes...) {
+@function selector-class-strict-order($classes...) {
   $result: '[class*="';
 
   @for $i from 1 through length($classes) {
@@ -151,282 +167,344 @@ $c-corner: 'corner';
 }
 
 /* Element Selectors */
-@function ui-button() {
+@function selector-ui-button() {
   @return '.#{$c-ui}.#{$c-button}';
 }
 
-@function ui-button-group() {
+@function selector-ui-button-group() {
   @return '.#{$c-ui}.#{$c-button-group}';
 }
 
-@function ui-container() {
+@function selector-ui-container() {
   @return '.#{$c-ui}.#{$c-container}';
 }
 
-@function ui-divider() {
+@function selector-ui-divider() {
   @return '.#{$c-ui}.#{$c-divider}';
 }
 
-@function ui-header() {
+@function selector-ui-header() {
   @return '.#{$c-ui}.#{$c-header}';
 }
 
-@function ui-header-sub() {
+@function selector-ui-header-sub() {
   @return '.#{$c-ui}.#{$c-header-sub}';
 }
 
-@function ui-icon() {
+@function selector-ui-icon() {
   @return 'i.#{$c-icon}';
 }
 
-@function ui-icon-group() {
+@function selector-ui-icon-group() {
   @return 'i.#{$c-icon-group}';
 }
 
-@function ui-image() {
+@function selector-ui-image() {
   @return '.#{$c-ui}.#{$c-image}';
 }
 
-@function ui-image-group() {
+@function selector-ui-image-group() {
   @return '.#{$c-ui}.#{$c-image-group}';
 }
 
-@function ui-input() {
+@function selector-ui-input() {
   @return '.#{$c-ui}.#{$c-input}';
 }
 
-@function ui-label() {
+@function selector-ui-label() {
   @return '.#{$c-ui}.#{$c-label}';
 }
 
-@function ui-label-group() {
+@function selector-ui-label-group() {
   @return '.#{$c-ui}.#{$c-label}';
 }
 
-@function ui-list() {
+@function selector-ui-list() {
   @return '.#{$c-ui}.#{$c-list}';
 }
 
-@function ui-loader() {
+@function selector-ui-loader() {
   @return '.#{$c-ui}.#{$c-loader}';
 }
 
-@function ui-rail() {
+@function selector-ui-rail() {
   @return '.#{$c-ui}.#{$c-rail}';
 }
 
-@function ui-reveal() {
+@function selector-ui-reveal() {
   @return '.#{$c-ui}.#{$c-reveal}';
 }
 
-@function ui-segment() {
+@function selector-ui-segment() {
   @return '.#{$c-ui}.#{$c-segment}';
 }
 
-@function ui-segment-group() {
+@function selector-ui-segment-group() {
   @return '.#{$c-ui}.#{$c-segment-group}';
 }
 
-@function ui-step() {
+@function selector-ui-step() {
   @return '.#{$c-ui}.#{$c-step}';
 }
 
-@function ui-step-group() {
+@function selector-ui-step-group() {
   @return '.#{$c-ui}.#{$c-step-group}';
 }
 
 /* Collections Selectors */
-@function ui-breadcrumb() {
+@function selector-ui-breadcrumb() {
   @return '.#{$c-ui}.#{$c-breadcrumb}';
 }
 
-@function ui-form() {
+@function selector-ui-form() {
   @return '.#{$c-ui}.#{$c-form}';
 }
 
-@function ui-grid() {
+@function selector-ui-grid() {
   @return '.#{$c-ui}.#{$c-grid}';
 }
 
-@function ui-menu() {
+@function selector-ui-menu() {
   @return '.#{$c-ui}.#{$c-menu}';
 }
 
-@function ui-message() {
+@function selector-ui-message() {
   @return '.#{$c-ui}.#{$c-message}';
 }
 
-@function ui-table() {
+@function selector-ui-table() {
   @return '.#{$c-ui}.#{$c-table}';
 }
 
 /* Views */
-@function ui-ad() {
+@function selector-ui-ad() {
   @return '.#{$c-ui}.#{$c-ad}';
 }
 
-@function ui-card() {
+@function selector-ui-card() {
   @return '.#{$c-ui}.#{$c-card}';
 }
 
-@function ui-comment() {
+@function selector-ui-comment() {
   @return '.#{$c-ui}.#{$c-comment}';
 }
 
-@function ui-feed() {
+@function selector-ui-feed() {
   @return '.#{$c-ui}.#{$c-feed}';
 }
 
-@function ui-item() {
+@function selector-ui-item() {
   @return '.#{$c-ui}.#{$c-item}';
 }
 
-@function ui-statistic() {
+@function selector-ui-statistic() {
   @return '.#{$c-ui}.#{$c-statistic}';
 }
 
-@function ui-dimmer() {
+@function selector-ui-dimmer() {
   @return '.#{$c-ui}.#{$c-dimmer}';
 }
 
+@function selector-ui-checkbox() {
+  @return '.#{$c-ui}.#{$c-checkbox}';
+}
+
 /* Directions */
-@function c-top-attached() {
-  @return c-strict-order($c-top, $c-attached);
+@function selector-top-attached() {
+  @return selector-class-strict-order($c-top, $c-attached);
 }
 
-@function c-bottom-attached() {
-  @return c-strict-order($c-bottom, $c-attached);
+@function selector-bottom-attached() {
+  @return selector-class-strict-order($c-bottom, $c-attached);
 }
 
-@function c-left-attached() {
-  @return c-strict-order($c-left, $c-attached);
+@function selector-left-attached() {
+  @return selector-class-strict-order($c-left, $c-attached);
 }
 
-@function c-right-attached() {
-  @return c-strict-order($c-right, $c-attached);
+@function selector-right-attached() {
+  @return selector-class-strict-order($c-right, $c-attached);
 }
 
-@function c-top-left-attached() {
-  @return c-strict-order($c-top, $c-left, $c-attached);
+@function selector-top-left-attached() {
+  @return selector-class-strict-order($c-top, $c-left, $c-attached);
 }
 
-@function c-bottom-left-attached() {
-  @return c-strict-order($c-bottom, $c-left, $c-attached);
+@function selector-bottom-left-attached() {
+  @return selector-class-strict-order($c-bottom, $c-left, $c-attached);
 }
 
-@function c-top-right-attached() {
-  @return c-strict-order($c-top, $c-right, $c-attached);
+@function selector-top-right-attached() {
+  @return selector-class-strict-order($c-top, $c-right, $c-attached);
 }
 
-@function c-bottom-right-attached() {
-  @return c-strict-order($c-bottom, $c-right, $c-attached);
+@function selector-bottom-right-attached() {
+  @return selector-class-strict-order($c-bottom, $c-right, $c-attached);
 }
 
-@function c-up-pointing() {
-  @return c-strict-order($c-up, $c-pointing);
+@function selector-top-fixed() {
+  @return selector-class-strict-order($c-top, $c-fixed);
 }
 
-@function c-down-pointing() {
-  @return c-strict-order($c-down, $c-pointing);
+@function selector-bottom-fixed() {
+  @return selector-class-strict-order($c-bottom, $c-fixed);
 }
 
-@function c-left-pointing() {
-  @return c-strict-order($c-left, $c-pointing);
+@function selector-left-fixed() {
+  @return selector-class-strict-order($c-left, $c-fixed);
 }
 
-@function c-right-pointing() {
-  @return c-strict-order($c-right, $c-pointing);
+@function selector-right-fixed() {
+  @return selector-class-strict-order($c-right, $c-fixed);
 }
 
-@function c-left-floated() {
-  @return c-strict-order($c-left, $c-floated);
+@function selector-top-pointing() {
+  @return selector-class-strict-order($c-top, $c-pointing);
 }
 
-@function c-right-floated() {
-  @return c-strict-order($c-right, $c-floated);
+@function selector-bottom-pointing() {
+  @return selector-class-strict-order($c-bottom, $c-pointing);
 }
 
-@function c-left-rotated() {
-  @return c-strict-order($c-left, $c-rotated);
+@function selector-left-pointing() {
+  @return selector-class-strict-order($c-left, $c-pointing);
 }
 
-@function c-right-rotated() {
-  @return c-strict-order($c-right, $c-rotated);
+@function selector-right-pointing() {
+  @return selector-class-strict-order($c-right, $c-pointing);
 }
 
-@function c-top-aligned() {
-  @return c-strict-order($c-top, $c-aligned);
+@function selector-left-floated() {
+  @return selector-class-strict-order($c-left, $c-floated);
 }
 
-@function c-bottom-aligned() {
-  @return c-strict-order($c-bottom, $c-aligned);
+@function selector-right-floated() {
+  @return selector-class-strict-order($c-right, $c-floated);
 }
 
-@function c-left-aligned() {
-  @return c-strict-order($c-left, $c-aligned);
+@function selector-left-rotated() {
+  @return selector-class-strict-order($c-left, $c-rotated);
 }
 
-@function c-right-aligned() {
-  @return c-strict-order($c-right, $c-aligned);
+@function selector-right-rotated() {
+  @return selector-class-strict-order($c-right, $c-rotated);
 }
 
-@function c-center-aligned() {
-  @return c-strict-order($c-center, $c-aligned);
+@function selector-top-aligned() {
+  @return selector-class-strict-order($c-top, $c-aligned);
 }
 
-@function c-middle-aligned() {
-  @return c-strict-order($c-center, $c-aligned);
+@function selector-bottom-aligned() {
+  @return selector-class-strict-order($c-bottom, $c-aligned);
 }
 
-@function c-left-labeled() {
-  @return c-strict-order($c-left, $c-labeled);
+@function selector-left-aligned() {
+  @return selector-class-strict-order($c-left, $c-aligned);
 }
 
-@function c-right-labeled() {
-  @return c-strict-order($c-right, $c-labeled);
+@function selector-right-aligned() {
+  @return selector-class-strict-order($c-right, $c-aligned);
 }
 
-@function c-corner-labeled() {
-  @return c-strict-order($c-corner, $c-labeled);
+@function selector-center-aligned() {
+  @return selector-class-strict-order($c-center, $c-aligned);
 }
 
-@function c-left-corner() {
-  @return c-strict-order($c-left, $c-corner);
+@function selector-middle-aligned() {
+  @return selector-class-strict-order($c-middle, $c-aligned);
 }
 
-@function c-left-corner-labeled() {
-  @return c-strict-order($c-left, $c-corner, $c-labeled);
+@function selector-left-labeled() {
+  @return selector-class-strict-order($c-left, $c-labeled);
 }
 
-@function c-left-spaced() {
-  @return c-strict-order($c-left, $c-spaced);
+@function selector-right-labeled() {
+  @return selector-class-strict-order($c-right, $c-labeled);
 }
 
-@function c-right-spaced() {
-  @return c-strict-order($c-right, $c-spaced);
+@function selector-corner-labeled() {
+  @return selector-class-strict-order($c-corner, $c-labeled);
 }
 
-@function c-left-action() {
-  @return c-strict-order($c-left, $c-action);
+@function selector-left-corner() {
+  @return selector-class-strict-order($c-left, $c-corner);
 }
 
-@function c-right-ribbon() {
-  @return c-strict-order($c-right, $c-ribbon);
+@function selector-left-corner-labeled() {
+  @return selector-class-strict-order($c-left, $c-corner, $c-labeled);
+}
+
+@function selector-left-spaced() {
+  @return selector-class-strict-order($c-left, $c-spaced);
+}
+
+@function selector-right-spaced() {
+  @return selector-class-strict-order($c-right, $c-spaced);
+}
+
+@function selector-left-action() {
+  @return selector-class-strict-order($c-left, $c-action);
+}
+
+@function selector-right-ribbon() {
+  @return selector-class-strict-order($c-right, $c-ribbon);
+}
+
+/* HORIZONTAL / VERTICAL */
+@function selector-horizontally-padded() {
+  @return selector-class-strict-order($c-horizontally, $c-padded);
+}
+
+@function selector-vertically-padded() {
+  @return selector-class-strict-order($c-vertically, $c-padded);
+}
+
+@function selector-horizontally-fitted() {
+  @return selector-class-strict-order($c-horizontally, $c-fitted);
+}
+
+@function selector-vertically-fitted() {
+  @return selector-class-strict-order($c-vertically, $c-fitted);
+}
+
+@function selector-vertically-divided() {
+  @return selector-class-strict-order($c-vertically, $c-divided);
+}
+
+@function selector-vertically-reversed() {
+  @return selector-class-strict-order($c-vertically, $c-reversed);
+}
+
+@function selector-vertical-pointing() {
+  @return selector-class-strict-order($c-vertical, $c-pointing);
+}
+
+/* NUM */
+@function selector-num-column($num) {
+  @return selector-class-strict-order(number-name($num), $c-column);
+}
+
+@function selector-num-wide($num) {
+  @return selector-class-strict-order(number-name($num), $c-wide);
+}
+
+@function selector-num-item($num) {
+  @return selector-class-strict-order(number-name($num), $c-item);
 }
 
 /* VERY */
-@function c-very-relaxed() {
-  @return c-strict-order('very', $c-relaxed);
+@function selector-very-relaxed() {
+  @return selector-class-strict-order('very', $c-relaxed);
 }
 
-@function c-very-close() {
-  @return c-strict-order('very', $c-close);
+@function selector-very-close() {
+  @return selector-class-strict-order('very', $c-close);
 }
 
-@function c-very-basic() {
-  @return c-strict-order('very', $c-basic);
+@function selector-very-basic() {
+  @return selector-class-strict-order('very', $c-basic);
 }
 
-@function c-very-padded() {
-  @return c-strict-order('very', $c-padded);
+@function selector-very-padded() {
+  @return selector-class-strict-order('very', $c-padded);
 }

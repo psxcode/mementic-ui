@@ -1,0 +1,32 @@
+/*-------------------
+      Evenly Sized
+--------------------*/
+
+#{$ui-menu} {
+
+  /* One Item Menu */
+  &.#{$c-item},
+  &.#{$c-item} .#{$c-item} {
+	width: 100%;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+	text-align: center;
+	justify-content: center;
+  }
+
+  &.#{$c-item} .#{$c-item}:last-child::before {
+	display: none;
+  }
+
+  @for $i from 2 through 12 {
+
+	$num-items: selector-num-item($i);
+
+	/* Num Items Menu */
+	&#{$num-items} .#{$c-item} {
+	  width: (100% / $i);
+	}
+  }
+}

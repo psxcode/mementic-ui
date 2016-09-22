@@ -1,0 +1,44 @@
+/*----------------------
+        Relaxed
+-----------------------*/
+
+/* Shortcuts */
+$very-relaxed: selector-very-relaxed();
+
+#{$ui-grid} {
+
+  &.#{$c-relaxed} > .#{$c-column}:not(.#{$c-row}),
+  &.#{$c-relaxed} > .#{$c-row} > .#{$c-column},
+  > .#{$c-relaxed}.#{$c-row} > .#{$c-column} {
+	padding-left: ($relaxed-gutter-width / 2);
+	padding-right: ($relaxed-gutter-width / 2);
+  }
+
+  &#{$very-relaxed} > .#{$c-column}:not(.#{$c-row}),
+  &#{$very-relaxed} > .#{$c-row} > .#{$c-column},
+  > #{$very-relaxed}.#{$c-row} > .#{$c-column} {
+	padding-left: ($very-relaxed-gutter-width / 2);
+	padding-right: ($very-relaxed-gutter-width / 2);
+  }
+
+  /* Coupling with UI Divider */
+  &.#{$c-relaxed} .#{$c-row},
+  .#{$c-relaxed}.#{$c-row} {
+
+	/* Divider after Row */
+	+ .#{$c-divider} {
+	  margin-left: ($relaxed-gutter-width / 2);
+	  margin-right: ($relaxed-gutter-width / 2);
+	}
+  }
+
+  &#{$very-relaxed} .#{$c-row},
+  #{$very-relaxed}.#{$c-row} {
+
+	/* Divider after Row */
+	+ .#{$c-divider} {
+	  margin-left: ($very-relaxed-gutter-width / 2);
+	  margin-right: ($very-relaxed-gutter-width / 2);
+	}
+  }
+}

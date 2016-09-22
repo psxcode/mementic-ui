@@ -1,0 +1,39 @@
+/*-------------------
+      Doubling
+--------------------*/
+
+/* Shortcuts */
+
+#{$ui-grid} {
+  
+  /* Doubling Grid */
+  &.#{$c-doubling} {
+  	width: auto;
+  }
+
+  /* Doubling Row */
+  > .#{$c-doubling}.#{$c-row},
+  &.#{$c-doubling} > .#{$c-row} {
+	margin: 0 !important;
+	padding: 0 !important;
+	
+	> .#{$c-column} {
+	  display: inline-block !important;
+	  padding-top: ($row-spacing / 2) !important;
+	  padding-bottom: ($row-spacing / 2) !important;
+	  box-shadow: none !important;
+	  margin: 0;
+	}
+  }
+  
+  @for $i from 1 through $num-columns {
+  
+	&.#{number-name($i)}.#{$c-column}.#{$c-doubling} > .#{$c-row} > .#{$c-column},
+	&.#{number-name($i)}.#{$c-column}.#{$c-doubling} > .#{$c-column}:not(.#{$c-row}),
+	> .#{number-name($i)}.#{$c-column}.#{$c-doubling}.#{$c-row}.#{$c-row} > .#{$c-column} {
+	  width: ceil($i * 0.5);
+	}
+  }
+}
+
+

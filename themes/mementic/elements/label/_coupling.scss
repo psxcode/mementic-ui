@@ -3,16 +3,16 @@
 --------------------*/
 
 /* Shortcuts */
-$ui-header: ui-header();
-$ui-segment: ui-segment();
+$ui-header: selector-ui-header();
+$ui-segment: selector-ui-segment();
 $attached: '.#{$c-attached}';
-$top-attached: c-top-attached();
-$bottom-attached: c-bottom-attached();
-$top-left-attached: c-top-left-attached();
-$top-right-attached: c-top-right-attached();
-$bottom-left-attached: c-bottom-left-attached();
-$bottom-right-attached: c-bottom-right-attached();
-$right-floated: c-right-floated();
+$top-attached: selector-top-attached();
+$bottom-attached: selector-bottom-attached();
+$top-left-attached: selector-top-left-attached();
+$top-right-attached: selector-top-right-attached();
+$bottom-left-attached: selector-bottom-left-attached();
+$bottom-right-attached: selector-bottom-right-attached();
+$right-floated: selector-right-floated();
 
 /* Header */
 #{$ui-header} > #{$ui-label} {

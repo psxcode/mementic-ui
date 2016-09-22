@@ -1,6 +1,6 @@
 /* Shortcuts */
-$ui-segment: ui-segment();
-$ui-segment-group: ui-segment-group();
+$ui-segment: selector-ui-segment();
+$ui-segment-group: selector-ui-segment-group();
 
 #{$ui-segment} {
   position: relative;

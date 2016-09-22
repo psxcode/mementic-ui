@@ -3,8 +3,8 @@
 ---------------*/
 
 /* Shortcuts */
-$top-attached: c-top-attached();
-$bottom-attached: c-bottom-attached();
+$top-attached: selector-top-attached();
+$bottom-attached: selector-bottom-attached();
 
 /* Top */
 #{$ui-step-group} {

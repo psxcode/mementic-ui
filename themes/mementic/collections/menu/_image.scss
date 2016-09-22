@@ -1,0 +1,19 @@
+/*--------------
+     Images
+---------------*/
+
+#{$ui-menu} {
+
+  .#{$c-item} > img:not(.#{$c-ui}) {
+	display: inline-block;
+	vertical-align: middle;
+	margin: $image-margin;
+	width: $image-width;
+  }
+
+  &.#{$c-vertical} .#{$c-item} > img:not(.#{$c-ui}):only-child {
+	display: block;
+	max-width: 100%;
+	width: $vertical-image-width;
+  }
+}

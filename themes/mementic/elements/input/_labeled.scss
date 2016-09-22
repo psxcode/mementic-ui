@@ -4,10 +4,10 @@
 
 /* Shortcuts */
 $ui-labeled-input: '#{$ui-input}.#{$c-labeled}';
-$right-labeled: c-right-labeled();
-$corner-labeled: c-corner-labeled();
-$left-corner: c-left-corner();
-$left-corner-labeled: c-left-corner-labeled();
+$right-labeled: selector-right-labeled();
+$corner-labeled: selector-corner-labeled();
+$left-corner: selector-left-corner();
+$left-corner-labeled: selector-left-corner-labeled();
 
 /* Adjacent Label */
 #{$ui-labeled-input} {

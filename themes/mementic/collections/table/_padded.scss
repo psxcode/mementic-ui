@@ -1,0 +1,23 @@
+/*--------------
+     Padded
+---------------*/
+
+.ui.padded.table th {
+  padding-left: $padded-horizontal-padding;
+  padding-right: $padded-horizontal-padding;
+}
+
+.ui.padded.table th,
+.ui.padded.table td {
+  padding: $padded-vertical-padding $padded-horizontal-padding;
+}
+
+/* Very */
+.ui[class*="very padded"].table th {
+  padding-left: $very-padded-horizontal-padding;
+  padding-right: $very-padded-horizontal-padding;
+}
+
+.ui[class*="very padded"].table td {
+  padding: $very-padded-vertical-padding $very-padded-horizontal-padding;
+}

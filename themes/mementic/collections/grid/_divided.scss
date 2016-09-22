@@ -1,0 +1,130 @@
+/*----------------------
+        Divided
+-----------------------*/
+
+/* Shortcuts */
+$vertically-divided: selector-vertically-divided();
+
+#{$ui-grid} {
+
+  /* Divided Grid */
+  &.#{$c-divided} {
+
+	/* Horizontally Divided Grid */
+	&:not(#{$vertically-divided}) {
+
+	  /* Column */
+	  > .#{$c-column}:not(.#{$c-row}),
+	  > .#{$c-row} > .#{$c-column} {
+		box-shadow: $divided-border;
+
+		&:first-child {
+		  box-shadow: none;
+		}
+	  }
+
+	  /* Inverted */
+	  &.#{$c-inverted} {
+		/* Column */
+		> .#{$c-column}:not(.#{$c-row}),
+		> .#{$c-row} > .#{$c-column} {
+		  box-shadow: $divided-inverted-border;
+
+		  &:first-child {
+			box-shadow: none;
+		  }
+		}
+	  }
+	}
+
+	/* Padded Divided Grid */
+	&.#{$c-padded} {
+	  width: 100%;
+	}
+  }
+
+  /* Vertically Divided Grid */
+  &#{$vertically-divided} {
+
+	/* Vertically Divided Grid > Row */
+	> .#{$c-row} {
+	  position: relative;
+	  margin-top: 0;
+	  margin-bottom: 0;
+
+	  &::before {
+		position: absolute;
+		content: "";
+		top: 0;
+		left: 0;
+
+		width: calc(100% - #{$gutter-width});
+		height: 1px;
+
+		margin: 0 ($gutter-width / 2);
+		box-shadow: $vertically-divided-border;
+	  }
+
+	  /* First Row */
+	  &:first-child {
+
+		&::before {
+		  box-shadow: none;
+		}
+
+		/* No space on top of first row */
+		> .#{$c-column} {
+		  margin-top: 0;
+		}
+	  }
+	}
+
+	/* Vertically Divided Grid > Column */
+	/* Swap from padding to margin on columns to have dividers align */
+	> .#{$c-column}:not(.#{$c-row}),
+	> .#{$c-row} > .#{$c-column} {
+
+	  margin-top: ($row-spacing / 2);
+	  margin-bottom: ($row-spacing / 2);
+	  padding-top: 0;
+	  padding-bottom: 0;
+	}
+
+	/* Inverted Vertically Divided Grid */
+	&.#{$c-inverted} {
+
+	  > .#{$c-row}::before {
+		box-shadow: $vertically-divided-inverted-border;
+	  }
+	}
+
+	/* Relaxed Vertically Divided Grid */
+	&.#{$c-relaxed} {
+
+	  > .#{$c-row}::before {
+		margin-left: ($relaxed-gutter-width / 2);
+		margin-right: ($relaxed-gutter-width / 2);
+		width: calc(100% - #{$relaxed-gutter-width});
+	  }
+	}
+
+	/* Very Relaxed Vertically Divided Grid */
+	&#{$very-relaxed} {
+
+	  > .#{$c-row}::before {
+		margin-left: $very-relaxed-gutter-width;
+		margin-right: $very-relaxed-gutter-width;
+		width: calc(100% - #{$very-relaxed-gutter-width});
+	  }
+	}
+  }
+
+  /* Grid > Divided Row > Column */
+  > .#{$c-divided}.#{$c-row} > .#{$c-column} {
+	box-shadow: $divided-border;
+
+	&:first-child {
+	  box-shadow: none;
+	}
+  }
+}

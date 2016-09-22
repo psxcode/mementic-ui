@@ -3,8 +3,8 @@
 ---------------------*/
 
 $ui-icon-input: '#{$ui-input}.#{$c-icon}';
-$ui-icon: ui-icon();
-$left-icon: c-strict-order($c-left, $c-icon);
+$ui-icon: selector-ui-icon();
+$left-icon: selector-class-strict-order($c-left, $c-icon);
 
 #{$ui-icon-input} {
 

@@ -2,7 +2,10 @@
        Loading
 ---------------------*/
 
-#{$ui-input}.#{$c-loading}.#{$c-loading} > #{ui-icon()} {
+/* Shortcuts */
+$ui-icon: selector-ui-icon();
+
+#{$ui-input}.#{$c-loading}.#{$c-loading} > #{$ui-icon} {
 
   &::before {
 	position: absolute;

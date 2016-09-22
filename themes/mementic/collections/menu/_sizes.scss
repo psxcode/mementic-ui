@@ -1,0 +1,14 @@
+/*--------------
+     Sizes
+---------------*/
+
+@each $name, $size in $sizes {
+
+  #{$ui-menu}.#{$name} {
+	font-size: size($name);
+
+	&.#{$c-vertical} {
+	  width: menu-width($name);
+	}
+  }
+}

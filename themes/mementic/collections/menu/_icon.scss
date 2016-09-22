@@ -1,0 +1,86 @@
+/*--------------
+      Icons
+---------------*/
+#{$ui-menu} {
+
+  .#{$c-item} > #{$ui-icon} {
+	opacity: $icon-opacity;
+	float: $icon-float;
+	margin: $icon-margin;
+  }
+}
+
+/*--------------
+    Icon Only
+---------------*/
+
+/* Vertical Menu */
+.ui.#{$c-vertical}.icon.menu {
+  display: inline-block;
+  width: auto;
+}
+
+/* Item */
+.ui.icon.menu .#{$c-item} {
+  height: auto;
+  text-align: $icon-menu-text-align;
+  color: $icon-menu-item-color;
+}
+
+/* Icon */
+.ui.icon.menu .#{$c-item} > .#{$c-icon}:not(.#{$c-dropdown}) {
+  margin: 0;
+  opacity: 1;
+}
+
+/* Icon Gylph */
+.ui.icon.menu .#{$c-icon}:before {
+  opacity: 1;
+}
+
+/* (x) Item Icon */
+.ui.menu .#{$c-icon}.#{$c-item} > .#{$c-icon} {
+  width: auto;
+  margin: 0 auto;
+}
+
+/* Vertical Icon */
+.ui.#{$c-vertical}.icon.menu .#{$c-item} > .#{$c-icon}:not(.#{$c-dropdown}) {
+  display: block;
+  opacity: 1;
+  margin: 0 auto;
+  float: none;
+}
+
+/* Inverted */
+.ui.inverted.icon.menu .#{$c-item} {
+  color: $icon-menu-inverted-item-color;
+}
+
+/*--------------
+   Labeled Icon
+---------------*/
+
+/* Menu */
+.ui.labeled.icon.menu {
+  text-align: center;
+}
+
+/* Item */
+.ui.labeled.icon.menu .#{$c-item} {
+  min-width: $labeled-icon-min-width;
+  flex-direction: column;
+}
+
+/* Icon */
+.ui.labeled.icon.menu .#{$c-item} > .#{$c-icon}:not(.#{$c-dropdown}) {
+  height: 1em;
+  display: block;
+  font-size: $labeled-icon-size !important;
+  margin: 0 auto $labeled-icon-text-margin !important;
+}
+
+/* Fluid */
+.ui.fluid.labeled.icon.menu > .#{$c-item} {
+  min-width: 0;
+}

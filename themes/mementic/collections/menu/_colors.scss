@@ -1,0 +1,37 @@
+/*--------------
+     Colors
+---------------*/
+
+@mixin colors($color-map) {
+  @each $name, $color in $color-map {
+
+	#{$ui-menu} {
+
+	  .#{$name}.#{$c-item}.#{$c-active},
+	  &.#{$name} .#{$c-item}.#{$c-active} {
+		border-color: $color !important;
+		color: $color !important;
+	  }
+
+	  /* Inverted */
+	  &.#{$c-inverted} {
+
+		.#{$name}.#{$c-item}.#{$c-active},
+		&.#{$name} {
+		  background-color: $color;
+		}
+
+		&.#{$name} .#{$c-item} {
+		  &::before {
+			background-color: $inverted-colored-divider-background;
+		  }
+
+		  &.#{$c-active} {
+			background-color: $inverted-colored-active-background !important;
+		  }
+		}
+	  }
+	}
+  }
+}
+

@@ -5,8 +5,8 @@
 /* Shortcuts */
 $ui-aligned-image: '#{$ui-image}.#{$c-aligned}';
 $ui-aligned-image-group: '#{$ui-image-group}.#{$c-aligned}';
-$top-aligned: c-top-aligned();
-$bottom-aligned: c-bottom-aligned();
+$top-aligned: selector-top-aligned();
+$bottom-aligned: selector-bottom-aligned();
 
 #{$ui-aligned-image-group} .#{$c-image},
 #{$ui-aligned-image},

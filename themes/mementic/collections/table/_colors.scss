@@ -1,0 +1,15 @@
+/*-------------------
+       Colors
+--------------------*/
+@mixin colors($color-map) {
+
+  @each $name, $color in $color-map {
+	.ui.#{$name}.table {
+	  border-top: $colored-border-size solid $color;
+	}
+	.ui.inverted.#{$name}.table {
+	  background-color: $color !important;
+	  color: color-text($inverted: true) !important;
+	}
+  }
+}

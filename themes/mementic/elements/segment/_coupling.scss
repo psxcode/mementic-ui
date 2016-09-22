@@ -3,11 +3,11 @@
 --------------------*/
 
 /* Shortcuts */
-$top-attached: c-top-attached();
-$bottom-attached: c-bottom-attached();
-$very-basic: c-very-basic();
-$ui-grid: ui-grid();
-$ui-table: ui-table();
+$top-attached: selector-top-attached();
+$bottom-attached: selector-bottom-attached();
+$very-basic: selector-very-basic();
+$ui-grid: selector-ui-grid();
+$ui-table: selector-ui-table();
 
 #{$ui-segment} {
 

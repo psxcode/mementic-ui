@@ -3,9 +3,9 @@
 --------------------*/
 
 /* Shortcuts */
-$top-aligned: c-top-aligned();
-$middle-aligned: c-middle-aligned();
-$bottom-aligned: c-bottom-aligned();
+$top-aligned: selector-top-aligned();
+$middle-aligned: selector-middle-aligned();
+$bottom-aligned: selector-bottom-aligned();
 
 #{$ui-list}#{$top-aligned} .#{$c-image},
 #{$ui-list}#{$top-aligned} .#{$c-content},

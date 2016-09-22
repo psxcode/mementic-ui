@@ -1,0 +1,19 @@
+/*--------------
+     Sidebar
+---------------*/
+
+/* Show vertical dividers below last */
+#{$ui-menu} {
+
+  &.#{$c-vertical}.#{$c-sidebar} > .#{$c-item} {
+
+	&::before {
+	  top: auto;
+	  bottom: 0;
+	}
+
+	&:first-child::before {
+	  display: block !important;
+	}
+  }
+}

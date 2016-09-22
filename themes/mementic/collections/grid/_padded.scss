@@ -1,0 +1,30 @@
+/*----------------------
+        Padded
+-----------------------*/
+
+/* Shortcuts */
+$horizontally-padded: selector-horizontally-padded();
+$vertically-padded: selector-vertically-padded();
+
+#{$ui-grid} {
+
+  &.#{$c-padded} {
+
+	&:not(.#{$c-vertically}):not(.#{$c-horizontally}) {
+	  margin: 0 !important;
+	}
+  }
+
+  &#{$horizontally-padded} {
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+  }
+
+  #{$vertically-padded} {
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+  }
+}
+
+
+

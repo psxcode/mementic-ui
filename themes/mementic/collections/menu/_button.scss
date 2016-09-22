@@ -1,0 +1,17 @@
+/*--------------
+     Button
+---------------*/
+
+#{$ui-menu} {
+
+  &:not(.#{$c-vertical}) {
+	.#{$c-item} > #{$c-button} {
+	  position: relative;
+	  top: $button-offset;
+	  margin: $button-margin;
+	  padding-bottom: $button-vertical-padding;
+	  padding-top: $button-vertical-padding;
+	  font-size: $button-size;
+	}
+  }
+}

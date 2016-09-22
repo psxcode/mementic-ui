@@ -1,0 +1,84 @@
+/*--------------------
+    Inline Fields
+---------------------*/
+
+#{$ui-form} {
+
+  .#{$c-inline} {
+
+	&.#{$c-field-group} {
+	  margin: $field-margin;
+	  align-items: center;
+	}
+
+	&.#{$c-field-group} .#{$c-field} {
+	  margin: 0;
+	  padding: $inline-fields-margin;
+	}
+
+	/* Inline Label */
+	&.#{$c-field-group},
+	&.#{$c-field-group} .#{$c-field},
+	&.#{$c-field} {
+
+	  > label,
+	  > p {
+		display: inline-block;
+		width: auto;
+		margin-top: 0;
+		margin-bottom: 0;
+		vertical-align: baseline;
+		font-size: $inline-label-font-size;
+		font-weight: $inline-label-font-weight;
+		color: $inline-label-color;
+		text-transform: $inline-label-text-transform;
+	  }
+	}
+
+	/* Grouped Inline Label */
+	&.#{$c-field-group} > label {
+	  margin: $grouped-inline-label-margin;
+	}
+
+	/* Inline Input */
+	&.#{$c-field-group} .#{$c-field},
+	&.#{$c-field} {
+
+	  > input,
+	  > select {
+		display: inline-block;
+		width: auto;
+
+		margin-top: 0;
+		margin-bottom: 0;
+
+		vertical-align: middle;
+		font-size: $inline-input-size;
+	  }
+	}
+
+	/* -label */
+	&.#{$c-field-group} .#{$c-field},
+	&.#{$c-field} {
+
+	  > :first-child {
+		margin: 0 $inline-label-distance 0 0;
+	  }
+
+	  > :only-child {
+		margin: 0;
+	  }
+	}
+
+	/* Inline Wide Field */
+	&.#{$c-field-group} .#{$c-field}.#{$c-wide} {
+	  display: flex;
+	  align-items: center;
+
+	  > input,
+	  > select {
+		width: 100%;
+	  }
+	}
+  }
+}

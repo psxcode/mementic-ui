@@ -5,8 +5,8 @@
 /* Shortcuts */
 $ui-pilled-segment: '#{$ui-segment}.#{$c-pilled}';
 $ui-pilled-segment-group: '#{$ui-segment-group}.#{$c-pilled}';
-$top-attached: c-top-attached();
-$bottom-attached: c-bottom-attached();
+$top-attached: selector-top-attached();
+$bottom-attached: selector-bottom-attached();
 
 #{$ui-pilled-segment-group},
 #{$ui-pilled-segment} {

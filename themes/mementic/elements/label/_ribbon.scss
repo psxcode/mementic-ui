@@ -5,10 +5,10 @@
 /* Shortcuts */
 $ui-ribbon-label: '#{$ui-label}.#{$c-ribbon}';
 $ribbon-label: '#{$c-label}.#{$c-ribbon}';
-$right-ribbon: c-right-ribbon();
-$ui-image: ui-image();
-$ui-card: ui-card();
-$ui-table: ui-table();
+$right-ribbon: selector-right-ribbon();
+$ui-image: selector-ui-image();
+$ui-card: selector-ui-card();
+$ui-table: selector-ui-table();
 
 #{$ui-ribbon-label} {
 

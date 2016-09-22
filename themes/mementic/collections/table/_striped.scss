@@ -1,0 +1,21 @@
+/*--------------
+     Striped
+---------------*/
+
+/* Table Striping */
+.ui.striped.table > tr:nth-child(2n),
+.ui.striped.table tbody tr:nth-child(2n) {
+  background-color: $striped-background;
+}
+
+/* Stripes */
+.ui.inverted.striped.table > tr:nth-child(2n),
+.ui.inverted.striped.table tbody tr:nth-child(2n) {
+  background-color: $inverted-striped-background;
+}
+
+/* Allow striped active hover */
+/*.ui.striped.selectable.selectable.selectable.table tbody tr.active:hover {
+  background: $activeBackgroundHover !important;
+  color: $activeColorHover !important;
+}*/

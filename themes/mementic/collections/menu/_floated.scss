@@ -1,0 +1,48 @@
+/*--------------
+     Floated
+---------------*/
+
+/* Shortcuts */
+$right-floated: selector-right-floated();
+
+#{$ui-menu} {
+
+  &.#{$c-floated} {
+	float: left;
+	margin: 0 $floated-distance 0 0;
+
+	.#{$c-item}:last-child:before {
+	  display: none;
+	}
+  }
+
+  &#{$right-floated} {
+	float: right;
+	margin: 0 0 0 $floated-distance;
+  }
+}
+
+/*------------------
+Floated Menu / Item
+-------------------*/
+
+/* Left Floated */
+.ui.menu:not(.#{$c-vertical}) .left.#{$c-item},
+.ui.menu:not(.#{$c-vertical}) .left.menu {
+  display: flex;
+  margin-right: auto !important;
+}
+
+/* Right Floated */
+.ui.menu:not(.#{$c-vertical}) .right.#{$c-item},
+.ui.menu:not(.#{$c-vertical}) .right.menu {
+  display: flex;
+  margin-left: auto !important;
+}
+
+/* Swapped Borders */
+.ui.menu .right.#{$c-item}::before,
+.ui.menu .right.menu > .#{$c-item}::before {
+  right: auto;
+  left: 0;
+}

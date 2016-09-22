@@ -1,0 +1,15 @@
+/*--------------
+      Sizes
+---------------*/
+
+/* Standard */
+.ui.table {
+  font-size: size('medium');
+}
+
+@each $name, $size in $sizes {
+
+  .ui.table {
+	font-size: size($name);
+  }
+}

@@ -1,0 +1,28 @@
+/*--------------
+    Complex
+---------------*/
+
+.ui.structured.table {
+  border-collapse: collapse;
+}
+
+.ui.structured.table thead th {
+  border-left: $header-divider;
+  border-right: $header-divider;
+}
+
+.ui.structured.sortable.table thead th {
+  border-left: $sortable-border;
+  border-right: $sortable-border;
+}
+
+.ui.structured.basic.table th {
+  border-left: $basic-table-header-divider;
+  border-right: $basic-table-header-divider;
+}
+
+.ui.structured.celled.table tr th,
+.ui.structured.celled.table tr td {
+  border-left: $cell-border;
+  border-right: $cell-border;
+}

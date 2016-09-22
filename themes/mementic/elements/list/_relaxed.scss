@@ -4,7 +4,7 @@
 
 /* Shortcuts */
 $ui-relaxed-list: '#{$ui-list}.#{$c-relaxed}';
-$very-relaxed: c-very-relaxed();
+$very-relaxed: selector-very-relaxed();
 
 #{$ui-relaxed-list} {
 

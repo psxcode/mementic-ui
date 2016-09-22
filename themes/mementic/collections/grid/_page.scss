@@ -1,0 +1,27 @@
+/*-----------------------
+       Page Grid
+-------------------------*/
+
+/* Shortcuts */
+$ui-page-grid: '#{$ui-grid}.#{$c-page}';
+
+#{$ui-page-grid} {
+
+  /* Mobile first */
+  width: auto;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0;
+
+  $i: 0;
+  @each $name, $bp in $bps {
+	$i: $i + 1;
+
+	@include media('screen', '>=#{$name}') {
+	  padding-left: nth($gutters, $i);
+	  padding-right: nth($gutters, $i);
+	}
+  }
+}
+

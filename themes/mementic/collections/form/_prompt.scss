@@ -1,0 +1,30 @@
+/*--------------------
+   Validation Prompt
+---------------------*/
+
+#{$ui-form} {
+
+  .#{$c-field} .#{$c-prompt}.#{$c-label} {
+	white-space: normal;
+	background: $prompt-background !important;
+	border: $prompt-border !important;
+	color: $prompt-text-color !important;
+  }
+
+  .#{$c-inline}.#{$c-field-group} .#{$c-field},
+  .#{$c-inline}.#{$c-field} {
+
+	.#{$c-prompt} {
+	  vertical-align: top;
+	  margin: $inline-prompt-margin;
+
+	  &::before {
+		border-width: 0 0 $inline-prompt-border-width $inline-prompt-border-width;
+		bottom: auto;
+		right: auto;
+		top: 50%;
+		left: 0;
+	  }
+	}
+  }
+}

@@ -1,0 +1,39 @@
+/*--------------------
+     Field Groups
+---------------------*/
+
+#{$ui-form} {
+
+  /* Grouped */
+  .#{$c-grouped} {
+
+	/* Grouped Vertically */
+	&.#{$c-field-group} {
+	  display: block;
+	  margin: $grouped-margin;
+
+	  &:last-child {
+		margin-bottom: 0;
+	  }
+
+	  > label {
+		margin: $grouped-label-margin;
+		color: $grouped-label-color;
+		font-size: $grouped-label-font-size;
+		font-weight: $grouped-label-font-weight;
+		text-transform: $grouped-label-text-transform;
+	  }
+	}
+
+	&.#{$c-field-group},
+	&.#{$c-inline}.#{$c-field-group} {
+
+	  .#{$c-field} {
+		display: block;
+		margin: $grouped-field-margin;
+		padding: 0;
+	  }
+	}
+  }
+}
+

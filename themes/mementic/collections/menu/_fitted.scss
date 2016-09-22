@@ -1,0 +1,30 @@
+/*--------------
+     Fitted
+---------------*/
+
+/* Shortcuts */
+$horizontally-fitted: selector-horizontally-fitted();
+$vertically-fitted: selector-vertically-fitted();
+
+#{$ui-menu} {
+
+  &.#{$c-fitted} .#{$c-item},
+  &.#{$c-fitted} .#{$c-item} .#{$c-menu} .#{$c-item},
+  .#{$c-fitted}.#{$c-item} {
+	padding: 0;
+  }
+
+  &#{$horizontally-fitted} .#{$c-item},
+  &#{$horizontally-fitted} .#{$c-item} .#{$c-menu} .#{$c-item},
+  #{$horizontally-fitted}.#{$c-item} {
+	padding-top: $item-vertical-padding;
+	padding-bottom: $item-vertical-padding;
+  }
+
+  &#{$vertically-fitted} .#{$c-item},
+  &#{$vertically-fitted} .#{$c-item} .#{$c-menu} .#{$c-item},
+  #{$vertically-fitted}.#{$c-item} {
+	padding-left: $item-horizontal-padding;
+	padding-right: $item-horizontal-padding;
+  }
+}

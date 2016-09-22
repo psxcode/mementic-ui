@@ -66,32 +66,6 @@ $ui-form: ui-form();
   margin-top: 0;
 }
 
-/*--------------------
-   Validation Prompt
----------------------*/
-
-.ui.form .#{$c-field} .prompt.label {
-  white-space: normal;
-  background: $prompt-background !important;
-  border: $prompt-border !important;
-  color: $prompt-text-color !important;
-}
-
-.ui.form .inline.#{$c-field-group} .#{$c-field} .prompt,
-.ui.form .inline.#{$c-field} .prompt {
-  vertical-align: top;
-  margin: $inline-prompt-margin;
-}
-
-.ui.form .inline.#{$c-field-group} .#{$c-field} .prompt:before,
-.ui.form .inline.#{$c-field} .prompt:before {
-  border-width: 0 0 $inline-prompt-border-width $inline-prompt-border-width;
-  bottom: auto;
-  right: auto;
-  top: 50%;
-  left: 0;
-}
-
 /*******************************
             States
 *******************************/
@@ -323,208 +297,35 @@ $ui-form: ui-form();
 }
 
 /*--------------------
-       Disabled
----------------------*/
-
-.ui.form .disabled.#{$c-field-group} .#{$c-field},
-.ui.form .disabled.#{$c-field},
-.ui.form .#{$c-field} :disabled {
-  pointer-events: none;
-  opacity: $opacity-disabled;
-}
-
-.ui.form .#{$c-field}.disabled > label,
-.ui.form .#{$c-field-group}.disabled > label {
-  opacity: $disabled-label-opacity;
-}
-
-.ui.form .#{$c-field}.disabled :disabled {
-  opacity: 1;
-}
-
-/*--------------
-    Loading
----------------*/
-
-.ui.loading.form {
-  position: relative;
-  cursor: default;
-  pointer-events: none;
-}
-
-.ui.loading.form:before {
-  position: absolute;
-  content: '';
-  top: 0;
-  left: 0;
-  background: $loader-dimmer-color;
-  width: 100%;
-  height: 100%;
-  z-index: $loader-dimmer-z-index;
-}
-
-.ui.loading.form:after {
-  position: absolute;
-  content: '';
-  top: 50%;
-  left: 50%;
-
-  margin: $loader-margin;
-  width: $loader-size;
-  height: $loader-size;
-
-  animation: form-spin $loader-speed linear;
-  animation-iteration-count: infinite;
-
-  border-radius: $border-radius-circular;
-
-  border-color: $loader-line-color $loader-fill-color $loader-fill-color $loader-fill-color;
-  border-style: solid;
-  border-width: $loader-line-width;
-
-  box-shadow: 0 0 0 1px transparent;
-  visibility: visible;
-  z-index: $loader-line-z-index;
-}
-
-@keyframes form-spin {
-  from {
-	transform: rotate(0deg);
-  }
-  to {
-	transform: rotate(360deg);
-  }
-}
-
-/*******************************
-         Element Types
-*******************************/
-
-/*--------------------
-     Required Field
----------------------*/
-
-.ui.form .required.#{$c-field-group}:not(.grouped) > .#{$c-field} > label:after,
-.ui.form .required.#{$c-field-group}.grouped > label:after,
-.ui.form .required.#{$c-field} > label:after,
-.ui.form .required.#{$c-field-group}:not(.grouped) > .#{$c-field} > .checkbox:after,
-.ui.form .required.#{$c-field} > .checkbox:after {
-  margin: $required-margin;
-  content: $required-content;
-  color: $required-color;
-}
-
-.ui.form .required.#{$c-field-group}:not(.grouped) > .#{$c-field} > label:after,
-.ui.form .required.#{$c-field-group}.grouped > label:after,
-.ui.form .required.#{$c-field} > label:after {
-  display: inline-block;
-  vertical-align: top;
-}
-
-.ui.form .required.#{$c-field-group}:not(.grouped) > .#{$c-field} > .checkbox:after,
-.ui.form .required.#{$c-field} > .checkbox:after {
-  position: absolute;
-  top: 0;
-  left: 100%;
-}
-
-/*******************************
-           Variations
-*******************************/
-
-/*--------------------
-    Inverted Colors
----------------------*/
-
-.ui.inverted.form label,
-.ui.form .inverted.segment label,
-.ui.form .inverted.segment .ui.checkbox label,
-.ui.form .inverted.segment .ui.checkbox .box,
-.ui.inverted.form .ui.checkbox label,
-.ui.inverted.form .ui.checkbox .box,
-.ui.inverted.form .inline.#{$c-field-group} > label,
-.ui.inverted.form .inline.#{$c-field-group} .#{$c-field} > label,
-.ui.inverted.form .inline.#{$c-field-group} .#{$c-field} > p,
-.ui.inverted.form .inline.#{$c-field} > label,
-.ui.inverted.form .inline.#{$c-field} > p {
-  color: $inverted-label-color;
-}
-
-/* -inverted -field */
-.ui.inverted.form input:not([type]),
-.ui.inverted.form input[type="date"],
-.ui.inverted.form input[type="datetime-local"],
-.ui.inverted.form input[type="email"],
-.ui.inverted.form input[type="number"],
-.ui.inverted.form input[type="password"],
-.ui.inverted.form input[type="search"],
-.ui.inverted.form input[type="tel"],
-.ui.inverted.form input[type="time"],
-.ui.inverted.form input[type="text"],
-.ui.inverted.form input[type="file"],
-.ui.inverted.form input[type="url"] {
-  background: $inverted-input-background;
-  border-color: $inverted-input-border-color;
-  color: $inverted-input-color;
-  box-shadow: $inverted-input-box-shadow;
-}
-
-/*--------------------
-     Field Groups
----------------------*/
-
-/* Grouped Vertically */
-.ui.form .grouped.#{$c-field-group} {
-  display: block;
-  margin: $grouped-margin;
-}
-
-.ui.form .grouped.#{$c-field-group}:last-child {
-  margin-bottom: 0;
-}
-
-.ui.form .grouped.#{$c-field-group} > label {
-  margin: $grouped-label-margin;
-  color: $grouped-label-color;
-  font-size: $grouped-label-font-size;
-  font-weight: $grouped-label-font-weight;
-  text-transform: $grouped-label-text-transform;
-}
-
-.ui.form .grouped.#{$c-field-group} .#{$c-field},
-.ui.form .grouped.inline.#{$c-field-group} .#{$c-field} {
-  display: block;
-  margin: $grouped-field-margin;
-  padding: 0;
-}
-
-/*--------------------
         Fields
 ---------------------*/
 
 /* Split fields */
-.ui.form .#{$c-field-group} {
+#{$ui-form} .#{$c-field-group} {
   display: flex;
   flex-direction: row;
   margin: $fields-margin;
-}
 
-.ui.form .#{$c-field-group} > .#{$c-field} {
-  flex: 0 1 auto;
-  padding-left: ($gutter-width / 2);
-  padding-right: ($gutter-width / 2);
-}
+  > .#{$c-field} {
+	flex: 0 1 auto;
+	padding-left: ($gutter-width / 2);
+	padding-right: ($gutter-width / 2);
 
-.ui.form .#{$c-field-group} > .#{$c-field}:first-child {
-  border-left: none;
-  box-shadow: none;
-}
+	&:first-child {
+	  border-left: none;
+	  box-shadow: none;
+	}
+  }
 
-@for $i from 2 through 10 {
-  /* Other Combinations */
-  .ui.form .#{number-name($i)}.#{$c-field-group} > .#{$c-field-group},
-  .ui.form .#{number-name($i)}.#{$c-field-group} > .#{$c-field} {
-	width: column($i);
+  @for $i from 2 through 10 {
+	/* Other Combinations */
+	&.#{number-name($i)} {
+
+	  > .#{$c-field-group},
+	  > .#{$c-field} {
+		width: column($i);
+	  }
+	}
   }
 }
 
@@ -618,87 +419,4 @@ $bp-tablet: map-value-by-index($bps, 1);
 .ui.form [class*="equal width"].#{$c-field-group} > .#{$c-field} {
   width: 100%;
   flex: 1 1 auto;
-}
-
-/*--------------------
-    Inline Fields
----------------------*/
-
-.ui.form .inline.#{$c-field-group} {
-  margin: $field-margin;
-  align-items: center;
-}
-
-.ui.form .inline.#{$c-field-group} .#{$c-field} {
-  margin: 0;
-  padding: $inline-fields-margin;
-}
-
-/* Inline Label */
-.ui.form .inline.#{$c-field-group} > label,
-.ui.form .inline.#{$c-field-group} .#{$c-field} > label,
-.ui.form .inline.#{$c-field-group} .#{$c-field} > p,
-.ui.form .inline.#{$c-field} > label,
-.ui.form .inline.#{$c-field} > p {
-  display: inline-block;
-  width: auto;
-  margin-top: 0;
-  margin-bottom: 0;
-  vertical-align: baseline;
-  font-size: $inline-label-font-size;
-  font-weight: $inline-label-font-weight;
-  color: $inline-label-color;
-  text-transform: $inline-label-text-transform;
-}
-
-/* Grouped Inline Label */
-.ui.form .inline.#{$c-field-group} > label {
-  margin: $grouped-inline-label-margin;
-}
-
-/* Inline Input */
-.ui.form .inline.#{$c-field-group} .#{$c-field} > input,
-.ui.form .inline.#{$c-field-group} .#{$c-field} > select,
-.ui.form .inline.#{$c-field} > input,
-.ui.form .inline.#{$c-field} > select {
-  display: inline-block;
-  width: auto;
-
-  margin-top: 0;
-  margin-bottom: 0;
-
-  vertical-align: middle;
-  font-size: $inline-input-size;
-}
-
-/* -label */
-.ui.form .inline.#{$c-field-group} .#{$c-field} > :first-child,
-.ui.form .inline.#{$c-field} > :first-child {
-  margin: 0 $inline-label-distance 0 0;
-}
-
-.ui.form .inline.#{$c-field-group} .#{$c-field} > :only-child,
-.ui.form .inline.#{$c-field} > :only-child {
-  margin: 0;
-}
-
-/* Wide */
-.ui.form .inline.#{$c-field-group} .wide.#{$c-field} {
-  display: flex;
-  align-items: center;
-}
-
-.ui.form .inline.#{$c-field-group} .wide.#{$c-field} > input,
-.ui.form .inline.#{$c-field-group} .wide.#{$c-field} > select {
-  width: 100%;
-}
-
-/*--------------------
-        Sizes
----------------------*/
-@each $name, $size in $sizes {
-
-  .ui.#{$name}.form {
-	font-size: size($name);
-  }
 }

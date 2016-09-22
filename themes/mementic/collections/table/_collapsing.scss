@@ -1,0 +1,17 @@
+/*--------------
+   Collapsing
+---------------*/
+
+.ui.collapsing.table {
+  width: auto;
+}
+
+/*--------------
+    Collapsing
+---------------*/
+
+.ui.table th.collapsing,
+.ui.table td.collapsing {
+  width: 1px;
+  white-space: nowrap;
+}

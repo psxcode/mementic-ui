@@ -1,0 +1,9 @@
+/*--------------
+   Borderless
+---------------*/
+
+.ui.borderless.menu .#{$c-item}:before,
+.ui.borderless.menu .#{$c-item} .#{$c-menu} .#{$c-item}:before,
+.ui.menu .borderless.#{$c-item}:before {
+  background: none !important;
+}

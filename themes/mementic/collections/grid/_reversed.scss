@@ -1,0 +1,68 @@
+/*----------------------
+        Reverse
+-----------------------*/
+
+/* Shortcuts */
+$vertically-reversed: selector-vertically-reversed();
+$vertically-divided: selector-vertically-divided();
+
+#{$ui-grid} {
+
+  /* Reversed Grid and Rows */
+  &.#{$c-reversed},
+  &.#{$c-reversed} > .#{$c-row},
+  > .#{$c-reversed}.#{$c-row} {
+	flex-direction: row-reverse;
+  }
+
+  /* Vertically Reversed Grid */
+  &#{$vertically-reversed},
+  &.#{$c-reversed}.#{$c-stackable} {
+	flex-direction: column-reverse;
+  }
+
+  /* Horizontally Divided Reversed Grid */
+  &.#{$c-reversed}.#{$c-divided}:not(#{$vertically-divided}) {
+
+	/* Column */
+	> .#{$c-column},
+	> .#{$c-row} > .#{$c-column} {
+
+	  &:first-child {
+		box-shadow: $divided-border;
+	  }
+
+	  &:last-child {
+		box-shadow: none;
+	  }
+	}
+  }
+
+  /* Vertically Divided Reversed Grid */
+  &#{$vertically-divided}#{$vertically-reversed} {
+
+	/* Row */
+	> .#{$c-row} {
+	  &:first-child::before {
+		box-shadow: $vertically-divided-border;
+	  }
+	  &:last-child::before {
+		box-shadow: none;
+	  }
+	}
+  }
+
+  /* Celled Reversed Grid */
+  &.#{$c-reversed}.#{$c-celled} {
+
+	/* Column */
+	> .#{$c-row} > .#{$c-column} {
+	  &:first-child {
+		box-shadow: $celled-column-divider;
+	  }
+	  &:last-child {
+		box-shadow: none;
+	  }
+	}
+  }
+}

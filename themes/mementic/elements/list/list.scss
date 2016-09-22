@@ -1,8 +1,8 @@
 /* Shortcuts */
-$ui-list: ui-list();
+$ui-list: selector-ui-list();
 $ui-ul-list: 'ul#{$ui-list}';
 $ui-ol-list: 'ol#{$ui-list}';
-$ui-icon: ui-icon();
+$ui-icon: selector-ui-icon();
 
 #{$ui-list},
 #{$ui-ul-list},

@@ -1,0 +1,78 @@
+/*--------------
+     Fixed
+---------------*/
+
+/* Shortcuts */
+$left-fixed: selector-left-fixed();
+$right-fixed: selector-right-fixed();
+$top-fixed: selector-top-fixed();
+$bottom-fixed: selector-bottom-fixed();
+
+#{$ui-menu} {
+
+  &.#{$c-fixed} {
+	position: fixed;
+	z-index: 101;
+	margin: 0;
+	width: 100%;
+
+	&,
+	.#{$c-item}:first-child,
+	.#{$c-item}:last-child {
+	  border-radius: 0 !important;
+	}
+  }
+
+  &.#{$c-fixed},
+  &#{$top-fixed} {
+	top: 0;
+	left: 0;
+	right: auto;
+	bottom: auto;
+  }
+
+  &#{$top-fixed} {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+  }
+
+  &#{$bottom-fixed} {
+	border-bottom: none;
+	border-left: none;
+	border-right: none;
+	bottom: 0;
+	left: 0;
+	top: auto;
+	right: auto;
+  }
+
+  &#{$left-fixed} {
+	border-top: none;
+	border-bottom: none;
+	border-left: none;
+	top: 0;
+	left: 0;
+	right: auto;
+	bottom: auto;
+	width: auto;
+	height: 100%;
+  }
+
+  &#{$right-fixed} {
+	border-top: none;
+	border-bottom: none;
+	border-right: none;
+	top: 0;
+	right: 0;
+	left: auto;
+	bottom: auto;
+	width: auto;
+	height: 100%;
+  }
+
+  /* Coupling with Grid */
+  &.#{$c-fixed} + .#{$c-grid} {
+	padding-top: $fixed-preceding-grid-margin;
+  }
+}

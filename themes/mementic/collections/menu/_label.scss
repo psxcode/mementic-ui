@@ -1,0 +1,25 @@
+/*--------------
+     Labels
+---------------*/
+
+#{$ui-menu} {
+
+  .#{$c-item} > .#{$c-label} {
+	background: $label-background;
+	color: $label-text-color;
+	margin-left: $label-text-margin;
+	padding: $label-vertical-padding $label-horizontal-padding;
+  }
+
+  &.#{$c-vertical} .#{$c-item} > .#{$c-label} {
+	background: $label-background;
+	color: $label-text-color;
+	margin-top: $label-offset;
+	margin-bottom: $label-offset;
+	padding: $label-vertical-padding $label-horizontal-padding;
+  }
+
+  .#{$c-item} > .#{$c-floating}.#{$c-label} {
+	padding: $label-vertical-padding $label-horizontal-padding;
+  }
+}

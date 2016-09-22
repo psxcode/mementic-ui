@@ -1,0 +1,118 @@
+/*----------------------
+   Vertically Aligned
+-----------------------*/
+
+/* Shortcuts */
+$top-aligned: selector-top-aligned();
+$middle-aligned: selector-middle-aligned();
+$bottom-aligned: selector-bottom-aligned();
+$left-aligned: selector-left-aligned();
+$center-aligned: selector-center-aligned();
+$right-aligned: selector-right-aligned();
+
+#{$ui-grid} {
+
+  /* Top Aligned */
+  &#{$top-aligned} > .#{$c-row} > .#{$c-column},
+  &#{$top-aligned} > .#{$c-column}:not(.#{$c-row}),
+  > #{$top-aligned}.#{$c-row} > .#{$c-column},
+  > #{$top-aligned}.#{$c-column}:not(.#{$c-row}),
+  > .#{$c-row} > #{$top-aligned}.#{$c-column} {
+	flex-direction: column;
+	vertical-align: top;
+	align-self: flex-start !important;
+  }
+
+  /* Middle Aligned */
+  &#{$middle-aligned} > .#{$c-row} > .#{$c-column},
+  &#{$middle-aligned} > .#{$c-column}:not(.#{$c-row}),
+  > #{$middle-aligned}.#{$c-row} > .#{$c-column},
+  > #{$middle-aligned}.#{$c-column}:not(.#{$c-row}),
+  > .#{$c-row} > #{$middle-aligned}.#{$c-column} {
+	flex-direction: column;
+	vertical-align: middle;
+	align-self: center !important;
+  }
+
+  /* Bottom Aligned */
+  &#{$bottom-aligned} > .#{$c-row} > .#{$c-column},
+  &#{$bottom-aligned} > .#{$c-column}:not(.#{$c-row}),
+  > #{$bottom-aligned}.#{$c-row} > .#{$c-column},
+  > #{$bottom-aligned}.#{$c-column}:not(.#{$c-row}),
+  > .#{$c-row} > #{$bottom-aligned}.#{$c-column} {
+	flex-direction: column;
+	vertical-align: bottom;
+	align-self: flex-end !important;
+  }
+
+  /* Stretched */
+  &.#{$c-stretched} > .#{$c-row} > .#{$c-column},
+  &.#{$c-stretched} > .#{$c-column},
+  > .#{$c-stretched}.#{$c-row} > .#{$c-column},
+  > .#{$c-stretched}.#{$c-column}:not(.#{$c-row}),
+  > .#{$c-row} > .#{$c-stretched}.#{$c-column} {
+	display: inline-flex !important;
+	align-self: stretch;
+	flex-direction: column;
+
+	> * {
+	  flex-grow: 1;
+	}
+  }
+}
+
+/*----------------------
+  Horizontally Centered
+-----------------------*/
+
+#{$ui-grid} {
+
+  /* Left Aligned */
+  &#{$left-aligned} > .#{$c-column},
+  &#{$left-aligned} > .#{$c-row} > .#{$c-column},
+  > #{$left-aligned}.#{$c-row} > .#{$c-column},
+  > #{$left-aligned}.#{$c-column}.#{$c-column},
+  > .#{$c-row} > #{$left-aligned}.#{$c-column}.#{$c-column} {
+	text-align: left;
+	align-self: inherit;
+  }
+
+  /* Center Aligned */
+  &#{$center-aligned} > .#{$c-column},
+  &#{$center-aligned} > .#{$c-row} > .#{$c-column},
+  > #{$center-aligned}.#{$c-row} > .#{$c-column},
+  > #{$center-aligned}.#{$c-column}.#{$c-column},
+  > .#{$c-row} > #{$center-aligned}.#{$c-column}.#{$c-column} {
+	text-align: center;
+	align-self: inherit;
+  }
+
+  &#{$center-aligned} {
+	justify-content: center;
+  }
+
+  /* Right Aligned */
+  &#{$right-aligned} > .#{$c-column},
+  &#{$right-aligned} > .#{$c-row} > .#{$c-column},
+  > #{$right-aligned}.#{$c-row} > .#{$c-column},
+  > #{$right-aligned}.#{$c-column}.#{$c-column},
+  > .#{$c-row} > #{$right-aligned}.#{$c-column}.#{$c-column} {
+	text-align: right;
+	align-self: inherit;
+  }
+
+  /* Justified */
+  &.#{$c-justified} > .#{$c-column},
+  &.#{$c-justified} > .#{$c-row} > .#{$c-column},
+  > .#{$c-justified}.#{$c-row} > .#{$c-column},
+  > .#{$c-justified}.#{$c-column}.#{$c-column},
+  > .#{$c-row} > .#{$c-justified}.#{$c-column}.#{$c-column} {
+	text-align: justify;
+	hyphens: auto;
+  }
+}
+
+
+
+
+

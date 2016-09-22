@@ -1,0 +1,19 @@
+/*--------------
+     Header
+---------------*/
+#{$ui-menu} {
+
+  .#{$c-item}.#{$c-header},
+  &.#{$c-vertical} .#{$c-item}.#{$c-header} {
+	margin: 0;
+	background: $header-background;
+	text-transform: $header-text-transform;
+	font-weight: $header-weight;
+  }
+
+  &.#{$c-vertical} .#{$c-item} > .#{$c-header}:not(.#{$c-ui}) {
+	margin: $vertical-header-margin;
+	font-size: $vertical-header-font-size;
+	font-weight: $vertical-header-font-weight;
+  }
+}

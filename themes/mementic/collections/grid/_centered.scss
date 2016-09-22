@@ -1,0 +1,30 @@
+/*----------------------
+        Centered
+-----------------------*/
+
+#{$ui-grid} {
+
+  &.#{$c-centered},
+  &.#{$c-centered} > .#{$c-row},
+  > .#{$c-centered}.#{$c-row} {
+	text-align: center;
+	justify-content: center;
+  }
+
+  &.#{$c-centered} > .#{$c-column}:not(.#{$c-row}),
+  &.#{$c-centered} > .#{$c-row} > .#{$c-column},
+  .#{$c-centered}.#{$c-row} > .#{$c-column} {
+
+	&:not(.#{$c-aligned}):not(.#{$c-justified}) {
+	  text-align: left;
+	}
+  }
+
+  > .#{$c-centered}.#{$c-column},
+  > .#{$c-row} > .#{$c-centered}.#{$c-column} {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+  }
+}
+

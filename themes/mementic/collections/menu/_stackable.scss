@@ -1,0 +1,34 @@
+/*--------------
+	Stackable
+---------------*/
+
+$bp-tablet: map-value-by-index($bps, 1);
+
+@include media('screen', '<#{$bp-tablet}') {
+
+  .ui.stackable.menu {
+	flex-direction: column;
+  }
+  .ui.stackable.menu .#{$c-item} {
+	width: 100% !important;
+  }
+  .ui.stackable.menu .#{$c-item}:before {
+	position: absolute;
+	content: '';
+	top: auto;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: $divider-size;
+	background: $vertical-divider-background;
+  }
+
+  .ui.stackable.menu .left.menu,
+  .ui.stackable.menu .left.#{$c-item} {
+	margin-right: 0 !important;
+  }
+  .ui.stackable.menu .right.menu,
+  .ui.stackable.menu .right.#{$c-item} {
+	margin-left: 0 !important;
+  }
+}

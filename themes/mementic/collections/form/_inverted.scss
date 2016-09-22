@@ -1,0 +1,68 @@
+/*--------------------
+    Inverted Colors
+---------------------*/
+
+/* Shortcuts */
+$ui-checkbox: ui-checkbox();
+
+#{$ui-form} {
+
+  /* Inverted Form */
+  &.#{$c-inverted} {
+
+	/* Labels inside Inverted Form */
+	label {
+	  color: $inverted-label-color;
+	}
+
+	/* Checkbox inside Inverted Form */
+	#{$ui-checkbox} {
+	  .#{$c-box},
+	  label {
+		color: $inverted-label-color;
+	  }
+	}
+
+	/* Inline in Inverted Form */
+	.#{$c-inline} {
+
+	  &.#{$c-field-group},
+	  &.#{$c-field-group} .#{$c-field},
+	  &.#{$c-field} {
+		> label,
+		> p {
+		  color: $inverted-label-color;
+		}
+	  }
+	}
+
+	/* Inputs inside Inverted Form */
+	input:not([type]),
+	input[type="date"],
+	input[type="datetime-local"],
+	input[type="email"],
+	input[type="number"],
+	input[type="password"],
+	input[type="search"],
+	input[type="tel"],
+	input[type="time"],
+	input[type="text"],
+	input[type="file"],
+	input[type="url"] {
+	  background: $inverted-input-background;
+	  border-color: $inverted-input-border-color;
+	  color: $inverted-input-color;
+	  box-shadow: $inverted-input-box-shadow;
+	}
+  }
+
+  /* Inverted Segment inside Form */
+  .#{$c-inverted}.#{$c-segment} {
+
+	label,
+	#{$ui-checkbox} label,
+	#{$ui-checkbox} .#{$c-box} {
+	  color: $inverted-label-color;
+	}
+  }
+}

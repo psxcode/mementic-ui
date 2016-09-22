@@ -3,10 +3,10 @@
 --------------------*/
 
 /* Shortcuts */
-$left-attached: c-left-attached();
-$right-attached: c-right-attached();
-$top-attached: c-top-attached();
-$bottom-attached: c-bottom-attached();
+$left-attached: selector-left-attached();
+$right-attached: selector-right-attached();
+$top-attached: selector-top-attached();
+$bottom-attached: selector-bottom-attached();
 
 /* Singular */
 #{$ui-button} {

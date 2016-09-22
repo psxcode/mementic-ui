@@ -3,8 +3,8 @@
 --------------------*/
 
 /* Shortcuts */
-$left-labeled: c-left-labeled();
-$right-labeled: c-right-labeled();
+$left-labeled: selector-left-labeled();
+$right-labeled: selector-right-labeled();
 
 
 #{$ui-button} {

@@ -1,0 +1,123 @@
+/* Shortcuts */
+$ui-grid: selector-ui-grid();
+$gutter-width-half: $gutter-width / 2;
+$row-spacing-half: $row-spacing / 2;
+
+#{$ui-grid} {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+  padding: 0;
+
+  margin-top: -$row-spacing-half;
+  margin-bottom: -$row-spacing-half;
+  margin-left: -$gutter-width-half;
+  margin-right: -$gutter-width-half;
+
+  /* Preserve Rows Spacing on Consecutive Grids */
+  + .#{$c-grid} {
+	margin-top: $consecutive-grid-distance;
+  }
+
+  /* Collapse Margin on Consecutive Grid */
+  > .#{$c-grid} {
+	&:first-child {
+	  margin-top: 0;
+	}
+	&:last-child {
+	  margin-bottom: 0;
+	}
+  }
+}
+
+// Columns
+// -------------------------------
+
+#{$ui-grid} {
+
+  > * {
+	padding-left: $gutter-width-half;
+	padding-right: $gutter-width-half;
+  }
+
+  /* Standard column */
+  > .#{$c-column}:not(.#{$c-row}),
+  > .#{$c-row} > .#{$c-column} {
+	position: relative;
+	display: inline-block;
+
+	width: wide(1);
+	padding-left: $gutter-width-half;
+	padding-right: $gutter-width-half;
+	vertical-align: top;
+  }
+
+  /* Vertical padding when no rows */
+  > .#{$c-column}:not(.#{$c-row}) {
+	padding-top: $row-spacing-half;
+	padding-bottom: $row-spacing-half;
+  }
+
+  > .#{$c-row} > .#{$c-column} {
+	margin-top: 0;
+	margin-bottom: 0;
+  }
+}
+
+// Rows
+// -------------------------------
+
+#{$ui-grid} {
+
+  > .#{$c-row} {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: inherit;
+	align-items: stretch;
+	width: 100% !important;
+	padding: $row-spacing-half 0 $row-spacing-half;
+  }
+}
+
+/*-------------------
+     Column Count
+--------------------*/
+
+#{$ui-grid} {
+
+  /* Assume full width with one column */
+  > .#{$c-column}:only-child,
+  > .#{$c-row} > .#{$c-column}:only-child {
+	width: column(1);
+  }
+
+  @for $i from 1 through $num-columns {
+
+	$num-columns: selector-num-column($i);
+	$num-wide: selector-num-wide($i);
+	/* Grid Based */
+	&#{$num-columns} {
+	  
+	  > .#{$c-row} > .#{$c-column},
+	  > .#{$c-column}:not(.#{$c-row}) {
+		width: column($i);
+	  }
+	}
+
+	/* Row Based Overrides */
+	> .#{$c-row}#{$num-columns} > .#{$c-column} {
+	  width: column($i) !important;
+	}
+
+	/* Sizing Combinations */
+	> .#{$c-row} > #{$num-wide}.#{$c-column},
+	> .#{$c-column}.#{$c-row} > #{$num-wide}.#{$c-column},
+	> #{$num-wide}.#{$c-column},
+	&.#{$c-column} > #{$num-wide}.#{$c-column} {
+	  width: wide($i) !important;
+	}
+  }
+}

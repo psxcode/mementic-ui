@@ -1,0 +1,46 @@
+// Content
+// -------------------------------
+
+#{$ui-grid} {
+
+  /* Image inside Grid */
+  > .#{$c-row} > img,
+  > .#{$c-row} > .#{$c-column} > img {
+	max-width: $column-max-image-width;
+  }
+}
+
+#{$ui-grid} {
+
+  /* Segment inside Aligned Grid */
+  &.#{$c-aligned} .#{$c-column},
+  .#{$c-row}.#{$c-aligned} > .#{$c-column} {
+
+	.#{$c-segment}:not(.#{$c-compact}):not(.#{$c-attached}) {
+	  width: 100%;
+	}
+  }
+}
+
+#{$ui-grid} {
+
+  /* Align Dividers with Gutter */
+  .#{$c-row} + .#{$c-divider} {
+	flex-grow: 1;
+	margin: $row-spacing-half $gutter-width-half;
+  }
+
+  .#{$c-column} + .#{$c-divider}.#{$c-vertical} {
+	height: calc(50% - #{$row-spacing-half});
+  }
+
+  /* Remove Border on Last Horizontal Segment */
+  > .#{$c-row} > .#{$c-column},
+  > .#{$c-column} {
+
+	&:last-child > .#{$c-segment}.#{$c-horizontal} {
+	  box-shadow: none;
+	}
+  }
+}
+

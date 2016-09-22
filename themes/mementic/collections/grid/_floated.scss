@@ -1,0 +1,19 @@
+/*----------------------
+       Floated
+-----------------------*/
+
+/* Shortcuts */
+$left-floated: c-left-floated();
+$right-floated: c-right-floated();
+
+#{$ui-grid} {
+
+  .#{$c-column} {
+	&#{$left-floated} {
+	  margin-right: auto;
+	}
+	&#{$right-floated} {
+	  margin-left: auto;
+	}
+  }
+}

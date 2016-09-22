@@ -1,0 +1,112 @@
+/*-------------------
+       Pointing
+--------------------*/
+
+/* Shortcuts */
+$vertical-pointing: selector-vertical-pointing();
+
+#{$ui-menu} {
+
+  /* Pointing */
+  &.#{$c-pointing} {
+
+	.#{$c-item} {
+
+	  &::after {
+		visibility: hidden;
+		position: absolute;
+		content: '';
+		top: 100%;
+		left: 50%;
+		transform: translateX(-50%) translateY(-50%) rotate(45deg);
+		background: none;
+
+		margin: ($arrow-border-width / 2) 0 0;
+		width: $arrow-size;
+		height: $arrow-size;
+
+		border: none;
+		border-bottom: $arrow-border;
+		border-right: $arrow-border;
+
+		z-index: $arrow-z-index;
+		transition: $arrow-transition;
+	  }
+
+	  &:hover::after {
+		background-color: $arrow-hover-color;
+	  }
+
+	  &.#{$c-active} {
+
+		&::after {
+		  background-color: $arrow-active-color;
+		}
+
+		&:hover::after {
+		  background-color: $arrow-active-hover-color;
+		}
+	  }
+	}
+  }
+
+  /* Vertical Pointing */
+  &.#{$vertical-pointing} {
+
+	.#{$c-item} {
+
+	  &::after {
+		position: absolute;
+		top: 50%;
+		right: 0;
+		bottom: auto;
+		left: auto;
+
+		transform: translateX(50%) translateY(-50%) rotate(45deg);
+		margin: 0 -($arrow-border-width / 2) 0 0;
+
+		border: none;
+		border-top: $arrow-border;
+		border-right: $arrow-border;
+	  }
+
+	  &:hover::after {
+		background-color: $arrow-vertical-hover-color;
+	  }
+
+	  &.#{$c-active} {
+
+		&::after {
+		  background-color: $arrow-vertical-active-color;
+		}
+
+		&:hover::after {
+		  background-color: $arrow-vertical-active-color;
+		}
+	  }
+	}
+
+	.#{$c-menu} .#{$c-active}.#{$c-item}::after {
+	  background-color: $arrow-vertical-sub-menu-color;
+	}
+  }
+
+  &.#{$c-pointing} {
+
+	/* Active */
+	.#{$c-item}.#{$c-active}::after {
+	  visibility: visible;
+	}
+
+	.#{$c-item}.#{$c-active}.#{$c-dropdown}::after {
+	  visibility: hidden;
+	}
+  }
+
+  /* Don't double up pointers */
+  .#{$c-item}.#{$c-active}.#{$c-dropdown}::after,
+  .#{$c-item}.#{$c-active} .#{$c-menu} .#{$c-item}.#{$c-active}::after {
+	display: none;
+  }
+}
+

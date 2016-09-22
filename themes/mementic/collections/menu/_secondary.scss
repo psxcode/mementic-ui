@@ -1,0 +1,253 @@
+/*--------------
+   Secondary
+---------------*/
+
+.ui.secondary.menu {
+  background: $secondary-background;
+  margin-left: -$secondary-item-spacing;
+  margin-right: -$secondary-item-spacing;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+}
+
+/* Item */
+.ui.secondary.menu .#{$c-item} {
+  align-self: center;
+  box-shadow: none;
+  border: none;
+  padding: $secondary-item-padding;
+  margin: $secondary-item-margin;
+  background: $secondary-item-background;
+  transition: $secondary-item-transition;
+  border-radius: $secondary-item-border-radius;
+}
+
+/* No Divider */
+.ui.secondary.menu .#{$c-item}:before {
+  display: none !important;
+}
+
+/* Header */
+.ui.secondary.menu .#{$c-header}.#{$c-item} {
+  border-radius: 0;
+  border-right: $secondary-header-border;
+  background: $secondary-header-background;
+}
+
+/* Image */
+.ui.secondary.menu .#{$c-item} > img:not(.#{$c-ui}) {
+  margin: 0;
+}
+
+/* Hover */
+.ui.secondary.menu .#{$c-dropdown}.#{$c-item}:hover,
+.ui.secondary.menu .link.#{$c-item}:hover,
+.ui.secondary.menu a.#{$c-item}:hover {
+  background: $secondary-hover-item-background;
+  color: $secondary-hover-item-color;
+}
+
+/* Active */
+.ui.secondary.menu .#{$c-active}.#{$c-item} {
+  box-shadow: none;
+  background: $secondary-active-item-background;
+  color: $secondary-active-item-color;
+  border-radius: $secondary-item-border-radius;
+}
+
+/* Active Hover */
+.ui.secondary.menu .#{$c-active}.#{$c-item}:hover {
+  box-shadow: none;
+  background: $secondary-active-hover-item-background;
+  color: $secondary-active-hover-item-color;
+}
+
+/* Inverted */
+.ui.secondary.inverted.menu .link.#{$c-item},
+.ui.secondary.inverted.menu a.#{$c-item} {
+  color: $secondary-inverted-color !important;
+}
+
+.ui.secondary.inverted.menu .#{$c-dropdown}.#{$c-item}:hover,
+.ui.secondary.inverted.menu .link.#{$c-item}:hover,
+.ui.secondary.inverted.menu a.#{$c-item}:hover {
+  background: $secondary-inverted-hover-background;
+  color: $secondary-inverted-hover-color !important;
+}
+
+.ui.secondary.inverted.menu .#{$c-active}.#{$c-item} {
+  background: $secondary-inverted-active-background;
+  color: $secondary-inverted-active-color !important;
+}
+
+/* Fix item margins */
+.ui.secondary.#{$c-item}.menu {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.ui.secondary.#{$c-item}.menu .#{$c-item}:last-child {
+  margin-right: 0;
+}
+
+.ui.secondary.attached.menu {
+  box-shadow: none;
+}
+
+/* Sub Menu */
+.ui.#{$c-vertical}.secondary.menu .#{$c-item}:not(.#{$c-dropdown}) > .#{$c-menu} {
+  margin: $secondary-menu-sub-menu-margin;
+}
+
+.ui.#{$c-vertical}.secondary.menu .#{$c-item}:not(.#{$c-dropdown}) > .#{$c-menu} > .#{$c-item} {
+  margin: $secondary-menu-sub-menu-item-margin;
+  padding: $secondary-menu-sub-menu-item-padding;
+}
+
+/*---------------------
+   Secondary Vertical
+-----------------------*/
+
+.ui.secondary.#{$c-vertical}.menu > .#{$c-item} {
+  border: none;
+  margin: $secondary-vertical-item-margin;
+  border-radius: $secondary-vertical-item-border-radius !important;
+}
+
+.ui.secondary.#{$c-vertical}.menu > .#{$c-header}.#{$c-item} {
+  border-radius: 0;
+}
+
+/* Sub Menu */
+.ui.#{$c-vertical}.secondary.menu .#{$c-item} > .#{$c-menu} .#{$c-item} {
+  background-color: transparent;
+}
+
+/* Inverted */
+.ui.secondary.inverted.menu {
+  background-color: transparent;
+}
+
+/*---------------------
+   Secondary Pointing
+-----------------------*/
+
+.ui.secondary.pointing.menu {
+  margin-left: 0;
+  margin-right: 0;
+  border-bottom: $secondary-pointing-border-width solid $secondary-pointing-border-color;
+}
+
+.ui.secondary.pointing.menu .#{$c-item} {
+  border-bottom-color: transparent;
+  border-bottom-style: solid;
+  border-radius: 0;
+  align-self: flex-end;
+
+  margin: 0 0 -$secondary-pointing-border-width;
+  padding: $secondary-pointing-item-vertical-padding $secondary-pointing-item-horizontal-padding;
+  border-bottom-width: $secondary-pointing-border-width;
+  transition: $secondary-item-transition;
+}
+
+/* Item Types */
+.ui.secondary.pointing.menu .#{$c-header}.#{$c-item} {
+  color: $secondary-pointing-header-color !important;
+}
+
+.ui.secondary.pointing.menu .#{$c-text}.#{$c-item} {
+  box-shadow: none !important;
+}
+
+.ui.secondary.pointing.menu .#{$c-item}:after {
+  display: none;
+}
+
+/* Hover */
+.ui.secondary.pointing.menu .#{$c-dropdown}.#{$c-item}:hover,
+.ui.secondary.pointing.menu .link.#{$c-item}:hover,
+.ui.secondary.pointing.menu a.#{$c-item}:hover {
+  background-color: transparent;
+  color: $secondary-pointing-hover-text-color;
+}
+
+/* Pressed */
+.ui.secondary.pointing.menu .#{$c-dropdown}.#{$c-item}:active,
+.ui.secondary.pointing.menu .link.#{$c-item}:active,
+.ui.secondary.pointing.menu a.#{$c-item}:active {
+  background-color: transparent;
+  border-color: $secondary-pointing-border-color;
+}
+
+/* Active */
+.ui.secondary.pointing.menu .#{$c-active}.#{$c-item} {
+  background-color: transparent;
+  box-shadow: none;
+  border-color: $secondary-pointing-active-border-color;
+  font-weight: $secondary-pointing-active-font-weight;
+  color: $secondary-pointing-active-text-color;
+}
+
+/* Active Hover */
+.ui.secondary.pointing.menu .#{$c-active}.#{$c-item}:hover {
+  border-color: $secondary-pointing-active-hover-border-color;
+  color: $secondary-pointing-active-hover-text-color;
+}
+
+/* Active Dropdown */
+.ui.secondary.pointing.menu .#{$c-active}.#{$c-dropdown}.#{$c-item} {
+  border-color: $secondary-pointing-active-dropdown-border-color;
+}
+
+/* Vertical Pointing */
+.ui.secondary.#{$c-vertical}.pointing.menu {
+  border-bottom-width: 0;
+  border-right-width: $secondary-pointing-border-width;
+  border-right-style: solid;
+  border-right-color: $secondary-pointing-border-color;
+}
+
+.ui.secondary.#{$c-vertical}.pointing.menu .#{$c-item} {
+  border-bottom: none;
+  border-right-style: solid;
+  border-right-color: transparent;
+  border-radius: 0 !important;
+  margin: $secondary-vertical-pointing-item-margin;
+  border-right-width: $secondary-pointing-border-width;
+}
+
+/* Vertical Active */
+.ui.secondary.#{$c-vertical}.pointing.menu .#{$c-active}.#{$c-item} {
+  border-color: $secondary-pointing-active-border-color;
+}
+
+/* Inverted */
+.ui.secondary.inverted.pointing.menu {
+  border-color: $secondary-pointing-inverted-border-color;
+}
+
+.ui.secondary.inverted.pointing.menu {
+  border-width: $secondary-pointing-border-width;
+  border-color: $secondary-pointing-border-color;
+}
+
+.ui.secondary.inverted.pointing.menu .#{$c-item} {
+  color: $secondary-pointing-inverted-item-text-color;
+}
+
+.ui.secondary.inverted.pointing.menu .#{$c-header}.#{$c-item} {
+  color: $secondary-pointing-inverted-item-header-color !important;
+}
+
+/* Hover */
+.ui.secondary.inverted.pointing.menu .link.#{$c-item}:hover,
+.ui.secondary.inverted.pointing.menu a.#{$c-item}:hover {
+  color: $secondary-pointing-inverted-item-hover-text-color;
+}
+
+/* Active */
+.ui.secondary.inverted.pointing.menu .#{$c-active}.#{$c-item} {
+  border-color: $secondary-pointing-inverted-active-border-color;
+  color: $secondary-pointing-inverted-active-color;
+}

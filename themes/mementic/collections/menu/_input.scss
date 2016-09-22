@@ -1,0 +1,25 @@
+/*--------------
+     Inputs
+---------------*/
+
+#{$ui-menu} {
+
+  .#{$c-item} > .#{$c-input} {
+	width: 100%;
+
+	input {
+	  font-size: $input-size;
+	  padding-top: $input-vertical-padding;
+	  padding-bottom: $input-vertical-padding;
+	}
+  }
+
+  :not(.#{$c-vertical}) {
+
+	.#{$c-item} > .#{$c-input} {
+	  position: relative;
+	  top: $input-offset;
+	  margin: $input-vertical-margin 0;
+	}
+  }
+}

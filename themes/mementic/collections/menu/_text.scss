@@ -1,0 +1,151 @@
+/*--------------
+  Text Content
+---------------*/
+#{$ui-grid} {
+
+  .#{$c-item}.#{$c-text} > *,
+  .#{$c-item} > a:not(.#{$c-ui}),
+  .#{$c-item} > p:only-child {
+    user-select: text;
+    line-height: $text-line-height;
+  }
+
+  .#{$c-item} > p:first-child {
+    margin-top: 0;
+  }
+
+  .#{$c-item} > p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/*--------------
+    Text Menu
+---------------*/
+
+.ui.#{$c-text}.menu {
+  background: none transparent;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+
+  margin: $text-menu-margin;
+}
+
+.ui.#{$c-text}.menu .#{$c-item} {
+  border-radius: 0;
+  box-shadow: none;
+  align-self: center;
+  margin: $text-menu-item-margin;
+  padding: $text-menu-item-padding;
+  font-weight: $text-menu-item-font-weight;
+  color: $text-menu-item-color;
+  transition: $text-menu-item-transition;
+}
+
+/* Border */
+.ui.#{$c-text}.menu .#{$c-item}:before,
+.ui.#{$c-text}.menu .#{$c-menu} .#{$c-item}:before {
+  display: none !important;
+}
+
+/* Header */
+.ui.#{$c-text}.menu .#{$c-header}.#{$c-item} {
+  background-color: transparent;
+  opacity: 1;
+  color: $text-menu-header-color;
+  font-size: $text-menu-header-size;
+  text-transform: $text-menu-header-text-transform;
+  font-weight: $text-menu-header-font-weight;
+}
+
+/* Image */
+.ui.#{$c-text}.menu .#{$c-item} > img:not(.#{$c-ui}) {
+  margin: 0;
+}
+
+/*--- fluid text ---*/
+.ui.#{$c-text}.#{$c-item}.menu .#{$c-item} {
+  margin: 0;
+}
+
+/*--- vertical text ---*/
+.ui.#{$c-vertical}.#{$c-text}.menu {
+  margin: $text-vertical-menu-margin;
+}
+
+.ui.#{$c-vertical}.#{$c-text}.menu:first-child {
+  margin-top: 0;
+}
+
+.ui.#{$c-vertical}.#{$c-text}.menu:last-child {
+  margin-bottom: 0;
+}
+
+.ui.#{$c-vertical}.#{$c-text}.menu .#{$c-item} {
+  margin: $text-vertical-menu-item-margin;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.ui.#{$c-vertical}.#{$c-text}.menu .#{$c-item} > #{$ui-icon} {
+  float: $text-vertical-menu-icon-float;
+  margin: $icon-margin;
+}
+
+.ui.#{$c-vertical}.#{$c-text}.menu .#{$c-header}.#{$c-item} {
+  margin: $text-vertical-menu-header-margin;
+}
+
+/* Vertical Sub Menu */
+.ui.#{$c-vertical}.#{$c-text}.menu .#{$c-item}:not(.#{$c-dropdown}) > .#{$c-menu} {
+  margin: $text-menu-sub-menu-margin;
+}
+
+.ui.#{$c-vertical}.#{$c-text}.menu .#{$c-item}:not(.#{$c-dropdown}) > .#{$c-menu} > .#{$c-item} {
+  margin: $text-menu-sub-menu-item-margin;
+  padding: $text-menu-sub-menu-item-padding;
+}
+
+/*--- hover ---*/
+.ui.#{$c-text}.menu .#{$c-item}:hover {
+  opacity: 1;
+  background-color: transparent;
+}
+
+/*--- active ---*/
+.ui.#{$c-text}.menu .#{$c-active}.#{$c-item} {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  font-weight: $text-menu-active-item-font-weight;
+  color: $text-menu-active-item-color;
+}
+
+/*--- active hover ---*/
+.ui.#{$c-text}.menu .#{$c-active}.#{$c-item}:hover {
+  background-color: transparent;
+}
+
+/* Disable Bariations */
+.ui.#{$c-text}.pointing.menu .#{$c-active}.#{$c-item}:after {
+  box-shadow: none;
+}
+
+.ui.#{$c-text}.attached.menu {
+  box-shadow: none;
+}
+
+/* Inverted */
+.ui.inverted.#{$c-text}.menu,
+.ui.inverted.#{$c-text}.menu .#{$c-item},
+.ui.inverted.#{$c-text}.menu .#{$c-item}:hover,
+.ui.inverted.#{$c-text}.menu .#{$c-active}.#{$c-item} {
+  background-color: transparent !important;
+}
+
+/* Fluid */
+.ui.fluid.#{$c-text}.menu {
+  margin-left: 0;
+  margin-right: 0;
+}

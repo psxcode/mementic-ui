@@ -1,0 +1,149 @@
+/* Shortcuts */
+$ui-menu: selector-ui-menu();
+$ui-icon: selector-ui-icon();
+
+#{$ui-menu} {
+  display: flex;
+  margin: $margin;
+  font-family: $font-family;
+  background: $background;
+  font-weight: $font-weight;
+  border: $border;
+  box-shadow: $box-shadow;
+  border-radius: $border-radius;
+  min-height: $min-height;
+
+  &::after {
+	content: '';
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+  }
+
+  &:first-child {
+	margin-top: 0;
+  }
+  &:last-child {
+	margin-bottom: 0;
+  }
+}
+
+/*--------------
+    Sub-Menu
+---------------*/
+
+#{$ui-menu} {
+
+  .#{$c-menu} {
+	margin: 0;
+  }
+
+  &:not(.#{$c-vertical}) > .#{$c-menu} {
+	display: flex;
+  }
+}
+
+/*--------------
+      Item
+---------------*/
+
+#{$ui-menu} {
+
+  &:not(.#{$c-vertical}) .#{$c-item} {
+	display: flex;
+	align-items: center;
+  }
+
+  .#{$c-item} {
+	position: relative;
+	vertical-align: middle;
+	line-height: 1;
+	text-decoration: none;
+	-webkit-tap-highlight-color: transparent;
+	flex: 0 0 auto;
+	user-select: none;
+
+	background: $item-background;
+	padding: $item-vertical-padding $item-horizontal-padding;
+	text-transform: $item-text-transform;
+	color: $item-text-color;
+	font-weight: $item-font-weight;
+	transition: $item-transition;
+
+	&::before {
+	  position: absolute;
+	  content: '';
+	  top: 0;
+	  right: 0;
+	  height: 100%;
+
+	  width: $divider-size;
+	  background: $divider-background;
+	}
+  }
+
+  > .#{$c-item}:first-child {
+	border-radius: $border-radius 0 0 $border-radius;
+  }
+}
+
+/*--------------
+      Hover
+---------------*/
+
+.ui.link.menu .#{$c-item}:hover,
+.ui.menu .#{$c-dropdown}.#{$c-item}:hover,
+.ui.menu .link.#{$c-item}:hover,
+.ui.menu a.#{$c-item}:hover {
+  cursor: pointer;
+  background: $hover-item-background;
+  color: $hover-item-text-color;
+}
+
+/*--------------
+     Pressed
+---------------*/
+
+.ui.link.menu .#{$c-item}:active,
+.ui.menu .link.#{$c-item}:active,
+.ui.menu a.#{$c-item}:active {
+  background: $pressed-item-background;
+  color: $pressed-item-text-color;
+}
+
+/*--------------
+     Active
+---------------*/
+
+.ui.menu .#{$c-active}.#{$c-item} {
+  background: $active-item-background;
+  color: $active-item-text-color;
+  font-weight: $active-item-font-weight;
+  box-shadow: $active-item-box-shadow;
+}
+
+.ui.menu .#{$c-active}.#{$c-item} > #{$ui-icon} {
+  opacity: $active-icon-opacity;
+}
+
+/*--------------
+  Active Hover
+---------------*/
+
+.ui.menu .#{$c-active}.#{$c-item}:hover,
+.ui.#{$c-vertical}.menu .#{$c-active}.#{$c-item}:hover {
+  background-color: $active-hover-item-background;
+  color: $active-hover-item-color;
+}
+
+/*--------------
+     Disabled
+---------------*/
+
+.ui.menu .#{$c-item}.disabled,
+.ui.menu .#{$c-item}.disabled:hover {
+  cursor: default;
+  background-color: transparent !important;
+  color: color-text-disabled();
+}

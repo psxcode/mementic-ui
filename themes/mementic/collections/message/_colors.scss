@@ -1,0 +1,20 @@
+@mixin colors($color-map) {
+  @each $name, $color in $color-map {
+
+	$box-shadow: 0 0 0 $border-width color-divider($color: $color) inset, $shadow-shadow;
+
+	.ui.#{$name}.message {
+	  background-color: color-bg($color);
+	  color: colorize-text($color);
+	}
+
+	.ui.#{$name}.message,
+	.ui.#{$name}.message.attached {
+	  box-shadow: $box-shadow;
+	}
+
+	.ui.#{$name}.message .header {
+	  color: color-heading($color);
+	}
+  }
+}

@@ -1,0 +1,19 @@
+/*----------------------
+      Equal Width
+-----------------------*/
+
+#{$ui-grid} {
+  
+  &.#{$c-equal} > .#{$c-column}:not(.#{$c-row}),
+  &.#{$c-equal} > .#{$c-row} > .#{$c-column},
+  > .#{$c-equal}.#{$c-row} > .#{$c-column} {
+	display: inline-block;
+	flex-grow: 1;
+  }
+  
+  .#{$c-equal} > .#{$c-wide}.#{$c-column},
+  .#{$c-equal} > .#{$c-row} > .#{$c-wide}.#{$c-column},
+  > .#{$c-equal}.#{$c-row} > .#{$c-wide}.#{$c-column} {
+	flex-grow: 0;
+  }
+}
