@@ -1,0 +1,17 @@
+/*--------------
+    Floated
+---------------*/
+
+.ui[class*="left floated"].statistic {
+  float: left;
+  margin: $left-floated-margin;
+}
+
+.ui[class*="right floated"].statistic {
+  float: right;
+  margin: $right-floated-margin;
+}
+
+.ui.floated.statistic:last-child {
+  margin-bottom: 0;
+}

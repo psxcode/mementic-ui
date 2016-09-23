@@ -3,8 +3,8 @@
 -----------------------*/
 
 /* Shortcuts */
-$left-floated: c-left-floated();
-$right-floated: c-right-floated();
+$left-floated: selector-left-floated();
+$right-floated: selector-right-floated();
 
 #{$ui-grid} {
 

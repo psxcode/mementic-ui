@@ -1,0 +1,17 @@
+/*--------------------
+        Minimal
+---------------------*/
+
+.ui.minimal.comments .comment .actions {
+  opacity: 0;
+  position: $minimal-action-position;
+  top: $minimal-action-top;
+  right: $minimal-action-right;
+  left: $minimal-action-left;
+  transition: $minimal-transition;
+  transition-delay: $minimal-transition-delay;
+}
+
+.ui.minimal.comments .comment > .content:hover > .actions {
+  opacity: 1;
+}

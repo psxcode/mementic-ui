@@ -1,0 +1,78 @@
+/* Standalone */
+.ui.statistic {
+  display: inline-flex;
+  flex-direction: column;
+  margin: $margin;
+  max-width: $max-width;
+}
+
+.ui.statistic + .ui.statistic {
+  margin: 0 0 0 $horizontal-spacing;
+}
+
+.ui.statistic:first-child {
+  margin-top: 0;
+}
+
+.ui.statistic:last-child {
+  margin-bottom: 0;
+}
+
+/*******************************
+            Group
+*******************************/
+
+/* Grouped */
+.ui.statistics {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.ui.statistics > .statistic {
+  display: inline-flex;
+  flex: 0 1 auto;
+  flex-direction: column;
+  margin: $element-margin;
+  max-width: $element-max-width;
+}
+
+.ui.statistics {
+  display: flex;
+  margin: $group-margin;
+}
+
+/* Clearing */
+.ui.statistics:after {
+  display: block;
+  content: ' ';
+  height: 0;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+.ui.statistics:first-child {
+  margin-top: 0;
+}
+
+.ui.statistics:last-child {
+  margin-bottom: 0;
+}
+
+/*--------------
+      Count
+---------------*/
+
+@for $i from 1 through 10 {
+
+  .ui.#{number-name($i)}.statistics {
+	margin: $item-group-margin;
+  }
+
+  .ui.#{number-name($i)}.statistics .statistic {
+	min-width: column($i);
+	margin: $item-margin;
+  }
+
+}

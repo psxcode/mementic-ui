@@ -1,0 +1,19 @@
+/*--------------
+     Metadata
+---------------*/
+
+.ui.comments .comment .metadata {
+  display: $metadata-display;
+  margin-left: $metadata-spacing;
+  color: $metadata-color;
+  font-size: $metadata-font-size;
+}
+
+.ui.comments .comment .metadata > * {
+  display: inline-block;
+  margin: 0 $metadata-content-spacing 0 0;
+}
+
+.ui.comments .comment .metadata > :last-child {
+  margin-right: 0;
+}

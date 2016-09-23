@@ -1,0 +1,9 @@
+/*--------------
+      Dimmer
+---------------*/
+
+.ui.cards > .card .dimmer,
+.ui.card .dimmer {
+  background-color: $dimmer-color;
+  z-index: $dimmer-z-index;
+}

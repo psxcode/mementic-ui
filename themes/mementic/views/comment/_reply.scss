@@ -1,0 +1,17 @@
+/*--------------------
+      Reply Form
+---------------------*/
+
+.ui.comments > .reply.form {
+  margin-top: $reply-distance;
+}
+
+.ui.comments .comment .reply.form {
+  width: 100%;
+  margin-top: $comment-reply-distance;
+}
+
+.ui.comments .reply.form textarea {
+  font-size: $reply-font-size;
+  height: $reply-height;
+}

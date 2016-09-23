@@ -1,0 +1,288 @@
+/* Shortcuts */
+$ui-ad: selector-ui-ad();
+
+#{$ui-ad} {
+
+  display: block;
+  overflow: $overflow;
+  margin: $margin;
+
+  &:first-child {
+	margin: 0;
+  }
+
+  &:last-child {
+	margin: 0;
+  }
+
+  iframe {
+	margin: 0;
+	padding: 0;
+	border: none;
+	overflow: hidden;
+  }
+}
+
+/*--------------
+     Common
+---------------*/
+
+$half-page: selector-class-strict-order($c-half, $c-page);
+
+/* Half Page */
+#{$ui-ad}#{$half-page} {
+  width: 300px;
+  height: 600px;
+}
+
+/*--------------
+     Square
+---------------*/
+
+$small-square: selector-class-strict-order($c-small, $c-square);
+
+#{$ui-ad} {
+
+  /* Square */
+  &.#{$c-square} {
+	width: 250px;
+	height: 250px;
+  }
+
+  /* Small Square */
+  &#{$small-square} {
+	width: 200px;
+	height: 200px;
+  }
+}
+
+/*--------------
+    Rectangle
+---------------*/
+
+$small-rectangle: selector-class-strict-order($c-small, $c-rectangle);
+$medium-rectangle: selector-class-strict-order($c-medium, $c-rectangle);
+$large-rectangle: selector-class-strict-order($c-large, $c-rectangle);
+$vertical-rectangle: selector-class-strict-order($c-vertical, $c-rectangle);
+
+#{$ui-ad} {
+
+  /* Small Rectangle */
+  &#{$small-rectangle} {
+	width: 180px;
+	height: 150px;
+  }
+
+  /* Medium Rectangle */
+  &#{$medium-rectangle} {
+	width: 300px;
+	height: 250px;
+  }
+
+  /* Large Rectangle */
+  &#{$large-rectangle} {
+	width: 336px;
+	height: 280px;
+  }
+
+  /* Vertical Rectangle */
+  &#{$vertical-rectangle} {
+	width: 240px;
+	height: 400px;
+  }
+}
+
+/*--------------
+     Button
+---------------*/
+
+$square-button: selector-class-strict-order($c-square, $c-button);
+$small-button: selector-class-strict-order($c-small, $c-button);
+
+#{$ui-ad} {
+
+  &.#{$c-button} {
+	width: 120px;
+	height: 90px;
+  }
+
+  &#{$square-button} {
+	width: 125px;
+	height: 125px;
+  }
+
+  &#{$small-button} {
+	width: 120px;
+	height: 60px;
+  }
+}
+
+/*--------------
+   Skyscrapers
+---------------*/
+
+$wide-skyscraper: selector-class-strict-order($c-wide, $c-skyscraper);
+
+#{$ui-ad} {
+
+  /* Skyscraper */
+  &.#{$c-skyscraper} {
+	width: 120px;
+	height: 600px;
+  }
+
+  /* Wide Skyscraper */
+  &#{$wide-skyscraper} {
+	width: 160px;
+  }
+}
+
+/*--------------
+     Banners
+---------------*/
+
+$vertical-banner: selector-class-strict-order($c-vertical, $c-banner);
+$top-banner: selector-class-strict-order($c-top, $c-banner);
+$half-banner: selector-class-strict-order($c-half, $c-banner);
+
+#{$ui-ad} {
+
+  /* Banner */
+  &.#{$c-banner} {
+	width: 468px;
+	height: 60px;
+  }
+
+  /* Vertical Banner */
+  &#{$vertical-banner} {
+	width: 120px;
+	height: 240px;
+  }
+
+  /* Top Banner */
+  &#{$top-banner} {
+	width: 930px;
+	height: 180px;
+  }
+
+  /* Half Banner */
+  &#{$half-banner} {
+	width: 234px;
+	height: 60px;
+  }
+}
+
+/*--------------
+    Boards
+---------------*/
+
+$large-leaderboard: selector-class-strict-order($c-large, $c-leaderboard);
+
+#{$ui-ad} {
+  /* Leaderboard */
+  &.#{$c-leaderboard} {
+	width: 728px;
+	height: 90px;
+  }
+
+  /* Leaderboard */
+  &#{$large-leaderboard} {
+	width: 970px;
+	height: 90px;
+  }
+
+  /* Billboard */
+  &.#{$c-billboard} {
+	width: 970px;
+	height: 250px;
+  }
+}
+
+/*--------------
+    Panorama
+---------------*/
+
+/* Panorama */
+#{$ui-ad}.#{$c-panorama} {
+  width: 980px;
+  height: 120px;
+}
+
+/*--------------
+     Netboard
+---------------*/
+
+/* Netboard */
+#{$ui-ad}.#{$c-netboard} {
+  width: 580px;
+  height: 400px;
+}
+
+/*--------------
+     Mobile
+---------------*/
+
+/* Large Mobile Banner */
+.ui[class*="large mobile banner"].ad {
+  width: 320px;
+  height: 100px;
+}
+
+/* Mobile Leaderboard */
+.ui[class*="mobile leaderboard"].ad {
+  width: 320px;
+  height: 50px;
+}
+
+/*******************************
+             Types
+*******************************/
+
+/* Mobile Sizes */
+.ui.mobile.ad {
+  display: none;
+}
+
+$bp-tablet: map-value-by-index($bps, 1);
+@include media('screen', '<#{$bp-tablet}') {
+
+  .ui.mobile.ad {
+	display: block;
+  }
+}
+
+/*******************************
+           Variations
+*******************************/
+
+.ui.centered.ad {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ui.test.ad {
+  position: relative;
+  background: $test-background;
+}
+
+.ui.test.ad:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  text-align: center;
+  transform: translateX(-50%) translateY(-50%);
+
+  content: $test-text;
+  color: $test-color;
+  font-size: $test-font-size;
+  font-weight: $test-font-weight;
+}
+
+.ui.mobile.test.ad:after {
+  font-size: $test-mobile-font-size;
+}
+
+.ui.test.ad[data-text]:after {
+  content: attr(data-text);
+}

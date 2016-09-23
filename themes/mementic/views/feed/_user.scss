@@ -1,0 +1,17 @@
+/*--------------
+      User
+---------------*/
+
+.ui.feed > .event > .content .user {
+  display: inline-block;
+  font-weight: $user-font-weight;
+  margin-right: $user-distance;
+  vertical-align: baseline;
+}
+
+.ui.feed > .event > .content .user img {
+  margin: $user-image-margin;
+  width: $user-image-width;
+  height: $user-image-height;
+  vertical-align: $user-image-vertical-align;
+}

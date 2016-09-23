@@ -1,0 +1,26 @@
+/*--------------
+     Images
+---------------*/
+
+.ui.items > .item > .image {
+  position: relative;
+  flex: 0 0 auto;
+  display: $image-display;
+  float: $image-float;
+  margin: $image-margin;
+  padding: $image-padding;
+  max-height: $image-max-height;
+  align-self: $image-vertical-align;
+}
+
+.ui.items > .item > .image > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: $image-border-radius;
+  border: $image-border;
+}
+
+.ui.items > .item > .image:only-child > img {
+  border-radius: $border-radius;
+}

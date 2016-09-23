@@ -1,0 +1,20 @@
+/*--------------
+     Colors
+---------------*/
+
+@mixin color($color-map) {
+  @each $name, $color in $color-map {
+
+	.ui.#{$name}.statistics .statistic > .value,
+	.ui.statistics .#{$name}.statistic > .value,
+	.ui.#{$name}.statistic > .value {
+	  color: $color;
+	}
+
+	.ui.inverted.red.statistics .statistic > .value,
+	.ui.statistics .inverted.red.statistic > .value,
+	.ui.inverted.red.statistic > .value {
+	  color: color-light($color);
+	}
+  }
+}

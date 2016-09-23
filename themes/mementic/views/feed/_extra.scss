@@ -1,0 +1,26 @@
+/*--------------
+  Extra Summary
+---------------*/
+
+.ui.feed > .event > .content .extra {
+  margin: $extra-margin;
+  background: $extra-background;
+  padding: $extra-padding;
+  color: $extra-color;
+}
+
+/* Images */
+.ui.feed > .event > .content .extra.images img {
+  display: inline-block;
+  margin: $extra-image-margin;
+  width: $extra-image-width;
+}
+
+/* Text */
+.ui.feed > .event > .content .extra.text {
+  padding: $extra-text-padding;
+  border-left: $extra-text-pointer;
+  font-size: $extra-text-font-size;
+  max-width: $extra-text-max-width;
+  line-height: $extra-text-line-height;
+}

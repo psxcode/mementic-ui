@@ -1,0 +1,19 @@
+/*--------------
+  Rounded Edges
+---------------*/
+
+.ui.cards > .card > :first-child,
+.ui.card > :first-child {
+  border-radius: $border-radius $border-radius 0 0 !important;
+  border-top: none !important;
+}
+
+.ui.cards > .card > :last-child,
+.ui.card > :last-child {
+  border-radius: 0 0 $border-radius $border-radius !important;
+}
+
+.ui.cards > .card > :only-child,
+.ui.card > :only-child {
+  border-radius: $border-radius !important;
+}

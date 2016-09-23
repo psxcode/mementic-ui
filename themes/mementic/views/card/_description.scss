@@ -1,0 +1,9 @@
+/*--------------
+   Description
+---------------*/
+
+.ui.cards > .card > .content > .#{$c-description},
+.ui.card > .content > .#{$c-description} {
+  clear: both;
+  color: $description-color;
+}

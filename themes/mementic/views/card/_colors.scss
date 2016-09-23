@@ -1,0 +1,25 @@
+/*-------------------
+       Colors
+--------------------*/
+
+@mixin colors($color-map) {
+
+  @each $name, $color in $color-map {
+
+	.ui.#{$name}.cards > .card,
+	.ui.cards > .#{$name}.card,
+	.ui.#{$name}.card {
+	  box-shadow: $border-shadow,
+	  0 $colored-shadow-distance 0 0 $color,
+	  $shadow-box-shadow;
+	}
+
+	.ui.#{$name}.cards > .card:hover,
+	.ui.cards > .#{$name}.card:hover,
+	.ui.#{$name}.card:hover {
+	  box-shadow: $border-shadow,
+	  0 $colored-shadow-distance 0 0 color-hover($color),
+	  $shadow-hover-box-shadow;
+	}
+  }
+}

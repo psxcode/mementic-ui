@@ -1,0 +1,9 @@
+/*--------------------
+        Threaded
+---------------------*/
+
+.ui.threaded.comments .comment .comments {
+  margin: $threaded-comment-margin;
+  padding: $threaded-comment-padding;
+  box-shadow: $threaded-comment-box-shadow;
+}

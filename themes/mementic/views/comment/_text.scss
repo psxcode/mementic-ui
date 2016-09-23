@@ -1,0 +1,11 @@
+/*--------------------
+     Comment Text
+---------------------*/
+
+.ui.comments .comment .text {
+  margin: $text-margin;
+  font-size: $text-font-size;
+  word-wrap: $text-word-wrap;
+  color: $text-color;
+  line-height: $text-line-height;
+}

@@ -1,0 +1,20 @@
+/*-------------------
+       Raised
+--------------------*/
+
+.ui.raised.cards > .card,
+.ui.raised.card {
+  box-shadow: $raised-shadow;
+}
+
+.ui.raised.cards a.card:hover,
+.ui.link.cards .raised.card:hover,
+a.ui.raised.card:hover,
+.ui.link.raised.card:hover {
+  box-shadow: $raised-shadow-hover;
+}
+
+.ui.raised.cards > .card,
+.ui.raised.card {
+  box-shadow: $raised-shadow;
+}

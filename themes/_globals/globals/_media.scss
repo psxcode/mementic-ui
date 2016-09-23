@@ -514,10 +514,10 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
 // -------------------------------
 /* Breakpoints are defined as min-width values. Mobile is default */
 $breakpoints: (
-  		'tablet': 		20em, // 320px
-		'desktop':	 	48em, // 768px
-		'large': 		62em, // 992px
-		'widescreen': 	75em  // 1200px
+		'tablet': 20em, // 320px
+		'desktop': 48em, // 768px
+		'large': 62em, // 992px
+		'widescreen': 75em // 1200px
 ) !default;
 
 $media-expressions: (
@@ -569,3 +569,52 @@ $media-expressions: (
 
   @return map-extract-by-indexes($breakpoint-map, $indexes);
 }
+
+@mixin breakpoint-from-index($bp-index) {
+  @include media('screen', '>=#{breakpoint-by-index($bp-index)}') {
+	@content;
+  }
+}
+
+@mixin breakpoint-until-index($bp-index) {
+  @include media('screen', '<#{breakpoint-by-index($bp-index)}') {
+	@content;
+  }
+}
+
+@mixin breakpoint-only-index($bp-index) {
+  @if $bp-index == 1 {
+	@include breakpoint-until-index($bp-index + 1) {
+	  @content;
+	}
+  } @else if $bp-index == map-length($breakpoints) {
+	@include breakpoint-from-index($bp-index) {
+	  @content;
+	}
+  } @else {
+	@include media('screen', '>=#{breakpoint-by-index($bp-index)}', '<#{breakpoint-by-index($bp-index + 1)}') {
+	  @content;
+	}
+  }
+}
+
+@mixin breakpoint-from($bp-name) {
+  @include media('screen', '>=#{breakpoint($bp-name)}') {
+	@content;
+  }
+}
+
+@mixin breakpoint-until($bp-name) {
+  @include media('screen', '<#{breakpoint($bp-name)}') {
+	@content;
+  }
+}
+
+@mixin breakpoint-only($bp-name) {
+  @include breakpoint-only-index(map-key-index($breakpoints, $bp-name)) {
+	@content;
+  }
+}
+
+
+

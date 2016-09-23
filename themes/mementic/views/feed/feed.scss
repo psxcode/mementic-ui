@@ -1,0 +1,12 @@
+
+.ui.feed {
+  margin: $margin;
+}
+
+.ui.feed:first-child {
+  margin-top: 0;
+}
+
+.ui.feed:last-child {
+  margin-bottom: 0;
+}

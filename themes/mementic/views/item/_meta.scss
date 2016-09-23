@@ -1,0 +1,23 @@
+/*--------------
+      Meta
+---------------*/
+
+.ui.items > .item .meta {
+  margin: $meta-margin;
+  font-size: $meta-font-size;
+  line-height: $meta-line-height;
+  color: $meta-color;
+}
+
+.ui.items > .item .meta * {
+  margin-right: $meta-spacing;
+}
+
+.ui.items > .item .meta :last-child {
+  margin-right: 0;
+}
+
+.ui.items > .item .meta [class*="right floated"] {
+  margin-right: 0;
+  margin-left: $meta-spacing;
+}

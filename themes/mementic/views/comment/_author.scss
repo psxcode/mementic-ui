@@ -1,0 +1,17 @@
+/*--------------
+     Author
+---------------*/
+
+.ui.comments .comment .author {
+  font-size: $author-font-size;
+  color: $author-color;
+  font-weight: $author-font-weight;
+}
+
+.ui.comments .comment a.author {
+  cursor: pointer;
+}
+
+.ui.comments .comment a.author:hover {
+  color: $author-hover-color;
+}

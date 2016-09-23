@@ -1,0 +1,28 @@
+/*--------------
+      Date
+---------------*/
+
+.ui.feed > .event > .content .date {
+  margin: $date-margin;
+  padding: $date-padding;
+  color: $date-color;
+  font-weight: $date-font-weight;
+  font-size: $date-font-size;
+  font-style: $date-font-style;
+}
+
+/*--------------
+   Inline Date
+---------------*/
+
+/* Date inside Summary */
+.ui.feed > .event > .content .summary > .date {
+  display: $summary-date-display;
+  float: $summary-date-float;
+  font-weight: $summary-date-font-weight;
+  font-size: $summary-date-font-size;
+  font-style: $summary-date-font-style;
+  margin: $summary-date-margin;
+  padding: $summary-date-padding;
+  color: $summary-date-color;
+}

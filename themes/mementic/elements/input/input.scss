@@ -31,17 +31,10 @@ $ui-input: selector-ui-input();
 	transition: $transition;
 
 	box-shadow: $box-shadow;
-  }
 
-  /* browsers require these rules separate */
-  input::-webkit-input-placeholder {
-	color: $placeholder-color;
-  }
-  input::-moz-placeholder {
-	color: $placeholder-color;
-  }
-  input:-ms-input-placeholder {
-	color: $placeholder-color;
+	@include placeholder {
+	  color: $placeholder-color;
+	}
   }
 
   /*--------------------
@@ -75,22 +68,22 @@ $ui-input: selector-ui-input();
 ---------------------*/
 
   &.#{$c-focus} input,
-  input:focus  {
+  input:focus {
 	border-color: $focus-border-color;
 	background: $focus-background;
 	color: $focus-color;
 	box-shadow: $focus-box-shadow;
 
 	&::-webkit-input-placeholder {
-		color: $placeholder-focus-color;
+	  color: $placeholder-focus-color;
 	}
 
 	&::-moz-placeholder {
-		color: $placeholder-focus-color;
+	  color: $placeholder-focus-color;
 	}
 
 	&:-ms-input-placeholder {
-		color: $placeholder-focus-color;
+	  color: $placeholder-focus-color;
 	}
   }
 }

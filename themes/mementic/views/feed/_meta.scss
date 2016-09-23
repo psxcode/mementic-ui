@@ -1,0 +1,67 @@
+/*--------------
+      Meta
+---------------*/
+
+.ui.feed > .event > .content .meta {
+  display: $metadata-display;
+  font-size: $metadata-font-size;
+  margin: $metadata-margin;
+  background: $metadata-background;
+  border: $metadata-border;
+  border-radius: $metadata-border-radius;
+  box-shadow: $metadata-box-shadow;
+  padding: $metadata-padding;
+  color: $metadata-color;
+}
+
+.ui.feed > .event > .content .meta > * {
+  position: relative;
+  margin-left: $metadata-element-spacing;
+}
+
+.ui.feed > .event > .content .meta > *:after {
+  content: $metadata-divider;
+  color: $metadata-divider-color;
+  top: 0;
+  left: $metadata-divider-offset;
+  opacity: 1;
+  position: absolute;
+  vertical-align: top;
+}
+
+.ui.feed > .event > .content .meta .like {
+  color: $like-color;
+  transition: $like-transition;
+}
+
+.ui.feed > .event > .content .meta .like:hover .icon {
+  color: $like-hover-color;
+}
+
+.ui.feed > .event > .content .meta .active.like .icon {
+  color: $like-active-color;
+}
+
+/* First element */
+.ui.feed > .event > .content .meta > :first-child {
+  margin-left: 0;
+}
+
+.ui.feed > .event > .content .meta > :first-child::after {
+  display: none;
+}
+
+/* Action */
+.ui.feed > .event > .content .meta a,
+.ui.feed > .event > .content .meta > .icon {
+  cursor: $metadata-action-cursor;
+  opacity: $metadata-action-opacity;
+  color: $metadata-action-color;
+  transition: $metadata-action-transition;
+}
+
+.ui.feed > .event > .content .meta a:hover,
+.ui.feed > .event > .content .meta a:hover .icon,
+.ui.feed > .event > .content .meta > .icon:hover {
+  color: $metadata-action-hover-color;
+}

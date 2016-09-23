@@ -147,12 +147,29 @@
   @return (nth($keys, $index), nth($values, $index));
 }
 
+@function map-length($map) {
+  @if type-of($map) != 'map' {
+	@error 'map-length: $map is invalid #{$map}';
+  }
+
+  @return length(map-keys($map));
+}
+
 @function map-key-by-index($map, $index) {
   @return nth(map-get-by-index($map, $index), 1);
 }
 
 @function map-value-by-index($map, $index) {
   @return nth(map-get-by-index($map, $index), 2);
+}
+
+@function map-key-index($map, $key) {
+  $keys: map-keys($map);
+  @for $i from 1 through length($keys) {
+	@if nth($keys, $i) == $key {
+	  @return $i;
+	}
+  }
 }
 
 @function map-extract($map, $keys) {
@@ -181,14 +198,6 @@
   }
 
   @return $result;
-}
-
-@function map-length($map) {
-  @if type-of($map) != 'map' {
-	@error 'map-length: $map is invalid #{$map}';
-  }
-
-  @return length(map-keys($map));
 }
 
 // Utility functions

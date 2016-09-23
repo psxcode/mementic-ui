@@ -1,0 +1,13 @@
+/*--------------
+    Inverted
+---------------*/
+
+.ui.inverted.statistics .statistic > .value,
+.ui.inverted.statistic .value {
+  color: $inverted-value-color;
+}
+
+.ui.inverted.statistics .statistic > .label,
+.ui.inverted.statistic .label {
+  color: $inverted-label-color;
+}

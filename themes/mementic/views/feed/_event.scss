@@ -1,0 +1,50 @@
+/* Event */
+.ui.feed > .event {
+  display: flex;
+  flex-direction: row;
+  width: $event-width;
+  padding: $event-padding;
+  margin: $event-margin;
+  background: $event-background;
+  border-top: $event-divider;
+}
+
+.ui.feed > .event:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.ui.feed > .event:last-child {
+  padding-bottom: 0;
+}
+
+/* Event Label */
+.ui.feed > .event > .label {
+  display: block;
+  flex: 0 0 auto;
+  width: $label-width;
+  height: $label-height;
+  align-self: $label-align-self;
+  text-align: $label-text-align;
+}
+
+.ui.feed > .event > .label .icon {
+  opacity: $icon-label-opacity;
+  font-size: $icon-label-size;
+  width: $icon-label-width;
+  padding: $icon-label-padding;
+  background: $icon-label-background;
+  border: $icon-label-border;
+  border-radius: $icon-label-border-radius;
+  color: $icon-label-color;
+}
+
+.ui.feed > .event > .label img {
+  width: $image-label-width;
+  height: $image-label-height;
+  border-radius: $image-label-border-radius;
+}
+
+.ui.feed > .event > .label + .content {
+  margin: $labeled-content-margin;
+}

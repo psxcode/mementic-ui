@@ -1,0 +1,45 @@
+/*--------------
+      Links
+---------------*/
+
+/* Generic */
+.ui.items > .item > .content a:not(.ui) {
+  color: $content-link-color;
+  transition: $content-link-transition;
+}
+
+.ui.items > .item > .content a:not(.ui):hover {
+  color: $content-link-hover-color;
+}
+
+/* Header */
+.ui.items > .item > .content > a.header {
+  color: $header-link-color;
+}
+
+.ui.items > .item > .content > a.header:hover {
+  color: $header-link-hover-color;
+}
+
+/* Meta */
+.ui.items > .item .meta > a:not(.ui) {
+  color: $meta-link-color;
+}
+
+.ui.items > .item .meta > a:not(.ui):hover {
+  color: $meta-link-hover-color;
+}
+
+/*-------------------
+        Link
+--------------------*/
+
+.ui.items a.item:hover,
+.ui.link.items > .item:hover {
+  cursor: pointer;
+}
+
+.ui.items a.item:hover .content .header,
+.ui.link.items > .item:hover .content .header {
+  color: $header-link-hover-color;
+}

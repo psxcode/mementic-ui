@@ -1,0 +1,33 @@
+$margin: 1em 0;
+$overflow: hidden;
+
+$test-background: color-light($color-dark);
+$test-color: $color-light;
+$test-font-weight: bold;
+$test-text: 'Ad';
+$test-font-size: size('medium');
+$test-mobile-font-size: size('tiny');
+
+/* Breakpoints */
+$bp-default-indexes: (1,);
+$bps: breakpoint-collect-by-indexes($bp-default-indexes);
+
+/* Size Classes */
+$c-large: 'large';
+$c-medium: 'medium';
+$c-small: 'small';
+$c-half: 'half';
+$c-wide: 'wide';
+$c-square: 'square';
+$c-vertical: 'vertical';
+
+/* Classes */
+$c-leaderboard: 'leaderboard';
+$c-skyscraper: 'skyscraper';
+$c-banner: 'banner';
+$c-billboard: 'billboard';
+$c-panorama: 'panorama';
+$c-netboard: 'netboard';
+$c-rectangle: 'rectangle';
+$c-page: 'page';
+$c-test: 'test';

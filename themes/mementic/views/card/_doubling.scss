@@ -1,0 +1,46 @@
+/*-------------------
+      Doubling
+--------------------*/
+@mixin doubling-card($doubling-value: 0.5) {
+  @for $i from 2 through length($card-widths) {
+
+	$card-width: nth($card-widths, ceil($i * $doubling-value));
+	$card-spacing: nth($card-spacings, ceil($i * $doubling-value));
+
+	.ui.#{number-name($i)}.doubling.cards {
+	  margin-left: -$card-spacing;
+	  margin-right: -$card-spacing;
+	}
+	.ui.#{number-name($i)}.doubling.cards .card {
+	  width: $card-width;
+	  margin-left: $card-spacing;
+	  margin-right: $card-spacing;
+	}
+  }
+}
+
+/* Mobile Default */
+@include doubling-card(0.3);
+
+$bp-largest-mobile: map-value-by-index($bps, 1);
+@include media('screen', '>=#{$bp-largest-mobile}') {
+  @include doubling-card();
+}
+
+/* Mobile Only */
+@include media('screen', '<#{$bp-largest-mobile}') {
+
+  .ui.stackable.cards {
+	display: block !important;
+  }
+  .ui.stackable.cards .card:first-child {
+	margin-top: 0 !important;
+  }
+  .ui.stackable.cards > .card {
+	display: block !important;
+	height: auto !important;
+	margin: $stackable-row-spacing $stackable-card-spacing;
+	padding: 0 !important;
+	width: $stackable-margin !important;
+  }
+}

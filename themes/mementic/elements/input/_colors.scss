@@ -6,7 +6,7 @@
   @each $name, $color in $color-map {
 
 	$placeholder-color: lighten($color, 40);
-	$placeholder-focus-color : lighten($color, 30);
+	$placeholder-focus-color: lighten($color, 30);
 
 	#{$ui-input}.#{$name} {
 
@@ -15,28 +15,18 @@
 		border-color: color-divider($color);
 		color: $color;
 		box-shadow: none;
-	  }
 
-	  /* Error Placeholder */
-	  input::-webkit-input-placeholder {
-		color: $placeholder-color;
-	  }
-	  input::-moz-placeholder {
-		color: $placeholder-color;
-	  }
-	  input:-ms-input-placeholder {
-		color: $placeholder-color !important;
-	  }
+		/* Color Placeholder */
+		@include placeholder {
+		  color: $placeholder-color;
+		}
 
-	  /* Focused Error Placeholder */
-	  input:focus::-webkit-input-placeholder {
-		color: $placeholder-focus-color;
-	  }
-	  input:focus::-moz-placeholder {
-		color: $placeholder-focus-color;
-	  }
-	  input:focus:-ms-input-placeholder {
-		color: $placeholder-focus-color !important;
+		&:focus {
+		  /* Focused Color Placeholder */
+		  @include placeholder {
+			color: $placeholder-focus-color;
+		  }
+		}
 	  }
 	}
   }

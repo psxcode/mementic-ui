@@ -1,0 +1,38 @@
+@mixin arrow($color) {
+  position: absolute;
+  display: block;
+  width: 7px;
+  border: 1px solid $color;
+  border-right: 0;
+  border-top: 0;
+  content: " ";
+  height: 7px;
+  pointer-events: none;
+  transform: rotate(-45deg);
+}
+
+@mixin overlay($offset: 0) {
+  position: absolute;
+  top: $offset;
+  bottom: $offset;
+  left: $offset;
+  right: $offset;
+}
+
+@mixin clearfix {
+  &:after {
+	clear: both;
+	content: "";
+	display: table;
+  }
+}
+
+@mixin placeholder {
+  $placeholders: ':-moz' ':-webkit-input' '-moz' '-ms-input';
+
+  @each $placeholder in $placeholders {
+	&:#{$placeholder}-placeholder {
+	  @content;
+	}
+  }
+}

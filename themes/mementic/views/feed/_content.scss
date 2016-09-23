@@ -1,0 +1,21 @@
+/*--------------
+     Content
+---------------*/
+
+/* Content */
+.ui.feed > .event > .content {
+  display: block;
+  flex: 1 1 auto;
+  align-self: $content-align-self;
+  text-align: $content-text-align;
+  word-wrap: $content-word-wrap;
+}
+
+.ui.feed > .event:last-child > .content {
+  padding-bottom: $last-labeled-content-padding;
+}
+
+/* Link */
+.ui.feed > .event > .content a {
+  cursor: pointer;
+}

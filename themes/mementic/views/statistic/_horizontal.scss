@@ -1,0 +1,44 @@
+/*--------------
+   Horizontal
+---------------*/
+
+.ui.horizontal.statistic {
+  flex-direction: row;
+  align-items: center;
+}
+
+.ui.horizontal.statistics {
+  flex-direction: column;
+  margin: 0;
+  max-width: none;
+}
+
+.ui.horizontal.statistics .statistic {
+  flex-direction: row;
+  align-items: center;
+  max-width: none;
+  margin: $horizontal-group-element-margin;
+}
+
+.ui.horizontal.statistic > .text.value,
+.ui.horizontal.statistics > .statistic > .text.value {
+  min-height: 0 !important;
+}
+
+.ui.horizontal.statistics .statistic > .value .icon,
+.ui.horizontal.statistic > .value .icon {
+  width: $icon-width;
+}
+
+.ui.horizontal.statistics .statistic > .value,
+.ui.horizontal.statistic > .value {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.ui.horizontal.statistics .statistic > .label,
+.ui.horizontal.statistic > .label {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0 0 $horizontal-label-distance;
+}

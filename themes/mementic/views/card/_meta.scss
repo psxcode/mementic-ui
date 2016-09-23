@@ -1,0 +1,25 @@
+/*--------------
+      Meta
+---------------*/
+
+.ui.cards > .card .meta,
+.ui.card .meta {
+  font-size: $meta-font-size;
+  color: $meta-color;
+}
+
+.ui.cards > .card .meta *,
+.ui.card .meta * {
+  margin-right: $meta-spacing;
+}
+
+.ui.cards > .card .meta :last-child,
+.ui.card .meta :last-child {
+  margin-right: 0;
+}
+
+.ui.cards > .card .meta [class*="right floated"],
+.ui.card .meta [class*="right floated"] {
+  margin-right: 0;
+  margin-left: $meta-spacing;
+}
