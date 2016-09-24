@@ -1,0 +1,34 @@
+/* Shortcuts */
+$mobile: breakpoint-name(1);
+
+#{$ui-ad} {
+
+  &.#{$c-test} {
+	position: relative;
+	background: $test-background;
+
+	&::after {
+	  position: absolute;
+	  top: 50%;
+	  left: 50%;
+	  width: 100%;
+	  text-align: center;
+	  transform: translateX(-50%) translateY(-50%);
+
+	  content: $test-text;
+	  color: $test-color;
+	  font-size: $test-font-size;
+	  font-weight: $test-font-weight;
+	}
+
+	&[data-text]::after {
+	  content: attr(data-text);
+	}
+
+	&.#{$mobile}::after {
+	  font-size: $test-mobile-font-size;
+	}
+  }
+}
+
+

@@ -1,0 +1,16 @@
+/*--------------------
+      Autofilled
+---------------------*/
+
+#{$ui-form} {
+  .#{$c-field}.#{$c-field} input:-webkit-autofill {
+	box-shadow: 0 0 0 100px $input-auto-fill-background inset !important;
+	border-color: $input-auto-fill-border !important;
+  }
+
+  /* Focus */
+  .#{$c-field}.#{$c-field} input:-webkit-autofill:focus {
+	box-shadow: 0 0 0 100px $input-auto-fill-focus-background inset !important;
+	border-color: $input-auto-fill-focus-border !important;
+  }
+}

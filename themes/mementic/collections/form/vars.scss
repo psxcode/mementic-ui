@@ -33,7 +33,7 @@ $input-width: 100%;
 $input-font-size: 1em;
 $input-padding: ($input-vertical-padding + ((1em - $input-line-height) / 2)) $input-horizontal-padding;
 $input-border: 1px solid color-divider();
-$input-border-radius: $border-radius-default;
+$input-border-radius: unit-rem($border-radius-default);
 $input-color: color-text();
 $input-transition:
 color $duration-default $easing-default,
@@ -113,7 +113,7 @@ $input-auto-fill-error-border: #E0B4B4;
 
 
 /* Input Error */
-$input-error-border-radius: $border-radius-default;
+$input-error-border-radius: unit-rem($border-radius-default);
 $input-error-box-shadow: none;
 
 /* Dropdown Error */

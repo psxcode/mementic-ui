@@ -8,7 +8,7 @@
   padding: $padding;
 
   border: $border;
-  border-radius: $border-radius-default;
+  border-radius: unit-rem($border-radius-default);
   box-shadow: $box-shadow;
   transition: $transition;
   z-index: $z-index;

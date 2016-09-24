@@ -66,7 +66,7 @@ $image-label-vertical-padding: $vertical-padding;
 $image-label-horizontal-padding: $horizontal-padding;
 $image-label-text-distance: 0.5em;
 $image-label-detail-distance: $image-label-text-distance;
-$image-label-border-radius: $border-radius-default;
+$image-label-border-radius: unit-rem($border-radius-default);
 $image-label-box-shadow: none;
 $image-label-padding: $image-label-vertical-padding $image-label-horizontal-padding $image-label-vertical-padding $image-label-text-distance;
 
@@ -155,7 +155,7 @@ $attached-vertical-padding: 0.75em;
 $attached-horizontal-padding: 1em;
 
 $attached-corner-border-radius: px-rem(3);
-$attached-border-radius: $border-radius-default;
+$attached-border-radius: unit-rem($border-radius-default);
 
 /* Corner */
 $corner-size-ratio: 1;

@@ -1,26 +1,9 @@
-/*--------------
-    Container
----------------*/
-
-$bp-tablet: map-value-by-index($bps, 1);
-
-@include media('screen', '<#{$bp-tablet}') {
-  .ui.menu > .ui.#{$c-container} {
-	width: 100% !important;
-	margin-left: 0 !important;
-	margin-right: 0 !important;
-  }
-}
-
-@include media('screen', '>=#{$bp-tablet}') {
-  .ui.menu:not(.secondary):not(.#{$c-text}):not(.tabular):not(.borderless) > .#{$c-container} > .#{$c-item}:not(.right):not(.borderless):first-child {
-	border-left: $divider-size solid $divider-background;
-  }
-}
-
 /*----------------
  Grid / Container
 -----------------*/
+
+/* Shortcuts */
+$bp-mobile: breakpoint-name(1);
 
 #{$ui-menu} {
   > .#{$c-grid},
@@ -30,3 +13,22 @@ $bp-tablet: map-value-by-index($bps, 1);
 	flex-direction: inherit;
   }
 }
+
+/*--------------
+    Container
+---------------*/
+
+@include breakpoint-only($bp-mobile) {
+  #{$ui-menu} > .#{$c-container} {
+	width: 100% !important;
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+  }
+}
+
+@include breakpoint-not($bp-mobile) {
+  #{$ui-menu}:not(.#{$menu-type-2}):not(.#{$c-text}):not(.#{$c-tabular}):not(.#{$c-borderless}) > .#{$c-container} > .#{$c-item}:not(.#{$c-right}):not(.#{$c-borderless}):first-child {
+	border-left: $divider-size solid $divider-background;
+  }
+}
+

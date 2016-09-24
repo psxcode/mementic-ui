@@ -2,108 +2,101 @@
     Vertical
 ---------------*/
 
-.ui.#{$c-vertical}.menu {
+#{$ui-menu}.#{$c-vertical} {
   display: block;
   flex-direction: column;
   background: $vertical-background;
   box-shadow: $vertical-box-shadow;
-}
 
-/*--- Item ---*/
-.ui.#{$c-vertical}.menu .#{$c-item} {
-  display: block;
-  background: $vertical-item-background;
-  border-top: none;
-  border-right: none;
-}
+  > .#{$c-item} {
 
-.ui.#{$c-vertical}.menu > .#{$c-item}:first-child {
-  border-radius: $border-radius $border-radius 0 0;
-}
+	&:first-child {
+	  border-radius: $border-radius $border-radius 0 0;
+	}
+	&:last-child {
+	  border-radius: 0 0 $border-radius $border-radius;
+	}
+  }
 
-.ui.#{$c-vertical}.menu > .#{$c-item}:last-child {
-  border-radius: 0 0 $border-radius $border-radius;
-}
+  .#{$c-item} {
+	display: block;
+	background: $vertical-item-background;
+	border-top: none;
+	border-right: none;
 
-/*--- Label ---*/
-.ui.#{$c-vertical}.menu .#{$c-item} > .#{$c-label} {
-  float: right;
-  text-align: center;
-}
+	/* Border */
+	&:before {
+	  position: absolute;
+	  content: '';
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  height: $divider-size;
+	  background: $vertical-divider-background;
+	}
 
-/*--- Icon ---*/
-.ui.#{$c-vertical}.menu .#{$c-item} > #{$ui-icon} {
-  width: $icon-width;
-  float: $vertical-icon-float;
-  margin: $vertical-icon-margin;
-}
+	&:first-child::before {
+	  display: none !important;
+	}
+  }
 
-.ui.#{$c-vertical}.menu .#{$c-item} > .#{$c-label} + #{$ui-icon} {
-  float: $label-and-icon-float;
-  margin: $label-and-icon-margin;
-}
+  /* Active Item */
+  .#{$c-active}.#{$c-item} {
+	background: $active-item-background;
+	box-shadow: $vertical-active-box-shadow;
+  }
 
-/*--- Border ---*/
-.ui.#{$c-vertical}.menu .#{$c-item}:before {
-  position: absolute;
-  content: '';
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: $divider-size;
-  background: $vertical-divider-background;
-}
+  /* Label */
+  .#{$c-item} > .#{$c-label} {
+	float: right;
+	text-align: center;
+  }
 
-.ui.#{$c-vertical}.menu .#{$c-item}:first-child:before {
-  display: none !important;
-}
+  /* Icon */
+  .#{$c-item} > #{$ui-icon} {
+	width: $icon-width;
+	float: $vertical-icon-float;
+	margin: $vertical-icon-margin;
+  }
 
-/*--- Sub Menu ---*/
-.ui.#{$c-vertical}.menu .#{$c-item} > .#{$c-menu} {
-  margin: $sub-menu-margin;
-}
+  /* Label then Icon */
+  .#{$c-item} > .#{$c-label} + #{$ui-icon} {
+	float: $label-and-icon-float;
+	margin: $label-and-icon-margin;
+  }
 
-.ui.#{$c-vertical}.menu .#{$c-menu} .#{$c-item} {
-  background: none;
-  padding: $sub-menu-vertical-padding $sub-menu-horizontal-padding;
-  font-size: $sub-menu-font-size;
-  color: $sub-menu-text-color;
-}
+  /* Sub Menu */
+  .#{$c-item} > .#{$c-menu} {
+	margin: $sub-menu-margin;
+  }
 
-.ui.#{$c-vertical}.menu .#{$c-item} .#{$c-menu} a.#{$c-item}:hover,
-.ui.#{$c-vertical}.menu .#{$c-item} .#{$c-menu} .link.#{$c-item}:hover {
-  color: color-text();
-}
+  .#{$c-menu} .#{$c-item} {
+	background: none;
+	padding: $sub-menu-vertical-padding $sub-menu-horizontal-padding;
+	font-size: $sub-menu-font-size;
+	color: $sub-menu-text-color;
 
-.ui.#{$c-vertical}.menu .#{$c-menu} .#{$c-item}:before {
-  display: none;
-}
+	&::before {
+	  display: none;
+	}
+  }
 
-/* Vertical Active */
-.ui.#{$c-vertical}.menu .#{$c-active}.#{$c-item} {
-  background: $active-item-background;
-  border-radius: 0;
-  box-shadow: $vertical-active-box-shadow;
-}
+  .#{$c-item} .#{$c-menu} {
+	a.#{$c-item},
+	.#{$c-link}.#{$c-item} {
+	  &:hover {
+		color: color-text();
+	  }
+	}
+  }
 
-.ui.#{$c-vertical}.menu > .#{$c-active}.#{$c-item}:first-child {
-  border-radius: $border-radius $border-radius 0 0;
-}
+  .#{$c-active}.#{$c-item} .#{$c-menu} .#{$c-active}.#{$c-item} {
+	border-left: none;
+  }
 
-.ui.#{$c-vertical}.menu > .#{$c-active}.#{$c-item}:last-child {
-  border-radius: 0 0 $border-radius $border-radius;
-}
-
-.ui.#{$c-vertical}.menu > .#{$c-active}.#{$c-item}:only-child {
-  border-radius: $border-radius;
-}
-
-.ui.#{$c-vertical}.menu .#{$c-active}.#{$c-item} .#{$c-menu} .#{$c-active}.#{$c-item} {
-  border-left: none;
-}
-
-.ui.#{$c-vertical}.menu .#{$c-item} .#{$c-menu} .#{$c-active}.#{$c-item} {
-  background-color: $sub-menu-active-background;
-  font-weight: $sub-menu-active-font-weight;
-  color: $sub-menu-active-text-color;
+  .#{$c-item} .#{$c-menu} .#{$c-active}.#{$c-item} {
+	background-color: $sub-menu-active-background;
+	font-weight: $sub-menu-active-font-weight;
+	color: $sub-menu-active-text-color;
+  }
 }

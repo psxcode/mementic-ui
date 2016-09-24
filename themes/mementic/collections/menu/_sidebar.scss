@@ -3,9 +3,9 @@
 ---------------*/
 
 /* Show vertical dividers below last */
-#{$ui-menu} {
+#{$ui-menu}.#{$c-vertical}.#{$c-sidebar} {
 
-  &.#{$c-vertical}.#{$c-sidebar} > .#{$c-item} {
+  > .#{$c-item} {
 
 	&::before {
 	  top: auto;

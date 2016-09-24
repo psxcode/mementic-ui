@@ -1,5 +1,7 @@
 /* Shortcuts */
 $ui-form: selector-ui-form();
+$bp-mobile: breakpoint-name(1);
+$equal-width: selector-class-strict-order($c-equal, 'width');
 
 #{$ui-form} {
   position: relative;
@@ -51,250 +53,9 @@ $ui-form: selector-ui-form();
   }
 }
 
-/*--------------------
-   Types of Messages
----------------------*/
-
-.ui.form .success.message,
-.ui.form .warning.message,
-.ui.form .error.message {
-  display: none;
-}
-
-/* Assumptions */
-.ui.form .message:first-child {
-  margin-top: 0;
-}
-
 /*******************************
             States
 *******************************/
-
-/*--------------------
-      Autofilled
----------------------*/
-
-.ui.form .#{$c-field}.#{$c-field} input:-webkit-autofill {
-  box-shadow: 0 0 0 100px $input-auto-fill-background inset !important;
-  border-color: $input-auto-fill-border !important;
-}
-
-/* Focus */
-.ui.form .#{$c-field}.#{$c-field} input:-webkit-autofill:focus {
-  box-shadow: 0 0 0 100px $input-auto-fill-focus-background inset !important;
-  border-color: $input-auto-fill-focus-border !important;
-}
-
-/* Error */
-.ui.form .error.error input:-webkit-autofill {
-  box-shadow: 0 0 0 100px $input-auto-fill-error-background inset !important;
-  border-color: $input-auto-fill-error-border !important;
-}
-
-/*--------------------
-        Success
----------------------*/
-
-/* On Form */
-.ui.form.success .success.message:not(:empty) {
-  display: block;
-}
-
-.ui.form.success .compact.success.message:not(:empty) {
-  display: inline-block;
-}
-
-.ui.form.success .icon.success.message:not(:empty) {
-  display: flex;
-}
-
-/*--------------------
-        Warning
----------------------*/
-
-/* On Form */
-.ui.form.warning .warning.message:not(:empty) {
-  display: block;
-}
-
-.ui.form.warning .compact.warning.message:not(:empty) {
-  display: inline-block;
-}
-
-.ui.form.warning .icon.warning.message:not(:empty) {
-  display: flex;
-}
-
-/*--------------------
-        Error
----------------------*/
-
-/* On Form */
-.ui.form.error .error.message:not(:empty) {
-  display: block;
-}
-
-.ui.form.error .compact.error.message:not(:empty) {
-  display: inline-block;
-}
-
-.ui.form.error .icon.error.message:not(:empty) {
-  display: flex;
-}
-
-/* On Field(s) */
-.ui.form .#{$c-field-group}.error .#{$c-field} label,
-.ui.form .#{$c-field}.error label,
-.ui.form .#{$c-field-group}.error .#{$c-field} .input,
-.ui.form .#{$c-field}.error .input {
-  color: $form-error-color;
-}
-
-.ui.form .#{$c-field-group}.error .#{$c-field} .corner.label,
-.ui.form .#{$c-field}.error .corner.label {
-  border-color: $form-error-color;
-  color: $color-light;
-}
-
-.ui.form .#{$c-field-group}.error .#{$c-field} textarea,
-.ui.form .#{$c-field-group}.error .#{$c-field} select,
-.ui.form .#{$c-field-group}.error .#{$c-field} input:not([type]),
-.ui.form .#{$c-field-group}.error .#{$c-field} input[type="date"],
-.ui.form .#{$c-field-group}.error .#{$c-field} input[type="datetime-local"],
-.ui.form .#{$c-field-group}.error .#{$c-field} input[type="email"],
-.ui.form .#{$c-field-group}.error .#{$c-field} input[type="number"],
-.ui.form .#{$c-field-group}.error .#{$c-field} input[type="password"],
-.ui.form .#{$c-field-group}.error .#{$c-field} input[type="search"],
-.ui.form .#{$c-field-group}.error .#{$c-field} input[type="tel"],
-.ui.form .#{$c-field-group}.error .#{$c-field} input[type="time"],
-.ui.form .#{$c-field-group}.error .#{$c-field} input[type="text"],
-.ui.form .#{$c-field-group}.error .#{$c-field} input[type="file"],
-.ui.form .#{$c-field-group}.error .#{$c-field} input[type="url"],
-.ui.form .#{$c-field}.error textarea,
-.ui.form .#{$c-field}.error select,
-.ui.form .#{$c-field}.error input:not([type]),
-.ui.form .#{$c-field}.error input[type="date"],
-.ui.form .#{$c-field}.error input[type="datetime-local"],
-.ui.form .#{$c-field}.error input[type="email"],
-.ui.form .#{$c-field}.error input[type="number"],
-.ui.form .#{$c-field}.error input[type="password"],
-.ui.form .#{$c-field}.error input[type="search"],
-.ui.form .#{$c-field}.error input[type="tel"],
-.ui.form .#{$c-field}.error input[type="time"],
-.ui.form .#{$c-field}.error input[type="text"],
-.ui.form .#{$c-field}.error input[type="file"],
-.ui.form .#{$c-field}.error input[type="url"] {
-  background: $form-error-background;
-  border-color: $form-error-border;
-  color: $form-error-color;
-  border-radius: $input-error-border-radius;
-  box-shadow: $input-error-box-shadow;
-}
-
-.ui.form .#{$c-field}.error textarea:focus,
-.ui.form .#{$c-field}.error select:focus,
-.ui.form .#{$c-field}.error input:not([type]):focus,
-.ui.form .#{$c-field}.error input[type="date"]:focus,
-.ui.form .#{$c-field}.error input[type="datetime-local"]:focus,
-.ui.form .#{$c-field}.error input[type="email"]:focus,
-.ui.form .#{$c-field}.error input[type="number"]:focus,
-.ui.form .#{$c-field}.error input[type="password"]:focus,
-.ui.form .#{$c-field}.error input[type="search"]:focus,
-.ui.form .#{$c-field}.error input[type="tel"]:focus,
-.ui.form .#{$c-field}.error input[type="time"]:focus,
-.ui.form .#{$c-field}.error input[type="text"]:focus,
-.ui.form .#{$c-field}.error input[type="file"]:focus,
-.ui.form .#{$c-field}.error input[type="url"]:focus {
-  background: $input-error-focus-background;
-  border-color: $input-error-focus-border;
-  color: $input-error-focus-color;
-
-  -webkit-appearance: none;
-  box-shadow: $input-error-focus-box-shadow;
-}
-
-/* Preserve Native Select Stylings */
-.ui.form .#{$c-field}.error select {
-  -webkit-appearance: menulist-button;
-}
-
-/*------------------
-    Dropdown Error
---------------------*/
-
-.ui.form .#{$c-field-group}.error .#{$c-field} .ui.dropdown,
-.ui.form .#{$c-field-group}.error .#{$c-field} .ui.dropdown .item,
-.ui.form .#{$c-field}.error .ui.dropdown,
-.ui.form .#{$c-field}.error .ui.dropdown .text,
-.ui.form .#{$c-field}.error .ui.dropdown .item {
-  background: $form-error-background;
-  color: $form-error-color;
-}
-
-.ui.form .#{$c-field-group}.error .#{$c-field} .ui.dropdown,
-.ui.form .#{$c-field}.error .ui.dropdown {
-  border-color: $form-error-border !important;
-}
-
-.ui.form .#{$c-field-group}.error .#{$c-field} .ui.dropdown:hover,
-.ui.form .#{$c-field}.error .ui.dropdown:hover {
-  border-color: $form-error-border !important;
-}
-
-.ui.form .#{$c-field-group}.error .#{$c-field} .ui.dropdown:hover .menu,
-.ui.form .#{$c-field}.error .ui.dropdown:hover .menu {
-  border-color: $form-error-border;
-}
-
-.ui.form .#{$c-field-group}.error .#{$c-field} .ui.multiple.selection.dropdown > .label,
-.ui.form .#{$c-field}.error .ui.multiple.selection.dropdown > .label {
-  background-color: $dropdown-error-label-background;
-  color: $dropdown-error-label-color;
-}
-
-/* Hover */
-.ui.form .#{$c-field-group}.error .#{$c-field} .ui.dropdown .menu .item:hover,
-.ui.form .#{$c-field}.error .ui.dropdown .menu .item:hover {
-  background-color: $dropdown-error-hover-background;
-}
-
-/* Selected */
-.ui.form .#{$c-field-group}.error .#{$c-field} .ui.dropdown .menu .selected.item,
-.ui.form .#{$c-field}.error .ui.dropdown .menu .selected.item {
-  background-color: $dropdown-error-selected-background;
-}
-
-/* Active */
-.ui.form .#{$c-field-group}.error .#{$c-field} .ui.dropdown .menu .active.item,
-.ui.form .#{$c-field}.error .ui.dropdown .menu .active.item {
-  background-color: $dropdown-error-active-background !important;
-}
-
-/*--------------------
-    Checkbox Error
----------------------*/
-
-.ui.form .#{$c-field-group}.error .#{$c-field} .checkbox:not(.toggle):not(.slider) label,
-.ui.form .#{$c-field}.error .checkbox:not(.toggle):not(.slider) label,
-.ui.form .#{$c-field-group}.error .#{$c-field} .checkbox:not(.toggle):not(.slider) .box,
-.ui.form .#{$c-field}.error .checkbox:not(.toggle):not(.slider) .box {
-  color: $form-error-color;
-}
-
-.ui.form .#{$c-field-group}.error .#{$c-field} .checkbox:not(.toggle):not(.slider) label:before,
-.ui.form .#{$c-field}.error .checkbox:not(.toggle):not(.slider) label:before,
-.ui.form .#{$c-field-group}.error .#{$c-field} .checkbox:not(.toggle):not(.slider) .box:before,
-.ui.form .#{$c-field}.error .checkbox:not(.toggle):not(.slider) .box:before {
-  background: $form-error-background;
-  border-color: $form-error-border;
-}
-
-.ui.form .#{$c-field-group}.error .#{$c-field} .checkbox label:after,
-.ui.form .#{$c-field}.error .checkbox label:after,
-.ui.form .#{$c-field-group}.error .#{$c-field} .checkbox .box:after,
-.ui.form .#{$c-field}.error .checkbox .box:after {
-  color: $form-error-color;
-}
 
 /*--------------------
         Fields
@@ -305,6 +66,11 @@ $ui-form: selector-ui-form();
   display: flex;
   flex-direction: row;
   margin: $fields-margin;
+
+  /* Swap to full width on mobile */
+  @include breakpoint-only($bp-mobile) {
+	flex-wrap: wrap;
+  }
 
   > .#{$c-field} {
 	flex: 0 1 auto;
@@ -324,90 +90,39 @@ $ui-form: selector-ui-form();
 	  > .#{$c-field-group},
 	  > .#{$c-field} {
 		width: column($i);
+
+		/* Swap to full width on mobile */
+		@include breakpoint-only($bp-mobile) {
+		  width: column(1) !important;
+		  margin: 0 0 $row-distance;
+		}
 	  }
 	}
   }
 }
 
-/* Swap to full width on mobile */
-$bp-tablet: map-value-by-index($bps, 1);
-
-@include media('screen', '<#{$bp-tablet}') {
-
-  .ui.form .#{$c-field-group} {
-	flex-wrap: wrap;
-  }
-
-  .ui[class*="equal width"].form .#{$c-field-group} > .#{$c-field},
-  .ui.form [class*="equal width"].#{$c-field-group} > .#{$c-field},
-  .ui.form .two.#{$c-field-group} > .#{$c-field-group},
-  .ui.form .two.#{$c-field-group} > .#{$c-field},
-  .ui.form .three.#{$c-field-group} > .#{$c-field-group},
-  .ui.form .three.#{$c-field-group} > .#{$c-field},
-  .ui.form .four.#{$c-field-group} > .#{$c-field-group},
-  .ui.form .four.#{$c-field-group} > .#{$c-field},
-  .ui.form .five.#{$c-field-group} > .#{$c-field-group},
-  .ui.form .five.#{$c-field-group} > .#{$c-field},
-  .ui.form .six.#{$c-field-group} > .#{$c-field-group},
-  .ui.form .six.#{$c-field-group} > .#{$c-field},
-  .ui.form .seven.#{$c-field-group} > .#{$c-field-group},
-  .ui.form .seven.#{$c-field-group} > .#{$c-field},
-  .ui.form .eight.#{$c-field-group} > .#{$c-field-group},
-  .ui.form .eight.#{$c-field-group} > .#{$c-field},
-  .ui.form .nine.#{$c-field-group} > .#{$c-field-group},
-  .ui.form .nine.#{$c-field-group} > .#{$c-field},
-  .ui.form .ten.#{$c-field-group} > .#{$c-field-group},
-  .ui.form .ten.#{$c-field-group} > .#{$c-field} {
-	width: column(1) !important;
-	margin: 0 0 $row-distance;
-  }
-}
-
 /* Sizing Combinations */
-.ui.form .#{$c-field-group} .wide.#{$c-field} {
-  width: wide(1);
-  padding-left: ($gutter-width / 2);
-  padding-right: ($gutter-width / 2);
-}
+#{$ui-form} {
 
-@for $i from 1 through $num-columns {
+  /* One wide field */
+  .#{$c-wide}.#{$c-field} {
+	width: wide(1);
+	padding-left: ($gutter-width / 2);
+	padding-right: ($gutter-width / 2);
 
-  .ui.form .#{number-name($i)}.wide.#{$c-field} {
-	width: wide($i) !important;
+	/* Swap to full width on mobile */
+	@include breakpoint-only($bp-mobile) {
+	  width: column(1) !important;
+	}
   }
-}
 
-/* Swap to full width on mobile */
+  /* Num wide fields */
+  @for $i from 1 through $num-columns {
+	$num-wide: selector-num-wide($i);
 
-@include media('screen', '<#{$bp-tablet}') {
-
-  .ui.form .two.#{$c-field-group} > .#{$c-field-group},
-  .ui.form .two.#{$c-field-group} > .#{$c-field},
-  .ui.form .three.#{$c-field-group} > .#{$c-field-group},
-  .ui.form .three.#{$c-field-group} > .#{$c-field},
-  .ui.form .four.#{$c-field-group} > .#{$c-field-group},
-  .ui.form .four.#{$c-field-group} > .#{$c-field},
-  .ui.form .five.#{$c-field-group} > .#{$c-field-group},
-  .ui.form .five.#{$c-field-group} > .#{$c-field},
-  .ui.form .#{$c-field-group} > .two.wide.#{$c-field},
-  .ui.form .#{$c-field-group} > .three.wide.#{$c-field},
-  .ui.form .#{$c-field-group} > .four.wide.#{$c-field},
-  .ui.form .#{$c-field-group} > .five.wide.#{$c-field},
-  .ui.form .#{$c-field-group} > .six.wide.#{$c-field},
-  .ui.form .#{$c-field-group} > .seven.wide.#{$c-field},
-  .ui.form .#{$c-field-group} > .eight.wide.#{$c-field},
-  .ui.form .#{$c-field-group} > .nine.wide.#{$c-field},
-  .ui.form .#{$c-field-group} > .ten.wide.#{$c-field},
-  .ui.form .#{$c-field-group} > .eleven.wide.#{$c-field},
-  .ui.form .#{$c-field-group} > .twelve.wide.#{$c-field},
-  .ui.form .#{$c-field-group} > .thirteen.wide.#{$c-field},
-  .ui.form .#{$c-field-group} > .fourteen.wide.#{$c-field},
-  .ui.form .#{$c-field-group} > .fifteen.wide.#{$c-field},
-  .ui.form .#{$c-field-group} > .sixteen.wide.#{$c-field} {
-	width: column(1) !important;
-  }
-  .ui.form .#{$c-field-group} {
-	margin-bottom: 0;
+	#{$num-wide}.#{$c-field} {
+	  width: wide($i) !important;
+	}
   }
 }
 
@@ -415,8 +130,18 @@ $bp-tablet: map-value-by-index($bps, 1);
      Equal Width
 ---------------------*/
 
-.ui[class*="equal width"].form .#{$c-field-group} > .#{$c-field},
-.ui.form [class*="equal width"].#{$c-field-group} > .#{$c-field} {
-  width: 100%;
-  flex: 1 1 auto;
+#{$ui-form} {
+
+  &#{$equal-width} .#{$c-field-group},
+  #{$equal-width}.#{$c-field-group} {
+
+	> .#{$c-field} {
+	  width: 100%;
+	  flex: 1 1 auto;
+
+	  @include breakpoint-only($bp-mobile) {
+		margin: 0 0 $row-distance;
+	  }
+	}
+  }
 }

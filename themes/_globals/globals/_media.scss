@@ -514,6 +514,7 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
 // -------------------------------
 /* Breakpoints are defined as min-width values. Mobile is default */
 $breakpoints: (
+		'mobile': -1, // first breakpoint for name
 		'tablet': 20em, // 320px
 		'desktop': 48em, // 768px
 		'large': 62em, // 992px
@@ -530,18 +531,18 @@ $media-expressions: (
 		'retina3x': '(-webkit-min-device-pixel-ratio: 3), (min-resolution: 350dpi), (min-resolution: 3dppx)'
 ) !default;
 
-@function breakpoint($name) {
+@function breakpoint($name, $breakpoint-map: $breakpoints) {
   $name: to-string($name);
 
-  @if not(map-has-key($breakpoints, $name)) {
+  @if not(map-has-key($breakpoint-map, $name)) {
 	@error 'breakpoint: invalid $name #{$name}';
   }
 
-  @return map-get($breakpoints, $name);
+  @return map-get($breakpoint-map, $name);
 }
 
-@function breakpoint-by-index($index) {
-  @return map-get-by-index($breakpoints, $index);
+@function breakpoint-by-index($index, $breakpoint-map: $breakpoints) {
+  @return map-get-by-index($breakpoint-map, $index);
 }
 
 @function breakpoint-collect($names: (), $breakpoint-map: $breakpoints) {
@@ -570,48 +571,74 @@ $media-expressions: (
   @return map-extract-by-indexes($breakpoint-map, $indexes);
 }
 
-@mixin breakpoint-from-index($bp-index) {
-  @include media('screen', '>=#{breakpoint-by-index($bp-index)}') {
+@function breakpoint-name($index, $breakpoint-map: $breakpoints) {
+  @return nth(map-keys($breakpoint-map), $index);
+}
+
+@mixin breakpoint-from-index($bp-index, $breakpoint-map: $breakpoints) {
+  @include media('screen', '>=#{breakpoint-by-index($bp-index, $breakpoint-map)}') {
 	@content;
   }
 }
 
-@mixin breakpoint-until-index($bp-index) {
-  @include media('screen', '<#{breakpoint-by-index($bp-index)}') {
+@mixin breakpoint-until-index($bp-index, $breakpoint-map: $breakpoints) {
+  @include media('screen', '<#{breakpoint-by-index($bp-index, $breakpoint-map)}') {
 	@content;
   }
 }
 
-@mixin breakpoint-only-index($bp-index) {
+@mixin breakpoint-only-index($bp-index, $breakpoint-map: $breakpoints) {
   @if $bp-index == 1 {
-	@include breakpoint-until-index($bp-index + 1) {
+	@include breakpoint-until-index($bp-index + 1, $breakpoint-map) {
 	  @content;
 	}
-  } @else if $bp-index == map-length($breakpoints) {
-	@include breakpoint-from-index($bp-index) {
+  } @else if $bp-index == map-length($breakpoint-map) {
+	@include breakpoint-from-index($bp-index, $breakpoint-map) {
 	  @content;
 	}
   } @else {
-	@include media('screen', '>=#{breakpoint-by-index($bp-index)}', '<#{breakpoint-by-index($bp-index + 1)}') {
+	@include media('screen', '>=#{breakpoint-by-index($bp-index, $breakpoint-map)}', '<#{breakpoint-by-index($bp-index + 1, $breakpoint-map)}') {
 	  @content;
 	}
   }
 }
 
-@mixin breakpoint-from($bp-name) {
-  @include media('screen', '>=#{breakpoint($bp-name)}') {
+@mixin breakpoint-not-index($bp-index, $breakpoint-map: $breakpoints) {
+  @if $bp-index == 1 {
+	@include breakpoint-from-index($bp-index + 1, $breakpoint-map) {
+	  @content;
+	}
+  } @else if $bp-index == map-length($breakpoint-map) {
+	@include breakpoint-until-index($bp-index, $breakpoint-map) {
+	  @content;
+	}
+  } @else {
+	@include media('screen', '<#{breakpoint-by-index($bp-index, $breakpoint-map)}', '>=#{breakpoint-by-index($bp-index + 1, $breakpoint-map)}') {
+	  @content;
+	}
+  }
+}
+
+@mixin breakpoint-from($bp-name, $breakpoint-map: $breakpoints) {
+  @include media('screen', '>=#{breakpoint($bp-name, $breakpoint-map)}') {
 	@content;
   }
 }
 
-@mixin breakpoint-until($bp-name) {
-  @include media('screen', '<#{breakpoint($bp-name)}') {
+@mixin breakpoint-until($bp-name, $breakpoint-map: $breakpoints) {
+  @include media('screen', '<#{breakpoint($bp-name, $breakpoint-map)}') {
 	@content;
   }
 }
 
-@mixin breakpoint-only($bp-name) {
-  @include breakpoint-only-index(map-key-index($breakpoints, $bp-name)) {
+@mixin breakpoint-only($bp-name, $breakpoint-map: $breakpoints) {
+  @include breakpoint-only-index(map-key-index($breakpoint-map, $bp-name), $breakpoint-map) {
+	@content;
+  }
+}
+
+@mixin breakpoint-not($bp-name, $breakpoint-map: $breakpoints) {
+  @include breakpoint-not-index(map-key-index($breakpoint-map, $bp-name), $breakpoint-map) {
 	@content;
   }
 }

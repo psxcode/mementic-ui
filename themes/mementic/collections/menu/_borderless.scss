@@ -1,9 +1,15 @@
 /*--------------
    Borderless
 ---------------*/
+#{$ui-menu} {
 
-.ui.borderless.menu .#{$c-item}:before,
-.ui.borderless.menu .#{$c-item} .#{$c-menu} .#{$c-item}:before,
-.ui.menu .borderless.#{$c-item}:before {
-  background: none !important;
+  &.#{$c-borderless} .#{$c-item},
+  &.#{$c-borderless} .#{$c-item} .#{$c-menu} .#{$c-item},
+  #{$c-borderless}.#{$c-item} {
+
+	&::before {
+	  background: none !important;
+	}
+  }
 }
+

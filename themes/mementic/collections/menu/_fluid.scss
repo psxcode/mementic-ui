@@ -2,7 +2,6 @@
         Fluid
 --------------------*/
 
-.ui.menu.fluid,
-.ui.#{$c-vertical}.menu.fluid {
+#{$ui-menu}.#{$c-fluid} {
   width: 100% !important;
 }

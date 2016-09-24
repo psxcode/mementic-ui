@@ -2,38 +2,35 @@
    Pagination
 ---------------*/
 
-.ui.pagination.menu {
+#{$ui-menu}.#{$c-pagination} {
   margin: 0;
   display: inline-flex;
   vertical-align: middle;
-}
 
-.ui.pagination.menu .#{$c-item}:last-child {
-  border-radius: 0 $border-radius $border-radius 0;
-}
+  .#{$c-item} {
+	min-width: $pagination-min-width;
+	text-align: center;
 
-.ui.compact.menu .#{$c-item}:last-child {
-  border-radius: 0 $border-radius $border-radius 0;
-}
+	&:last-child {
+	  border-radius: 0 $border-radius $border-radius 0;
 
-.ui.pagination.menu .#{$c-item}:last-child:before {
-  display: none;
-}
+	  &:before {
+		display: none;
+	  }
+	}
+  }
 
-.ui.pagination.menu .#{$c-item} {
-  min-width: $pagination-min-width;
-  text-align: center;
-}
+  /* Active Item */
+  .#{$c-active}.#{$c-item} {
+	border-top: none;
+	padding-top: $item-vertical-padding;
+	background-color: $pagination-active-background;
+	color: $pagination-active-text-color;
+	box-shadow: none;
+  }
 
-.ui.pagination.menu .#{$c-icon}.#{$c-item} #{$ui-icon} {
-  vertical-align: top;
-}
-
-/* Active */
-.ui.pagination.menu .#{$c-active}.#{$c-item} {
-  border-top: none;
-  padding-top: $item-vertical-padding;
-  background-color: $pagination-active-background;
-  color: $pagination-active-text-color;
-  box-shadow: none;
+  /* Icon Item */
+  .#{$c-icon}.#{$c-item} #{$ui-icon} {
+	vertical-align: top;
+  }
 }

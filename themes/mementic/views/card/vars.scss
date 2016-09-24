@@ -15,7 +15,7 @@ $text-color: color-text();
 $font-family: $font-family;
 $display: flex;
 $background: $color-light;
-$border-radius: $border-radius-default;
+$border-radius: unit-rem($border-radius-default);
 $margin: 1em 0;
 $min-height: 0;
 $padding: 0;

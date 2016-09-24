@@ -1,0 +1,29 @@
+/*--------------
+     Mobile
+---------------*/
+
+$mobile: breakpoint-name(1);
+$large-mobile-banner: selector-class-strict-order($c-large, $mobile, $c-banner);
+$mobile-leaderboard: selector-class-strict-order($mobile, $c-leaderboard);
+
+#{$ui-ad} {
+
+  &.#{$mobile} {
+	display: none;
+
+	@include breakpoint-only($mobile) {
+	  display: block;
+	}
+  }
+
+  /* Large Mobile Banner */
+  &#{$large-mobile-banner} {
+	width: 320px;
+	height: 100px;
+  }
+  /* Mobile Leaderboard */
+  &#{$mobile-leaderboard} {
+	width: 320px;
+	height: 50px;
+  }
+}

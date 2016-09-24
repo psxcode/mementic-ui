@@ -3,29 +3,15 @@
 ---------------------*/
 
 /* browsers require these rules separate */
-#{$ui-form} {
+#{$ui-form} input {
 
-  ::-webkit-input-placeholder {
+  @include placeholder {
 	color: $input-placeholder-color;
   }
 
-  :-ms-input-placeholder {
-	color: $input-placeholder-color;
-  }
-
-  ::-moz-placeholder {
-	color: $input-placeholder-color;
-  }
-
-  :focus::-webkit-input-placeholder {
-	color: $input-placeholder-focus-color;
-  }
-
-  :focus:-ms-input-placeholder {
-	color: $input-placeholder-focus-color;
-  }
-
-  :focus::-moz-placeholder {
-	color: $input-placeholder-focus-color;
+  &:focus {
+	@include placeholder {
+	  color: $input-placeholder-focus-color;
+	}
   }
 }

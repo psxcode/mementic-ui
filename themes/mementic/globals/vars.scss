@@ -55,7 +55,6 @@ $c-description: 'description';
 $c-detail: 'detail';
 $c-field: 'field';
 $c-field-group: 'fields';
-$c-item: 'item';
 $c-row: 'row';
 $c-row-group: 'rows';
 $c-section: 'section';
@@ -71,6 +70,7 @@ $c-animated: 'animated'; // button list
 $c-basic: 'basic'; // button label
 $c-block: 'block';
 $c-bordered: 'bordered'; // image, icon
+$c-borderless: 'borderless'; // menu
 $c-bulleted: 'bulleted'; // list
 $c-celled: 'celled'; // list grid
 $c-centered: 'centered'; // image grid
@@ -101,6 +101,7 @@ $c-move: 'move'; // reveal
 $c-ordered: 'ordered'; // list, step
 $c-padded: 'padded'; // segment grid
 $c-page: 'page'; // grid
+$c-pagination: 'page'; // menu
 $c-pilled: 'pilled'; // segment
 $c-pointing: 'pointing'; // label
 $c-prompt: 'prompt'; // form
@@ -120,10 +121,11 @@ $c-stackable: 'stackable'; // step
 $c-stacked: 'stacked'; // segment
 $c-stretched: 'stretched'; // grid
 $c-square: 'square'; // icon
+$c-slider: 'slider'; // checkbox
 $c-tabular: 'tabular'; // menu
 $c-tag: 'tag'; // label
 $c-tall: 'tall'; // segment
-$c-toggle: 'toggle'; // button,
+$c-toggle: 'toggle'; // button checkbox
 $c-wide: 'wide'; // form
 
 /* States */
@@ -473,10 +475,6 @@ $c-corner: 'corner';
 
 @function selector-vertically-reversed() {
   @return selector-class-strict-order($c-vertically, $c-reversed);
-}
-
-@function selector-vertical-pointing() {
-  @return selector-class-strict-order($c-vertical, $c-pointing);
 }
 
 /* NUM */

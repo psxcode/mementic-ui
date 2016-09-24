@@ -2,9 +2,6 @@
        Pointing
 --------------------*/
 
-/* Shortcuts */
-$vertical-pointing: selector-vertical-pointing();
-
 #{$ui-menu} {
 
   /* Pointing */
@@ -36,22 +33,31 @@ $vertical-pointing: selector-vertical-pointing();
 	  &:hover::after {
 		background-color: $arrow-hover-color;
 	  }
+	}
 
-	  &.#{$c-active} {
+	/* Active Item */
+	.#{$c-item}.#{$c-active} {
 
-		&::after {
-		  background-color: $arrow-active-color;
-		}
-
-		&:hover::after {
-		  background-color: $arrow-active-hover-color;
-		}
+	  &::after {
+		background-color: $arrow-active-color;
 	  }
+
+	  &:hover::after {
+		background-color: $arrow-active-hover-color;
+	  }
+	}
+
+	.#{$c-item}.#{$c-active}::after {
+	  visibility: visible;
+	}
+
+	.#{$c-item}.#{$c-active}.#{$c-dropdown}::after {
+	  visibility: hidden;
 	}
   }
 
   /* Vertical Pointing */
-  &.#{$vertical-pointing} {
+  &.#{$c-vertical}.#{$c-pointing} {
 
 	.#{$c-item} {
 
@@ -73,33 +79,22 @@ $vertical-pointing: selector-vertical-pointing();
 	  &:hover::after {
 		background-color: $arrow-vertical-hover-color;
 	  }
+	}
 
-	  &.#{$c-active} {
+	/* Active Item */
+	.#{$c-active}.#{$c-item} {
 
-		&::after {
-		  background-color: $arrow-vertical-active-color;
-		}
+	  &::after {
+		background-color: $arrow-vertical-active-color;
+	  }
 
-		&:hover::after {
-		  background-color: $arrow-vertical-active-color;
-		}
+	  &:hover::after {
+		background-color: $arrow-vertical-active-color;
 	  }
 	}
 
 	.#{$c-menu} .#{$c-active}.#{$c-item}::after {
 	  background-color: $arrow-vertical-sub-menu-color;
-	}
-  }
-
-  &.#{$c-pointing} {
-
-	/* Active */
-	.#{$c-item}.#{$c-active}::after {
-	  visibility: visible;
-	}
-
-	.#{$c-item}.#{$c-active}.#{$c-dropdown}::after {
-	  visibility: hidden;
 	}
   }
 

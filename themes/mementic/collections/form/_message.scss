@@ -1,0 +1,22 @@
+/*--------------------
+   Types of Messages
+---------------------*/
+
+#{$ui-form} {
+
+  .#{$c-message} {
+	display: block;
+
+	&:first-child {
+	  margin-top: 0;
+	}
+
+	&.#{$c-compact} {
+	  display: inline-block;
+	}
+
+	&.#{$c-icon} {
+	  display: flex;
+	}
+  }
+}

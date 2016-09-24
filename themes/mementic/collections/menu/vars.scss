@@ -237,7 +237,7 @@ $secondary-item-margin: 0 $secondary-item-spacing;
 $secondary-item-vertical-padding: size('mini');
 $secondary-item-horizontal-padding: size('small');
 $secondary-item-padding: size('mini') size('small');
-$secondary-item-border-radius: $border-radius-default;
+$secondary-item-border-radius: unit-rem($border-radius-default);
 $secondary-item-transition: color $duration-default $easing-default;
 $secondary-item-color: color-text-unselected();
 
@@ -257,7 +257,7 @@ $secondary-header-border: none;
 
 $secondary-item-vertical-spacing: $secondary-item-spacing;
 $secondary-vertical-item-margin: 0 0 $secondary-item-vertical-spacing;
-$secondary-vertical-item-border-radius: $border-radius-default;
+$secondary-vertical-item-border-radius: unit-rem($border-radius-default);
 
 $secondary-menu-sub-menu-margin: 0 -$secondary-item-horizontal-padding;
 $secondary-menu-sub-menu-item-margin: 0;
@@ -331,7 +331,7 @@ $tabular-border-width: 1px;
 $tabular-opposite-border-width: $tabular-border-width + 1px;
 $tabular-vertical-padding: $item-vertical-padding;
 $tabular-horizontal-padding: size('huge');
-$tabular-border-radius: $border-radius-default;
+$tabular-border-radius: unit-rem($border-radius-default);
 $tabular-text-color: $item-text-color;
 
 $tabular-hovered-text-color: color-text-hovered();

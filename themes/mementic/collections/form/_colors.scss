@@ -1,32 +1,142 @@
 @mixin colors($color-map) {
-
   @each $name, $color in $color-map {
 
 	/* Color Placeholder */
-	#{$ui-form} .#{$name} {
+	#{$ui-form} .#{$name} input {
 
-	  ::-webkit-input-placeholder {
+	  @include placeholder {
 		color: $color;
 	  }
 
-	  :-ms-input-placeholder {
-		color: $color !important;
+	  &:focus {
+		@include placeholder {
+		  color: color-focus($color);
+		}
 	  }
+	}
 
-	  ::-moz-placeholder {
-		color: $color;
+	/* Color Autofill */
+	#{$ui-form} {
+
+	  .#{$name}.#{$name} input:-webkit-autofill {
+		box-shadow: 0 0 0 100px color-bg($color) inset !important;
+		border-color: colorize-divider($color) !important;
 	  }
+	}
 
-	  :focus::-webkit-input-placeholder {
-		color: color-focus($color);
-	  }
+	/* Color On Field(s) */
+	#{$ui-form} {
 
-	  :focus:-ms-input-placeholder {
-		color: color-focus($color) !important;
-	  }
+	  .#{$c-field-group}.#{$name} .#{$c-field},
+	  .#{$c-field}.#{$name} {
 
-	  :focus::-moz-placeholder {
-		color: color-focus($color);
+		label,
+		.#{$c-input} {
+		  color: $color;
+		}
+
+		.#{$c-label}.#{$c-corner} {
+		  border-color: colorize-divider($color);
+		  color: $color-light;
+		}
+
+		textarea,
+		select,
+		input:not([type]),
+		input[type="date"],
+		input[type="datetime-local"],
+		input[type="email"],
+		input[type="number"],
+		input[type="password"],
+		input[type="search"],
+		input[type="tel"],
+		input[type="time"],
+		input[type="text"],
+		input[type="file"],
+		input[type="url"] {
+		  background: color-bg($color);
+		  border-color: colorize-divider($color);
+		  color: $color;
+		  border-radius: $input-border-radius;
+
+		  &:focus {
+			background: $input-error-focus-background;
+			border-color: $input-error-focus-border;
+			color: $input-error-focus-color;
+
+			-webkit-appearance: none;
+			box-shadow: $input-error-focus-box-shadow;
+		  }
+		}
+
+		/* Preserve Native Select Stylings */
+		select {
+		  -webkit-appearance: menulist-button;
+		}
+
+		/* Color Dropdown */
+		.#{$c-dropdown} {
+
+		  background: color-bg($color);
+		  color: $color;
+		  border-color: colorize-divider($color) !important;
+
+		  &:hover {
+			border-color: color-hover(colorize-divider($color)) !important;
+
+			.#{$c-menu} {
+			  border-color: color-hover(colorize-divider($color)) !important;
+			}
+		  }
+
+		  .#{$c-text},
+		  .#{$c-item} {
+			background: color-bg($color);
+			color: $color;
+		  }
+
+		  /* Color Dropdown Menu Item */
+		  .#{$c-menu} .#{$c-item} {
+
+			&:hover {
+			  background-color: color-hover(color-bg($color));
+			}
+
+			&.#{$c-selected} {
+			  background-color: color-active(color-bg($color));
+			}
+
+			&.#{$c-active} {
+			  background-color: color-down(color-bg($color)) !important;
+			}
+		  }
+
+		  /* Color Label */
+		  > .#{$c-label} {
+			background-color: color-bg($color);
+			color: $color;
+		  }
+
+		  /* Color CheckBox */
+		  .#{$c-checkbox} {
+
+			label::after {
+			  color: $color;
+			}
+
+			&:not(.#{$c-toggle}):not(.#{$c-slider}) {
+			  label,
+			  #{$c-box} {
+				color: $color;
+
+				::before {
+				  background: color-bg($color);
+				  border-color: colorize-divider($color);
+				}
+			  }
+			}
+		  }
+		}
 	  }
 	}
   }

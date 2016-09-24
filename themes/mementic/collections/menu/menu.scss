@@ -1,6 +1,7 @@
 /* Shortcuts */
 $ui-menu: selector-ui-menu();
 $ui-icon: selector-ui-icon();
+$menu-type-2: 'type-2';
 
 #{$ui-menu} {
   display: flex;
@@ -81,69 +82,70 @@ $ui-icon: selector-ui-icon();
 	  width: $divider-size;
 	  background: $divider-background;
 	}
+
+	:first-child {
+	  border-radius: $border-radius 0 0 $border-radius;
+	}
   }
 
-  > .#{$c-item}:first-child {
-	border-radius: $border-radius 0 0 $border-radius;
+  /* Link Item */
+  &.#{$c-link} .#{$c-item},
+  .#{$c-dropdown}.#{$c-item},
+  .#{$c-link}.#{$c-item},
+  a.#{$c-item} {
+
+	&:hover {
+	  cursor: pointer;
+	  background: $hover-item-background;
+	  color: $hover-item-text-color;
+	}
+
+	&:active {
+	  background: $pressed-item-background;
+	  color: $pressed-item-text-color;
+	}
+  }
+
+  /* Active Item */
+  .#{$c-active}.#{$c-item} {
+	background: $active-item-background;
+	color: $active-item-text-color;
+	font-weight: $active-item-font-weight;
+	box-shadow: $active-item-box-shadow;
+
+	&:hover {
+	  background-color: $active-hover-item-background;
+	  color: $active-hover-item-color;
+	}
+
+	> #{$ui-icon} {
+	  opacity: $active-icon-opacity;
+	}
+  }
+
+  /* Disabled Item */
+  .#{$c-item}.#{$c-disabled} {
+	&,
+	&:hover {
+	  cursor: default;
+	  background-color: transparent !important;
+	  color: color-text-disabled();
+	}
   }
 }
 
-/*--------------
-      Hover
----------------*/
-
-.ui.link.menu .#{$c-item}:hover,
-.ui.menu .#{$c-dropdown}.#{$c-item}:hover,
-.ui.menu .link.#{$c-item}:hover,
-.ui.menu a.#{$c-item}:hover {
-  cursor: pointer;
-  background: $hover-item-background;
-  color: $hover-item-text-color;
+/* Coupling with segment for attachment */
+.ui.tabular.menu + .attached:not(.top).segment,
+.ui.tabular.menu + .attached:not(.top).segment + .attached:not(.top).segment {
+  border-top: none;
+  margin-left: 0;
+  margin-top: 0;
+  margin-right: 0;
+  width: 100%;
 }
 
-/*--------------
-     Pressed
----------------*/
-
-.ui.link.menu .#{$c-item}:active,
-.ui.menu .link.#{$c-item}:active,
-.ui.menu a.#{$c-item}:active {
-  background: $pressed-item-background;
-  color: $pressed-item-text-color;
-}
-
-/*--------------
-     Active
----------------*/
-
-.ui.menu .#{$c-active}.#{$c-item} {
-  background: $active-item-background;
-  color: $active-item-text-color;
-  font-weight: $active-item-font-weight;
-  box-shadow: $active-item-box-shadow;
-}
-
-.ui.menu .#{$c-active}.#{$c-item} > #{$ui-icon} {
-  opacity: $active-icon-opacity;
-}
-
-/*--------------
-  Active Hover
----------------*/
-
-.ui.menu .#{$c-active}.#{$c-item}:hover,
-.ui.#{$c-vertical}.menu .#{$c-active}.#{$c-item}:hover {
-  background-color: $active-hover-item-background;
-  color: $active-hover-item-color;
-}
-
-/*--------------
-     Disabled
----------------*/
-
-.ui.menu .#{$c-item}.disabled,
-.ui.menu .#{$c-item}.disabled:hover {
-  cursor: default;
-  background-color: transparent !important;
-  color: color-text-disabled();
+.top.attached.segment + .ui.bottom.tabular.menu {
+  position: relative;
+  width: $tabular-fluid-width;
+  left: -$tabular-fluid-offset;
 }

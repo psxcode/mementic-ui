@@ -21,6 +21,11 @@ $ui-ad: selector-ui-ad();
 	border: none;
 	overflow: hidden;
   }
+
+  &.#{$c-centered} {
+	margin-left: auto;
+	margin-right: auto;
+  }
 }
 
 /*--------------
@@ -216,73 +221,4 @@ $large-leaderboard: selector-class-strict-order($c-large, $c-leaderboard);
 #{$ui-ad}.#{$c-netboard} {
   width: 580px;
   height: 400px;
-}
-
-/*--------------
-     Mobile
----------------*/
-
-/* Large Mobile Banner */
-.ui[class*="large mobile banner"].ad {
-  width: 320px;
-  height: 100px;
-}
-
-/* Mobile Leaderboard */
-.ui[class*="mobile leaderboard"].ad {
-  width: 320px;
-  height: 50px;
-}
-
-/*******************************
-             Types
-*******************************/
-
-/* Mobile Sizes */
-.ui.mobile.ad {
-  display: none;
-}
-
-$bp-tablet: map-value-by-index($bps, 1);
-@include media('screen', '<#{$bp-tablet}') {
-
-  .ui.mobile.ad {
-	display: block;
-  }
-}
-
-/*******************************
-           Variations
-*******************************/
-
-.ui.centered.ad {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.ui.test.ad {
-  position: relative;
-  background: $test-background;
-}
-
-.ui.test.ad:after {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  text-align: center;
-  transform: translateX(-50%) translateY(-50%);
-
-  content: $test-text;
-  color: $test-color;
-  font-size: $test-font-size;
-  font-weight: $test-font-weight;
-}
-
-.ui.mobile.test.ad:after {
-  font-size: $test-mobile-font-size;
-}
-
-.ui.test.ad[data-text]:after {
-  content: attr(data-text);
 }

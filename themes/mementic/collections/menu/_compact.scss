@@ -25,10 +25,14 @@ $ui-compact-menu: '#{$ui-menu}.#{$c-compact}';
 	  border-radius: 0 $border-radius $border-radius 0;
 	}
 
-	:last-child:before {
+	:last-child::before {
 	  display: none;
 	}
   }
+}
+
+.ui.compact.menu .#{$c-item}:last-child {
+  border-radius: 0 $border-radius $border-radius 0;
 }
 
 
