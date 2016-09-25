@@ -2,32 +2,32 @@
       Icon
 ---------------*/
 
-.ui.icon.message {
+#{$ui-message}.#{$c-icon} {
   display: flex;
   width: 100%;
   align-items: center;
-}
 
-.ui.icon.message > .icon:not(.close) {
-  display: block;
-  flex: 0 0 auto;
-  width: auto;
-  line-height: 1;
-  vertical-align: $icon-vertical-align;
-  font-size: $icon-size;
-  opacity: $icon-opacity;
-}
+  > .#{$c-icon}:not(.close) {
+	display: block;
+	flex: 0 0 auto;
+	width: auto;
+	line-height: 1;
+	vertical-align: $icon-vertical-align;
+	font-size: $icon-size;
+	opacity: $icon-opacity;
+  }
 
-.ui.icon.message > .content {
-  display: block;
-  flex: 1 1 auto;
-  vertical-align: $icon-vertical-align;
-}
+  > .#{$c-content} {
+	display: block;
+	flex: 1 1 auto;
+	vertical-align: $icon-vertical-align;
+  }
 
-.ui.icon.message .icon:not(.close) + .content {
-  padding-left: $icon-content-distance;
-}
+  .#{$c-icon}:not(.close) + .#{$c-content} {
+	padding-left: $icon-content-distance;
+  }
 
-.ui.icon.message .circular.icon {
-  width: 1em;
+  .#{$c-icon}.#{$c-circular} {
+	width: 1em;
+  }
 }

@@ -2,12 +2,12 @@
    Single Line
 ---------------*/
 
-.ui.table[class*="single line"],
-.ui.table [class*="single line"] {
-  white-space: nowrap;
-}
+$single-line: '.single-line';
 
-.ui.table[class*="single line"],
-.ui.table [class*="single line"] {
-  white-space: nowrap;
+#{$ui-table} {
+
+  &#{$single-line},
+  #{$single-line} {
+	white-space: nowrap;
+  }
 }

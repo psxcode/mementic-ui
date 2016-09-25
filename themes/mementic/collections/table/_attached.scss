@@ -2,8 +2,12 @@
       Attached
 --------------------*/
 
+/* Shortcuts */
+$top-attached: selector-top-attached();
+$bottom-attached: selector-bottom-attached();
+
 /* Middle */
-.ui.attached.table {
+#{$ui-table}.#{$c-attached} {
   top: 0;
   bottom: 0;
   border-radius: 0;
@@ -14,33 +18,33 @@
   border: $attached-border;
 }
 
-.ui.attached + .ui.attached.table:not(.top) {
+.#{$c-ui}.#{$c-attached} + #{$ui-table}.#{$c-attached}:not(.#{$c-top}) {
   border-top: none;
 }
 
 /* Top */
-.ui[class*="top attached"].table {
+#{$ui-table}#{$top-attached} {
   bottom: 0;
   margin-bottom: 0;
   top: $attached-top-offset;
   margin-top: $vertical-margin;
   border-radius: $border-radius $border-radius 0 0;
-}
 
-.ui.table[class*="top attached"]:first-child {
-  margin-top: 0;
+  &:first-child {
+	margin-top: 0;
+  }
 }
 
 /* Bottom */
-.ui[class*="bottom attached"].table {
+#{$ui-table}#{$bottom-attached} {
   bottom: 0;
   margin-top: 0;
   top: $attached-bottom-offset;
   margin-bottom: $vertical-margin;
   box-shadow: $attached-bottom-box-shadow;
   border-radius: 0 0 $border-radius $border-radius;
-}
 
-.ui[class*="bottom attached"].table:last-child {
-  margin-bottom: 0;
+  &:last-child {
+	margin-bottom: 0;
+  }
 }

@@ -130,3 +130,22 @@
 	border-radius: 0 0 $tabular-border-radius $tabular-border-radius !important;
   }
 }
+
+/* Coupling with segment for attachment */
+#{$ui-menu}.#{$c-tabular} {
+
+  ~ .#{$c-attached}.#{$c-segment}:not(.#{$c-top}) {
+	border-top: none;
+	margin-left: 0;
+	margin-top: 0;
+	margin-right: 0;
+	width: 100%;
+  }
+}
+
+$top-attached: selector-top-attached();
+#{$c-segment}#{$top-attached} + #{$ui-menu}.#{$c-tabular}.#{$c-bottom} {
+  position: relative;
+  width: $tabular-fluid-width;
+  left: -$tabular-fluid-offset;
+}

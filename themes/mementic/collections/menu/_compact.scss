@@ -31,10 +31,6 @@ $ui-compact-menu: '#{$ui-menu}.#{$c-compact}';
   }
 }
 
-.ui.compact.menu .#{$c-item}:last-child {
-  border-radius: 0 $border-radius $border-radius 0;
-}
-
 
 
 

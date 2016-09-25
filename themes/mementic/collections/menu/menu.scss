@@ -133,19 +133,3 @@ $menu-type-2: 'type-2';
 	}
   }
 }
-
-/* Coupling with segment for attachment */
-.ui.tabular.menu + .attached:not(.top).segment,
-.ui.tabular.menu + .attached:not(.top).segment + .attached:not(.top).segment {
-  border-top: none;
-  margin-left: 0;
-  margin-top: 0;
-  margin-right: 0;
-  width: 100%;
-}
-
-.top.attached.segment + .ui.bottom.tabular.menu {
-  position: relative;
-  width: $tabular-fluid-width;
-  left: -$tabular-fluid-offset;
-}

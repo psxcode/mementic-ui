@@ -2,16 +2,17 @@
    Collapsing
 ---------------*/
 
-.ui.collapsing.table {
-  width: auto;
+#{$ui-table} {
+
+  /* Collapsing Table */
+  &.#{$c-collapsing} {
+	width: auto;
+  }
+
+  th.#{$c-collapsing},
+  td.#{$c-collapsing} {
+	width: 1px;
+	white-space: nowrap;
+  }
 }
 
-/*--------------
-    Collapsing
----------------*/
-
-.ui.table th.collapsing,
-.ui.table td.collapsing {
-  width: 1px;
-  white-space: nowrap;
-}

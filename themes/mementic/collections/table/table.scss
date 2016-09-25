@@ -1,5 +1,8 @@
+/* Shortcuts */
+$ui-table: selector-ui-table();
+
 /* Prototype */
-.ui.table {
+#{$ui-table} {
   width: 100%;
   background: $background;
   margin: $margin;
@@ -10,262 +13,146 @@
   color: $color;
   border-collapse: $border-collapse;
   border-spacing: $border-spacing;
-}
 
-.ui.table:first-child {
-  margin-top: 0;
-}
+  &:first-child {
+	margin-top: 0;
+  }
 
-.ui.table:last-child {
-  margin-bottom: 0;
-}
+  &:last-child {
+	margin-bottom: 0;
+  }
 
-/*******************************
-             Parts
-*******************************/
+  /* Table Content */
+  th,
+  td {
+	transition: $transition;
+  }
 
-/* Table Content */
-.ui.table th,
-.ui.table td {
-  transition: $transition;
-}
+  /* Headers */
+  thead {
+	box-shadow: $header-box-shadow;
+  }
 
-/* Headers */
-.ui.table thead {
-  box-shadow: $header-box-shadow;
-}
+  thead th {
+	cursor: auto;
+	background: $header-background;
+	text-align: $header-align;
+	color: $header-color;
+	padding: $header-vertical-padding $header-horizontal-padding;
+	vertical-align: $header-vertical-align;
+	font-style: $header-font-style;
+	font-weight: $header-font-weight;
+	text-transform: $header-text-transform;
+	border-bottom: $header-border;
+	border-left: $header-divider;
+  }
 
-.ui.table thead th {
-  cursor: auto;
-  background: $header-background;
-  text-align: $header-align;
-  color: $header-color;
-  padding: $header-vertical-padding $header-horizontal-padding;
-  vertical-align: $header-vertical-align;
-  font-style: $header-font-style;
-  font-weight: $header-font-weight;
-  text-transform: $header-text-transform;
-  border-bottom: $header-border;
-  border-left: $header-divider;
-}
+  thead tr > th:first-child {
+	border-left: none;
+  }
 
-.ui.table thead tr > th:first-child {
-  border-left: none;
-}
+  thead tr:first-child > th:first-child {
+	border-radius: $border-radius 0 0 0;
+  }
 
-.ui.table thead tr:first-child > th:first-child {
-  border-radius: $border-radius 0 0 0;
-}
+  thead tr:first-child > th:last-child {
+	border-radius: 0 $border-radius 0 0;
+  }
 
-.ui.table thead tr:first-child > th:last-child {
-  border-radius: 0 $border-radius 0 0;
-}
+  thead tr:first-child > th:only-child {
+	border-radius: $border-radius $border-radius 0 0;
+  }
 
-.ui.table thead tr:first-child > th:only-child {
-  border-radius: $border-radius $border-radius 0 0;
-}
+  /* Footer */
+  tfoot {
+	box-shadow: $footer-box-shadow;
+  }
 
-/* Footer */
-.ui.table tfoot {
-  box-shadow: $footer-box-shadow;
-}
+  tfoot th {
+	cursor: auto;
+	border-top: $footer-border;
+	background: $footer-background;
+	text-align: $footer-align;
+	color: $footer-color;
+	padding: $footer-vertical-padding $footer-horizontal-padding;
+	vertical-align: $footer-vertical-align;
+	font-style: $footer-font-style;
+	font-weight: $footer-font-weight;
+	text-transform: $footer-text-transform;
+  }
 
-.ui.table tfoot th {
-  cursor: auto;
-  border-top: $footer-border;
-  background: $footer-background;
-  text-align: $footer-align;
-  color: $footer-color;
-  padding: $footer-vertical-padding $footer-horizontal-padding;
-  vertical-align: $footer-vertical-align;
-  font-style: $footer-font-style;
-  font-weight: $footer-font-weight;
-  text-transform: $footer-text-transform;
-}
+  tfoot tr > th:first-child {
+	border-left: none;
+  }
 
-.ui.table tfoot tr > th:first-child {
-  border-left: none;
-}
+  tfoot tr:first-child > th:first-child {
+	border-radius: 0 0 0 $border-radius;
+  }
 
-.ui.table tfoot tr:first-child > th:first-child {
-  border-radius: 0 0 0 $border-radius;
-}
+  tfoot tr:first-child > th:last-child {
+	border-radius: 0 0 $border-radius 0;
+  }
 
-.ui.table tfoot tr:first-child > th:last-child {
-  border-radius: 0 0 $border-radius 0;
-}
+  tfoot tr:first-child > th:only-child {
+	border-radius: 0 0 $border-radius $border-radius;
+  }
 
-.ui.table tfoot tr:first-child > th:only-child {
-  border-radius: 0 0 $border-radius $border-radius;
-}
+  /* Table Row */
+  tr td {
+	border-top: $row-border;
+  }
 
-/* Table Row */
-.ui.table tr td {
-  border-top: $row-border;
-}
+  tr:first-child td {
+	border-top: none;
+  }
 
-.ui.table tr:first-child td {
-  border-top: none;
-}
+  /* Table Cells */
+  td {
+	padding: $cell-vertical-padding $cell-horizontal-padding;
+	text-align: $cell-text-align;
+  }
 
-/* Table Cells */
-.ui.table td {
-  padding: $cell-vertical-padding $cell-horizontal-padding;
-  text-align: $cell-text-align;
-}
+  /* Icons */
+  > .icon {
+	vertical-align: $icon-vertical-align;
 
-/* Icons */
-.ui.table > .icon {
-  vertical-align: $icon-vertical-align;
-}
-
-.ui.table > .icon:only-child {
-  margin: 0;
+	&:only-child {
+	  margin: 0;
+	}
+  }
 }
 
 /* Table Segment */
-.ui.table.segment {
+#{$ui-table}.#{$c-segment} {
   padding: 0;
+
+  &::after {
+	display: none;
+  }
+
+  /* Stacked Segment Table */
+  &.#{$c-stacked} {
+	:after {
+	  display: block;
+	}
+  }
 }
-
-.ui.table.segment:after {
-  display: none;
-}
-
-.ui.table.segment.stacked:after {
-  display: block;
-}
-
-/* Responsive */
-/*@media only screen and (max-width : $largestMobileScreen) {
-  .ui.table:not(.unstackable) {
-    width: 100%;
-  }
-  .ui.table:not(.unstackable) tbody,
-  .ui.table:not(.unstackable) tr,
-  .ui.table:not(.unstackable) tr > th,
-  .ui.table:not(.unstackable) tr > td  {
-    display: block !important;
-    width: auto !important;
-  }
-
-  .ui.table:not(.unstackable) {
-    padding: 0;
-  }
-  .ui.table:not(.unstackable) thead {
-    display: $responsive-header-display;
-  }
-  .ui.table:not(.unstackable) tfoot {
-    display: $responsive-footer-display;
-  }
-  .ui.table:not(.unstackable) tr {
-    padding-top: $responsive-row-vertical-padding;
-    padding-bottom: $responsive-row-vertical-padding;
-    box-shadow: $responsive-row-box-shadow;
-  }
-
-  .ui.table:not(.unstackable) tr > th,
-  .ui.table:not(.unstackable) tr > td {
-    background: none;
-    border: none !important;
-    padding: $responsive-cell-vertical-padding $responsive-cell-horizontal-padding !important;
-    box-shadow: $responsive-cell-box-shadow;
-  }
-  .ui.table:not(.unstackable) th:first-child,
-  .ui.table:not(.unstackable) td:first-child {
-    font-weight: bold;
-  }
-
-  !* Definition Table *!
-  .ui.definition.table:not(.unstackable) thead th:first-child {
-    box-shadow: none !important;
-  }
-}*/
-
-/*******************************
-             States
-*******************************/
-
-/*--------------
-    Positive
----------------*/
-
-/*.ui.table tr.positive,
-.ui.table td.positive {
-  box-shadow: $positiveBoxShadow;
-}
-.ui.table tr.positive,
-.ui.table td.positive {
-  background: $positiveBackgroundColor !important;
-  color: $positiveColor !important;
-}*/
-
-/*--------------
-     Negative
----------------*/
-
-/*.ui.table tr.negative,
-.ui.table td.negative {
-  box-shadow: $negativeBoxShadow;
-}
-.ui.table tr.negative,
-.ui.table td.negative {
-  background: $negativeBackgroundColor !important;
-  color: $negativeColor !important;
-}*/
-
-/*--------------
-      Error
----------------*/
-
-/*.ui.table tr.error,
-.ui.table td.error {
-  box-shadow: $errorBoxShadow;
-}
-.ui.table tr.error,
-.ui.table td.error {
-  background: $errorBackgroundColor !important;
-  color: $errorColor !important;
-}*/
-/*--------------
-     Warning
----------------*/
-
-/*.ui.table tr.warning,
-.ui.table td.warning {
-  box-shadow: $warningBoxShadow;
-}
-.ui.table tr.warning,
-.ui.table td.warning {
-  background: $warningBackgroundColor !important;
-  color: $warningColor !important;
-}*/
-
-/*--------------
-     Active
----------------*/
-
-/*.ui.table tr.active,
-.ui.table td.active {
-  box-shadow: $activeBoxShadow;
-}
-.ui.table tr.active,
-.ui.table td.active {
-  background: $activeBackgroundColor !important;
-  color: $activeColor !important;
-}*/
 
 /*--------------
      Disabled
 ---------------*/
 
-.ui.table tr.disabled td,
-.ui.table tr td.disabled,
-.ui.table tr.disabled:hover,
-.ui.table tr:hover td.disabled {
-  pointer-events: none;
-  color: color-text-disabled();
+#{$ui-table} {
+  
+  tr.#{$c-disabled} td,
+  tr td.#{$c-disabled},
+  tr.#{$c-disabled}:hover,
+  tr:hover td.#{$c-disabled} {
+	pointer-events: none;
+	color: color-text-disabled();
+  }
 }
+
 
 /*--------------
   Column Count
@@ -274,12 +161,19 @@
 @for $i from 1 through $num-columns {
 
   /* Grid Based */
-  .ui.#{number-name($i)}.column.table td {
-    width: column($i);
+  $num-columns: selector-num-column($i);
+  #{$ui-table}#{$num-columns} {
+	td {
+	  width: column($i);
+	}
   }
+  
   /* Column Width */
-  .ui.table th.#{number-name($i)}.wide,
-  .ui.table td.#{number-name($i)}.wide {
-    width: wide($i);
+  $num-wide: selector-num-wide($i);
+  #{$ui-table} {
+	th#{$num-wide},
+	td#{$num-wide} {
+	  width: wide($i);
+	}
   }
 }

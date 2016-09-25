@@ -81,8 +81,8 @@
   /* Inverted */
   &.#{$c-inverted} {
 
-	.search.#{$c-dropdown}.#{$c-item} {
-	  > .search,
+	.#{$c-search}.#{$c-dropdown}.#{$c-item} {
+	  > .#{$c-search},
 	  > .#{$c-text} {
 		color: $inverted-selection-dropdown-color;
 	  }

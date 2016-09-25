@@ -14,7 +14,7 @@
 	}
   }
 
-  :not(.#{$c-vertical}) {
+  &:not(.#{$c-vertical}) {
 
 	.#{$c-item} > .#{$c-input} {
 	  position: relative;

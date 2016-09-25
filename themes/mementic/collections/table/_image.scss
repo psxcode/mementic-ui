@@ -1,7 +1,12 @@
 /* UI Image */
-.ui.table th .image,
-.ui.table th .image img,
-.ui.table td .image,
-.ui.table td .image img {
-  max-width: none;
+
+#{$ui-table} {
+
+  th,
+  td {
+	.#{$c-image},
+	.#{$c-image} img {
+	  max-width: none;
+	}
+  }
 }

@@ -10,19 +10,23 @@ $bottom-fixed: selector-bottom-fixed();
 
 #{$ui-menu} {
 
+  /* Fixed Menu */
   &.#{$c-fixed} {
 	position: fixed;
 	z-index: 101;
 	margin: 0;
 	width: 100%;
+	border-radius: 0;
 
-	&,
-	.#{$c-item}:first-child,
-	.#{$c-item}:last-child {
-	  border-radius: 0 !important;
+	.#{$c-item} {
+	  &:first-child,
+	  &:last-child {
+		border-radius: 0 !important;
+	  }
 	}
   }
 
+  /* Top Fixed Menu */
   &.#{$c-fixed},
   &#{$top-fixed} {
 	top: 0;
@@ -31,12 +35,14 @@ $bottom-fixed: selector-bottom-fixed();
 	bottom: auto;
   }
 
+  /* Top Fixed Menu */
   &#{$top-fixed} {
 	border-top: none;
 	border-left: none;
 	border-right: none;
   }
 
+  /* Bottom Fixed Menu */
   &#{$bottom-fixed} {
 	border-bottom: none;
 	border-left: none;
@@ -47,6 +53,7 @@ $bottom-fixed: selector-bottom-fixed();
 	right: auto;
   }
 
+  /* Left Fixed Menu */
   &#{$left-fixed} {
 	border-top: none;
 	border-bottom: none;
@@ -59,6 +66,7 @@ $bottom-fixed: selector-bottom-fixed();
 	height: 100%;
   }
 
+  /* Right Fixed Menu */
   &#{$right-fixed} {
 	border-top: none;
 	border-bottom: none;

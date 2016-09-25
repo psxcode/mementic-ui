@@ -2,14 +2,11 @@
       Sizes
 ---------------*/
 
-/* Standard */
-.ui.table {
+#{$ui-table} {
   font-size: size('medium');
-}
 
-@each $name, $size in $sizes {
-
-  .ui.table {
+  @each $name, $size in $sizes {
 	font-size: size($name);
   }
 }
+

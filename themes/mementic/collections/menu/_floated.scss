@@ -26,23 +26,31 @@ $right-floated: selector-right-floated();
 Floated Menu / Item
 -------------------*/
 
-/* Left Floated */
-.ui.menu:not(.#{$c-vertical}) .left.#{$c-item},
-.ui.menu:not(.#{$c-vertical}) .left.menu {
-  display: flex;
-  margin-right: auto !important;
+#{$ui-menu}:not(.#{$c-vertical}) {
+
+  /* Left Floated */
+  .#{$c-left}.#{$c-item},
+  .#{$c-left}.#{$c-menu} {
+	display: flex;
+	margin-right: auto !important;
+  }
+
+  /* Right Floated */
+  .#{$c-right}.#{$c-item},
+  .#{$c-right}.#{$c-menu} {
+	display: flex;
+	margin-left: auto !important;
+  }
 }
 
-/* Right Floated */
-.ui.menu:not(.#{$c-vertical}) .right.#{$c-item},
-.ui.menu:not(.#{$c-vertical}) .right.menu {
-  display: flex;
-  margin-left: auto !important;
-}
+#{$ui-menu} {
 
-/* Swapped Borders */
-.ui.menu .right.#{$c-item}::before,
-.ui.menu .right.menu > .#{$c-item}::before {
-  right: auto;
-  left: 0;
+  /* Swapped Borders */
+  .#{$c-right}.#{$c-item},
+  .#{$c-right}.#{$c-menu} > .#{$c-item} {
+	&::before {
+	  right: auto;
+	  left: 0;
+	}
+  }
 }

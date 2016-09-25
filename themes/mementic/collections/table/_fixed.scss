@@ -2,12 +2,14 @@
      Fixed
 ---------------*/
 
-.ui.fixed.table {
+#{$ui-table}.#{$c-fixed} {
+
   table-layout: fixed;
+
+  th,
+  td {
+	overflow: hidden;
+	text-overflow: ellipsis;
+  }
 }
 
-.ui.fixed.table th,
-.ui.fixed.table td {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}

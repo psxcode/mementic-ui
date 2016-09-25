@@ -3,7 +3,8 @@
 ---------------*/
 
 @each $name, $size in $sizes {
-  .ui.#{$name}.message {
+
+  #{$ui-message}.#{$name} {
 	font-size: size($name);
   }
 }

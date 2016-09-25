@@ -2,36 +2,43 @@
  Text Alignment
 ---------------*/
 
-.ui.table[class*="left aligned"],
-.ui.table [class*="left aligned"] {
-  text-align: left;
-}
+/* Shortcuts */
+$left-aligned: selector-left-aligned();
+$right-aligned: selector-right-aligned();
+$center-aligned: selector-center-aligned();
+$top-aligned: selector-top-aligned();
+$middle-aligned: selector-middle-aligned();
+$bottom-aligned: selector-bottom-aligned();
 
-.ui.table[class*="center aligned"],
-.ui.table [class*="center aligned"] {
-  text-align: center;
-}
+#{$ui-table} {
 
-.ui.table[class*="right aligned"],
-.ui.table [class*="right aligned"] {
-  text-align: right;
-}
+  &#{$left-aligned},
+  #{$left-aligned} {
+	text-align: left;
+  }
 
-/*------------------
- Vertical Alignment
-------------------*/
+  &#{$center-aligned},
+  #{$center-aligned} {
+	text-align: center;
+  }
 
-.ui.table[class*="top aligned"],
-.ui.table [class*="top aligned"] {
-  vertical-align: top;
-}
+  &#{$right-aligned},
+  #{$right-aligned} {
+	text-align: right;
+  }
 
-.ui.table[class*="middle aligned"],
-.ui.table [class*="middle aligned"] {
-  vertical-align: middle;
-}
+  &#{$top-aligned},
+  #{$top-aligned} {
+	vertical-align: top;
+  }
 
-.ui.table[class*="bottom aligned"],
-.ui.table [class*="bottom aligned"] {
-  vertical-align: bottom;
+  &#{$middle-aligned},
+  #{$middle-aligned} {
+	vertical-align: middle;
+  }
+
+  &#{$bottom-aligned},
+  #{$bottom-aligned} {
+	vertical-align: bottom;
+  }
 }

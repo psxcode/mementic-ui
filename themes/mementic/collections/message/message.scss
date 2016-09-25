@@ -1,4 +1,10 @@
-.ui.message {
+/* Shortcuts */
+$ui-message: selector-ui-message();
+$visible: '.#{$c-visible}.#{$c-visible}.#{$c-visible}';
+$hidden: '.#{$c-hidden}.#{$c-hidden}.#{$c-hidden}';
+
+#{$ui-message} {
+
   position: relative;
   min-height: 1em;
   margin: $vertical-margin 0;
@@ -9,36 +15,28 @@
   transition: $transition;
   border-radius: $border-radius;
   box-shadow: $box-shadow;
+
+  &:first-child {
+	margin-top: 0;
+  }
+
+  &:last-child {
+	margin-bottom: 0;
+  }
+
+  &#{$visible} {
+	display: block;
+  }
+
+  &#{$visible}.#{$c-icon} {
+	display: flex;
+  }
+
+  &#{$hidden} {
+	display: none;
+  }
 }
 
-.ui.message:first-child {
-  margin-top: 0;
-}
-
-.ui.message:last-child {
-  margin-bottom: 0;
-}
-
-/*******************************
-            States
-*******************************/
-
-/*--------------
-    Visible
----------------*/
-
-.ui.visible.visible.visible.visible.message {
-  display: block;
-}
-
-.ui.icon.visible.visible.visible.visible.message {
-  display: flex;
-}
-
-/*--------------
-     Hidden
----------------*/
-
-.ui.hidden.hidden.hidden.hidden.message {
-  display: none;
+.ui.dropdown .menu > .message {
+  margin: 0 -$border-width;
 }

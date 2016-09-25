@@ -2,22 +2,31 @@
      Padded
 ---------------*/
 
-.ui.padded.table th {
-  padding-left: $padded-horizontal-padding;
-  padding-right: $padded-horizontal-padding;
+/* Shortcuts */
+$very-padded: selector-very-padded();
+
+#{$ui-table}.#{$c-padded} {
+
+  th {
+	padding-left: $padded-horizontal-padding;
+	padding-right: $padded-horizontal-padding;
+  }
+
+  th,
+  td {
+	padding: $padded-vertical-padding $padded-horizontal-padding;
+  }
 }
 
-.ui.padded.table th,
-.ui.padded.table td {
-  padding: $padded-vertical-padding $padded-horizontal-padding;
-}
+/* Very Padded Table */
+#{$ui-table}#{$very-padded} {
 
-/* Very */
-.ui[class*="very padded"].table th {
-  padding-left: $very-padded-horizontal-padding;
-  padding-right: $very-padded-horizontal-padding;
-}
+  th {
+	padding-left: $very-padded-horizontal-padding;
+	padding-right: $very-padded-horizontal-padding;
+  }
 
-.ui[class*="very padded"].table td {
-  padding: $very-padded-vertical-padding $very-padded-horizontal-padding;
+  td {
+	padding: $very-padded-vertical-padding $very-padded-horizontal-padding;
+  }
 }

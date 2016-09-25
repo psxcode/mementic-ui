@@ -2,14 +2,34 @@
        Colors
 --------------------*/
 @mixin colors($color-map) {
-
   @each $name, $color in $color-map {
-	.ui.#{$name}.table {
+
+	#{$ui-table}.#{$name} {
 	  border-top: $colored-border-size solid $color;
+
+	  &.#{$c-inverted} {
+		background-color: $color !important;
+		color: color-text($inverted: true) !important;
+	  }
 	}
-	.ui.inverted.#{$name}.table {
-	  background-color: $color !important;
-	  color: color-text($inverted: true) !important;
+
+	#{$ui-table} {
+
+	  tr.#{$name},
+	  td.#{$name} {
+		box-shadow: $state-marker-width 0 0 colorize-divider($color) inset;;
+		background: color-bg($color) !important;
+		color: colorize-text($color) !important;
+	  }
+	}
+
+	#{$ui-table} {
+	  &.#{$c-selectable} tr.#{$name}:hover,
+	  tr td.#{$c-selectable}.#{$name}:hover,
+	  &.#{$c-selectable} tr:hover td.#{$name} {
+		background: color-hover(color-bg($color)) !important;
+		color: colorize-text-hovered($color) !important;
+	  }
 	}
   }
 }

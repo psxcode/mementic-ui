@@ -2,7 +2,10 @@
     Attached
 ---------------*/
 
-.ui.attached.message {
+/* Shortcuts */
+$bottom-attached: selector-bottom-attached();
+
+#{$ui-message}.#{$c-attached} {
   margin-bottom: $attached-y-offset;
   border-radius: $border-radius $border-radius 0 0;
   box-shadow: $attached-box-shadow;
@@ -10,21 +13,22 @@
   margin-right: $attached-x-offset;
 }
 
-.ui.attached + .ui.attached.message:not(.top):not(.bottom) {
-  margin-top: $attached-y-offset;
-  border-radius: 0;
+/* Icon Message */
+#{$ui-message}.#{$c-attached}.#{$c-icon} {
+  width: auto;
 }
 
-.ui.bottom.attached.message {
+#{$ui-message}#{$bottom-attached} {
   margin-top: $attached-y-offset;
   border-radius: 0 0 $border-radius $border-radius;
   box-shadow: $attached-bottom-box-shadow;
+
+  &:not(:last-child) {
+	margin-bottom: $vertical-margin;
+  }
 }
 
-.ui.bottom.attached.message:not(:last-child) {
-  margin-bottom: $vertical-margin;
-}
-
-.ui.attached.icon.message {
-  width: auto;
+.#{$c-ui}.#{$c-attached} + #{$ui-message}.#{$c-attached}:not(.#{$c-top}):not(.#{$c-bottom}) {
+  margin-top: $attached-y-offset;
+  border-radius: 0;
 }

@@ -2,21 +2,30 @@
      Compact
 ---------------*/
 
-.ui.compact.table th {
-  padding-left: $compact-horizontal-padding;
-  padding-right: $compact-horizontal-padding;
+/* Shortcuts */
+$very-compact: selector-very-compact();
+
+#{$ui-table}.#{$c-compact} {
+
+  th {
+	padding-left: $compact-horizontal-padding;
+	padding-right: $compact-horizontal-padding;
+  }
+
+  td {
+	padding: $compact-vertical-padding $compact-horizontal-padding;
+  }
 }
 
-.ui.compact.table td {
-  padding: $compact-vertical-padding $compact-horizontal-padding;
-}
+/* Very Compact Table */
+#{$ui-table}#{$very-compact} {
 
-/* Very */
-.ui[class*="very compact"].table th {
-  padding-left: $very-compact-horizontal-padding;
-  padding-right: $very-compact-horizontal-padding;
-}
+  th {
+	padding-left: $very-compact-horizontal-padding;
+	padding-right: $very-compact-horizontal-padding;
+  }
 
-.ui[class*="very compact"].table td {
-  padding: $very-compact-vertical-padding $very-compact-horizontal-padding;
+  td {
+	padding: $very-compact-vertical-padding $very-compact-horizontal-padding;
+  }
 }

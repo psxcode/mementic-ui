@@ -1,20 +1,24 @@
 @mixin colors($color-map) {
   @each $name, $color in $color-map {
 
-	$box-shadow: 0 0 0 $border-width color-divider($color: $color) inset, $shadow-shadow;
+	#{$ui-message}.#{$name} {
 
-	.ui.#{$name}.message {
 	  background-color: color-bg($color);
 	  color: colorize-text($color);
-	}
+	  box-shadow: 0 0 0 $border-width colorize-divider($color) inset, $shadow-shadow;
 
-	.ui.#{$name}.message,
-	.ui.#{$name}.message.attached {
-	  box-shadow: $box-shadow;
-	}
+	  &.#{$c-attached} {
+		box-shadow: 0 0 0 $border-width colorize-divider($color) inset, $shadow-shadow;
+	  }
 
-	.ui.#{$name}.message .header {
-	  color: color-heading($color);
+	  .#{$c-header} {
+		color: color-text-heading($color);
+	  }
+
+	  &.#{$c-inverted} {
+		background-color: $color;
+		color: color-text($inverted: true);
+	  }
 	}
   }
 }

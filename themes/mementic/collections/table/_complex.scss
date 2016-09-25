@@ -2,27 +2,44 @@
     Complex
 ---------------*/
 
-.ui.structured.table {
+#{$ui-table}.#{$c-structured} {
+
   border-collapse: collapse;
+
+  thead th {
+	border-left: $header-divider;
+	border-right: $header-divider;
+  }
+
+  /* Sortable Structured Table */
+  &.#{$c-sortable} {
+
+	thead th {
+	  border-left: $sortable-border;
+	  border-right: $sortable-border;
+	}
+  }
+
+  /* Basic Structured Table */
+  &.#{$c-basic} {
+
+	th {
+	  border-left: $basic-table-header-divider;
+	  border-right: $basic-table-header-divider;
+	}
+  }
+
+  /* Celled Structured Table */
+  &.#{$c-celled} {
+
+	tr th,
+	tr td {
+	  border-left: $cell-border;
+	  border-right: $cell-border;
+	}
+  }
 }
 
-.ui.structured.table thead th {
-  border-left: $header-divider;
-  border-right: $header-divider;
-}
 
-.ui.structured.sortable.table thead th {
-  border-left: $sortable-border;
-  border-right: $sortable-border;
-}
 
-.ui.structured.basic.table th {
-  border-left: $basic-table-header-divider;
-  border-right: $basic-table-header-divider;
-}
 
-.ui.structured.celled.table tr th,
-.ui.structured.celled.table tr td {
-  border-left: $cell-border;
-  border-right: $cell-border;
-}

@@ -2,41 +2,107 @@
     Stackable
 ---------------*/
 
-/*@media only screen and (max-width: $largestTabletScreen) {
+/* Shortcuts */
+$bp-tablet: breakpoint-name(2);
+$tablet-stackable: selector-class-strict-order($bp-tablet, $c-stackable);
 
-  .ui[class*="tablet stackable"].table,
-  .ui[class*="tablet stackable"].table tbody,
-  .ui[class*="tablet stackable"].table tr,
-  .ui[class*="tablet stackable"].table tr > th,
-  .ui[class*="tablet stackable"].table tr > td {
-    display: block !important;
-    width: 100% !important;
-  }
+/* Until Tablet largest screen */
+@include breakpoint-until-index(3) {
 
-  .ui[class*="tablet stackable"].table {
-    padding: 0;
-  }
-  .ui[class*="tablet stackable"].table thead {
-    display: $responsive-header-display;
-  }
-  .ui[class*="tablet stackable"].table tfoot {
-    display: $responsive-footer-display;
-  }
-  .ui[class*="tablet stackable"].table tr {
-    padding-top: $responsive-row-vertical-padding;
-    padding-bottom: $responsive-row-vertical-padding;
-    box-shadow: $responsive-row-box-shadow;
-  }
-  .ui[class*="tablet stackable"].table tr > th,
-  .ui[class*="tablet stackable"].table tr > td {
-    background: none;
-    border: none !important;
-    padding: $responsive-cell-vertical-padding $responsive-cell-horizontal-padding;
-    box-shadow: $responsive-cell-box-shadow;
-  }
+  #{$ui-table}#{$tablet-stackable} {
+	display: block !important;
+	width: 100% !important;
+	padding: 0;
 
-  !* Definition Table *!
-  .ui.definition[class*="tablet stackable"].table thead th:first-child {
-    box-shadow: none !important;
+	tbody,
+	tr,
+	tr > th,
+	tr > td {
+	  display: block !important;
+	  width: 100% !important;
+	}
+
+	thead {
+	  display: $responsive-header-display;
+	}
+
+	tfoot {
+	  display: $responsive-footer-display;
+	}
+
+	tr {
+	  padding-top: $responsive-row-vertical-padding;
+	  padding-bottom: $responsive-row-vertical-padding;
+	  box-shadow: $responsive-row-box-shadow;
+	}
+
+	tr > th,
+	tr > td {
+	  background: none;
+	  border: none !important;
+	  padding: $responsive-cell-vertical-padding $responsive-cell-horizontal-padding;
+	  box-shadow: $responsive-cell-box-shadow;
+	}
+
+	/* Definition Table */
+	&.#{$c-definition} {
+	  thead th:first-child {
+		box-shadow: none !important;
+	  }
+	}
   }
-}*/
+}
+
+/* Until Mobile largest screen */
+@include breakpoint-until($bp-tablet) {
+
+  #{$ui-table}:not(.#{$c-unstackable}) {
+
+	width: 100%;
+	padding: 0;
+
+	tbody,
+	tr,
+	tr > th,
+	tr > td {
+	  display: block !important;
+	  width: auto !important;
+	}
+
+	thead {
+	  display: $responsive-header-display;
+	}
+
+	tfoot {
+	  display: $responsive-footer-display;
+	}
+
+	tr {
+	  padding-top: $responsive-row-vertical-padding;
+	  padding-bottom: $responsive-row-vertical-padding;
+	  box-shadow: $responsive-row-box-shadow;
+	}
+
+	tr > th,
+	tr > td {
+	  background: none;
+	  border: none !important;
+	  padding: $responsive-cell-vertical-padding $responsive-cell-horizontal-padding !important;
+	  box-shadow: $responsive-cell-box-shadow;
+	}
+
+	th,
+	td {
+	  &:first-child {
+		font-weight: bold;
+	  }
+	}
+
+	/* Definition Table */
+	&.#{$c-definition} {
+	  thead th:first-child {
+		box-shadow: none !important;
+	  }
+	}
+  }
+}

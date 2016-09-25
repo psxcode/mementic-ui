@@ -2,54 +2,76 @@
    Definition
 ---------------*/
 
-.ui.definition.table thead:not(.full-width) th:first-child {
-  pointer-events: none;
-  background: $definition-header-background;
-  font-weight: $definition-header-font-weight;
-  color: $definition-header-color;
-  box-shadow: -$border-width -$border-width 0 $border-width $definition-page-background;
-}
+$c-full-width: 'full-width';
 
-.ui.definition.table tfoot:not(.full-width) th:first-child {
-  pointer-events: none;
-  background: $definition-footer-background;
-  font-weight: $definition-footer-color;
-  color: $definition-footer-font-weight;
-  box-shadow: $border-width $border-width 0 $border-width $definition-page-background;
-}
+#{$ui-table}.#{$c-definition} {
 
-/* Remove Border */
-.ui.celled.definition.table thead:not(.full-width) th:first-child {
-  box-shadow: 0 -$border-width 0 $border-width $definition-page-background;
-}
+  thead:not(.#{$c-full-width}) th:first-child {
+	pointer-events: none;
+	background: $definition-header-background;
+	font-weight: $definition-header-font-weight;
+	color: $definition-header-color;
+	box-shadow: -$border-width -$border-width 0 $border-width $definition-page-background;
+  }
 
-.ui.celled.definition.table tfoot:not(.full-width) th:first-child {
-  box-shadow: 0 $border-width 0 $border-width $definition-page-background;
-}
+  tfoot:not(.#{$c-full-width}) th:first-child {
+	pointer-events: none;
+	background: $definition-footer-background;
+	font-weight: $definition-footer-color;
+	color: $definition-footer-font-weight;
+	box-shadow: $border-width $border-width 0 $border-width $definition-page-background;
+  }
 
-/* Highlight Defining Column */
-.ui.definition.table tr td:first-child:not(.ignored),
-.ui.definition.table tr td.definition {
-  background: $definition-column-background;
-  font-weight: $definition-column-font-weight;
-  color: $definition-column-color;
-  text-transform: $definition-column-text-transform;
-  box-shadow: $definition-column-box-shadow;
-  text-align: $definition-column-text-align;
-  font-size: $definition-column-font-size;
-  padding-left: $definition-column-horizontal-padding;
-  padding-right: $definition-column-horizontal-padding;
-}
+  /* Highlight Defining Column */
+  tr td:first-child:not(.ignored),
+  tr td.#{$c-definition} {
+	background: $definition-column-background;
+	font-weight: $definition-column-font-weight;
+	color: $definition-column-color;
+	text-transform: $definition-column-text-transform;
+	box-shadow: $definition-column-box-shadow;
+	text-align: $definition-column-text-align;
+	font-size: $definition-column-font-size;
+	padding-left: $definition-column-horizontal-padding;
+	padding-right: $definition-column-horizontal-padding;
+  }
 
-/* Fix 2nd Column */
-.ui.definition.table thead:not(.full-width) th:nth-child(2) {
-  border-left: $border-width solid color-divider();
-}
+  /* Fix 2nd Column */
+  thead:not(.#{$c-full-width}) th:nth-child(2) {
+	border-left: $border-width solid color-divider();
+  }
 
-.ui.definition.table tfoot:not(.full-width) th:nth-child(2) {
-  border-left: $border-width solid color-divider();
-}
+  tfoot:not(.#{$c-full-width}) th:nth-child(2) {
+	border-left: $border-width solid color-divider();
+  }
 
-.ui.definition.table td:nth-child(2) {
-  border-left: $border-width solid color-divider();
+  td:nth-child(2) {
+	border-left: $border-width solid color-divider();
+  }
+
+  /* Inverted Definition Table */
+  &.#{$c-inverted} {
+
+	tfoot:not(.#{$c-full-width}) th:first-child,
+	thead:not(.#{$c-full-width}) th:first-child {
+	  background: $definition-page-background;
+	}
+
+	tr td:first-child {
+	  background: $inverted-definition-column-background;
+	  color: $inverted-definition-column-color;
+	}
+  }
+
+  /* Celled Definition Table */
+  &.#{$c-celled} {
+
+	thead:not(.#{$c-full-width}) th:first-child {
+	  box-shadow: 0 -$border-width 0 $border-width $definition-page-background;
+	}
+
+	tfoot:not(.#{$c-full-width}) th:first-child {
+	  box-shadow: 0 $border-width 0 $border-width $definition-page-background;
+	}
+  }
 }

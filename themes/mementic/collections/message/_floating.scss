@@ -2,12 +2,6 @@
     Floating
 ---------------*/
 
-.ui.floating.message {
+#{$ui-menu}.#{$c-floating} {
   box-shadow: $floating-box-shadow;
-}
-
-/* Colors */
-.ui.inverted.message {
-  background-color: $color-dark;
-  color: color-text($inverted: true);
 }

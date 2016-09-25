@@ -2,54 +2,61 @@
       Basic
 ---------------*/
 
-.ui.basic.table {
+/* Shortcuts */
+$very-basic: selector-very-basic();
+
+#{$ui-table}.#{$c-basic} {
+
   background: $basic-table-background;
   border: $basic-table-border;
   box-shadow: $basic-box-shadow;
+
+  thead,
+  tfoot {
+	box-shadow: none;
+  }
+
+  th {
+	background: $basic-table-header-background;
+	border-left: $basic-table-header-divider;
+  }
+
+  tbody tr {
+	border-bottom: $basic-table-cell-border;
+  }
+
+  td {
+	background: $basic-table-cell-background;
+  }
+
+  /* Striped Basic Table */
+  &.#{$c-striped} {
+	tbody tr:nth-child(2n) {
+	  background-color: $basic-table-striped-background !important;
+	}
+  }
 }
 
-.ui.basic.table thead,
-.ui.basic.table tfoot {
-  box-shadow: none;
-}
-
-.ui.basic.table th {
-  background: $basic-table-header-background;
-  border-left: $basic-table-header-divider;
-}
-
-.ui.basic.table tbody tr {
-  border-bottom: $basic-table-cell-border;
-}
-
-.ui.basic.table td {
-  background: $basic-table-cell-background;
-}
-
-.ui.basic.striped.table tbody tr:nth-child(2n) {
-  background-color: $basic-table-striped-background !important;
-}
-
-/* Very Basic */
-.ui[class*="very basic"].table {
+/* Very Basic Table */
+#{$ui-table}#{$very-basic} {
   border: none;
-}
 
-.ui[class*="very basic"].table:not(.sortable):not(.striped) th,
-.ui[class*="very basic"].table:not(.sortable):not(.striped) td {
-  padding: $basic-table-cell-padding;
-}
+  &:not(.#{$c-sortable}):not(.#{$c-striped}) {
+	th,
+	td {
+	  padding: $basic-table-cell-padding;
 
-.ui[class*="very basic"].table:not(.sortable):not(.striped) th:first-child,
-.ui[class*="very basic"].table:not(.sortable):not(.striped) td:first-child {
-  padding-left: 0;
-}
+	  &:first-child {
+		padding-left: 0;
+	  }
 
-.ui[class*="very basic"].table:not(.sortable):not(.striped) th:last-child,
-.ui[class*="very basic"].table:not(.sortable):not(.striped) td:last-child {
-  padding-right: 0;
-}
+	  &:last-child {
+		padding-right: 0;
+	  }
+	}
 
-.ui[class*="very basic"].table:not(.sortable):not(.striped) thead tr:first-child th {
-  padding-top: 0;
+	thead tr:first-child th {
+	  padding-top: 0;
+	}
+  }
 }

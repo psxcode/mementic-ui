@@ -67,17 +67,19 @@ $c-aligned: 'aligned'; // header, image
 $c-attached: 'attached'; // label, step
 $c-avatar: 'avatar'; // image
 $c-animated: 'animated'; // button list
-$c-basic: 'basic'; // button label
+$c-basic: 'basic'; // button label table
 $c-block: 'block';
 $c-bordered: 'bordered'; // image, icon
 $c-borderless: 'borderless'; // menu
 $c-bulleted: 'bulleted'; // list
-$c-celled: 'celled'; // list grid
+$c-celled: 'celled'; // list grid table
 $c-centered: 'centered'; // image grid
 $c-circular: 'circular'; // button, image, icon, segment
 $c-clearing: 'clearing'; // divider
-$c-compact: 'compact'; // button
+$c-collapsing: 'collapsing'; // table
+$c-compact: 'compact'; // button message table
 $c-completed: 'completed'; // step
+$c-definition: 'definition'; // table
 $c-divided: 'divided'; // list
 $c-dividing: 'dividing'; // header
 $c-doubling: 'doubling'; // grid
@@ -113,19 +115,26 @@ $c-reversed: 'reversed'; // grid
 $c-rotate: 'rotate'; // reveal
 $c-rotated: 'rotated'; // icon
 $c-rounded: 'rounded'; // image
+$c-search: 'search'; // menu
+$c-selectable: 'selectable'; // table
 $c-selected: 'selected'; // list
 $c-selection: 'selection'; // list
 $c-slide: 'slide'; // reveal
+$c-sortable: 'sortable'; // table
+$c-sorted: 'sorted'; // table
 $c-spaced: 'spaced'; // image
 $c-stackable: 'stackable'; // step
-$c-stacked: 'stacked'; // segment
+$c-stacked: 'stacked'; // segment table
 $c-stretched: 'stretched'; // grid
+$c-striped: 'striped'; // table
+$c-structured: 'structured'; // table
 $c-square: 'square'; // icon
 $c-slider: 'slider'; // checkbox
 $c-tabular: 'tabular'; // menu
 $c-tag: 'tag'; // label
 $c-tall: 'tall'; // segment
 $c-toggle: 'toggle'; // button checkbox
+$c-unstackable: 'unstackable'; // table
 $c-wide: 'wide'; // form
 
 /* States */
@@ -152,6 +161,8 @@ $c-center: 'center';
 $c-middle: 'middle';
 $c-close: 'close';
 $c-corner: 'corner';
+$c-ascending: 'ascending'; // table
+$c-descending: 'descending'; // table
 
 @function selector-class-strict-order($classes...) {
   $result: '[class*="';
@@ -505,4 +516,8 @@ $c-corner: 'corner';
 
 @function selector-very-padded() {
   @return selector-class-strict-order('very', $c-padded);
+}
+
+@function selector-very-compact() {
+  @return selector-class-strict-order('very', $c-compact);
 }
