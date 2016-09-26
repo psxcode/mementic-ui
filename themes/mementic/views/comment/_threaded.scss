@@ -2,8 +2,12 @@
         Threaded
 ---------------------*/
 
-.ui.threaded.comments .comment .comments {
-  margin: $threaded-comment-margin;
-  padding: $threaded-comment-padding;
-  box-shadow: $threaded-comment-box-shadow;
+#{$ui-comment-group}.#{$c-threaded} {
+
+  /* Nested Comment Group */
+  .#{$c-comment} .#{$c-comment-group} {
+	margin: $threaded-comment-margin;
+	padding: $threaded-comment-padding;
+	box-shadow: $threaded-comment-box-shadow;
+  }
 }

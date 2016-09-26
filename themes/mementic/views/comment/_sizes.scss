@@ -3,7 +3,7 @@
 --------------------*/
 @each $name, $size in $sizes {
 
-  .ui.#{$name}.comments {
+  #{$ui-comment-group}.#{$name} {
 	font-size: size($name);
   }
 }

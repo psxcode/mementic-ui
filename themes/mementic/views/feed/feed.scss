@@ -1,12 +1,14 @@
+/* Shortcuts */
+$ui-feed: selector-ui-feed();
 
-.ui.feed {
+#{$ui-feed} {
   margin: $margin;
-}
 
-.ui.feed:first-child {
-  margin-top: 0;
-}
+  &:first-child {
+	margin-top: 0;
+  }
 
-.ui.feed:last-child {
-  margin-bottom: 0;
+  &:last-child {
+	margin-bottom: 0;
+  }
 }

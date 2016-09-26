@@ -1,0 +1,24 @@
+/*-------------------
+       Colors
+--------------------*/
+
+@mixin colors($color-map) {
+  @each $name, $color in $color-map {
+
+	#{$ui-item-group} {
+
+	  > .#{$c-item} > .#{$c-content} .#{$c-icon} {
+
+		color: colorize-text($color);
+
+		&:hover {
+		  color: colorize-text-hovered($color);
+		}
+
+		&.#{$c-active} {
+		  color: colorize-text-selected($color);
+		}
+	  }
+	}
+  }
+}

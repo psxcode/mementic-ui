@@ -2,19 +2,27 @@
      Avatar
 ---------------*/
 
-.ui.comments .comment .avatar {
-  display: $avatar-display;
-  width: $avatar-width;
-  height: $avatar-height;
-  float: $avatar-float;
-  margin: $avatar-margin;
+#{$ui-comment-group} {
+
+  .#{$c-comment} {
+
+	.#{$c-avatar} {
+	  display: $avatar-display;
+	  width: $avatar-width;
+	  height: $avatar-height;
+	  float: $avatar-float;
+	  margin: $avatar-margin;
+	}
+
+	img.#{$c-avatar},
+	.#{$c-avatar} img {
+	  display: block;
+	  margin: 0 auto;
+	  width: 100%;
+	  height: 100%;
+	  border-radius: $avatar-border-radius;
+	}
+  }
 }
 
-.ui.comments .comment img.avatar,
-.ui.comments .comment .avatar img {
-  display: block;
-  margin: 0 auto;
-  width: 100%;
-  height: 100%;
-  border-radius: $avatar-border-radius;
-}
+

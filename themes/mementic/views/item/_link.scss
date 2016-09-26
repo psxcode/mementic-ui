@@ -2,44 +2,49 @@
       Links
 ---------------*/
 
-/* Generic */
-.ui.items > .item > .content a:not(.ui) {
-  color: $content-link-color;
-  transition: $content-link-transition;
-}
+#{$ui-item-group} > .#{$c-item} {
 
-.ui.items > .item > .content a:not(.ui):hover {
-  color: $content-link-hover-color;
-}
+  /* Generic */
+  > .#{$c-content} a:not(.#{$c-ui}) {
+	color: $content-link-color;
+	transition: $content-link-transition;
 
-/* Header */
-.ui.items > .item > .content > a.header {
-  color: $header-link-color;
-}
+	&:hover {
+	  color: $content-link-hover-color;
+	}
+  }
 
-.ui.items > .item > .content > a.header:hover {
-  color: $header-link-hover-color;
-}
+  /* Header */
+  > .#{$c-content} > a.#{$c-content} {
+	color: $header-link-color;
 
-/* Meta */
-.ui.items > .item .meta > a:not(.ui) {
-  color: $meta-link-color;
-}
+	&:hover {
+	  color: $header-link-hover-color;
+	}
+  }
 
-.ui.items > .item .meta > a:not(.ui):hover {
-  color: $meta-link-hover-color;
+  /* Meta */
+  .#{$c-meta} > a:not(.#{$c-ui}) {
+	color: $meta-link-color;
+
+	&:hover {
+	  color: $meta-link-hover-color;
+	}
+  }
 }
 
 /*-------------------
         Link
 --------------------*/
 
-.ui.items a.item:hover,
-.ui.link.items > .item:hover {
-  cursor: pointer;
-}
+#{$ui-item-group} a.#{$c-item},
+#{$ui-item-group}.#{$c-link} > .#{$c-item} {
 
-.ui.items a.item:hover .content .header,
-.ui.link.items > .item:hover .content .header {
-  color: $header-link-hover-color;
+  &:hover {
+	cursor: pointer;
+  }
+
+  .#{$c-content} .#{$c-header} {
+	color: $header-link-hover-color;
+  }
 }

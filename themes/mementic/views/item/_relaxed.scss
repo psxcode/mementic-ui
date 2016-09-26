@@ -1,0 +1,14 @@
+/*--------------
+     Relaxed
+---------------*/
+
+/* Shortcuts */
+$very-relaxed: selector-very-relaxed();
+
+#{$ui-item-group}.#{$c-relaxed} > .#{$c-item} {
+  margin: $relaxed-item-spacing 0;
+}
+
+#{$ui-item-group}#{$very-relaxed-header-margin} > .#{$c-item} {
+  margin: $very-relaxed-item-spacing 0;
+}

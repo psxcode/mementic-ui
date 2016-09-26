@@ -1,6 +1,6 @@
 @each $name, $size in $sizes {
 
-  .ui.#{$name}.feed {
+  #{$ui-feed}.#{$name} {
 	font-size: size($name);
   }
 }

@@ -1,52 +1,50 @@
-.ui.comments {
+/* Shortcuts */
+$ui-comment-group: selector-ui-comment-group();
+
+#{$ui-comment-group} {
+
   margin: $margin;
   max-width: $max-width;
-}
 
-.ui.comments:first-child {
-  margin-top: 0;
-}
+  &:first-child {
+	margin-top: 0;
+  }
 
-.ui.comments:last-child {
-  margin-bottom: 0;
-}
+  &:last-child {
+	margin-bottom: 0;
+  }
 
-/*--------------
-     Comment
----------------*/
+  /* Comment */
+  .#{$c-comment} {
+	position: relative;
+	background: $comment-background;
+	margin: $comment-margin;
+	padding: $comment-padding;
+	border: $comment-border;
+	border-top: $comment-divider;
+	line-height: $comment-line-height;
 
-.ui.comments .comment {
-  position: relative;
-  background: $comment-background;
-  margin: $comment-margin;
-  padding: $comment-padding;
-  border: $comment-border;
-  border-top: $comment-divider;
-  line-height: $comment-line-height;
-}
+	&:first-child {
+	  margin-top: $first-comment-margin;
+	  padding-top: $first-comment-padding;
+	}
+  }
 
-.ui.comments .comment:first-child {
-  margin-top: $first-comment-margin;
-  padding-top: $first-comment-padding;
-}
+  /* Nested Comment Group */
+  .#{$c-comment} .#{$c-comment-group} {
+	margin: $nested-comments-margin;
+	padding: $nested-comments-padding;
 
-/*--------------------
-    Nested Comments
----------------------*/
+	&::before {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	}
 
-.ui.comments .comment .comments {
-  margin: $nested-comments-margin;
-  padding: $nested-comments-padding;
-}
-
-.ui.comments .comment .comments:before {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.ui.comments .comment .comments .comment {
-  border: $nested-comment-border;
-  border-top: $nested-comment-divider;
-  background: $nested-comment-background;
+	.comment {
+	  border: $nested-comment-border;
+	  border-top: $nested-comment-divider;
+	  background: $nested-comment-background;
+	}
+  }
 }

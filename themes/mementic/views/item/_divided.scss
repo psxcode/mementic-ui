@@ -2,30 +2,36 @@
       Divided
 --------------------*/
 
-.ui.divided.items > .item {
-  border-top: $divided-border;
-  margin: $divided-margin;
-  padding: $divided-padding;
+/* Shortcuts */
+$very-relaxed: selector-very-relaxed();
+
+#{$ui-item-group}.#{$c-divided} {
+
+  > .#{$c-item} {
+	border-top: $divided-border;
+	margin: $divided-margin;
+	padding: $divided-padding;
+
+	&:first-child {
+	  border-top: none;
+	  margin-top: $divided-first-last-margin !important;
+	  padding-top: $divided-first-last-padding !important;
+	}
+
+	&:last-child {
+	  margin-bottom: $divided-first-last-margin !important;
+	  padding-bottom: $divided-first-last-padding !important;
+	}
+  }
+
+  &.#{$c-relaxed} > .#{$c-item} {
+	margin: 0;
+	padding: $relaxed-item-spacing 0;
+  }
+
+  #{$very-relaxed} > .#{$c-item} {
+	margin: 0;
+	padding: $very-relaxed-item-spacing 0;
+  }
 }
 
-.ui.divided.items > .item:first-child {
-  border-top: none;
-  margin-top: $divided-first-last-margin !important;
-  padding-top: $divided-first-last-padding !important;
-}
-
-.ui.divided.items > .item:last-child {
-  margin-bottom: $divided-first-last-margin !important;
-  padding-bottom: $divided-first-last-padding !important;
-}
-
-/* Relaxed Divided */
-.ui.relaxed.divided.items > .item {
-  margin: 0;
-  padding: $relaxed-item-spacing 0;
-}
-
-.ui[class*="very relaxed"].divided.items > .item {
-  margin: 0;
-  padding: $very-relaxed-item-spacing 0;
-}

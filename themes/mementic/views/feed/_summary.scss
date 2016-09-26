@@ -2,19 +2,21 @@
      Summary
 ---------------*/
 
-.ui.feed > .event > .content .summary {
-  margin: $summary-margin;
-  font-size: $summary-font-size;
-  font-weight: $summary-font-weight;
-  color: $summary-color;
-}
+#{$ui-feed} > .#{$c-event} > .#{$c-content} {
 
-/* Summary Image */
-.ui.feed > .event > .content .summary img {
-  display: inline-block;
-  width: $summary-image-width;
-  height: $summary-image-height;
-  margin: $summary-image-margin;
-  border-radius: $summary-image-border-radius;
-  vertical-align: $summary-image-vertical-align;
+  .#{$c-summary} {
+	margin: $summary-margin;
+	font-size: $summary-font-size;
+	font-weight: $summary-font-weight;
+	color: $summary-color;
+
+	img {
+	  display: inline-block;
+	  width: $summary-image-width;
+	  height: $summary-image-height;
+	  margin: $summary-image-margin;
+	  border-radius: $summary-image-border-radius;
+	  vertical-align: $summary-image-vertical-align;
+	}
+  }
 }

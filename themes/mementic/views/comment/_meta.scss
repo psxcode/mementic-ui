@@ -2,18 +2,22 @@
      Metadata
 ---------------*/
 
-.ui.comments .comment .metadata {
-  display: $metadata-display;
-  margin-left: $metadata-spacing;
-  color: $metadata-color;
-  font-size: $metadata-font-size;
+#{$ui-comment-group} {
+
+  .#{$c-comment} .#{$c-metadata} {
+	display: $metadata-display;
+	margin-left: $metadata-spacing;
+	color: $metadata-color;
+	font-size: $metadata-font-size;
+
+	> * {
+	  display: inline-block;
+	  margin: 0 $metadata-content-spacing 0 0;
+	}
+
+	> :last-child {
+	  margin-right: 0;
+	}
+  }
 }
 
-.ui.comments .comment .metadata > * {
-  display: inline-block;
-  margin: 0 $metadata-content-spacing 0 0;
-}
-
-.ui.comments .comment .metadata > :last-child {
-  margin-right: 0;
-}

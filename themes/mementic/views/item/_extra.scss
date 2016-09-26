@@ -1,35 +1,39 @@
 /*----------------
   Extra Content
 -----------------*/
+$right-floated: selector-right-floated();
 
-.ui.items > .item .extra {
-  display: $extra-display;
-  position: $extra-position;
-  background: $extra-background;
-  margin: $extra-margin;
-  width: $extra-width;
-  padding: $extra-padding;
-  top: $extra-top;
-  left: $extra-left;
-  color: $extra-color;
-  box-shadow: $extra-box-shadow;
-  transition: $extra-transition;
-  border-top: $extra-divider;
-}
+#{$ui-item-group} > .#{$c-item} {
 
-.ui.items > .item .extra > * {
-  margin: ($extra-row-spacing / 2) $extra-horizontal-spacing ($extra-row-spacing / 2) 0;
-}
+  .#{$c-extra} {
+	display: $extra-display;
+	position: $extra-position;
+	background: $extra-background;
+	margin: $extra-margin;
+	width: $extra-width;
+	padding: $extra-padding;
+	top: $extra-top;
+	left: $extra-left;
+	color: $extra-color;
+	box-shadow: $extra-box-shadow;
+	transition: $extra-transition;
+	border-top: $extra-divider;
 
-.ui.items > .item .extra > [class*="right floated"] {
-  margin: ($extra-row-spacing / 2) 0 ($extra-row-spacing / 2) $extra-horizontal-spacing;
-}
+	&::after {
+	  display: block;
+	  content: ' ';
+	  height: 0;
+	  clear: both;
+	  overflow: hidden;
+	  visibility: hidden;
+	}
 
-.ui.items > .item .extra:after {
-  display: block;
-  content: ' ';
-  height: 0;
-  clear: both;
-  overflow: hidden;
-  visibility: hidden;
+	> * {
+	  margin: ($extra-row-spacing / 2) $extra-horizontal-spacing ($extra-row-spacing / 2) 0;
+	}
+
+	> #{$right-floated} {
+	  margin: ($extra-row-spacing / 2) 0 ($extra-row-spacing / 2) $extra-horizontal-spacing;
+	}
+  }
 }

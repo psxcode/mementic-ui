@@ -2,11 +2,20 @@
      Content
 ---------------*/
 
-.ui.comments .comment > .content {
-  display: block;
+#{$ui-comment-group} {
+
+  .#{$c-comment} {
+
+	> .#{$c-content} {
+	  display: block;
+	}
+
+	/* If there is an avatar move content over */
+	> .#{$c-avatar} ~ .#{$c-content} {
+	  margin-left: $content-margin;
+	}
+  }
+
 }
 
-/* If there is an avatar move content over */
-.ui.comments .comment > .avatar ~ .content {
-  margin-left: $content-margin;
-}
+

@@ -2,22 +2,29 @@
      User Actions
 ---------------------*/
 
-.ui.comments .comment .actions {
-  font-size: $action-font-size;
+#{$ui-comment-group} {
+
+  .#{$c-comment} .#{$c-action-group} {
+	font-size: $action-font-size;
+
+	a {
+	  cursor: pointer;
+	  display: inline-block;
+	  margin: 0 $action-content-distance 0 0;
+	  color: $action-link-color;
+
+	  &:hover {
+		color: $action-link-hover-color;
+	  }
+
+	  &:last-child {
+		margin-right: 0;
+	  }
+	}
+
+	a.#{$c-active} {
+	  color: $action-link-hover-color;
+	}
+  }
 }
 
-.ui.comments .comment .actions a {
-  cursor: pointer;
-  display: inline-block;
-  margin: 0 $action-content-distance 0 0;
-  color: $action-link-color;
-}
-
-.ui.comments .comment .actions a:last-child {
-  margin-right: 0;
-}
-
-.ui.comments .comment .actions a.active,
-.ui.comments .comment .actions a:hover {
-  color: $action-link-hover-color;
-}

@@ -2,16 +2,25 @@
      Author
 ---------------*/
 
-.ui.comments .comment .author {
-  font-size: $author-font-size;
-  color: $author-color;
-  font-weight: $author-font-weight;
+#{$ui-comment-group} {
+
+  .#{$c-comment} {
+
+	.#{$c-author} {
+	  font-size: $author-font-size;
+	  color: $author-color;
+	  font-weight: $author-font-weight;
+	}
+
+	a.#{$c-author} {
+	  cursor: pointer;
+
+	  &:hover {
+		color: $author-hover-color;
+	  }
+	}
+  }
 }
 
-.ui.comments .comment a.author {
-  cursor: pointer;
-}
 
-.ui.comments .comment a.author:hover {
-  color: $author-hover-color;
-}
+

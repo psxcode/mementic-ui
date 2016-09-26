@@ -1,5 +1,5 @@
-.ui.collapsed.comments,
-.ui.comments .collapsed.comments,
-.ui.comments .collapsed.comment {
+
+#{$c-comment-group}.#{$c-collapsed},
+#{$c-comment}.#{$c-collapsed} {
   display: none;
 }

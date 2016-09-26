@@ -37,8 +37,10 @@ $c-table: 'table';
 $c-ad: 'ad';
 $c-card: 'card';
 $c-comment: 'comment';
+$c-comment-group: 'comments';
 $c-feed: 'feed';
 $c-item: 'item';
+$c-item-group: 'items';
 $c-statistic: 'statistic';
 
 /* Modules */
@@ -60,9 +62,20 @@ $c-row-group: 'rows';
 $c-section: 'section';
 $c-text: 'text';
 $c-title: 'title';
+$c-reply: 'reply'; // comment
+$c-metadata: 'metadata'; // comment
+$c-author: 'author'; // comment
+$c-event: 'event'; // feed
+$c-user: 'user'; // feed
+$c-summary: 'summary'; // feed
+$c-meta: 'meta'; // feed item
+$c-like: 'like'; // feed
+$c-extra: 'extra'; // feed item
+$c-date: 'date'; // feed
 
 /* Types */
 $c-action: 'action';
+$c-action-group: 'actions'; // comment
 $c-aligned: 'aligned'; // header, image
 $c-attached: 'attached'; // label, step
 $c-avatar: 'avatar'; // image
@@ -76,6 +89,7 @@ $c-celled: 'celled'; // list grid table
 $c-centered: 'centered'; // image grid
 $c-circular: 'circular'; // button, image, icon, segment
 $c-clearing: 'clearing'; // divider
+$c-collapsed: 'collapsed'; // comment
 $c-collapsing: 'collapsing'; // table
 $c-compact: 'compact'; // button message table
 $c-completed: 'completed'; // step
@@ -99,6 +113,7 @@ $c-instant: 'instant'; // reveal
 $c-inverted: 'inverted';
 $c-justified: 'justified'; // header
 $c-labeled: 'labeled'; // button
+$c-minimal: 'minimal'; // comment
 $c-move: 'move'; // reveal
 $c-ordered: 'ordered'; // list, step
 $c-padded: 'padded'; // segment grid
@@ -133,6 +148,7 @@ $c-slider: 'slider'; // checkbox
 $c-tabular: 'tabular'; // menu
 $c-tag: 'tag'; // label
 $c-tall: 'tall'; // segment
+$c-threaded: 'threaded'; // comment
 $c-toggle: 'toggle'; // button checkbox
 $c-unstackable: 'unstackable'; // table
 $c-wide: 'wide'; // form
@@ -302,12 +318,20 @@ $c-descending: 'descending'; // table
   @return '.#{$c-ui}.#{$c-comment}';
 }
 
+@function selector-ui-comment-group() {
+  @return '.#{$c-ui}.#{$c-comment-group}';
+}
+
 @function selector-ui-feed() {
   @return '.#{$c-ui}.#{$c-feed}';
 }
 
 @function selector-ui-item() {
   @return '.#{$c-ui}.#{$c-item}';
+}
+
+@function selector-ui-item-group() {
+  @return '.#{$c-ui}.#{$c-item-group}';
 }
 
 @function selector-ui-statistic() {

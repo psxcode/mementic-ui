@@ -1,0 +1,12 @@
+/*--------------
+      Size
+---------------*/
+
+@each $name, $size in $sizes {
+
+  #{$ui-item-group}.#{$name} > .#{$c-item},
+  #{$ui-item-group} > .#{$c-item}.#{$name} {
+
+	font-size: size($name);
+  }
+}
