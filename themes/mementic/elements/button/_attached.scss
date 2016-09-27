@@ -49,53 +49,58 @@ $bottom-attached: selector-bottom-attached();
 /* Plural */
 #{$ui-button-group} {
 
-  &.attached {
-	position: relative;
-	display: flex;
-	border-radius: 0;
-	width: auto !important;
-	z-index: $attached-z-index;
-	margin-left: $attached-offset;
-	margin-right: $attached-offset;
-  }
+  position: relative;
+  display: flex;
+  border-radius: 0;
+  width: auto !important;
+  z-index: $attached-z-index;
+  margin-left: $attached-offset;
+  margin-right: $attached-offset;
 
-  &.attached .#{$c-button} {
-	margin: 0;
-  }
+  &.#{$c-attached} {
 
-  &.attached .#{$c-button}:first-child {
-	border-radius: 0;
-  }
+	.#{$c-button} {
+	  margin: 0;
 
-  &.attached .#{$c-button}:last-child {
-	border-radius: 0;
+	  &:first-child {
+		border-radius: 0;
+	  }
+
+	  &:last-child {
+		border-radius: 0;
+	  }
+	}
   }
 
   /* Top / Bottom */
   &#{$top-attached} {
 	margin-bottom: $attached-offset;
 	border-radius: $border-radius $border-radius 0 0;
-  }
 
-  &#{$top-attached} .#{$c-button}:first-child {
-	border-radius: $border-radius 0 0 0;
-  }
+	.#{$c-button} {
+	  &:first-child {
+		border-radius: $border-radius 0 0 0;
+	  }
 
-  &#{$top-attached} .#{$c-button}:last-child {
-	border-radius: 0 $border-radius 0 0;
+	  &:last-child {
+		border-radius: 0 $border-radius 0 0;
+	  }
+	}
   }
 
   &#{$bottom-attached} {
 	margin-top: $attached-offset;
 	border-radius: 0 0 $border-radius $border-radius;
-  }
 
-  &#{$bottom-attached} .#{$c-button}:first-child {
-	border-radius: 0 0 0 $border-radius;
-  }
+	.#{$c-button} {
+	  &:first-child {
+		border-radius: 0 0 0 $border-radius;
+	  }
 
-  &#{$bottom-attached} .#{$c-button}:last-child {
-	border-radius: 0 0 $border-radius 0;
+	  &:last-child {
+		border-radius: 0 0 $border-radius 0;
+	  }
+	}
   }
 
   /* Left / Right */
@@ -104,16 +109,18 @@ $bottom-attached: selector-bottom-attached();
 	margin-right: 0;
 	margin-left: $attached-offset;
 	border-radius: 0 $border-radius $border-radius 0;
-  }
 
-  &#{$left-attached} .#{$c-button}:first-child {
-	margin-left: $attached-offset;
-	border-radius: 0 $border-radius 0 0;
-  }
+	.#{$c-button} {
+	  :first-child {
+		margin-left: $attached-offset;
+		border-radius: 0 $border-radius 0 0;
+	  }
 
-  &#{$left-attached} .#{$c-button}:last-child {
-	margin-left: $attached-offset;
-	border-radius: 0 0 $border-radius 0;
+	  :last-child {
+		margin-left: $attached-offset;
+		border-radius: 0 0 $border-radius 0;
+	  }
+	}
   }
 
   &#{$right-attached} {
@@ -121,15 +128,17 @@ $bottom-attached: selector-bottom-attached();
 	margin-left: 0;
 	margin-right: $attached-offset;
 	border-radius: $border-radius 0 0 $border-radius;
-  }
 
-  &#{$right-attached} .#{$c-button}:first-child {
-	margin-left: $attached-offset;
-	border-radius: $border-radius 0 0 0;
-  }
+	.#{$c-button} {
+	  &:first-child {
+		margin-left: $attached-offset;
+		border-radius: $border-radius 0 0 0;
+	  }
 
-  &#{$right-attached} .#{$c-button}:last-child {
-	margin-left: $attached-offset;
-	border-radius: 0 0 0 $border-radius;
+	  &:last-child {
+		margin-left: $attached-offset;
+		border-radius: 0 0 0 $border-radius;
+	  }
+	}
   }
 }

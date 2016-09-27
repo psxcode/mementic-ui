@@ -4,127 +4,96 @@
 
 #{$ui-button-group}.#{$c-basic} .#{$c-button},
 #{$ui-button}.#{$c-basic} {
-  background: $basic-background !important;
-  color: $basic-text-color !important;
+
+  color: color-text();
+  background: $basic-background;
   font-weight: $basic-font-weight;
   border-radius: $basic-border-radius;
   text-transform: $basic-text-transform;
-  text-shadow: none !important;
-  box-shadow: $basic-box-shadow;
+
+  &:hover {
+	color: color-text-hovered();
+  }
+
+  &:focus {
+	color: color-text-selected();
+  }
+
+  &:active {
+	color: color-text-pressed();
+  }
+
+  &.#{$c-active} {
+	color: color-text-selected();
+
+	&:hover {
+	  background-color: color-transparent($color-dark);
+	}
+  }
 }
 
 #{$ui-button-group}.#{$c-basic} {
-  box-shadow: $basic-group-box-shadow;
   border: $basic-group-border;
   border-radius: $border-radius;
+
+  .#{$c-button} {
+	border-radius: 0;
+	border-left: $basic-group-border;
+	box-shadow: none;
+
+	&:hover {
+	}
+
+	&:focus {
+	}
+
+	&:active {
+	}
+
+	&.#{$c-active} {
+	}
+  }
 }
 
-#{$ui-button-group}.#{$c-basic} .#{$c-button} {
-  border-radius: 0;
-}
+#{$ui-button-group}.#{$c-basic}.#{$c-vertical} {
 
-#{$ui-button-group}.#{$c-basic} .#{$c-button}:hover,
-#{$ui-button}.#{$c-basic}:hover {
-  background: $basic-hover-background !important;
-  color: $basic-hover-text-color !important;
-  box-shadow: $basic-hover-box-shadow;
-}
+  .#{$c-button} {
+	border-left: none;
+	border-top: $basic-group-border;
 
-#{$ui-button-group}.#{$c-basic} .#{$c-button}:focus,
-#{$ui-button}.#{$c-basic}:focus {
-  background: $basic-focus-background !important;
-  color: $basic-focus-text-color !important;
-  box-shadow: $basic-focus-box-shadow;
-}
-
-#{$ui-button-group}.#{$c-basic} .#{$c-button}:active,
-#{$ui-button}.#{$c-basic}:active {
-  background: $basic-down-background !important;
-  color: $basic-down-text-color !important;
-  box-shadow: $basic-down-box-shadow;
-}
-
-#{$ui-button-group}.#{$c-basic} .#{$c-active}.#{$c-button},
-#{$ui-button}.#{$c-basic}.#{$c-active} {
-  background: $basic-active-background !important;
-  box-shadow: $basic-active-box-shadow !important;
-  color: $basic-active-text-color;
-}
-
-#{$ui-button-group}.#{$c-basic} .#{$c-active}.#{$c-button}:hover,
-#{$ui-button}.#{$c-basic}.#{$c-active}:hover {
-  background-color: color-transparent($color-dark);
-}
-
-/* Vertical */
-#{$ui-button-group}.#{$c-basic} .#{$c-button}:hover {
-  box-shadow: $basic-hover-box-shadow;
-}
-
-#{$ui-button-group}.#{$c-basic} .#{$c-button}:active {
-  box-shadow: $basic-down-box-shadow;
-}
-
-#{$ui-button-group}.#{$c-basic} .#{$c-active}.#{$c-button} {
-  box-shadow: $basic-active-box-shadow;
+	&:first-child {
+	  border-top-width: 0;
+	}
+  }
 }
 
 /* Standard Basic Inverted */
 #{$ui-button-group}.#{$c-basic}.#{$c-inverted} .#{$c-button},
 #{$ui-button}.#{$c-basic}.#{$c-inverted} {
-  background-color: transparent !important;
-  color: $color-mid !important;
-  box-shadow: $basic-inverted-box-shadow !important;
-}
 
-#{$ui-button-group}.#{$c-basic}.#{$c-inverted} .#{$c-button}:hover,
-#{$ui-button}.#{$c-basic}.#{$c-inverted}:hover {
-  color: $color-light !important;
-  box-shadow: $basic-inverted-hover-box-shadow !important;
-}
+  color: $color-mid;
+  background-color: transparent;
 
-#{$ui-button-group}.#{$c-basic}.#{$c-inverted} .#{$c-button}:focus,
-#{$ui-button}.#{$c-basic}.#{$c-inverted}:focus {
-  color: $color-light !important;
-  box-shadow: $basic-inverted-focus-box-shadow !important;
-}
+  &:hover {
+	color: $color-light;
+  }
 
-#{$ui-button-group}.#{$c-basic}.#{$c-inverted} .#{$c-button}:active,
-#{$ui-button}.#{$c-basic}.#{$c-inverted}:active {
-  background-color: color-transparent($color-light) !important;
-  color: $color-light !important;
-  box-shadow: $basic-inverted-down-box-shadow !important;
-}
+  &:focus {
+	color: $color-light;
+  }
 
-#{$ui-button-group}.#{$c-basic}.#{$c-inverted} .#{$c-active}.#{$c-button},
-#{$ui-button}.#{$c-basic}.#{$c-inverted}.#{$c-active} {
-  background-color: color-transparent($color-light);
-  color: color-text($inverted: true);
-  text-shadow: color-shadow(color-text($inverted: true));
-  box-shadow: $basic-inverted-active-box-shadow;
-}
+  &:active {
+	color: $color-light;
+	background-color: color-transparent($color-light);
+  }
 
-#{$ui-button-group}.#{$c-basic}.#{$c-inverted} .#{$c-active}.#{$c-button}:hover,
-#{$ui-button}.#{$c-basic}.#{$c-inverted}.#{$c-active}:hover {
-  background-color: color-transparent-strong($color-light);
-  box-shadow: $basic-inverted-hover-box-shadow !important;
-}
+  &.#{$c-active} {
+	background-color: color-transparent($color-light);
+	color: color-text($inverted: true);
+	text-shadow: color-shadow(color-text($inverted: true));
 
-/* Basic Group */
-#{$ui-button-group}.#{$c-basic} .#{$c-button} {
-  border-left: $basic-group-border;
-  box-shadow: none;
-}
-
-#{$ui-button-group}.#{$c-basic}.#{$c-vertical} .#{$c-button} {
-  border-left: none;
-}
-
-#{$ui-button-group}.#{$c-basic}.#{$c-vertical} .#{$c-button} {
-  border-left-width: 0;
-  border-top: $basic-group-border;
-}
-
-#{$ui-button-group}.#{$c-basic}.#{$c-vertical} .#{$c-button}:first-child {
-  border-top-width: 0;
+	&:hover {
+	  background-color: color-transparent-strong($color-light);
+	}
+  }
 }

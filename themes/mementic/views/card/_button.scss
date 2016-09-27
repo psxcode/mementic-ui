@@ -2,10 +2,12 @@
      Buttons
 ---------------*/
 
-.ui.cards > .card > .buttons,
-.ui.card > .buttons,
-.ui.cards > .card > .button,
-.ui.card > .button {
-  margin: $button-margin;
-  width: $button-width;
+#{$ui-card-group} > .#{$c-card},
+#{$ui-card} {
+
+  > .#{$c-button-group},
+  > .#{$c-button} {
+	margin: $button-margin;
+	width: $button-width;
+  }
 }

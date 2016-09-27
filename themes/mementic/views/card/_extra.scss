@@ -2,30 +2,31 @@
   Extra Content
 -----------------*/
 
-.ui.cards > .card > .extra,
-.ui.card > .extra {
-  max-width: 100%;
-  min-height: 0 !important;
-  flex-grow: 0;
-  border-top: $extra-divider !important;
-  position: $extra-position;
-  background: $extra-background;
-  width: $extra-width;
-  margin: $extra-margin;
-  padding: $extra-padding;
-  top: $extra-top;
-  left: $extra-left;
-  color: $extra-color;
-  box-shadow: $extra-box-shadow;
-  transition: $extra-transition;
-}
+#{$ui-card-group} > .#{$c-card},
+#{$ui-card} {
 
-.ui.cards > .card > .extra a:not(.ui),
-.ui.card > .extra a:not(.ui) {
-  color: $extra-link-color;
-}
+  > .#{$c-extra} {
+	max-width: 100%;
+	min-height: 0 !important;
+	flex-grow: 0;
+	border-top: $extra-divider !important;
+	position: $extra-position;
+	background: $extra-background;
+	width: $extra-width;
+	margin: $extra-margin;
+	padding: $extra-padding;
+	top: $extra-top;
+	left: $extra-left;
+	color: $extra-color;
+	box-shadow: $extra-box-shadow;
+	transition: $extra-transition;
 
-.ui.cards > .card > .extra a:not(.ui):hover,
-.ui.card > .extra a:not(.ui):hover {
-  color: $extra-link-hover-color;
+	a:not(.#{$c-ui}) {
+	  color: $extra-link-color;
+
+	  &:hover {
+		color: $extra-link-hover-color;
+	  }
+	}
+  }
 }

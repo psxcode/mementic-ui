@@ -8,86 +8,55 @@
 	/*--- Standard ---*/
 	#{$ui-button-group}.#{$name} .#{$c-button},
 	#{$ui-button}.#{$name} {
+
 	  background-color: $color;
 	  color: color-text($inverted: true);
-	  text-shadow: color-shadow(color-text($inverted: true));
-	  background-image: $colored-background-image;
+
+	  &:hover {
+		color: color-text($inverted: true);
+		background-color: color-hover($color);
+	  }
+
+	  &:focus {
+		background-color: color-focus($color);
+		color: color-text($inverted: true);
+	  }
+
+	  &:active {
+		background-color: color-down($color);
+		color: color-text($inverted: true);
+	  }
+
+	  &.#{$c-active} {
+		background-color: color-active($color);
+		color: color-text($inverted: true);
+	  }
 	}
 
-	#{$ui-button}.#{$name} {
+	/*#{$ui-button}.#{$name} {
 	  box-shadow: $colored-box-shadow;
-	}
-
-	// Hover
-	#{$ui-button-group}.#{$name} .#{$c-button}:hover,
-	#{$ui-button}.#{$name}:hover {
-	  background-color: color-hover($color);
-	  color: color-text($inverted: true);
-	  text-shadow: color-shadow(color-text($inverted: true));
-	}
-
-	// Focus
-	#{$ui-button-group}.#{$name} .#{$c-button}:focus,
-	#{$ui-button}.#{$name}:focus {
-	  background-color: color-focus($color);
-	  color: color-text($inverted: true);
-	  text-shadow: color-shadow(color-text($inverted: true));
-	}
-	
-	// Down
-	#{$ui-button-group}.#{$name} .#{$c-button}:active,
-	#{$ui-button}.#{$name}:active {
-	  background-color: color-down($color);
-	  color: color-text($inverted: true);
-	  text-shadow: color-shadow(color-text($inverted: true));
-	}
-
-	// Down
-	#{$ui-button-group}.#{$name} .#{$c-active}.#{$c-button},
-	#{$ui-button-group}.#{$name} .#{$c-active}.#{$c-button}:active,
-	#{$ui-button}.#{$name}.#{$c-active},
-	#{$ui-button}.#{$name} .#{$c-active}.#{$c-button}:active {
-	  background-color: color-active($color);
-	  color: color-text($inverted: true);
-	  text-shadow: color-shadow(color-text($inverted: true));
-	}
+	}*/
 
 	/* Basic */
 	#{$ui-button-group}.#{$c-basic}.#{$name} .#{$c-button},
 	#{$ui-button}.#{$c-basic}.#{$name} {
-	  box-shadow: 0 0 0 $basic-border-size $color inset !important;
-	  color: $color !important;
-	}
-	
-	// Hover
-	#{$ui-button-group}.#{$c-basic}.#{$name} .#{$c-button}:hover,
-	#{$ui-button}.#{$c-basic}.#{$name}:hover {
-	  background: transparent !important;
-	  box-shadow: 0 0 0 $basic-colored-border-size color-hover($color) inset !important;
-	  color: color-hover($color) !important;
-	}
-	
-	// Focus
-	#{$ui-button-group}.#{$c-basic}.#{$name} .#{$c-button}:focus,
-	.#{$ui-button}.#{$c-basic}.#{$name}:focus {
-	  background: transparent !important;
-	  box-shadow: 0 0 0 $basic-colored-border-size color-focus($color) inset !important;
-	  color: color-hover($color) !important;
-	}
-	
-	// Active
-	#{$ui-button-group}.#{$c-basic}.#{$name} .#{$c-active}.#{$c-button},
-	#{$ui-button}.#{$c-basic}.#{$name}.#{$c-active} {
-	  background: transparent !important;
-	  box-shadow: 0 0 0 $basic-colored-border-size color-active($color) inset !important;
-	  color: color-down($color) !important;
-	}
-	
-	// Down
-	#{$ui-button-group}.#{$c-basic}.#{$name} .#{$c-button}:active,
-	#{$ui-button}.#{$c-basic}.#{$name}:active {
-	  box-shadow: 0 0 0 $basic-colored-border-size color-down($color) inset !important;
-	  color: color-down($color) !important;
+	  color: colorize-text($color);
+
+	  &:hover {
+		color: colorize-text-hovered($color);
+	  }
+
+	  &:focus {
+		color: colorize-text-selected($color);
+	  }
+
+	  &:active {
+		color: colorize-text-pressed($color);
+	  }
+
+	  &.#{$c-active} {
+		color: colorize-text-selected($color);
+	  }
 	}
 
 	#{$ui-button-group}:not(.#{$c-vertical}) > .#{$c-basic}.#{$name}.#{$c-button}:not(:first-child) {
@@ -97,90 +66,55 @@
 	/* Inverted */
 	#{$ui-button-group}.#{$c-inverted}.#{$name} .#{$c-button},
 	#{$ui-button}.#{$c-inverted}.#{$name} {
+	  color: colorize-text($color);
 	  background-color: transparent;
-	  box-shadow: 0 0 0 $inverted-border-size color-light($color) inset !important;
-	  color: color-light($color);
-	}
 
-	// Hover
-	#{$ui-button-group}.#{$c-inverted}.#{$name} .#{$c-button}:hover,
-	#{$ui-button}.#{$c-inverted}.#{$name}:hover,
-	// Focus
-	#{$ui-button-group}.#{$c-inverted}.#{$name} .#{$c-button}:focus,
-	#{$ui-button}.#{$c-inverted}.#{$name}:focus,
-	// Active
-	#{$ui-button-group}.#{$c-inverted}.#{$name} .#{$c-button}.#{$c-active},
-	#{$ui-button}.#{$c-inverted}.#{$name}.#{$c-active},
-	// Down
-	#{$ui-button-group}.#{$c-inverted}.#{$name} .#{$c-button}:active,
-	#{$ui-button}.#{$c-inverted}.#{$name}:active {
-	  box-shadow: none !important;
-	  color: color-text($inverted: true);;
-	}
+	  &:hover,
+	  &:focus,
+	  &:active,
+	  &.#{$c-active} {
+		color: color-text($inverted: true);
+	  }
 
-	// Hover
-	#{$ui-button-group}.#{$c-inverted}.#{$name} .#{$c-button}:hover,
-	#{$ui-button}.#{$c-inverted}.#{$name}:hover {
-	  background-color: color-hover(color-light($color));
-	}
+	  &:hover {
+		background-color: color-hover(color-light($color));
+	  }
 
-	// Focus
-	#{$ui-button-group}.#{$c-inverted}.#{$name} .#{$c-button}:focus,
-	#{$ui-button}.#{$c-inverted}.#{$name}:focus {
-	  background-color: color-focus(color-light($color));
-	}
+	  &:focus {
+		background-color: color-focus(color-light($color));
+	  }
 
-	// Active
-	#{$ui-button-group}.#{$c-inverted}.#{$name} .#{$c-active}.#{$c-button},
-	#{$ui-button}.#{$c-inverted}.#{$name}.#{$c-active} {
-	  background-color: color-active(color-light($color));
-	}
+	  &:active {
+		background-color: color-down(color-light($color));
+	  }
 
-	// Down
-	#{$ui-button-group}.#{$c-inverted}.#{$name} .#{$c-button}:active,
-	#{$ui-button}.#{$c-inverted}.#{$name}:active {
-	  background-color: color-down(color-light($color));
+	  &.#{$c-active} {
+		background-color: color-active(color-light($color));
+	  }
 	}
 
 	/* Inverted Basic */
 	#{$ui-button-group}.#{$c-inverted}.#{$name}.#{$c-basic} .#{$c-button},
 	#{$ui-button-group}.#{$c-inverted}.#{$name} .#{$c-basic}.#{$c-button},
 	#{$ui-button}.#{$c-inverted}.#{$name}.#{$c-basic} {
+	  color: color-text($inverted: true);
 	  background-color: transparent;
-	  box-shadow: $basic-inverted-box-shadow !important;
-	  color: $color-light !important;
-	}
 
-	// Hover
-	#{$ui-button-group}.#{$c-inverted}.#{$name}.#{$c-basic} .#{$c-button}:hover,
-	#{$ui-button-group}.#{$c-inverted}.#{$name} .#{$c-basic}.#{$c-button}:hover,
-	#{$ui-button}.#{$c-inverted}.#{$name}.#{$c-basic}:hover {
-	  box-shadow: 0 0 0 $inverted-border-size color-hover(color-light($color)) inset !important;
-	  color: color-light($color) !important;
-	}
+	  &:hover {
+		color: color-light($color);
+	  }
 
-	// Focus
-	#{$ui-button-group}.#{$c-inverted}.#{$name}.#{$c-basic} .#{$c-button}:focus,
-	#{$ui-button-group}.#{$c-inverted}.#{$name}.#{$c-basic} .#{$c-button}:focus,
-	#{$ui-button}.#{$c-inverted}.#{$name}.#{$c-basic}:focus {
-	  box-shadow: 0 0 0 $inverted-border-size color-focus(color-light($color)) inset !important;
-	  color: color-light($color) !important;
-	}
+	  &:focus {
+		color: color-light($color);
+	  }
 
-	// Active
-	#{$ui-button-group}.#{$c-inverted}.#{$name}.#{$c-basic} .#{$c-active}.#{$c-button},
-	#{$ui-button-group}.#{$c-inverted}.#{$name} .#{$c-basic}.#{$c-active}.#{$c-button},
-	#{$ui-button}.#{$c-inverted}.#{$name}.#{$c-basic}.#{$c-active} {
-	  box-shadow: 0 0 0 $inverted-border-size color-active(color-light($color)) inset !important;
-	  color: color-light($color) !important;
-	}
+	  &:active {
+		color: color-light($color);
+	  }
 
-	// Down
-	#{$ui-button-group}.#{$c-inverted}.#{$name}.#{$c-basic} .#{$c-button}:active,
-	#{$ui-button-group}.#{$c-inverted}.#{$name} .#{$c-basic}.#{$c-button}:active,
-	#{$ui-button}.#{$c-inverted}.#{$name}.#{$c-basic}:active {
-	  box-shadow: 0 0 0 $inverted-border-size color-down(color-light($color)) inset !important;
-	  color: color-light($color) !important;
+	  &.#{$c-active} {
+		color: color-light($color);
+	  }
 	}
   }
 }

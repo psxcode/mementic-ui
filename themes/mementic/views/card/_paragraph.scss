@@ -2,12 +2,14 @@
     Paragraph
 ---------------*/
 
-.ui.cards > .card > .content p,
-.ui.card > .content p {
-  margin: 0 0 $paragraph-distance;
-}
+#{$ui-card-group} > .#{$c-card},
+#{$ui-card} {
 
-.ui.cards > .card > .content p:last-child,
-.ui.card > .content p:last-child {
-  margin-bottom: 0;
+  > .#{$c-content} p {
+	margin: 0 0 $paragraph-distance;
+
+	&:last-child {
+	  margin-bottom: 0;
+	}
+  }
 }

@@ -2,84 +2,69 @@
      Content
 ---------------*/
 
-.ui.cards > .card > .content,
-.ui.card > .content {
-  flex-grow: 1;
-  border: $content-border;
-  border-top: $content-divider;
-  background: $content-background;
-  margin: $content-margin;
-  padding: $content-padding;
-  box-shadow: $content-box-shadow;
-  font-size: $content-font-size;
-  border-radius: $content-border-radius;
-}
+/* Shortcuts */
+$right-floated: selector-right-floated();
 
-.ui.cards > .card > .content:after,
-.ui.card > .content:after {
-  display: block;
-  content: ' ';
-  height: 0;
-  clear: both;
-  overflow: hidden;
-  visibility: hidden;
-}
+#{$ui-card-group} > .#{$c-card},
+#{$ui-card} {
 
-.ui.cards > .card > .content > .header,
-.ui.card > .content > .header {
-  display: block;
-  margin: $header-margin;
-  font-family: $heading-font-family;
-  color: $header-color;
-}
+  > .#{$c-content} {
+	flex-grow: 1;
+	border: $content-border;
+	border-top: $content-divider;
+	background: $content-background;
+	margin: $content-margin;
+	padding: $content-padding;
+	box-shadow: $content-box-shadow;
+	font-size: $content-font-size;
+	border-radius: $content-border-radius;
 
-/* Default Header Size */
-.ui.cards > .card > .content > .header:not(.ui),
-.ui.card > .content > .header:not(.ui) {
-  font-weight: $header-font-weight;
-  font-size: $header-font-size;
-  margin-top: $header-line-height-offset;
-  line-height: $heading-line-height;
-}
+	&::after {
+	  display: block;
+	  content: ' ';
+	  height: 0;
+	  clear: both;
+	  overflow: hidden;
+	  visibility: hidden;
+	}
 
-.ui.cards > .card > .content > .meta + .#{$c-description},
-.ui.cards > .card > .content > .header + .#{$c-description},
-.ui.card > .content > .meta + .#{$c-description},
-.ui.card > .content > .header + .#{$c-description} {
-  margin-top: $description-distance;
-}
+	> .#{$c-header} {
+	  display: block;
+	  margin: $header-margin;
+	  font-family: $heading-font-family;
+	  color: $header-color;
 
-/*----------------
- Floated Content
------------------*/
+	  /* Default Header Size */
+	  &:not(.#{$c-ui}) {
+		font-weight: $header-font-weight;
+		font-size: $header-font-size;
+		margin-top: $header-line-height-offset;
+		line-height: $heading-line-height;
+	  }
+	}
 
-.ui.cards > .card [class*="left floated"],
-.ui.card [class*="left floated"] {
-  float: left;
-}
+	> .#{$c-meta} + .#{$c-description},
+	> .#{$c-header} + .#{$c-description} {
+	  margin-top: $description-distance;
+	}
 
-.ui.cards > .card [class*="right floated"],
-.ui.card [class*="right floated"] {
-  float: right;
-}
+	img {
+	  display: inline-block;
+	  vertical-align: $content-image-vertical-align;
+	  width: $content-image-width;
+	}
 
+	img.#{$c-avatar} {
+	  width: $avatar-size;
+	  height: $avatar-size;
+	  border-radius: $avatar-border-radius;
+	}
+  }
 
-/*--------------
-  Content Image
----------------*/
-
-.ui.cards > .card .content img,
-.ui.card .content img {
-  display: inline-block;
-  vertical-align: $content-image-vertical-align;
-  width: $content-image-width;
-}
-
-.ui.cards > .card img.avatar,
-.ui.cards > .card .avatar img,
-.ui.card img.avatar,
-.ui.card .avatar img {
-  width: $avatar-size;
-  height: $avatar-size;
-  border-radius: $avatar-border-radius;
+  .#{$c-floated} {
+	float: left;
+  }
+  #{$right-floated} {
+	float: right;
+  }
 }

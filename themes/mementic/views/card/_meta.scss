@@ -2,24 +2,27 @@
       Meta
 ---------------*/
 
-.ui.cards > .card .meta,
-.ui.card .meta {
-  font-size: $meta-font-size;
-  color: $meta-color;
-}
+/* Shortcuts */
+$right-floated: selector-right-floated();
 
-.ui.cards > .card .meta *,
-.ui.card .meta * {
-  margin-right: $meta-spacing;
-}
+#{$ui-card-group} > .#{$c-card},
+#{$ui-card} {
 
-.ui.cards > .card .meta :last-child,
-.ui.card .meta :last-child {
-  margin-right: 0;
-}
+  .#{$c-meta} {
+	font-size: $meta-font-size;
+	color: $meta-color;
 
-.ui.cards > .card .meta [class*="right floated"],
-.ui.card .meta [class*="right floated"] {
-  margin-right: 0;
-  margin-left: $meta-spacing;
+	* {
+	  margin-right: $meta-spacing;
+	}
+
+	:last-child {
+	  margin-right: 0;
+	}
+
+	#{$right-floated} {
+	  margin-right: 0;
+	  margin-left: $meta-spacing;
+	}
+  }
 }

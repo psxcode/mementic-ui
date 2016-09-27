@@ -5,16 +5,22 @@
 @mixin color($color-map) {
   @each $name, $color in $color-map {
 
-	.ui.#{$name}.statistics .statistic > .value,
-	.ui.statistics .#{$name}.statistic > .value,
-	.ui.#{$name}.statistic > .value {
-	  color: $color;
+	#{$ui-statistic-group}.#{$name} .#{$c-statistic},
+	#{$ui-statistic-group} .#{$c-statistic}.#{$name},
+	#{$ui-statistic}.#{$name} {
+
+	  > .#{$c-value} {
+		color: $color;
+	  }
 	}
 
-	.ui.inverted.red.statistics .statistic > .value,
-	.ui.statistics .inverted.red.statistic > .value,
-	.ui.inverted.red.statistic > .value {
-	  color: color-light($color);
+	#{$ui-statistic-group}.#{$name}.#{$c-inverted} .#{$c-statistic},
+	#{$ui-statistic-group} .#{$c-statistic}.#{$name}.#{$c-inverted},
+	#{$ui-statistic}.#{$name}.#{$c-inverted} {
+
+	  > .#{$c-value} {
+		color: color-light($color);
+	  }
 	}
   }
 }

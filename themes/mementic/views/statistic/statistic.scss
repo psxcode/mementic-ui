@@ -1,63 +1,59 @@
+/* Shortcuts */
+$ui-statistic: selector-ui-statistic();
+$ui-statistic-group: selector-ui-statistic-group();
+
 /* Standalone */
-.ui.statistic {
+#{$ui-statistic} {
   display: inline-flex;
   flex-direction: column;
   margin: $margin;
   max-width: $max-width;
-}
 
-.ui.statistic + .ui.statistic {
-  margin: 0 0 0 $horizontal-spacing;
-}
+  &:first-child {
+	margin-top: 0;
+  }
 
-.ui.statistic:first-child {
-  margin-top: 0;
-}
+  &:last-child {
+	margin-bottom: 0;
+  }
 
-.ui.statistic:last-child {
-  margin-bottom: 0;
+  + #{$c-statistic} {
+	margin: 0 0 0 $horizontal-spacing;
+  }
 }
-
-/*******************************
-            Group
-*******************************/
 
 /* Grouped */
-.ui.statistics {
+#{$ui-statistic-group} {
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
-}
-
-.ui.statistics > .statistic {
-  display: inline-flex;
-  flex: 0 1 auto;
-  flex-direction: column;
-  margin: $element-margin;
-  max-width: $element-max-width;
-}
-
-.ui.statistics {
-  display: flex;
   margin: $group-margin;
-}
 
-/* Clearing */
-.ui.statistics:after {
-  display: block;
-  content: ' ';
-  height: 0;
-  clear: both;
-  overflow: hidden;
-  visibility: hidden;
-}
+  /* Clearing */
+  &::after {
+	display: block;
+	content: ' ';
+	height: 0;
+	clear: both;
+	overflow: hidden;
+	visibility: hidden;
+  }
 
-.ui.statistics:first-child {
-  margin-top: 0;
-}
+  &:first-child {
+	margin-top: 0;
+  }
 
-.ui.statistics:last-child {
-  margin-bottom: 0;
+  &:last-child {
+	margin-bottom: 0;
+  }
+
+  > .#{$c-statistic} {
+	display: inline-flex;
+	flex: 0 1 auto;
+	flex-direction: column;
+	margin: $element-margin;
+	max-width: $element-max-width;
+  }
 }
 
 /*--------------
@@ -66,13 +62,12 @@
 
 @for $i from 1 through 10 {
 
-  .ui.#{number-name($i)}.statistics {
+  #{$ui-statistic-group}.#{number-name($i)} {
 	margin: $item-group-margin;
-  }
 
-  .ui.#{number-name($i)}.statistics .statistic {
-	min-width: column($i);
-	margin: $item-margin;
+	.#{$c-statistic} {
+	  min-width: column($i);
+	  margin: $item-margin;
+	}
   }
-
 }

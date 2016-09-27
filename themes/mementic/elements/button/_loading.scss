@@ -11,20 +11,17 @@
   }
 }
 
-#{$ui-button} {
+#{$ui-button}.#{$c-loading} {
 
-  /* Specificity hack */
-  &.#{$c-loading}.#{$c-loading}.#{$c-loading}.#{$c-loading}.#{$c-loading}.#{$c-loading} {
-	position: relative;
-	cursor: default;
-	text-shadow: none !important;
-	color: transparent !important;
-	opacity: $loading-opacity;
-	pointer-events: $loading-pointer-events;
-	transition: $loading-transition;
-  }
+  position: relative;
+  cursor: default;
+  text-shadow: none !important;
+  color: transparent !important;
+  opacity: $loading-opacity;
+  pointer-events: $loading-pointer-events;
+  transition: $loading-transition;
 
-  &.#{$c-loading}:before {
+  &::before {
 	position: absolute;
 	content: '';
 	top: 50%;
@@ -38,7 +35,7 @@
 	border: $loader-line-width solid $inverted-loader-fill-color;
   }
 
-  &.#{$c-loading}:after {
+  &::after {
 	position: absolute;
 	content: '';
 	top: 50%;
@@ -60,16 +57,19 @@
 	box-shadow: 0 0 0 1px transparent;
   }
 
-  &.#{$c-labeled}.#{$c-icon}.#{$c-loading} .#{$c-icon} {
+  &.#{$c-labeled}.#{$c-icon} .#{$c-icon} {
 	background-color: transparent;
 	box-shadow: none;
   }
 
-  &.#{$c-basic}.#{$c-loading}:not(.#{$c-inverted}):before {
-	border-color: $loader-fill-color;
-  }
+  &.#{$c-basic}:not(.#{$c-inverted}) {
 
-  &.#{$c-basic}.#{$c-loading}:not(.#{$c-inverted}):after {
-	border-top-color: $loader-line-color;
+	&::before {
+	  border-color: $loader-fill-color;
+	}
+
+	&:after {
+	  border-top-color: $loader-line-color;
+	}
   }
 }

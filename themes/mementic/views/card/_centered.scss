@@ -2,11 +2,11 @@
        Centered
 --------------------*/
 
-.ui.centered.cards {
+#{$ui-card-group}.#{$c-centered} {
   justify-content: center;
 }
 
-.ui.centered.card {
+#{$ui-card}.#{$c-centered} {
   margin-left: auto;
   margin-right: auto;
 }

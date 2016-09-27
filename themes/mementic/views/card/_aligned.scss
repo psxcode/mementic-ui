@@ -2,17 +2,24 @@
      Aligned
 ---------------*/
 
-.ui.cards > .card [class*="left aligned"],
-.ui.card [class*="left aligned"] {
-  text-align: left;
-}
+/* Shortcuts */
+$left-aligned: selector-left-aligned();
+$right-aligned: selector-right-aligned();
+$center-aligned: selector-center-aligned();
 
-.ui.cards > .card [class*="center aligned"],
-.ui.card [class*="center aligned"] {
-  text-align: center;
-}
+#{$ui-card-group} > .#{$c-card},
+#{$ui-card} {
 
-.ui.cards > .card [class*="right aligned"],
-.ui.card [class*="right aligned"] {
-  text-align: right;
+  #{$center-aligned},
+  .#{$c-aligned} {
+	text-align: center;
+  }
+
+  #{$left-aligned} {
+	text-align: left;
+  }
+
+  #{$right-aligned} {
+	text-align: right;
+  }
 }

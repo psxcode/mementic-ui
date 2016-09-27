@@ -13,3 +13,7 @@
  }]
  };
  */
+
+module.exports = {
+	deps: [{'mementic': 'button'}]
+};

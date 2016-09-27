@@ -2,43 +2,43 @@
    Horizontal
 ---------------*/
 
-.ui.horizontal.statistic {
+#{$ui-statistic}.#{$c-horizontal} {
   flex-direction: row;
   align-items: center;
 }
 
-.ui.horizontal.statistics {
+#{$ui-statistic-group}.#{$c-horizontal} {
   flex-direction: column;
   margin: 0;
   max-width: none;
+
+  .#{$c-statistic} {
+	flex-direction: row;
+	align-items: center;
+	max-width: none;
+	margin: $horizontal-group-element-margin;
+  }
 }
 
-.ui.horizontal.statistics .statistic {
-  flex-direction: row;
-  align-items: center;
-  max-width: none;
-  margin: $horizontal-group-element-margin;
-}
+#{$ui-statistic-group}.#{$c-horizontal} > .#{$c-statistic},
+#{$ui-statistic}.#{$c-horizontal} {
 
-.ui.horizontal.statistic > .text.value,
-.ui.horizontal.statistics > .statistic > .text.value {
-  min-height: 0 !important;
-}
+  > .#{$c-value} {
+	display: inline-block;
+	vertical-align: middle;
+  }
 
-.ui.horizontal.statistics .statistic > .value .icon,
-.ui.horizontal.statistic > .value .icon {
-  width: $icon-width;
-}
+  > .#{$c-value}.#{$c-text} {
+	min-height: 0 !important;
+  }
 
-.ui.horizontal.statistics .statistic > .value,
-.ui.horizontal.statistic > .value {
-  display: inline-block;
-  vertical-align: middle;
-}
+  > .#{$c-value} .#{$c-icon} {
+	width: $icon-width;
+  }
 
-.ui.horizontal.statistics .statistic > .label,
-.ui.horizontal.statistic > .label {
-  display: inline-block;
-  vertical-align: middle;
-  margin: 0 0 0 $horizontal-label-distance;
+  > .#{$c-label} {
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0 0 0 $horizontal-label-distance;
+  }
 }

@@ -3,11 +3,10 @@
 --------------------*/
 
 /* Shortcuts */
-$left-floated: selector-left-floated();
 $right-floated: selector-right-floated();
 
-#{$ui-button-group}#{$left-floated},
-#{$ui-button}#{$left-floated} {
+#{$ui-button-group}.#{$c-floated},
+#{$ui-button}.#{$c-floated} {
   float: left;
   margin-left: 0;
   margin-right: $floated-margin;

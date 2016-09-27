@@ -4,22 +4,18 @@ $ui-button-group: selector-ui-button-group();
 
 #{$ui-button} {
 
-  cursor: pointer;
   display: inline-block;
 
-  min-height: 1em;
-
-  outline: none;
-  border: none;
-  vertical-align: $vertical-align;
-  background: $background;
-  color: $text-color;
-
-  font-family: $font-family;
+  color: color-text();
+  background-color: color-bg($bg-base-color);
 
   margin: 0 $horizontal-margin $vertical-margin 0;
-  padding: $vertical-padding $horizontal-padding ($vertical-padding + $shadow-offset);
+  padding: $vertical-padding $horizontal-padding $vertical-padding;
+  border: none;
+  border-radius: $border-radius;
+  min-height: 1em;
 
+  font-family: $font-family;
   text-transform: $text-transform;
   text-shadow: $text-shadow;
   font-weight: $font-weight;
@@ -28,82 +24,57 @@ $ui-button-group: selector-ui-button-group();
   text-align: center;
   text-decoration: none;
 
-  border-radius: $border-radius;
-  box-shadow: $box-shadow;
-
+  vertical-align: $vertical-align;
+  cursor: pointer;
+  outline: none;
   user-select: none;
   transition: $transition;
 
   -webkit-tap-highlight-color: $tap-color;
 
-  /*--------------
-      Hover
----------------*/
-
   &:hover {
-	background-color: $hover-background-color;
-	background-image: $hover-background-image;
-	box-shadow: $hover-box-shadow;
-	color: $hover-color;
-  }
+	color: color-text-hovered();
+	background-color: color-hover(color-bg($bg-base-color));
 
-  &:hover .#{$c-icon} {
-	opacity: $icon-hover-opacity;
+	.#{$c-icon} {
+	  opacity: $icon-hover-opacity;
+	}
   }
-
-  /*--------------
-		Focus
-  ---------------*/
 
   &:focus {
-	background-color: $focus-background-color;
-	color: $focus-color;
-	background-image: $focus-background-image !important;
-	box-shadow: $focus-box-shadow !important;
+	color: color-text-selected();
+	background-color: color-focus(color-bg($bg-base-color));
+
+	.#{$c-icon} {
+	  opacity: $icon-focus-opacity;
+	}
   }
 
-  &:focus .#{$c-icon} {
-	opacity: $icon-focus-opacity;
+  &:active {
+	color: color-text-pressed();
+	background-color: color-down(color-bg($bg-base-color));
   }
-
-  /*--------------
-      Down
----------------*/
-
-  &:active,
-  &.#{$c-active}:active {
-	background-color: $down-background-color;
-	background-image: $down-background-image;
-	color: $down-color;
-	box-shadow: $down-box-shadow;
-  }
-
-  /*--------------
-     Active
----------------*/
 
   &.#{$c-active} {
-	background-color: $active-background-color;
-	background-image: $active-background-image;
-	box-shadow: $active-box-shadow;
-	color: $active-color;
-  }
+	color: color-text-selected();
+	background-color: color-active(color-bg($bg-base-color));
 
-  &.#{$c-active}:hover {
-	background-color: $active-hover-background-color;
-	background-image: $active-hover-background-image;
-	color: $active-hover-color;
-  }
+	/*&:hover {
+	  color: $active-hover-color;
+	  background-color: $active-hover-background-color;
+	}*/
 
-  &.#{$c-active}:active {
-	background-color: $active-background-color;
-	background-image: $active-background-image;
+	/*&:active {
+	  color: $down-color;
+	  background-color: $down-background-color;
+	}*/
   }
 }
 
 /*-------------------
 	Group
 --------------------*/
+
 #{$ui-button-group} {
 
   display: inline-flex;
@@ -113,11 +84,10 @@ $ui-button-group: selector-ui-button-group();
   margin: $vertical-margin $horizontal-margin 0 0;
 
   &:not(.#{$c-basic}):not(.#{$c-inverted}) {
-	box-shadow: $group-box-shadow;
   }
 
   /* Clearfix */
-  &:after {
+  &::after {
 	content: ".";
 	display: block;
 	height: 0;
@@ -130,18 +100,18 @@ $ui-button-group: selector-ui-button-group();
 	flex: 1 0 auto;
 	border-radius: 0;
 	margin: $group-button-offset;
-  }
 
-  .#{$c-button}:first-child {
-	border-left: none;
-	margin-left: 0;
-	border-top-left-radius: $border-radius;
-	border-bottom-left-radius: $border-radius;
-  }
+	&:first-child {
+	  border-left: none;
+	  margin-left: 0;
+	  border-top-left-radius: $border-radius;
+	  border-bottom-left-radius: $border-radius;
+	}
 
-  .#{$c-button}:last-child {
-	border-top-right-radius: $border-radius;
-	border-bottom-right-radius: $border-radius;
+	&:last-child {
+	  border-top-right-radius: $border-radius;
+	  border-bottom-right-radius: $border-radius;
+	}
   }
 
   /* Basic Group With Disabled */
@@ -149,57 +119,54 @@ $ui-button-group: selector-ui-button-group();
 	border-color: color-divider-disabled();
   }
 
-  & > .#{$c-button}:not(.#{$c-basic}):not(.#{$c-inverted}),
+  /*> .#{$c-button}:not(.#{$c-basic}):not(.#{$c-inverted}),
   &:not(.#{$c-basic}):not(.#{$c-inverted}) > .#{$c-button} {
 	box-shadow: $group-button-box-shadow;
-  }
+  }*/
 }
 
 /* Vertical  Style */
-#{$ui-button-group} {
-  &.#{$c-vertical} {
-	display: inline-flex;
-	flex-direction: column;
-  }
+#{$ui-button-group}.#{$c-vertical} {
 
-  &.#{$c-vertical} .#{$c-button} {
+  display: inline-flex;
+  flex-direction: column;
+
+  .#{$c-button} {
+
 	display: block;
 	float: none;
 	width: 100%;
 	margin: $vertical-group-offset;
-	box-shadow: $vertical-box-shadow;
 	border-radius: 0;
-  }
 
-  &.#{$c-vertical} .#{$c-button}:first-child {
-	border-top-left-radius: $border-radius;
-	border-top-right-radius: $border-radius;
-  }
+	&:first-child {
+	  border-top-left-radius: $border-radius;
+	  border-top-right-radius: $border-radius;
+	}
 
-  &.#{$c-vertical} .#{$c-button}:last-child {
-	margin-bottom: 0;
-	border-bottom-left-radius: $border-radius;
-	border-bottom-right-radius: $border-radius;
-  }
+	&:last-child {
+	  margin-bottom: 0;
+	  border-bottom-left-radius: $border-radius;
+	  border-bottom-right-radius: $border-radius;
+	}
 
-  &.#{$c-vertical} .#{$c-button}:only-child {
-	border-radius: $border-radius;
+	&:only-child {
+	  border-radius: $border-radius;
+	}
   }
 }
 
 /* Numbers */
-#{$ui-button-group} {
-  @for $i from 2 through 12 {
+@for $i from 2 through 12 {
 
-	&.#{number-name($i)} {
-	  width: 100%;
-	}
+  #{$ui-button-group}.#{number-name($i)} {
+	width: 100%;
 
-	&.#{number-name($i)} > .#{$c-button} {
+	> .#{$c-button} {
 	  width: (100% / $i);
 	}
 
-	&.#{number-name($i)}.#{$c-vertical} > .#{$c-button} {
+	&.#{$c-vertical} > .#{$c-button} {
 	  height: (100% / $i);
 	}
   }
@@ -209,7 +176,7 @@ $ui-button-group: selector-ui-button-group();
 //@import "attached";
 //@import "basic";
 //@import "circular";
-//@import "colors";
+@import "colors";
 //@import "compact";
 //@import "disabled";
 //@import "floated";

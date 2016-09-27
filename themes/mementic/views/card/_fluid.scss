@@ -2,7 +2,7 @@
         Fluid
 --------------------*/
 
-.ui.fluid.card {
+#{$ui-card}.#{$c-fluid} {
   width: 100%;
   max-width: 9999px;
 }

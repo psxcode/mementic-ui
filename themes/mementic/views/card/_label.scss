@@ -2,44 +2,14 @@
      Labels
 ---------------*/
 
-/*-----Star----- */
-
 /* Icon */
-.ui.cards > .card > .content .star.icon,
-.ui.card > .content .star.icon {
-  cursor: pointer;
-  opacity: $action-opacity;
-  transition: $action-transition;
-}
 
-.ui.cards > .card > .content .star.icon:hover,
-.ui.card > .content .star.icon:hover {
-  opacity: $action-hover-opacity;
-  color: $star-color;
-}
+#{$ui-card-group} > .#{$c-card},
+#{$ui-card} {
 
-.ui.cards > .card > .content .active.star.icon,
-.ui.card > .content .active.star.icon {
-  color: $star-active-color;
-}
-
-/*-----Like----- */
-
-/* Icon */
-.ui.cards > .card > .content .like.icon,
-.ui.card > .content .like.icon {
-  cursor: pointer;
-  opacity: $action-opacity;
-  transition: $action-transition;
-}
-
-.ui.cards > .card > .content .like.icon:hover,
-.ui.card > .content .like.icon:hover {
-  opacity: $action-hover-opacity;
-  color: $like-color;
-}
-
-.ui.cards > .card > .content .active.like.icon,
-.ui.card > .content .active.like.icon {
-  color: $like-active-color;
+  > .#{$c-content} .#{$c-icon} {
+	cursor: pointer;
+	opacity: $action-opacity;
+	transition: $action-transition;
+  }
 }

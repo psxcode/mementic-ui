@@ -27,6 +27,6 @@
   }
 }
 
-@if $auto-include-colors-vendor == true {
+@if $auto-include-colors-vendor {
   @include colors-vendor($colors-vendor);
 }

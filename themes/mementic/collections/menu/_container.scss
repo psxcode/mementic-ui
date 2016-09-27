@@ -26,7 +26,7 @@ $bp-mobile: breakpoint-name(1);
   }
 }
 
-@include breakpoint-not($bp-mobile) {
+@include breakpoint-after($bp-mobile) {
   #{$ui-menu}:not(.#{$menu-type-2}):not(.#{$c-text}):not(.#{$c-tabular}):not(.#{$c-borderless}) > .#{$c-container} > .#{$c-item}:not(.#{$c-right}):not(.#{$c-borderless}):first-child {
 	border-left: $divider-size solid $divider-background;
   }

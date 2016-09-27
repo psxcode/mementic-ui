@@ -2,98 +2,25 @@
      Sizes
 ---------------*/
 
-/* Mini */
-.ui.mini.statistics .statistic > .value,
-.ui.mini.statistic > .value {
-  font-size: $mini-value-size !important;
-}
+@each $name, $size in $sizes {
 
-.ui.mini.horizontal.statistics .statistic > .value,
-.ui.mini.horizontal.statistic > .value {
-  font-size: $mini-horizontal-value-size !important;
-}
+  #{$ui-statistic-group}.#{$name} > .#{$c-statistic},
+  #{$ui-statistic}.#{$name} {
 
-.ui.mini.statistics .statistic > .text.value,
-.ui.mini.statistic > .text.value {
-  font-size: $mini-text-value-size !important;
-}
+	> .#{$c-value} {
+	  font-size: $mini-value-size !important;
+	}
 
-/* Tiny */
-.ui.tiny.statistics .statistic > .value,
-.ui.tiny.statistic > .value {
-  font-size: $tiny-value-size !important;
-}
+	> .#{$c-value}.#{$c-value} {
+	  font-size: $mini-text-value-size !important;
+	}
+  }
 
-.ui.tiny.horizontal.statistics .statistic > .value,
-.ui.tiny.horizontal.statistic > .value {
-  font-size: $tiny-horizontal-value-size !important;
-}
+  #{$ui-statistic-group}.#{$name}.#{$c-horizontal} > .#{$c-statistic},
+  #{$ui-statistic}.#{$name}.#{$c-horizontal} {
 
-.ui.tiny.statistics .statistic > .text.value,
-.ui.tiny.statistic > .text.value {
-  font-size: $tiny-text-value-size !important;
-}
-
-/* Small */
-.ui.small.statistics .statistic > .value,
-.ui.small.statistic > .value {
-  font-size: $small-value-size !important;
-}
-
-.ui.small.horizontal.statistics .statistic > .value,
-.ui.small.horizontal.statistic > .value {
-  font-size: $small-horizontal-value-size !important;
-}
-
-.ui.small.statistics .statistic > .text.value,
-.ui.small.statistic > .text.value {
-  font-size: $small-text-value-size !important;
-}
-
-/* Medium */
-.ui.statistics .statistic > .value,
-.ui.statistic > .value {
-  font-size: $value-size !important;
-}
-
-.ui.horizontal.statistics .statistic > .value,
-.ui.horizontal.statistic > .value {
-  font-size: $horizontal-value-size !important;
-}
-
-.ui.statistics .statistic > .text.value,
-.ui.statistic > .text.value {
-  font-size: $text-value-size !important;
-}
-
-/* Large */
-.ui.large.statistics .statistic > .value,
-.ui.large.statistic > .value {
-  font-size: $large-value-size !important;
-}
-
-.ui.large.horizontal.statistics .statistic > .value,
-.ui.large.horizontal.statistic > .value {
-  font-size: $large-horizontal-value-size !important;
-}
-
-.ui.large.statistics .statistic > .text.value,
-.ui.large.statistic > .text.value {
-  font-size: $large-text-value-size !important;
-}
-
-/* Huge */
-.ui.huge.statistics .statistic > .value,
-.ui.huge.statistic > .value {
-  font-size: $huge-value-size !important;
-}
-
-.ui.huge.horizontal.statistics .statistic > .value,
-.ui.huge.horizontal.statistic > .value {
-  font-size: $huge-horizontal-value-size !important;
-}
-
-.ui.huge.statistics .statistic > .text.value,
-.ui.huge.statistic > .text.value {
-  font-size: $huge-text-value-size !important;
+	> .#{$c-value} {
+	  font-size: $mini-horizontal-value-size !important;
+	}
+  }
 }

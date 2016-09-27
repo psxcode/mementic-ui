@@ -3,58 +3,51 @@
 ---------------*/
 
 /* Generic */
-.ui.cards > .card > .content a:not(.ui),
-.ui.card > .content a:not(.ui) {
-  color: $content-link-color;
-  transition: $content-link-transition;
-}
+#{$ui-card-group} > .#{$c-card},
+#{$ui-card} {
 
-.ui.cards > .card > .content a:not(.ui):hover,
-.ui.card > .content a:not(.ui):hover {
-  color: $content-link-hover-color;
-}
+  > .#{$c-content} a:not(.#{$c-ui}) {
+	color: $content-link-color;
+	transition: $content-link-transition;
 
-/* Header */
-.ui.cards > .card > .content > a.header,
-.ui.card > .content > a.header {
-  color: $header-link-color;
-}
+	&:hover {
+	  color: $content-link-hover-color;
+	}
+  }
 
-.ui.cards > .card > .content > a.header:hover,
-.ui.card > .content > a.header:hover {
-  color: $header-link-hover-color;
-}
+  > .#{$c-content} > a.#{$c-header} {
+	color: $header-link-color;
 
-/* Meta */
-.ui.cards > .card .meta > a:not(.ui),
-.ui.card .meta > a:not(.ui) {
-  color: $meta-link-color;
-}
+	&:hover {
+	  color: $header-link-hover-color;
+	}
+  }
 
-.ui.cards > .card .meta > a:not(.ui):hover,
-.ui.card .meta > a:not(.ui):hover {
-  color: $meta-link-hover-color;
+  .#{$c-meta} > a:not(.#{$c-ui}) {
+	color: $meta-link-color;
+
+	&:hover {
+	  color: $meta-link-hover-color;
+	}
+  }
 }
 
 /*-------------------
         Link
 --------------------*/
 
-.ui.cards a.card,
-.ui.link.cards .card,
-a.ui.card,
-.ui.link.card {
+#{$ui-card-group} a.#{$c-card},
+#{$ui-card-group}.#{$c-link} .#{$c-card},
+a#{$ui-card},
+#{$ui-card}.#{$c-link} {
   transform: none;
-}
 
-.ui.cards a.card:hover,
-.ui.link.cards .card:hover,
-a.ui.card:hover,
-.ui.link.card:hover {
-  cursor: pointer;
-  z-index: $link-hover-z-index;
-  background: $link-hover-background;
-  border: $link-hover-border;
-  box-shadow: $link-hover-box-shadow;
-  transform: $link-hover-transform;
+  &:hover {
+	cursor: pointer;
+	z-index: $link-hover-z-index;
+	background: $link-hover-background;
+	border: $link-hover-border;
+	box-shadow: $link-hover-box-shadow;
+	transform: $link-hover-transform;
+  }
 }

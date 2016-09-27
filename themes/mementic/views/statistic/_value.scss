@@ -2,77 +2,63 @@
       Value
 ---------------*/
 
-.ui.statistics .statistic > .value,
-.ui.statistic > .value {
-  font-family: $value-font;
-  font-size: $value-size;
-  font-weight: $value-font-weight;
-  line-height: $value-line-height;
-  color: $value-color;
-  text-transform: $value-text-transform;
-  text-align: $text-align;
-}
+#{$ui-statistic-group} .#{$c-statistic},
+#{$ui-statistic} {
 
-/*--------------
-     Label
----------------*/
+  /* Value */
+  > .#{$c-value} {
+	font-family: $value-font;
+	font-size: $value-size;
+	font-weight: $value-font-weight;
+	line-height: $value-line-height;
+	color: $value-color;
+	text-transform: $value-text-transform;
+	text-align: $text-align;
+  }
 
-.ui.statistics .statistic > .label,
-.ui.statistic > .label {
-  font-family: $label-font;
-  font-size: $label-size;
-  font-weight: $label-font-weight;
-  color: $label-color;
-  text-transform: $label-text-transform;
-  text-align: $text-align;
-}
+  /* Label */
+  > .#{$c-label} {
+	font-family: $label-font;
+	font-size: $label-size;
+	font-weight: $label-font-weight;
+	color: $label-color;
+	text-transform: $label-text-transform;
+	text-align: $text-align;
+  }
 
-/* Top Label */
-.ui.statistics .statistic > .label ~ .value,
-.ui.statistic > .label ~ .value {
-  margin-top: $top-label-distance;
-}
+  /* Top Label */
+  > .#{$c-label} ~ .#{$c-value} {
+	margin-top: $top-label-distance;
+  }
 
-/* Bottom Label */
-.ui.statistics .statistic > .value ~ .label,
-.ui.statistic > .value ~ .label {
-  margin-top: $bottom-label-distance;
-}
+  /* Bottom Label */
+  > .#{$c-value} ~ .#{$c-label} {
+	margin-top: $bottom-label-distance;
+  }
 
-/*--------------
-   Icon Value
----------------*/
+  /* Icon Value */
+  > .#{$c-value} .#{$c-icon} {
+	opacity: 1;
+	width: auto;
+	margin: 0;
+  }
 
-.ui.statistics .statistic > .value .icon,
-.ui.statistic > .value .icon {
-  opacity: 1;
-  width: auto;
-  margin: 0;
-}
+  /* Text Value */
+  .#{$c-value}.#{$c-text} {
+	line-height: $text-value-line-height;
+	min-height: $text-value-min-height;
+	font-weight: $text-value-font-weight;
+	text-align: center;
+  }
 
-/*--------------
-   Text Value
----------------*/
+  /* Label after Text Value */
+  > .#{$c-value}.#{$c-text} + .#{$c-label} {
+	text-align: center;
+  }
 
-.ui.statistics .statistic > .text.value,
-.ui.statistic > .text.value {
-  line-height: $text-value-line-height;
-  min-height: $text-value-min-height;
-  font-weight: $text-value-font-weight;
-  text-align: center;
-}
-
-.ui.statistics .statistic > .text.value + .label,
-.ui.statistic > .text.value + .label {
-  text-align: center;
-}
-
-/*--------------
-   Image Value
----------------*/
-
-.ui.statistics .statistic > .value img,
-.ui.statistic > .value img {
-  max-height: $image-height;
-  vertical-align: $image-vertical-align;
+  /* Image Value */
+  > .#{$c-value} img {
+	max-height: $image-height;
+	vertical-align: $image-vertical-align;
+  }
 }

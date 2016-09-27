@@ -2,12 +2,14 @@
     Inverted
 ---------------*/
 
-.ui.inverted.statistics .statistic > .value,
-.ui.inverted.statistic .value {
-  color: $inverted-value-color;
-}
+#{$ui-statistic-group}.#{$c-inverted} > .#{$c-statistic},
+#{$ui-statistic}.#{$c-inverted} {
 
-.ui.inverted.statistics .statistic > .label,
-.ui.inverted.statistic .label {
-  color: $inverted-label-color;
+  > .#{$c-value} {
+	color: $inverted-value-color;
+  }
+
+  > .#{$c-label} {
+	color: $inverted-label-color;
+  }
 }

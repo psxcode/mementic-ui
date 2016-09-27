@@ -587,6 +587,18 @@ $media-expressions: (
   }
 }
 
+@mixin breakpoint-after-index($bp-index, $breakpoint-map: $breakpoints) {
+  @include media('screen', '>=#{breakpoint-by-index($bp-index + 1, $breakpoint-map)}') {
+	@content;
+  }
+}
+
+@mixin breakpoint-before-index($bp-index, $breakpoint-map: $breakpoints) {
+  @include media('screen', '<#{breakpoint-by-index($bp-index - 1, $breakpoint-map)}') {
+	@content;
+  }
+}
+
 @mixin breakpoint-only-index($bp-index, $breakpoint-map: $breakpoints) {
   @if $bp-index == 1 {
 	@include breakpoint-until-index($bp-index + 1, $breakpoint-map) {
@@ -627,6 +639,18 @@ $media-expressions: (
 
 @mixin breakpoint-until($bp-name, $breakpoint-map: $breakpoints) {
   @include media('screen', '<#{breakpoint($bp-name, $breakpoint-map)}') {
+	@content;
+  }
+}
+
+@mixin breakpoint-after($bp-name, $breakpoint-map: $breakpoints) {
+  @include media('screen', '>=#{breakpoint($bp-name + 1, $breakpoint-map)}') {
+	@content;
+  }
+}
+
+@mixin breakpoint-before($bp-name, $breakpoint-map: $breakpoints) {
+  @include media('screen', '<#{breakpoint($bp-name - 1, $breakpoint-map)}') {
 	@content;
   }
 }

@@ -2,19 +2,19 @@
        Raised
 --------------------*/
 
-.ui.raised.cards > .card,
-.ui.raised.card {
+#{$ui-card-group}.#{$c-raised} > .#{$c-card},
+#{$ui-card}.#{$c-raised} {
   box-shadow: $raised-shadow;
 }
 
-.ui.raised.cards a.card:hover,
-.ui.link.cards .raised.card:hover,
-a.ui.raised.card:hover,
-.ui.link.raised.card:hover {
-  box-shadow: $raised-shadow-hover;
-}
-
-.ui.raised.cards > .card,
-.ui.raised.card {
-  box-shadow: $raised-shadow;
+#{$ui-card-group}.#{$c-raised} > a.#{$c-card},
+#{$ui-card-group} > a.#{$c-card}.#{$c-raised},
+#{$ui-card-group}.#{$c-raised}.#{$c-link} > #{$c-card},
+#{$ui-card-group}.#{$c-link} > #{$c-card}.#{$c-raised},
+#{$ui-card-group} > #{$c-card}.#{$c-raised}.#{$c-link},
+a#{$ui-card}.#{$c-raised}
+#{$ui-card}.#{$c-raised}.#{$c-link} {
+  &:hover {
+	box-shadow: $raised-shadow-hover;
+  }
 }

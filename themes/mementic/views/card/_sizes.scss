@@ -2,6 +2,11 @@
       Size
 ---------------*/
 
-.ui.cards > .card {
-  font-size: size('medium');
+@each $name, $size in $sizes {
+
+  #{$ui-card-group}.#{$name} > .#{$c-card},
+  #{$ui-card-group} > .#{$c-card}.#{$name},
+  #{$ui-card}.#{$name} {
+	font-size: size($name);
+  }
 }

@@ -2,16 +2,19 @@
     Floated
 ---------------*/
 
-.ui[class*="left floated"].statistic {
+/* Shortcuts */
+$right-floated: selector-right-floated();
+
+#{$ui-statistic}.#{$c-floated} {
   float: left;
   margin: $left-floated-margin;
+
+  &:last-child {
+	margin-bottom: 0;
+  }
 }
 
-.ui[class*="right floated"].statistic {
+#{$ui-statistic}#{$right-floated} {
   float: right;
   margin: $right-floated-margin;
-}
-
-.ui.floated.statistic:last-child {
-  margin-bottom: 0;
 }

@@ -1,5 +1,9 @@
-.ui.cards > .card,
-.ui.card {
+/* Shortcuts */
+$ui-card-group: selector-ui-card-group();
+$ui-card: selector-ui-card();
+
+#{$ui-card-group} > .#{$c-card},
+#{$ui-card} {
   max-width: 100%;
   position: relative;
   display: $display;
@@ -15,54 +19,52 @@
   box-shadow: $box-shadow;
   transition: $transition;
   z-index: $z-index;
+
+  a {
+	cursor: pointer;
+  }
 }
 
-.ui.card {
+#{$ui-card-group},
+#{$ui-card} {
+
+  /* Clearing */
+  &::after {
+	display: block;
+	content: ' ';
+	height: 0;
+	clear: both;
+	overflow: hidden;
+	visibility: hidden;
+  }
+}
+
+#{$ui-card} {
   margin: $margin;
+
+  &:first-child {
+	margin-top: 0;
+  }
+
+  &:last-child {
+	margin-bottom: 0;
+  }
 }
 
-.ui.cards > .card a,
-.ui.card a {
-  cursor: pointer;
-}
-
-.ui.card:first-child {
-  margin-top: 0;
-}
-
-.ui.card:last-child {
-  margin-bottom: 0;
-}
-
-/*--------------
-      Cards
----------------*/
-
-.ui.cards {
+#{$ui-card-group} {
   display: $group-display;
   margin: $group-margin;
   flex-wrap: wrap;
-}
 
-.ui.cards > .card {
-  display: $group-card-display;
-  margin: $group-card-margin;
-  float: $group-card-float;
-}
-
-/* Clearing */
-.ui.cards:after,
-.ui.card:after {
-  display: block;
-  content: ' ';
-  height: 0;
-  clear: both;
-  overflow: hidden;
-  visibility: hidden;
+  > .#{$c-card} {
+	display: $group-card-display;
+	margin: $group-card-margin;
+	float: $group-card-float;
+  }
 }
 
 /* Consecutive Card Groups Preserve Row Spacing */
-.ui.cards ~ .ui.cards {
+#{$ui-card-group} ~ #{$ui-card-group} {
   margin-top: $consecutive-group-distance;
 }
 
@@ -73,11 +75,12 @@
 
   $cardOffset: -(nth($card-spacings, $i));
 
-  .ui.#{number-name($i)}.cards {
-    margin-left: $cardOffset;
-    margin-right: $cardOffset;
-  }
-  .ui.#{number-name($i)}.cards > .card {
-    width: nth($card-widths, $i);
+  #{$ui-card-group}.#{number-name($i)} {
+	margin-left: $cardOffset;
+	margin-right: $cardOffset;
+
+	> .#{$c-card} {
+	  width: nth($card-widths, $i);
+	}
   }
 }

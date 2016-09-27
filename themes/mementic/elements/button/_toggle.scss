@@ -10,10 +10,10 @@
   box-shadow: none !important;
   text-shadow: color-shadow(color-text($inverted: true));
   color: color-text($inverted: true) !important;
-}
 
-#{$ui-button}.#{$c-toggle}.#{$c-active}:hover {
-  background-color: color-hover(color-info('positive')) !important;
-  text-shadow: color-shadow(color-text($inverted: true));
-  color: color-text($inverted: true) !important;
+  &:hover {
+	background-color: color-hover(color-info('positive')) !important;
+	text-shadow: color-shadow(color-text($inverted: true));
+	color: color-text($inverted: true) !important;
+  }
 }

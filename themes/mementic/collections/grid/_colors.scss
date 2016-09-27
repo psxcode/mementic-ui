@@ -24,6 +24,6 @@
   }
 }
 
-@if $auto-include-colors-info == true {
+@if $auto-include-colors-info {
   @include colors($colors-info);
 }

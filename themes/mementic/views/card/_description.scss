@@ -2,8 +2,11 @@
    Description
 ---------------*/
 
-.ui.cards > .card > .content > .#{$c-description},
-.ui.card > .content > .#{$c-description} {
-  clear: both;
-  color: $description-color;
+#{$ui-card-group} > .#{$c-card},
+#{$ui-card} {
+
+  > .#{$c-content} > .#{$c-description} {
+	clear: both;
+	color: $description-color;
+  }
 }

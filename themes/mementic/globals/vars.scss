@@ -36,12 +36,14 @@ $c-table: 'table';
 /* Views */
 $c-ad: 'ad';
 $c-card: 'card';
+$c-card-group: 'cards';
 $c-comment: 'comment';
 $c-comment-group: 'comments';
 $c-feed: 'feed';
 $c-item: 'item';
 $c-item-group: 'items';
 $c-statistic: 'statistic';
+$c-statistic-group: 'statistics';
 
 /* Modules */
 $c-dimmer: 'dimmer';
@@ -63,15 +65,16 @@ $c-section: 'section';
 $c-text: 'text';
 $c-title: 'title';
 $c-reply: 'reply'; // comment
-$c-metadata: 'metadata'; // comment
 $c-author: 'author'; // comment
 $c-event: 'event'; // feed
 $c-user: 'user'; // feed
 $c-summary: 'summary'; // feed
-$c-meta: 'meta'; // feed item
+$c-meta: 'meta'; // feed item card
+$c-metadata: 'metadata'; // comment
 $c-like: 'like'; // feed
 $c-extra: 'extra'; // feed item
 $c-date: 'date'; // feed
+$c-value: 'value'; // statistic
 
 /* Types */
 $c-action: 'action';
@@ -122,7 +125,7 @@ $c-pagination: 'page'; // menu
 $c-pilled: 'pilled'; // segment
 $c-pointing: 'pointing'; // label
 $c-prompt: 'prompt'; // form
-$c-raised: 'raised'; // segment
+$c-raised: 'raised'; // segment card
 $c-relaxed: 'relaxed'; // list
 $c-ribbon: 'ribbon'; // label
 $c-required: 'required'; // form
@@ -314,6 +317,10 @@ $c-descending: 'descending'; // table
   @return '.#{$c-ui}.#{$c-card}';
 }
 
+@function selector-ui-card-group() {
+  @return '.#{$c-ui}.#{$c-card-group}';
+}
+
 @function selector-ui-comment() {
   @return '.#{$c-ui}.#{$c-comment}';
 }
@@ -336,6 +343,10 @@ $c-descending: 'descending'; // table
 
 @function selector-ui-statistic() {
   @return '.#{$c-ui}.#{$c-statistic}';
+}
+
+@function selector-ui-statistic-group() {
+  @return '.#{$c-ui}.#{$c-statistic-group}';
 }
 
 @function selector-ui-dimmer() {

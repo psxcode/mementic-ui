@@ -5,6 +5,6 @@ var path = require('path');
 
 gulp.task('default', function() {
 	return require('./tasks/build')({
-		deps: [{'mementic': 'label'}]
+		deps: ['theme-material']
 	}).streamCss().pipe(gulp.dest('./build'));
 });
