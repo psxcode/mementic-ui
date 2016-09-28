@@ -4,33 +4,103 @@
 
 /* Button */
 $vertical-margin: 0;
-$horizontal-margin: 0.25em;
-$background: $color-light;
-$line-height: 1;
+$horizontal-margin: 0.25rem;
 
 /* Button defaults to using same height as input globally */
 $vertical-padding: $input-vertical-padding;
 $horizontal-padding: 1.5em;
 
 /* Text */
-$text-transform: none;
-$tap-color: transparent;
 $font-family: $font-family;
 $font-weight: bold;
-$text-shadow: none;
-$inverted-text-shadow: $text-shadow;
-$border-radius: unit-rem($border-radius-default);
+$line-height: 1;
+$text-transform: none;
 $vertical-align: baseline;
+$border-radius: unit-rem($border-radius-default);
+
+/* Transition */
+$transition: opacity $duration-default $easing-default,
+background-color $duration-default $easing-default,
+color $duration-default $easing-default,
+box-shadow $duration-default $easing-default,
+background $duration-default $easing-default;
 
 /* Colors */
-$bg-base-color: $color-mid;
-$text-base-color: $color-darker;
+@function color($inverted: false) {
+  @return color-text($inverted);
+}
+
+@function color-hover($inverted: false) {
+  @return color-text-hovered($inverted);
+}
+
+@function color-focus($inverted: false) {
+  @return color-text-selected($inverted);
+}
+
+@function color-down($inverted: false) {
+  @return color-text-pressed($inverted);
+}
+
+@function color-active($inverted: false) {
+  @return color-text-selected($inverted);
+}
+
+@function color-active-hover($inverted: false) {
+  @return color-text-selected($inverted);
+}
+
+/* Background */
+@function background($inverted: false) {
+  @return #E0E1E2;
+}
+
+@function background-hover($inverted: false) {
+  @return #CACBCD;
+}
+
+@function background-focus($inverted: false) {
+  @return #CACBCD;
+}
+
+@function background-down($inverted: false) {
+  @return #BABBBC;
+}
+
+@function background-active($inverted: false) {
+  @return #C0C1C2;
+}
+
+@function background-active-hover($inverted: false) {
+  @return #C0C1C2;
+}
+
+/* Shadows */
+$box-shadow-border: box-shadow-create(0, 0, 0, 1px, true);
+$box-shadow-blur: box-shadow-create(0, 0, 4px);
+@function box-shadow($inverted: false) {
+
+}
+
+@function box-shadow-hover($inverted: false) {
+
+}
+
+@function box-shadow-focus($inverted: false) {
+
+}
+
+@function text-shadow($inverted: false) {
+  @return none;
+}
+
+$text-shadow: none;
+$inverted-text-shadow: $text-shadow;
 
 /* Icon */
 $icon-height: size('tiny');
 $icon-opacity: 0.8;
 $icon-distance: px-em(6);
-$icon-color: $color-mid;
 $icon-transition: opacity $duration-default $easing-default;
 $icon-vertical-align: middle;
 
@@ -40,13 +110,11 @@ $right-icon-margin: 0 -($icon-distance / 2) 0 $icon-distance;
 /* Loader */
 $inverted-loader-fill-color: rgba(0, 0, 0, 0.15);
 
-$transition:
-opacity $duration-default $easing-default,
-background-color $duration-default $easing-default,
-color $duration-default $easing-default,
-box-shadow $duration-default $easing-default,
-background $duration-default $easing-default
-;
+/* Loading */
+$loading-opacity: 1;
+$loading-pointer-events: auto;
+$loading-transition: all 0s linear,
+opacity $duration-default $easing-default;
 
 /*-------------------
         Group
@@ -56,43 +124,30 @@ $group-button-offset: 0 0 0 0;
 $vertical-group-offset: 0 0 0 0;
 
 /*-------------------
-        States
---------------------*/
-
-/* Hovered */
-$hover-background-color: #CACBCD;
-$icon-hover-opacity: 0.85;
-
-/* Focused */
-$focus-background-color: $hover-background-color;
-$icon-focus-opacity: 0.85;
-
-/* Disabled */
-
-/* Pressed Down */
-$down-background-color: #BABBBC;
-$down-pressed-shadow: none;
-$down-color: color-text-pressed();
-
-/* Active */
-$active-background-color: #C0C1C2;
-$active-color: color-text-selected();
-
-/* Active + Hovered */
-$active-hover-background-color: $active-background-color;
-$active-hover-color: $active-color;
-
-/* Loading */
-$loading-opacity: 1;
-$loading-pointer-events: auto;
-$loading-transition:
-all 0s linear,
-opacity $duration-default $easing-default
-;
-
-/*-------------------
         Types
 --------------------*/
+
+/* Basic */
+$basic-border: 1px solid color-divider();
+$basic-border-radius: $border-radius;
+
+$basic-font-weight: normal;
+$basic-text-transform: none;
+$basic-background: transparent none;
+
+/* Basic Inverted */
+$basic-inverted-color: $color-mid;
+$basic-inverted-hover-color: color-hover($color-mid);
+$basic-inverted-down-color: color-active($color-light);
+$basic-inverted-active-color: color-text($inverted: true);
+
+$basic-inverted-background: transparent;
+$basic-inverted-focus-background: transparent;
+$basic-inverted-down-background: color-transparent($color-light);
+$basic-inverted-active-background: color-transparent($color-light);
+
+/* Basic Group */
+$basic-group-border: $basic-border;
 
 /* Or */
 $or-text: 'or';
@@ -113,7 +168,6 @@ $or-text-shadow: $inverted-text-shadow;
 $or-text-style: normal;
 $or-text-weight: bold;
 $or-text-color: color-light(color-text());
-
 
 $or-spacer-height: $vertical-padding;
 $or-spacer-color: transparent;
@@ -139,53 +193,15 @@ $labeled-icon-color: $color-mid;
 $labeled-icon-left-shadow: -1px 0 0 0 $labeled-icon-border inset;
 $labeled-icon-right-shadow: 1px 0 0 0 $labeled-icon-border inset;
 
-
 /* Inverted */
 $inverted-border-size: 2px;
 $inverted-text-color: color-text($inverted: true);
 $inverted-group-button-offset: 0 0 0 -($inverted-border-size);
 $inverted-vertical-group-button-offset: 0 0 -($inverted-border-size) 0;
 
-/* Basic */
-$basic-border-radius: $border-radius;
-$basic-border-size: 1px;
-$basic-colored-border-size: 1px;
-
-$basic-background: transparent none;
-$basic-font-weight: normal;
-$basic-border: 1px solid color-divider();
-$basic-loading-color: $color-mid;
-$basic-text-transform: none;
-
-
-/* Basic Inverted */
-$basic-inverted-background: transparent;
-$basic-inverted-focus-background: transparent;
-$basic-inverted-down-background: color-transparent($color-light);
-$basic-inverted-active-background: color-transparent($color-light);
-
-$basic-inverted-color: $color-mid;
-$basic-inverted-hover-color: color-hover($color-mid);
-$basic-inverted-down-color: color-active($color-light);
-$basic-inverted-active-color: color-text($inverted: true);
-
-
-/* Basic Group */
-$basic-group-border: $basic-border-size solid color-divider();
-
 /*-------------------
       Variations
 --------------------*/
-
-/* Colors */
-
-/* Colored */
-$color-text: color-text($inverted: true);
-$color-text-shadow: color-shadow(color-text($inverted: true));
-
-/* Inverted */
-$light-color-text: color-text($inverted: true);
-$light-color-text-shadow: color-shadow(color-text($inverted: true));
 
 /* Compact */
 $compact-vertical-padding: ($vertical-padding * 0.75);
@@ -206,7 +222,5 @@ $animation-duration: 0.3s;
 $animation-easing: ease;
 $fade-scale-high: 1.5;
 $fade-scale-low: 0.75;
-
-
 
 $auto-include-colors-info: true;

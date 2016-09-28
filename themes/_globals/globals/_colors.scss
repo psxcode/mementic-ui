@@ -99,8 +99,8 @@ $color-lighter: #f5f7fa;
 
 // Divider Colors
 // -------------------------------
-$_color-divider: #202020;
-$_color-divider-inverted: #E0E0E0;
+$_color-divider: #202020 !default;
+$_color-divider-inverted: #E0E0E0 !default;
 
 $_color-divider-blend: 0.15 !default;
 $_color-divider-blend-inverted: 0.5 !default;
@@ -136,12 +136,19 @@ $_colors-divider-states-blend-mult: map-zip($color-divider-state-names, (
   @return rgba($color, clamp($blend * $mult));
 }
 
+@function _color-divider-state($state, $inverted: false) {
+  $inverted: to-bool($inverted);
+  $color: rgba(if($inverted, $_color-divider-inverted, $_color-divider), if($inverted, $_color-divider-blend-inverted, $_color-divider-blend));
+
+  @return _colorize-divider-state($color, $state);
+}
+
 @function colorize-divider($color) {
   @return _colorize-divider-state($color, 'default');
 }
 
 @function color-divider($inverted: false) {
-  @return colorize-divider(if(to-bool($inverted), $_color-divider-inverted, $_color-divider));
+  @return _color-divider-state('default', $inverted);
 }
 
 @function colorize-divider-strong($color) {
@@ -149,7 +156,7 @@ $_colors-divider-states-blend-mult: map-zip($color-divider-state-names, (
 }
 
 @function color-divider-strong($inverted: false) {
-  @return colorize-divider-strong(if(to-bool($inverted), $_color-divider-inverted, $_color-divider));
+  @return _color-divider-state('strong', $inverted);
 }
 
 @function colorize-divider-solid($color) {
@@ -157,7 +164,7 @@ $_colors-divider-states-blend-mult: map-zip($color-divider-state-names, (
 }
 
 @function color-divider-solid($inverted: false) {
-  @return colorize-divider-solid(if(to-bool($inverted), $_color-divider-inverted, $_color-divider));
+  @return _color-divider-state('solid', $inverted);
 }
 
 @function colorize-divider-internal($color) {
@@ -165,7 +172,7 @@ $_colors-divider-states-blend-mult: map-zip($color-divider-state-names, (
 }
 
 @function color-divider-internal($inverted: false) {
-  @return colorize-divider-internal(if(to-bool($inverted), $_color-divider-inverted, $_color-divider));
+  @return _color-divider-state('internal', $inverted);
 }
 
 @function colorize-divider-solid-internal($color) {
@@ -173,7 +180,7 @@ $_colors-divider-states-blend-mult: map-zip($color-divider-state-names, (
 }
 
 @function color-divider-solid-internal($inverted: false) {
-  @return colorize-divider-solid-internal(if(to-bool($inverted), $_color-divider-inverted, $_color-divider));
+  @return _color-divider-state('solid-internal', $inverted);
 }
 
 @function colorize-divider-selected($color) {
@@ -181,7 +188,7 @@ $_colors-divider-states-blend-mult: map-zip($color-divider-state-names, (
 }
 
 @function color-divider-selected($inverted: false) {
-  @return colorize-divider-selected(if(to-bool($inverted), $_color-divider-inverted, $_color-divider));
+  @return _color-divider-state('selected', $inverted);
 }
 
 @function colorize-divider-solid-selected($color) {
@@ -189,7 +196,7 @@ $_colors-divider-states-blend-mult: map-zip($color-divider-state-names, (
 }
 
 @function color-divider-solid-selected($inverted: false) {
-  @return colorize-divider-solid-selected(if(to-bool($inverted), $_color-divider-inverted, $_color-divider));
+  @return _color-divider-state('solid-selected', $inverted);
 }
 
 @function colorize-divider-strong-selected($color) {
@@ -197,7 +204,7 @@ $_colors-divider-states-blend-mult: map-zip($color-divider-state-names, (
 }
 
 @function color-divider-strong-selected($inverted: false) {
-  @return colorize-divider-strong-selected(if(to-bool($inverted), $_color-divider-inverted, $_color-divider));
+  @return _color-divider-state('strong-selected', $inverted);
 }
 
 @function colorize-divider-disabled($color) {
@@ -205,16 +212,16 @@ $_colors-divider-states-blend-mult: map-zip($color-divider-state-names, (
 }
 
 @function color-divider-disabled($inverted: false) {
-  @return colorize-divider-disabled(if(to-bool($inverted), $_color-divider-inverted, $_color-divider));
+  @return _color-divider-state('disabled', $inverted);
 }
 
 // Text Colors
 // -------------------------------
-$_color-text: #202020;
-$_color-text-inverted: #E0E0E0;
+$_color-text: #202020 !default;
+$_color-text-inverted: #E0E0E0 !default;
 
-$_color-text-blend: 0.85;
-$_color-text-blend-inverted: 0.9;
+$_color-text-blend: 0.85 !default;
+$_color-text-blend-inverted: 0.9 !default;
 
 $color-text-state-names: (
 		'default',
@@ -224,7 +231,7 @@ $color-text-state-names: (
 		'hovered',
 		'pressed',
 		'disabled'
-);
+) !default;
 
 $_colors-text-states-blend-mult: map-zip($color-text-state-names, (
 		1.0, //default
@@ -237,10 +244,17 @@ $_colors-text-states-blend-mult: map-zip($color-text-state-names, (
 )) !default;
 
 @function _colorize-text-state($color, $state) {
-  $blend: $_color-text-blend;
+  $blend: alpha($color);
   $mult: map-get($_colors-text-states-blend-mult, $state);
 
   @return rgba($color, clamp($blend * $mult));
+}
+
+@function _color-text-state($state, $inverted: false) {
+  $inverted: to-bool($inverted);
+  $color: rgba(if($inverted, $_color-text-inverted, $_color-text), if($inverted, $_color-text_blend-inverted, $_color-text_blend));
+
+  @return _colorize-text-state($color, $state);
 }
 
 @function colorize-text($color) {
@@ -248,7 +262,7 @@ $_colors-text-states-blend-mult: map-zip($color-text-state-names, (
 }
 
 @function color-text($inverted: false) {
-  @return colorize-text(if(to-bool($inverted), $_color-text-inverted, $_color-text));
+  @return _color-text-state('default', $inverted);
 }
 
 @function colorize-text-muted($color) {
@@ -256,7 +270,7 @@ $_colors-text-states-blend-mult: map-zip($color-text-state-names, (
 }
 
 @function color-text-muted($inverted: false) {
-  @return colorize-text-muted(if(to-bool($inverted), $_color-text-inverted, $_color-text));
+  @return _color-text-state('muted', $inverted);
 }
 
 @function colorize-text-selected($color) {
@@ -264,7 +278,7 @@ $_colors-text-states-blend-mult: map-zip($color-text-state-names, (
 }
 
 @function color-text-selected($inverted: false) {
-  @return colorize-text-selected(if(to-bool($inverted), $_color-text-inverted, $_color-text));
+  @return _color-text-state('selected', $inverted);
 }
 
 @function colorize-text-unselected($color) {
@@ -272,7 +286,7 @@ $_colors-text-states-blend-mult: map-zip($color-text-state-names, (
 }
 
 @function color-text-unselected($inverted: false) {
-  @return colorize-text-unselected(if(to-bool($inverted), $_color-text-inverted, $_color-text));
+  @return _color-text-state('unselected', $inverted);
 }
 
 @function colorize-text-hovered($color) {
@@ -280,7 +294,7 @@ $_colors-text-states-blend-mult: map-zip($color-text-state-names, (
 }
 
 @function color-text-hovered($inverted: false) {
-  @return colorize-text-hovered(if(to-bool($inverted), $_color-text-inverted, $_color-text));
+  @return _color-text-state('hovered', $inverted);
 }
 
 @function colorize-text-pressed($color) {
@@ -288,7 +302,7 @@ $_colors-text-states-blend-mult: map-zip($color-text-state-names, (
 }
 
 @function color-text-pressed($inverted: false) {
-  @return colorize-text-pressed(if(to-bool($inverted), $_color-text-inverted, $_color-text));
+  @return _color-text-state('pressed', $inverted);
 }
 
 @function colorize-text-disabled($color) {
@@ -296,7 +310,7 @@ $_colors-text-states-blend-mult: map-zip($color-text-state-names, (
 }
 
 @function color-text-disabled($inverted: false) {
-  @return colorize-text-disabled(if(to-bool($inverted), $_color-text-inverted, $_color-text));
+  @return _color-text-state('disabled', $inverted);
 }
 
 @function colorize-text-heading($color) {
@@ -304,5 +318,8 @@ $_colors-text-states-blend-mult: map-zip($color-text-state-names, (
 }
 
 @function color-text-heading($inverted: false) {
-  @return colorize-text-heading(if(to-bool($inverted), $_color-text-inverted, $_color-text));
+  $inverted: to-bool($inverted);
+  $color: darken(rgba(if($inverted, $_color-text-inverted, $_color-text), if($inverted, $_color-text_blend-inverted, $_color-text_blend)), 5%);
+
+  @return _colorize-text-state($color, 'default');
 }

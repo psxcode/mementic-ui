@@ -1,0 +1,4 @@
+@function background-image-create($url, $x, $y, $repeat: no-repeat) {
+  @return 'url(#{$url}) #{$x} #{$y} #{$repeat}';
+}
+

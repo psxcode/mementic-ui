@@ -2,12 +2,13 @@
 $ui-button: selector-ui-button();
 $ui-button-group: selector-ui-button-group();
 
+#{$ui-button-group} > #{$c-button}
 #{$ui-button} {
 
   display: inline-block;
 
   color: color-text();
-  background-color: color-bg($bg-base-color);
+  background: $background;
 
   margin: 0 $horizontal-margin $vertical-margin 0;
   padding: $vertical-padding $horizontal-padding $vertical-padding;
@@ -16,13 +17,13 @@ $ui-button-group: selector-ui-button-group();
   min-height: 1em;
 
   font-family: $font-family;
-  text-transform: $text-transform;
-  text-shadow: $text-shadow;
   font-weight: $font-weight;
   line-height: $line-height;
   font-style: normal;
   text-align: center;
   text-decoration: none;
+  text-transform: $text-transform;
+  text-shadow: $text-shadow;
 
   vertical-align: $vertical-align;
   cursor: pointer;
@@ -37,7 +38,7 @@ $ui-button-group: selector-ui-button-group();
 	background-color: color-hover(color-bg($bg-base-color));
 
 	.#{$c-icon} {
-	  opacity: $icon-hover-opacity;
+	  opacity: $icon-opacity-hover;
 	}
   }
 
@@ -46,7 +47,7 @@ $ui-button-group: selector-ui-button-group();
 	background-color: color-focus(color-bg($bg-base-color));
 
 	.#{$c-icon} {
-	  opacity: $icon-focus-opacity;
+	  opacity: $icon-opacity-focus;
 	}
   }
 
@@ -69,6 +70,13 @@ $ui-button-group: selector-ui-button-group();
 	  background-color: $down-background-color;
 	}*/
   }
+
+  &.#{$c-disabled},
+  &:disabled {
+	cursor: default;
+	opacity: $opacity-disabled;
+	pointer-events: none;
+  }
 }
 
 /*-------------------
@@ -83,9 +91,6 @@ $ui-button-group: selector-ui-button-group();
   vertical-align: baseline;
   margin: $vertical-margin $horizontal-margin 0 0;
 
-  &:not(.#{$c-basic}):not(.#{$c-inverted}) {
-  }
-
   /* Clearfix */
   &::after {
 	content: ".";
@@ -96,7 +101,7 @@ $ui-button-group: selector-ui-button-group();
   }
 
   /* Standard Group */
-  .#{$c-button} {
+  > .#{$c-button} {
 	flex: 1 0 auto;
 	border-radius: 0;
 	margin: $group-button-offset;
@@ -114,9 +119,7 @@ $ui-button-group: selector-ui-button-group();
 	}
   }
 
-  /* Basic Group With Disabled */
-  &.#{$c-basic} .#{$c-button}.#{$c-disabled} {
-	border-color: color-divider-disabled();
+  &:not(.#{$c-basic}):not(.#{$c-inverted}) {
   }
 
   /*> .#{$c-button}:not(.#{$c-basic}):not(.#{$c-inverted}),
@@ -128,10 +131,9 @@ $ui-button-group: selector-ui-button-group();
 /* Vertical  Style */
 #{$ui-button-group}.#{$c-vertical} {
 
-  display: inline-flex;
   flex-direction: column;
 
-  .#{$c-button} {
+  > .#{$c-button} {
 
 	display: block;
 	float: none;

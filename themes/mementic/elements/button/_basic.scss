@@ -2,7 +2,24 @@
         Basic
 --------------------*/
 
-#{$ui-button-group}.#{$c-basic} .#{$c-button},
+#{$ui-button-group}.#{$c-basic} {
+  border: $basic-group-border;
+  border-radius: $border-radius;
+}
+
+#{$ui-button-group}.#{$c-basic}.#{$c-vertical} {
+
+  .#{$c-button} {
+	border-left: none;
+	border-top: $basic-group-border;
+
+	&:first-child {
+	  border-top-width: 0;
+	}
+  }
+}
+
+#{$ui-button-group}.#{$c-basic} > .#{$c-button},
 #{$ui-button}.#{$c-basic} {
 
   color: color-text();
@@ -30,45 +47,15 @@
 	  background-color: color-transparent($color-dark);
 	}
   }
-}
 
-#{$ui-button-group}.#{$c-basic} {
-  border: $basic-group-border;
-  border-radius: $border-radius;
-
-  .#{$c-button} {
-	border-radius: 0;
-	border-left: $basic-group-border;
-	box-shadow: none;
-
-	&:hover {
-	}
-
-	&:focus {
-	}
-
-	&:active {
-	}
-
-	&.#{$c-active} {
-	}
+  /* Basic Group With Disabled */
+  &.#{$c-disabled} {
+	border-color: color-divider-disabled();
   }
 }
 
-#{$ui-button-group}.#{$c-basic}.#{$c-vertical} {
-
-  .#{$c-button} {
-	border-left: none;
-	border-top: $basic-group-border;
-
-	&:first-child {
-	  border-top-width: 0;
-	}
-  }
-}
-
-/* Standard Basic Inverted */
-#{$ui-button-group}.#{$c-basic}.#{$c-inverted} .#{$c-button},
+/* Basic Inverted */
+#{$ui-button-group}.#{$c-basic}.#{$c-inverted} > .#{$c-button},
 #{$ui-button}.#{$c-basic}.#{$c-inverted} {
 
   color: $color-mid;

@@ -2,34 +2,34 @@
        Colors
 --------------------*/
 
-@mixin colors($color-map) {
+@mixin colorize($color-map) {
   @each $name, $color in $color-map {
 
 	/*--- Standard ---*/
 	#{$ui-button-group}.#{$name} .#{$c-button},
 	#{$ui-button}.#{$name} {
 
-	  background-color: $color;
 	  color: color-text($inverted: true);
+	  background-color: $color;
 
 	  &:hover {
-		color: color-text($inverted: true);
+		color: color-text-hovered($inverted: true);
 		background-color: color-hover($color);
 	  }
 
 	  &:focus {
+		color: color-text-selected($inverted: true);
 		background-color: color-focus($color);
-		color: color-text($inverted: true);
 	  }
 
 	  &:active {
+		color: color-text-pressed($inverted: true);
 		background-color: color-down($color);
-		color: color-text($inverted: true);
 	  }
 
 	  &.#{$c-active} {
+		color: color-text-selected($inverted: true);
 		background-color: color-active($color);
-		color: color-text($inverted: true);
 	  }
 	}
 
@@ -40,6 +40,7 @@
 	/* Basic */
 	#{$ui-button-group}.#{$c-basic}.#{$name} .#{$c-button},
 	#{$ui-button}.#{$c-basic}.#{$name} {
+
 	  color: colorize-text($color);
 
 	  &:hover {
@@ -59,13 +60,14 @@
 	  }
 	}
 
-	#{$ui-button-group}:not(.#{$c-vertical}) > .#{$c-basic}.#{$name}.#{$c-button}:not(:first-child) {
+	/*#{$ui-button-group}:not(.#{$c-vertical}) > .#{$c-basic}.#{$name}.#{$c-button}:not(:first-child) {
 	  margin-left: -$basic-colored-border-size;
-	}
+	}*/
 
 	/* Inverted */
 	#{$ui-button-group}.#{$c-inverted}.#{$name} .#{$c-button},
 	#{$ui-button}.#{$c-inverted}.#{$name} {
+
 	  color: colorize-text($color);
 	  background-color: transparent;
 
@@ -97,6 +99,7 @@
 	#{$ui-button-group}.#{$c-inverted}.#{$name}.#{$c-basic} .#{$c-button},
 	#{$ui-button-group}.#{$c-inverted}.#{$name} .#{$c-basic}.#{$c-button},
 	#{$ui-button}.#{$c-inverted}.#{$name}.#{$c-basic} {
+
 	  color: color-text($inverted: true);
 	  background-color: transparent;
 
@@ -120,5 +123,5 @@
 }
 
 @if $auto-include-colors-info {
-  @include colors($colors-info);
+  @include colorize($colors-info);
 }

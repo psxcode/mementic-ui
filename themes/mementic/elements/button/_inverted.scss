@@ -1,31 +1,26 @@
 /* Inverted */
 #{$ui-button}.#{$c-inverted} {
 
-  box-shadow: 0 0 0 $inverted-border-size $color-light inset !important;
-  background: transparent none;
   color: $color-light;
-  text-shadow: none !important;
+  background: transparent none;
 
   /* Hover */
   &:hover {
-	background: $color-light;
-	box-shadow: 0 0 0 $inverted-border-size $color-light inset !important;
 	color: $hover-color;
+	background: $color-light;
   }
 
   /* Active / Focus */
   &:focus,
   &.#{$c-active} {
-	background: $color-light;
-	box-shadow: 0 0 0 $inverted-border-size $color-light inset !important;
 	color: $focus-color;
+	background: $color-light;
   }
 
   /* Active Focus */
   &.#{$c-active}:focus {
-	background: $color-mid;
-	box-shadow: 0 0 0 $inverted-border-size $color-mid inset !important;
 	color: $focus-color;
+	background: $color-mid;
   }
 }
 
