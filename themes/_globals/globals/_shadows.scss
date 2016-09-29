@@ -43,11 +43,17 @@
 
   $shadow: join($shadow, ($x $y), space);
 
-  @if strip-unit($blur) > 0 {
+  @if $blur > 0 {
 	$shadow: append($shadow, $blur, space);
   }
 
-  @if strip-unit($spread) > 0 {
+  @if $spread > 0 {
+
+	//add blur
+	@if $blur == 0 {
+	  $shadow: append($shadow, $blur, space);
+	}
+
 	$shadow: append($shadow, $spread, space);
   }
 

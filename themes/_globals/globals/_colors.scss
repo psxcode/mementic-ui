@@ -68,9 +68,9 @@
 // Main colors
 // -------------------------------
 $colors-info: (
-		'positive': #387ef5,
+		'positive': #2185D0,
 		'negative': #ef473a,
-		'success': #387ef5,
+		'success': #2185D0,
 		'fail': #ef473a,
 		'info': #94eeff,
 		'warning': #fff57a,
@@ -217,11 +217,11 @@ $_colors-divider-states-blend-mult: map-zip($color-divider-state-names, (
 
 // Text Colors
 // -------------------------------
-$_color-text: #202020 !default;
-$_color-text-inverted: #E0E0E0 !default;
+$_color-text: #000 !default;
+$_color-text-inverted: #fff !default;
 
-$_color-text-blend: 0.85 !default;
-$_color-text-blend-inverted: 0.9 !default;
+$_color-text-blend: 0.6 !default;
+$_color-text-blend-inverted: 1.0 !default;
 
 $color-text-state-names: (
 		'default',

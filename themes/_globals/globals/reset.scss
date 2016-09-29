@@ -112,6 +112,9 @@ html {
   font-family: sans-serif; /* 1 */
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%; /* 2 */
+
+  /* define rem unit */
+  font-size: 100%;
 }
 
 html,
@@ -124,7 +127,7 @@ body {
   padding: 0;
   overflow-x: hidden;
   //min-width: $pageMinWidth;
-  background: $color-light;
+  background: white;
   font-family: $font-family;
   font-size: $font-size;
   line-height: $line-height;

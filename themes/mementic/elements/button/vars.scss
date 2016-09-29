@@ -25,31 +25,6 @@ color $duration-default $easing-default,
 box-shadow $duration-default $easing-default,
 background $duration-default $easing-default;
 
-/* Colors */
-@function color($inverted: false) {
-  @return color-text($inverted);
-}
-
-@function color-hover($inverted: false) {
-  @return color-text-hovered($inverted);
-}
-
-@function color-focus($inverted: false) {
-  @return color-text-selected($inverted);
-}
-
-@function color-down($inverted: false) {
-  @return color-text-pressed($inverted);
-}
-
-@function color-active($inverted: false) {
-  @return color-text-selected($inverted);
-}
-
-@function color-active-hover($inverted: false) {
-  @return color-text-selected($inverted);
-}
-
 /* Background */
 @function background($inverted: false) {
   @return #E0E1E2;
@@ -75,27 +50,62 @@ background $duration-default $easing-default;
   @return #C0C1C2;
 }
 
-/* Shadows */
-$box-shadow-border: box-shadow-create(0, 0, 0, 1px, true);
-$box-shadow-blur: box-shadow-create(0, 0, 4px);
-@function box-shadow($inverted: false) {
+@function background-colorize($color) {
+  @return $color;
+}
 
+@function background-colorize-hover($color) {
+  @return color-hover($color);
+}
+
+@function background-colorize-focus($color) {
+  @return color-focus($color);
+}
+
+@function background-colorize-down($color) {
+  @return color-down($color);
+}
+
+@function background-colorize-active($color) {
+  @return color-active($color);
+}
+
+@function background-colorize-active-hover($color) {
+  @return color-hover($color);
+}
+
+/* Background Basic */
+@function basic-background($inverted: false) {
+  @return transparent none;
+}
+
+/* Shadows */
+@function box-shadow($inverted: false) {
+  @return none;
 }
 
 @function box-shadow-hover($inverted: false) {
-
+  @return none;
 }
 
 @function box-shadow-focus($inverted: false) {
-
+  @return none;
 }
 
 @function text-shadow($inverted: false) {
   @return none;
 }
 
-$text-shadow: none;
-$inverted-text-shadow: $text-shadow;
+/* Basic Box Shadows */
+$basic-box-shadow-border: box-shadow-create(0, 0, 0, 1px, true);
+$basic-box-shadow-blur: box-shadow-create(0, 0, 4px);
+@function basic-box-shadow($inverted: false) {
+  @return box-shadow-colorize($basic-box-shadow-border, color-divider($inverted));
+}
+
+@function basic-box-shadow-colorize($color) {
+  @return box-shadow-colorize($basic-box-shadow-border, $color);
+}
 
 /* Icon */
 $icon-height: size('tiny');
@@ -133,7 +143,6 @@ $basic-border-radius: $border-radius;
 
 $basic-font-weight: normal;
 $basic-text-transform: none;
-$basic-background: transparent none;
 
 /* Basic Inverted */
 $basic-inverted-color: $color-mid;
@@ -164,7 +173,7 @@ $or-vertical-offset: -($or-circle-size / 2);
 $or-horizontal-offset: -($or-circle-size / 2);
 
 $or-background-color: $color-light;
-$or-text-shadow: $inverted-text-shadow;
+$or-text-shadow: text-shadow($inverted: true);
 $or-text-style: normal;
 $or-text-weight: bold;
 $or-text-color: color-light(color-text());

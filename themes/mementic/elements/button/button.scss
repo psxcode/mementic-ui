@@ -2,13 +2,13 @@
 $ui-button: selector-ui-button();
 $ui-button-group: selector-ui-button-group();
 
-#{$ui-button-group} > #{$c-button}
+#{$ui-button-group} > #{$c-button},
 #{$ui-button} {
 
   display: inline-block;
 
   color: color-text();
-  background: $background;
+  background: background();
 
   margin: 0 $horizontal-margin $vertical-margin 0;
   padding: $vertical-padding $horizontal-padding $vertical-padding;
@@ -23,7 +23,9 @@ $ui-button-group: selector-ui-button-group();
   text-align: center;
   text-decoration: none;
   text-transform: $text-transform;
-  text-shadow: $text-shadow;
+
+  text-shadow: text-shadow();
+  box-shadow: box-shadow();
 
   vertical-align: $vertical-align;
   cursor: pointer;
@@ -31,34 +33,26 @@ $ui-button-group: selector-ui-button-group();
   user-select: none;
   transition: $transition;
 
-  -webkit-tap-highlight-color: $tap-color;
+  //-webkit-tap-highlight-color: $tap-color;
 
   &:hover {
 	color: color-text-hovered();
-	background-color: color-hover(color-bg($bg-base-color));
-
-	.#{$c-icon} {
-	  opacity: $icon-opacity-hover;
-	}
+	background: background-hover();
   }
 
   &:focus {
 	color: color-text-selected();
-	background-color: color-focus(color-bg($bg-base-color));
-
-	.#{$c-icon} {
-	  opacity: $icon-opacity-focus;
-	}
+	background: background-focus();
   }
 
   &:active {
 	color: color-text-pressed();
-	background-color: color-down(color-bg($bg-base-color));
+	background: background-down();
   }
 
   &.#{$c-active} {
 	color: color-text-selected();
-	background-color: color-active(color-bg($bg-base-color));
+	background: background-active();
 
 	/*&:hover {
 	  color: $active-hover-color;
@@ -87,13 +81,12 @@ $ui-button-group: selector-ui-button-group();
 
   display: inline-flex;
   flex-direction: row;
-  font-size: 0;
   vertical-align: baseline;
   margin: $vertical-margin $horizontal-margin 0 0;
 
   /* Clearfix */
   &::after {
-	content: ".";
+	content: " ";
 	display: block;
 	height: 0;
 	clear: both;
@@ -107,8 +100,6 @@ $ui-button-group: selector-ui-button-group();
 	margin: $group-button-offset;
 
 	&:first-child {
-	  border-left: none;
-	  margin-left: 0;
 	  border-top-left-radius: $border-radius;
 	  border-bottom-left-radius: $border-radius;
 	}
@@ -134,7 +125,6 @@ $ui-button-group: selector-ui-button-group();
   flex-direction: column;
 
   > .#{$c-button} {
-
 	display: block;
 	float: none;
 	width: 100%;
@@ -158,6 +148,7 @@ $ui-button-group: selector-ui-button-group();
   }
 }
 
+
 /* Numbers */
 @for $i from 2 through 12 {
 
@@ -176,7 +167,7 @@ $ui-button-group: selector-ui-button-group();
 
 //@import "animated";
 //@import "attached";
-//@import "basic";
+@import "basic";
 //@import "circular";
 @import "colors";
 //@import "compact";
@@ -187,7 +178,7 @@ $ui-button-group: selector-ui-button-group();
 //@import "inverted";
 //@import "loading";
 //@import "or";
-//@import "sizes";
+@import "sizes";
 //@import "toggle";
 
 

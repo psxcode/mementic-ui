@@ -2,6 +2,12 @@
         Sizes
 --------------------*/
 
+/* Default size */
+#{$ui-button-group} > #{$c-button},
+#{$ui-button} {
+  font-size: size('medium');
+}
+
 @each $name, $size in $sizes {
 
   #{$ui-button-group}.#{$name} .#{$c-button},

@@ -9,7 +9,7 @@
 
 #{$ui-button-group}.#{$c-basic}.#{$c-vertical} {
 
-  .#{$c-button} {
+  > .#{$c-button} {
 	border-left: none;
 	border-top: $basic-group-border;
 
@@ -23,10 +23,13 @@
 #{$ui-button}.#{$c-basic} {
 
   color: color-text();
-  background: $basic-background;
+  background: basic-background();
   font-weight: $basic-font-weight;
   border-radius: $basic-border-radius;
   text-transform: $basic-text-transform;
+
+  text-shadow: text-shadow();
+  box-shadow: basic-box-shadow();
 
   &:hover {
 	color: color-text-hovered();
@@ -58,29 +61,25 @@
 #{$ui-button-group}.#{$c-basic}.#{$c-inverted} > .#{$c-button},
 #{$ui-button}.#{$c-basic}.#{$c-inverted} {
 
-  color: $color-mid;
-  background-color: transparent;
+  color: color-text($inverted: true);
+  background: basic-background($inverted: true);
 
   &:hover {
-	color: $color-light;
+	color: color-text-hovered($inverted: true);
   }
 
   &:focus {
-	color: $color-light;
+	color: color-text-selected($inverted: true);
   }
 
   &:active {
-	color: $color-light;
-	background-color: color-transparent($color-light);
+	color: color-text-pressed($inverted: true);
   }
 
   &.#{$c-active} {
-	background-color: color-transparent($color-light);
-	color: color-text($inverted: true);
-	text-shadow: color-shadow(color-text($inverted: true));
+	color: color-text-selected($inverted: true);
 
 	&:hover {
-	  background-color: color-transparent-strong($color-light);
 	}
   }
 }

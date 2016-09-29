@@ -13,19 +13,19 @@ $sizes: (
 		'massive': 1.7142 // 24/14
 ) !default;
 
-@function size($variant, $relative: false) {
+@function size($variant, $absolute: false) {
   $variant: to-string($variant);
-  $relative: to-bool($relative);
+  $absolute: to-bool($absolute);
 
   @if not(map-has-key($sizes, $variant)) {
 	@error 'size: invalid $variant #{$variant}';
   }
 
   $size: map-get($sizes, $variant);
-  @if $relative == true {
-	@return unit-em($size);
-  } @else {
+  @if $absolute == true {
 	@return unit-rem($size);
+  } @else {
+	@return unit-em($size);
   }
 }
 

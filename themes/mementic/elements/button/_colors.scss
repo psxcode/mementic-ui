@@ -6,42 +6,40 @@
   @each $name, $color in $color-map {
 
 	/*--- Standard ---*/
-	#{$ui-button-group}.#{$name} .#{$c-button},
+	#{$ui-button-group}.#{$name} > .#{$c-button},
 	#{$ui-button}.#{$name} {
 
 	  color: color-text($inverted: true);
-	  background-color: $color;
+	  background: background-colorize($color);
 
 	  &:hover {
 		color: color-text-hovered($inverted: true);
-		background-color: color-hover($color);
+		background: background-colorize-hover($color);
 	  }
 
 	  &:focus {
 		color: color-text-selected($inverted: true);
-		background-color: color-focus($color);
+		background: background-colorize-focus($color);
 	  }
 
 	  &:active {
 		color: color-text-pressed($inverted: true);
-		background-color: color-down($color);
+		background: background-colorize-down($color);
 	  }
 
 	  &.#{$c-active} {
 		color: color-text-selected($inverted: true);
-		background-color: color-active($color);
+		background: background-colorize-active($color);
 	  }
 	}
-
-	/*#{$ui-button}.#{$name} {
-	  box-shadow: $colored-box-shadow;
-	}*/
 
 	/* Basic */
 	#{$ui-button-group}.#{$c-basic}.#{$name} .#{$c-button},
 	#{$ui-button}.#{$c-basic}.#{$name} {
 
 	  color: colorize-text($color);
+	  background: basic-background();
+	  box-shadow: basic-box-shadow-colorize($color);
 
 	  &:hover {
 		color: colorize-text-hovered($color);
@@ -69,7 +67,7 @@
 	#{$ui-button}.#{$c-inverted}.#{$name} {
 
 	  color: colorize-text($color);
-	  background-color: transparent;
+	  background: basic-background($inverted: true);
 
 	  &:hover,
 	  &:focus,
