@@ -1,0 +1,14 @@
+.example {
+  padding: 32px;
+  width: 768px;
+  max-width: 100%;
+  margin: auto;
+}
+
+.example.inverted {
+  background-color: #1B1C1D;
+
+  h1, h2, h3, h4, h5, h6, p {
+    color: white;
+  }
+}

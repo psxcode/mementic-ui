@@ -74,10 +74,7 @@ background $duration-default $easing-default;
   @return color-hover($color);
 }
 
-/* Background Basic */
-@function basic-background($inverted: false) {
-  @return transparent none;
-}
+
 
 /* Shadows */
 @function box-shadow($inverted: false) {
@@ -96,16 +93,7 @@ background $duration-default $easing-default;
   @return none;
 }
 
-/* Basic Box Shadows */
-$basic-box-shadow-border: box-shadow-create(0, 0, 0, 1px, true);
-$basic-box-shadow-blur: box-shadow-create(0, 0, 4px);
-@function basic-box-shadow($inverted: false) {
-  @return box-shadow-colorize($basic-box-shadow-border, color-divider($inverted));
-}
 
-@function basic-box-shadow-colorize($color) {
-  @return box-shadow-colorize($basic-box-shadow-border, $color);
-}
 
 /* Icon */
 $icon-height: size('tiny');
@@ -137,26 +125,7 @@ $vertical-group-offset: 0 0 0 0;
         Types
 --------------------*/
 
-/* Basic */
-$basic-border: 1px solid color-divider();
-$basic-border-radius: $border-radius;
 
-$basic-font-weight: normal;
-$basic-text-transform: none;
-
-/* Basic Inverted */
-$basic-inverted-color: $color-mid;
-$basic-inverted-hover-color: color-hover($color-mid);
-$basic-inverted-down-color: color-active($color-light);
-$basic-inverted-active-color: color-text($inverted: true);
-
-$basic-inverted-background: transparent;
-$basic-inverted-focus-background: transparent;
-$basic-inverted-down-background: color-transparent($color-light);
-$basic-inverted-active-background: color-transparent($color-light);
-
-/* Basic Group */
-$basic-group-border: $basic-border;
 
 /* Or */
 $or-text: 'or';
@@ -233,3 +202,5 @@ $fade-scale-high: 1.5;
 $fade-scale-low: 0.75;
 
 $auto-include-colors-info: true;
+
+@import "basic-vars";

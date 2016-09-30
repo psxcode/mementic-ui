@@ -2,23 +2,6 @@
         Basic
 --------------------*/
 
-#{$ui-button-group}.#{$c-basic} {
-  border: $basic-group-border;
-  border-radius: $border-radius;
-}
-
-#{$ui-button-group}.#{$c-basic}.#{$c-vertical} {
-
-  > .#{$c-button} {
-	border-left: none;
-	border-top: $basic-group-border;
-
-	&:first-child {
-	  border-top-width: 0;
-	}
-  }
-}
-
 #{$ui-button-group}.#{$c-basic} > .#{$c-button},
 #{$ui-button}.#{$c-basic} {
 
@@ -33,21 +16,28 @@
 
   &:hover {
 	color: color-text-hovered();
+	background: basic-background-hover();
+	box-shadow: basic-box-shadow-hover();
   }
 
   &:focus {
 	color: color-text-selected();
+	background: basic-background-focus();
+	box-shadow: basic-box-shadow-focus();
   }
 
   &:active {
 	color: color-text-pressed();
+	background: basic-background-down();
+	box-shadow: basic-box-shadow-down();
   }
 
   &.#{$c-active} {
 	color: color-text-selected();
+	background: basic-background-active();
+	box-shadow: basic-box-shadow-active();
 
 	&:hover {
-	  background-color: color-transparent($color-dark);
 	}
   }
 
@@ -63,23 +53,69 @@
 
   color: color-text($inverted: true);
   background: basic-background($inverted: true);
+  box-shadow: basic-box-shadow($inverted: true);
 
   &:hover {
 	color: color-text-hovered($inverted: true);
+	background: basic-background-hover($inverted: true);
+	box-shadow: basic-box-shadow-hover($inverted: true);
   }
 
   &:focus {
 	color: color-text-selected($inverted: true);
+	background: basic-background-focus($inverted: true);
+	box-shadow: basic-box-shadow-focus($inverted: true);
   }
 
   &:active {
 	color: color-text-pressed($inverted: true);
+	background: basic-background-down($inverted: true);
+	box-shadow: basic-box-shadow-down($inverted: true);
   }
 
   &.#{$c-active} {
 	color: color-text-selected($inverted: true);
+	background: basic-background-active($inverted: true);
+	box-shadow: basic-box-shadow-active($inverted: true);
 
 	&:hover {
+	}
+  }
+}
+
+#{$ui-button-group}.#{$c-basic} {
+  border: $basic-group-border;
+  border-radius: $basic-border-radius;
+}
+
+#{$ui-button-group}.#{$c-basic} {
+
+  > .#{$c-button} {
+	border-radius: 0;
+	border-left: $basic-border;
+	box-shadow: none;
+
+	&:first-child {
+	  border: none;
+	  border-top-left-radius: $basic-border-radius;
+	  border-bottom-left-radius: $basic-border-radius;
+	}
+
+	&:last-child {
+	  border-top-right-radius: $basic-border-radius;
+	  border-bottom-right-radius: $basic-border-radius;
+	}
+  }
+}
+
+#{$ui-button-group}.#{$c-basic}.#{$c-vertical} {
+
+  > .#{$c-button} {
+	border-left: none;
+	border-top: $basic-group-border;
+
+	&:first-child {
+	  border-top-width: 0;
 	}
   }
 }

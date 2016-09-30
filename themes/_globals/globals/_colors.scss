@@ -100,10 +100,10 @@ $color-lighter: #f5f7fa;
 // Divider Colors
 // -------------------------------
 $_color-divider: #202020 !default;
-$_color-divider-inverted: #E0E0E0 !default;
+$_color-divider-inverted: #FFF !default;
 
 $_color-divider-blend: 0.15 !default;
-$_color-divider-blend-inverted: 0.5 !default;
+$_color-divider-blend-inverted: 0.3 !default;
 
 $color-divider-state-names: (
 		'default',
@@ -130,7 +130,7 @@ $_colors-divider-states-blend-mult: map-zip($color-divider-state-names, (
 )) !default;
 
 @function _colorize-divider-state($color, $state) {
-  $blend: $_color-divider-blend;
+  $blend: alpha($color);
   $mult: map-get($_colors-divider-states-blend-mult, $state);
 
   @return rgba($color, clamp($blend * $mult));

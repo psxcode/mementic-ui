@@ -33,8 +33,36 @@
 	  }
 	}
 
+	/* Inverted */
+	#{$ui-button-group}.#{$c-inverted}.#{$name} > .#{$c-button},
+	#{$ui-button}.#{$c-inverted}.#{$name} {
+
+	  color: colorize-text($color);
+	  background: basic-background($inverted: true);
+
+	  &:hover {
+		color: color-text($inverted: true);
+		background: color-hover(color-light($color));
+	  }
+
+	  &:focus {
+		color: color-text($inverted: true);
+		background: color-focus(color-light($color));
+	  }
+
+	  &:active {
+		color: color-text($inverted: true);
+		background: color-down(color-light($color));
+	  }
+
+	  &.#{$c-active} {
+		color: color-text($inverted: true);
+		background: color-active(color-light($color));
+	  }
+	}
+
 	/* Basic */
-	#{$ui-button-group}.#{$c-basic}.#{$name} .#{$c-button},
+	#{$ui-button-group}.#{$c-basic}.#{$name} > .#{$c-button},
 	#{$ui-button}.#{$c-basic}.#{$name} {
 
 	  color: colorize-text($color);
@@ -62,59 +90,25 @@
 	  margin-left: -$basic-colored-border-size;
 	}*/
 
-	/* Inverted */
-	#{$ui-button-group}.#{$c-inverted}.#{$name} .#{$c-button},
-	#{$ui-button}.#{$c-inverted}.#{$name} {
-
-	  color: colorize-text($color);
-	  background: basic-background($inverted: true);
-
-	  &:hover,
-	  &:focus,
-	  &:active,
-	  &.#{$c-active} {
-		color: color-text($inverted: true);
-	  }
-
-	  &:hover {
-		background-color: color-hover(color-light($color));
-	  }
-
-	  &:focus {
-		background-color: color-focus(color-light($color));
-	  }
-
-	  &:active {
-		background-color: color-down(color-light($color));
-	  }
-
-	  &.#{$c-active} {
-		background-color: color-active(color-light($color));
-	  }
-	}
-
 	/* Inverted Basic */
 	#{$ui-button-group}.#{$c-inverted}.#{$name}.#{$c-basic} .#{$c-button},
 	#{$ui-button-group}.#{$c-inverted}.#{$name} .#{$c-basic}.#{$c-button},
 	#{$ui-button}.#{$c-inverted}.#{$name}.#{$c-basic} {
 
 	  color: color-text($inverted: true);
-	  background-color: transparent;
+	  //background: basic-background();
+	  box-shadow: basic-box-shadow-colorize($color);
 
 	  &:hover {
-		color: color-light($color);
 	  }
 
 	  &:focus {
-		color: color-light($color);
 	  }
 
 	  &:active {
-		color: color-light($color);
 	  }
 
 	  &.#{$c-active} {
-		color: color-light($color);
 	  }
 	}
   }

@@ -5,6 +5,6 @@ var path = require('path');
 
 gulp.task('default', function() {
 	return require('./tasks/build')({
-		deps: ['theme-material']
+		deps: ['theme-material', 'theme-test']
 	}).streamCss().pipe(gulp.dest('./public'));
 });

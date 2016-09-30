@@ -1,0 +1,58 @@
+
+/* Background Basic */
+@function basic-background($inverted: false) {
+  @return transparent none;
+}
+
+@function basic-background-hover($inverted: false) {
+  @return transparent none;
+}
+
+@function basic-background-focus($inverted: false) {
+  @return transparent none;
+}
+
+@function basic-background-down($inverted: false) {
+  @return color-transparent-subtle($color-dark);
+}
+
+@function basic-background-active($inverted: false) {
+  @return transparent none;
+}
+
+/* Basic Box Shadows */
+$basic-box-shadow-border: box-shadow-create(0, 0, 0, 1px, true);
+$basic-box-shadow-blur: box-shadow-create(0, 0, 4px);
+@function basic-box-shadow($inverted: false) {
+  @return box-shadow-colorize($basic-box-shadow-border, color-divider($inverted));
+}
+
+@function basic-box-shadow-hover($inverted: false) {
+  @return box-shadow-colorize($basic-box-shadow-border, color-divider-strong($inverted));
+}
+
+@function basic-box-shadow-focus($inverted: false) {
+  @return box-shadow-colorize($basic-box-shadow-border, color-divider-strong($inverted));
+}
+
+@function basic-box-shadow-down($inverted: false) {
+  @return box-shadow-colorize($basic-box-shadow-border, color-divider($inverted));
+}
+
+@function basic-box-shadow-active($inverted: false) {
+  @return box-shadow-colorize($basic-box-shadow-border, color-divider-strong($inverted));
+}
+
+@function basic-box-shadow-colorize($color) {
+  @return box-shadow-colorize($basic-box-shadow-border, $color);
+}
+
+/* Basic */
+$basic-border: 1px solid color-divider();
+$basic-border-radius: $border-radius;
+
+$basic-font-weight: normal;
+$basic-text-transform: none;
+
+/* Basic Group */
+$basic-group-border: $basic-border;
