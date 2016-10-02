@@ -1,15 +1,15 @@
 
 /* Background Basic */
 @function basic-background($inverted: false) {
-  @return transparent none;
+  @return transparent;
 }
 
 @function basic-background-hover($inverted: false) {
-  @return transparent none;
+  @return transparent;
 }
 
 @function basic-background-focus($inverted: false) {
-  @return transparent none;
+  @return transparent;
 }
 
 @function basic-background-down($inverted: false) {
@@ -17,7 +17,7 @@
 }
 
 @function basic-background-active($inverted: false) {
-  @return transparent none;
+  @return transparent;
 }
 
 /* Basic Box Shadows */
@@ -45,6 +45,14 @@ $basic-box-shadow-blur: box-shadow-create(0, 0, 4px);
 
 @function basic-box-shadow-colorize($color) {
   @return box-shadow-colorize($basic-box-shadow-border, $color);
+}
+
+@function basic-box-shadow-colorize-hover($color) {
+  @return box-shadow-colorize($basic-box-shadow-border, colorize-divider-strong($color));
+}
+
+@function basic-box-shadow-colorize-down($color) {
+  @return box-shadow-colorize($basic-box-shadow-border, colorize-divider($color));
 }
 
 /* Basic */

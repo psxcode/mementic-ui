@@ -27,7 +27,7 @@ background $duration-default $easing-default;
 
 /* Background */
 @function background($inverted: false) {
-  @return #E0E1E2;
+  @return if($inverted, transparent, #E0E1E2);
 }
 
 @function background-hover($inverted: false) {
@@ -50,50 +50,37 @@ background $duration-default $easing-default;
   @return #C0C1C2;
 }
 
-@function background-colorize($color) {
-  @return $color;
+@function background-colorize($color, $inverted: false) {
+  @return if($inverted, transparent, $color);
 }
 
-@function background-colorize-hover($color) {
+@function background-colorize-hover($color, $inverted: false) {
   @return color-hover($color);
 }
 
-@function background-colorize-focus($color) {
+@function background-colorize-focus($color, $inverted: false) {
   @return color-focus($color);
 }
 
-@function background-colorize-down($color) {
+@function background-colorize-down($color, $inverted: false) {
   @return color-down($color);
 }
 
-@function background-colorize-active($color) {
+@function background-colorize-active($color, $inverted: false) {
   @return color-active($color);
 }
 
-@function background-colorize-active-hover($color) {
+@function background-colorize-active-hover($color, $inverted: false) {
   @return color-hover($color);
 }
 
-
-
 /* Shadows */
+$inverted-box-shadow-border: box-shadow-create(0, 0, 0, 2px, true);
 @function box-shadow($inverted: false) {
-  @return none;
+  @return if($inverted,
+		  box-shadow-colorize($inverted-box-shadow-border, color-divider($inverted)),
+		  none);
 }
-
-@function box-shadow-hover($inverted: false) {
-  @return none;
-}
-
-@function box-shadow-focus($inverted: false) {
-  @return none;
-}
-
-@function text-shadow($inverted: false) {
-  @return none;
-}
-
-
 
 /* Icon */
 $icon-height: size('tiny');
@@ -115,17 +102,8 @@ $loading-transition: all 0s linear,
 opacity $duration-default $easing-default;
 
 /*-------------------
-        Group
---------------------*/
-
-$group-button-offset: 0 0 0 0;
-$vertical-group-offset: 0 0 0 0;
-
-/*-------------------
         Types
 --------------------*/
-
-
 
 /* Or */
 $or-text: 'or';
@@ -142,7 +120,6 @@ $or-vertical-offset: -($or-circle-size / 2);
 $or-horizontal-offset: -($or-circle-size / 2);
 
 $or-background-color: $color-light;
-$or-text-shadow: text-shadow($inverted: true);
 $or-text-style: normal;
 $or-text-weight: bold;
 $or-text-color: color-light(color-text());
@@ -170,12 +147,6 @@ $labeled-icon-color: $color-mid;
 
 $labeled-icon-left-shadow: -1px 0 0 0 $labeled-icon-border inset;
 $labeled-icon-right-shadow: 1px 0 0 0 $labeled-icon-border inset;
-
-/* Inverted */
-$inverted-border-size: 2px;
-$inverted-text-color: color-text($inverted: true);
-$inverted-group-button-offset: 0 0 0 -($inverted-border-size);
-$inverted-vertical-group-button-offset: 0 0 -($inverted-border-size) 0;
 
 /*-------------------
       Variations

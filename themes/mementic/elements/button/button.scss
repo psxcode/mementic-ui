@@ -24,13 +24,16 @@ $ui-button-group: selector-ui-button-group();
   text-decoration: none;
   text-transform: $text-transform;
 
-  text-shadow: text-shadow();
   box-shadow: box-shadow();
 
   vertical-align: $vertical-align;
   cursor: pointer;
   outline: none;
-  user-select: none;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+
   transition: $transition;
 
   //-webkit-tap-highlight-color: $tap-color;
@@ -71,6 +74,38 @@ $ui-button-group: selector-ui-button-group();
 	opacity: $opacity-disabled;
 	pointer-events: none;
   }
+
+  /* Inverted */
+  &.#{$c-inverted} {
+
+	color: color-text(true);
+	background: background(true);
+	box-shadow: box-shadow(true);
+
+	&:hover {
+	  color: color-text-hovered();
+	  background: background-hover(true);
+	  box-shadow: none;
+	}
+
+	&:focus {
+	  color: color-text-selected();
+	  background: background-focus(true);
+	  box-shadow: none;
+	}
+
+	&:active {
+	  color: color-text-pressed();
+	  background: background-down(true);
+	  box-shadow: none;
+	}
+
+	&.#{$c-active} {
+	  color: color-text-selected();
+	  background: background-active(true);
+	  box-shadow: none;
+	}
+  }
 }
 
 /*-------------------
@@ -97,7 +132,7 @@ $ui-button-group: selector-ui-button-group();
   > .#{$c-button} {
 	flex: 1 0 auto;
 	border-radius: 0;
-	margin: $group-button-offset;
+	margin: 0;
 
 	&:first-child {
 	  border-top-left-radius: $border-radius;
@@ -126,9 +161,7 @@ $ui-button-group: selector-ui-button-group();
 
   > .#{$c-button} {
 	display: block;
-	float: none;
 	width: 100%;
-	margin: $vertical-group-offset;
 	border-radius: 0;
 
 	&:first-child {
@@ -137,17 +170,11 @@ $ui-button-group: selector-ui-button-group();
 	}
 
 	&:last-child {
-	  margin-bottom: 0;
 	  border-bottom-left-radius: $border-radius;
 	  border-bottom-right-radius: $border-radius;
 	}
-
-	&:only-child {
-	  border-radius: $border-radius;
-	}
   }
 }
-
 
 /* Numbers */
 @for $i from 2 through 12 {
@@ -175,7 +202,6 @@ $ui-button-group: selector-ui-button-group();
 //@import "floated";
 //@import "fluid";
 //@import "icon-labeled";
-//@import "inverted";
 //@import "loading";
 //@import "or";
 @import "sizes";

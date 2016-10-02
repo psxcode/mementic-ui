@@ -7,6 +7,7 @@
 
 	/*--- Standard ---*/
 	#{$ui-button-group}.#{$name} > .#{$c-button},
+	#{$ui-button-group} > .#{$c-button}.#{$name},
 	#{$ui-button}.#{$name} {
 
 	  color: color-text($inverted: true);
@@ -35,54 +36,61 @@
 
 	/* Inverted */
 	#{$ui-button-group}.#{$c-inverted}.#{$name} > .#{$c-button},
+	#{$ui-button-group}.#{$c-inverted} > .#{$c-button}.#{$name},
 	#{$ui-button}.#{$c-inverted}.#{$name} {
 
 	  color: colorize-text($color);
-	  background: basic-background($inverted: true);
+	  background: background-colorize($color, true);
 
 	  &:hover {
 		color: color-text($inverted: true);
-		background: color-hover(color-light($color));
+		background: background-colorize-hover($color, true);
 	  }
 
 	  &:focus {
 		color: color-text($inverted: true);
-		background: color-focus(color-light($color));
+		background: background-colorize-focus($color, true);
 	  }
 
 	  &:active {
 		color: color-text($inverted: true);
-		background: color-down(color-light($color));
+		background: background-colorize-down($color, true);
 	  }
 
 	  &.#{$c-active} {
 		color: color-text($inverted: true);
-		background: color-active(color-light($color));
+		background: background-colorize-active($color, true);
 	  }
 	}
 
 	/* Basic */
 	#{$ui-button-group}.#{$c-basic}.#{$name} > .#{$c-button},
+	#{$ui-button-group}.#{$c-basic} > .#{$c-button}.#{$name},
 	#{$ui-button}.#{$c-basic}.#{$name} {
 
 	  color: colorize-text($color);
 	  background: basic-background();
 	  box-shadow: basic-box-shadow-colorize($color);
+	  border: none;
 
 	  &:hover {
 		color: colorize-text-hovered($color);
+		background: basic-background();
 	  }
 
 	  &:focus {
 		color: colorize-text-selected($color);
+		background: basic-background();
 	  }
 
 	  &:active {
 		color: colorize-text-pressed($color);
+		background: basic-background();
 	  }
 
 	  &.#{$c-active} {
 		color: colorize-text-selected($color);
+		background: basic-background();
 	  }
 	}
 
@@ -91,24 +99,31 @@
 	}*/
 
 	/* Inverted Basic */
-	#{$ui-button-group}.#{$c-inverted}.#{$name}.#{$c-basic} .#{$c-button},
-	#{$ui-button-group}.#{$c-inverted}.#{$name} .#{$c-basic}.#{$c-button},
-	#{$ui-button}.#{$c-inverted}.#{$name}.#{$c-basic} {
+	#{$ui-button-group}.#{$c-basic}.#{$c-inverted}.#{$name} > .#{$c-button},
+	#{$ui-button-group}.#{$c-basic}.#{$c-inverted} > .#{$c-button}.#{$name},
+	#{$ui-button}.#{$c-basic}.#{$c-inverted}.#{$name} {
 
 	  color: color-text($inverted: true);
-	  //background: basic-background();
 	  box-shadow: basic-box-shadow-colorize($color);
 
 	  &:hover {
+		color: colorize-text-hovered($color);
+		box-shadow: basic-box-shadow-colorize-hover($color);
 	  }
 
 	  &:focus {
+		color: colorize-text-selected($color);
+		box-shadow: basic-box-shadow-colorize-hover($color);
 	  }
 
 	  &:active {
+		color: colorize-text-pressed($color);
+		box-shadow: basic-box-shadow-colorize-down($color);
 	  }
 
 	  &.#{$c-active} {
+		color: colorize-text-selected($color);
+		box-shadow: basic-box-shadow-colorize-hover($color);
 	  }
 	}
   }

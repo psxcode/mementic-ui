@@ -11,7 +11,6 @@
   border-radius: $basic-border-radius;
   text-transform: $basic-text-transform;
 
-  text-shadow: text-shadow();
   box-shadow: basic-box-shadow();
 
   &:hover {
@@ -84,15 +83,14 @@
 }
 
 #{$ui-button-group}.#{$c-basic} {
+
   border: $basic-group-border;
   border-radius: $basic-border-radius;
-}
-
-#{$ui-button-group}.#{$c-basic} {
 
   > .#{$c-button} {
-	border-radius: 0;
+	border: none;
 	border-left: $basic-border;
+	border-radius: 0;
 	box-shadow: none;
 
 	&:first-child {
@@ -111,11 +109,19 @@
 #{$ui-button-group}.#{$c-basic}.#{$c-vertical} {
 
   > .#{$c-button} {
-	border-left: none;
+	border: none;
 	border-top: $basic-group-border;
+	border-radius: 0;
 
 	&:first-child {
-	  border-top-width: 0;
+	  border: none;
+	  border-top-left-radius: $basic-border-radius;
+	  border-top-right-radius: $basic-border-radius;
+	}
+
+	&:last-child {
+	  border-bottom-left-radius: $basic-border-radius;
+	  border-bottom-right-radius: $basic-border-radius;
 	}
   }
 }
