@@ -35,6 +35,9 @@
 	}
 
 	/* Inverted */
+	.#{$c-inverted} > #{$ui-button-group}.#{$name} > .#{$c-button},
+	.#{$c-inverted} > #{$ui-button-group} > .#{$c-button}.#{$name},
+	.#{$c-inverted} > #{$ui-button}.#{$name},
 	#{$ui-button-group}.#{$c-inverted}.#{$name} > .#{$c-button},
 	#{$ui-button-group}.#{$c-inverted} > .#{$c-button}.#{$name},
 	#{$ui-button}.#{$c-inverted}.#{$name} {
@@ -99,6 +102,9 @@
 	}*/
 
 	/* Inverted Basic */
+	.#{$c-inverted} > #{$ui-button-group}.#{$c-basic}.#{$name} > .#{$c-button},
+	.#{$c-inverted} > #{$ui-button-group}.#{$c-basic} > .#{$c-button}.#{$name},
+	.#{$c-inverted} > #{$ui-button}.#{$c-basic}.#{$name},
 	#{$ui-button-group}.#{$c-basic}.#{$c-inverted}.#{$name} > .#{$c-button},
 	#{$ui-button-group}.#{$c-basic}.#{$c-inverted} > .#{$c-button}.#{$name},
 	#{$ui-button}.#{$c-basic}.#{$c-inverted}.#{$name} {

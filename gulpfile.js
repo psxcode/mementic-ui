@@ -3,8 +3,23 @@
 var gulp = require('gulp');
 var path = require('path');
 
-gulp.task('default', function() {
-	return require('./tasks/build')({
-		deps: ['theme-material', 'theme-test']
-	}).streamCss().pipe(gulp.dest('./public'));
+
+function ui() {
+	var result = require('./tasks/build');
+
+	if (!result.isConfigured()) {
+		result({
+			deps: ['theme-test']
+		});
+	}
+
+	return result;
+}
+
+gulp.task('default', function () {
+	return ui().streamCss().pipe(gulp.dest('./public'));
+});
+
+gulp.task('install', function () {
+	return ui().streamPublic().pipe(gulp.dest('./public'));
 });

@@ -2,12 +2,16 @@
         Sizes
 --------------------*/
 
-@each $name, $size in $icon-width {
+#{$ui-icon},
+#{$ui-icon-group} {
+  font-size: size('medium');
+}
+
+@each $name, $size in $sizes {
 
   #{$ui-icon}.#{$name},
   #{$ui-icon-group}.#{$name} {
 
-	line-height: 1;
-	font-size: $size;
+	font-size: size($name);
   }
 }

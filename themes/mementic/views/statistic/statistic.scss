@@ -17,7 +17,7 @@ $ui-statistic-group: selector-ui-statistic-group();
 	margin-bottom: 0;
   }
 
-  + #{$c-statistic} {
+  + .#{$c-statistic} {
 	margin: 0 0 0 $horizontal-spacing;
   }
 }

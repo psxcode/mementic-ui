@@ -5,7 +5,7 @@
 #{$ui-menu} {
 
   &:not(.#{$c-vertical}) {
-	.#{$c-item} > #{$c-button} {
+	.#{$c-item} > .#{$c-button} {
 	  position: relative;
 	  top: $button-offset;
 	  margin: $button-margin;

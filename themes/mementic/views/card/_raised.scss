@@ -9,9 +9,9 @@
 
 #{$ui-card-group}.#{$c-raised} > a.#{$c-card},
 #{$ui-card-group} > a.#{$c-card}.#{$c-raised},
-#{$ui-card-group}.#{$c-raised}.#{$c-link} > #{$c-card},
-#{$ui-card-group}.#{$c-link} > #{$c-card}.#{$c-raised},
-#{$ui-card-group} > #{$c-card}.#{$c-raised}.#{$c-link},
+#{$ui-card-group}.#{$c-raised}.#{$c-link} > .#{$c-card},
+#{$ui-card-group}.#{$c-link} > .#{$c-card}.#{$c-raised},
+#{$ui-card-group} > .#{$c-card}.#{$c-raised}.#{$c-link},
 a#{$ui-card}.#{$c-raised}
 #{$ui-card}.#{$c-raised}.#{$c-link} {
   &:hover {

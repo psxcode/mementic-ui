@@ -2,22 +2,22 @@
        Colors
 --------------------*/
 
-@mixin colors($color-map) {
+@mixin colorize($color-map) {
   @each $name, $color in $color-map {
 
 	#{$ui-icon}.#{$name} {
 
-	  color: $color !important;
+	  color: $color;
 
 	  /* Inverted */
 	  &.#{$c-inverted} {
 
-		color: color-light($color) !important;
+		color: color-light($color);
 
 		&.#{$c-bordered},
 		&.#{$c-circular} {
-		  background-color: $color !important;
-		  color: $color-light !important;
+		  background-color: $color;
+		  color: $color-light;
 		}
 	  }
 	}
@@ -25,5 +25,5 @@
 }
 
 @if $auto-include-colors-info {
-  @include colors($colors-info);
+  @include colorize($colors-info);
 }

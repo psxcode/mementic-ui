@@ -1,12 +1,6 @@
-/*******************************
-             Icon
-*******************************/
-
 /*-------------------
    Icon Variables
 --------------------*/
-
-$font-name: 'icons';
 
 $opacity: 1;
 $width: 1.18em;
@@ -20,13 +14,13 @@ $link-duration: 0.3s;
 $loading-duration: 2s;
 
 $circular-size: 2em;
-$circular-padding: 0.5em 0.5em;
-$circular-shadow: 0em 0em 0em 0.1em rgba(0, 0, 0, 0.1) inset;
+$circular-padding: 0.5em;
+$circular-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
 
 $bordered-size: 2em;
 $bordered-vertical-padding: (($bordered-size - $height) / 2);
 $bordered-horizontal-padding: (($bordered-size - $width) / 2);
-$bordered-shadow: 0em 0em 0em 0.1em rgba(0, 0, 0, 0.1) inset;
+$bordered-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
 
 $corner-icon-size: 0.45em;
 $corner-icon-stroke: 1px;
@@ -42,18 +36,13 @@ $corner-icon-stroke -$corner-icon-stroke 0 $color-dark,
 $corner-icon-stroke $corner-icon-stroke 0 $color-dark;
 
 /* Size */
-$icon-width: map-zip(map-keys($sizes), (
-        0.4em, // mini
-        0.5em, // tiny
-        0.75em, // small
-        1em, // medium
-        1.5em, // large
-        2em, // big
-        4em, //huge
-        8em // massive
+$sizes: map-zip(map-keys($sizes), (
+        0.6, // mini
+        0.8, // tiny
+        1, // small
+        1.4, // medium
+        2, // large
+        3.5, // big
+        5.5, //huge
+        8 // massive
 ));
-
-@function icon-width($variant) {
-  $variant: to-string($variant);
-  @return map-get($icon-width, $variant);
-}

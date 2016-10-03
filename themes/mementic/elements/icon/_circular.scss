@@ -7,13 +7,13 @@ $ui-circular-icon: '#{$ui-icon}.#{$c-circular}';
 
 #{$ui-circular-icon} {
 
-  border-radius: 500em !important;
+  border-radius: 50%;
 
-  padding: $circular-padding !important;
+  padding: $circular-padding;
   box-shadow: $circular-shadow;
 
-  width: $circular-size !important;
-  height: $circular-size !important;
+  width: $circular-size;
+  height: $circular-size;
 
   /* Inverted */
   &.#{$c-inverted} {

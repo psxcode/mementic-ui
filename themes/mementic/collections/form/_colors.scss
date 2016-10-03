@@ -126,7 +126,7 @@
 
 			&:not(.#{$c-toggle}):not(.#{$c-slider}) {
 			  label,
-			  #{$c-box} {
+			  .#{$c-box} {
 				color: $color;
 
 				::before {

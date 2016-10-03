@@ -2,6 +2,7 @@
         Basic
 --------------------*/
 
+/* Basic button */
 #{$ui-button-group}.#{$c-basic} > .#{$c-button},
 #{$ui-button}.#{$c-basic} {
 
@@ -11,117 +12,177 @@
   border-radius: $basic-border-radius;
   text-transform: $basic-text-transform;
 
-  box-shadow: basic-box-shadow();
-
   &:hover {
 	color: color-text-hovered();
 	background: basic-background-hover();
-	box-shadow: basic-box-shadow-hover();
   }
 
   &:focus {
 	color: color-text-selected();
 	background: basic-background-focus();
-	box-shadow: basic-box-shadow-focus();
   }
 
   &:active {
 	color: color-text-pressed();
 	background: basic-background-down();
-	box-shadow: basic-box-shadow-down();
   }
 
   &.#{$c-active} {
 	color: color-text-selected();
 	background: basic-background-active();
-	box-shadow: basic-box-shadow-active();
-
-	&:hover {
-	}
-  }
-
-  /* Basic Group With Disabled */
-  &.#{$c-disabled} {
-	border-color: color-divider-disabled();
   }
 }
 
-/* Basic Inverted */
+/* Basic Single Button */
+#{$ui-button}.#{$c-basic} {
+  box-shadow: basic-box-shadow();
+
+  &:hover {
+	box-shadow: basic-box-shadow-hover();
+  }
+
+  &:focus {
+	box-shadow: basic-box-shadow-focus();
+  }
+
+  &:active {
+	box-shadow: basic-box-shadow-down();
+  }
+
+  &.#{$c-active} {
+	box-shadow: basic-box-shadow-active();
+  }
+}
+
+/* Basic Group */
+#{$ui-button-group}.#{$c-basic} {
+
+  border: basic-border();
+  border-radius: $basic-border-radius;
+
+  /* Button in a Basic Group */
+  > .#{$c-button} {
+	border: none;
+	border-left: basic-border();
+	border-radius: 0;
+
+	&:first-child {
+	  border: none;
+	  border-top-left-radius: $basic-border-radius;
+	  border-bottom-left-radius: $basic-border-radius;
+	}
+
+	&:last-child {
+	  border-top-right-radius: $basic-border-radius;
+	  border-bottom-right-radius: $basic-border-radius;
+	}
+  }
+}
+
+/* Basic Vertical Group */
+#{$ui-button-group}.#{$c-basic}.#{$c-vertical} {
+
+  /* Button in a Vertical Basic Group */
+  > .#{$c-button} {
+	border: none;
+	border-top: basic-border();
+	border-radius: 0;
+
+	&:first-child {
+	  border: none;
+	  border-top-left-radius: $basic-border-radius;
+	  border-top-right-radius: $basic-border-radius;
+	}
+
+	&:last-child {
+	  border-bottom-left-radius: $basic-border-radius;
+	  border-bottom-right-radius: $basic-border-radius;
+	}
+  }
+}
+
+/* Basic Inverted Button */
+.#{$c-inverted} > #{$ui-button-group}.#{$c-basic} > .#{$c-button},
+.#{$c-inverted} > #{$ui-button}.#{$c-basic},
 #{$ui-button-group}.#{$c-basic}.#{$c-inverted} > .#{$c-button},
 #{$ui-button}.#{$c-basic}.#{$c-inverted} {
 
   color: color-text($inverted: true);
   background: basic-background($inverted: true);
-  box-shadow: basic-box-shadow($inverted: true);
 
   &:hover {
 	color: color-text-hovered($inverted: true);
 	background: basic-background-hover($inverted: true);
-	box-shadow: basic-box-shadow-hover($inverted: true);
   }
 
   &:focus {
 	color: color-text-selected($inverted: true);
 	background: basic-background-focus($inverted: true);
-	box-shadow: basic-box-shadow-focus($inverted: true);
   }
 
   &:active {
 	color: color-text-pressed($inverted: true);
 	background: basic-background-down($inverted: true);
-	box-shadow: basic-box-shadow-down($inverted: true);
   }
 
   &.#{$c-active} {
 	color: color-text-selected($inverted: true);
 	background: basic-background-active($inverted: true);
+  }
+}
+
+/* Basic Inverted Single Button */
+.#{$c-inverted} > #{$ui-button}.#{$c-basic},
+#{$ui-button}.#{$c-basic}.#{$c-inverted} {
+  box-shadow: basic-box-shadow($inverted: true);
+
+  &:hover {
+	box-shadow: basic-box-shadow-hover($inverted: true);
+  }
+
+  &:focus {
+	box-shadow: basic-box-shadow-focus($inverted: true);
+  }
+
+  &:active {
+	box-shadow: basic-box-shadow-down($inverted: true);
+  }
+
+  &.#{$c-active} {
 	box-shadow: basic-box-shadow-active($inverted: true);
+  }
+}
 
-	&:hover {
+/* Basic Inverted Group */
+.#{$c-inverted} > #{$ui-button-group}.#{$c-basic},
+#{$ui-button-group}.#{$c-basic}.#{$c-inverted} {
+
+  border: basic-border(true);
+
+  /* Button in a Basic Inverted Group */
+  > .#{$c-button} {
+	border: none;
+	border-left: basic-border(true);
+
+	&:first-child {
+	  border: none;
 	}
   }
 }
 
-#{$ui-button-group}.#{$c-basic} {
+/* Basic Inverted Vertical Group */
+.#{$c-inverted} > #{$ui-button-group}.#{$c-basic}.#{$c-vertical},
+#{$ui-button-group}.#{$c-basic}.#{$c-inverted}.#{$c-vertical} {
 
-  border: $basic-group-border;
-  border-radius: $basic-border-radius;
+  border: basic-border(true);
 
+  /* Button in a Basic Inverted Vertical Group */
   > .#{$c-button} {
 	border: none;
-	border-left: $basic-border;
-	border-radius: 0;
-	box-shadow: none;
+	border-top: basic-border(true);
 
 	&:first-child {
 	  border: none;
-	  border-top-left-radius: $basic-border-radius;
-	  border-bottom-left-radius: $basic-border-radius;
-	}
-
-	&:last-child {
-	  border-top-right-radius: $basic-border-radius;
-	  border-bottom-right-radius: $basic-border-radius;
-	}
-  }
-}
-
-#{$ui-button-group}.#{$c-basic}.#{$c-vertical} {
-
-  > .#{$c-button} {
-	border: none;
-	border-top: $basic-group-border;
-	border-radius: 0;
-
-	&:first-child {
-	  border: none;
-	  border-top-left-radius: $basic-border-radius;
-	  border-top-right-radius: $basic-border-radius;
-	}
-
-	&:last-child {
-	  border-bottom-left-radius: $basic-border-radius;
-	  border-bottom-right-radius: $basic-border-radius;
 	}
   }
 }

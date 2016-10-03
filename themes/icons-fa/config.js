@@ -18,5 +18,8 @@ module.exports = {
 	modules: [{
 		path: '',
 		name: 'globals'
+	}, {
+		path: 'elements',
+		name: 'icon'
 	}]
 };

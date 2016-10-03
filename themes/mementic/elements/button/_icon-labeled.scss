@@ -11,10 +11,10 @@ $right-labeled: selector-right-labeled();
   &.#{$c-labeled}:not(.#{$c-icon}) {
 	display: inline-flex;
 	flex-direction: row;
-	background: none !important;
-	padding: 0 !important;
-	border: none !important;
-	box-shadow: none !important;
+	background: none;
+	padding: 0;
+	border: none;
+	box-shadow: none;
   }
 
   &.#{$c-labeled} > .#{$c-button} {
@@ -24,7 +24,7 @@ $right-labeled: selector-right-labeled();
   &.#{$c-labeled} > .#{$c-label} {
 	display: flex;
 	align-items: $labeled-label-align;
-	margin: 0 0 0 $labeled-label-border-offset !important;
+	margin: 0;
 	font-size: $labeled-label-font-size;
 	padding: $labeled-label-padding;
 	border-color: $labeled-label-border-color;
@@ -71,7 +71,7 @@ $right-labeled: selector-right-labeled();
 	margin: $icon-margin;
 	transition: $icon-transition;
 	vertical-align: $icon-vertical-align;
-	color: $icon-color;
+	color: color-text();
   }
 
   /* Not Icon Button */
@@ -95,7 +95,7 @@ $right-labeled: selector-right-labeled();
 
 #{$ui-button-group}.#{$c-icon} .#{$c-button},
 #{$ui-button}.#{$c-icon} {
-  padding: $vertical-padding $vertical-padding ($vertical-padding + $shadow-offset);
+  padding: $vertical-padding $vertical-padding;
 
   > .#{$c-icon} {
 	opacity: $icon-button-opacity;
@@ -111,8 +111,8 @@ $right-labeled: selector-right-labeled();
 #{$ui-button-group}.#{$c-labeled}.#{$c-icon} .#{$c-button},
 #{$ui-button}.#{$c-labeled}.#{$c-icon} {
   position: relative;
-  padding-left: $labeled-icon-padding !important;
-  padding-right: $horizontal-padding !important;
+  padding-left: $labeled-icon-padding;
+  padding-right: $horizontal-padding;
 }
 
 /* Left Labeled */
@@ -189,6 +189,6 @@ $right-labeled: selector-right-labeled();
 
 /* Fluid Labeled */
 #{$ui-button}.#{$c-labeled}.#{$c-fluid}.#{$c-icon} {
-  padding-left: $horizontal-padding !important;
-  padding-right: $horizontal-padding !important;
+  padding-left: $horizontal-padding;
+  padding-right: $horizontal-padding;
 }
