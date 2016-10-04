@@ -8,12 +8,12 @@ $ui-label-group: selector-ui-label-group();
   line-height: 1;
   vertical-align: $vertical-align;
 
-  margin: $vertical-margin $horizontal-margin;
-
+  color: $color;
   background-color: $background-color;
   background-image: $background-image;
+
+  margin: $vertical-margin $horizontal-margin;
   padding: $vertical-padding $horizontal-padding;
-  color: $color;
 
   text-transform: $text-transform;
   font-weight: $font-weight;
@@ -43,16 +43,19 @@ $ui-label-group: selector-ui-label-group();
         Hover
 --------------------*/
 
-#{$ui-label-group} a.#{$c-label}:hover,
-a#{$ui-label}:hover {
-  background-color: $label-hover-background-color;
-  border-color: $label-hover-background-color;
+#{$ui-label-group} a.#{$c-label},
+a#{$ui-label} {
 
-  background-image: $label-hover-background-image;
-  color: $label-hover-text-color;
+  &:hover {
+	background-color: $label-hover-background-color;
+	border-color: $label-hover-background-color;
 
-  &::before {
+	background-image: $label-hover-background-image;
 	color: $label-hover-text-color;
+
+	&::before {
+	  color: $label-hover-text-color;
+	}
   }
 }
 
@@ -61,16 +64,16 @@ a#{$ui-label}:hover {
 --------------------*/
 
 #{$ui-label}.#{$c-active} {
+
+  color: $label-active-text-color;
   background-color: $label-active-background-color;
+  background-image: $label-active-background-image;
   border-color: $label-active-background-color;
 
-  background-image: $label-active-background-image;
-  color: $label-active-text-color;
-
   &::before {
+	color: $label-active-text-color;
 	background-color: $label-active-background-color;
 	background-image: $label-active-background-image;
-	color: $label-active-text-color;
   }
 }
 
@@ -78,18 +81,21 @@ a#{$ui-label}:hover {
      Active Hover
 --------------------*/
 
-#{$ui-label-group} a.#{$c-label}.#{$c-active}:hover,
-a#{$ui-label}.#{$c-active}:hover {
-  background-color: $label-active-hover-background-color;
-  border-color: $label-active-hover-background-color;
+#{$ui-label-group} a.#{$c-label}.#{$c-active},
+a#{$ui-label}.#{$c-active} {
 
-  background-image: $label-active-hover-background-image;
-  color: $label-active-hover-text-color;
-
-  &::before {
+  &:hover {
 	background-color: $label-active-hover-background-color;
+	border-color: $label-active-hover-background-color;
+
 	background-image: $label-active-hover-background-image;
 	color: $label-active-hover-text-color;
+
+	&::before {
+	  background-color: $label-active-hover-background-color;
+	  background-image: $label-active-hover-background-image;
+	  color: $label-active-hover-text-color;
+	}
   }
 }
 
@@ -99,7 +105,7 @@ a#{$ui-label}.#{$c-active}:hover {
 
 #{$ui-label-group}.#{$c-visible} .#{$c-label},
 #{$ui-label}.#{$c-visible} {
-  display: inline-block !important;
+  display: inline-block;
 }
 
 /*-------------------
@@ -108,7 +114,14 @@ a#{$ui-label}.#{$c-active}:hover {
 
 #{$ui-label-group}.#{$c-hidden} .#{$c-label},
 #{$ui-label}.#{$c-hidden} {
-  display: none !important;
+  display: none;
+}
+
+/*-------------------
+       Disabled
+--------------------*/
+#{$ui-label}.#{$c-disabled} {
+  opacity: 0.5;
 }
 
 /*-------------------
@@ -117,12 +130,5 @@ a#{$ui-label}.#{$c-active}:hover {
 
 #{$ui-label-group}.#{$c-inverted} .#{$c-label},
 #{$ui-label}.#{$c-inverted} {
-  color: color-text($inverted: true) !important;
-}
-
-/*-------------------
-       Disabled
---------------------*/
-#{$ui-label}.#{$c-disabled} {
-  opacity: 0.5;
+  color: color-text($inverted: true);
 }

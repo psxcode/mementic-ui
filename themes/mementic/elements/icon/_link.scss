@@ -13,7 +13,7 @@ $ui-link-icon-group: '#{$ui-icon-group}.#{$c-link}';
   transition: opacity $duration-default $easing-default;
 
   &:hover {
-	opacity: 1 !important;
+	opacity: 1;
   }
 }
 

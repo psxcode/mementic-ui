@@ -3,9 +3,9 @@
 --------------------*/
 
 $opacity: 1;
-$width: 1.18em;
+$width: 1em;
 $height: 1em;
-$distance-from-text: 0.25rem;
+$distance-from-text: 0.25em;
 
 /* Variations */
 
@@ -13,14 +13,20 @@ $link-opacity: 0.8;
 $link-duration: 0.3s;
 $loading-duration: 2s;
 
+$bordered-shadow: box-shadow-create(0, 0, 0, 1px, true);
+@function bordered-box-shadow($inverted: false) {
+  @return box-shadow-colorize($bordered-shadow, color-divider($inverted));
+}
+
 $circular-size: 2em;
-$circular-padding: 0.5em;
-$circular-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
+@function circular-padding() {
+  @return 0.5em;
+}
 
 $bordered-size: 2em;
-$bordered-vertical-padding: (($bordered-size - $height) / 2);
-$bordered-horizontal-padding: (($bordered-size - $width) / 2);
-$bordered-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
+@function bordered-padding() {
+  @return (($bordered-size - $height) / 2) (($bordered-size - $width) / 2)
+}
 
 $corner-icon-size: 0.45em;
 $corner-icon-stroke: 1px;
@@ -37,12 +43,12 @@ $corner-icon-stroke $corner-icon-stroke 0 $color-dark;
 
 /* Size */
 $sizes: map-zip(map-keys($sizes), (
-        0.6, // mini
-        0.8, // tiny
-        1, // small
-        1.4, // medium
-        2, // large
-        3.5, // big
-        5.5, //huge
-        8 // massive
+		0.6, // mini
+		0.8, // tiny
+		1, // small
+		1.4, // medium
+		2, // large
+		3.5, // big
+		5.5, //huge
+		8 // massive
 ));

@@ -430,10 +430,6 @@ $c-descending: 'descending'; // table
   @return selector-class-strict-order($c-right, $c-floated);
 }
 
-@function selector-left-rotated() {
-  @return selector-class-strict-order($c-left, $c-rotated);
-}
-
 @function selector-right-rotated() {
   @return selector-class-strict-order($c-right, $c-rotated);
 }

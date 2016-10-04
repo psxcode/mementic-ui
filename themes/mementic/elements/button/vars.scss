@@ -89,8 +89,8 @@ $icon-distance: px-em(6);
 $icon-transition: opacity $duration-default $easing-default;
 $icon-vertical-align: middle;
 
-$icon-margin: 0 $icon-distance 0 -($icon-distance / 2);
-$right-icon-margin: 0 -($icon-distance / 2) 0 $icon-distance;
+$icon-margin: 0 $icon-distance 0 ($icon-distance * -0.5);
+$right-icon-margin: 0 ($icon-distance * -0.5) 0 $icon-distance;
 
 /* Loader */
 $inverted-loader-fill-color: rgba(0, 0, 0, 0.15);

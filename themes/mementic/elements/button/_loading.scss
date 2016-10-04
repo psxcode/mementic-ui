@@ -15,8 +15,8 @@
 
   position: relative;
   cursor: default;
-  text-shadow: none !important;
-  color: transparent !important;
+  text-shadow: none;
+  color: transparent;
   opacity: $loading-opacity;
   pointer-events: $loading-pointer-events;
   transition: $loading-transition;

@@ -3,15 +3,14 @@
 --------------------*/
 
 #{$ui-icon},
-#{$ui-icon-group} {
+#{$ui-icon-group} > .#{$c-icon} {
   font-size: size('medium');
 }
 
 @each $name, $size in $sizes {
 
   #{$ui-icon}.#{$name},
-  #{$ui-icon-group}.#{$name} {
-
+  #{$ui-icon-group}.#{$name} > .#{$c-icon} {
 	font-size: size($name);
   }
 }

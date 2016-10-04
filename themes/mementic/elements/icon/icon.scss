@@ -15,6 +15,7 @@ $ui-icon-group: selector-ui-icon-group();
   height: $height;
   line-height: 1;
   text-align: center;
+  vertical-align: bottom;
 
   font-style: normal;
   font-weight: normal;
@@ -28,20 +29,8 @@ $ui-icon-group: selector-ui-icon-group();
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  &:before {
+  &::before {
 	background: none;
-  }
-
-  &.#{$c-hover} {
-	opacity: 1;
-  }
-
-  &.#{$c-active} {
-	opacity: 1;
-  }
-
-  &.emphasized {
-	opacity: 1;
   }
 
   &.#{$c-disabled} {
@@ -56,22 +45,17 @@ $ui-icon-group: selector-ui-icon-group();
 #{$ui-icon-group} {
   display: inline-block;
   position: relative;
-  line-height: 1;
 
   > .#{$c-icon} {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translateX(-50%) translateY(-50%);
 	margin: 0;
 
-	&:first-child {
-	  position: static;
-	  width: auto;
-	  height: auto;
-	  vertical-align: top;
-	  transform: none;
-	  margin-right: $distance-from-text;
+	&:not(:first-child) {
+	  position: absolute;
+	  top: 0;
+	  bottom: 0;
+	  left: 0;
+	  right: 0;
+	  margin: auto;
 	}
 
 	/* Corner Icon */
@@ -80,7 +64,6 @@ $ui-icon-group: selector-ui-icon-group();
 	  left: auto;
 	  right: 0;
 	  bottom: 0;
-	  transform: none;
 	  font-size: $corner-icon-size;
 	  text-shadow: $corner-icon-shadow;
 
@@ -91,20 +74,21 @@ $ui-icon-group: selector-ui-icon-group();
   }
 }
 
+/* Icon on Inverted Background */
 .#{$c-inverted} > #{$ui-icon},
+.#{$c-inverted} > #{$ui-icon-group} > .#{$c-icon},
+#{$ui-icon-group}.#{$c-inverted} > .#{$c-icon},
 #{$ui-icon}.#{$c-inverted} {
-
   color: color-text(true)
 }
 
-//@import "bordered";
+@import "bordered";
 @import "circular";
 @import "colors";
-//@import "fitted";
-//@import "inverted";
-//@import "link";
-//@import "loading";
-//@import "rotated";
+@import "fitted";
+@import "link";
+@import "loading";
+@import "rotated";
 @import "sizes";
 
 

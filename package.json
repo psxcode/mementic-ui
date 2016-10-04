@@ -22,7 +22,9 @@
     "gulp-clean-css": "^2.0.12",
     "gulp-concat": "^2.6.0",
     "gulp-inject": "^4.1.0",
+    "gulp-inject-string": "^1.1.0",
     "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
     "gulp-sass": "^2.3.2",
     "lodash": "^4.15.0",
     "ordered-merge-stream": "^1.0.0"
@@ -31,9 +33,11 @@
     "fsxu": "*",
     "gulp": "*",
     "gulp-inject": "*",
+    "gulp-inject-string": "*",
     "gulp-concat": "*",
     "gulp-rename": "*",
     "gulp-clean-css": "*",
+    "gulp-replace": "*",
     "gulp-sass": "*",
     "ordered-merge-stream": "*",
     "lodash": "*"

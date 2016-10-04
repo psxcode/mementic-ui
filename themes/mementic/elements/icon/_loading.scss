@@ -15,8 +15,18 @@
 $ui-loading-icon: '#{$ui-icon}.#{$c-loading}';
 
 #{$ui-loading-icon} {
+  position: relative;
 
-  height: 1em;
-  line-height: 1;
-  animation: icon-loading $loading-duration linear infinite;
+  &::before {
+	animation: icon-loading $loading-duration linear infinite;
+
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	width: 1em;
+	height: 1em;
+  }
 }

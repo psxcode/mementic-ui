@@ -8,42 +8,50 @@
 	/* Color */
 	#{$ui-label-group}.#{$name} .#{$c-label},
 	#{$ui-label}.#{$name} {
-	  background-color: $color !important;
-	  border-color: $color !important;
-	  color: color-text($inverted: true) !important;
+	  background-color: $color;
+	  border-color: $color;
+	  color: color-text($inverted: true);
 	}
 
 	/* Link */
-	#{$ui-label-group}.#{$name} a.#{$c-label}:hover,
-	a.#{$name}#{$ui-label}:hover {
-	  background-color: color-hover($color) !important;
-	  border-color: color-hover($color) !important;
-	  color: color-text-hovered($inverted: true) !important;
+	#{$ui-label-group}.#{$name} a.#{$c-label},
+	a.#{$name}#{$ui-label} {
+
+	  &:hover {
+		background-color: color-hover($color);
+		border-color: color-hover($color);
+		color: color-text-hovered($inverted: true);
+	  }
 	}
 
 	/* Corner */
-	.ui.#{$name}.corner.label,
-	.ui.#{$name}.corner.label:hover {
-	  background-color: transparent !important;
+	#{$ui-label}.#{$c-corner}.#{$name} {
+
+	  &, &:hover {
+		background-color: transparent;
+	  }
 	}
 
 	/* Ribbon */
-	.ui.#{$name}.ribbon.label {
-	  border-color: color-shadow($color) !important;
+	#{$ui-label}.#{$c-ribbon}.#{$name} {
+	  border-color: color-shadow($color);
 	}
 
 	/* Basic */
-	.ui.basic.#{$name}.label {
-	  background-color: $color-light !important;
-	  color: $color !important;
-	  border-color: $color !important;
+	#{$ui-label}.#{$name}.#{$c-basic} {
+	  background-color: $color-light;
+	  color: $color;
+	  border-color: $color;
 	}
 
-	.ui.basic.#{$name}.labels a.label:hover,
-	a.ui.basic.#{$name}.label:hover {
-	  background-color: $color-light !important;
-	  color: color-hover($color) !important;
-	  border-color: color-hover($color) !important;
+	#{$ui-label-group}.#{$name}.#{$c-basic} a.#{$c-label},
+	a#{$ui-label}.#{$name}.#{$c-basic} {
+
+	  &:hover {
+		background-color: $color-light;
+		color: color-hover($color);
+		border-color: color-hover($color);
+	  }
 	}
   }
 }

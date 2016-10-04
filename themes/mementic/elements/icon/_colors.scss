@@ -5,21 +5,25 @@
 @mixin colorize($color-map) {
   @each $name, $color in $color-map {
 
+	#{$ui-icon-group}.#{$name} > .#{$c-icon},
 	#{$ui-icon}.#{$name} {
 
 	  color: $color;
+	}
 
-	  /* Inverted */
-	  &.#{$c-inverted} {
+	/* Color Icon inside Inverted Background */
+	.#{$c-inverted} > #{$ui-icon-group}.#{$name} > .#{$c-icon},
+	.#{$c-inverted} > #{$ui-icon-group} > .#{$c-icon}.#{$name},
+	.#{$c-inverted} > #{$ui-icon}.#{$name} {
+	  color: color-light($color);
+	}
 
-		color: color-light($color);
-
-		&.#{$c-bordered},
-		&.#{$c-circular} {
-		  background-color: $color;
-		  color: $color-light;
-		}
-	  }
+	/* Inverted Color Icon */
+	#{$ui-icon-group}.#{$c-inverted}.#{$name} > .#{$c-icon},
+	#{$ui-icon-group}.#{$c-inverted} > .#{$c-icon}.#{$name},
+	#{$ui-icon}.#{$c-inverted}.#{$name} {
+	  color: color-text(true);
+	  background: $color;
 	}
   }
 }

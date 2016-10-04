@@ -2,21 +2,22 @@
       Bordered
 --------------------*/
 
-/* Shortcuts */
-$ui-bordered-icon: '#{$ui-icon}.#{$c-bordered}';
-
-#{$ui-bordered-icon} {
-
-  vertical-align: baseline;
+#{$ui-icon}.#{$c-bordered} {
 
   width: $bordered-size;
   height: $bordered-size;
-  padding: $bordered-vertical-padding $bordered-horizontal-padding !important;
-  box-shadow: $bordered-shadow;
+  padding: bordered-padding();
+  box-shadow: bordered-box-shadow();
+}
 
-  /* Inverted */
-  &.#{$c-inverted} {
-	border: none;
-	box-shadow: none;
-  }
+.#{$c-inverted} > #{$ui-icon-group} > .#{$c-icon}.#{$c-bordered},
+.#{$c-inverted} > #{$ui-icon}.#{$c-bordered} {
+  box-shadow: bordered-box-shadow(true);
+}
+
+/* Inverted */
+#{$ui-icon-group}.#{$c-inverted} > .#{$c-icon}.#{$c-bordered},
+#{$ui-icon}.#{$c-inverted}.#{$c-bordered} {
+  background: color-text();
+  box-shadow: none;
 }

@@ -2,22 +2,24 @@
       Circular
 --------------------*/
 
-/* Shortcuts */
-$ui-circular-icon: '#{$ui-icon}.#{$c-circular}';
-
-#{$ui-circular-icon} {
-
-  border-radius: 50%;
-
-  padding: $circular-padding;
-  box-shadow: $circular-shadow;
+#{$ui-icon}.#{$c-circular} {
 
   width: $circular-size;
   height: $circular-size;
+  padding: circular-padding();
 
-  /* Inverted */
-  &.#{$c-inverted} {
-	border: none;
-	box-shadow: none;
-  }
+  border-radius: 50%;
+  box-shadow: bordered-box-shadow();
+}
+
+.#{$c-inverted} > #{$ui-icon-group} > .#{$c-icon}.#{$c-circular},
+.#{$c-inverted} > #{$ui-icon}.#{$c-circular} {
+  box-shadow: bordered-box-shadow(true);
+}
+
+/* Inverted */
+#{$ui-icon-group}.#{$c-inverted} > .#{$c-icon}.#{$c-circular},
+#{$ui-icon}.#{$c-inverted}.#{$c-circular} {
+  background: color-text();
+  box-shadow: none;
 }
