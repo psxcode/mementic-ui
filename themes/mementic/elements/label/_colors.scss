@@ -2,32 +2,33 @@
        Colors
 --------------------*/
 
-@mixin colors($color-map) {
+@mixin colorize($color-map) {
   @each $name, $color in $color-map {
 
 	/* Color */
-	#{$ui-label-group}.#{$name} .#{$c-label},
+	#{$ui-label-group}.#{$name} > .#{$c-label},
 	#{$ui-label}.#{$name} {
+	  color: color-text($inverted: true);
 	  background-color: $color;
 	  border-color: $color;
-	  color: color-text($inverted: true);
 	}
 
 	/* Link */
-	#{$ui-label-group}.#{$name} a.#{$c-label},
+	#{$ui-label-group}.#{$name} > a.#{$c-label},
 	a.#{$name}#{$ui-label} {
 
 	  &:hover {
+		color: color-text-hovered($inverted: true);
 		background-color: color-hover($color);
 		border-color: color-hover($color);
-		color: color-text-hovered($inverted: true);
 	  }
 	}
 
 	/* Corner */
 	#{$ui-label}.#{$c-corner}.#{$name} {
 
-	  &, &:hover {
+	  &,
+	  &:hover {
 		background-color: transparent;
 	  }
 	}
@@ -39,17 +40,17 @@
 
 	/* Basic */
 	#{$ui-label}.#{$name}.#{$c-basic} {
-	  background-color: $color-light;
 	  color: $color;
+	  background-color: $color-light;
 	  border-color: $color;
 	}
 
-	#{$ui-label-group}.#{$name}.#{$c-basic} a.#{$c-label},
+	#{$ui-label-group}.#{$name}.#{$c-basic} > a.#{$c-label},
 	a#{$ui-label}.#{$name}.#{$c-basic} {
 
 	  &:hover {
-		background-color: $color-light;
 		color: color-hover($color);
+		background-color: $color-light;
 		border-color: color-hover($color);
 	  }
 	}
@@ -57,5 +58,5 @@
 }
 
 @if $auto-include-colors-info {
-  @include colors($colors-info);
+  @include colorize($colors-info);
 }

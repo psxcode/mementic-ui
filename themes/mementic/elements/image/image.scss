@@ -2,40 +2,41 @@
 $ui-image: selector-ui-image();
 $ui-image-group: selector-ui-image-group();
 
-#{$ui-image} {
-
-  position: relative;
+#{$ui-image-group} > .#{$c-image} > img,
+#{$ui-image-group} > .#{$c-image} > svg,
+#{$ui-image-group} > img,
+#{$ui-image-group} > svg,
+img#{$ui-image} {
   display: inline-block;
-  vertical-align: middle;
   max-width: 100%;
   background-color: $placeholder-color;
+}
 
-  svg,
-  img {
-	display: block;
-	max-width: 100%;
-	height: auto;
+#{$ui-image-group} > .#{$c-image} > img,
+#{$ui-image-group} > .#{$c-image} > svg,
+#{$ui-image-group} > img,
+#{$ui-image-group} > svg {
+  margin: 0 $image-horizontal-margin $image-vertical-margin;
+
+  &:first-child {
+	margin-left: 0;
   }
 
-  @at-root img#{&} {
-	display: block;
+  &:last-child {
+	margin-right: 0;
   }
 }
 
+/* Image Group */
 #{$ui-image-group} {
-
   font-size: 0;
-  margin: 0 -$image-horizontal-margin 0;
-
-  .#{$c-image}, img, svg {
-	display: inline-block;
-	margin: 0 $image-horizontal-margin $image-vertical-margin;
-  }
+  //margin: 0 -$image-horizontal-margin 0;
 }
 
-
+/* Hidden */
 #{$ui-image-group}.#{$c-hidden},
 #{$ui-image}.#{$c-hidden} {
+
   display: none;
 
   &.transition {
@@ -44,9 +45,19 @@ $ui-image-group: selector-ui-image-group();
   }
 }
 
+/* Disabled */
 #{$ui-image-group}.#{$c-disabled},
 #{$ui-image}.#{$c-disabled} {
   cursor: default;
   opacity: $opacity-disabled;
 }
 
+@import "sizes";
+@import "aligned";
+@import "avatar";
+@import "bordered";
+@import "circular";
+@import "fluid";
+@import "floated";
+@import "rounded";
+@import "spaced";

@@ -2,17 +2,12 @@
     Circular
 ---------------*/
 
-$ui-circular-image: '#{$ui-image}.#{$c-circular}';
-$ui-circular-image-group: '#{$ui-image-group}.#{$c-circular}';
-
-#{$ui-circular-image-group},
-#{$ui-circular-image} {
-  overflow: hidden;
-}
-
-#{$ui-circular-image-group} .#{$c-image},
-#{$ui-circular-image-group} .#{$c-image} > *,
-#{$ui-circular-image},
-#{$ui-circular-image} > * {
+#{$ui-image-group}.#{$c-circular} > .#{$c-image} > img,
+#{$ui-image-group}.#{$c-circular} > .#{$c-image} > svg,
+#{$ui-image-group}.#{$c-circular} > img,
+#{$ui-image-group}.#{$c-circular} > svg,
+#{$ui-image}.#{$c-circular} > img,
+#{$ui-image}.#{$c-circular} > svg,
+img#{$ui-image}.#{$c-circular} {
   border-radius: $border-radius-circular;
 }

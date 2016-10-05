@@ -36,29 +36,17 @@ $ui-label-group: selector-ui-label-group();
 --------------------*/
 
 #{$ui-label-group} > .#{$c-label} {
+
   margin: 0 $group-horizontal-margin $group-vertical-margin 0;
-}
 
-/*-------------------
-        Hover
---------------------*/
+  &:first-child {
+	margin-left: 0;
+  }
 
-#{$ui-label-group} a.#{$c-label},
-a#{$ui-label} {
-
-  &:hover {
-	background-color: $label-hover-background-color;
-	border-color: $label-hover-background-color;
-
-	background-image: $label-hover-background-image;
-	color: $label-hover-text-color;
-
-	&::before {
-	  color: $label-hover-text-color;
-	}
+  &:last-child {
+	margin-right: 0;
   }
 }
-
 /*-------------------
         Active
 --------------------*/
@@ -78,32 +66,10 @@ a#{$ui-label} {
 }
 
 /*-------------------
-     Active Hover
---------------------*/
-
-#{$ui-label-group} a.#{$c-label}.#{$c-active},
-a#{$ui-label}.#{$c-active} {
-
-  &:hover {
-	background-color: $label-active-hover-background-color;
-	border-color: $label-active-hover-background-color;
-
-	background-image: $label-active-hover-background-image;
-	color: $label-active-hover-text-color;
-
-	&::before {
-	  background-color: $label-active-hover-background-color;
-	  background-image: $label-active-hover-background-image;
-	  color: $label-active-hover-text-color;
-	}
-  }
-}
-
-/*-------------------
       Visible
 --------------------*/
 
-#{$ui-label-group}.#{$c-visible} .#{$c-label},
+#{$ui-label-group}.#{$c-visible} > .#{$c-label},
 #{$ui-label}.#{$c-visible} {
   display: inline-block;
 }
@@ -112,7 +78,7 @@ a#{$ui-label}.#{$c-active} {
       Hidden
 --------------------*/
 
-#{$ui-label-group}.#{$c-hidden} .#{$c-label},
+#{$ui-label-group}.#{$c-hidden} > .#{$c-label},
 #{$ui-label}.#{$c-hidden} {
   display: none;
 }
@@ -128,7 +94,12 @@ a#{$ui-label}.#{$c-active} {
        Inverted
 --------------------*/
 
-#{$ui-label-group}.#{$c-inverted} .#{$c-label},
+.#{$c-inverted} > #{$ui-label-group} > .#{$c-label},
+.#{$c-inverted} > #{$ui-label},
+#{$ui-label-group}.#{$c-inverted} > .#{$c-label},
 #{$ui-label}.#{$c-inverted} {
-  color: color-text($inverted: true);
+  color: color-text(true);
 }
+
+@import "sizes";
+@import "colors";

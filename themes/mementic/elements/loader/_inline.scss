@@ -2,31 +2,30 @@
        Inline
 --------------------*/
 
-/* Shortcuts */
-$ui-inline-loader: '#{$ui-loader}.#{$c-inline}';
-
-#{$ui-inline-loader} {
+#{$ui-loader}.#{$c-inline} {
 
   position: relative;
-  vertical-align: $inline-vertical-align;
-  margin: $inline-margin;
+  vertical-align: middle;
+  margin: 0;
+
+  /*
   left: 0;
   top: 0;
   transform: none;
+  */
 
   &.#{$c-active},
   &.#{$c-visible} {
-  	display: inline-block;
+	display: inline-block;
   }
+}
 
-	/* Centered Inline */
-  &.#{$c-centered} {
+/* Centered Inline */
+#{$ui-loader}.#{$c-inline}.#{$c-centered} {
 
-	&.#{$c-active},
-	&.#{$c-visible} {
-	  display: block;
-	  margin-left: auto;
-	  margin-right: auto;
-	}
+  &.#{$c-active},
+  &.#{$c-visible} {
+	display: block;
+	margin: auto;
   }
 }

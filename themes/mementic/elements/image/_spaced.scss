@@ -3,21 +3,20 @@
 --------------------*/
 
 /* Shortcuts */
-$ui-spaced-image: '#{$ui-image}.#{$c-spaced}';
 $left-spaced: selector-left-spaced();
 $right-spaced: selector-right-spaced();
 
-#{$ui-spaced-image} {
+#{$ui-image}.#{$c-spaced} {
 
-  display: inline-block !important;
+  display: inline-block;
   margin-left: $spaced-distance;
   margin-right: $spaced-distance;
+}
 
-  &#{$left-spaced} {
-	margin-right: 0;
-  }
+#{$ui-image}#{$left-spaced} {
+  margin-right: 0;
+}
 
-  &#{$right-spaced} {
-	margin-left: 0;
-  }
+#{$ui-image}#{$right-spaced} {
+  margin-left: 0;
 }

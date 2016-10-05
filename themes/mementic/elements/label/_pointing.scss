@@ -8,114 +8,109 @@ $down-pointing: selector-bottom-pointing();
 $left-pointing: selector-left-pointing();
 $right-pointing: selector-right-pointing();
 
-#{$ui-label} {
+/* Pointing */
+#{$ui-label}.#{$c-pointing} {
 
-  /* Pointing */
-  &.#{$c-pointing} {
-	position: relative;
+  position: relative;
 
-	&::before {
-	  background-color: inherit;
-	  background-image: inherit;
-	  border-width: 0;
-	  border-style: solid;
-	  border-color: $pointing-border-color;
-	}
-
-	/* Attached */
-	&.#{$c-attached} {
-	  position: absolute;
-	}
-
-	/* Arrow */
-	&::before {
-	  position: absolute;
-	  content: '';
-	  transform: rotate(45deg);
-	  background-image: none;
-
-	  z-index: $pointing-triangle-z-index;
-	  width: $pointing-triangle-size;
-	  height: $pointing-triangle-size;
-	  transition: $pointing-triangle-transition;
-	}
+  /* Attached */
+  &.#{$c-attached} {
+	position: absolute;
   }
 
-  /*--- Above ---*/
-  &.#{$c-pointing},
-  &#{$down-pointing} {
-	margin-top: $pointing-vertical-distance;
+  /* Arrow */
+  &::before {
+	position: absolute;
+	content: '';
+	transform: rotate(45deg);
 
-	&::before {
-	  border-width: $border-width 0 0 $border-width;
-	  transform: translateX(-50%) translateY(-50%) rotate(45deg);
-	  top: 0;
-	  left: 50%;
-	}
+	width: $pointing-triangle-size;
+	height: $pointing-triangle-size;
+	background: inherit;
+	border: thin solid $pointing-border-color;
 
-	/* Basic */
-	&.#{$c-basic}::before {
-	  margin-top: $basic-pointing-triangle-offset;
-	}
+	z-index: $pointing-triangle-z-index;
+	transition: $pointing-triangle-transition;
+  }
+}
+
+/*--- Above ---*/
+#{$ui-label}.#{$c-pointing},
+#{$ui-label}#{$down-pointing} {
+
+  margin-top: $pointing-vertical-distance;
+
+  &::before {
+	border-width: $border-width 0 0 $border-width;
+	transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	top: 0;
+	left: 50%;
   }
 
-  /*--- Below ---*/
-  &#{$up-pointing} {
-	margin-top: 0;
-	margin-bottom: $pointing-vertical-distance;
+  /* Basic */
+  &.#{$c-basic}::before {
+	margin-top: $basic-pointing-triangle-offset;
+  }
+}
 
-	&::before {
-	  border-width: 0 $border-width $border-width 0;
-	  bottom: auto;
-	  right: auto;
-	  transform: translateX(-50%) translateY(-50%) rotate(45deg);
-	  top: 100%;
-	  left: 50%;
-	}
+/*--- Below ---*/
+#{$ui-label}#{$up-pointing} {
 
-	/* Basic */
-	&.#{$c-basic}::before {
-	  margin-top: - $basic-pointing-triangle-offset;
-	}
+  margin-top: 0;
+  margin-bottom: $pointing-vertical-distance;
+
+  &::before {
+	border-width: 0 $border-width $border-width 0;
+	bottom: auto;
+	right: auto;
+	transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	top: 100%;
+	left: 50%;
   }
 
-  /*--- Left ---*/
-  &#{$left-pointing} {
-	margin-top: 0;
-	margin-left: $pointing-horizontal-distance;
+  /* Basic */
+  &.#{$c-basic}::before {
+	margin-top: - $basic-pointing-triangle-offset;
+  }
+}
 
-	&::before {
-	  border-width: 0 0 $border-width $border-width;
-	  transform: translateX(-50%) translateY(-50%) rotate(45deg);
-	  bottom: auto;
-	  right: auto;
-	  top: 50%;
-	  left: 0;
-	}
+/*--- Left ---*/
+#{$ui-label}#{$left-pointing} {
 
-	/* Basic */
-	&.#{$c-basic}::before {
-	  left: $basic-pointing-triangle-offset;
-	}
+  margin-top: 0;
+  margin-left: $pointing-horizontal-distance;
+
+  &::before {
+	border-width: 0 0 $border-width $border-width;
+	transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	bottom: auto;
+	right: auto;
+	top: 50%;
+	left: 0;
   }
 
-  /*--- Right ---*/
-  #{$right-pointing} {
-	margin-top: 0;
-	margin-right: $pointing-horizontal-distance;
+  /* Basic */
+  &.#{$c-basic}::before {
+	left: $basic-pointing-triangle-offset;
+  }
+}
 
-	&::before {
-	  border-width: $border-width $border-width 0 0;
-	  transform: translateX(50%) translateY(-50%) rotate(45deg);
-	  top: 50%;
-	  right: 0;
-	  bottom: auto;
-	  left: auto;
-	}
+/*--- Right ---*/
+#{$ui-label}#{$right-pointing} {
+  margin-top: 0;
+  margin-right: $pointing-horizontal-distance;
 
-	/* Basic */
-	&.#{$c-basic}::before {
-	  right: $basic-pointing-triangle-offset;
-	}
+  &::before {
+	border-width: $border-width $border-width 0 0;
+	transform: translateX(50%) translateY(-50%) rotate(45deg);
+	top: 50%;
+	right: 0;
+	bottom: auto;
+	left: auto;
+  }
+
+  /* Basic */
+  &.#{$c-basic}::before {
+	right: $basic-pointing-triangle-offset;
   }
 }

@@ -2,14 +2,12 @@
      Rounded
 ---------------*/
 
-/* Shortcuts */
-$ui-rounded-image: '#{$ui-image}.#{$c-rounded}';
-$ui-rounded-image-group: '#{$ui-image-group}.#{$c-rounded}';
-
-#{$ui-rounded-image-group} .#{$c-image},
-#{$ui-rounded-image-group} .#{$c-image} > *,
-#{$ui-rounded-image},
-#{$ui-rounded-image} > * {
-
+#{$ui-image-group}.#{$c-rounded} > .#{$c-image} > img,
+#{$ui-image-group}.#{$c-rounded} > .#{$c-image} > svg,
+#{$ui-image-group}.#{$c-rounded} > img,
+#{$ui-image-group}.#{$c-rounded} > svg,
+#{$ui-image}.#{$c-rounded} > img,
+#{$ui-image}.#{$c-rounded} > svg,
+img#{$ui-image}.#{$c-rounded} {
   border-radius: $rounded-border-radius;
 }

@@ -4,13 +4,15 @@
 
 @each $name, $size in $image-width {
 
-  #{$ui-image-group}.#{$name} .#{$c-image},
-  #{$ui-image-group}.#{$name} img,
-  #{$ui-image-group}.#{$name} svg,
-  #{$ui-image}.#{$name} {
+  #{$ui-image-group}.#{$name} > .#{$c-image} > img,
+  #{$ui-image-group}.#{$name} > .#{$c-image} > svg,
+  #{$ui-image-group}.#{$name} > img,
+  #{$ui-image-group}.#{$name} > svg,
+  #{$ui-image}.#{$name} > img,
+  #{$ui-image}.#{$name} > svg,
+  img#{$ui-image}.#{$name} {
 
 	width: $size;
-	height: auto;
 	font-size: size($name);
   }
 }

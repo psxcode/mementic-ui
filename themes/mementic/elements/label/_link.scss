@@ -1,19 +1,47 @@
-/* Link */
-#{$ui-label} {
+/* Inside Link */
+#{$ui-label} > a {
+  cursor: pointer;
+  color: inherit;
+  opacity: $link-opacity;
+  transition: $link-transition;
 
-  @at-root a#{&} {
-	cursor: pointer;
+  &:hover {
+	opacity: 1;
   }
+}
 
-  /* Inside Link */
-  > a {
-	cursor: pointer;
-	color: inherit;
-	opacity: $link-opacity;
-	transition: $link-transition;
+/* Link */
+#{$ui-label-group} > a.#{$c-label},
+a#{$ui-label} {
 
-	&:hover {
-	  opacity: 1;
+  cursor: pointer;
+
+  &:hover {
+	color: $label-hover-text-color;
+	background-color: $label-hover-background-color;
+	background-image: $label-hover-background-image;
+	border-color: $label-hover-background-color;
+
+	&::before {
+	  color: $label-hover-text-color;
+	}
+  }
+}
+
+/* Active Link Label */
+#{$ui-label-group} > a.#{$c-label}.#{$c-active},
+a#{$ui-label}.#{$c-active} {
+
+  &:hover {
+	color: $label-active-hover-text-color;
+	background-color: $label-active-hover-background-color;
+	background-image: $label-active-hover-background-image;
+	border-color: $label-active-hover-background-color;
+
+	&::before {
+	  color: $label-active-hover-text-color;
+	  background-color: $label-active-hover-background-color;
+	  background-image: $label-active-hover-background-image;
 	}
   }
 }

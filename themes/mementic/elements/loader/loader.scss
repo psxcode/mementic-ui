@@ -10,6 +10,7 @@
 
 /* Shortcuts */
 $ui-loader: selector-ui-loader();
+$ui-dimmer: selector-ui-dimmer();
 
 /* Standard Size */
 #{$ui-loader} {
@@ -17,12 +18,18 @@ $ui-loader: selector-ui-loader();
   // Hidden by default
   display: none;
   position: absolute;
-  top: $loader-top-offset;
-  left: $loader-left-offset;
-  margin: 0;
+
+  /*
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  */
+
+  top: 0; bottom: 0; left: 0; right: 0;
+  margin: auto;
+
   text-align: center;
   z-index: 1000;
-  transform: translateX(-50%) translateY(-50%);
 
   /* Static Shape */
   &::before {
@@ -91,3 +98,41 @@ $ui-loader: selector-ui-loader();
 	}
   }
 }
+
+/*-------------------
+      Coupling
+--------------------*/
+
+/* Show inside active dimmer */
+#{$ui-dimmer} > .#{$c-loader} {
+  display: block;
+}
+
+/* Black Dimmer */
+#{$ui-dimmer} > #{$ui-loader} {
+
+  color: $inverted-loader-text-color;
+
+  &::before {
+	border-color: $inverted-loader-fill-color;
+  }
+  &::after {
+	border-color: $inverted-shape-border-color;
+  }
+}
+
+/* White Dimmer (Inverted) */
+#{$ui-dimmer}.#{$c-inverted} > #{$ui-loader} {
+
+  color: $loader-text-color;
+  &::before {
+	border-color: $loader-fill-color;
+  }
+  &::after {
+	border-color: $shape-border-color;
+  }
+}
+
+@import "sizes";
+@import "text";
+@import "inline";

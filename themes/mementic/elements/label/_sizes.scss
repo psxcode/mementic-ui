@@ -2,19 +2,16 @@
         Sizes
 --------------------*/
 
-#{$ui-label-group} .#{$c-label},
+/* Default Size */
+#{$ui-label-group} > .#{$c-label},
 #{$ui-label} {
   font-size: size('medium');
 }
 
-@mixin sizes($size-map) {
-  @each $name, $value in $size-map {
+@each $name, $value in $sizes {
 
-	#{$ui-label-group}.#{$name} .#{$c-label},
-	#{$ui-label}.#{$name} {
-	  font-size: size($name);
-	}
+  #{$ui-label-group}.#{$name} > .#{$c-label},
+  #{$ui-label}.#{$name} {
+	font-size: size($name);
   }
 }
-
-@include sizes($sizes);

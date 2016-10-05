@@ -17,7 +17,6 @@ $image-border: 1px solid rgba(0, 0, 0, 0.1);
 $avatar-size: 2em;
 $avatar-margin: 0.25em;
 
-
 /*-------------------
        Variations
 --------------------*/
@@ -31,14 +30,14 @@ $floated-vertical-margin: 1em;
 
 /* Size */
 $image-width: map-zip(map-keys($sizes), (
-        35px, //mini
-        80px, //tiny
-        150px, //small
-        300px, //medium
-        450px, //large
-        600px, //big
-        800px, //huge
-        960px //massive
+		35px, //mini
+		80px, //tiny
+		150px, //small
+		300px, //medium
+		450px, //large
+		600px, //big
+		800px, //huge
+		960px //massive
 ));
 
 @function image-width($variant) {

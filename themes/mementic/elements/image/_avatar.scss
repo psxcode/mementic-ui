@@ -2,22 +2,21 @@
      Avatar
 ---------------*/
 
-/* Shortcuts */
-$ui-avatar-image: '#{$ui-image}.#{$c-avatar}';
-$ui-avatar-image-group: '#{$ui-image-group}.#{$c-avatar}';
-
-#{$ui-avatar-image-group} .#{$c-image},
-#{$ui-avatar-image-group} img,
-#{$ui-avatar-image-group} svg,
-#{$ui-avatar-image} img,
-#{$ui-avatar-image} svg,
-#{$ui-avatar-image} {
-
-  margin-right: $avatar-margin;
+#{$ui-image-group}.#{$c-avatar} > .#{$c-image} > img,
+#{$ui-image-group}.#{$c-avatar} > .#{$c-image} > svg,
+#{$ui-image-group}.#{$c-avatar} > img,
+#{$ui-image-group}.#{$c-avatar} > svg,
+#{$ui-image}.#{$c-avatar} > img,
+#{$ui-image}.#{$c-avatar} > svg,
+img#{$ui-image}.#{$c-avatar} {
 
   display: inline-block;
+
   width: $avatar-size;
   height: $avatar-size;
+  margin-right: $avatar-margin;
+
+  vertical-align: middle;
 
   border-radius: $border-radius-circular;
 }

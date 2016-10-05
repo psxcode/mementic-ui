@@ -2,30 +2,36 @@
         Sizes
 --------------------*/
 
-/* Shortcuts */
-$ui-dimmer: selector-ui-dimmer();
-$ui-text-loader: '#{$ui-loader}.#{$c-text}';
+@mixin loader-size($name, $default-size: false) {
 
-@each $name, $size in $loader-sizes {
+  $size-class: if(to-bool($default-size), '', '.#{$name}');
+  $loader-size: loader-size($name);
 
   /* Loader */
-  #{$ui-loader}.#{$name} {
+  #{$ui-loader}#{$size-class} {
 
-	width: $size;
-	height: $size;
+	width: $loader-size;
+	height: $loader-size;
 	font-size: size($name);
 
 	&::before,
 	&::after {
-	  width: $size;
-	  height: $size;
+	  width: $loader-size;
+	  height: $loader-size;
 	  margin: loader-offset($name);
 	}
   }
 
   /* Text Loader */
-  #{$ui-text-loader}.#{$name} {
-	min-width: $size;
-	padding-top: calc(#{$size} + #{$text-distance});
+  #{$ui-loader}.#{$c-text}#{$size-class} {
+	min-width: $loader-size;
+	padding-top: $loader-size + $text-distance;
   }
+}
+
+/* Default Size */
+@include loader-size('medium', true);
+
+@each $name, $size in $loader-sizes {
+  @include loader-size($name);
 }
