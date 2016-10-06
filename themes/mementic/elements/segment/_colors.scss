@@ -1,23 +1,28 @@
 /*-------------------
        Colors
 --------------------*/
-@mixin colors($color-map) {
+@mixin colorize($color-map) {
   @each $name, $color in $color-map {
 
+	/* Colored Segment */
+	#{$ui-segment-group} > .#{$c-segment}.#{$name},
 	#{$ui-segment}.#{$name} {
+	  border-top: $colored-border-size solid $color;
+	}
 
-	  &:not(.#{$c-inverted}) {
-		border-top: $colored-border-size solid $color;
-	  }
-
-	  &.#{$c-inverted} {
-		background-color: $color !important;
-		color: $color-light !important;
-	  }
+	/* Inverted Colored Segment */
+	.#{$c-inverted} > #{$ui-segment-group} > .#{$c-segment}.#{$name},
+	.#{$c-inverted} > #{$ui-segment}.#{$name},
+	#{$ui-segment-group}.#{$c-inverted} > .#{$c-segment}.#{$name},
+	#{$ui-segment-group} > .#{$c-segment}.#{$name}.#{$c-inverted},
+	#{$ui-segment}.#{$name}.#{$c-inverted} {
+	  color: color-text(true);
+	  background: background-colorize($color, true);
+	  border: none;
 	}
   }
 }
 
 @if $auto-include-colors-info {
-  @include colors($colors-info);
+  @include colorize($colors-info);
 }

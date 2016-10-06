@@ -2,50 +2,79 @@
        Element
 --------------------*/
 
-$background: $color-light;
-$border-width: 1px;
-$border: $border-width solid color-divider();
-
-$box-shadow: $subtle-shadow;
 $vertical-padding: 1em;
 $horizontal-padding: 1em;
-$padding: $vertical-padding $horizontal-padding;
+@function padding() {
+  @return $vertical-padding $horizontal-padding;
+}
 
 $vertical-margin: 1rem;
 $horizontal-margin: 0;
-$margin: $vertical-margin $horizontal-margin;
+@function margin() {
+  @return $vertical-margin $horizontal-margin;
+}
+
 $border-radius: unit-rem($border-radius-default);
+$border-size: 1px;
+$colored-border-size: 2px;
+
+@function background($inverted: false) {
+  @return if(to-bool($inverted), $color-dark, white);
+}
+
+@function background-colorize($color, $inverted: false) {
+  @return if(to-bool($inverted), $color, white);
+}
+
+@function border($inverted: false) {
+  @return $border-size solid color-divider();
+}
+
+@function box-shadow($inverted: false) {
+  @return 0 1px 2px 0 color-divider();
+}
 
 /*-------------------
        Group
 --------------------*/
 
-$grouped-margin: $margin;
-$grouped-border: $border;
-$grouped-box-shadow: $box-shadow;
+@function group-border($inverted: false) {
+  @return border($inverted);
+}
+
+@function group-box-shadow($inverted: false) {
+  @return box-shadow($inverted);
+}
+
+@function group-margin() {
+  @return margin();
+}
+
 $grouped-border-radius: $border-radius;
 
-$nested-group-margin: $vertical-margin $vertical-margin;
+@function nested-group-margin() {
+  @return $vertical-margin $vertical-margin;
+}
 
-$grouped-segment-border: none;
-$grouped-segment-divider: $border;
-$grouped-segment-margin: 0;
-$grouped-segment-width: auto;
-$grouped-segment-box-shadow: none;
+@function grouped-segment-divider($inverted: false) {
+  @return border($inverted);
+}
 
 /*-------------------
        Coupling
 --------------------*/
 
 /* Page Grid Segment */
-$page-grid-margin: (2 * $vertical-padding);
+@function page-grid-margin() {
+  @return (2 * $vertical-padding);
+}
 
 /*******************************
             States
 *******************************/
 
 /* Loading Dimmer */
-$loader-dimmer-color: rgba(255, 255, 255, 0.8);
+$loader-dimmer-color: rgba(white, 0.8);
 $loader-dimmer-z-index: 100;
 
 /* Loading Spinner */
@@ -58,68 +87,129 @@ $loader-line-z-index: 101;
 
 /* Piled */
 $piled-z-index: auto;
-$piled-margin: 3em;
-$piled-box-shadow: 0;
+@function piled-margin() {
+  @return 3em 0;
+}
+
+@function piled-top-attached-margin() {
+  @return 3em 0 0;
+}
+
+@function piled-bottom-attached-margin() {
+  @return 0 0 3em;
+}
+
+@function piled-border($inverted: false) {
+  @return border($inverted);
+}
+
+@function piled-box-shadow($inverted: false) {
+  @return none;
+}
+
 $piled-degrees: 1.2deg;
-$piled-border: $border;
 
 /* Circular */
-$circular-padding: 2em;
+@function circular-padding() {
+  @return 2em;
+}
 
 /* Stacked */
 $stacked-height: 6px;
-$stacked-page-background: color-transparent-subtle($color-dark);
-$stacked-padding: $vertical-padding + (0.4em);
-$tall-stacked-padding: $vertical-padding + (0.8em);
+@function stacked-background($inverted: false) {
+  @return color-transparent-subtle($color-dark);
+}
+
+@function stacked-border($inverted: false) {
+  @return border($inverted);
+}
+
+@function stacked-padding-value() {
+  @return $vertical-padding + (0.4em);
+}
+
+@function tall-stacked-padding-value() {
+  @return $vertical-padding + (0.8em);
+}
 
 /* Raised */
-$raised-box-shadow: $floating-shadow;
+@function raised-box-shadow($inverted: false) {
+  @return 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
+}
 
 /* Padded */
-$padded-segment-padding: 1.5em;
-$very-padded-segment-padding: 3em;
+@function padded-padding() {
+  @return 1.5em;
+}
+
+@function very-padded-padding() {
+  @return 3em;
+}
 
 /* Attached */
 $attached-top-offset: 0;
 $attached-bottom-offset: 0;
-$attached-horizontal-offset: $border-width;
+$attached-horizontal-offset: $border-size;
 $attached-width: calc(100% - (#{$attached-horizontal-offset} * 2));
-$attached-box-shadow: 0;
-$attached-border: $border-width solid color-divider-solid();
-$attached-bottom-box-shadow: $box-shadow, $attached-box-shadow;
+@function attached-border($inverted: false) {
+  @return thin solid color-divider-solid();
+}
 
-/* Inverted */
-$inverted-background: $color-dark;
+@function attached-box-shadow($inverted: false) {
+  @return none;
+}
+
+@function bottom-attached-box-shadow($inverted: false) {
+  @return box-shadow($inverted), attached-box-shadow($inverted);
+}
 
 /* Floated */
 $floated-distance: 1em;
 
 /* Basic */
-$basic-background: none transparent;
-$basic-border: none;
-$basic-box-shadow: none;
+@function basic-background($inverted: false) {
+  @return none;
+}
+
+@function basic-border($inverted: false) {
+  @return none;
+}
+
+@function basic-box-shadow($inverted: false) {
+  @return none;
+}
+
+@function basic-padding() {
+  @return 0;
+}
+
 $basic-border-radius: 0;
 
-/* Colors */
-$colored-border-size: 2px;
-
 /* Ordinality */
-$secondary-background: $color-mid;
-$secondary-color: color-text-muted();
-
-$tertiary-background: $color-mid;
-$tertiary-color: color-text-muted();
+@function secondary-color($inverted: false) {
+  @return color-text-muted($inverted);
+}
 
 $secondary-inverted-lightness: 0.2;
-$secondary-inverted-background: lighten($color-dark, ($secondary-inverted-lightness * 100)) linear-gradient(
-                rgba(255, 255, 255, $secondary-inverted-lightness) 0%,
-                rgba(255, 255, 255, $secondary-inverted-lightness) 100%
-);
-$secondaryInvertedColor: color-text-muted($inverted: true);
+@function secondary-background($inverted: false) {
+  @return if(to-bool($inverted),
+		  lighten($color-dark, ($secondary-inverted-lightness * 100)) linear-gradient(
+						  rgba(white, $secondary-inverted-lightness) 0%,
+						  rgba(white, $secondary-inverted-lightness) 100%
+		  ),
+		  $color-mid);
+}
+
+@function tertiary-color($inverted: false) {
+  @return color-text-muted($inverted);
+}
 
 $tertiary-inverted-lightness: 0.35;
-$tertiary-inverted-background: lighten($color-dark, ($tertiary-inverted-lightness * 100)) linear-gradient(
-                rgba(255, 255, 255, $tertiary-inverted-lightness) 0%,
-                rgba(255, 255, 255, $tertiary-inverted-lightness) 100%
-);
-$tertiaryInvertedColor: color-text-muted($inverted: true);
+@function tertiary-background($inverted: false) {
+  @return if(to-bool($inverted),
+		  lighten($color-dark, ($tertiary-inverted-lightness * 100)) linear-gradient(
+						  rgba(white, $tertiary-inverted-lightness) 0%,
+						  rgba(white, $tertiary-inverted-lightness) 100%
+		  ),
+		  $color-mid);
+}

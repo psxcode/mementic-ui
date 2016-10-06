@@ -2,15 +2,18 @@
         Size
 --------------------*/
 
-@mixin sizes($size-map) {
-  @each $name, $size in $size-map {
+@mixin segment-size($name, $default-size: false) {
+  $class-name: if(to-bool($default-size), '', '.#{$name}');
 
-	#{$ui-segment-group}.#{$name} .#{$c-segment},
-	#{$ui-segment}.#{$name} {
-	  font-size: size($name);
-	}
+  #{$ui-segment-group}#{$class-name} > .#{$c-segment},
+  #{$ui-segment}#{$class-name} {
 
+	font-size: size($name);
   }
 }
 
-@include sizes($sizes);
+@include segment-size('medium', true);
+
+@each $name, $size in $sizes {
+  @include segment-size($name);
+}

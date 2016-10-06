@@ -2,12 +2,10 @@
        Basic
 --------------------*/
 
-/* Shortcuts */
-$ui-basic-segment: '#{$ui-segment}.#{$c-basic}';
-
-#{$ui-basic-segment} {
-  background: $basic-background;
-  box-shadow: $basic-box-shadow;
-  border: $basic-border;
+#{$ui-segment}.#{$c-basic} {
+  background: basic-background();
+  padding: basic-padding();
+  border: basic-border();
   border-radius: $basic-border-radius;
+  box-shadow: basic-box-shadow();
 }

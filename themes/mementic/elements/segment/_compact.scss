@@ -2,21 +2,19 @@
        Compact
 --------------------*/
 
-/* Shortcuts */
-$ui-compact-segment: '#{$ui-segment}.#{$c-compact}';
-$ui-compact-segment-group: '#{$ui-segment-group}.#{$c-compact}';
+/* Compact Segment Group */
+#{$ui-segment-group}.#{$c-compact} {
+  display: inline-flex;
+}
 
-#{$ui-compact-segment-group} .#{$c-segment},
-#{$ui-segment-group} .#{$c-segment}.#{$c-compact} {
+/* Compact Segment inside Group */
+#{$ui-segment-group}.#{$c-compact} > .#{$c-segment},
+#{$ui-segment-group} > .#{$c-segment}.#{$c-compact} {
   display: block;
   flex: 0 1 auto;
 }
 
-#{$ui-compact-segment} {
+/* Compact Single Segment */
+#{$ui-segment}.#{$c-compact} {
   display: table;
-}
-
-/* Compact Group */
-#{$ui-compact-segment-group} {
-  display: inline-flex;
 }

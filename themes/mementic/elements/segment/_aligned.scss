@@ -5,19 +5,15 @@
 /* Shortcuts */
 $left-aligned: selector-left-aligned();
 $right-aligned: selector-right-aligned();
-$center-aligned: selector-center-aligned();
 
-#{$ui-segment} {
+#{$ui-segment}.#{$c-aligned} {
+  text-align: center;
+}
 
-  &#{$left-aligned} {
-	text-align: left;
-  }
+#{$ui-segment}#{$left-aligned} {
+  text-align: left;
+}
 
-  &#{$right-aligned} {
-	text-align: right;
-  }
-
-  &#{$center-aligned} {
-	text-align: center;
-  }
+#{$ui-segment}#{$right-aligned} {
+  text-align: right;
 }

@@ -12,19 +12,19 @@ $bottom-attached: selector-bottom-attached();
   &.#{$c-attached} {
 	top: 0;
 	bottom: 0;
-	border-radius: 0;
 	margin: 0 $attached-horizontal-offset;
 	width: $attached-width;
 	max-width: $attached-width;
-	box-shadow: $attached-box-shadow;
-	border: $attached-border;
+	box-shadow: attached-box-shadow();
+	border: attached-border();
+	border-radius: 0;
   }
 
   /* Top */
   &#{$top-attached} {
+	top: $attached-top-offset;
 	bottom: 0;
 	margin-bottom: 0;
-	top: $attached-top-offset;
 	margin-top: $vertical-margin;
 	border-radius: $border-radius $border-radius 0 0;
 
@@ -35,11 +35,11 @@ $bottom-attached: selector-bottom-attached();
 
   /* Bottom */
   &#{$bottom-attached} {
+	top: $attached-bottom-offset;
 	bottom: 0;
 	margin-top: 0;
-	top: $attached-bottom-offset;
 	margin-bottom: $vertical-margin;
-	box-shadow: $attached-bottom-box-shadow;
+	box-shadow: bottom-attached-box-shadow();
 	border-radius: 0 0 $border-radius $border-radius;
 
 	&:last-child {

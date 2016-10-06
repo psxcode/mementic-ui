@@ -2,16 +2,6 @@
        Clearing
 --------------------*/
 
-/* Shortcuts */
-$ui-clearing-segment: '#{$ui-segment}.#{$c-clearing}';
-
-#{$ui-clearing-segment} {
-
-  &::after {
-	content: ".";
-	display: block;
-	height: 0;
-	clear: both;
-	visibility: hidden;
-  }
+#{$ui-segment}.#{$c-clearing} {
+  @include clearfix;
 }

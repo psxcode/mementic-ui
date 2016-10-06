@@ -16,20 +16,22 @@ $ui-loading-segment: '#{$ui-segment}.#{$c-loading}';
 
 #{$ui-loading-segment} {
   position: relative;
-  cursor: default;
-  pointer-events: none;
-  text-shadow: none !important;
-  color: transparent !important;
+  color: transparent;
+  text-shadow: none;
   transition: all 0s linear;
+  pointer-events: none;
+  cursor: default;
 
   &::before {
 	position: absolute;
 	content: '';
 	top: 0;
 	left: 0;
-	background: $loader-dimmer-color;
+
 	width: 100%;
 	height: 100%;
+
+	background: $loader-dimmer-color;
 	border-radius: $border-radius;
 	z-index: $loader-dimmer-z-index;
   }

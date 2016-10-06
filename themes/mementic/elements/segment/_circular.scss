@@ -2,13 +2,10 @@
        Circular
 --------------------*/
 
-/* Shortcuts */
-$ui-circular-segment: '#{$ui-segment}.#{$c-circular}';
-
-#{$ui-circular-segment} {
+#{$ui-segment}.#{$c-circular} {
   display: table-cell;
-  padding: $circular-padding;
+  padding: circular-padding();
   text-align: center;
   vertical-align: middle;
-  border-radius: 500em;
+  border-radius: 50%;
 }

@@ -2,26 +2,24 @@
        Stacked
 --------------------*/
 
-/* Shortcuts */
-$ui-stacked-segment: '#{$ui-segment}.#{$c-stacked}';
-$ui-stacked-segment-group: '#{$ui-segment-group}.#{$c-stacked}';
+#{$ui-segment-group}.#{$c-stacked},
+#{$ui-segment}.#{$c-stacked} {
 
-#{$ui-stacked-segment-group},
-#{$ui-stacked-segment} {
+  padding-bottom: stacked-padding-value();
 
   &::before,
   &::after {
 	content: '';
 	position: absolute;
-	bottom: -($stacked-height / 2);
+	visibility: visible;
+
 	left: 0;
-
-	border-top: 1px solid color-divider();
-	background: $stacked-page-background;
-
+	bottom: -($stacked-height / 2);
 	width: 100%;
 	height: $stacked-height;
-	visibility: visible;
+
+	background: stacked-background();
+	border-top: stacked-border();
   }
 
   &::before {
@@ -30,6 +28,8 @@ $ui-stacked-segment-group: '#{$ui-segment-group}.#{$c-stacked}';
 
   /* Add additional page */
   &.#{$c-tall} {
+	padding-bottom: tall-stacked-padding-value();
+
 	&::before {
 	  display: block;
 	  bottom: 0;
@@ -38,14 +38,11 @@ $ui-stacked-segment-group: '#{$ui-segment-group}.#{$c-stacked}';
 
   /* Inverted */
   &.#{$c-inverted} {
+
 	&::before,
 	&::after {
-	  background-color: color-transparent-subtle($color-dark);
-	  border-top: 1px solid color-divider-selected();
+	  background: stacked-background(true);
+	  border-top: stacked-border(true);
 	}
   }
-}
-
-#{$ui-stacked-segment} {
-  padding-bottom: $stacked-padding;
 }

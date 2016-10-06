@@ -1,12 +1,15 @@
 /* Shortcuts */
 $ui-rail: selector-ui-rail();
+$very-close: selector-very-close();
 
 #{$ui-rail} {
-
   position: absolute;
   top: 0;
   width: $width;
   height: $height;
+
+  // Default Size
+  font-size: size('medium');
 
   &.#{$c-left} {
 	left: auto;
@@ -20,5 +23,83 @@ $ui-rail: selector-ui-rail();
 	right: auto;
 	padding: 0 0 0 $split-distance;
 	margin: 0 0 0 $split-distance;
+  }
+}
+
+/* Internal rail */
+#{$ui-rail}.#{$c-internal} {
+
+  &.#{$c-left} {
+	left: 0;
+	right: auto;
+	padding: 0 0 0 $split-distance;
+	margin: 0 0 0 $split-distance;
+  }
+
+  &.#{$c-right} {
+	left: auto;
+	right: 0;
+	padding: 0 $split-distance 0 0;
+	margin: 0 $split-distance 0 0;
+  }
+}
+
+#{$ui-rail}.#{$c-dividing} {
+
+  width: $dividing-width;
+
+  &.#{$c-left} {
+	border-right: $dividing-border;
+	padding: 0 $split-dividing-distance 0 0;
+	margin: 0 $split-dividing-distance 0 0;
+  }
+
+  &.#{$c-right} {
+	border-left: $dividing-border;
+	padding: 0 0 0 $split-dividing-distance;
+	margin: 0 0 0 $split-dividing-distance;
+  }
+}
+
+#{$ui-rail}.#{$c-attached} {
+  padding: 0;
+  margin: 0;
+}
+
+/* Close Rail */
+#{$ui-rail}.#{$c-close} {
+
+  width: $close-width;
+
+  &.#{$c-left} {
+	padding: 0 $split-close-distance 0 0;
+	margin: 0 $split-close-distance 0 0;
+  }
+
+  &.#{$c-right} {
+	padding: 0 0 0 $split-close-distance;
+	margin: 0 0 0 $split-close-distance;
+  }
+}
+
+/* Very Close Rail */
+#{$ui-rail}#{$very-close} {
+  width: $very-close-width;
+
+  &.#{$c-left} {
+	padding: 0 $split-very-close-distance 0 0;
+	margin: 0 $split-very-close-distance 0 0;
+  }
+
+  &.#{$c-right} {
+	padding: 0 0 0 $split-very-close-distance;
+	margin: 0 0 0 $split-very-close-distance;
+  }
+}
+
+@each $name, $value in $sizes {
+
+  #{$ui-rail}.#{$name} {
+	font-size: size($name);
   }
 }

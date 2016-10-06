@@ -3,45 +3,48 @@
 --------------------*/
 
 /* Shortcuts */
-$ui-pilled-segment: '#{$ui-segment}.#{$c-pilled}';
-$ui-pilled-segment-group: '#{$ui-segment-group}.#{$c-pilled}';
+$ui-piled-segment: '#{$ui-segment}.#{$c-piled}';
+$ui-piled-segment-group: '#{$ui-segment-group}.#{$c-piled}';
 $top-attached: selector-top-attached();
 $bottom-attached: selector-bottom-attached();
 
-#{$ui-pilled-segment-group},
-#{$ui-pilled-segment} {
-  margin: $piled-margin 0;
-  box-shadow: $piled-box-shadow;
+#{$ui-piled-segment-group},
+#{$ui-piled-segment} {
+
+  margin: piled-margin();
+  box-shadow: piled-box-shadow();
   z-index: $piled-z-index;
 
   &::before,
   &::after {
-	background-color: $color-light;
-	visibility: visible;
 	content: '';
 	display: block;
-	height: 100%;
-	left: 0;
 	position: absolute;
+	visibility: visible;
+
+	left: 0;
 	width: 100%;
-	border: $piled-border;
-	box-shadow: $piled-box-shadow;
+	height: 100%;
+
+	background-color: white;
+	border: piled-border();
+	box-shadow: piled-box-shadow();
   }
 
   &::before {
-	transform: rotate(-$piled-degrees);
 	top: 0;
 	z-index: -2;
+	transform: rotate(-$piled-degrees);
   }
 
   &::after {
-	transform: rotate($piled-degrees);
 	top: 0;
 	z-index: -1;
+	transform: rotate($piled-degrees);
   }
 }
 
-#{$ui-pilled-segment} {
+#{$ui-piled-segment} {
 
   &:first-child {
 	margin-top: 0;
@@ -52,8 +55,7 @@ $bottom-attached: selector-bottom-attached();
 
   /* Piled Attached */
   &#{$top-attached} {
-	margin-top: $piled-margin;
-	margin-bottom: 0;
+	margin: piled-top-attached-margin();
 
 	&:first-child {
 	  margin-top: 0;
@@ -61,8 +63,7 @@ $bottom-attached: selector-bottom-attached();
   }
 
   &#{$bottom-attached} {
-	margin-top: 0;
-	margin-bottom: $piled-margin;
+	margin: piled-bottom-attached-margin();
 
 	&:first-child {
 	  margin-bottom: 0;

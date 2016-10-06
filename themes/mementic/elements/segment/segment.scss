@@ -2,14 +2,18 @@
 $ui-segment: selector-ui-segment();
 $ui-segment-group: selector-ui-segment-group();
 
+#{$ui-segment-group} > .#{$c-segment},
 #{$ui-segment} {
+
   position: relative;
-  background: $background;
-  box-shadow: $box-shadow;
-  margin: $margin;
-  padding: $padding;
+  background: background();
+
+  margin: margin();
+  padding: padding();
+
+  border: border();
   border-radius: $border-radius;
-  border: $border;
+  box-shadow: box-shadow();
 
   &:first-child {
 	margin-top: 0;
@@ -18,23 +22,53 @@ $ui-segment-group: selector-ui-segment-group();
   &:last-child {
 	margin-bottom: 0;
   }
+}
 
-  /* Disabled */
-  &.#{$c-disabled} {
-	opacity: $opacity-disabled;
-	color: color-text-disabled();
+/* Inverted Segment */
+.#{$c-inverted} > #{$ui-segment-group} > .#{$c-segment},
+.#{$c-inverted} > #{$ui-segment},
+#{$ui-segment-group}.#{$c-inverted} > .#{$c-segment},
+#{$ui-segment-group} > .#{$c-segment}.#{$c-inverted},
+#{$ui-segment}.#{$c-inverted} {
+  color: color-text(true);
+  background: background(true);
+
+  border: none;
+  box-shadow: none;
+
+  /* Nested Segment */
+  /*> .#{$c-segment} {
+	color: color-text();
+
+	&.#{$c-inverted} {
+	  color: color-text(true);
+	}
+  }*/
+
+  /* Attached Inverted Segment */
+  &.#{$c-attached} {
+	border-color: color-divider-solid(true);
   }
 }
 
-/* Group */
+/* Disabled Segment */
+#{$ui-segment-group}.#{$c-disabled} > .#{$c-segment},
+#{$ui-segment-group} > .#{$c-segment}.#{$c-disabled},
+#{$ui-segment}.#{$c-disabled} {
+  color: color-text-disabled();
+  opacity: $opacity-disabled;
+}
+
+/* Segment Group */
 #{$ui-segment-group} {
 
-  flex-direction: column;
   position: relative;
-  margin: $grouped-margin;
-  border: $grouped-border;
-  box-shadow: $grouped-box-shadow;
+  flex-direction: column;
+  margin: group-margin();
+
+  border: group-border();
   border-radius: $grouped-border-radius;
+  box-shadow: group-box-shadow();
 
   &:first-child {
 	margin-top: 0;
@@ -45,104 +79,106 @@ $ui-segment-group: selector-ui-segment-group();
 
   /* Nested Segment */
   > .#{$c-segment} {
-	top: 0;
-	bottom: 0;
-	border-radius: 0;
-	margin: $grouped-segment-margin;
-	width: $grouped-segment-width;
-	box-shadow: $grouped-segment-box-shadow;
-	border: $grouped-segment-border;
-	border-top: $grouped-segment-divider;
-  }
-
-  &:not(.#{$c-horizontal}) {
-	/* Nested Segment */
-	> .#{$c-segment} {
-
-	  &:first-child {
-		border-top: none;
-		margin-top: 0;
-		margin-bottom: 0;
-		top: $attached-top-offset;
-		bottom: 0;
-		border-radius: $border-radius $border-radius 0 0;
-	  }
-
-	  &:last-child {
-		top: $attached-bottom-offset;
-		bottom: 0;
-		margin-top: 0;
-		margin-bottom: 0;
-		box-shadow: $attached-bottom-box-shadow;
-		border-radius: 0 0 $border-radius $border-radius;
-	  }
-
-	  &:only-child {
-		border-radius: $border-radius;
-	  }
-	}
-  }
-
-  /* Nested Group */
-  > .#{$c-segment-group} {
-	border-top: $grouped-segment-divider;
-	margin: $nested-group-margin;
-
-	&:first-child {
-	  border-top: none;
-	}
-  }
-
-  /* Nested Group After Segment */
-  > .#{$c-segment} + .#{$c-segment-group} {
-
-	&:not(.#{$c-horizontal}) {
-	  margin-top: 0;
-	}
-  }
-
-  /* Horizontal Group */
-  &.#{$c-horizontal} {
-	display: flex;
-	flex-direction: row;
-	padding: 0;
-	background-color: $background;
-	box-shadow: $box-shadow;
-	margin: $margin;
-	border-radius: $border-radius;
-	border: $border;
-
-	/* Horizontal Segment */
-	> .#{$c-segment} {
-	  flex: 1 1 auto;
-	  -ms-flex: 1 1 0; /* Solves #2550 MS Flex */
-	  margin: 0;
-	  min-width: 0;
-	  background-color: transparent;
-	  border-radius: 0;
-	  border: none;
-	  box-shadow: none;
-	  border-left: $border-width solid color-divider();
-
-	  /* Border Fixes */
-	  &:first-child {
-		border-left: none;
-	  }
-	}
-  }
-
-  /* Nested Horizontal Group */
-  > .#{$c-segment-group}.#{$c-horizontal} {
 	margin: 0;
-	background-color: transparent;
-	border-radius: 0;
 	border: none;
+	border-top: grouped-segment-divider();
+	border-radius: 0;
 	box-shadow: none;
-	border-top: $grouped-segment-divider;
+  }
+}
+
+/* Nested Group */
+#{$ui-segment-group} > .#{$c-segment-group} {
+  margin: nested-group-margin();
+
+  /*&:first-child {
+	border-top: none;
+  }*/
+}
+
+/* Nested Vertical Group After Segment */
+#{$ui-segment-group} > .#{$c-segment} + .#{$c-segment-group}:not(.#{$c-horizontal}) {
+  margin-top: 0;
+}
+
+/* Vertical Group */
+#{$ui-segment-group}:not(.#{$c-horizontal}) > .#{$c-segment} {
+
+  &:first-child {
+	border-top: none;
+	border-radius: $border-radius $border-radius 0 0;
+  }
+
+  &:last-child {
+	border-radius: 0 0 $border-radius $border-radius;
+  }
+
+  &:only-child {
+	border-radius: $border-radius;
+  }
+}
+
+/* Horizontal Group */
+#{$ui-segment-group}.#{$c-horizontal} {
+  display: flex;
+  flex-direction: row;
+
+  margin: margin();
+  padding: 0;
+
+  background-color: background();
+
+  border: border();
+  border-radius: $border-radius;
+  box-shadow: box-shadow();
+
+  /* Horizontal Segment */
+  > .#{$c-segment} {
+	flex: 1 1 auto;
+
+	margin: 0;
+	background: none;
+
+	border: none;
+	border-left: border();
+	border-radius: 0;
+	box-shadow: none;
 
 	/* Border Fixes */
 	&:first-child {
-	  border-top: none;
+	  border-left: none;
 	}
   }
 }
+
+/* Nested Horizontal Group */
+#{$ui-segment-group} > .#{$c-segment-group}.#{$c-horizontal} {
+  margin: 0;
+  background: none;
+
+  border: none;
+  border-top: grouped-segment-divider();
+  border-radius: 0;
+  box-shadow: none;
+
+  /* Border Fixes */
+  &:first-child {
+	border-top: none;
+  }
+}
+
+@import "sizes";
+@import "colors";
+@import "attached";
+@import "basic";
+@import "dividing";
+@import "raised";
+@import "stacked";
+@import "padded";
+@import "piled";
+@import "compact";
+@import "circular";
+@import "clearing";
+@import "floated";
+@import "aligned";
+@import "emphasis";

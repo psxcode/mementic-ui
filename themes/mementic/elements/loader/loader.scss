@@ -25,7 +25,11 @@ $ui-dimmer: selector-ui-dimmer();
   transform: translateX(-50%) translateY(-50%);
   */
 
-  top: 0; bottom: 0; left: 0; right: 0;
+  // Centering
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   margin: auto;
 
   text-align: center;
@@ -58,6 +62,7 @@ $ui-dimmer: selector-ui-dimmer();
 
 	border-radius: $border-radius-circular;
 
+	// Intentionally separate
 	border-color: $shape-border-color;
 	border-style: solid;
 	border-width: $loader-line-width;

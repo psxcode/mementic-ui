@@ -2,27 +2,28 @@
      Emphasis
 --------------------*/
 
+#{$ui-segment-group} > .#{$c-segment},
 #{$ui-segment} {
 
   /* Secondary */
   &.secondary {
-	background: $secondary-background;
-	color: $secondary-color;
+	color: secondary-color();
+	background: secondary-background();
 
 	&.#{$c-inverted} {
-	  background: $secondary-inverted-background;
-	  color: $secondaryInvertedColor;
+	  color: secondary-color(true);
+	  background: secondary-background(true);
 	}
   }
 
   /* Tertiary */
   &.tertiary {
-	background: $tertiary-background;
-	color: $tertiary-color;
+	color: tertiary-color();
+	background: tertiary-background();
 
 	&.#{$c-inverted} {
-	  background: $tertiary-inverted-background;
-	  color: $tertiaryInvertedColor;
+	  color: tertiary-color(true);
+	  background: tertiary-background(true);
 	}
   }
 }

@@ -3,14 +3,13 @@
 --------------------*/
 
 /* Shortcuts */
-$left-floated: selector-left-floated();
 $right-floated: selector-right-floated();
 
+#{$ui-segment-group},
 #{$ui-segment} {
 
   /* Left by default */
-  &.#{$c-floated},
-  &#{$left-floated} {
+  &.#{$c-floated} {
 	float: left;
 	margin-right: $floated-distance;
   }
@@ -18,5 +17,6 @@ $right-floated: selector-right-floated();
   &#{$right-floated} {
 	float: right;
 	margin-left: $floated-distance;
+	margin-right: 0;
   }
 }

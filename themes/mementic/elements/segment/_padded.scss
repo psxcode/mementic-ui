@@ -5,12 +5,10 @@
 /* Shortcuts */
 $very-padded: selector-very-padded();
 
-#{$ui-segment} {
+#{$ui-segment}.#{$c-padded} {
+  padding: padded-padding();
+}
 
-  &.#{$c-padded} {
-	padding: $padded-segment-padding;
-  }
-  &#{$very-padded} {
-	padding: $very-padded-segment-padding;
-  }
+#{$ui-segment}#{$very-padded} {
+  padding: very-padded-padding();
 }

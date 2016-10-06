@@ -1,0 +1,18 @@
+/* Vertical Segment */
+#{$ui-segment-group} > .#{$c-segment}.#{$c-dividing},
+#{$ui-segment}.#{$c-dividing} {
+
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+
+  background: none;
+  border: none;
+  border-bottom: border();
+  border-radius: 0;
+  box-shadow: none;
+
+  /*&:last-child {
+	border: none;
+  }*/
+}

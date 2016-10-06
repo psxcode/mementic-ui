@@ -20,10 +20,12 @@
 }
 
 @mixin clearfix {
-  &:after {
+  &::after {
+	content: '';
+	display: block;
 	clear: both;
-	content: "";
-	display: table;
+	height: 0;
+	visibility: hidden;
   }
 }
 

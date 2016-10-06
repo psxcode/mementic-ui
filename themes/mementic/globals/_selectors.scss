@@ -1,0 +1,369 @@
+@function selector-class-strict-order($classes...) {
+  $result: '[class*="';
+
+  @for $i from 1 through length($classes) {
+	@if ($i > 1) {
+	  $result: $result + ' ';
+	}
+	$result: $result + nth($classes, $i);
+  }
+
+  $result: $result + '"]';
+
+  @return $result;
+}
+
+/* Element Selectors */
+@function selector-ui-button() {
+  @return '.#{$c-ui}.#{$c-button}';
+}
+
+@function selector-ui-button-group() {
+  @return '.#{$c-ui}.#{$c-button-group}';
+}
+
+@function selector-ui-container() {
+  @return '.#{$c-ui}.#{$c-container}';
+}
+
+@function selector-ui-divider() {
+  @return '.#{$c-ui}.#{$c-divider}';
+}
+
+@function selector-ui-header() {
+  @return '.#{$c-ui}.#{$c-header}';
+}
+
+@function selector-ui-header-sub() {
+  @return '.#{$c-ui}.#{$c-header-sub}';
+}
+
+@function selector-ui-icon() {
+  @return 'i.#{$c-icon}';
+}
+
+@function selector-ui-icon-group() {
+  @return 'i.#{$c-icon-group}';
+}
+
+@function selector-ui-image() {
+  @return '.#{$c-ui}.#{$c-image}';
+}
+
+@function selector-ui-image-group() {
+  @return '.#{$c-ui}.#{$c-image-group}';
+}
+
+@function selector-ui-input() {
+  @return '.#{$c-ui}.#{$c-input}';
+}
+
+@function selector-ui-label() {
+  @return '.#{$c-ui}.#{$c-label}';
+}
+
+@function selector-ui-label-group() {
+  @return '.#{$c-ui}.#{$c-label}';
+}
+
+@function selector-ui-list() {
+  @return '.#{$c-ui}.#{$c-list}';
+}
+
+@function selector-ui-loader() {
+  @return '.#{$c-ui}.#{$c-loader}';
+}
+
+@function selector-ui-rail() {
+  @return '.#{$c-ui}.#{$c-rail}';
+}
+
+@function selector-ui-reveal() {
+  @return '.#{$c-ui}.#{$c-reveal}';
+}
+
+@function selector-ui-segment() {
+  @return '.#{$c-ui}.#{$c-segment}';
+}
+
+@function selector-ui-segment-group() {
+  @return '.#{$c-ui}.#{$c-segment-group}';
+}
+
+@function selector-ui-step() {
+  @return '.#{$c-ui}.#{$c-step}';
+}
+
+@function selector-ui-step-group() {
+  @return '.#{$c-ui}.#{$c-step-group}';
+}
+
+/* Collections Selectors */
+@function selector-ui-breadcrumb() {
+  @return '.#{$c-ui}.#{$c-breadcrumb}';
+}
+
+@function selector-ui-form() {
+  @return '.#{$c-ui}.#{$c-form}';
+}
+
+@function selector-ui-grid() {
+  @return '.#{$c-ui}.#{$c-grid}';
+}
+
+@function selector-ui-menu() {
+  @return '.#{$c-ui}.#{$c-menu}';
+}
+
+@function selector-ui-message() {
+  @return '.#{$c-ui}.#{$c-message}';
+}
+
+@function selector-ui-table() {
+  @return '.#{$c-ui}.#{$c-table}';
+}
+
+/* Views */
+@function selector-ui-ad() {
+  @return '.#{$c-ui}.#{$c-ad}';
+}
+
+@function selector-ui-card() {
+  @return '.#{$c-ui}.#{$c-card}';
+}
+
+@function selector-ui-card-group() {
+  @return '.#{$c-ui}.#{$c-card-group}';
+}
+
+@function selector-ui-comment() {
+  @return '.#{$c-ui}.#{$c-comment}';
+}
+
+@function selector-ui-comment-group() {
+  @return '.#{$c-ui}.#{$c-comment-group}';
+}
+
+@function selector-ui-feed() {
+  @return '.#{$c-ui}.#{$c-feed}';
+}
+
+@function selector-ui-item() {
+  @return '.#{$c-ui}.#{$c-item}';
+}
+
+@function selector-ui-item-group() {
+  @return '.#{$c-ui}.#{$c-item-group}';
+}
+
+@function selector-ui-statistic() {
+  @return '.#{$c-ui}.#{$c-statistic}';
+}
+
+@function selector-ui-statistic-group() {
+  @return '.#{$c-ui}.#{$c-statistic-group}';
+}
+
+@function selector-ui-dimmer() {
+  @return '.#{$c-ui}.#{$c-dimmer}';
+}
+
+@function selector-ui-checkbox() {
+  @return '.#{$c-ui}.#{$c-checkbox}';
+}
+
+/* Directions */
+@function selector-top-attached() {
+  @return selector-class-strict-order($c-top, $c-attached);
+}
+
+@function selector-bottom-attached() {
+  @return selector-class-strict-order($c-bottom, $c-attached);
+}
+
+@function selector-left-attached() {
+  @return selector-class-strict-order($c-left, $c-attached);
+}
+
+@function selector-right-attached() {
+  @return selector-class-strict-order($c-right, $c-attached);
+}
+
+@function selector-top-left-attached() {
+  @return selector-class-strict-order($c-top, $c-left, $c-attached);
+}
+
+@function selector-bottom-left-attached() {
+  @return selector-class-strict-order($c-bottom, $c-left, $c-attached);
+}
+
+@function selector-top-right-attached() {
+  @return selector-class-strict-order($c-top, $c-right, $c-attached);
+}
+
+@function selector-bottom-right-attached() {
+  @return selector-class-strict-order($c-bottom, $c-right, $c-attached);
+}
+
+@function selector-top-fixed() {
+  @return selector-class-strict-order($c-top, $c-fixed);
+}
+
+@function selector-bottom-fixed() {
+  @return selector-class-strict-order($c-bottom, $c-fixed);
+}
+
+@function selector-left-fixed() {
+  @return selector-class-strict-order($c-left, $c-fixed);
+}
+
+@function selector-right-fixed() {
+  @return selector-class-strict-order($c-right, $c-fixed);
+}
+
+@function selector-top-pointing() {
+  @return selector-class-strict-order($c-top, $c-pointing);
+}
+
+@function selector-bottom-pointing() {
+  @return selector-class-strict-order($c-bottom, $c-pointing);
+}
+
+@function selector-left-pointing() {
+  @return selector-class-strict-order($c-left, $c-pointing);
+}
+
+@function selector-right-pointing() {
+  @return selector-class-strict-order($c-right, $c-pointing);
+}
+
+@function selector-left-floated() {
+  @return selector-class-strict-order($c-left, $c-floated);
+}
+
+@function selector-right-floated() {
+  @return selector-class-strict-order($c-right, $c-floated);
+}
+
+@function selector-right-rotated() {
+  @return selector-class-strict-order($c-right, $c-rotated);
+}
+
+@function selector-top-aligned() {
+  @return selector-class-strict-order($c-top, $c-aligned);
+}
+
+@function selector-bottom-aligned() {
+  @return selector-class-strict-order($c-bottom, $c-aligned);
+}
+
+@function selector-left-aligned() {
+  @return selector-class-strict-order($c-left, $c-aligned);
+}
+
+@function selector-right-aligned() {
+  @return selector-class-strict-order($c-right, $c-aligned);
+}
+
+@function selector-center-aligned() {
+  @return selector-class-strict-order($c-center, $c-aligned);
+}
+
+@function selector-middle-aligned() {
+  @return selector-class-strict-order($c-middle, $c-aligned);
+}
+
+@function selector-left-labeled() {
+  @return selector-class-strict-order($c-left, $c-labeled);
+}
+
+@function selector-right-labeled() {
+  @return selector-class-strict-order($c-right, $c-labeled);
+}
+
+@function selector-corner-labeled() {
+  @return selector-class-strict-order($c-corner, $c-labeled);
+}
+
+@function selector-left-corner() {
+  @return selector-class-strict-order($c-left, $c-corner);
+}
+
+@function selector-left-corner-labeled() {
+  @return selector-class-strict-order($c-left, $c-corner, $c-labeled);
+}
+
+@function selector-left-spaced() {
+  @return selector-class-strict-order($c-left, $c-spaced);
+}
+
+@function selector-right-spaced() {
+  @return selector-class-strict-order($c-right, $c-spaced);
+}
+
+@function selector-left-action() {
+  @return selector-class-strict-order($c-left, $c-action);
+}
+
+@function selector-right-ribbon() {
+  @return selector-class-strict-order($c-right, $c-ribbon);
+}
+
+/* HORIZONTAL / VERTICAL */
+@function selector-horizontally-padded() {
+  @return selector-class-strict-order($c-horizontally, $c-padded);
+}
+
+@function selector-vertically-padded() {
+  @return selector-class-strict-order($c-vertically, $c-padded);
+}
+
+@function selector-horizontally-fitted() {
+  @return selector-class-strict-order($c-horizontally, $c-fitted);
+}
+
+@function selector-vertically-fitted() {
+  @return selector-class-strict-order($c-vertically, $c-fitted);
+}
+
+@function selector-vertically-divided() {
+  @return selector-class-strict-order($c-vertically, $c-divided);
+}
+
+@function selector-vertically-reversed() {
+  @return selector-class-strict-order($c-vertically, $c-reversed);
+}
+
+/* NUM */
+@function selector-num-column($num) {
+  @return selector-class-strict-order(number-name($num), $c-column);
+}
+
+@function selector-num-wide($num) {
+  @return selector-class-strict-order(number-name($num), $c-wide);
+}
+
+@function selector-num-item($num) {
+  @return selector-class-strict-order(number-name($num), $c-item);
+}
+
+/* VERY */
+@function selector-very-relaxed() {
+  @return selector-class-strict-order('very', $c-relaxed);
+}
+
+@function selector-very-close() {
+  @return selector-class-strict-order('very', $c-close);
+}
+
+@function selector-very-basic() {
+  @return selector-class-strict-order('very', $c-basic);
+}
+
+@function selector-very-padded() {
+  @return selector-class-strict-order('very', $c-padded);
+}
+
+@function selector-very-compact() {
+  @return selector-class-strict-order('very', $c-compact);
+}
