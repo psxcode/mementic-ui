@@ -11,12 +11,50 @@
   transform: rotate(-45deg);
 }
 
-@mixin overlay($offset: 0) {
+@mixin overlay($offset: 0, $z: 100) {
   position: absolute;
+  content: '';
   top: $offset;
   bottom: $offset;
   left: $offset;
   right: $offset;
+
+  z-index: $z;
+}
+
+/* Loader Animation */
+@keyframes loader-animation {
+  from {
+	transform: rotate(0deg);
+  }
+  to {
+	transform: rotate(360deg);
+  }
+}
+
+@mixin loader($color-active, $color-fill, $size-px: 32px, $thickness: 2px, $z: 101, $indeterminate: false) {
+  $direction: if(to-bool($indeterminate), reverse, normal);
+  $loader-speed: if(to-bool($indeterminate), 1.2s, 0.6s);
+
+  position: absolute;
+  content: '';
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: $size-px;
+  height: $size-px;
+  margin: auto;
+
+  animation: loader-animation $loader-speed linear;
+  animation-iteration-count: infinite;
+  animation-direction: $direction;
+
+  border: $thickness solid $color-fill;
+  border-color: $color-active $color-fill $color-fill;
+  border-radius: 50%;
+
+  z-index: $z;
 }
 
 @mixin clearfix {

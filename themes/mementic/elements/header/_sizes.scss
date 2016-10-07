@@ -2,18 +2,19 @@
   	 Sizes
 ---------------*/
 
-@for $i from 1 through 5 {
+@mixin header-size($index) {
 
-  #{$ui-header} {
+  h#{$index}#{$ui-header},
+  .h#{$index}#{$ui-header} {
 
-	@at-root h#{$i}#{&},
-	&.h#{$i} {
+	font-size: heading-size($index);
 
-	  font-size: heading-size($i);
-
-	  .#{$c-header-sub} {
-		font-size: heading-size($i + 1);
-	  }
+	> .#{$c-header-sub} {
+	  font-size: heading-size($index + 1);
 	}
   }
+}
+
+@for $i from 1 through 5 {
+  @include header-size($i);
 }

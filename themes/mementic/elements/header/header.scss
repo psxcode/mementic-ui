@@ -2,15 +2,16 @@ $ui-header: selector-ui-header();
 
 #{$ui-header} {
 
-  border: none;
+  color: $color;
   margin: $margin;
   padding: $vertical-padding $horizontal-padding;
+
   font-family: $font-family;
   font-weight: $font-weight;
   line-height: $line-height;
-  font-size: heading-size(3);
   text-transform: $text-transform;
-  color: $color;
+
+  border: none;
 
   &:first-child {
 	margin-top: $first-margin;
@@ -21,7 +22,7 @@ $ui-header: selector-ui-header();
   }
 
   /* Label */
-  .#{$c-label} {
+  > .#{$c-label} {
 	font-size: $label-size;
 	margin-left: $label-distance;
 	vertical-align: $label-vertical-align;
@@ -49,6 +50,6 @@ $ui-header: selector-ui-header();
 //@import "icon";
 //@import "image";
 //@import "inverted";
-//@import "sizes";
+@import "sizes";
 //@import "sub-header";
 

@@ -1,7 +1,7 @@
 "use strict";
 
 module.exports = {
-	deps: [{'mementic': ['segment']}],
+	deps: [{'mementic': ['header']}],
 	modules: [{
 		path: '',
 		names: ['test']

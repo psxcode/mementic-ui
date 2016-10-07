@@ -10,8 +10,21 @@
       Standard
 --------------------*/
 
-$shape-border-color: $loader-line-color transparent transparent;
-$inverted-shape-border-color: $inverted-loader-line-color transparent transparent;
+@function shape-border-color($inverted: false) {
+  @return if(to-bool($inverted),
+		  color-text(true) $color-mid $color-mid,
+		  color-text() $color-light $color-light);
+}
+
+@function shape-border($inverted: false) {
+  @return if(to-bool($inverted),
+		  $loader-line-width solid $inverted-loader-fill-color,
+		  $loader-line-width solid $loader-fill-color);
+}
+
+@function box-shadow($inverted: false) {
+  @return none;
+}
 
 /*-------------------
         Types
@@ -19,8 +32,6 @@ $inverted-shape-border-color: $inverted-loader-line-color transparent transparen
 
 /* Text */
 $text-distance: size('mini');
-$loader-text-color: color-text();
-$inverted-loader-text-color: color-text($inverted: true);
 
 /*-------------------
         States
@@ -35,14 +46,14 @@ $indeterminate-speed: (2 * $loader-speed);
 
 /* Exact Sizes (Avoids Rounding Errors) */
 $loader-sizes: map-zip(map-keys($sizes), (
-        px-em(14), // mini
-        px-em(16), // tiny
-        px-em(24), // small
-        px-em(32), // medium
-        px-em(48), // large
-        px-em(52), // big
-        px-em(58), // huge
-        px-em(64) // massive
+		14px, // mini
+		16px, // tiny
+		24px, // small
+		32px, // medium
+		48px, // large
+		52px, // big
+		58px, // huge
+		64px // massive
 ));
 
 @function loader-size($variant) {
@@ -51,14 +62,14 @@ $loader-sizes: map-zip(map-keys($sizes), (
 }
 
 $loader-offsets: map-zip(map-keys($sizes), (
-    0 0 0 (loader-size('mini') * -0.5),
-    0 0 0 (loader-size('tiny') * -0.5),
-    0 0 0 (loader-size('small') * -0.5),
-    0 0 0 (loader-size('medium') * -0.5),
-    0 0 0 (loader-size('large') * -0.5),
-    0 0 0 (loader-size('big') * -0.5),
-    0 0 0 (loader-size('huge') * -0.5),
-    0 0 0 (loader-size('massive') * -0.5),
+		0 0 0 (loader-size('mini') * -0.5),
+		0 0 0 (loader-size('tiny') * -0.5),
+		0 0 0 (loader-size('small') * -0.5),
+		0 0 0 (loader-size('medium') * -0.5),
+		0 0 0 (loader-size('large') * -0.5),
+		0 0 0 (loader-size('big') * -0.5),
+		0 0 0 (loader-size('huge') * -0.5),
+		0 0 0 (loader-size('massive') * -0.5),
 ));
 
 @function loader-offset($variant) {

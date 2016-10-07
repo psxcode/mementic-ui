@@ -1,13 +1,3 @@
-/* Active Animation */
-@keyframes loader {
-  from {
-	transform: rotate(0deg);
-  }
-  to {
-	transform: rotate(360deg);
-  }
-}
-
 /* Shortcuts */
 $ui-loader: selector-ui-loader();
 $ui-dimmer: selector-ui-dimmer();
@@ -19,12 +9,6 @@ $ui-dimmer: selector-ui-dimmer();
   display: none;
   position: absolute;
 
-  /*
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  */
-
   // Centering
   top: 0;
   bottom: 0;
@@ -32,21 +16,10 @@ $ui-dimmer: selector-ui-dimmer();
   right: 0;
   margin: auto;
 
+  color: color-text();
+
   text-align: center;
   z-index: 1000;
-
-  /* Static Shape */
-  &::before {
-	position: absolute;
-	content: '';
-	top: 0;
-	left: 50%;
-	width: 100%;
-	height: 100%;
-
-	border-radius: $border-radius-circular;
-	border: $loader-line-width solid $loader-fill-color;
-  }
 
   /* Active Shape */
   &::after {
@@ -57,28 +30,21 @@ $ui-dimmer: selector-ui-dimmer();
 	width: 100%;
 	height: 100%;
 
-	animation: loader $loader-speed linear;
+	animation: loader-animation $loader-speed linear;
 	animation-iteration-count: infinite;
 
+	border: shape-border();
+	border-color: shape-border-color();
 	border-radius: $border-radius-circular;
-
-	// Intentionally separate
-	border-color: $shape-border-color;
-	border-style: solid;
-	border-width: $loader-line-width;
-
-	box-shadow: 0 0 0 1px transparent;
+	box-shadow: box-shadow();
   }
 
   /* Inverted */
   &.#{$c-inverted} {
-	color: $inverted-loader-text-color;
+	color: color-text(true);
 
-	&::before {
-	  border-color: $inverted-loader-fill-color;
-	}
 	&::after {
-	  border-top-color: $inverted-loader-line-color;
+	  border-top-color: color-text(true);
 	}
   }
 
@@ -105,39 +71,67 @@ $ui-dimmer: selector-ui-dimmer();
 }
 
 /*-------------------
-      Coupling
+        Text
 --------------------*/
 
-/* Show inside active dimmer */
-#{$ui-dimmer} > .#{$c-loader} {
-  display: block;
+#{$ui-loader}.#{$c-text} {
+  width: fit-content;
+  height: fit-content;
+  text-align: center;
+  font-style: normal;
 }
+
+/*-------------------
+       Inline
+--------------------*/
+
+#{$ui-loader}.#{$c-inline} {
+
+  position: relative;
+  vertical-align: middle;
+  margin: 0;
+
+  &.#{$c-active},
+  &.#{$c-visible} {
+	display: inline-block;
+  }
+}
+
+/* Centered Inline */
+#{$ui-loader}.#{$c-inline}.#{$c-centered} {
+
+  &.#{$c-active},
+  &.#{$c-visible} {
+	display: block;
+	margin: auto;
+  }
+}
+
+/*-------------------
+      Coupling
+--------------------*/
 
 /* Black Dimmer */
 #{$ui-dimmer} > #{$ui-loader} {
 
-  color: $inverted-loader-text-color;
+  // Show inside dimmer
+  display: block;
 
-  &::before {
-	border-color: $inverted-loader-fill-color;
-  }
+  color: color-text(true);
+
   &::after {
-	border-color: $inverted-shape-border-color;
+	border-color: shape-border-color(true);
   }
 }
 
 /* White Dimmer (Inverted) */
 #{$ui-dimmer}.#{$c-inverted} > #{$ui-loader} {
 
-  color: $loader-text-color;
-  &::before {
-	border-color: $loader-fill-color;
-  }
+  color: color-text();
+
   &::after {
-	border-color: $shape-border-color;
+	border-color: shape-border-color();
   }
 }
 
 @import "sizes";
-@import "text";
-@import "inline";

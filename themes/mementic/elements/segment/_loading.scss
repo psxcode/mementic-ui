@@ -1,12 +1,3 @@
-@keyframes segment-spin {
-  from {
-	transform: rotate(0deg);
-  }
-  to {
-	transform: rotate(360deg);
-  }
-}
-
 /*--------------
     Loading
 ---------------*/
@@ -15,21 +6,12 @@
 $ui-loading-segment: '#{$ui-segment}.#{$c-loading}';
 
 #{$ui-loading-segment} {
-  position: relative;
-  color: transparent;
-  text-shadow: none;
-  transition: all 0s linear;
+
   pointer-events: none;
   cursor: default;
 
   &::before {
-	position: absolute;
-	content: '';
-	top: 0;
-	left: 0;
-
-	width: 100%;
-	height: 100%;
+	@include overlay;
 
 	background: $loader-dimmer-color;
 	border-radius: $border-radius;
@@ -37,6 +19,10 @@ $ui-loading-segment: '#{$ui-segment}.#{$c-loading}';
   }
 
   &::after {
+	@include loader($loader-line-color, $loader-fill-color, $loader-size);
+  }
+
+  /*&::after {
 	position: absolute;
 	content: '';
 	top: 50%;
@@ -58,5 +44,5 @@ $ui-loading-segment: '#{$ui-segment}.#{$c-loading}';
 	box-shadow: 0 0 0 1px transparent;
 	visibility: visible;
 	z-index: $loader-line-z-index;
-  }
+  }*/
 }

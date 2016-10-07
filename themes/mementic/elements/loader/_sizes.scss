@@ -12,9 +12,9 @@
 
 	width: $loader-size;
 	height: $loader-size;
+
 	font-size: size($name);
 
-	&::before,
 	&::after {
 	  width: $loader-size;
 	  height: $loader-size;
@@ -24,8 +24,9 @@
 
   /* Text Loader */
   #{$ui-loader}.#{$c-text}#{$size-class} {
-	min-width: $loader-size;
-	padding-top: $loader-size + $text-distance;
+	width: fit-content;
+	height: fit-content;
+	padding-top: calc(#{$loader-size} + #{$text-distance});
   }
 }
 
