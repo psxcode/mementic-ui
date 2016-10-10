@@ -22,16 +22,6 @@
   z-index: $z;
 }
 
-/* Loader Animation */
-@keyframes loader-animation {
-  from {
-	transform: rotate(0deg);
-  }
-  to {
-	transform: rotate(360deg);
-  }
-}
-
 @mixin loader($color-active, $color-fill, $size-px: 32px, $thickness: 2px, $z: 101, $indeterminate: false) {
   $direction: if(to-bool($indeterminate), reverse, normal);
   $loader-speed: if(to-bool($indeterminate), 1.2s, 0.6s);

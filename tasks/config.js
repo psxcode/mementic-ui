@@ -146,7 +146,8 @@ function getModulePaths(moduleName, modulePathInTheme) {
 	function srcGlobalsPaths() {
 		return srcGlobalsVarsPaths().concat(
 			srcFilePaths(null, paths.globalsName, 'fonts.scss'),
-			srcFilePaths(null, paths.globalsName, 'reset.scss')
+			srcFilePaths(null, paths.globalsName, 'reset.scss'),
+			srcFilePaths(null, paths.globalsName, 'anims.scss')
 		);
 	}
 

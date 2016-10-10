@@ -3,42 +3,30 @@
 --------------------*/
 
 /* Shortcuts */
-$ui-attached-header: '#{$ui-header}.#{$c-attached}';
+$top-attached: selector-top-attached();
+$bottom-attached: selector-bottom-attached();
 
-#{$ui-attached-header} {
+#{$ui-header}.#{$c-attached} {
 
-  background: $attached-background;
-  padding: $attached-vertical-padding $attached-horizontal-padding;
-  margin-left: $attached-offset;
-  margin-right: $attached-offset;
-  box-shadow: $attached-box-shadow;
-  border: $attached-border;
+  background: attached-background();
 
-  //TODO check if can remove selector
-  &:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
-	font-size: $medium-attached-size;
-  }
+  margin: attached-margin();
+  padding: attached-padding();
 
-  //TODO check if can remove selector
-  &:not(.#{$c-top}):not(.#{$c-bottom}) {
-	margin-top: 0;
-	margin-bottom: 0;
-	border-top: none;
-	border-radius: 0;
-  }
+  border: attached-border();
+  border-top: none;
+  border-radius: 0;
+  box-shadow: attached-box-shadow();
 
-  &.#{$c-top} {
-	margin-bottom: 0;
-	border-radius: $attached-border-radius $attached-border-radius 0 0;
-  }
+}
 
-  &.#{$c-bottom} {
-	margin-top: 0;
-	border-top: none;
-	border-radius: 0 0 $attached-border-radius $attached-border-radius;
-  }
+#{$ui-header}#{$top-attached} {
+  margin-bottom: 0;
+  border: attached-border();
+  border-radius: $attached-border-radius $attached-border-radius 0 0;
+}
 
-  &.#{$c-block} {
-	background: $block-background;
-  }
+#{$ui-header}#{$bottom-attached} {
+  margin-top: 0;
+  border-radius: 0 0 $attached-border-radius $attached-border-radius;
 }

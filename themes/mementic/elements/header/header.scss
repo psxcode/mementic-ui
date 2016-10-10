@@ -2,16 +2,14 @@ $ui-header: selector-ui-header();
 
 #{$ui-header} {
 
-  color: $color;
-  margin: $margin;
-  padding: $vertical-padding $horizontal-padding;
+  color: color-text-heading();
+  margin: margin();
+  padding: padding();
 
-  font-family: $font-family;
-  font-weight: $font-weight;
-  line-height: $line-height;
+  font-family: heading-font-family();
+  font-weight: $heading-font-weight;
+  line-height: heading-line-height();
   text-transform: $text-transform;
-
-  border: none;
 
   &:first-child {
 	margin-top: $first-margin;
@@ -19,6 +17,12 @@ $ui-header: selector-ui-header();
 
   &:last-child {
 	margin-bottom: $last-margin;
+  }
+
+  /* Content */
+  > .#{$c-content} {
+	display: inline-block;
+	vertical-align: $content-alignment;
   }
 
   /* Label */
@@ -37,19 +41,22 @@ $ui-header: selector-ui-header();
   &.#{$c-disabled} {
 	opacity: $opacity-disabled;
   }
+
+  /* Inverted */
+  &.#{$c-inverted} {
+	color: color-text-heading(true);
+  }
 }
 
-//@import "aligned";
-//@import "attached";
-//@import "block";
-//@import "colors";
-//@import "content";
-//@import "dividing";
-//@import "fitted";
-//@import "floated";
-//@import "icon";
-//@import "image";
-//@import "inverted";
+@import "aligned";
+@import "attached";
+@import "block";
+@import "colors";
+@import "dividing";
+@import "fitted";
+@import "floated";
+@import "icon";
+@import "image";
 @import "sizes";
-//@import "sub-header";
+@import "sub-header";
 

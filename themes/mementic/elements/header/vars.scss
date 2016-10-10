@@ -2,48 +2,56 @@
 // -------------------------------
 
 $text-transform: none;
-$font-family: $heading-font-family;
-$font-weight: $heading-font-weight;
-$line-height: $heading-line-height;
-$line-height-offset: $heading-line-height-offset;
-$color: color-text();
 
-$top-margin: $heading-top-margin;
-$bottom-margin: $heading-bottom-margin ;
-$margin: $top-margin 0 $bottom-margin;
+@function margin() {
+  @return heading-margin();
+}
 
-$first-margin: -$line-height-offset;
+$first-margin: - heading-line-height-offset();
 $last-margin: 0;
+
 $horizontal-padding: 0;
 $vertical-padding: 0;
+@function padding() {
+  @return $vertical-padding $horizontal-padding;
+}
 
 /* Sub Heading */
 $sub-heading-distance: px-em(2px);
-$sub-heading-font-size: size('tiny');
-$sub-heading-font-weight: bold;
-$sub-heading-text-transform: uppercase;
-$sub-heading-color: color-text-muted();
+$sub-heading-font-weight: normal;
+$sub-heading-text-transform: none;
+
+@function sub-header-color($inverted: false) {
+  @return color-text-muted($inverted);
+}
 
 $small-sub-heading-size: size('mini');
 $large-sub-heading-size: size('small');
 $huge-sub-heading-size: size('medium');
 
 /* Sub Header */
-$sub-header-margin: 0;
+@function sub-header-margin() {
+  @return 0;
+}
+
+@function sub-header-padding() {
+  @return 0;
+}
+
 $sub-header-line-height: 1.2em;
 $sub-header-color: color-text-muted();
 
 /* Icon */
 $icon-opacity: 1;
 $icon-size: 1.5em;
-$icon-offset: $line-height-offset;
+$icon-offset: heading-line-height-offset();
 $icon-margin: 0.75rem;
 $icon-alignment: middle;
 
 /* Image */
 $image-width: 2.5em;
 $image-height: auto;
-$image-offset: $line-height-offset;
+$image-offset: heading-line-height-offset();
 $image-margin: $icon-margin;
 $image-alignment: middle;
 
@@ -64,78 +72,104 @@ $next-paragraph-distance: 0;
       Variations
 --------------------*/
 
-/* Header */
-$h1-header-font-size: heading-size(1);
-$h2-header-font-size: heading-size(2);
-$h3-header-font-size: heading-size(3);
-$h4-header-font-size: heading-size(4);
-$h5-header-font-size: heading-size(5);
-
-/* Sub Header */
-$h1-sub-header-font-size: heading-size(2);
-$h2-sub-header-font-size: heading-size(3);
-$h3-sub-header-font-size: heading-size(4);
-$h4-sub-header-font-size: heading-size(5);
-$h5-sub-header-font-size: heading-size(6);
-
 /* Icon Header */
-$icon-header-size:            3em;
-$icon-header-opacity:         1;
-$icon-header-margin:          0.5rem;
-$circular-header-icon-size:   2em;
-$square-header-icon-size:     2em;
+$icon-header-size: 3em;
+$icon-header-opacity: 1;
+$circular-header-icon-size: 2em;
+$square-header-icon-size: 2em;
+@function icon-header-margin-icon() {
+  @return 0 auto 0.5rem;
+}
+
+@function icon-header-padding-icon() {
+  @return 0;
+}
 
 /* No Line Height Offset */
-$icon-header-top-margin:       2rem;
-$icon-header-bottom-margin:    $bottom-margin;
-$icon-header-first-margin:     0em;
+$icon-header-top-margin: 2rem;
+$icon-header-bottom-margin: $heading-bottom-margin;
+$icon-header-first-margin: 0em;
+@function icon-header-margin() {
+  @return $icon-header-top-margin 0 $icon-header-bottom-margin;
+}
+
+@function aligned-icon-header-margin() {
+  @return $icon-header-top-margin auto $icon-header-bottom-margin;
+}
 
 /* Divided */
-$divided-border-width:            1px;
-$divided-border:                  $divided-border-width solid color-divider();
-$divided-colored-border-width:    2px;
+$divided-border-width: 1px;
+@function divided-border($inverted: false) {
+  @return $divided-border-width solid color-divider($inverted);
+}
 
-$divided-border-padding:        px-em(3px);
-$divided-sub-header-padding:    px-em(3px);
-$divided-icon-padding:          0em;
+$divided-colored-border-width: 2px;
+@function divided-border-colorize($color, $inverted: false) {
+  @return $divided-colored-border-width solid colorize-divider($color);
+}
+
+$divided-border-padding: px-em(3px);
+$divided-sub-header-padding: px-em(3px);
+$divided-icon-padding: 0em;
 
 /* Block */
-$block-background: $color-mid;
-$block-box-shadow: none;
+@function block-background($inverted: false) {
+  @return if(to-bool($inverted), $color-mid, $color-light);
+}
+
+@function block-box-shadow($inverted: false) {
+  @return none;
+}
+
 $block-border-width: 1px;
-$block-border: $block-border-width solid color-divider-solid();
+$block-border-radius: unit-em($border-radius-default);
+@function block-border($inverted: false) {
+  @return $block-border-width solid color-divider-solid($inverted);
+}
+
 $block-horizontal-padding: size('medium');
 $block-vertical-padding: size('mini');
-$block-border-radius: unit-rem($border-radius-default);
-
-$tiny-block:     size('tiny');
-$small-block:    size('small');
-$medium-block:   size('medium');
-$large-block:    size('large');
-$huge-block:     size('huge');
+@function block-padding() {
+  @return $block-vertical-padding $block-horizontal-padding;
+}
 
 /* Attached */
 $attached-offset: -1px;
-$attached-box-shadow: none;
-$attached-border: 1px solid color-divider-solid();
+@function attached-margin() {
+  @return 0 $attached-offset;
+}
+
+@function attached-box-shadow($inverted: false) {
+  @return none;
+}
+
+$attached-border-radius: $block-border-radius;
+@function attached-border($inverted: false) {
+  @return 1px solid color-divider-solid();
+}
+
 $attached-vertical-padding: $block-vertical-padding;
 $attached-horizontal-padding: $block-horizontal-padding;
-$attached-background: white;
-$attached-border-radius: $block-border-radius;
+@function attached-padding() {
+  @return $attached-vertical-padding $attached-horizontal-padding;
+}
 
-$tiny-attached-size: size('tiny', true);
-$small-attached-size: size('small', true);
-$medium-attached-size: size('medium', true);
-$large-attached-size: size('large', true);
-$big-attached-size: size('big', true);
-$huge-attached-size: size('huge', true);
-
-/* Inverted */
-$inverted-color: color-text($inverted: true);
-$inverted-sub-header-color: color-text-muted($inverted: true);
-$inverted-divided-border-color: color-divider($inverted: true);
-$inverted-block-background: color-light($color-dark) $subtle-gradient;
-$inverted-attached-background: $inverted-block-background;
+@function attached-background($inverted: false) {
+  @return if(to-bool($inverted), $color-mid, white);
+}
 
 /* Floated */
 $floated-margin: 0.5em;
+
+// (2.6, 2.15, 1.70, 1.25, 1.0, 0.85)
+$sub-header-sizes: (2.0, 1.6, 1.2, 1.0, 0.85, 0.6);
+
+@function sub-header-size($index, $relative: false) {
+  $size: nth($sub-header-sizes, $index);
+
+  @if $relative == true {
+	@return unit-em($size);
+  } @else {
+	@return unit-rem($size);
+  }
+}

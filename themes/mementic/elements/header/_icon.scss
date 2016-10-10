@@ -2,55 +2,51 @@
         Icon
 --------------------*/
 
-/* Shortcuts */
-$ui-icon-header: '#{$ui-header}.#{$c-icon}';
+/* Icon inside Header */
+#{$ui-header} > .#{$c-icon} {
 
-#{$ui-header} {
+  display: table-cell;
+  opacity: $icon-opacity;
+  font-size: $icon-size;
+  padding-top: $icon-offset;
+  vertical-align: $icon-alignment;
 
-  > .#{$c-icon} {
-	display: table-cell;
-	opacity: $icon-opacity;
-	font-size: $icon-size;
-	padding-top: $icon-offset;
-	vertical-align: $icon-alignment;
-
-	/* With Text Node */
-	&:only-child {
-	  display: inline-block;
-	  padding: 0;
-	  margin-right: $icon-margin;
-	}
+  /* With Text Node */
+  &:only-child {
+	display: inline-block;
+	padding: 0;
+	margin-right: $icon-margin;
   }
-
 }
 
-#{$ui-icon-header} {
+/* Content after Icon inside Header */
+#{$ui-header} > .#{$c-icon} + .#{$c-content} {
+  padding-left: $icon-margin;
+  display: table-cell;
+  vertical-align: $content-icon-alignment;
+}
 
-  display: inline-block;
+/* Icon Header */
+#{$ui-header}.#{$c-icon} {
+
   text-align: center;
-  margin: $icon-header-top-margin 0 $icon-header-bottom-margin;
-
-  &:after {
-	content: '';
-	display: block;
-	height: 0;
-	clear: both;
-	visibility: hidden;
-  }
+  margin: icon-header-margin();
 
   &:first-child {
 	margin-top: $icon-header-first-margin;
   }
 
+  /* Icon inside Icon Header */
   > .#{$c-icon} {
-	float: none;
 	display: block;
 	width: auto;
 	height: auto;
-	line-height: 1;
-	padding: 0;
+	margin: icon-header-margin-icon();
+	padding: icon-header-padding-icon();
+
 	font-size: $icon-header-size;
-	margin: 0 auto $icon-header-margin;
+	line-height: 1;
+
 	opacity: $icon-header-opacity;
 
 	&.#{$c-circular} {
@@ -62,22 +58,21 @@ $ui-icon-header: '#{$ui-header}.#{$c-icon}';
   }
 
   /* Icon Header Content */
-  .#{$c-content} {
+  > .#{$c-content} {
 	display: block;
 	padding: 0;
   }
+}
 
-  /* Block Icon Header */
-  &.#{$c-block} > .#{$c-icon} {
-	margin-bottom: 0;
-  }
+/* Icon inside Block Icon Header */
+#{$ui-header}.#{$c-icon}.#{$c-block} > .#{$c-icon} {
+  margin-bottom: 0;
+}
 
-  /* Aligned Icon Header */
-  &.#{$c-aligned} {
-	margin-left: auto;
-	margin-right: auto;
-	display: block;
-  }
+/* Aligned Icon Header */
+#{$ui-header}.#{$c-icon}.#{$c-aligned} {
+  display: block;
+  margin: aligned-icon-header-margin();
 }
 
 

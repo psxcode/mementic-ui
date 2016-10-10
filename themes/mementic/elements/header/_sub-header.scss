@@ -4,23 +4,28 @@
 
 $ui-sub-header: selector-ui-header-sub();
 
-#{$ui-header} .#{$c-header-sub} {
-
-  display: block;
-  font-weight: normal;
-  padding: 0;
-  margin: $sub-header-margin;
-  line-height: $sub-header-line-height;
-  font-size: heading-size(4);
-  color: $sub-header-color;
-}
-
+#{$ui-header} .#{$c-header-sub},
 #{$ui-sub-header} {
 
-  padding: 0;
-  margin-bottom: $sub-heading-distance;
+  display: block;
+  color: sub-header-color();
+
+  font-size: heading-size(4);
   font-weight: $sub-heading-font-weight;
-  font-size: $sub-heading-font-size;
+  line-height: $sub-header-line-height;
+
+  margin: sub-header-margin();
+  margin-bottom: $sub-heading-distance;
+  padding: sub-header-padding();
+
   text-transform: $sub-heading-text-transform;
-  color: $sub-heading-color;
+}
+
+/* Inverted sub-header */
+.#{$c-inverted} > #{$ui-header} .#{$c-header-sub},
+.#{$c-inverted} > #{$ui-sub-header},
+#{$ui-header}.#{$c-inverted} .#{$c-header-sub},
+#{$ui-header} .#{$c-header-sub}.#{$c-inverted},
+#{$ui-sub-header}.#{$c-inverted} {
+  color: sub-header-color(true);
 }

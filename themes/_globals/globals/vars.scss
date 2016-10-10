@@ -12,6 +12,7 @@
 // Base
 // -------------------------------
 $font-context: 14;
+$line-height-context: 20;
 
 @function unit-em($value) {
   @return strip-unit($value) * 1em;
@@ -19,6 +20,10 @@ $font-context: 14;
 
 @function unit-rem($value) {
   @return strip-unit($value) * 1rem;
+}
+
+@function unit-px($value) {
+  @return strip-unit($value) * 1px;
 }
 
 @function px-em($px) {
@@ -32,17 +37,31 @@ $font-context: 14;
 $font-family-sans-serif: '-apple-system', "Helvetica Neue", "Roboto", "Segoe UI", sans-serif !default;
 $font-family-sans-serif-light: '-apple-system', "HelveticaNeue-Light", "Roboto-Light", "Segoe UI-Light", sans-serif-light, sans-serif !default;
 
-$font-family: $font-family-sans-serif !default;
+@function font-family() {
+  @return $font-family-sans-serif;
+}
 
-$font-size: $font-context * 1px !default;
+@function font-size() {
+  @return unit-px($font-context);
+}
+
 //$font-size-large: 1.2857 * $font-size !default;
 //$font-size-small: 0.7857 * $font-size !default;
 
-$line-height: 1.428571429 !default; // 20/14
-$line-height-abs: floor($line-height * $font-size) !default; // ~20px
+@function line-height() {
+  @return ($line-height-context / $font-context);
+}
+
+@function line-height-abs($line-height: line-height()) {
+  @return round(unit-px($line-height * $font-context));
+}
+
 //$line-height-large: 1.5 !default;
 //$line-height-small: 1.33 !default;
-$line-height-offset: unit-rem(($line-height - 1) / 2) !default;
+
+@function line-height-offset($line-height: line-height()) {
+  @return unit-rem(($line-height - 1) * 0.5);
+}
 
 // Border
 // -------------------------------
@@ -51,17 +70,30 @@ $border-radius-circular: 50%;
 
 // Headings
 // -------------------------------
-$heading-font-family: $font-family !default;
+@function heading-font-family() {
+  @return font-family();
+}
+
 $heading-font-weight: 500 !default;
-$heading-line-height: 1.2 !default;
+@function heading-line-height() {
+  @return 1.2;
+}
+
+@function heading-line-height-abs() {
+  @return line-height-abs(heading-line-height());
+}
 
 /* Used to match floats with text */
-$heading-line-height-offset: unit-rem($heading-line-height - 1) / 2 !default;
+@function heading-line-height-offset() {
+  @return line-height-offset(heading-line-height());
+}
 
 /* Header Spacing */
-$heading-top-margin: calc(2rem - #{$heading-line-height-offset}) !default;
+$heading-top-margin: calc(2rem - #{heading-line-height-offset()}) !default;
 $heading-bottom-margin: 1rem !default;
-$heading-margin: $heading-top-margin 0 $heading-bottom-margin !default;
+@function heading-margin() {
+  @return $heading-top-margin 0 $heading-bottom-margin;
+}
 
 // Semantic sizes
 //$heading-sizes: (2.0, 1.714, 1.28, 1.071, 1.0, 0.85) !default;
@@ -81,8 +113,13 @@ $heading-sizes: (2.6, 2.15, 1.70, 1.25, 1.0, 0.85) !default;
 
 // Paragraphs
 // -------------------------------
-$paragraph-margin: 0 0 unit-rem($line-height / 2) !default;
-$paragraph-line-height: $line-height !default;
+@function paragraph-margin() {
+  @return 0 0 unit-rem(line-height() * 0.5);
+}
+
+@function paragraph-line-height() {
+  @return line-height();
+}
 
 // Links
 // -------------------------------
@@ -107,13 +144,13 @@ $loader-offset: -($loader-size / 2);
 $loader-margin: $loader-offset 0 0 $loader-offset;
 
 /* Rendered Scrollbar Width */
-$scrollbar-width: px-rem(17);
+$scrollbar-width: px-rem(17) !default;
 
 /* Maximum Single Character Glyph Width, aka Capital "W" */
-$glyph-width: 1.1em;
+$glyph-width: 1.1em !default;
 
 /* Maximum Glyph Width of Icon */
-$icon-width: 1.18em;
+$icon-width: 1.18em !default;
 
 // Form Input
 // -------------------------------
@@ -146,7 +183,7 @@ $subtle-gradient: linear-gradient(transparent, color-transparent($color-dark));
 $floating-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
 $floating-shadow-hover: 0 2px 4px 0 rgba(34, 36, 38, 0.15), 0 2px 10px 0 rgba(34, 36, 38, 0.25);
 
-$duration-default: 0.1s;
-$easing-default: ease;
+$duration-default: 0.1s !default;
+$easing-default: ease !default;
 
 $opacity-disabled: 0.5 !default;

@@ -15,5 +15,10 @@
 	&:only-child {
 	  margin-right: $image-margin;
 	}
+
+	+ .#{$c-content} {
+	  padding-left: $image-margin;
+	  vertical-align: $content-image-alignment;
+	}
   }
 }

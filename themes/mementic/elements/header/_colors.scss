@@ -2,32 +2,32 @@
        Colors
 --------------------*/
 
-@mixin colors($color-map) {
+@mixin colorize($color-map) {
   @each $name, $color in $color-map {
 
 	#{$ui-header}.#{$name} {
 
-	  color: $color !important;
+	  color: $color;
 
 	  &.#{$c-dividing} {
-		border-bottom: $divided-colored-border-width solid $color;
+		border-bottom: divided-border-colorize($color);
 	  }
 
 	  /* Inverted */
 	  &.#{$c-inverted} {
-		color: color-light($color) !important;
+		color: color-light($color);
 	  }
+	}
 
-	  @at-root a.#{&}.#{$name}:hover {
-		color: color-hover($color) !important;
-	  }
-	  @at-root a.#{&}.#{$c-inverted}.#{$name}:hover {
-		color: color-light(color-hover($color)) !important;
-	  }
+	a#{$ui-header}.#{$name}:hover {
+	  color: color-hover($color);
+	}
+	a#{$ui-header}.#{$c-inverted}.#{$name}:hover {
+	  color: color-light(color-hover($color));
 	}
   }
 }
 
 @if $auto-include-colors-info {
-  @include colors($colors-info);
+  @include colorize($colors-info);
 }

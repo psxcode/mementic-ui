@@ -3,14 +3,14 @@
 $auto-include-sizes: true !default;
 
 $sizes: (
-		'mini': 0.7857, // 11/14
-		'tiny': 0.8571, // 12/14
-		'small': 0.9285, // 13/14
-		'medium': 1.0,
-		'large': 1.1428, // 16/14
-		'big': 1.2857, // 18/14
-		'huge': 1.4285, // 20/14
-		'massive': 1.7142 // 24/14
+		'mini': 	(11 / 14),
+		'tiny': 	(12 / 14),
+		'small': 	(13 / 14),
+		'medium': 	(14 / 14),
+		'large': 	(16 / 14),
+		'big': 		(18 / 14),
+		'huge': 	(20 / 14),
+		'massive': 	(24 / 14)
 ) !default;
 
 @function size($variant, $absolute: false) {

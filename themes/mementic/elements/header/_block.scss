@@ -7,9 +7,17 @@ $ui-block-header: '#{$ui-header}.#{$c-block}';
 
 #{$ui-block-header} {
 
-  background: $block-background;
-  padding: $block-vertical-padding $block-horizontal-padding;
-  box-shadow: $block-box-shadow;
-  border: $block-border;
+  background: block-background();
+  padding: block-padding();
+  box-shadow: block-box-shadow();
+  border: block-border();
   border-radius: $block-border-radius;
+}
+
+.#{$c-inverted} > #{$ui-block-header},
+#{$ui-block-header}.#{$c-inverted} {
+
+  background: block-background(true);
+  box-shadow: none;
+  border-bottom: none;
 }

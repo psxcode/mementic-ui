@@ -4,29 +4,26 @@
 
 $left-aligned: selector-left-aligned();
 $right-aligned: selector-right-aligned();
-$center-aligned: selector-center-aligned();
 
-#{$ui-header} {
+/* Center aligned by default */
+#{$ui-header}.#{$c-aligned} {
+  text-align: center;
+}
 
-  &#{$left-aligned} {
-  	text-align: left;
-  }
+#{$ui-header}#{$left-aligned} {
 
-  &#{$right-aligned} {
-  	text-align: right;
-  }
+  text-align: left;
+}
 
-  &#{$center-aligned} {
-  	text-align: center;
-  }
+#{$ui-header}#{$right-aligned} {
+  text-align: right;
+}
 
-  &.#{$c-justified} {
-	text-align: justify;
+#{$ui-header}.#{$c-justified} {
+  text-align: justify;
 
-	&:after {
-	  display: inline-block;
-	  content: '';
-	  width: 100%;
-	}
+  &:after {
+	display: block;
+	content: '';
   }
 }

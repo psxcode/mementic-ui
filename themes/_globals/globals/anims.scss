@@ -1,0 +1,9 @@
+/* Loader Animation */
+@keyframes loader-animation {
+  from {
+	transform: rotate(0deg);
+  }
+  to {
+	transform: rotate(360deg);
+  }
+}

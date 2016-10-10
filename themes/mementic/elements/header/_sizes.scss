@@ -2,18 +2,23 @@
   	 Sizes
 ---------------*/
 
-@mixin header-size($index) {
+@mixin header-size($index, $default: false) {
+  $class-name: if(to-bool($default), '', '.h#{$index}');
+  $el-name: if(to-bool($default), '', 'h#{$index}');
 
-  h#{$index}#{$ui-header},
-  .h#{$index}#{$ui-header} {
+  #{$el-name}#{$ui-header},
+  #{$class-name}#{$ui-header} {
 
 	font-size: heading-size($index);
 
-	> .#{$c-header-sub} {
-	  font-size: heading-size($index + 1);
+	.#{$c-header-sub} {
+	  font-size: sub-header-size($index);
 	}
   }
 }
+
+/* Default Size */
+@include header-size(3, true);
 
 @for $i from 1 through 5 {
   @include header-size($i);
