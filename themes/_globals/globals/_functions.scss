@@ -231,6 +231,16 @@
   @return $string;
 }
 
+@function str-replace-recursive($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+
+  @if $index {
+	@return str-replace-recursive(str-slice($string, 1, $index - 1) + $replace + str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+
+  @return $string;
+}
+
 @function number-name($number) {
   $numbers: ('one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen') !default;
   @return nth($numbers, $number);

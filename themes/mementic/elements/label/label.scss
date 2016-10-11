@@ -1,24 +1,25 @@
 /* Shortcuts */
 $ui-label: selector-ui-label();
 $ui-label-group: selector-ui-label-group();
+$ui-icon: selector-ui-icon();
 
+#{$ui-label-group} > .#{$c-label},
 #{$ui-label} {
 
   display: inline-block;
+
+  color: label-color();
+  background: background();
+
+  margin: margin();
+  padding: padding();
+
+  font-weight: $font-weight;
   line-height: 1;
+  text-transform: $text-transform;
   vertical-align: $vertical-align;
 
-  color: $color;
-  background-color: $background-color;
-  background-image: $background-image;
-
-  margin: $vertical-margin $horizontal-margin;
-  padding: $vertical-padding $horizontal-padding;
-
-  text-transform: $text-transform;
-  font-weight: $font-weight;
-
-  border: $border;
+  border: border();
   border-radius: $border-radius;
   transition: $transition;
 
@@ -29,77 +30,117 @@ $ui-label-group: selector-ui-label-group();
   &:last-child {
 	margin-right: 0;
   }
-}
 
-/*-------------------
-       Group
---------------------*/
-
-#{$ui-label-group} > .#{$c-label} {
-
-  margin: 0 $group-horizontal-margin $group-vertical-margin 0;
-
-  &:first-child {
-	margin-left: 0;
+  /* Disabled */
+  &.#{$c-disabled} {
+	opacity: 0.5;
   }
 
-  &:last-child {
+  /* Active Label */
+  &.#{$c-active} {
+	color: label-color-active();
+	background: background-active();
+
+	&::before {
+	  color: label-color-active();
+	  background: background-active();
+	}
+  }
+
+  /* Link inside Label */
+  > a {
+	cursor: pointer;
+	color: inherit;
+	opacity: $link-opacity;
+	transition: $link-transition;
+
+	&:hover {
+	  opacity: 1;
+	}
+  }
+
+  /* Image inside Label */
+  > img {
+	width: auto;
+	vertical-align: middle;
+	height: $image-height;
+  }
+
+  /* Icon inside Label */
+  > #{$ui-icon} {
+	width: auto;
+	margin: 0 $icon-distance 0 0;
+	font-size: 1em;
+  }
+
+  /* Detail inside Label */
+  > .#{$c-detail} {
+	display: inline-block;
+	vertical-align: top;
+	font-weight: $detail-font-weight;
+	margin-left: $detail-margin;
+	opacity: $detail-opacity;
+
+	/* Icon inside Detail */
+	#{$ui-icon} {
+	  margin: 0 $detail-icon-distance 0 0;
+	}
+  }
+
+  > #{$ui-icon}.close,
+  > #{$ui-icon}.delete {
+	cursor: pointer;
 	margin-right: 0;
+	margin-left: $delete-margin;
+	font-size: $delete-size;
+	opacity: $delete-opacity;
+	transition: $delete-transition;
+
+	&:hover {
+	  opacity: 1;
+	}
   }
 }
-/*-------------------
-        Active
---------------------*/
-
-#{$ui-label}.#{$c-active} {
-
-  color: $label-active-text-color;
-  background-color: $label-active-background-color;
-  background-image: $label-active-background-image;
-  border-color: $label-active-background-color;
-
-  &::before {
-	color: $label-active-text-color;
-	background-color: $label-active-background-color;
-	background-image: $label-active-background-image;
-  }
-}
-
-/*-------------------
-      Visible
---------------------*/
-
-#{$ui-label-group}.#{$c-visible} > .#{$c-label},
-#{$ui-label}.#{$c-visible} {
-  display: inline-block;
-}
-
-/*-------------------
-      Hidden
---------------------*/
-
-#{$ui-label-group}.#{$c-hidden} > .#{$c-label},
-#{$ui-label}.#{$c-hidden} {
-  display: none;
-}
-
-/*-------------------
-       Disabled
---------------------*/
-#{$ui-label}.#{$c-disabled} {
-  opacity: 0.5;
-}
-
-/*-------------------
-       Inverted
---------------------*/
 
 .#{$c-inverted} > #{$ui-label-group} > .#{$c-label},
 .#{$c-inverted} > #{$ui-label},
 #{$ui-label-group}.#{$c-inverted} > .#{$c-label},
 #{$ui-label}.#{$c-inverted} {
-  color: color-text(true);
+  color: label-color(true);
+  background: background(true);
+  border: border(true);
+
+  /* Active Label */
+  &.#{$c-active} {
+	color: label-color-active(true);
+	background: background-active(true);
+
+	&::before {
+	  color: label-color-active(true);
+	  background: background-active(true);
+	}
+  }
 }
 
+/* Label inside Group */
+#{$ui-label-group} > .#{$c-label} {
+  margin: 0 $group-horizontal-margin $group-vertical-margin 0;
+}
+
+/* Visible */
+#{$ui-label-group}.#{$c-visible} > .#{$c-label},
+#{$ui-label}.#{$c-visible} {
+  display: inline-block;
+}
+
+/* Hidden */
+#{$ui-label-group}.#{$c-hidden} > .#{$c-label},
+#{$ui-label}.#{$c-hidden} {
+  display: none;
+}
+
+@import "pointing";
+@import "basic";
+@import "image";
 @import "sizes";
 @import "colors";

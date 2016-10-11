@@ -13,163 +13,201 @@
   @return $result;
 }
 
+@function validate-selector($str) {
+  $str: str-replace-recursive($str, '..', '.');
+
+  @if str-slice($str, -1) == '.' {
+	@return str-slice($str, 1, -2);
+  }
+  @return $str;
+}
+
+/* UI Selector */
+@function selector-element-ui() {
+  @return validate-selector('.#{$c-ui}');
+}
+
 /* Element Selectors */
+@function selector-element-button() {
+  @return validate-selector('.#{$c-button}');
+}
+
 @function selector-ui-button() {
-  @return '.#{$c-ui}.#{$c-button}';
+  @return selector-element-button() + selector-element-ui();
 }
 
 @function selector-ui-button-group() {
-  @return '.#{$c-ui}.#{$c-button-group}';
+  @return '.#{$c-button-group}' + selector-element-ui();
+}
+
+@function selector-element-container() {
+  @return validate-selector('.#{$c-container}');
 }
 
 @function selector-ui-container() {
-  @return '.#{$c-ui}.#{$c-container}';
+  @return selector-element-container() + selector-element-ui();
 }
 
 @function selector-ui-divider() {
-  @return '.#{$c-ui}.#{$c-divider}';
+  @return '.#{$c-divider}' + selector-element-ui();
 }
 
 @function selector-ui-header() {
-  @return '.#{$c-ui}.#{$c-header}';
+  @return '.#{$c-header}' + selector-element-ui();
 }
 
 @function selector-ui-header-sub() {
-  @return '.#{$c-ui}.#{$c-header-sub}';
+  @return '.#{$c-header-sub}' + selector-element-ui();
+}
+
+@function selector-element-icon() {
+  @return validate-selector('.#{$c-icon}');
 }
 
 @function selector-ui-icon() {
-  @return 'i.#{$c-icon}';
+  @return validate-selector('i.#{$c-icon}');
 }
 
 @function selector-ui-icon-group() {
-  @return 'i.#{$c-icon-group}';
+  @return '.#{$c-icon-group}' + selector-element-ui();
+}
+
+@function selector-element-image() {
+  @return validate-selector('.#{$c-image}');
 }
 
 @function selector-ui-image() {
-  @return '.#{$c-ui}.#{$c-image}';
+  @return selector-element-image() + selector-element-ui();
 }
 
 @function selector-ui-image-group() {
-  @return '.#{$c-ui}.#{$c-image-group}';
+  @return '.#{$c-image-group}' + selector-element-ui();
+}
+
+@function selector-element-input() {
+  @return validate-selector('.#{$c-input}');
 }
 
 @function selector-ui-input() {
-  @return '.#{$c-ui}.#{$c-input}';
+  @return selector-element-input() + selector-element-ui();
 }
 
 @function selector-ui-label() {
-  @return '.#{$c-ui}.#{$c-label}';
+  @return '.#{$c-label}' + selector-element-ui();
 }
 
 @function selector-ui-label-group() {
-  @return '.#{$c-ui}.#{$c-label}';
+  @return '.#{$c-label-group}' + selector-element-ui();
 }
 
 @function selector-ui-list() {
-  @return '.#{$c-ui}.#{$c-list}';
+  @return '.#{$c-list}' + selector-element-ui();
 }
 
 @function selector-ui-loader() {
-  @return '.#{$c-ui}.#{$c-loader}';
+  @return '.#{$c-loader}' + selector-element-ui();
 }
 
 @function selector-ui-rail() {
-  @return '.#{$c-ui}.#{$c-rail}';
+  @return '.#{$c-rail}' + selector-element-ui();
 }
 
 @function selector-ui-reveal() {
-  @return '.#{$c-ui}.#{$c-reveal}';
+  @return '.#{$c-reveal}' + selector-element-ui();
+}
+
+@function selector-element-segment() {
+  @return validate-selector('.#{$c-segment}');
 }
 
 @function selector-ui-segment() {
-  @return '.#{$c-ui}.#{$c-segment}';
+  @return selector-element-segment() + selector-element-ui();
 }
 
 @function selector-ui-segment-group() {
-  @return '.#{$c-ui}.#{$c-segment-group}';
+  @return '.#{$c-segment-group}' + selector-element-ui();
 }
 
 @function selector-ui-step() {
-  @return '.#{$c-ui}.#{$c-step}';
+  @return '.#{$c-step}' + selector-element-ui();
 }
 
 @function selector-ui-step-group() {
-  @return '.#{$c-ui}.#{$c-step-group}';
+  @return '.#{$c-step-group}' + selector-element-ui();
 }
 
 /* Collections Selectors */
 @function selector-ui-breadcrumb() {
-  @return '.#{$c-ui}.#{$c-breadcrumb}';
+  @return '.#{$c-breadcrumb}' + selector-element-ui();
 }
 
 @function selector-ui-form() {
-  @return '.#{$c-ui}.#{$c-form}';
+  @return '.#{$c-form}' + selector-element-ui();
 }
 
 @function selector-ui-grid() {
-  @return '.#{$c-ui}.#{$c-grid}';
+  @return '.#{$c-grid}' + selector-element-ui();
 }
 
 @function selector-ui-menu() {
-  @return '.#{$c-ui}.#{$c-menu}';
+  @return '.#{$c-menu}' + selector-element-ui();
 }
 
 @function selector-ui-message() {
-  @return '.#{$c-ui}.#{$c-message}';
+  @return '.#{$c-message}' + selector-element-ui();
 }
 
 @function selector-ui-table() {
-  @return '.#{$c-ui}.#{$c-table}';
+  @return '.#{$c-table}' + selector-element-ui();
 }
 
 /* Views */
 @function selector-ui-ad() {
-  @return '.#{$c-ui}.#{$c-ad}';
+  @return '.#{$c-ad}' + selector-element-ui();
 }
 
 @function selector-ui-card() {
-  @return '.#{$c-ui}.#{$c-card}';
+  @return '.#{$c-card}' + selector-element-ui();
 }
 
 @function selector-ui-card-group() {
-  @return '.#{$c-ui}.#{$c-card-group}';
+  @return '.#{$c-card-group}' + selector-element-ui();
 }
 
 @function selector-ui-comment() {
-  @return '.#{$c-ui}.#{$c-comment}';
+  @return '.#{$c-comment}' + selector-element-ui();
 }
 
 @function selector-ui-comment-group() {
-  @return '.#{$c-ui}.#{$c-comment-group}';
+  @return '.#{$c-comment-group}' + selector-element-ui();
 }
 
 @function selector-ui-feed() {
-  @return '.#{$c-ui}.#{$c-feed}';
+  @return '.#{$c-feed}' + selector-element-ui();
 }
 
 @function selector-ui-item() {
-  @return '.#{$c-ui}.#{$c-item}';
+  @return '.#{$c-item}' + selector-element-ui();
 }
 
 @function selector-ui-item-group() {
-  @return '.#{$c-ui}.#{$c-item-group}';
+  @return '.#{$c-item-group}' + selector-element-ui();
 }
 
 @function selector-ui-statistic() {
-  @return '.#{$c-ui}.#{$c-statistic}';
+  @return '.#{$c-statistic}' + selector-element-ui();
 }
 
 @function selector-ui-statistic-group() {
-  @return '.#{$c-ui}.#{$c-statistic-group}';
+  @return '.#{$c-statistic-group}' + selector-element-ui();
 }
 
 @function selector-ui-dimmer() {
-  @return '.#{$c-ui}.#{$c-dimmer}';
+  @return '.#{$c-dimmer}' + selector-element-ui();
 }
 
 @function selector-ui-checkbox() {
-  @return '.#{$c-ui}.#{$c-checkbox}';
+  @return '.#{$c-checkbox}' + selector-element-ui();
 }
 
 /* Directions */

@@ -22,12 +22,11 @@ $right-pointing: selector-right-pointing();
   &::before {
 	position: absolute;
 	content: '';
-	transform: rotate(45deg);
 
 	width: $pointing-triangle-size;
 	height: $pointing-triangle-size;
 	background: inherit;
-	border: thin solid $pointing-border-color;
+	border: pointing-label-border();
 
 	z-index: $pointing-triangle-z-index;
 	transition: $pointing-triangle-transition;
@@ -35,16 +34,16 @@ $right-pointing: selector-right-pointing();
 }
 
 /*--- Above ---*/
-#{$ui-label}.#{$c-pointing},
 #{$ui-label}#{$down-pointing} {
 
   margin-top: $pointing-vertical-distance;
 
+  /* Arrow */
   &::before {
-	border-width: $border-width 0 0 $border-width;
-	transform: translateX(-50%) translateY(-50%) rotate(45deg);
 	top: 0;
 	left: 50%;
+	transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	border-width: $border-width 0 0 $border-width;
   }
 
   /* Basic */
@@ -60,17 +59,17 @@ $right-pointing: selector-right-pointing();
   margin-bottom: $pointing-vertical-distance;
 
   &::before {
-	border-width: 0 $border-width $border-width 0;
+	top: 100%;
 	bottom: auto;
+	left: 50%;
 	right: auto;
 	transform: translateX(-50%) translateY(-50%) rotate(45deg);
-	top: 100%;
-	left: 50%;
+	border-width: 0 $border-width $border-width 0;
   }
 
   /* Basic */
   &.#{$c-basic}::before {
-	margin-top: - $basic-pointing-triangle-offset;
+	margin-top: -$basic-pointing-triangle-offset;
   }
 }
 
@@ -81,12 +80,12 @@ $right-pointing: selector-right-pointing();
   margin-left: $pointing-horizontal-distance;
 
   &::before {
-	border-width: 0 0 $border-width $border-width;
-	transform: translateX(-50%) translateY(-50%) rotate(45deg);
-	bottom: auto;
-	right: auto;
 	top: 50%;
+	bottom: auto;
 	left: 0;
+	right: auto;
+	transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	border-width: 0 0 $border-width $border-width;
   }
 
   /* Basic */
@@ -101,12 +100,12 @@ $right-pointing: selector-right-pointing();
   margin-right: $pointing-horizontal-distance;
 
   &::before {
-	border-width: $border-width $border-width 0 0;
-	transform: translateX(50%) translateY(-50%) rotate(45deg);
 	top: 50%;
-	right: 0;
 	bottom: auto;
 	left: auto;
+	right: 0;
+	transform: translateX(50%) translateY(-50%) rotate(45deg);
+	border-width: $border-width $border-width 0 0;
   }
 
   /* Basic */

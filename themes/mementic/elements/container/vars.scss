@@ -1,11 +1,11 @@
 /* Text */
 $text-width: px-rem(700);
-$text-font-family: $font-family;
+$text-font-family: font-family();
 $text-line-height: 1.5;
 $text-size: size('large');
 
 $max-width: 100%;
 
 /* Breakpoints */
-$bp-default-indexes: (1, 2, 3);
+$bp-default-indexes: (2, 3, 4);
 $bps: breakpoint-collect-by-indexes($bp-default-indexes);

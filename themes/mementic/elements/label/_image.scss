@@ -2,42 +2,38 @@
          Image
 --------------------*/
 
-#{$ui-label} > img {
-  width: auto;
-  vertical-align: middle;
-  height: $image-height;
-}
-
 #{$ui-label}.#{$c-image} {
   width: auto;
   max-width: 100%;
 
   margin-top: 0;
   margin-bottom: 0;
-  padding: $image-label-padding;
+  padding: image-label-padding();
 
   vertical-align: baseline;
   text-transform: none;
 
-  background: $image-label-background;
-  box-shadow: $image-label-box-shadow;
+  background: image-label-background();
+  box-shadow: image-label-box-shadow();
   border-radius: $image-label-border-radius;
-}
 
-#{$ui-label}.#{$c-image} > img {
-  display: inline-block;
-  vertical-align: top;
+  /* Image inside Image Label */
+  > img {
+	display: inline-block;
+	vertical-align: top;
 
-  height: $image-label-image-height;
-  margin: $image-label-image-margin;
-  border-radius: $image-label-image-border-radius;
-}
+	height: $image-label-image-height;
+	margin: image-label-image-margin();
+	border-radius: $image-label-image-border-radius;
+  }
 
-#{$ui-label}.#{$c-image} > .#{$c-detail} {
-  background: $image-label-detail-background;
-  margin: $image-label-detail-margin;
-  padding: $image-label-detail-padding;
-  border-radius: 0 $image-label-border-radius $image-label-border-radius 0;
+  /* Detail inside Image Label */
+  > .#{$c-detail} {
+	background: image-label-detail-background();
+	margin: image-label-detail-margin();
+	padding: image-label-detail-padding();
+	border-radius: 0 $image-label-border-radius $image-label-border-radius 0;
+  }
 }
 
 

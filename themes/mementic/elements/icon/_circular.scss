@@ -12,13 +12,13 @@
   box-shadow: bordered-box-shadow();
 }
 
-.#{$c-inverted} > #{$ui-icon-group} > .#{$c-icon}.#{$c-circular},
+.#{$c-inverted} > #{$ui-icon-group} > i.#{$c-circular},
 .#{$c-inverted} > #{$ui-icon}.#{$c-circular} {
   box-shadow: bordered-box-shadow(true);
 }
 
 /* Inverted */
-#{$ui-icon-group}.#{$c-inverted} > .#{$c-icon}.#{$c-circular},
+#{$ui-icon-group}.#{$c-inverted} > i.#{$c-circular},
 #{$ui-icon}.#{$c-inverted}.#{$c-circular} {
   background: color-text();
   box-shadow: none;

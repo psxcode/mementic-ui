@@ -1,15 +1,3 @@
-/* Inside Link */
-#{$ui-label} > a {
-  cursor: pointer;
-  color: inherit;
-  opacity: $link-opacity;
-  transition: $link-transition;
-
-  &:hover {
-	opacity: 1;
-  }
-}
-
 /* Link */
 #{$ui-label-group} > a.#{$c-label},
 a#{$ui-label} {
@@ -17,13 +5,11 @@ a#{$ui-label} {
   cursor: pointer;
 
   &:hover {
-	color: $label-hover-text-color;
-	background-color: $label-hover-background-color;
-	background-image: $label-hover-background-image;
-	border-color: $label-hover-background-color;
+	color: label-color-hover();
+	background: background-hover();
 
 	&::before {
-	  color: $label-hover-text-color;
+	  color: label-color-hover();
 	}
   }
 }
@@ -33,15 +19,12 @@ a#{$ui-label} {
 a#{$ui-label}.#{$c-active} {
 
   &:hover {
-	color: $label-active-hover-text-color;
-	background-color: $label-active-hover-background-color;
-	background-image: $label-active-hover-background-image;
-	border-color: $label-active-hover-background-color;
+	color: label-color-active-hover();
+	background: background-active-hover();
 
 	&::before {
-	  color: $label-active-hover-text-color;
-	  background-color: $label-active-hover-background-color;
-	  background-image: $label-active-hover-background-image;
+	  color: label-color-active-hover();
+	  background: background-active-hover();
 	}
   }
 }

@@ -1,6 +1,7 @@
 /* Shortcuts */
 $ui-icon: selector-ui-icon();
 $ui-icon-group: selector-ui-icon-group();
+$e-icon: selector-element-icon();
 
 #{$ui-icon} {
 
@@ -46,7 +47,8 @@ $ui-icon-group: selector-ui-icon-group();
   display: inline-block;
   position: relative;
 
-  > .#{$c-icon} {
+  /* Icon inside Icon Group */
+  > #{$e-icon} {
 	margin: 0;
 
 	&:not(:first-child) {
@@ -75,9 +77,9 @@ $ui-icon-group: selector-ui-icon-group();
 }
 
 /* Icon on Inverted Background */
+.#{$c-inverted} > #{$ui-icon-group} > #{$e-icon},
 .#{$c-inverted} > #{$ui-icon},
-.#{$c-inverted} > #{$ui-icon-group} > .#{$c-icon},
-#{$ui-icon-group}.#{$c-inverted} > .#{$c-icon},
+#{$ui-icon-group}.#{$c-inverted} > #{$e-icon},
 #{$ui-icon}.#{$c-inverted} {
   color: color-text(true)
 }

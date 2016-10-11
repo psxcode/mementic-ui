@@ -6,7 +6,7 @@
 $ui-tag-label: '#{$ui-label}.#{$c-tag}';
 $ui-tag-label-group: '#{$ui-label-group}.#{$c-tag}';
 
-#{$ui-tag-label-group} .#{$c-label},
+#{$ui-tag-label-group} > .#{$c-label},
 #{$ui-tag-label} {
 
   margin-left: 1em;

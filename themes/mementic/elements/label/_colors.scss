@@ -7,6 +7,7 @@
 
 	/* Color */
 	#{$ui-label-group}.#{$name} > .#{$c-label},
+	#{$ui-label-group} > .#{$c-label}.#{$name},
 	#{$ui-label}.#{$name} {
 	  color: color-text($inverted: true);
 	  background-color: $color;
@@ -15,8 +16,8 @@
 
 	/* Link */
 	#{$ui-label-group}.#{$name} > a.#{$c-label},
+	#{$ui-label-group} > a.#{$c-label}.#{$name},
 	a.#{$name}#{$ui-label} {
-
 	  &:hover {
 		color: color-text-hovered($inverted: true);
 		background-color: color-hover($color);
@@ -46,8 +47,8 @@
 	}
 
 	#{$ui-label-group}.#{$name}.#{$c-basic} > a.#{$c-label},
+	#{$ui-label-group}.#{$c-basic} > a.#{$c-label}.#{$name},
 	a#{$ui-label}.#{$name}.#{$c-basic} {
-
 	  &:hover {
 		color: color-hover($color);
 		background-color: $color-light;

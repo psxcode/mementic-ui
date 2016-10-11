@@ -3,13 +3,12 @@
 -------------------*/
 
 /* Shortcuts */
-$ui-floating-label: '#{$ui-label}.#{$c-floating}';
 
-#{$ui-floating-label} {
+#{$ui-label}.#{$c-floating} {
 
   position: absolute;
   z-index: $floating-z-index;
   top: $floating-top-offset;
   left: 100%;
-  margin: 0 0 0 $floating-left-offset !important;
+  margin: 0 0 0 $floating-left-offset;
 }

@@ -1,26 +1,64 @@
-/*******************************
-             Label
-*******************************/
-
 /*-------------------
        Element
 --------------------*/
 
-$vertical-align: baseline;
+@function label-color($inverted: false) {
+  @return color-text-muted($inverted);
+}
+
+@function label-color-hover($inverted: false) {
+  @return color-text-hovered($inverted);
+}
+
+@function label-color-active($inverted: false) {
+  @return color-text-selected($inverted);
+}
+
+@function label-color-active-hover($inverted: false) {
+  @return color-text-selected($inverted);
+}
+
+@function background($inverted: false) {
+  @return #E8E8E8;
+}
+
+@function background-hover($inverted: false) {
+  @return #E0E0E0;
+}
+
+@function background-active($inverted: false) {
+  @return #D0D0D0;
+}
+
+@function background-active-hover($inverted: false) {
+  @return #C8C8C8;
+}
+
 $vertical-margin: 0;
 $horizontal-margin: px-em(2);
-$background-color: #E8E8E8;
-$color: color-text-muted();
-$background-image: none;
+@function margin() {
+  @return $vertical-margin ($horizontal-margin * 2) $vertical-margin 0;
+}
+
 $vertical-padding: 0.5833em; /* medium is not $emSize custom value required */
 $horizontal-padding: 0.833em;
-$border-radius: unit-rem($border-radius-default);
+@function padding() {
+  @return $vertical-padding $horizontal-padding;
+}
+
 $text-transform: none;
 $font-weight: bold;
-$border-width: 1px;
-$border: 0 solid transparent;
+$vertical-align: baseline;
 
-$line-height-offset: -($vertical-padding / 2);
+$border-width: 1px;
+$border-radius: unit-rem($border-radius-default);
+@function border($inverted: false) {
+  @return none;
+}
+
+@function line-height-offset() {
+  @return $vertical-padding * -0.5;
+}
 
 $label-transition-duration: $duration-default;
 $label-transition-easing: $easing-default;
@@ -52,7 +90,7 @@ $detail-margin: 1em;
 
 /* Delete */
 $delete-opacity: $link-opacity;
-$delete-size: size('small', true);
+$delete-size: size('small');
 $delete-margin: 0.5em;
 $delete-transition: background $label-transition-duration $label-transition-easing;
 
@@ -61,66 +99,98 @@ $delete-transition: background $label-transition-duration $label-transition-easi
 --------------------*/
 
 /* Image Label */
-$image-label-background: $background-color;
+@function image-label-background($inverted: false) {
+  @return background($inverted);
+}
+
 $image-label-vertical-padding: $vertical-padding;
 $image-label-horizontal-padding: $horizontal-padding;
+
 $image-label-text-distance: 0.5em;
 $image-label-detail-distance: $image-label-text-distance;
 $image-label-border-radius: unit-rem($border-radius-default);
-$image-label-box-shadow: none;
-$image-label-padding: $image-label-vertical-padding $image-label-horizontal-padding $image-label-vertical-padding $image-label-text-distance;
+@function image-label-box-shadow($inverted: false) {
+  @return none;
+}
 
-$image-label-image-margin: -$vertical-padding $image-label-text-distance -$vertical-padding -$image-label-text-distance;
+@function image-label-padding() {
+  @return $image-label-vertical-padding $image-label-horizontal-padding $image-label-vertical-padding $image-label-text-distance;
+}
+
+@function image-label-image-margin() {
+  @return (-$vertical-padding) ($image-label-text-distance) (-$vertical-padding) (-$image-label-text-distance);
+}
+
 $image-label-image-border-radius: $image-label-border-radius 0em 0em $image-label-border-radius;
 $image-label-image-height: $image-height;
 
-$image-label-detail-background: color-transparent-strong($color-dark);
-$image-label-detail-padding: $image-label-vertical-padding $image-label-horizontal-padding;
-$image-label-detail-margin: -$image-label-vertical-padding -$image-label-horizontal-padding -$image-label-vertical-padding $image-label-detail-distance;
+@function image-label-detail-background($inverted: false) {
+  @return color-transparent-strong($color-dark);
+}
 
-/*-------------------
-        States
---------------------*/
+@function image-label-detail-margin() {
+  @return (-$image-label-vertical-padding) (-$image-label-horizontal-padding) (-$image-label-vertical-padding) ($image-label-detail-distance);
+}
 
-/* Hover */
-$label-hover-background-color: #E0E0E0;
-$label-hover-background-image: none;
-$label-hover-text-color: color-text-hovered();
-
-/* Active */
-$label-active-background-color: #D0D0D0;
-$label-active-background-image: none;
-$label-active-text-color: color-text-selected();
-
-/* Active Hover */
-$label-active-hover-background-color: #C8C8C8;
-$label-active-hover-background-image: none;
-$label-active-hover-text-color: color-text-selected();
+@function image-label-detail-padding() {
+  @return $image-label-vertical-padding $image-label-horizontal-padding;
+}
 
 /*-------------------
       Variations
 --------------------*/
 
 /* Basic */
-$basic-background: none $color-light;
-$basic-border-width: 1px;
-$basic-border: $basic-border-width solid color-divider();
-$basic-color: color-text();
-$basic-box-shadow: none;
+@function basic-label-color($inverted: false) {
+  @return label-color($inverted);
+}
 
-$basic-hover-background: $basic-background;
-$basic-hover-color: $link-hover-color;
-$basic-hover-border: $basic-border;
+@function basic-label-color-hover($inverted: false) {
+  @return label-color-hover($inverted);
+}
+
+@function basic-background($inverted: false) {
+  @return none;
+}
+
+@function basic-background-hover($inverted: false) {
+  @return basic-background($inverted);
+}
+
+$basic-border-width: 1px;
+@function basic-border($inverted: false) {
+  @return $basic-border-width solid color-divider($inverted);
+}
+
+@function basic-border-hover($inverted: false) {
+  @return $basic-border-width solid color-divider($inverted);
+}
+
+@function basic-box-shadow($inverted: false) {
+  @return none;
+}
+
+@function basic-box-shadow-hover($inverted: false) {
+  @return none;
+}
 
 /* Tag */
 $tag-circle-color: $color-light;
 $tag-circle-size: 0.5em;
 $tag-horizontal-padding: 1.5em;
-$tag-circle-box-shadow: 0 -1px 1px 0 rgba(0, 0, 0, 0.3);
+
+@function tag-circle-box-shadow($inverted: false) {
+  @return 0 -1px 1px 0 rgba(0, 0, 0, 0.3);
+}
+
 $tag-triangle-right-offset: 100%;
 $tag-triangle-top-offset: 50%;
 $tag-triangle-size: 1.56em;
-$tag-triangle-background-image: none;
+
+@function tag-triangle-background($inverted: false) {
+  @return none;
+}
+
 $tag-transition: none; /* Avoids error with background: inherit; on animation */
 
 /* Ribbon */
@@ -183,8 +253,10 @@ $circular-min-size: 2em;
 $empty-circle-size: 0.5em;
 
 /* Pointing */
-$pointing-border-color: inherit;
 $pointing-border-width: $border-width;
+@function pointing-label-border($inverted: false) {
+  @return $pointing-border-width solid inherit;
+}
 $pointing-vertical-distance: 1em;
 $pointing-triangle-size: 0.6666em;
 $pointing-horizontal-distance: $pointing-triangle-size;
@@ -205,10 +277,10 @@ $floating-z-index: 100;
 --------------------*/
 
 /* Sizing */
-$mini: px-rem(9);
-$tiny: px-rem(10);
-$small: px-rem(11);
-$medium: px-rem(12);
+$mini: px-em(9);
+$tiny: px-em(10);
+$small: px-em(11);
+$medium: px-em(12);
 $large: size('medium');
 $big: size('big');
 $huge: size('huge');

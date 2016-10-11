@@ -11,7 +11,16 @@
 	<h4>Label</h4>
 	<p>a label</p>
 
-	<div class="ui label"><i class="fa-mail-reply icon"></i> 23</div>
+	<div class="ui label"><i class="fa-mail-reply icon"></i>23</div>
+	<div class="ui basic label"><i class="fa-mail-reply icon"></i>23</div>
+</div>
+
+<div class="example inverted">
+	<h4>Label</h4>
+	<p>a label</p>
+
+	<div class="ui label"><i class="fa-mail-reply icon"></i>23</div>
+	<div class="ui basic label"><i class="fa-mail-reply icon"></i>23</div>
 </div>
 
 <div class="example">
@@ -26,22 +35,47 @@
 		<img src="http://lorempixel.com/32/32/people">
 		Elliot
 	</a>
+</div>
+
+<div class="example inverted">
+	<h4>Image</h4>
+	<p>A label can be formatted to emphasize an image</p>
+
 	<a class="ui image label">
 		<img src="http://lorempixel.com/32/32/people">
-		Stevie
+		Joe
+	</a>
+	<a class="ui image label">
+		<img src="http://lorempixel.com/32/32/people">
+		Elliot
 	</a>
 </div>
 
 <div class="example">
-	<a class="ui blue image label">
+	<a class="ui positive image label">
 		<img src="http://lorempixel.com/32/32/people"> Veronika
 		<div class="detail">Friend</div>
 	</a>
-	<a class="ui teal image label">
+	<a class="ui negative image label">
 		<img src="http://lorempixel.com/32/32/people"> Veronika
 		<div class="detail">Student</div>
 	</a>
-	<a class="ui yellow image label">
+	<a class="ui info image label">
+		<img src="http://lorempixel.com/32/32/people"> Helen
+		<div class="detail">Co-worker</div>
+	</a>
+</div>
+
+<div class="example inverted">
+	<a class="ui positive image label">
+		<img src="http://lorempixel.com/32/32/people"> Veronika
+		<div class="detail">Friend</div>
+	</a>
+	<a class="ui negative image label">
+		<img src="http://lorempixel.com/32/32/people"> Veronika
+		<div class="detail">Student</div>
+	</a>
+	<a class="ui info image label">
 		<img src="http://lorempixel.com/32/32/people"> Helen
 		<div class="detail">Co-worker</div>
 	</a>
@@ -51,17 +85,35 @@
 	<div class="ui image label">
 		<img src="http://lorempixel.com/32/32/people">
 		Adrienne
-		<i class="delete icon"></i>
+		<i class="fa-remove close icon"></i>
 	</div>
 	<div class="ui image label">
 		<img src="http://lorempixel.com/32/32/people">
 		Zoe
-		<i class="delete icon"></i>
+		<i class="fa-remove close icon"></i>
 	</div>
 	<div class="ui image label">
 		<img src="http://lorempixel.com/32/32/people">
 		Nan
-		<i class="delete icon"></i>
+		<i class="fa-remove close icon"></i>
+	</div>
+</div>
+
+<div class="example inverted">
+	<div class="ui image label">
+		<img src="http://lorempixel.com/32/32/people">
+		Adrienne
+		<i class="fa-remove close icon"></i>
+	</div>
+	<div class="ui image label">
+		<img src="http://lorempixel.com/32/32/people">
+		Zoe
+		<i class="fa-remove close icon"></i>
+	</div>
+	<div class="ui image label">
+		<img src="http://lorempixel.com/32/32/people">
+		Nan
+		<i class="fa-remove close icon"></i>
 	</div>
 </div>
 
@@ -149,20 +201,20 @@
 
 	<a class="ui tag label">New</a>
 	<a class="ui positive tag label">Upcoming</a>
-	<a class="ui assertive tag label">Featured</a>
+	<a class="ui negative tag label">Featured</a>
 </div>
 
 <div class="example">
 	<div class="ui two column grid">
 		<div class="column">
 			<div class="ui raised segment">
-				<a class="ui red ribbon label">Overview</a>
+				<a class="ui negative ribbon label">Overview</a>
 				<span>Account Details</span>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci alias aspernatur assumenda
 					dignissimos, dolorem, doloribus eveniet facilis, iure molestiae nam nisi officia pariatur porro
 					quisquam quos sequi velit voluptates voluptatum?
 				</p>
-				<a class="ui blue ribbon label">Community</a>
+				<a class="ui positive ribbon label">Community</a>
 				User Reviews
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate dignissimos distinctio
 					dolorum ea et iusto, libero molestiae odit ratione. At commodi deserunt, distinctio dolor fugit
@@ -172,12 +224,12 @@
 		</div>
 		<div class="column">
 			<div class="ui segment">
-				<a class="ui orange right ribbon label">Specs</a>
+				<a class="ui warn right ribbon label">Specs</a>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At dolores doloribus excepturi
 					laudantium, natus sequi sint soluta. Ab aliquid at aut, dicta eligendi, eos et maxime odit omnis
 					quod suscipit!
 				</p>
-				<a class="ui teal right ribbon label">Reviews</a>
+				<a class="ui info right ribbon label">Reviews</a>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis cumque eius, magni mollitia
 					neque nisi quae quis rerum sequi velit. Autem dolores eligendi laborum laudantium libero porro
 					quam vel voluptate!
@@ -200,7 +252,7 @@
 		</div>
 		<div class="column">
 			<div class="ui fluid image">
-				<div class="ui blue ribbon label">
+				<div class="ui positive ribbon label">
 					<i class="spoon icon"></i>
 					Food
 				</div>
@@ -229,11 +281,11 @@
 
 	<div class="ui divided selection list">
 		<a class="item">
-			<div class="ui red horizontal label">Fruit</div>Kumquats </a>
+			<div class="ui positive horizontal label">Fruit</div>Kumquats </a>
 		<a class="item">
-			<div class="ui purple horizontal label">Candy</div>Ice Cream </a>
+			<div class="ui negative horizontal label">Candy</div>Ice Cream </a>
 		<a class="item">
-			<div class="ui red horizontal label">Fruit</div>Orange </a>
+			<div class="ui warn horizontal label">Fruit</div>Orange </a>
 		<a class="item">
 			<div class="ui horizontal label">Dog</div>Poodle </a>
 	</div>

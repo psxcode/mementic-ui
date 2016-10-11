@@ -2,26 +2,49 @@
         Basic
 --------------------*/
 
-/* Shortcuts */
-$ui-basic-label: '#{$ui-label}.#{$c-basic}';
+#{$ui-label-group}.#{$c-basic} > .#{$c-label},
+#{$ui-label}.#{$c-basic} {
 
-#{$ui-basic-label} {
+  color: basic-label-color();
+  background: basic-background();
+  border: basic-border();
+  box-shadow: basic-box-shadow();
 
-  background: $basic-background;
-  border: $basic-border;
-  color: $basic-color;
-  box-shadow: $basic-box-shadow;
-
-  /* Link */
-  @at-root a#{&}:hover {
-	text-decoration: none;
-	background: $basic-hover-background;
-	color: $basic-hover-color;
-	box-shadow: $basic-hover-border;
-  }
-
-  /* Pointing */
+  /* Basic Pointing Label */
   &.#{$c-pointing} {
 	border-color: inherit;
   }
+}
+
+/* Basic Link Label */
+#{$ui-label-group}.#{$c-basic} > a.#{$c-label},
+a#{$ui-label}.#{$c-basic} {
+  &:hover {
+	text-decoration: none;
+	color: basic-label-color-hover();
+	background: basic-background-hover();
+	box-shadow: basic-box-shadow-hover();
+  }
+}
+
+/* Inverted */
+.#{$c-inverted} > #{$ui-label-group}.#{$c-basic} > .#{$c-label},
+.#{$c-inverted} > #{$ui-label}.#{$c-basic},
+#{$ui-label-group}.#{$c-inverted}.#{$c-basic} > .#{$c-label},
+#{$ui-label}.#{$c-inverted}.#{$c-basic} {
+  color: basic-label-color(true);
+  background: basic-background(true);
+  border: basic-border(true);
+  box-shadow: basic-box-shadow(true);
+}
+
+/* Inverted Link Label */
+.#{$c-inverted} > #{$ui-label-group}.#{$c-basic} > a.#{$c-label},
+.#{$c-inverted} > a#{$ui-label}.#{$c-basic},
+#{$ui-label-group}.#{$c-inverted}.#{$c-basic} > a.#{$c-label},
+a#{$ui-label}.#{$c-inverted}.#{$c-basic} {
+  color: basic-label-color(true);
+  background: basic-background(true);
+  border: basic-border(true);
+  box-shadow: basic-box-shadow(true);
 }
