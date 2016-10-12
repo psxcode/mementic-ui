@@ -1,7 +1,47 @@
+/* Variations
+ *
+ * Colors
+ * Sizes
+ * Basic
+ * Link - Element or Class
+ * Inverted - Parent Class or Self Class
+ */
+
+/* Types
+ *
+ * Image
+ * Tag
+ * Corner
+ * Ribbon
+ * Attached
+ * Horizontal
+ * Circular
+ * Pointing
+ * Floating
+ */
+
+/* States
+ *
+ * Disabled
+ * Visible
+ * Hidden
+ * Hover - Link Variation
+ */
+
+/*
+ * Content
+ *
+ * Detail - Element or Class
+ * Icon - Element or Class
+ * Image - Element
+ * Link - Element or Class
+ */
+
 /* Shortcuts */
 $ui-label: selector-ui-label();
 $ui-label-group: selector-ui-label-group();
-$ui-icon: selector-ui-icon();
+$e-icon: selector-element-icon();
+$e-detail: selector-element-detail();
 
 #{$ui-label-group} > .#{$c-label},
 #{$ui-label} {
@@ -67,14 +107,15 @@ $ui-icon: selector-ui-icon();
   }
 
   /* Icon inside Label */
-  > #{$ui-icon} {
+  > #{$e-icon} {
+	color: color-text();
 	width: auto;
 	margin: 0 $icon-distance 0 0;
 	font-size: 1em;
   }
 
   /* Detail inside Label */
-  > .#{$c-detail} {
+  > #{$e-detail} {
 	display: inline-block;
 	vertical-align: top;
 	font-weight: $detail-font-weight;
@@ -82,19 +123,19 @@ $ui-icon: selector-ui-icon();
 	opacity: $detail-opacity;
 
 	/* Icon inside Detail */
-	#{$ui-icon} {
+	> #{$e-icon} {
 	  margin: 0 $detail-icon-distance 0 0;
 	}
   }
 
-  > #{$ui-icon}.close,
-  > #{$ui-icon}.delete {
-	cursor: pointer;
-	margin-right: 0;
-	margin-left: $delete-margin;
+  /* Special Close Icon */
+  > #{$e-icon}.close,
+  > #{$e-icon}.delete {
+	margin: 0 0 0 $delete-margin;
 	font-size: $delete-size;
-	opacity: $delete-opacity;
 	transition: $delete-transition;
+	opacity: $delete-opacity;
+	cursor: pointer;
 
 	&:hover {
 	  opacity: 1;
@@ -106,9 +147,14 @@ $ui-icon: selector-ui-icon();
 .#{$c-inverted} > #{$ui-label},
 #{$ui-label-group}.#{$c-inverted} > .#{$c-label},
 #{$ui-label}.#{$c-inverted} {
+
   color: label-color(true);
   background: background(true);
   border: border(true);
+
+  > #{$e-icon} {
+	color: color-text(true);
+  }
 
   /* Active Label */
   &.#{$c-active} {
@@ -139,8 +185,12 @@ $ui-icon: selector-ui-icon();
   display: none;
 }
 
-@import "pointing";
-@import "basic";
+/* Types */
 @import "image";
+@import "pointing";
+
+/* Variations */
+@import "basic";
+@import "link";
 @import "sizes";
 @import "colors";

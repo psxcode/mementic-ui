@@ -22,6 +22,7 @@
 	a#{$ui-header}.#{$name}:hover {
 	  color: color-hover($color);
 	}
+
 	a#{$ui-header}.#{$c-inverted}.#{$name}:hover {
 	  color: color-light(color-hover($color));
 	}

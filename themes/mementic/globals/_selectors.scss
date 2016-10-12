@@ -48,6 +48,14 @@
   @return selector-element-container() + selector-element-ui();
 }
 
+@function selector-element-content() {
+  @return validate-selector('.#{$c-content}');
+}
+
+@function selector-element-detail() {
+  @return validate-selector('.#{$c-detail}');
+}
+
 @function selector-ui-divider() {
   @return '.#{$c-divider}' + selector-element-ui();
 }

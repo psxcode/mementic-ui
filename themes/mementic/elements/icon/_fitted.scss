@@ -2,10 +2,7 @@
         Fitted
 --------------------*/
 
-/* Shortcuts */
-$ui-fitted-icon: '#{$ui-icon}.#{$c-fitted}';
-
-#{$ui-fitted-icon} {
+#{$ui-icon}.#{$c-fitted} {
   width: auto;
   margin: 0;
   vertical-align: text-bottom;

@@ -9,19 +9,25 @@
 	#{$ui-label-group}.#{$name} > .#{$c-label},
 	#{$ui-label-group} > .#{$c-label}.#{$name},
 	#{$ui-label}.#{$name} {
-	  color: color-text($inverted: true);
-	  background-color: $color;
-	  border-color: $color;
+	  color: color-text(true);
+	  background: background-colorize($color);
+
+	  > #{$e-icon} {
+		color: color-text(true);
+	  }
 	}
 
-	/* Link */
+	/* Colored Link Label */
 	#{$ui-label-group}.#{$name} > a.#{$c-label},
 	#{$ui-label-group} > a.#{$c-label}.#{$name},
 	a.#{$name}#{$ui-label} {
 	  &:hover {
-		color: color-text-hovered($inverted: true);
-		background-color: color-hover($color);
-		border-color: color-hover($color);
+		color: color-text-hovered(true);
+		background: background-colorize-hover($color);
+
+		> #{$e-icon} {
+		  color: color-text-hovered(true);
+		}
 	  }
 	}
 
@@ -39,20 +45,55 @@
 	  border-color: color-shadow($color);
 	}
 
-	/* Basic */
-	#{$ui-label}.#{$name}.#{$c-basic} {
-	  color: $color;
-	  background-color: $color-light;
-	  border-color: $color;
+	/* Basic Colored Label */
+	#{$ui-label-group}.#{$c-basic}.#{$name} > .#{$c-label},
+	#{$ui-label-group}.#{$c-basic} > .#{$c-label}.#{$name},
+	#{$ui-label-group}.#{$name} > .#{$c-label}.#{$c-basic},
+	#{$ui-label-group} > .#{$c-label}.#{$c-basic}.#{$name},
+	#{$ui-label}.#{$c-basic}.#{$name} {
+	  color: color-light($color);
+	  background: basic-background-colorize($color);
+	  border: basic-border-colorize($color);
+
+	  > #{$e-icon} {
+		color: $color;
+	  }
 	}
 
-	#{$ui-label-group}.#{$name}.#{$c-basic} > a.#{$c-label},
+	/* Inverted Basic Colored Label */
+	.#{$c-inverted} > #{$ui-label-group}.#{$c-basic}.#{$name} > .#{$c-label},
+	.#{$c-inverted} > #{$ui-label-group}.#{$c-basic} > .#{$c-label}.#{$name},
+	.#{$c-inverted} > #{$ui-label-group}.#{$name} > .#{$c-label}.#{$c-basic},
+	.#{$c-inverted} > #{$ui-label-group} > .#{$c-label}.#{$c-basic}.#{$name},
+	.#{$c-inverted} > #{$ui-label}.#{$c-basic}.#{$name},
+	#{$ui-label-group}.#{$c-inverted}.#{$c-basic}.#{$name} > .#{$c-label},
+	#{$ui-label-group}.#{$c-inverted}.#{$c-basic} > .#{$c-label}.#{$name},
+	#{$ui-label-group}.#{$c-inverted}.#{$name} > .#{$c-label}.#{$c-basic},
+	#{$ui-label-group}.#{$c-inverted} > .#{$c-label}.#{$c-basic}.#{$name},
+	#{$ui-label}.#{$c-inverted}.#{$c-basic} {
+	  color: color-light($color);
+	  background: basic-background-colorize($color, true);
+	  border: basic-border-colorize($color, true);
+
+	  > #{$e-icon} {
+		color: $color;
+	  }
+	}
+
+	/* Basic Link Label */
+	#{$ui-label-group}.#{$c-basic}.#{$name} > a.#{$c-label},
 	#{$ui-label-group}.#{$c-basic} > a.#{$c-label}.#{$name},
+	#{$ui-label-group}.#{$name} > a.#{$c-label}.#{$c-basic},
+	#{$ui-label-group} > a.#{$c-label}.#{$c-basic}.#{$name},
 	a#{$ui-label}.#{$name}.#{$c-basic} {
 	  &:hover {
 		color: color-hover($color);
-		background-color: $color-light;
-		border-color: color-hover($color);
+		background: basic-background-colorize-hover($color);
+		border: basic-border-colorize-hover($color);
+
+		> #{$e-icon} {
+		  color: color-hover($color);
+		}
 	  }
 	}
   }

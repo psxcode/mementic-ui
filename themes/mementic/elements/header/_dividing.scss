@@ -2,6 +2,7 @@
       Dividing
 --------------------*/
 $ui-dividing-header: '#{$ui-header}.#{$c-dividing}';
+$e-icon: selector-element-icon();
 
 #{$ui-dividing-header} {
 
@@ -12,7 +13,7 @@ $ui-dividing-header: '#{$ui-header}.#{$c-dividing}';
 	padding-bottom: $divided-sub-header-padding;
   }
 
-  > .#{$c-icon} {
+  > #{$e-icon} {
 	margin-bottom: $divided-icon-padding;
   }
 

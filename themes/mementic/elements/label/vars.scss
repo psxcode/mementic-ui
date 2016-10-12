@@ -19,7 +19,7 @@
 }
 
 @function background($inverted: false) {
-  @return #E8E8E8;
+  @return if(to-bool($inverted), color-transparent(#E8E8E8), #E8E8E8);
 }
 
 @function background-hover($inverted: false) {
@@ -32,6 +32,14 @@
 
 @function background-active-hover($inverted: false) {
   @return #C8C8C8;
+}
+
+@function background-colorize($color, $inverted: false) {
+  @return $color;
+}
+
+@function background-colorize-hover($color, $inverted: false) {
+  @return color-hover($color);
 }
 
 $vertical-margin: 0;
@@ -52,6 +60,10 @@ $vertical-align: baseline;
 
 $border-width: 1px;
 $border-radius: unit-rem($border-radius-default);
+@function border($inverted: false) {
+  @return none;
+}
+
 @function border($inverted: false) {
   @return none;
 }
@@ -157,13 +169,29 @@ $image-label-image-height: $image-height;
   @return basic-background($inverted);
 }
 
+@function basic-background-colorize($color, $inverted: false) {
+  @return none;
+}
+
+@function basic-background-colorize-hover($color, $inverted: false) {
+  @return none;
+}
+
 $basic-border-width: 1px;
 @function basic-border($inverted: false) {
   @return $basic-border-width solid color-divider($inverted);
 }
 
 @function basic-border-hover($inverted: false) {
-  @return $basic-border-width solid color-divider($inverted);
+  @return $basic-border-width solid color-divider-selected($inverted);
+}
+
+@function basic-border-colorize($color, $inverted: false) {
+  @return $basic-border-width solid colorize-divider($color);
+}
+
+@function basic-border-colorize-hover($color, $inverted: false) {
+  @return $basic-border-width solid colorize-divider-selected($color);
 }
 
 @function basic-box-shadow($inverted: false) {
@@ -188,7 +216,7 @@ $tag-triangle-top-offset: 50%;
 $tag-triangle-size: 1.56em;
 
 @function tag-triangle-background($inverted: false) {
-  @return none;
+  @return inherit;
 }
 
 $tag-transition: none; /* Avoids error with background: inherit; on animation */
@@ -257,6 +285,7 @@ $pointing-border-width: $border-width;
 @function pointing-label-border($inverted: false) {
   @return $pointing-border-width solid inherit;
 }
+
 $pointing-vertical-distance: 1em;
 $pointing-triangle-size: 0.6666em;
 $pointing-horizontal-distance: $pointing-triangle-size;

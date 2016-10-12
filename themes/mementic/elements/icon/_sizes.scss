@@ -2,15 +2,15 @@
         Sizes
 --------------------*/
 
-#{$ui-icon},
-#{$ui-icon-group} > .#{$c-icon} {
+#{$ui-icon-group} > #{$e-icon},
+#{$ui-icon} {
   font-size: size('medium');
 }
 
 @each $name, $size in $sizes {
 
-  #{$ui-icon}.#{$name},
-  #{$ui-icon-group}.#{$name} > .#{$c-icon} {
+  #{$ui-icon-group}.#{$name} > #{$e-icon},
+  #{$ui-icon}.#{$name} {
 	font-size: size($name);
   }
 }

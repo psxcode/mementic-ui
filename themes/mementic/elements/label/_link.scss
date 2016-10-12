@@ -11,6 +11,10 @@ a#{$ui-label} {
 	&::before {
 	  color: label-color-hover();
 	}
+
+	> #{$e-icon} {
+	  color: label-color-hover();
+	}
   }
 }
 

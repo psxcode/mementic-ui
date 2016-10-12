@@ -1,6 +1,7 @@
 /*-------------------
-		  Image
-  --------------------*/
+		Image
+--------------------*/
+$e-content: selector-element-content();
 
 #{$ui-header} {
 
@@ -16,7 +17,8 @@
 	  margin-right: $image-margin;
 	}
 
-	+ .#{$c-content} {
+	/* Content after Image inside Header */
+	+ #{$e-content} {
 	  padding-left: $image-margin;
 	  vertical-align: $content-image-alignment;
 	}

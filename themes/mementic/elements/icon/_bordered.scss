@@ -2,7 +2,7 @@
       Bordered
 --------------------*/
 
-#{$ui-icon}.#{$c-bordered} {
+#{$e-icon}.#{$c-bordered} {
 
   width: $bordered-size;
   height: $bordered-size;
@@ -10,14 +10,14 @@
   box-shadow: bordered-box-shadow();
 }
 
-.#{$c-inverted} > #{$ui-icon-group} > i.#{$c-bordered},
-.#{$c-inverted} > #{$ui-icon}.#{$c-bordered} {
+.#{$c-inverted} > #{$ui-icon-group} > #{$e-icon}.#{$c-bordered},
+.#{$c-inverted} > #{$e-icon}.#{$c-bordered} {
   box-shadow: bordered-box-shadow(true);
 }
 
 /* Inverted */
-#{$ui-icon-group}.#{$c-inverted} > i.#{$c-bordered},
-#{$ui-icon}.#{$c-inverted}.#{$c-bordered} {
+#{$ui-icon-group}.#{$c-inverted} > #{$e-icon}.#{$c-bordered},
+#{$e-icon}.#{$c-inverted}.#{$c-bordered} {
   background: color-text();
   box-shadow: none;
 }

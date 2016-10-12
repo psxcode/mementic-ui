@@ -5,22 +5,22 @@
 @mixin colorize($color-map) {
   @each $name, $color in $color-map {
 
-	#{$ui-icon-group}.#{$name} > .#{$c-icon},
+	#{$ui-icon-group}.#{$name} > #{$e-icon},
 	#{$ui-icon}.#{$name} {
 
 	  color: $color;
 	}
 
 	/* Color Icon inside Inverted Background */
-	.#{$c-inverted} > #{$ui-icon-group}.#{$name} > .#{$c-icon},
-	.#{$c-inverted} > #{$ui-icon-group} > .#{$c-icon}.#{$name},
-	.#{$c-inverted} > #{$ui-icon}.#{$name} {
+	.#{$c-inverted} > #{$ui-icon-group}.#{$name} > #{$e-icon},
+	.#{$c-inverted} > #{$ui-icon-group} > #{$e-icon}.#{$name},
+	.#{$c-inverted} > #{$e-icon}.#{$name} {
 	  color: color-light($color);
 	}
 
 	/* Inverted Color Icon */
-	#{$ui-icon-group}.#{$c-inverted}.#{$name} > .#{$c-icon},
-	#{$ui-icon-group}.#{$c-inverted} > .#{$c-icon}.#{$name},
+	#{$ui-icon-group}.#{$c-inverted}.#{$name} > #{$e-icon},
+	#{$ui-icon-group}.#{$c-inverted} > #{$e-icon}.#{$name},
 	#{$ui-icon}.#{$c-inverted}.#{$name} {
 	  color: color-text(true);
 	  background: $color;

@@ -1,9 +1,10 @@
 /*-------------------
         Icon
 --------------------*/
+$e-icon: selector-element-icon();
 
 /* Icon inside Header */
-#{$ui-header} > .#{$c-icon} {
+#{$ui-header} > #{$e-icon} {
 
   display: table-cell;
   opacity: $icon-opacity;
@@ -17,13 +18,13 @@
 	padding: 0;
 	margin-right: $icon-margin;
   }
-}
 
-/* Content after Icon inside Header */
-#{$ui-header} > .#{$c-icon} + .#{$c-content} {
-  padding-left: $icon-margin;
-  display: table-cell;
-  vertical-align: $content-icon-alignment;
+  /* Content after Icon inside Header */
+  + #{$e-content} {
+	padding-left: $icon-margin;
+	display: table-cell;
+	vertical-align: $content-icon-alignment;
+  }
 }
 
 /* Icon Header */
@@ -37,7 +38,7 @@
   }
 
   /* Icon inside Icon Header */
-  > .#{$c-icon} {
+  > #{$e-icon} {
 	display: block;
 	width: auto;
 	height: auto;
@@ -58,14 +59,14 @@
   }
 
   /* Icon Header Content */
-  > .#{$c-content} {
+  > #{$e-content} {
 	display: block;
 	padding: 0;
   }
 }
 
 /* Icon inside Block Icon Header */
-#{$ui-header}.#{$c-icon}.#{$c-block} > .#{$c-icon} {
+#{$ui-header}.#{$c-icon}.#{$c-block} > #{$e-icon} {
   margin-bottom: 0;
 }
 

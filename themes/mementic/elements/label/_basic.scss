@@ -3,6 +3,7 @@
 --------------------*/
 
 #{$ui-label-group}.#{$c-basic} > .#{$c-label},
+#{$ui-label-group} > .#{$c-label}.#{$c-basic},
 #{$ui-label}.#{$c-basic} {
 
   color: basic-label-color();
@@ -16,21 +17,12 @@
   }
 }
 
-/* Basic Link Label */
-#{$ui-label-group}.#{$c-basic} > a.#{$c-label},
-a#{$ui-label}.#{$c-basic} {
-  &:hover {
-	text-decoration: none;
-	color: basic-label-color-hover();
-	background: basic-background-hover();
-	box-shadow: basic-box-shadow-hover();
-  }
-}
-
 /* Inverted */
 .#{$c-inverted} > #{$ui-label-group}.#{$c-basic} > .#{$c-label},
+.#{$c-inverted} > #{$ui-label-group} > .#{$c-label}.#{$c-basic},
 .#{$c-inverted} > #{$ui-label}.#{$c-basic},
 #{$ui-label-group}.#{$c-inverted}.#{$c-basic} > .#{$c-label},
+#{$ui-label-group}.#{$c-inverted} > .#{$c-label}.#{$c-basic},
 #{$ui-label}.#{$c-inverted}.#{$c-basic} {
   color: basic-label-color(true);
   background: basic-background(true);
@@ -38,13 +30,30 @@ a#{$ui-label}.#{$c-basic} {
   box-shadow: basic-box-shadow(true);
 }
 
+/* Basic Link Label */
+#{$ui-label-group}.#{$c-basic} > a.#{$c-label},
+#{$ui-label-group} > a.#{$c-label}.#{$c-basic},
+a#{$ui-label}.#{$c-basic} {
+  &:hover {
+	text-decoration: none;
+	color: basic-label-color-hover();
+	background: basic-background-hover();
+	border: basic-border-hover();
+	box-shadow: basic-box-shadow-hover();
+  }
+}
+
 /* Inverted Link Label */
 .#{$c-inverted} > #{$ui-label-group}.#{$c-basic} > a.#{$c-label},
+.#{$c-inverted} > #{$ui-label-group} > a.#{$c-label}.#{$c-basic},
 .#{$c-inverted} > a#{$ui-label}.#{$c-basic},
 #{$ui-label-group}.#{$c-inverted}.#{$c-basic} > a.#{$c-label},
+#{$ui-label-group}.#{$c-inverted} > a.#{$c-label}.#{$c-basic},
 a#{$ui-label}.#{$c-inverted}.#{$c-basic} {
-  color: basic-label-color(true);
-  background: basic-background(true);
-  border: basic-border(true);
-  box-shadow: basic-box-shadow(true);
+  &:hover {
+	color: basic-label-color-hover(true);
+	background: basic-background-hover(true);
+	border: basic-border-hover(true);
+	box-shadow: basic-box-shadow-hover(true);
+  }
 }

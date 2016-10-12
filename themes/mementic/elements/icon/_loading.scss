@@ -2,10 +2,9 @@
     Loading
 ---------------*/
 
-/* Shortcuts */
-$ui-loading-icon: '#{$ui-icon}.#{$c-loading}';
+#{$ui-icon-group} > #{$e-icon}.#{$c-loading},
+#{$ui-icon}.#{$c-loading} {
 
-#{$ui-loading-icon} {
   position: relative;
 
   &::before {

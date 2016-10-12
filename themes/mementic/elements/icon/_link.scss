@@ -2,11 +2,8 @@
          Link
 --------------------*/
 
-/* Shortcuts */
-$ui-link-icon: '#{$ui-icon}.#{$c-link}';
-$ui-link-icon-group: '#{$ui-icon-group}.#{$c-link}';
-
-#{$ui-link-icon}, #{$ui-link-icon-group} {
+#{$ui-icon-group}.#{$c-link},
+#{$ui-icon}.#{$c-link} {
 
   cursor: pointer;
   opacity: $link-opacity;
