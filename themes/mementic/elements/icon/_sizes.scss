@@ -10,6 +10,7 @@
 @each $name, $size in $sizes {
 
   #{$ui-icon-group}.#{$name} > #{$e-icon},
+  #{$ui-icon-group} > #{$e-icon}.#{$name},
   #{$ui-icon}.#{$name} {
 	font-size: size($name);
   }

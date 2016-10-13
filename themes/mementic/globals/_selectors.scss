@@ -69,7 +69,8 @@
 }
 
 @function selector-element-icon() {
-  @return validate-selector('.#{$c-icon}');
+  //@return validate-selector('.#{$c-icon}');
+  @return 'i';
 }
 
 @function selector-ui-icon() {

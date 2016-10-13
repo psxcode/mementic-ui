@@ -1,7 +1,7 @@
 "use strict";
 
 module.exports = {
-	deps: ['icons-fa', {'mementic': ['image', 'icon', 'label']}],
+	deps: ['icons-fa', 'icons-ionic', {'mementic': ['icon']}],
 	modules: [{
 		path: '',
 		names: ['test']
