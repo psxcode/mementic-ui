@@ -5,8 +5,6 @@
 #{$ui-icon-group} > #{$e-icon}.#{$c-loading},
 #{$ui-icon}.#{$c-loading} {
 
-  position: relative;
-
   &::before {
 	animation: loader-animation $loading-duration linear infinite;
 

@@ -2,39 +2,26 @@
  *
  * Colors
  * Sizes
- * Basic
- * Link - Element or Class
  * Inverted - Parent Class or Self Class
+ * Fitted
+ * Link
+ * Circular
+ * Bordered
+ * Rotated
+ * Flipped
  */
 
 /* Types
  *
- * Image
- * Tag
  * Corner
- * Ribbon
- * Attached
- * Horizontal
- * Circular
- * Pointing
- * Floating
  */
 
 /* States
  *
  * Disabled
- * Visible
- * Hidden
+ * Loading
+ * Active
  * Hover - Link Variation
- */
-
-/*
- * Content
- *
- * Detail - Element or Class
- * Icon - Element or Class
- * Image - Element
- * Link - Element or Class
  */
 
 /* Shortcuts */
@@ -46,9 +33,10 @@ $e-icon: selector-element-icon();
 #{$ui-icon} {
 
   display: inline-block;
-  opacity: $opacity;
+  position: relative;
 
   color: color-text();
+  opacity: $opacity;
 
   margin: 0 $distance-from-text 0 0;
 
@@ -71,6 +59,7 @@ $e-icon: selector-element-icon();
   -moz-osx-font-smoothing: grayscale;
 
   &::before {
+	display: inline-block;
 	background: none;
   }
 
@@ -92,7 +81,7 @@ $e-icon: selector-element-icon();
 	margin: 0;
 
 	&:not(:first-child) {
-	  position: absolute !important;
+	  position: absolute;
 	  top: 0;
 	  bottom: 0;
 	  left: 0;

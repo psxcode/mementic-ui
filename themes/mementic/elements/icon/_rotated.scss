@@ -4,12 +4,18 @@
 
 #{$ui-icon-group} > #{$e-icon}.#{$c-flipped},
 #{$ui-icon}.#{$c-flipped} {
-  transform: scale(-1, 1);
+
+  &::before {
+	transform: scale(-1, 1);
+  }
 }
 
 #{$ui-icon-group} > #{$e-icon}.#{$c-flipped}.#{$c-vertical},
 #{$ui-icon}.#{$c-flipped}.#{$c-vertical} {
-  transform: scale(1, -1);
+
+  &::before {
+	transform: scale(1, -1);
+  }
 }
 
 /*-------------------
@@ -19,10 +25,16 @@ $right-rotated: selector-right-rotated();
 
 #{$ui-icon-group} > #{$e-icon}.#{$c-rotated},
 #{$ui-icon}.#{$c-rotated} {
-  transform: rotate(-90deg);
+
+  &::before {
+	transform: rotate(-90deg);
+  }
 }
 
 #{$ui-icon-group} > #{$e-icon}#{$right-rotated},
 #{$ui-icon}#{$right-rotated} {
-  transform: rotate(90deg);
+
+  &::before {
+	transform: rotate(90deg);
+  }
 }
