@@ -14,7 +14,7 @@ var paths = null;
 		depsDirs: [srcdir],
 		sourceDir: srcdir,
 		sassModuleFilepath: path.join(srcdir, 'module.scss'),
-		themeConfigFilename: 'config.js',
+		themeConfigFilename: 'mem-config.js',
 		cssFilename: 'style.css',
 		globalsName: 'globals'
 	};
