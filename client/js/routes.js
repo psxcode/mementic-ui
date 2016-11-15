@@ -37,7 +37,7 @@
 			}
 
 			//add view states
-			var views = mementic.collectionNames;
+			var views = mementic.viewNames;
 			for(i = 0; i < views.length; ++i) {
 				$stateProvider.state('main.' + views[i], {
 					url: 'views/' + views[i],

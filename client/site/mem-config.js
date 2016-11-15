@@ -1,7 +1,7 @@
 "use strict";
 
 module.exports = {
-	deps: ['mem-elements'],
+	deps: [{'mementic': ['button']}],
 	modules: [{
 		path: '',
 		names: ['example']

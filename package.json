@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "lite-server",
+    "dev": "gulp serve",
 	"clean": "gulp clean",
 	"build": "gulp build-install"
   },

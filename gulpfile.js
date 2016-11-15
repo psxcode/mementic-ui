@@ -9,17 +9,30 @@ var rename = require('gulp-rename');
 var templates = require('gulp-angular-templatecache');
 var inject = require('gulp-inject');
 var path = require('path');
-var bs = require('browser-sync').create();
 var clean = require('gulp-clean');
 
 // Require Mem-UI
 var ui = require('./index');
 
 gulp.task('serve', function () {
+	var bs = require('browser-sync').create();
 
+	bs.init({
+		port: 3000,
+		server: {
+			baseDir: './public'
+		},
+		files: ['./public/*']
+	});
+
+	// scss
+	gulp.watch(['./themes/**/*.*', 'client/site/**/*'], ['css']);
+
+	// js
+	gulp.watch(['./client/js/**/*', './client/views/**/*'], ['js']);
 });
 
-gulp.task('clean', function() {
+gulp.task('clean', function () {
 	return gulp.src(['./public/**/*', '!./public/favicon.ico'], {read: false})
 		.pipe(clean());
 });
@@ -55,7 +68,7 @@ gulp.task('js', function () {
 
 gulp.task('css', function () {
 
-	if(!ui.isConfigured()) {
+	if (!ui.isConfigured()) {
 		ui({deps: ['client/site']});
 	}
 
