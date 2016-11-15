@@ -1,7 +1,4 @@
 .idea/
 node_modules/
 public/
-userThemes/
-site/
-
-smt-ui.json
+client/lib/

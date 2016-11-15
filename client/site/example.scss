@@ -1,0 +1,12 @@
+.example {
+  margin: 2em 0;
+  padding: 2em 0;
+}
+
+.relative {
+  position: relative;
+}
+
+.example > .ui.header:first-child {
+  margin: 0;
+}
