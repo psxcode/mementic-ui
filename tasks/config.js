@@ -247,66 +247,62 @@ function resolveThemeDepsPaths() {
 					Array.prototype.push.apply(result.modules, pushModules);
 				}
 			}
+
+			function getPushModules(dep) {
+				var themeModules = getThemeModuleDefinitions(themeConfig);
+				var depModules = getDepModuleDefinitions(dep);
+				var pushModules = themeModules;
+
+				if (depModules.length > 0) {
+					//check if modules are in ignore mode
+					if (depModules[0].ignore) {
+
+						//modules are in ignore mode
+						pushModules = _.filter(themeModules, function (themeMod) {
+
+							//using for to early interrupt loop
+							for (var i = 0; i < depModules.length; ++i) {
+								var depMod = depModules[i];
+
+								// if name and path? are set then ignore
+								if (themeMod.name === depMod.name &&
+									(_.isString(depMod.path) ? themeMod.path === depMod.path : true)) {
+									return false;
+								}
+							}
+							return true;
+						})
+					} else {
+
+						//modules are in add mode
+						pushModules = [];
+
+						_.forEach(depModules, function (mod) {
+							if (_.isString(mod.path)) {
+								pushModules.push({
+									path: mod.path || '',
+									name: mod.name
+								})
+							} else {
+								//add all modules with name from themeModules
+								_.forEach(themeModules, function (themeMod) {
+									if (mod.name === themeMod.name) {
+										pushModules.push({
+											path: themeMod.path,
+											name: themeMod.name
+										});
+									}
+								});
+							}
+						})
+					}
+				}
+
+				return pushModules;
+			}
 		}
 
 		return result;
-
-		function getPushModules(dep) {
-			var depName = getDepName(dep);
-			var depPath = getThemePath(depName);
-			var themeConfig = requireThemeConfig(depPath) || {};
-
-			var themeModules = getThemeModuleDefinitions(themeConfig);
-			var depModules = getDepModuleDefinitions(dep);
-			var pushModules = themeModules;
-
-			if (depModules.length > 0) {
-				//check if modules are in ignore mode
-				if (depModules[0].ignore) {
-
-					//modules are in ignore mode
-					pushModules = _.filter(themeModules, function (themeMod) {
-
-						//using for to early interrupt loop
-						for (var i = 0; i < depModules.length; ++i) {
-							var depMod = depModules[i];
-
-							// if name and path? are set then ignore
-							if (themeMod.name === depMod.name &&
-								(_.isString(depMod.path) ? themeMod.path === depMod.path : true)) {
-								return false;
-							}
-						}
-						return true;
-					})
-				} else {
-
-					//modules are in add mode
-					pushModules = [];
-
-					_.forEach(depModules, function (mod) {
-						if (_.isString(mod.path)) {
-							pushModules.push({
-								path: mod.path || '',
-								name: mod.name
-							})
-						} else {
-							//add all modules with name from themeModules
-							_.forEach(themeModules, function (themeMod) {
-								if (mod.name === themeMod.name) {
-									pushModules.push({
-										path: themeMod.path,
-										name: themeMod.name
-									});
-								}
-							});
-						}
-					})
-				}
-			}
-
-			return pushModules;
-		}
 
 		function checkCircularDep(dep) {
 			var isCircular = _.indexOf(parents, dep) >= 0;
@@ -413,7 +409,6 @@ function resolveThemeDepsPaths() {
 		}
 	}
 
-
 	function getThemePath(themeNameOrPath) {
 		var themeConfigFileFound = false;
 
@@ -446,7 +441,10 @@ function resolveThemeDepsPaths() {
 
 function requireThemeConfig(themePath) {
 	try {
-		return require(path.resolve(path.join(themePath, paths.themeConfigFilename)));
-	} catch (e) {}
+		var requireModule = path.resolve(path.join(themePath, paths.themeConfigFilename));
+		delete require.cache[requireModule];
+		return require(requireModule);
+	} catch (e) {
+	}
 	return null;
 }

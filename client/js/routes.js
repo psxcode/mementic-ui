@@ -23,7 +23,7 @@
 			for(var i = 0; i < elements.length; ++i) {
 				$stateProvider.state('main.' + elements[i], {
 					url: 'elements/' + elements[i],
-					templateUrl: elements[i] + '.html'
+					templateUrl: 'elements/' + elements[i] + '.html'
 				});
 			}
 
@@ -32,7 +32,7 @@
 			for(i = 0; i < collections.length; ++i) {
 				$stateProvider.state('main.' + collections[i], {
 					url: 'collections/' + collections[i],
-					templateUrl: collections[i] + '.html'
+					templateUrl: 'collections/' + collections[i] + '.html'
 				});
 			}
 
@@ -41,7 +41,7 @@
 			for(i = 0; i < views.length; ++i) {
 				$stateProvider.state('main.' + views[i], {
 					url: 'views/' + views[i],
-					templateUrl: views[i] + '.html'
+					templateUrl: 'views/' + views[i] + '.html'
 				});
 			}
 

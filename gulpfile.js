@@ -26,7 +26,7 @@ gulp.task('serve', function () {
 	});
 
 	// scss
-	gulp.watch(['./themes/**/*.*', 'client/site/**/*'], ['css']);
+	gulp.watch(['./themes/**/*', 'client/site/**/*'], ['css']);
 
 	// js
 	gulp.watch(['./client/js/**/*', './client/views/**/*'], ['js']);
@@ -68,9 +68,7 @@ gulp.task('js', function () {
 
 gulp.task('css', function () {
 
-	if (!ui.isConfigured()) {
-		ui({deps: ['client/site']});
-	}
+	ui({deps: ['client/site']});
 
 	return ui.streamCss().pipe(gulp.dest('./public'));
 });

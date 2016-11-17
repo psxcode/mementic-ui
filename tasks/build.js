@@ -20,7 +20,6 @@ module.exports = function (userConfig) {
 
 module.exports.streamCss = streamCss;
 module.exports.streamPublic = streamPublic;
-module.exports.isConfigured = config.isConfigured;
 
 function streamCss() {
 	var streams = [];

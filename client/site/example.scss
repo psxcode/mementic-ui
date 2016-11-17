@@ -1,12 +1,36 @@
-.example {
-  margin: 2em 0;
-  padding: 2em 0;
-}
-
 .relative {
   position: relative;
 }
 
-.example > .ui.header:first-child {
-  margin: 0;
+.example {
+  position: relative;
+  padding: 32px;
+  width: 768px;
+  max-width: 100%;
+  margin: auto;
+}
+
+.example.container {
+  padding: 2em;
+}
+
+.example.inverted {
+  background-color: #1B1C1D;
+
+  > h1, > h2, > h3, > h4, > h5, > h6, > p {
+	color: white;
+  }
+}
+
+.example.clearing {
+  @include clearfix;
+}
+
+.dimmer {
+  @include overlay(0);
+  background-color: rgba(black, 0.75);
+}
+
+.dimmer.inverted {
+  background-color: rgba(white, 0.75);
 }
