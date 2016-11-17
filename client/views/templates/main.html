@@ -1,19 +1,16 @@
-<div class="" style="width: 200px">
-	<div class="">
-		<div ng-repeat="el in ctrl.elementNames" class="item">
-			<div class="">
-				<a ui-sref="main.{{el}}" class="">{{el}}</a>
-			</div>
-		</div>
+<div class="example list">
+	<div ng-repeat="el in ctrl.elementNames"
+	     ui-sref="main.{{el}}"
+	     class="item">
+		{{el}}
 	</div>
+</div>
 
-	<div class="">
-		<div ng-repeat="coll in ctrl.collectionNames" class="item">
-			<div class="">
-				<a ui-sref="main.{{coll}}" class="">{{coll}}</a>
-			</div>
-		</div>
+<div class="example list">
+	<div ng-repeat="coll in ctrl.collectionNames"
+	     ui-sref="main.{{coll}}"
+	     class="item">
+		{{coll}}
 	</div>
-
 </div>
 <div ui-view="" class="example container"></div>

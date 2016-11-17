@@ -4,10 +4,10 @@
 
 .example {
   position: relative;
+  margin: auto;
   padding: 32px;
   width: 768px;
   max-width: 100%;
-  margin: auto;
 }
 
 .example.container {
@@ -24,6 +24,19 @@
 
 .example.clearing {
   @include clearfix;
+}
+
+.example.list {
+
+  > .item {
+	display: inline-block;
+	margin: 0.5em;
+	padding: 1em;
+	border: thin gray solid;
+	border-radius: 0.2em;
+	cursor: pointer;
+	text-transform: uppercase;
+  }
 }
 
 .dimmer {
