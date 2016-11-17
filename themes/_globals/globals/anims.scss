@@ -1,7 +1,7 @@
 /* Loader Animation */
 @keyframes loader-animation {
   from {
-	transform: rotate(0deg);
+	transform: rotate(0.01deg);
   }
   to {
 	transform: rotate(360deg);

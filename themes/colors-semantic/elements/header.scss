@@ -1,3 +1,3 @@
 @if $auto-include-colors-semantic {
-  @include colors($colors-semantic);
+  @include colorize($colors-semantic);
 }

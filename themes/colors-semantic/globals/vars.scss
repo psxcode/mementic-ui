@@ -27,5 +27,4 @@ $colors-semantic: (
   @return map-get($colors-semantic, $variant);
 }
 
-$auto-include-colors-info: false;
 $auto-include-colors-semantic: true;

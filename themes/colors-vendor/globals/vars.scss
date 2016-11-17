@@ -20,5 +20,4 @@ $colors-vendor: (
   @return map-get($colors-vendor, $variant);
 }
 
-$auto-include-colors-info: false;
 $auto-include-colors-vendor: true;
