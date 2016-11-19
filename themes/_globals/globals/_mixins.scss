@@ -1,16 +1,3 @@
-@mixin arrow($color) {
-  position: absolute;
-  display: block;
-  width: 7px;
-  border: 1px solid $color;
-  border-right: 0;
-  border-top: 0;
-  content: " ";
-  height: 7px;
-  pointer-events: none;
-  transform: rotate(-45deg);
-}
-
 @mixin overlay($offset: 0, $z: 100) {
   position: absolute;
   content: '';
@@ -47,22 +34,122 @@
   z-index: $z;
 }
 
-@mixin clearfix {
-  &::after {
-	content: '';
-	display: block;
-	clear: both;
-	height: 0;
-	visibility: hidden;
+%clearfix {
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
+  visibility: hidden;
+}
+
+@mixin vp-transition($values) {
+  $vendors: '-webkit-' '-moz-' '-o-' '';
+
+  @each $vendor in $vendors {
+	#{$vendor}transition: $values;
   }
 }
 
-@mixin placeholder {
-  $placeholders: ':-moz' ':-webkit-input' '-moz' '-ms-input';
+@mixin vp-transition-property($values) {
+  $vendors: '-webkit-' '-moz-' '-o-' '';
+
+  @each $vendor in $vendors {
+	#{$vendor}transition-property: $values;
+  }
+}
+
+@mixin vp-transition-delay($values) {
+  $vendors: '-webkit-' '-moz-' '-o-' '';
+
+  @each $vendor in $vendors {
+	#{$vendor}transition-delay: $values;
+  }
+}
+
+@mixin vp-transition-timing-function($values) {
+  $vendors: '-webkit-' '-moz-' '-o-' '';
+
+  @each $vendor in $vendors {
+	#{$vendor}transition-timing-function: $values;
+  }
+}
+
+@mixin vp-transition-duration($values) {
+  $vendors: '-webkit-' '-moz-' '-o-' '';
+
+  @each $vendor in $vendors {
+	#{$vendor}transition-duration: $values;
+  }
+}
+
+/* options: none, auto, text, contain, all */
+@mixin vp-user-select($option: none) {
+  $vendors: '-webkit-' '-moz-' '-ms-' '';
+
+  @each $vendor in $vendors {
+	#{$vendor}user-select: $option;
+  }
+}
+
+@mixin vp-border-radius($value) {
+  $vendors: '-webkit-' '-moz-' '';
+
+  @each $vendor in $vendors {
+	#{$vendor}border-radius: $value;
+  }
+}
+
+@mixin vp-left-border-radius($value) {
+  -webkit-border-top-left-radius: $value;
+  -webkit-border-bottom-left-radius: $value;
+  -moz-border-radius-topleft: $value;
+  -moz-border-radius-bottomleft: $value;
+  border-top-left-radius: $value;
+  border-bottom-left-radius: $value;
+}
+
+@mixin vp-right-border-radius($value) {
+  -webkit-border-top-right-radius: $value;
+  -webkit-border-bottom-right-radius: $value;
+  -moz-border-radius-topright: $value;
+  -moz-border-radius-bottomright: $value;
+  border-top-right-radius: $value;
+  border-bottom-right-radius: $value;
+}
+
+@mixin vp-top-border-radius($value) {
+  -webkit-border-top-left-radius: $value;
+  -webkit-border-top-right-radius: $value;
+  -moz-border-radius-topleft: $value;
+  -moz-border-radius-topright: $value;
+  border-top-left-radius: $value;
+  border-top-right-radius: $value;
+}
+
+@mixin vp-bottom-border-radius($value) {
+  -webkit-border-bottom-right-radius: $value;
+  -webkit-border-bottom-left-radius: $value;
+  -moz-border-radius-bottomright: $value;
+  -moz-border-radius-bottomleft: $value;
+  border-bottom-right-radius: $value;
+  border-bottom-left-radius: $value;
+}
+
+@mixin vp-placeholder {
+  $placeholders: ':-moz-' ':-webkit-input-' '-moz-' '-ms-input-';
 
   @each $placeholder in $placeholders {
-	&:#{$placeholder}-placeholder {
+	&:#{$placeholder}placeholder {
 	  @content;
 	}
+  }
+}
+
+/// Contexts
+/// @author Hugo Giraudel
+/// @param {String | List} $context
+@mixin when-inside($context) {
+  #{$context} & {
+	@content;
   }
 }

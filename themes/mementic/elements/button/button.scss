@@ -1,244 +1,82 @@
+/* Types: [mut-ex]: Each type provides support for Variations and States if desired.
+ *
+ * Default
+ * Group - button inside a Group
+ * Labeled - special combination of Label and Button
+ * Circular
+ * Block - display: block
+ */
+
+/* Variations: [mut-inc]
+ *
+ * Colors
+ * Sizes
+ * Inverted - Parent Class or Self Class
+ * Aligned
+ * Floated
+ * Fitted
+ * Attached
+ * Transition - animated transition between two contents on some State
+ */
+
+/* States: [mut-ex]
+ *
+ * Hover
+ * Focus
+ * Down
+ * Disabled
+ */
+
+/* Content
+ *
+ * Icon - Element or Class
+ * Content - Visible/Hidden Content for animated transition
+ */
+
 /* Shortcuts */
 $ui-button: selector-ui-button();
-$ui-button-group: selector-ui-button-group();
 
-#{$ui-button-group} > .#{$c-button},
+/* Button */
 #{$ui-button} {
+  @include user-button;
 
-  display: inline-block;
-
-  color: color-text();
-  background: background();
-
-  margin: 0 $horizontal-margin $vertical-margin 0;
-  padding: $vertical-padding $horizontal-padding $vertical-padding;
-  border: none;
-  border-radius: $border-radius;
-  min-height: 1em;
-
-  font-family: $font-family;
-  font-weight: $font-weight;
-  line-height: $line-height;
-  font-style: normal;
-  text-align: center;
-  text-decoration: none;
-  text-transform: $text-transform;
-
-  box-shadow: box-shadow();
-
-  vertical-align: $vertical-align;
-  cursor: pointer;
-  outline: none;
-
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-
-  transition: $transition;
-
-  //-webkit-tap-highlight-color: $tap-color;
-
+  // States
   &:hover {
-	color: color-text-hovered();
-	background: background-hover();
+	@include user-button-hover;
   }
 
   &:focus {
-	color: color-text-selected();
-	background: background-focus();
+	@include user-button-focus;
   }
 
   &:active {
-	color: color-text-pressed();
-	background: background-down();
-  }
-
-  &.#{$c-active} {
-	color: color-text-selected();
-	background: background-active();
-
-	/*&:hover {
-	  color: $active-hover-color;
-	  background-color: $active-hover-background-color;
-	}*/
-
-	/*&:active {
-	  color: $down-color;
-	  background-color: $down-background-color;
-	}*/
+	@include user-button-down;
   }
 
   &.#{$c-disabled},
   &:disabled {
-	cursor: default;
-	opacity: $opacity-disabled;
-	pointer-events: none;
+	@include user-button-disabled;
   }
 }
 
-/*-------------------
-	Group
---------------------*/
+/* Sizes Variation */
+@each $name, $size in $sizes {
 
-#{$ui-button-group} {
-
-  display: inline-flex;
-  flex-direction: row;
-  vertical-align: baseline;
-  margin: $vertical-margin $horizontal-margin 0 0;
-  border-radius: $border-radius;
-
-  /* Clearfix */
-  &::after {
-	content: " ";
-	display: block;
-	height: 0;
-	clear: both;
-	visibility: hidden;
-  }
-
-  /* Standard Group */
-  > .#{$c-button} {
-	flex: 1 0 auto;
-	border-radius: 0;
-	margin: 0;
-
-	&:first-child {
-	  border-top-left-radius: $border-radius;
-	  border-bottom-left-radius: $border-radius;
-	}
-
-	&:last-child {
-	  border-top-right-radius: $border-radius;
-	  border-bottom-right-radius: $border-radius;
-	}
-  }
-
-  &:not(.#{$c-basic}):not(.#{$c-inverted}) {
-  }
-
-  /*> .#{$c-button}:not(.#{$c-basic}):not(.#{$c-inverted}),
-  &:not(.#{$c-basic}):not(.#{$c-inverted}) > .#{$c-button} {
-	box-shadow: $group-button-box-shadow;
-  }*/
-}
-
-/* Vertical Group */
-#{$ui-button-group}.#{$c-vertical} {
-
-  flex-direction: column;
-
-  > .#{$c-button} {
-	display: block;
-	border-radius: 0;
-
-	&:first-child {
-	  border-top-left-radius: $border-radius;
-	  border-top-right-radius: $border-radius;
-	}
-
-	&:last-child {
-	  border-bottom-left-radius: $border-radius;
-	  border-bottom-right-radius: $border-radius;
-	}
+  #{$ui-button}.#{$name} {
+	font: font($name);
   }
 }
 
-/* Inverted */
-.#{$c-inverted} > #{$ui-button-group} > .#{$c-button},
-.#{$c-inverted} > #{$ui-button},
-#{$ui-button-group}.#{$c-inverted} > .#{$c-button},
-#{$ui-button}.#{$c-inverted} {
-
-  color: color-text(true);
-  background: background(true);
-  box-shadow: box-shadow(true);
-
-  &:hover {
-	color: color-text-hovered();
-	background: background-hover(true);
-	box-shadow: none;
-  }
-
-  &:focus {
-	color: color-text-selected();
-	background: background-focus(true);
-	box-shadow: none;
-  }
-
-  &:active {
-	color: color-text-pressed();
-	background: background-down(true);
-	box-shadow: none;
-  }
-
-  &.#{$c-active} {
-	color: color-text-selected();
-	background: background-active(true);
-	box-shadow: none;
-  }
-}
-
-/* Inverted Group */
-.#{$c-inverted} > #{$ui-button-group},
-#{$ui-button-group}.#{$c-inverted} {
-  border: 2px solid color-divider(true);
-
-  > .#{$c-button} {
-	box-shadow: none;
-	border: none;
-	border-left: 2px solid color-divider(true);
-
-	&:first-child {
-	  border: none;
-	}
-  }
-}
-
-/* Inverted Vertical Group */
-.#{$c-inverted} > #{$ui-button-group}.#{$c-vertical},
-#{$ui-button-group}.#{$c-inverted}.#{$c-vertical} {
-
-  > .#{$c-button} {
-	border: none;
-	border-top: 2px solid color-divider(true);
-
-	&:first-child {
-	  border: none;
-	}
-  }
-}
-
-/* Numbers */
-@for $i from 2 through 12 {
-
-  #{$ui-button-group}.#{number-name($i)} {
-	width: 100%;
-
-	> .#{$c-button} {
-	  width: (100% / $i);
-	}
-
-	&.#{$c-vertical} > .#{$c-button} {
-	  height: (100% / $i);
-	}
-  }
-}
-
+@import "group";
 //@import "animated";
 //@import "attached";
-@import "basic";
+//@import "basic";
 //@import "circular";
-@import "colors";
-@import "compact";
+//@import "colors";
+//@import "compact";
 //@import "disabled";
 //@import "floated";
 //@import "fluid";
-@import "icon-labeled";
-//@import "loading";
-//@import "or";
-@import "sizes";
-//@import "toggle";
 
 
 

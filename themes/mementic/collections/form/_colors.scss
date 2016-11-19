@@ -4,12 +4,12 @@
 	/* Color Placeholder */
 	#{$ui-form} .#{$name} input {
 
-	  @include placeholder {
+	  @include vp-placeholder {
 		color: $color;
 	  }
 
 	  &:focus {
-		@include placeholder {
+		@include vp-placeholder {
 		  color: color-focus($color);
 		}
 	  }

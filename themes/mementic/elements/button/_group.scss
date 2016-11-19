@@ -1,0 +1,127 @@
+/* Shortcuts */
+$ui-button-group: selector-ui-button-group();
+
+/* Group Button Type */
+#{$ui-button-group} > .#{$c-button} {
+  @extend #{$ui-button};
+}
+
+/* Group */
+#{$ui-button-group} {
+
+  @include user-group;
+
+  /* Group Button Type */
+  > .#{$c-button} {
+	@include user-group-button;
+  }
+}
+
+/* Vertical Group */
+#{$ui-button-group}.#{$c-vertical} {
+
+  @include user-vertical-group;
+
+  /* Group Button Type */
+  > .#{$c-button} {
+	@include user-vertical-group-button;
+  }
+}
+
+/* Sizes Variation */
+@each $name, $size in $sizes {
+
+  #{$ui-button-group}.#{$name} > .#{$c-button} {
+	@extend #{$ui-button}.#{$name};
+  }
+}
+
+/* Inverted */
+
+/*
+.#{$c-inverted} > #{$ui-button-group} > .#{$c-button},
+.#{$c-inverted} > #{$ui-button},
+#{$ui-button-group}.#{$c-inverted} > .#{$c-button},
+#{$ui-button}.#{$c-inverted} {
+
+  color: color-text(true);
+  background: background(true);
+  box-shadow: box-shadow(true);
+
+  &:hover {
+	color: color-text-hovered();
+	background: background-hover(true);
+	box-shadow: none;
+  }
+
+  &:focus {
+	color: color-text-selected();
+	background: background-focus(true);
+	box-shadow: none;
+  }
+
+  &:active {
+	color: color-text-pressed();
+	background: background-down(true);
+	box-shadow: none;
+  }
+
+  &.#{$c-active} {
+	color: color-text-selected();
+	background: background-active(true);
+	box-shadow: none;
+  }
+}
+*/
+
+/* Inverted Group */
+/*
+.#{$c-inverted} > #{$ui-button-group},
+#{$ui-button-group}.#{$c-inverted} {
+  border: 2px solid color-divider(true);
+
+  > .#{$c-button} {
+	box-shadow: none;
+	border: none;
+	border-left: 2px solid color-divider(true);
+
+	&:first-child {
+	  border: none;
+	}
+  }
+}
+*/
+
+/* Inverted Vertical Group */
+/*
+.#{$c-inverted} > #{$ui-button-group}.#{$c-vertical},
+#{$ui-button-group}.#{$c-inverted}.#{$c-vertical} {
+
+  > .#{$c-button} {
+	border: none;
+	border-top: 2px solid color-divider(true);
+
+	&:first-child {
+	  border: none;
+	}
+  }
+}
+*/
+
+/* Numbers */
+
+//@for $i from 2 through 12 {
+//
+//  #{$ui-button-group}.#{number-name($i)} {
+//	width: 100%;
+//
+//	> .#{$c-button} {
+//	  width: (100% / $i);
+//	}
+//
+//	&.#{$c-vertical} > .#{$c-button} {
+//	  height: (100% / $i);
+//	}
+//  }
+//}
+

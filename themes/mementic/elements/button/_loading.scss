@@ -2,74 +2,28 @@
     Loading
 ---------------*/
 
-@keyframes button-spin {
-  from {
-	transform: rotate(0deg);
-  }
-  to {
-	transform: rotate(360deg);
-  }
-}
+@mixin _button-loading() {
 
-#{$ui-button}.#{$c-loading} {
-
+  // positioning
   position: relative;
-  cursor: default;
+
+  // text
   text-shadow: none;
+
+  // color
   color: transparent;
-  opacity: $loading-opacity;
-  pointer-events: $loading-pointer-events;
-  transition: $loading-transition;
+  opacity: 1;
+
+  // misc
+  cursor: default;
+  pointer-events: auto;
+  @include vp-transition(loading-transition());
 
   &::before {
-	position: absolute;
-	content: '';
-	top: 50%;
-	left: 50%;
-
-	margin: $loader-margin;
-	width: $loader-size;
-	height: $loader-size;
-
-	border-radius: $border-radius-circular;
-	border: $loader-line-width solid $inverted-loader-fill-color;
-  }
-
-  &::after {
-	position: absolute;
-	content: '';
-	top: 50%;
-	left: 50%;
-
-	margin: $loader-margin;
-	width: $loader-size;
-	height: $loader-size;
-
-	animation: button-spin $loader-speed linear;
-	animation-iteration-count: infinite;
-
-	border-radius: $border-radius-circular;
-
-	border-color: $inverted-loader-line-color transparent transparent;
-	border-style: solid;
-	border-width: $loader-line-width;
-
-	box-shadow: 0 0 0 1px transparent;
-  }
-
-  &.#{$c-labeled}.#{$c-icon} .#{$c-icon} {
-	background-color: transparent;
-	box-shadow: none;
-  }
-
-  &.#{$c-basic}:not(.#{$c-inverted}) {
-
-	&::before {
-	  border-color: $loader-fill-color;
-	}
-
-	&:after {
-	  border-top-color: $loader-line-color;
-	}
+	@include loader($inverted-loader-line-color,
+			$inverted-loader-fill-color,
+			$loader-size,
+			$loader-line-width
+	);
   }
 }

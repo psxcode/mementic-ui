@@ -22,8 +22,8 @@
   }
 }
 
-.example.clearing {
-  @include clearfix;
+.example.clearing::after {
+  @extend %clearfix;
 }
 
 .example.list {

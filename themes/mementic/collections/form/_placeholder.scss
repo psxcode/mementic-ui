@@ -5,12 +5,12 @@
 /* browsers require these rules separate */
 #{$ui-form} input {
 
-  @include placeholder {
+  @include vp-placeholder {
 	color: $input-placeholder-color;
   }
 
   &:focus {
-	@include placeholder {
+	@include vp-placeholder {
 	  color: $input-placeholder-focus-color;
 	}
   }

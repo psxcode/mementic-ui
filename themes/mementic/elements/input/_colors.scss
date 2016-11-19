@@ -17,13 +17,13 @@
 		box-shadow: none;
 
 		/* Color Placeholder */
-		@include placeholder {
+		@include vp-placeholder {
 		  color: $placeholder-color;
 		}
 
 		&:focus {
 		  /* Focused Color Placeholder */
-		  @include placeholder {
+		  @include vp-placeholder {
 			color: $placeholder-focus-color;
 		  }
 		}

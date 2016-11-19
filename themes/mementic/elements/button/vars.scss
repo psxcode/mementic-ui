@@ -3,27 +3,33 @@
 --------------------*/
 
 /* Button */
+$display: inline-block;
+
 $vertical-margin: 0;
 $horizontal-margin: 0.25rem;
+
+@function margin() {
+  @return 0 $horizontal-margin $vertical-margin 0
+}
 
 /* Button defaults to using same height as input globally */
 $vertical-padding: $input-vertical-padding;
 $horizontal-padding: 1.5em;
 
+@function padding() {
+  @return $vertical-padding $horizontal-padding $vertical-padding;
+}
+
 /* Text */
-$font-family: font-family();
-$font-weight: bold;
-$line-height: 1;
+@function font($size-name) {
+  @return bold size($size-name)/line-height() font-family();
+}
+
 $text-transform: none;
 $vertical-align: baseline;
-$border-radius: unit-rem($border-radius-default);
-
-/* Transition */
-$transition: opacity $duration-default $easing-default,
-background-color $duration-default $easing-default,
-color $duration-default $easing-default,
-box-shadow $duration-default $easing-default,
-background $duration-default $easing-default;
+@function border-radius() {
+  @return unit-rem($border-radius-default);
+}
 
 /* Background */
 @function background($inverted: false) {
@@ -82,6 +88,19 @@ $inverted-box-shadow-border: box-shadow-create(0, 0, 0, 2px, true);
 		  none);
 }
 
+/* Transition */
+@function transition() {
+  @return opacity $duration-default $easing-default,
+  background-color $duration-default $easing-default,
+  color $duration-default $easing-default,
+  box-shadow $duration-default $easing-default,
+  background $duration-default $easing-default;
+}
+
+@function loading-transition() {
+  @return opacity $duration-default $easing-default;
+}
+
 /* Icon */
 $icon-height: size('tiny');
 $icon-opacity: 0.8;
@@ -94,12 +113,6 @@ $right-icon-margin: 0 ($icon-distance * -0.5) 0 $icon-distance;
 
 /* Loader */
 $inverted-loader-fill-color: rgba(0, 0, 0, 0.15);
-
-/* Loading */
-$loading-opacity: 1;
-$loading-pointer-events: auto;
-$loading-transition: all 0s linear,
-opacity $duration-default $easing-default;
 
 /*-------------------
         Types
@@ -174,4 +187,105 @@ $fade-scale-low: 0.75;
 
 $auto-include-colors-info: true;
 
-@import "basic-vars";
+//@import "basic-vars";
+
+@mixin _button() {
+
+  // positioning
+  display: $display;
+
+  // size
+  margin: margin();
+  padding: padding();
+  min-height: 1em;
+
+  // text
+  font: font('medium');
+  text-align: center;
+  text-decoration: none;
+  text-transform: $text-transform;
+  vertical-align: $vertical-align;
+
+  // colors
+  color: color-text();
+  background: background();
+
+  // border
+  border: none;
+  @include vp-border-radius(border-radius());
+  box-shadow: box-shadow();
+
+  // misc
+  cursor: pointer;
+  outline: none;
+  @include vp-user-select(none);
+  @include vp-transition(transition());
+
+  // user content
+  @content;
+}
+
+@mixin _button-hover() {
+
+  // colors
+  color: color-text-hovered();
+  background: background-hover();
+
+  // user content
+  @content;
+}
+
+@mixin _button-focus() {
+
+  // colors
+  color: color-text-selected();
+  background: background-focus();
+
+  // user content
+  @content;
+}
+
+@mixin _button-down() {
+
+  // colors
+  color: color-text-pressed();
+  background: background-down();
+
+  // user content
+  @content;
+}
+
+@mixin _button-disabled() {
+
+  // colors
+  opacity: $opacity-disabled;
+
+  // misc
+  cursor: default;
+  pointer-events: none;
+}
+
+
+
+/* User mixins */
+@mixin user-button() {
+  @include _button();
+}
+
+@mixin user-button-hover() {
+  @include _button-hover;
+}
+
+@mixin user-button-focus() {
+  @include _button-focus;
+}
+
+@mixin user-button-down() {
+  @include _button-down;
+}
+
+@mixin user-button-disabled() {
+  @include _button-disabled;
+}
+
+@import "group-vars";

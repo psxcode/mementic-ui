@@ -32,7 +32,7 @@ $ui-input: selector-ui-input();
 
 	box-shadow: $box-shadow;
 
-	@include placeholder {
+	@include vp-placeholder {
 	  color: $placeholder-color;
 	}
   }
@@ -74,15 +74,7 @@ $ui-input: selector-ui-input();
 	color: $focus-color;
 	box-shadow: $focus-box-shadow;
 
-	&::-webkit-input-placeholder {
-	  color: $placeholder-focus-color;
-	}
-
-	&::-moz-placeholder {
-	  color: $placeholder-focus-color;
-	}
-
-	&:-ms-input-placeholder {
+	@include vp-placeholder {
 	  color: $placeholder-focus-color;
 	}
   }
