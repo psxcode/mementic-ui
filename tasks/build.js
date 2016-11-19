@@ -40,7 +40,7 @@ function streamCss() {
 			.pipe(inject(gulp.src(config.getModulePaths(moduleName, modulePathInTheme), {read: false}), config.injectOpts))
 			.pipe(sass())
 			.pipe(cleanCss({keepBreaks: true, advanced: false}))
-			.pipe(replace(/\@charset.*/g, ''))
+			.pipe(replace(/@charset.*/g, ''))
 			;
 	}
 }

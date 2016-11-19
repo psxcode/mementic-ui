@@ -10,6 +10,7 @@ var templates = require('gulp-angular-templatecache');
 var inject = require('gulp-inject');
 var path = require('path');
 var clean = require('gulp-clean');
+var run = require('run-sequence');
 
 // Require Mem-UI
 var ui = require('./index');
@@ -32,22 +33,26 @@ gulp.task('serve', function () {
 	gulp.watch(['./client/js/**/*', './client/views/**/*'], ['js']);
 });
 
+gulp.task('build-install', function (done) {
+	run('clean', 'html', 'install-public', done);
+});
+
 gulp.task('clean', function () {
 	return gulp.src(['./public/**/*', '!./public/favicon.ico'], {read: false})
 		.pipe(clean());
 });
 
-gulp.task('build-install', ['css', 'js', 'clean'], function () {
+gulp.task('install-public', function () {
+	//stream public files
+	var uiPublicStream = ui.streamPublic()
+		.pipe(gulp.dest('./public'));
+});
 
+gulp.task('html', ['css', 'js'], function () {
 	//inject minified files into index.html
 	var indexHtmlStream = gulp.src('./client/views/index.html')
-		.pipe(inject(gulp.src(['./public/*.css', './public/*.js'], {read: false}), {ignorePath: 'public'}));
-
-	//stream public files
-	var uiPublicStream = ui.streamPublic();
-
-	//write everything into public
-	merge([indexHtmlStream, uiPublicStream]).pipe(gulp.dest('./public'));
+		.pipe(inject(gulp.src(['./public/*.css', './public/*.js'], {read: false}), {ignorePath: 'public'}))
+		.pipe(gulp.dest('./public'));
 });
 
 gulp.task('js', function () {
