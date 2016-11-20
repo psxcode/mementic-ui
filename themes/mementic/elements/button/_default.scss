@@ -72,13 +72,13 @@ $right-floated: selector-right-floated();
   @each $name, $color in $color-map {
 
 	/*--- Standard ---*/
-	#{selector-ui-color-button($name)} {
+	#{selector-ui-color-button($name, false)} {
 	  @include _colorize($name, $color, false);
 	}
 
 	/* Inverted */
-	.#{$c-inverted} > #{selector-ui-color-button($name)},
-	#{selector-ui-inverted-color-button($name)} {
+	.#{$c-inverted} > #{selector-ui-color-button($name, false)},
+	#{selector-ui-color-button($name, true)} {
 	  @include _colorize($name, $color, true);
 	}
   }

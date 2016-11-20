@@ -143,6 +143,25 @@ $c-button-group: 'buttons' !default;
   @content;
 }
 
+@mixin props-color-group($name, $color, $inverted) {
+
+  @content;
+}
+
+@mixin props-color-group-button($name, $color, $inverted) {
+
+  @extend #{selector-ui-color-button($name, $inverted)};
+
+  @content;
+}
+
+@mixin props-color-group-button($name, $color, $inverted) {
+
+  @extend #{selector-ui-color-button($name, $inverted)};
+
+  @content;
+}
+
 /* User mixins */
 @mixin user-group() {
   @include props-group;
@@ -198,4 +217,8 @@ $c-button-group: 'buttons' !default;
 
 @mixin user-right-floated-group() {
   @include props-right-floated-group;
+}
+
+@mixin user-color-group-button($name, $color, $inverted) {
+  @include props-color-group-button($name, $color, $inverted);
 }

@@ -13,12 +13,8 @@ $c-button: 'button' !default;
   @return selector-ui-button() + validate-selector('.#{$name}');
 }
 
-@function selector-ui-color-button($name) {
-  @return selector-ui-button() + validate-selector('.#{$name}');
-}
-
-@function selector-ui-inverted-color-button($name) {
-  @return selector-ui-button() + validate-selector('.#{$name}') + validate-selector('.#{$c-inverted}');
+@function selector-ui-color-button($name, $inverted) {
+  @return selector-ui-button() + validate-selector('.#{$name}') + if($inverted, validate-selector('.#{$c-inverted}'), '');
 }
 
 /* Button */

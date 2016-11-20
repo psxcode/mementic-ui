@@ -81,9 +81,9 @@ $ui-button-group: selector-ui-button-group();
 }
 
 /* Color Variations */
-@mixin _group-colorize($name, $color, $inverted) {
+@mixin _group-button-colorize($name, $color, $inverted) {
 
-  @include user-color-button($name, $color, $inverted);
+  @include user-color-group-button($name, $color, $inverted);
 
   &:hover {
 	@include user-color-button-hover($name, $color, $inverted);
@@ -107,18 +107,18 @@ $ui-button-group: selector-ui-button-group();
   @each $name, $color in $color-map {
 
 	/*--- Standard ---*/
-	#{selector-ui-color-button($name)} {
-	  @include _group-colorize($name, $color, false);
+	#{$ui-button-group}.#{$name} > #{$c-button},
+	#{$ui-button-group} > .#{$c-button}.#{$name} {
+	  @include _group-button-colorize($name, $color, false);
 	}
 
 	/* Inverted */
-	.#{$c-inverted} > #{selector-ui-color-button($name)},
-	#{selector-ui-inverted-color-button($name)} {
-	  @include _group-colorize($name, $color, true);
+	.#{$c-inverted} > #{$ui-button-group}.#{$name} > #{$c-button},
+	#{$ui-button-group}.#{$name}.#{$c-inverted} > #{$c-button} {
+	  @include _group-button-colorize($name, $color, true);
 	}
   }
 }
-
 
 /* Inverted */
 
