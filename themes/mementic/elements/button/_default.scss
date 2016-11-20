@@ -1,0 +1,89 @@
+/* Selectors */
+$ui-button: selector-ui-button();
+$right-floated: selector-right-floated();
+
+/* Button */
+#{$ui-button} {
+
+  @include user-button;
+
+  // States
+  &:hover {
+	@include user-button-hover;
+  }
+
+  &:focus {
+	@include user-button-focus;
+  }
+
+  &:active {
+	@include user-button-down;
+  }
+
+  &.#{$c-disabled},
+  &:disabled {
+	@include user-button-disabled;
+  }
+}
+
+/* Sizes Variation */
+@each $name, $value in $sizes {
+
+  #{selector-ui-size-button($name)} {
+	@include user-size-button($name, $value);
+  }
+}
+
+/* Floated Variation */
+#{$ui-button}.#{$c-floated} {
+
+  @include user-left-floated-button;
+}
+
+#{$ui-button}#{$right-floated} {
+
+  @include user-right-floated-button;
+}
+
+/* Color Variations */
+@mixin _colorize($name, $color, $inverted) {
+
+  @include user-color-button($name, $color, $inverted);
+
+  &:hover {
+	@include user-color-button-hover($name, $color, $inverted);
+  }
+
+  &:focus {
+	@include user-color-button-focus($name, $color, $inverted);
+  }
+
+  &:active {
+	@include user-color-button-down($name, $color, $inverted);
+  }
+
+  &:disabled,
+  &.#{$c-disabled} {
+	@include user-color-button-disabled($name, $color, $inverted);
+  }
+}
+
+@mixin colorize($color-map) {
+  @each $name, $color in $color-map {
+
+	/*--- Standard ---*/
+	#{selector-ui-color-button($name)} {
+	  @include _colorize($name, $color, false);
+	}
+
+	/* Inverted */
+	.#{$c-inverted} > #{selector-ui-color-button($name)},
+	#{selector-ui-inverted-color-button($name)} {
+	  @include _colorize($name, $color, true);
+	}
+  }
+}
+
+@if $auto-include-colors-info {
+  @include colorize($colors-info);
+}

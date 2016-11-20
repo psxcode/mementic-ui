@@ -39,7 +39,7 @@ function streamCss() {
 		return gulp.src(config.paths.sassModuleFilepath)
 			.pipe(inject(gulp.src(config.getModulePaths(moduleName, modulePathInTheme), {read: false}), config.injectOpts))
 			.pipe(sass())
-			.pipe(cleanCss({keepBreaks: true, advanced: false}))
+			.pipe(cleanCss({keepBreaks: true, advanced: true}))
 			.pipe(replace(/@charset.*/g, ''))
 			;
 	}

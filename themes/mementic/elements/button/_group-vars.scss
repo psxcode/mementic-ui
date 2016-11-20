@@ -1,14 +1,30 @@
-@mixin _group() {
+/* Selectors */
+$c-button-group: 'buttons' !default;
+
+@function selector-element-button-group() {
+  @return validate-selector('.#{$c-button-group}');
+}
+
+@function selector-ui-button-group() {
+  @return selector-element-button-group() + selector-element-ui();
+}
+
+@function group-margin() {
+  @return $vertical-margin $horizontal-margin 0 0;
+}
+
+@mixin props-group() {
 
   // positioning
   display: inline-flex;
   flex-direction: row;
 
   // text
+  // font: font('medium');
   vertical-align: baseline;
 
   // size
-  margin: $vertical-margin $horizontal-margin 0 0;
+  margin: group-margin();
 
   // border
   @include vp-border-radius(border-radius());
@@ -21,7 +37,10 @@
   @content;
 }
 
-@mixin _group-button() {
+@mixin props-group-button() {
+
+  // separation from selector '.ui.button'
+  @extend %props-button;
 
   // positioning
   flex: 1 0 auto;
@@ -43,7 +62,7 @@
   @content;
 }
 
-@mixin _vertical-group() {
+@mixin props-vertical-group() {
 
   // positioning
   flex-direction: column;
@@ -51,38 +70,132 @@
   @content;
 }
 
-@mixin _vertical-group-button() {
+@mixin props-vertical-group-button() {
 
   // positioning
   display: block;
 
-  // border
-  @include vp-border-radius(0);
-
   &:first-child {
+
+	// border
+	@include vp-border-radius(0);
 	@include vp-top-border-radius(border-radius());
   }
 
   &:last-child {
-	@include vp-top-border-radius(border-radius());
+
+	// border
+	@include vp-border-radius(0);
+	@include vp-bottom-border-radius(border-radius());
   }
+
+  @content;
+}
+
+@mixin props-size-group($name, $value) {
+
+  @content;
+}
+
+@mixin props-size-group-button($name, $value) {
+
+  // extending selector. cannot extend placeholder with params
+  @extend #{selector-ui-size-button($name)};
+
+  @content;
+}
+
+/* Multiple includes of mixin 'props-number-group' */
+%props-number-group {
+  display: flex;
+}
+
+@mixin props-number-group($index) {
+
+  @extend %props-number-group;
+
+  @content;
+}
+
+/* Multiple includes od mixin 'props-number-group-button' */
+%props-number-group-button {
+  flex: 1 1 0;
+}
+
+@mixin props-number-group-button($index) {
+
+  @extend %props-number-group-button;
+
+  @content;
+}
+
+@mixin props-left-floated-group() {
+
+  @include user-left-floated-button;
+
+  @content;
+}
+
+@mixin props-right-floated-group() {
+
+  @include user-right-floated-button;
 
   @content;
 }
 
 /* User mixins */
 @mixin user-group() {
-  @include _group;
+  @include props-group;
 }
 
 @mixin user-group-button() {
-  @include _group-button;
+  @include props-group-button;
+}
+
+@mixin user-group-button-hover() {
+  @include props-button-hover;
+}
+
+@mixin user-group-button-focus() {
+  @include props-button-focus;
+}
+
+@mixin user-group-button-down() {
+  @include props-button-down;
+}
+
+@mixin user-group-button-disabled() {
+  @include props-button-disabled;
 }
 
 @mixin user-vertical-group() {
-  @include _vertical-group;
+  @include props-vertical-group;
 }
 
 @mixin user-vertical-group-button() {
-  @include _vertical-group-button;
+  @include props-vertical-group-button;
+}
+
+@mixin user-size-group($name, $value) {
+  @include props-size-group($name, $value);
+}
+
+@mixin user-size-group-button($name, $value) {
+  @include props-size-group-button($name, $value);
+}
+
+@mixin user-number-group($index) {
+  @include props-number-group($index);
+}
+
+@mixin user-number-group-button($index) {
+  @include props-number-group-button($index);
+}
+
+@mixin user-left-floated-group() {
+  @include props-left-floated-group;
+}
+
+@mixin user-right-floated-group() {
+  @include props-right-floated-group;
 }

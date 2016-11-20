@@ -1,0 +1,412 @@
+/* Selectors */
+$c-button: 'button' !default;
+
+@function selector-element-button() {
+  @return validate-selector('.#{$c-button}');
+}
+
+@function selector-ui-button() {
+  @return selector-element-button() + selector-element-ui();
+}
+
+@function selector-ui-size-button($name) {
+  @return selector-ui-button() + validate-selector('.#{$name}');
+}
+
+@function selector-ui-color-button($name) {
+  @return selector-ui-button() + validate-selector('.#{$name}');
+}
+
+@function selector-ui-inverted-color-button($name) {
+  @return selector-ui-button() + validate-selector('.#{$name}') + validate-selector('.#{$c-inverted}');
+}
+
+/* Button */
+$display: inline-block;
+
+$vertical-margin: 0;
+$horizontal-margin: 0.25rem;
+
+@function margin() {
+  @return 0 $horizontal-margin $vertical-margin 0
+}
+
+/* Button defaults to using same height as input globally */
+$vertical-padding: $input-vertical-padding;
+$horizontal-padding: 1.5em;
+
+@function padding() {
+  @return $vertical-padding $horizontal-padding $vertical-padding;
+}
+
+/* Text */
+@function font($size-name) {
+  @return bold #{size($size-name)}/#{line-height()} font-family();
+}
+
+$text-transform: none;
+$vertical-align: baseline;
+@function border-radius() {
+  @return unit-rem($border-radius-default);
+}
+
+/* Background */
+@function background($inverted: false) {
+  @return if($inverted, transparent, #E0E1E2);
+}
+
+@function background-hover($inverted: false) {
+  @return #CACBCD;
+}
+
+@function background-focus($inverted: false) {
+  @return #CACBCD;
+}
+
+@function background-down($inverted: false) {
+  @return #BABBBC;
+}
+
+@function background-active($inverted: false) {
+  @return #C0C1C2;
+}
+
+@function background-active-hover($inverted: false) {
+  @return #C0C1C2;
+}
+
+@function background-colorize($color, $inverted: false) {
+  @return if($inverted, transparent, $color);
+}
+
+@function background-colorize-hover($color, $inverted: false) {
+  @return color-hover($color);
+}
+
+@function background-colorize-focus($color, $inverted: false) {
+  @return color-focus($color);
+}
+
+@function background-colorize-down($color, $inverted: false) {
+  @return color-down($color);
+}
+
+@function background-colorize-active($color, $inverted: false) {
+  @return color-active($color);
+}
+
+@function background-colorize-active-hover($color, $inverted: false) {
+  @return color-hover($color);
+}
+
+/* Shadows */
+$inverted-box-shadow-border: box-shadow-create(0, 0, 0, 2px, true);
+@function box-shadow($inverted: false) {
+  @return if($inverted,
+		  box-shadow-colorize($inverted-box-shadow-border, color-divider($inverted)),
+		  none);
+}
+
+/* Transition */
+@function transition() {
+  @return opacity $duration-default $easing-default,
+  background-color $duration-default $easing-default,
+  color $duration-default $easing-default,
+  box-shadow $duration-default $easing-default,
+  background $duration-default $easing-default;
+}
+
+@function loading-transition() {
+  @return opacity $duration-default $easing-default;
+}
+
+/* Icon */
+$icon-height: size('tiny');
+$icon-opacity: 0.8;
+$icon-distance: px-em(6);
+$icon-transition: opacity $duration-default $easing-default;
+$icon-vertical-align: middle;
+
+$icon-margin: 0 $icon-distance 0 ($icon-distance * -0.5);
+$right-icon-margin: 0 ($icon-distance * -0.5) 0 $icon-distance;
+
+/* Loader */
+$inverted-loader-fill-color: rgba(0, 0, 0, 0.15);
+
+/*-------------------
+        Types
+--------------------*/
+
+/* Icon */
+$icon-button-opacity: 0.9;
+
+/* Labeled */
+$labeled-label-font-size: size('medium');
+$labeled-label-align: center;
+$labeled-label-padding: 0;
+$labeled-label-border-color: color-divider();
+$labeled-tag-label-size: 1.85em; /* hypotenuse of triangle */
+$labeled-icon-margin: 0;
+
+/* Labeled Icon */
+$labeled-icon-width: 1em + ($vertical-padding * 2);
+$labeled-icon-background-color: rgba(0, 0, 0, 0.05);
+$labeled-icon-padding: ($horizontal-padding + $labeled-icon-width);
+$labeled-icon-border: transparent;
+$labeled-icon-color: $color-mid;
+
+$labeled-icon-left-shadow: -1px 0 0 0 $labeled-icon-border inset;
+$labeled-icon-right-shadow: 1px 0 0 0 $labeled-icon-border inset;
+
+/*-------------------
+      Variations
+--------------------*/
+
+/* Attached */
+$attached-offset: -1px;
+$attached-horizontal-padding: 0.75em;
+$attached-z-index: 2;
+
+/* Floated */
+$floated-margin: 0.25em;
+
+/* Animated */
+$animated-vertical-align: middle;
+$animated-z-index: 1;
+$animation-duration: 0.3s;
+$animation-easing: ease;
+$fade-scale-high: 1.5;
+$fade-scale-low: 0.75;
+
+$auto-include-colors-info: true;
+
+%props-button {
+
+  // positioning
+  display: $display;
+
+  // size
+  margin: margin();
+  padding: padding();
+  min-height: 1em;
+
+  // text
+  font: font('medium');
+  text-align: center;
+  text-decoration: none;
+  text-transform: $text-transform;
+  vertical-align: $vertical-align;
+
+  // colors
+  color: color-text();
+  background: background();
+
+  // border
+  border: none;
+  @include vp-border-radius(border-radius());
+  box-shadow: box-shadow();
+
+  // misc
+  cursor: pointer;
+  outline: none;
+  @include vp-user-select(none);
+  @include vp-transition(transition());
+}
+
+@mixin props-button() {
+
+  @extend %props-button;
+
+  // user content
+  @content;
+}
+
+%props-button-hover {
+
+  // colors
+  color: color-text-hovered();
+  background: background-hover();
+}
+
+@mixin props-button-hover() {
+
+  @extend %props-button-hover;
+
+  // user content
+  @content;
+}
+
+%props-button-focus {
+
+  // colors
+  color: color-text-selected();
+  background: background-focus();
+}
+
+@mixin props-button-focus() {
+
+  @extend %props-button-focus;
+
+  // user content
+  @content;
+}
+
+%props-button-down {
+
+  // colors
+  color: color-text-pressed();
+  background: background-down();
+}
+
+@mixin props-button-down() {
+
+  @extend %props-button-down;
+
+  // user content
+  @content;
+}
+
+%props-button-disabled {
+
+  // colors
+  opacity: $opacity-disabled;
+
+  // misc
+  cursor: default;
+  pointer-events: none;
+}
+
+@mixin props-button-disabled() {
+
+  @extend %props-button-disabled;
+
+  @content;
+}
+
+@mixin props-size-button($name, $value) {
+
+  font-size: size($name);
+
+  @content;
+}
+
+%props-left-floated-button {
+  float: left;
+  margin-left: 0;
+  margin-right: $floated-margin;
+}
+
+@mixin props-left-floated-button() {
+
+  @extend %props-left-floated-button;
+
+  @content;
+}
+
+%props-right-floated-button {
+  float: right;
+  margin-right: 0;
+  margin-left: $floated-margin;
+}
+
+@mixin props-right-floated-button() {
+
+  @extend %props-right-floated-button;
+
+  @content;
+}
+
+/* Color mixins */
+@mixin props-color-button($name, $color, $inverted) {
+
+  // color
+  color: color-text($inverted);
+  background: background-colorize($color, $inverted);
+
+  @content;
+}
+
+@mixin props-color-button-hover($name, $color, $inverted) {
+
+  // color
+  color: color-text-hovered($inverted);
+  background: background-colorize-hover($color, $inverted);
+
+  @content;
+}
+
+@mixin props-color-button-focus($name, $color, $inverted) {
+
+  // color
+  color: color-text-selected($inverted);
+  background: background-colorize-focus($color, $inverted);
+
+  @content;
+}
+
+@mixin props-color-button-down($name, $color, $inverted) {
+
+  // color
+  color: color-text-pressed($inverted);
+  background: background-colorize-down($color, $inverted);
+
+  @content;
+}
+
+@mixin props-color-button-disabled($name, $color, $inverted) {
+
+  @content;
+}
+
+/* User mixins */
+@mixin user-button() {
+  @include props-button();
+}
+
+@mixin user-button-hover() {
+  @include props-button-hover;
+}
+
+@mixin user-button-focus() {
+  @include props-button-focus;
+}
+
+@mixin user-button-down() {
+  @include props-button-down;
+}
+
+@mixin user-button-disabled() {
+  @include props-button-disabled;
+}
+
+@mixin user-size-button($name, $value) {
+  @include props-size-button($name, $value);
+}
+
+@mixin user-left-floated-button() {
+  @include props-left-floated-button;
+}
+
+@mixin user-right-floated-button() {
+  @include props-right-floated-button;
+}
+
+@mixin user-color-button($name, $color, $inverted: false) {
+  @include props-color-button($name, $color, $inverted);
+}
+
+@mixin user-color-button-hover($name, $color, $inverted: false) {
+  @include props-color-button-hover($name, $color, $inverted);
+}
+
+@mixin user-color-button-focus($name, $color, $inverted: false) {
+  @include props-color-button-focus($name, $color, $inverted);
+}
+
+@mixin user-color-button-down($name, $color, $inverted: false) {
+  @include props-color-button-down($name, $color, $inverted);
+}
+
+@mixin user-color-button-disabled($name, $color, $inverted: false) {
+  @include props-color-button-disabled($name, $color, $inverted);
+}

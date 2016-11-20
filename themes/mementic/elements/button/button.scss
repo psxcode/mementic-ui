@@ -33,40 +33,8 @@
  * Content - Visible/Hidden Content for animated transition
  */
 
-/* Shortcuts */
-$ui-button: selector-ui-button();
 
-/* Button */
-#{$ui-button} {
-  @include user-button;
-
-  // States
-  &:hover {
-	@include user-button-hover;
-  }
-
-  &:focus {
-	@include user-button-focus;
-  }
-
-  &:active {
-	@include user-button-down;
-  }
-
-  &.#{$c-disabled},
-  &:disabled {
-	@include user-button-disabled;
-  }
-}
-
-/* Sizes Variation */
-@each $name, $size in $sizes {
-
-  #{$ui-button}.#{$name} {
-	font: font($name);
-  }
-}
-
+@import "default";
 @import "group";
 //@import "animated";
 //@import "attached";

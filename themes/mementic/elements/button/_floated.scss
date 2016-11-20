@@ -3,18 +3,3 @@
 --------------------*/
 
 /* Shortcuts */
-$right-floated: selector-right-floated();
-
-#{$ui-button-group}.#{$c-floated},
-#{$ui-button}.#{$c-floated} {
-  float: left;
-  margin-left: 0;
-  margin-right: $floated-margin;
-}
-
-#{$ui-button-group}#{$right-floated},
-#{$ui-button}#{$right-floated} {
-  float: right;
-  margin-right: 0;
-  margin-left: $floated-margin;
-}

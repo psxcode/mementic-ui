@@ -1,184 +1,183 @@
-$c-ui: 'ui';
+$c-ui: 'ui' !default;
 
 /* Elements */
-$c-button: 'button';
-$c-button-group: 'buttons';
-$c-button-or: 'or';
-$c-container: 'container';
-$c-divider: 'divider';
-$c-header: 'header';
-$c-header-sub: 'sub.header';
-$c-icon: 'icon';
-$c-icon-group: 'icons';
-$c-image: 'image';
-$c-image-group: 'images';
-$c-input: 'input';
-$c-label: 'label';
-$c-label-group: 'labels';
-$c-link: 'link';
-$c-list: 'list';
-$c-loader: 'loader';
-$c-rail: 'rail';
-$c-reveal: 'reveal';
-$c-segment: 'segment';
-$c-segment-group: 'segments';
-$c-step: 'step';
-$c-step-group: 'steps';
+$c-button: 'button' !default;
+$c-button-group: 'buttons' !default;
+$c-container: 'container' !default;
+$c-divider: 'divider' !default;
+$c-header: 'header' !default;
+$c-header-sub: 'sub.header' !default;
+$c-icon: 'icon' !default;
+$c-icon-group: 'icons' !default;
+$c-image: 'image' !default;
+$c-image-group: 'images' !default;
+$c-input: 'input' !default;
+$c-label: 'label' !default;
+$c-label-group: 'labels' !default;
+$c-link: 'link' !default;
+$c-list: 'list' !default;
+$c-loader: 'loader' !default;
+$c-rail: 'rail' !default;
+$c-reveal: 'reveal' !default;
+$c-segment: 'segment' !default;
+$c-segment-group: 'segments' !default;
+$c-step: 'step' !default;
+$c-step-group: 'steps' !default;
 
 /* Collections */
-$c-breadcrumb: 'breadcrumb';
-$c-form: 'form';
-$c-grid: 'grid';
-$c-menu: 'menu';
-$c-message: 'message';
-$c-table: 'table';
+$c-breadcrumb: 'breadcrumb' !default;
+$c-form: 'form' !default;
+$c-grid: 'grid' !default;
+$c-menu: 'menu' !default;
+$c-message: 'message' !default;
+$c-table: 'table' !default;
 
 /* Views */
-$c-ad: 'ad';
-$c-card: 'card';
-$c-card-group: 'cards';
-$c-comment: 'comment';
-$c-comment-group: 'comments';
-$c-feed: 'feed';
-$c-item: 'item';
-$c-item-group: 'items';
-$c-statistic: 'statistic';
-$c-statistic-group: 'statistics';
+$c-ad: 'ad' !default;
+$c-card: 'card' !default;
+$c-card-group: 'cards' !default;
+$c-comment: 'comment' !default;
+$c-comment-group: 'comments' !default;
+$c-feed: 'feed' !default;
+$c-item: 'item' !default;
+$c-item-group: 'items' !default;
+$c-statistic: 'statistic' !default;
+$c-statistic-group: 'statistics' !default;
 
 /* Modules */
-$c-dimmer: 'dimmer';
-$c-dropdown: 'dropdown';
-$c-checkbox: 'checkbox';
-$c-sidebar: 'sidebar';
+$c-dimmer: 'dimmer' !default;
+$c-dropdown: 'dropdown' !default;
+$c-checkbox: 'checkbox' !default;
+$c-sidebar: 'sidebar' !default;
 
 /* Sub Elements */
-$c-box: 'box';
-$c-column: 'col';
-$c-content: 'content';
-$c-description: 'description';
-$c-detail: 'detail';
-$c-field: 'field';
-$c-field-group: 'fields';
-$c-row: 'row';
-$c-row-group: 'rows';
-$c-section: 'section';
-$c-text: 'text';
-$c-title: 'title';
-$c-reply: 'reply'; // comment
-$c-author: 'author'; // comment
-$c-event: 'event'; // feed
-$c-user: 'user'; // feed
-$c-summary: 'summary'; // feed
-$c-meta: 'meta'; // feed item card
-$c-metadata: 'metadata'; // comment
-$c-like: 'like'; // feed
-$c-extra: 'extra'; // feed item
-$c-date: 'date'; // feed
-$c-value: 'value'; // statistic
+$c-box: 'box' !default;
+$c-column: 'col' !default;
+$c-content: 'content' !default;
+$c-description: 'description' !default;
+$c-detail: 'detail' !default;
+$c-field: 'field' !default;
+$c-field-group: 'fields' !default;
+$c-row: 'row' !default;
+$c-row-group: 'rows' !default;
+$c-section: 'section' !default;
+$c-text: 'text' !default;
+$c-title: 'title' !default;
+$c-reply: 'reply' !default; // comment
+$c-author: 'author' !default; // comment
+$c-event: 'event' !default; // feed
+$c-user: 'user' !default; // feed
+$c-summary: 'summary' !default; // feed
+$c-meta: 'meta' !default; // feed item card
+$c-metadata: 'metadata' !default; // comment
+$c-like: 'like' !default; // feed
+$c-extra: 'extra' !default; // feed item
+$c-date: 'date' !default; // feed
+$c-value: 'value' !default; // statistic
 
 /* Types */
-$c-action: 'action';
-$c-action-group: 'actions'; // comment
-$c-aligned: 'aligned'; // header, image
-$c-attached: 'attached'; // label, step
-$c-avatar: 'avatar'; // image
-$c-animated: 'animated'; // button list
-$c-basic: 'basic'; // button label table
-$c-block: 'block';
-$c-bordered: 'bordered'; // image, icon
-$c-borderless: 'borderless'; // menu
-$c-bulleted: 'bulleted'; // list
-$c-celled: 'celled'; // list grid table
-$c-centered: 'centered'; // image grid
-$c-circular: 'circular'; // button, image, icon, segment
-$c-clearing: 'clearing'; // divider
-$c-collapsed: 'collapsed'; // comment
-$c-collapsing: 'collapsing'; // table
-$c-compact: 'compact'; // button message table
-$c-completed: 'completed'; // step
-$c-definition: 'definition'; // table
-$c-divided: 'divided'; // list
-$c-dividing: 'dividing'; // header
-$c-doubling: 'doubling'; // grid
-$c-equal: 'equal'; //grid
-$c-fade: 'fade'; // reveal
-$c-fitted: 'fitted'; // header, divider, list
-$c-fixed: 'fixed'; // menu
-$c-flipped: 'flipped'; // icon
-$c-floated: 'floated'; // button image list grid
-$c-floating: 'floating'; // label
-$c-fluid: 'fluid'; // button image label step
-$c-grouped: 'grouped'; // form
-$c-inline: 'inline'; // loader
-$c-indeterminate: 'indeterminate'; // loader
-$c-internal: 'internal'; // rail
-$c-instant: 'instant'; // reveal
-$c-inverted: 'inverted';
-$c-justified: 'justified'; // header
-$c-labeled: 'labeled'; // button
-$c-minimal: 'minimal'; // comment
-$c-move: 'move'; // reveal
-$c-ordered: 'ordered'; // list, step
-$c-padded: 'padded'; // segment grid
-$c-page: 'page'; // grid
-$c-pagination: 'page'; // menu
-$c-piled: 'piled'; // segment
-$c-pointing: 'pointing'; // label
-$c-prompt: 'prompt'; // form
-$c-raised: 'raised'; // segment card
-$c-relaxed: 'relaxed'; // list
-$c-ribbon: 'ribbon'; // label
-$c-required: 'required'; // form
-$c-reversed: 'reversed'; // grid
-$c-rotate: 'rotate'; // reveal
-$c-rotated: 'rotated'; // icon
-$c-rounded: 'rounded'; // image
-$c-search: 'search'; // menu
-$c-selectable: 'selectable'; // table
-$c-selected: 'selected'; // list
-$c-selection: 'selection'; // list
-$c-slide: 'slide'; // reveal
-$c-sortable: 'sortable'; // table
-$c-sorted: 'sorted'; // table
-$c-spaced: 'spaced'; // image
-$c-stackable: 'stackable'; // step
-$c-stacked: 'stacked'; // segment table
-$c-stretched: 'stretched'; // grid
-$c-striped: 'striped'; // table
-$c-structured: 'structured'; // table
-$c-square: 'square'; // icon
-$c-slider: 'slider'; // checkbox
-$c-tabular: 'tabular'; // menu
-$c-tag: 'tag'; // label
-$c-tall: 'tall'; // segment
-$c-threaded: 'threaded'; // comment
-$c-toggle: 'toggle'; // button checkbox
-$c-unstackable: 'unstackable'; // table
-$c-wide: 'wide'; // form
+$c-action: 'action' !default;
+$c-action-group: 'actions' !default; // comment
+$c-aligned: 'aligned' !default; // header, image
+$c-attached: 'attached' !default; // label, step
+$c-avatar: 'avatar' !default; // image
+$c-animated: 'animated' !default; // button list
+$c-basic: 'basic' !default; // button label table
+$c-block: 'block' !default;
+$c-bordered: 'bordered' !default; // image, icon
+$c-borderless: 'borderless' !default; // menu
+$c-bulleted: 'bulleted' !default; // list
+$c-celled: 'celled' !default; // list grid table
+$c-centered: 'centered' !default; // image grid
+$c-circular: 'circular' !default; // button, image, icon, segment
+$c-clearing: 'clearing' !default; // divider
+$c-collapsed: 'collapsed' !default; // comment
+$c-collapsing: 'collapsing' !default; // table
+$c-compact: 'compact' !default; // button message table
+$c-completed: 'completed' !default; // step
+$c-definition: 'definition' !default; // table
+$c-divided: 'divided' !default; // list
+$c-dividing: 'dividing' !default; // header
+$c-doubling: 'doubling' !default; // grid
+$c-equal: 'equal' !default; //grid
+$c-fade: 'fade' !default; // reveal
+$c-fitted: 'fitted' !default; // header, divider, list
+$c-fixed: 'fixed' !default; // menu
+$c-flipped: 'flipped' !default; // icon
+$c-floated: 'floated' !default; // button image list grid
+$c-floating: 'floating' !default; // label
+$c-fluid: 'fluid' !default; // button image label step
+$c-grouped: 'grouped' !default; // form
+$c-inline: 'inline' !default; // loader
+$c-indeterminate: 'indeterminate' !default; // loader
+$c-internal: 'internal' !default; // rail
+$c-instant: 'instant' !default; // reveal
+$c-inverted: 'inverted' !default;
+$c-justified: 'justified' !default; // header
+$c-labeled: 'labeled' !default; // button
+$c-minimal: 'minimal' !default; // comment
+$c-move: 'move' !default; // reveal
+$c-ordered: 'ordered' !default; // list, step
+$c-padded: 'padded' !default; // segment grid
+$c-page: 'page' !default; // grid
+$c-pagination: 'page' !default; // menu
+$c-piled: 'piled' !default; // segment
+$c-pointing: 'pointing' !default; // label
+$c-prompt: 'prompt' !default; // form
+$c-raised: 'raised' !default; // segment card
+$c-relaxed: 'relaxed' !default; // list
+$c-ribbon: 'ribbon' !default; // label
+$c-required: 'required' !default; // form
+$c-reversed: 'reversed' !default; // grid
+$c-rotate: 'rotate' !default; // reveal
+$c-rotated: 'rotated' !default; // icon
+$c-rounded: 'rounded' !default; // image
+$c-search: 'search' !default; // menu
+$c-selectable: 'selectable' !default; // table
+$c-selected: 'selected' !default; // list
+$c-selection: 'selection' !default; // list
+$c-slide: 'slide' !default; // reveal
+$c-sortable: 'sortable' !default; // table
+$c-sorted: 'sorted' !default; // table
+$c-spaced: 'spaced' !default; // image
+$c-stackable: 'stackable' !default; // step
+$c-stacked: 'stacked' !default; // segment table
+$c-stretched: 'stretched' !default; // grid
+$c-striped: 'striped' !default; // table
+$c-structured: 'structured' !default; // table
+$c-square: 'square' !default; // icon
+$c-slider: 'slider' !default; // checkbox
+$c-tabular: 'tabular' !default; // menu
+$c-tag: 'tag' !default; // label
+$c-tall: 'tall' !default; // segment
+$c-threaded: 'threaded' !default; // comment
+$c-toggle: 'toggle' !default; // button checkbox
+$c-unstackable: 'unstackable' !default; // table
+$c-wide: 'wide' !default; // form
 
 /* States */
-$c-visible: 'visible';
-$c-hidden: 'hidden';
-$c-hover: 'hover';
-$c-focus: 'focus';
-$c-active: 'active';
-$c-disabled: 'disabled';
-$c-loading: 'loading';
+$c-visible: 'visible' !default;
+$c-hidden: 'hidden' !default;
+$c-hover: 'hover' !default;
+$c-focus: 'focus' !default;
+$c-active: 'active' !default;
+$c-disabled: 'disabled' !default;
+$c-loading: 'loading' !default;
 
 /* Directions */
-$c-horizontal: 'horizontal';
-$c-vertical: 'vertical';
-$c-horizontally: 'horizontally';
-$c-vertically: 'vertically';
-$c-left: 'left';
-$c-right: 'right';
-$c-up: 'up';
-$c-down: 'down';
-$c-top: 'top';
-$c-bottom: 'bottom';
-$c-center: 'center';
-$c-middle: 'middle';
-$c-close: 'close';
-$c-corner: 'corner';
-$c-ascending: 'ascending'; // table
-$c-descending: 'descending'; // table
+$c-horizontal: 'horizontal' !default;
+$c-vertical: 'vertical' !default;
+$c-horizontally: 'horizontally' !default;
+$c-vertically: 'vertically' !default;
+$c-left: 'left' !default;
+$c-right: 'right' !default;
+$c-up: 'up' !default;
+$c-down: 'down' !default;
+$c-top: 'top' !default;
+$c-bottom: 'bottom' !default;
+$c-center: 'center' !default;
+$c-middle: 'middle' !default;
+$c-close: 'close' !default;
+$c-corner: 'corner' !default;
+$c-ascending: 'ascending' !default; // table
+$c-descending: 'descending' !default; // table

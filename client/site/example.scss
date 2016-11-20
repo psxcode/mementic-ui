@@ -3,15 +3,20 @@
 }
 
 .example {
-  position: relative;
-  margin: auto;
-  padding: 32px;
-  width: 768px;
-  max-width: 100%;
+  display: block;
+  padding: 2em;
+
+  &::after {
+	@extend %clearfix;
+  }
 }
 
 .example.container {
+  display: block;
+  margin: auto;
+  width: 768px;
   padding: 2em;
+  max-width: 100%;
 }
 
 .example.inverted {
@@ -20,10 +25,6 @@
   > h1, > h2, > h3, > h4, > h5, > h6, > p {
 	color: white;
   }
-}
-
-.example.clearing::after {
-  @extend %clearfix;
 }
 
 .example.list {

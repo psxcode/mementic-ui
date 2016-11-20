@@ -1,10 +1,5 @@
-/* Shortcuts */
+/* Selectors */
 $ui-button-group: selector-ui-button-group();
-
-/* Group Button Type */
-#{$ui-button-group} > .#{$c-button} {
-  @extend #{$ui-button};
-}
 
 /* Group */
 #{$ui-button-group} {
@@ -13,7 +8,26 @@ $ui-button-group: selector-ui-button-group();
 
   /* Group Button Type */
   > .#{$c-button} {
+
 	@include user-group-button;
+
+	// States
+	&:hover {
+	  @include user-group-button-hover;
+	}
+
+	&:focus {
+	  @include user-group-button-focus;
+	}
+
+	&:active {
+	  @include user-group-button-down;
+	}
+
+	&.#{$c-disabled},
+	&:disabled {
+	  @include user-group-button-disabled;
+	}
   }
 }
 
@@ -24,17 +38,87 @@ $ui-button-group: selector-ui-button-group();
 
   /* Group Button Type */
   > .#{$c-button} {
+
 	@include user-vertical-group-button;
   }
 }
 
 /* Sizes Variation */
-@each $name, $size in $sizes {
+@each $name, $value in $sizes {
 
-  #{$ui-button-group}.#{$name} > .#{$c-button} {
-	@extend #{$ui-button}.#{$name};
+  #{$ui-button-group}.#{$name} {
+
+	@include user-size-group($name, $value);
+
+	> .#{$c-button} {
+	  @include user-size-group-button($name, $value);
+	}
   }
 }
+
+/* Numbers */
+@for $i from 2 through 16 {
+
+  #{$ui-button-group}:not(.#{$c-vertical}).#{number-name($i)} {
+
+	@include user-number-group($i);
+
+	> .#{$c-button} {
+	  @include user-number-group-button($i)
+	}
+  }
+}
+
+/* Floated Group Variation */
+#{$ui-button-group}.#{$c-floated} {
+
+  @include user-left-floated-group;
+}
+
+#{$ui-button-group}#{$right-floated} {
+
+  @include user-right-floated-group;
+}
+
+/* Color Variations */
+@mixin _group-colorize($name, $color, $inverted) {
+
+  @include user-color-button($name, $color, $inverted);
+
+  &:hover {
+	@include user-color-button-hover($name, $color, $inverted);
+  }
+
+  &:focus {
+	@include user-color-button-focus($name, $color, $inverted);
+  }
+
+  &:active {
+	@include user-color-button-down($name, $color, $inverted);
+  }
+
+  &:disabled,
+  &.#{$c-disabled} {
+	@include user-color-button-disabled($name, $color, $inverted);
+  }
+}
+
+@mixin group-colorize($color-map) {
+  @each $name, $color in $color-map {
+
+	/*--- Standard ---*/
+	#{selector-ui-color-button($name)} {
+	  @include _group-colorize($name, $color, false);
+	}
+
+	/* Inverted */
+	.#{$c-inverted} > #{selector-ui-color-button($name)},
+	#{selector-ui-inverted-color-button($name)} {
+	  @include _group-colorize($name, $color, true);
+	}
+  }
+}
+
 
 /* Inverted */
 
@@ -107,21 +191,4 @@ $ui-button-group: selector-ui-button-group();
   }
 }
 */
-
-/* Numbers */
-
-//@for $i from 2 through 12 {
-//
-//  #{$ui-button-group}.#{number-name($i)} {
-//	width: 100%;
-//
-//	> .#{$c-button} {
-//	  width: (100% / $i);
-//	}
-//
-//	&.#{$c-vertical} > .#{$c-button} {
-//	  height: (100% / $i);
-//	}
-//  }
-//}
 

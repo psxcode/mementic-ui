@@ -28,17 +28,6 @@
 }
 
 /* Element Selectors */
-@function selector-element-button() {
-  @return validate-selector('.#{$c-button}');
-}
-
-@function selector-ui-button() {
-  @return selector-element-button() + selector-element-ui();
-}
-
-@function selector-ui-button-group() {
-  @return '.#{$c-button-group}' + selector-element-ui();
-}
 
 @function selector-element-container() {
   @return validate-selector('.#{$c-container}');
