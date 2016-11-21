@@ -1,8 +1,8 @@
 /* Selectors */
-$ui-button-group: selector-ui-button-group();
+$ui-group: selector-ui-group();
 
 /* Group */
-#{$ui-button-group} {
+#{$ui-group} {
 
   @include user-group;
 
@@ -32,7 +32,7 @@ $ui-button-group: selector-ui-button-group();
 }
 
 /* Vertical Group */
-#{$ui-button-group}.#{$c-vertical} {
+#{$ui-group}.#{$c-vertical} {
 
   @include user-vertical-group;
 
@@ -46,7 +46,7 @@ $ui-button-group: selector-ui-button-group();
 /* Sizes Variation */
 @each $name, $value in $sizes {
 
-  #{$ui-button-group}.#{$name} {
+  #{$ui-group}.#{$name} {
 
 	@include user-size-group($name, $value);
 
@@ -59,7 +59,7 @@ $ui-button-group: selector-ui-button-group();
 /* Numbers */
 @for $i from 2 through 16 {
 
-  #{$ui-button-group}:not(.#{$c-vertical}).#{number-name($i)} {
+  #{$ui-group}:not(.#{$c-vertical}).#{number-name($i)} {
 
 	@include user-number-group($i);
 
@@ -70,125 +70,84 @@ $ui-button-group: selector-ui-button-group();
 }
 
 /* Floated Group Variation */
-#{$ui-button-group}.#{$c-floated} {
+#{$ui-group}.#{$c-floated} {
 
   @include user-left-floated-group;
 }
 
-#{$ui-button-group}#{$right-floated} {
+#{$ui-group}#{$right-floated} {
 
   @include user-right-floated-group;
 }
 
-/* Color Variations */
-@mixin _group-button-colorize($name, $color, $inverted) {
-
-  @include user-color-group-button($name, $color, $inverted);
-
-  &:hover {
-	@include user-color-button-hover($name, $color, $inverted);
-  }
-
-  &:focus {
-	@include user-color-button-focus($name, $color, $inverted);
-  }
-
-  &:active {
-	@include user-color-button-down($name, $color, $inverted);
-  }
-
-  &:disabled,
-  &.#{$c-disabled} {
-	@include user-color-button-disabled($name, $color, $inverted);
-  }
-}
-
-@mixin group-colorize($color-map) {
-  @each $name, $color in $color-map {
-
-	/*--- Standard ---*/
-	#{$ui-button-group}.#{$name} > #{$c-button},
-	#{$ui-button-group} > .#{$c-button}.#{$name} {
-	  @include _group-button-colorize($name, $color, false);
-	}
-
-	/* Inverted */
-	.#{$c-inverted} > #{$ui-button-group}.#{$name} > #{$c-button},
-	#{$ui-button-group}.#{$name}.#{$c-inverted} > #{$c-button} {
-	  @include _group-button-colorize($name, $color, true);
-	}
-  }
-}
-
 /* Inverted */
 
-/*
-.#{$c-inverted} > #{$ui-button-group} > .#{$c-button},
-.#{$c-inverted} > #{$ui-button},
-#{$ui-button-group}.#{$c-inverted} > .#{$c-button},
-#{$ui-button}.#{$c-inverted} {
 
-  color: color-text(true);
-  background: background(true);
-  box-shadow: box-shadow(true);
+//.#{$c-inverted} > #{$ui-button-group} > .#{$c-button},
+//.#{$c-inverted} > #{$ui-button},
+//#{$ui-button-group}.#{$c-inverted} > .#{$c-button},
+//#{$ui-button}.#{$c-inverted} {
+//
+//  color: color-text(true);
+//  background: background(true);
+//  box-shadow: box-shadow(true);
+//
+//  &:hover {
+//	color: color-text-hovered();
+//	background: background-hover(true);
+//	box-shadow: none;
+//  }
+//
+//  &:focus {
+//	color: color-text-selected();
+//	background: background-focus(true);
+//	box-shadow: none;
+//  }
+//
+//  &:active {
+//	color: color-text-pressed();
+//	background: background-down(true);
+//	box-shadow: none;
+//  }
+//
+//  &.#{$c-active} {
+//	color: color-text-selected();
+//	background: background-active(true);
+//	box-shadow: none;
+//  }
+//}
 
-  &:hover {
-	color: color-text-hovered();
-	background: background-hover(true);
-	box-shadow: none;
-  }
-
-  &:focus {
-	color: color-text-selected();
-	background: background-focus(true);
-	box-shadow: none;
-  }
-
-  &:active {
-	color: color-text-pressed();
-	background: background-down(true);
-	box-shadow: none;
-  }
-
-  &.#{$c-active} {
-	color: color-text-selected();
-	background: background-active(true);
-	box-shadow: none;
-  }
-}
-*/
 
 /* Inverted Group */
-/*
-.#{$c-inverted} > #{$ui-button-group},
-#{$ui-button-group}.#{$c-inverted} {
-  border: 2px solid color-divider(true);
 
-  > .#{$c-button} {
-	box-shadow: none;
-	border: none;
-	border-left: 2px solid color-divider(true);
+//.#{$c-inverted} > #{$ui-button-group},
+//#{$ui-button-group}.#{$c-inverted} {
+//  border: 2px solid color-divider(true);
+//
+//  > .#{$c-button} {
+//	box-shadow: none;
+//	border: none;
+//	border-left: 2px solid color-divider(true);
+//
+//	&:first-child {
+//	  border: none;
+//	}
+//  }
+//}
 
-	&:first-child {
-	  border: none;
-	}
-  }
-}
-*/
 
 /* Inverted Vertical Group */
-/*
-.#{$c-inverted} > #{$ui-button-group}.#{$c-vertical},
-#{$ui-button-group}.#{$c-inverted}.#{$c-vertical} {
 
-  > .#{$c-button} {
-	border: none;
-	border-top: 2px solid color-divider(true);
-
-	&:first-child {
-	  border: none;
-	}
-  }
-}
-*/
+//.#{$c-inverted} > #{$ui-button-group}.#{$c-vertical},
+//#{$ui-button-group}.#{$c-inverted}.#{$c-vertical} {
+//
+//  > .#{$c-button} {
+//	border: none;
+//	border-top: 2px solid color-divider(true);
+//
+//	&:first-child {
+//	  border: none;
+//	}
+//  }
+//}
 

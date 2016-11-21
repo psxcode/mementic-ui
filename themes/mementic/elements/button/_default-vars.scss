@@ -103,6 +103,12 @@ $inverted-box-shadow-border: box-shadow-create(0, 0, 0, 2px, true);
 		  none);
 }
 
+@function colorize-box-shadow($color, $inverted: false) {
+  @return if($inverted,
+		  box-shadow-colorize($inverted-box-shadow-border, colorize-divider($color)),
+		  none);
+}
+
 /* Transition */
 @function transition() {
   @return opacity $duration-default $easing-default,
@@ -312,6 +318,17 @@ $auto-include-colors-info: true;
   @content;
 }
 
+/* Inverted Button */
+@mixin props-inverted-button() {
+
+  // colors
+  color: color-text(true);
+  background: background(true);
+
+  // border
+  box-shadow: box-shadow(true);
+}
+
 /* Color mixins */
 @mixin props-color-button($name, $color, $inverted) {
 
@@ -328,6 +345,9 @@ $auto-include-colors-info: true;
   color: color-text-hovered($inverted);
   background: background-colorize-hover($color, $inverted);
 
+  // border
+  box-shadow: none;
+
   @content;
 }
 
@@ -336,6 +356,9 @@ $auto-include-colors-info: true;
   // color
   color: color-text-selected($inverted);
   background: background-colorize-focus($color, $inverted);
+
+  // border
+  box-shadow: none;
 
   @content;
 }
@@ -346,6 +369,9 @@ $auto-include-colors-info: true;
   color: color-text-pressed($inverted);
   background: background-colorize-down($color, $inverted);
 
+  // border
+  box-shadow: none;
+
   @content;
 }
 
@@ -353,6 +379,8 @@ $auto-include-colors-info: true;
 
   @content;
 }
+
+
 
 /* User mixins */
 @mixin user-button() {
@@ -405,4 +433,53 @@ $auto-include-colors-info: true;
 
 @mixin user-color-button-disabled($name, $color, $inverted: false) {
   @include props-color-button-disabled($name, $color, $inverted);
+}
+
+@mixin user-inverted-button() {
+  @include props-inverted-button;
+}
+
+/* Color Variations */
+@mixin props-colorize($name, $color, $inverted) {
+
+  @include user-color-button($name, $color, $inverted);
+
+  &:hover {
+	@include user-color-button-hover($name, $color, $inverted);
+  }
+
+  &:focus {
+	@include user-color-button-focus($name, $color, $inverted);
+  }
+
+  &:active {
+	@include user-color-button-down($name, $color, $inverted);
+  }
+
+  &:disabled,
+  &.#{$c-disabled} {
+	@include user-color-button-disabled($name, $color, $inverted);
+  }
+}
+
+@mixin user-colorize($color-map) {
+
+  @each $name, $color in $color-map {
+
+	/*--- Standard ---*/
+	#{selector-ui-color-button($name, false)} {
+	  @include props-colorize($name, $color, false);
+	}
+
+	/* Inverted */
+	.#{$c-inverted} > #{selector-ui-color-button($name, false)},
+	#{selector-ui-color-button($name, true)} {
+	  @include props-colorize($name, $color, true);
+	}
+
+  }
+
+  @if mixin_exists(group-colorize) {
+	@include group-colorize($color-map);
+  }
 }

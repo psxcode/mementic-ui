@@ -3,8 +3,8 @@
 ---------------*/
 
 /* Toggle (Modifies active state to give affordances) */
-#{$ui-button-group}.#{$c-toggle} .#{$c-button}.#{$c-active},
-#{$ui-button-group} .#{$c-button}.#{$c-toggle}.#{$c-active},
+#{$ui-group}.#{$c-toggle} .#{$c-button}.#{$c-active},
+#{$ui-group} .#{$c-button}.#{$c-toggle}.#{$c-active},
 #{$ui-button}.#{$c-toggle}.#{$c-active} {
   background-color: color-info('positive') !important;
   box-shadow: none !important;

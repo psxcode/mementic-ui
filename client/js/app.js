@@ -18,6 +18,7 @@
 			var elements = [
 				'button',
 				'button-basic',
+				'button-circular',
 				'button-compact',
 				'button-icon-labeled',
 				'container',

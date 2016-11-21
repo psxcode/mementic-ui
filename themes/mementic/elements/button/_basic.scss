@@ -3,7 +3,7 @@
 --------------------*/
 
 /* Basic button */
-#{$ui-button-group}.#{$c-basic} > .#{$c-button},
+#{$ui-group}.#{$c-basic} > .#{$c-button},
 #{$ui-button}.#{$c-basic} {
 
   color: color-text();
@@ -55,7 +55,7 @@
 }
 
 /* Basic Group */
-#{$ui-button-group}.#{$c-basic} {
+#{$ui-group}.#{$c-basic} {
 
   border: basic-border();
   border-radius: $basic-border-radius;
@@ -80,7 +80,7 @@
 }
 
 /* Basic Vertical Group */
-#{$ui-button-group}.#{$c-basic}.#{$c-vertical} {
+#{$ui-group}.#{$c-basic}.#{$c-vertical} {
 
   /* Button in a Vertical Basic Group */
   > .#{$c-button} {
@@ -102,9 +102,9 @@
 }
 
 /* Basic Inverted Button */
-.#{$c-inverted} > #{$ui-button-group}.#{$c-basic} > .#{$c-button},
+.#{$c-inverted} > #{$ui-group}.#{$c-basic} > .#{$c-button},
 .#{$c-inverted} > #{$ui-button}.#{$c-basic},
-#{$ui-button-group}.#{$c-basic}.#{$c-inverted} > .#{$c-button},
+#{$ui-group}.#{$c-basic}.#{$c-inverted} > .#{$c-button},
 #{$ui-button}.#{$c-basic}.#{$c-inverted} {
 
   color: color-text($inverted: true);
@@ -154,8 +154,8 @@
 }
 
 /* Basic Inverted Group */
-.#{$c-inverted} > #{$ui-button-group}.#{$c-basic},
-#{$ui-button-group}.#{$c-basic}.#{$c-inverted} {
+.#{$c-inverted} > #{$ui-group}.#{$c-basic},
+#{$ui-group}.#{$c-basic}.#{$c-inverted} {
 
   border: basic-border(true);
 
@@ -171,8 +171,8 @@
 }
 
 /* Basic Inverted Vertical Group */
-.#{$c-inverted} > #{$ui-button-group}.#{$c-basic}.#{$c-vertical},
-#{$ui-button-group}.#{$c-basic}.#{$c-inverted}.#{$c-vertical} {
+.#{$c-inverted} > #{$ui-group}.#{$c-basic}.#{$c-vertical},
+#{$ui-group}.#{$c-basic}.#{$c-inverted}.#{$c-vertical} {
 
   border: basic-border(true);
 

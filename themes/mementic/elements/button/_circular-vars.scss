@@ -1,0 +1,22 @@
+@function padding() {
+  @return $vertical-padding;
+}
+
+@mixin props-circular-button() {
+
+  padding: padding();
+
+  // border
+  @include vp-border-radius(10em);
+
+  > .#{$c-icon} {
+	width: 1em;
+	vertical-align: baseline;
+  }
+
+  @content;
+}
+
+@mixin user-circular-button() {
+  @include props-circular-button;
+}

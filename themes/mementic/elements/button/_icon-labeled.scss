@@ -93,7 +93,7 @@ $right-labeled: selector-right-labeled();
     Icon Only
 ---------------*/
 
-#{$ui-button-group}.#{$c-icon} .#{$c-button},
+#{$ui-group}.#{$c-icon} .#{$c-button},
 #{$ui-button}.#{$c-icon} {
 
   padding: $vertical-padding $vertical-padding;
@@ -109,7 +109,7 @@ $right-labeled: selector-right-labeled();
   Labeled Icon
 ---------------*/
 
-#{$ui-button-group}.#{$c-labeled}.#{$c-icon} .#{$c-button},
+#{$ui-group}.#{$c-labeled}.#{$c-icon} .#{$c-button},
 #{$ui-button}.#{$c-labeled}.#{$c-icon} {
 
   position: relative;
@@ -118,7 +118,7 @@ $right-labeled: selector-right-labeled();
 }
 
 /* Left Labeled */
-#{$ui-button-group}.#{$c-labeled}.#{$c-icon} > .#{$c-button},
+#{$ui-group}.#{$c-labeled}.#{$c-icon} > .#{$c-button},
 #{$ui-button}.#{$c-labeled}.#{$c-icon} {
 
   > .#{$c-icon} {
@@ -161,7 +161,7 @@ $right-labeled: selector-right-labeled();
 }
 
 /* Right Labeled */
-#{$ui-button-group}#{$right-labeled}.#{$c-icon} > .#{$c-button},
+#{$ui-group}#{$right-labeled}.#{$c-icon} > .#{$c-button},
 #{$ui-button}#{$right-labeled}.#{$c-icon} {
 
   padding-right: $labeled-icon-padding;
@@ -177,7 +177,7 @@ $right-labeled: selector-right-labeled();
   }
 }
 
-#{$ui-button-group}.#{$c-vertical}.#{$c-labeled}.#{$c-icon} {
+#{$ui-group}.#{$c-vertical}.#{$c-labeled}.#{$c-icon} {
 
   .#{$c-button}:first-child > .#{$c-icon} {
 	border-radius: 0;

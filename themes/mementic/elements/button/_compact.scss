@@ -2,17 +2,17 @@
        Compact
 --------------------*/
 
-#{$ui-button-group}.#{$c-compact} > .#{$c-button},
+#{$ui-group}.#{$c-compact} > .#{$c-button},
 #{$ui-button}.#{$c-compact} {
   padding: $compact-vertical-padding $compact-horizontal-padding;
 }
 
-#{$ui-button-group}.#{$c-compact}.#{$c-icon} > .#{$c-button},
+#{$ui-group}.#{$c-compact}.#{$c-icon} > .#{$c-button},
 #{$ui-button}.#{$c-compact}.#{$c-icon} {
   padding: $compact-vertical-padding $compact-vertical-padding;
 }
 
-#{$ui-button-group}.#{$c-compact}.#{$c-labeled}.#{$c-icon} > .#{$c-button},
+#{$ui-group}.#{$c-compact}.#{$c-labeled}.#{$c-icon} > .#{$c-button},
 #{$ui-button}.#{$c-compact}.#{$c-labeled}.#{$c-icon} {
   padding: $compact-vertical-padding ($compact-horizontal-padding + $labeled-icon-width);
 }

@@ -2,15 +2,6 @@
    Circular
 ---------------*/
 
-/* Shortcuts */
-$ui-circular-button: '.#{$c-ui}.#{$c-button}.#{$c-circular}';
-
-#{$ui-circular-button} {
-
-  border-radius: 10em;
-
-  > .#{$c-icon} {
-	width: 1em;
-	vertical-align: baseline;
-  }
+#{$ui-button}.#{$c-circular} {
+  @include user-circular-button;
 }

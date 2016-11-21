@@ -1,12 +1,16 @@
 /* Selectors */
 $c-button-group: 'buttons' !default;
 
-@function selector-element-button-group() {
+@function selector-element-group() {
   @return validate-selector('.#{$c-button-group}');
 }
 
-@function selector-ui-button-group() {
-  @return selector-element-button-group() + selector-element-ui();
+@function selector-ui-group() {
+  @return selector-element-group() + selector-element-ui();
+}
+
+@function selector-ui-color-group($name, $inverted) {
+  @return selector-ui-group() + validate-selector('.#{$name}') + if($inverted, validate-selector('.#{$c-inverted}'), '');
 }
 
 @function group-margin() {
@@ -148,20 +152,6 @@ $c-button-group: 'buttons' !default;
   @content;
 }
 
-@mixin props-color-group-button($name, $color, $inverted) {
-
-  @extend #{selector-ui-color-button($name, $inverted)};
-
-  @content;
-}
-
-@mixin props-color-group-button($name, $color, $inverted) {
-
-  @extend #{selector-ui-color-button($name, $inverted)};
-
-  @content;
-}
-
 /* User mixins */
 @mixin user-group() {
   @include props-group;
@@ -219,6 +209,40 @@ $c-button-group: 'buttons' !default;
   @include props-right-floated-group;
 }
 
-@mixin user-color-group-button($name, $color, $inverted) {
-  @include props-color-group-button($name, $color, $inverted);
+/* Color Variations */
+@mixin props-group-button-colorize($name, $color, $inverted) {
+  @extend #{selector-ui-color-button($name, $inverted)};
+}
+
+@mixin group-colorize($color-map) {
+
+  $ui-group: selector-ui-group();
+
+  @each $name, $color in $color-map {
+
+	/* Colored Group */
+	#{$ui-group}.#{$name} {
+	  @include props-color-group($name, $color, false);
+	}
+
+	/* Colored Group Button */
+	#{$ui-group}.#{$name} > #{$c-button},
+	#{$ui-group} > .#{$c-button}.#{$name} {
+	  @include props-group-button-colorize($name, $color, false);
+	}
+
+	/* Inverted Colored Group */
+	.#{$c-inverted} > #{$ui-group}.#{$name},
+	#{$ui-group}.#{$name}.#{$c-inverted} {
+	  @include props-color-group($name, $color, true);
+	}
+
+	/* Inverted Colored Group Button */
+	.#{$c-inverted} > #{$ui-group}.#{$name} > #{$c-button},
+	.#{$c-inverted} > #{$ui-group} > #{$c-button}.#{$name},
+	#{$ui-group}.#{$name}.#{$c-inverted} > #{$c-button},
+	#{$ui-group}.#{$c-inverted} > #{$c-button}.#{$name}	{
+	  @include props-group-button-colorize($name, $color, true);
+	}
+  }
 }

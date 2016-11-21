@@ -6,8 +6,13 @@ $right-floated: selector-right-floated();
 #{$ui-button} {
 
   @include user-button;
+}
 
-  // States
+// States
+#{$ui-button},
+.#{$c-inverted} > #{$ui-button},
+#{$ui-button}.#{$c-inverted} {
+
   &:hover {
 	@include user-button-hover;
   }
@@ -45,43 +50,15 @@ $right-floated: selector-right-floated();
   @include user-right-floated-button;
 }
 
-/* Color Variations */
-@mixin _colorize($name, $color, $inverted) {
-
-  @include user-color-button($name, $color, $inverted);
-
-  &:hover {
-	@include user-color-button-hover($name, $color, $inverted);
-  }
-
-  &:focus {
-	@include user-color-button-focus($name, $color, $inverted);
-  }
-
-  &:active {
-	@include user-color-button-down($name, $color, $inverted);
-  }
-
-  &:disabled,
-  &.#{$c-disabled} {
-	@include user-color-button-disabled($name, $color, $inverted);
-  }
+/* Inverted Variation */
+.#{$c-inverted} > #{$ui-button},
+#{$ui-button}.#{$c-inverted} {
+  @include user-inverted-button;
 }
 
+/* Color Variations */
 @mixin colorize($color-map) {
-  @each $name, $color in $color-map {
-
-	/*--- Standard ---*/
-	#{selector-ui-color-button($name, false)} {
-	  @include _colorize($name, $color, false);
-	}
-
-	/* Inverted */
-	.#{$c-inverted} > #{selector-ui-color-button($name, false)},
-	#{selector-ui-color-button($name, true)} {
-	  @include _colorize($name, $color, true);
-	}
-  }
+  @include user-colorize($color-map);
 }
 
 @if $auto-include-colors-info {
