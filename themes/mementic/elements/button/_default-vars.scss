@@ -199,14 +199,9 @@ $auto-include-colors-info: true;
   text-transform: $text-transform;
   vertical-align: $vertical-align;
 
-  // colors
-  color: color-text();
-  background: background();
-
   // border
   border: none;
   @include vp-border-radius(border-radius());
-  box-shadow: box-shadow();
 
   // misc
   cursor: pointer;
@@ -215,131 +210,87 @@ $auto-include-colors-info: true;
   @include vp-transition(transition());
 }
 
-@mixin props-button() {
-
-  @extend %props-button;
-
-  // user content
-  @content;
-}
-
 %props-button-hover {
-
-  // colors
-  color: color-text-hovered();
-  background: background-hover();
-}
-
-@mixin props-button-hover() {
-
-  @extend %props-button-hover;
-
-  // user content
-  @content;
 }
 
 %props-button-focus {
-
-  // colors
-  color: color-text-selected();
-  background: background-focus();
-}
-
-@mixin props-button-focus() {
-
-  @extend %props-button-focus;
-
-  // user content
-  @content;
 }
 
 %props-button-down {
-
-  // colors
-  color: color-text-pressed();
-  background: background-down();
-}
-
-@mixin props-button-down() {
-
-  @extend %props-button-down;
-
-  // user content
-  @content;
 }
 
 %props-button-disabled {
-
-  // colors
-  opacity: $opacity-disabled;
 
   // misc
   cursor: default;
   pointer-events: none;
 }
 
-@mixin props-button-disabled() {
-
-  @extend %props-button-disabled;
-
-  @content;
-}
-
-@mixin props-size-button($name, $value) {
-
-  font-size: size($name);
-
-  @content;
-}
-
 %props-left-floated-button {
+
   float: left;
   margin-left: 0;
   margin-right: $floated-margin;
 }
 
-@mixin props-left-floated-button() {
-
-  @extend %props-left-floated-button;
-
-  @content;
-}
-
 %props-right-floated-button {
+
   float: right;
   margin-right: 0;
   margin-left: $floated-margin;
 }
 
-@mixin props-right-floated-button() {
-
-  @extend %props-right-floated-button;
-
-  @content;
-}
-
-/* Inverted Button */
-@mixin props-inverted-button() {
+/* Color mixins */
+@mixin props-button-color($inverted) {
 
   // colors
-  color: color-text(true);
-  background: background(true);
+  color: color-text($inverted);
+  background: background($inverted);
 
   // border
-  box-shadow: box-shadow(true);
+  box-shadow: box-shadow($inverted);
 }
 
-/* Color mixins */
-@mixin props-color-button($name, $color, $inverted) {
+@mixin props-button-color-hover($inverted) {
+
+  // colors
+  color: color-text-hovered($inverted);
+  background: background-hover($inverted);
+}
+
+@mixin props-button-color-focus($inverted) {
+
+  // colors
+  color: color-text-selected($inverted);
+  background: background-focus($inverted);
+}
+
+@mixin props-button-color-down($inverted) {
+
+  // colors
+  color: color-text-pressed($inverted);
+  background: background-down($inverted);
+}
+
+@mixin props-button-color-disabled($inverted) {
+
+  // colors
+  opacity: $opacity-disabled;
+}
+
+@mixin props-button-colorize($name, $color, $inverted) {
 
   // color
   color: color-text($inverted);
   background: background-colorize($color, $inverted);
 
+  // border
+  box-shadow: colorize-box-shadow($color, $inverted);
+
   @content;
 }
 
-@mixin props-color-button-hover($name, $color, $inverted) {
+@mixin props-button-colorize-hover($name, $color, $inverted) {
 
   // color
   color: color-text-hovered($inverted);
@@ -351,7 +302,7 @@ $auto-include-colors-info: true;
   @content;
 }
 
-@mixin props-color-button-focus($name, $color, $inverted) {
+@mixin props-button-colorize-focus($name, $color, $inverted) {
 
   // color
   color: color-text-selected($inverted);
@@ -363,7 +314,7 @@ $auto-include-colors-info: true;
   @content;
 }
 
-@mixin props-color-button-down($name, $color, $inverted) {
+@mixin props-button-colorize-down($name, $color, $inverted) {
 
   // color
   color: color-text-pressed($inverted);
@@ -375,106 +326,279 @@ $auto-include-colors-info: true;
   @content;
 }
 
-@mixin props-color-button-disabled($name, $color, $inverted) {
+@mixin props-button-colorize-disabled($name, $color, $inverted) {
 
   @content;
 }
 
+@mixin props-button($inverted) {
 
+  @extend %props-button;
+
+  // colors
+  @include props-button-color($inverted);
+
+  // user content
+  @content;
+}
+
+@mixin props-button-hover($inverted) {
+
+  @extend %props-button-hover !optional;
+
+  // colors
+  @include props-button-color-hover($inverted);
+
+  // user content
+  @content;
+}
+
+@mixin props-button-focus($inverted) {
+
+  @extend %props-button-focus !optional;
+
+  // colors
+  @include props-button-color-focus($inverted);
+
+  // user content
+  @content;
+}
+
+@mixin props-button-down($inverted) {
+
+  @extend %props-button-down !optional;
+
+  // colors
+  @include props-button-color-down($inverted);
+
+  // user content
+  @content;
+}
+
+@mixin props-button-disabled($inverted) {
+
+  @extend %props-button-disabled !optional;
+
+  // colors
+  @include props-button-color-disabled($inverted);
+
+  @content;
+}
+
+/* Do not using placeholders here because of parameters */
+@mixin props-size-button($name, $value) {
+
+  font-size: size($name);
+
+  @content;
+}
+
+@mixin props-left-floated-button() {
+
+  @extend %props-left-floated-button;
+
+  @content;
+}
+
+@mixin props-right-floated-button() {
+
+  @extend %props-right-floated-button;
+
+  @content;
+}
 
 /* User mixins */
-@mixin user-button() {
-  @include props-button();
+@mixin user-props-button($inverted) {
+  @include props-button($inverted);
 }
 
-@mixin user-button-hover() {
-  @include props-button-hover;
+@mixin user-props-button-hover($inverted) {
+  @include props-button-hover($inverted);
 }
 
-@mixin user-button-focus() {
-  @include props-button-focus;
+@mixin user-props-button-focus($inverted) {
+  @include props-button-focus($inverted);
 }
 
-@mixin user-button-down() {
-  @include props-button-down;
+@mixin user-props-button-down($inverted) {
+  @include props-button-down($inverted);
 }
 
-@mixin user-button-disabled() {
-  @include props-button-disabled;
+@mixin user-props-button-disabled($inverted) {
+  @include props-button-disabled($inverted);
 }
 
-@mixin user-size-button($name, $value) {
+@mixin user-props-size-button($name, $value) {
   @include props-size-button($name, $value);
 }
 
-@mixin user-left-floated-button() {
+@mixin user-props-left-floated-button() {
   @include props-left-floated-button;
 }
 
-@mixin user-right-floated-button() {
+@mixin user-props-right-floated-button() {
   @include props-right-floated-button;
 }
 
-@mixin user-color-button($name, $color, $inverted: false) {
-  @include props-color-button($name, $color, $inverted);
+@mixin user-props-button-colorize($name, $color, $inverted) {
+  @include props-button-colorize($name, $color, $inverted);
 }
 
-@mixin user-color-button-hover($name, $color, $inverted: false) {
-  @include props-color-button-hover($name, $color, $inverted);
+@mixin user-props-button-colorize-hover($name, $color, $inverted) {
+  @include props-button-colorize-hover($name, $color, $inverted);
 }
 
-@mixin user-color-button-focus($name, $color, $inverted: false) {
-  @include props-color-button-focus($name, $color, $inverted);
+@mixin user-props-button-colorize-focus($name, $color, $inverted) {
+  @include props-button-colorize-focus($name, $color, $inverted);
 }
 
-@mixin user-color-button-down($name, $color, $inverted: false) {
-  @include props-color-button-down($name, $color, $inverted);
+@mixin user-props-button-colorize-down($name, $color, $inverted) {
+  @include props-button-colorize-down($name, $color, $inverted);
 }
 
-@mixin user-color-button-disabled($name, $color, $inverted: false) {
-  @include props-color-button-disabled($name, $color, $inverted);
+@mixin user-props-button-colorize-disabled($name, $color, $inverted) {
+  @include props-button-colorize-disabled($name, $color, $inverted);
 }
 
-@mixin user-inverted-button() {
-  @include props-inverted-button;
+@mixin selector-button() {
+
+  /* Button */
+  #{selector-ui-button()} {
+	@include user-props-button(false);
+
+	&:hover {
+	  @include user-props-button-hover(false);
+	}
+
+	&:focus {
+	  @include user-props-button-focus(false);
+	}
+
+	&:active {
+	  @include user-props-button-down(false);
+	}
+
+	&.#{$c-disabled},
+	&:disabled {
+	  @include user-props-button-disabled(false);
+	}
+  }
+}
+
+@mixin selector-inverted-button() {
+
+  /* Inverted Button */
+  .#{$c-inverted} > #{selector-ui-button()},
+  #{selector-ui-button()}.#{$c-inverted} {
+	@include user-props-button(true);
+
+	&:hover {
+	  @include user-props-button-hover(true);
+	}
+
+	&:focus {
+	  @include user-props-button-focus(true);
+	}
+
+	&:active {
+	  @include user-props-button-down(true);
+	}
+
+	&.#{$c-disabled},
+	&:disabled {
+	  @include user-props-button-disabled(true);
+	}
+  }
+}
+
+@mixin selector-size-button($name, $value) {
+
+  /* Size Button */
+  #{selector-ui-size-button($name)} {
+	@include user-props-size-button($name, $value);
+  }
+}
+
+@mixin selector-floated-button() {
+  #{selector-ui-button()}.#{$c-floated} {
+	@include user-props-left-floated-button;
+  }
+}
+
+@mixin selector-right-floated-button() {
+  #{selector-ui-button()}#{selector-right-floated()} {
+	@include user-props-right-floated-button;
+  }
+}
+
+@mixin user-selector-button() {
+  @include selector-button;
+}
+
+@mixin user-selector-inverted-button() {
+  @include selector-inverted-button;
+}
+
+@mixin user-selector-size-button($name, $value) {
+  @include selector-size-button($name, $value);
+}
+
+@mixin user-selector-floated-button() {
+  @include selector-floated-button;
+}
+
+@mixin user-selector-right-floated-button() {
+  @include selector-right-floated-button;
 }
 
 /* Color Variations */
-@mixin props-colorize($name, $color, $inverted) {
-
-  @include user-color-button($name, $color, $inverted);
-
-  &:hover {
-	@include user-color-button-hover($name, $color, $inverted);
-  }
-
-  &:focus {
-	@include user-color-button-focus($name, $color, $inverted);
-  }
-
-  &:active {
-	@include user-color-button-down($name, $color, $inverted);
-  }
-
-  &:disabled,
-  &.#{$c-disabled} {
-	@include user-color-button-disabled($name, $color, $inverted);
-  }
-}
-
 @mixin user-colorize($color-map) {
 
   @each $name, $color in $color-map {
 
 	/*--- Standard ---*/
 	#{selector-ui-color-button($name, false)} {
-	  @include props-colorize($name, $color, false);
+	  @include user-props-button-colorize($name, $color, false);
+
+	  &:hover {
+		@include user-props-button-colorize-hover($name, $color, false);
+	  }
+
+	  &:focus {
+		@include user-props-button-colorize-focus($name, $color, false);
+	  }
+
+	  &:active {
+		@include user-props-button-colorize-down($name, $color, false);
+	  }
+
+	  &:disabled,
+	  &.#{$c-disabled} {
+		@include user-props-button-colorize-disabled($name, $color, false);
+	  }
 	}
 
 	/* Inverted */
 	.#{$c-inverted} > #{selector-ui-color-button($name, false)},
 	#{selector-ui-color-button($name, true)} {
-	  @include props-colorize($name, $color, true);
+	  @include user-props-button-colorize($name, $color, true);
+
+	  &:hover {
+		@include user-props-button-colorize-hover($name, $color, true);
+	  }
+
+	  &:focus {
+		@include user-props-button-colorize-focus($name, $color, true);
+	  }
+
+	  &:active {
+		@include user-props-button-colorize-down($name, $color, true);
+	  }
+
+	  &:disabled,
+	  &.#{$c-disabled} {
+		@include user-props-button-colorize-disabled($name, $color, true);
+	  }
 	}
 
   }

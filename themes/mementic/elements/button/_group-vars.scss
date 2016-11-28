@@ -135,14 +135,14 @@ $c-button-group: 'buttons' !default;
 
 @mixin props-left-floated-group() {
 
-  @include user-left-floated-button;
+  @include user-props-left-floated-button;
 
   @content;
 }
 
 @mixin props-right-floated-group() {
 
-  @include user-right-floated-button;
+  @include user-props-right-floated-button;
 
   @content;
 }
@@ -226,7 +226,7 @@ $c-button-group: 'buttons' !default;
 	}
 
 	/* Colored Group Button */
-	#{$ui-group}.#{$name} > #{$c-button},
+	#{$ui-group}.#{$name} > .#{$c-button},
 	#{$ui-group} > .#{$c-button}.#{$name} {
 	  @include props-group-button-colorize($name, $color, false);
 	}
@@ -238,10 +238,10 @@ $c-button-group: 'buttons' !default;
 	}
 
 	/* Inverted Colored Group Button */
-	.#{$c-inverted} > #{$ui-group}.#{$name} > #{$c-button},
-	.#{$c-inverted} > #{$ui-group} > #{$c-button}.#{$name},
-	#{$ui-group}.#{$name}.#{$c-inverted} > #{$c-button},
-	#{$ui-group}.#{$c-inverted} > #{$c-button}.#{$name}	{
+	.#{$c-inverted} > #{$ui-group}.#{$name} > .#{$c-button},
+	.#{$c-inverted} > #{$ui-group} > .#{$c-button}.#{$name},
+	#{$ui-group}.#{$name}.#{$c-inverted} > .#{$c-button},
+	#{$ui-group}.#{$c-inverted} > .#{$c-button}.#{$name}	{
 	  @include props-group-button-colorize($name, $color, true);
 	}
   }

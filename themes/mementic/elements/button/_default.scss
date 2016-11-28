@@ -1,60 +1,14 @@
-/* Selectors */
-$ui-button: selector-ui-button();
-$right-floated: selector-right-floated();
-
-/* Button */
-#{$ui-button} {
-
-  @include user-button;
-}
-
-// States
-#{$ui-button},
-.#{$c-inverted} > #{$ui-button},
-#{$ui-button}.#{$c-inverted} {
-
-  &:hover {
-	@include user-button-hover;
-  }
-
-  &:focus {
-	@include user-button-focus;
-  }
-
-  &:active {
-	@include user-button-down;
-  }
-
-  &.#{$c-disabled},
-  &:disabled {
-	@include user-button-disabled;
-  }
-}
+@include user-selector-button;
+@include user-selector-inverted-button;
 
 /* Sizes Variation */
 @each $name, $value in $sizes {
-
-  #{selector-ui-size-button($name)} {
-	@include user-size-button($name, $value);
-  }
+  @include user-selector-size-button($name, $value);
 }
 
 /* Floated Variation */
-#{$ui-button}.#{$c-floated} {
-
-  @include user-left-floated-button;
-}
-
-#{$ui-button}#{$right-floated} {
-
-  @include user-right-floated-button;
-}
-
-/* Inverted Variation */
-.#{$c-inverted} > #{$ui-button},
-#{$ui-button}.#{$c-inverted} {
-  @include user-inverted-button;
-}
+@include user-selector-floated-button;
+@include user-selector-right-floated-button;
 
 /* Color Variations */
 @mixin colorize($color-map) {
