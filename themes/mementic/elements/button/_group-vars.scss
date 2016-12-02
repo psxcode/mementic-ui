@@ -17,7 +17,7 @@ $c-button-group: 'buttons' !default;
   @return $vertical-margin $horizontal-margin 0 0;
 }
 
-@mixin props-group() {
+@mixin props-group($inverted) {
 
   // positioning
   display: inline-flex;
@@ -38,10 +38,11 @@ $c-button-group: 'buttons' !default;
 	@extend %clearfix;
   }
 
+  // user content
   @content;
 }
 
-@mixin props-group-button() {
+@mixin props-group-button($inverted) {
 
   // separation from selector '.ui.button'
   @extend %props-button;
@@ -55,6 +56,9 @@ $c-button-group: 'buttons' !default;
   // border
   @include vp-border-radius(0);
 
+  // colors
+  @include props-button-color($inverted);
+
   &:first-child {
 	@include vp-left-border-radius(border-radius());
   }
@@ -63,6 +67,7 @@ $c-button-group: 'buttons' !default;
 	@include vp-right-border-radius(border-radius());
   }
 
+  // user content
   @content;
 }
 
@@ -71,6 +76,7 @@ $c-button-group: 'buttons' !default;
   // positioning
   flex-direction: column;
 
+  // user content
   @content;
 }
 
@@ -93,11 +99,13 @@ $c-button-group: 'buttons' !default;
 	@include vp-bottom-border-radius(border-radius());
   }
 
+  // user content
   @content;
 }
 
 @mixin props-size-group($name, $value) {
 
+  // user content
   @content;
 }
 
@@ -106,6 +114,7 @@ $c-button-group: 'buttons' !default;
   // extending selector. cannot extend placeholder with params
   @extend #{selector-ui-size-button($name)};
 
+  // user content
   @content;
 }
 
@@ -118,6 +127,7 @@ $c-button-group: 'buttons' !default;
 
   @extend %props-number-group;
 
+  // user content
   @content;
 }
 
@@ -130,6 +140,7 @@ $c-button-group: 'buttons' !default;
 
   @extend %props-number-group-button;
 
+  // user content
   @content;
 }
 
@@ -137,6 +148,7 @@ $c-button-group: 'buttons' !default;
 
   @include user-props-left-floated-button;
 
+  // user content
   @content;
 }
 
@@ -144,16 +156,18 @@ $c-button-group: 'buttons' !default;
 
   @include user-props-right-floated-button;
 
+  // user content
   @content;
 }
 
 @mixin props-color-group($name, $color, $inverted) {
 
+  // user content
   @content;
 }
 
 /* User mixins */
-@mixin user-group() {
+@mixin user-group($inverted) {
   @include props-group;
 }
 
@@ -214,7 +228,7 @@ $c-button-group: 'buttons' !default;
   @extend #{selector-ui-color-button($name, $inverted)};
 }
 
-@mixin group-colorize($color-map) {
+@mixin user-group-colorize($color-map) {
 
   $ui-group: selector-ui-group();
 

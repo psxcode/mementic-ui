@@ -12,7 +12,14 @@
 
 /* Color Variations */
 @mixin colorize($color-map) {
+
+  /* Default Button */
   @include user-colorize($color-map);
+
+  /* Button Group */
+  @if mixin_exists(user-group-colorize) {
+	@include user-group-colorize($color-map);
+  }
 }
 
 @if $auto-include-colors-info {

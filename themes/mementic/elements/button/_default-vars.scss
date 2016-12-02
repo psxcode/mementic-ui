@@ -600,10 +600,5 @@ $auto-include-colors-info: true;
 		@include user-props-button-colorize-disabled($name, $color, true);
 	  }
 	}
-
-  }
-
-  @if mixin_exists(group-colorize) {
-	@include group-colorize($color-map);
   }
 }
