@@ -17,7 +17,57 @@ $c-button-group: 'buttons' !default;
   @return $vertical-margin $horizontal-margin 0 0;
 }
 
-@mixin props-group($inverted) {
+@function border($inverted) {
+  @return 2px solid color-divider($inverted);
+}
+
+@function border-colorize($name, $color, $inverted) {
+  @return 2px solid colorize-divider($color);
+}
+
+@mixin props-group-button-color($inverted) {
+
+	// use default button style
+	@include props-button-color($inverted);
+
+  //@if not $inverted {
+  //
+  //} @else {
+  //
+	//// colors
+	//color: color-text($inverted);
+	//background: background($inverted);
+  //
+	//// border
+	//box-shadow: none;
+	//border: border($inverted);
+	//&:not(:first-child) {
+	//  border-left: none;
+	//}
+  //}
+}
+
+@mixin props-vertical-group-button-color($inverted) {
+
+  @if not $inverted {
+
+	// use default button style
+	@include props-button-color(false);
+  } @else {
+
+	// colors
+	color: color-text($inverted);
+	background: background($inverted);
+
+	// border
+	border: border($inverted);
+	&:not(:first-child) {
+	  border-top: none;
+	}
+  }
+}
+
+@mixin props-group() {
 
   // positioning
   display: inline-flex;
@@ -42,9 +92,9 @@ $c-button-group: 'buttons' !default;
   @content;
 }
 
-@mixin props-group-button($inverted) {
+@mixin props-group-button() {
 
-  // separation from selector '.ui.button'
+  // extending placeholder to separate from selector
   @extend %props-button;
 
   // positioning
@@ -53,11 +103,11 @@ $c-button-group: 'buttons' !default;
   // size
   margin: 0;
 
+  // colors
+  @include props-group-button-color(false);
+
   // border
   @include vp-border-radius(0);
-
-  // colors
-  @include props-button-color($inverted);
 
   &:first-child {
 	@include vp-left-border-radius(border-radius());
@@ -71,6 +121,23 @@ $c-button-group: 'buttons' !default;
   @content;
 }
 
+/* Inverted Group */
+@mixin props-inverted-group() {
+
+  // user content
+  @content;
+}
+
+@mixin props-inverted-group-button() {
+
+  // colors
+  @include props-group-button-color(true);
+
+  // user content
+  @content;
+}
+
+/* Vertical Group modifies Default Group */
 @mixin props-vertical-group() {
 
   // positioning
@@ -80,22 +147,24 @@ $c-button-group: 'buttons' !default;
   @content;
 }
 
+/* Vertical Group Button modifies Default Group Button */
 @mixin props-vertical-group-button() {
 
   // positioning
   display: block;
 
+  // border
+  @include vp-border-radius(0);
+
   &:first-child {
 
 	// border
-	@include vp-border-radius(0);
 	@include vp-top-border-radius(border-radius());
   }
 
   &:last-child {
 
 	// border
-	@include vp-border-radius(0);
 	@include vp-bottom-border-radius(border-radius());
   }
 
@@ -144,6 +213,7 @@ $c-button-group: 'buttons' !default;
   @content;
 }
 
+/* Uses same properties as Floated Button */
 @mixin props-left-floated-group() {
 
   @include user-props-left-floated-button;
@@ -152,6 +222,7 @@ $c-button-group: 'buttons' !default;
   @content;
 }
 
+/* Uses same properties as Floated Button */
 @mixin props-right-floated-group() {
 
   @include user-props-right-floated-button;
@@ -160,103 +231,336 @@ $c-button-group: 'buttons' !default;
   @content;
 }
 
-@mixin props-color-group($name, $color, $inverted) {
+/* Colorize */
+@mixin props-group-colorize($name, $color) {
 
   // user content
   @content;
 }
 
+@mixin props-group-button-colorize($name, $color) {
+
+  // Extending by selector
+  @extend #{selector-ui-color-button($name)};
+}
+
+@mixin props-inverted-group-colorize($name, $color) {
+
+  // user content
+  @content;
+}
+
+@mixin props-inverted-group-button-colorize($name, $color) {
+
+  // Extending by selector
+  @extend #{selector-ui-color-button($name)}.#{$c-inverted};
+}
+
 /* User mixins */
-@mixin user-group($inverted) {
-  @include props-group;
+@mixin user-props-group() {
+  @include props-group();
 }
 
-@mixin user-group-button() {
-  @include props-group-button;
+@mixin user-props-group-button() {
+  @include props-group-button();
 }
 
-@mixin user-group-button-hover() {
-  @include props-button-hover;
+@mixin user-props-inverted-group() {
+  @include props-inverted-group();
 }
 
-@mixin user-group-button-focus() {
-  @include props-button-focus;
+@mixin user-props-group-button-hover() {
+  @include props-button-hover();
 }
 
-@mixin user-group-button-down() {
-  @include props-button-down;
+@mixin user-props-group-button-focus() {
+  @include props-button-focus();
 }
 
-@mixin user-group-button-disabled() {
-  @include props-button-disabled;
+@mixin user-props-group-button-down() {
+  @include props-button-down();
 }
 
-@mixin user-vertical-group() {
-  @include props-vertical-group;
+@mixin user-props-group-button-disabled() {
+  @include props-button-disabled();
 }
 
-@mixin user-vertical-group-button() {
-  @include props-vertical-group-button;
+@mixin user-props-inverted-group-button() {
+  @include props-inverted-group-button();
 }
 
-@mixin user-size-group($name, $value) {
+@mixin user-props-inverted-group-button-hover() {
+  @include props-inverted-button-hover();
+}
+
+@mixin user-props-inverted-group-button-focus() {
+  @include props-inverted-button-focus();
+}
+
+@mixin user-props-inverted-group-button-down() {
+  @include props-inverted-button-down();
+}
+
+@mixin user-props-inverted-group-button-disabled() {
+  @include props-inverted-button-disabled();
+}
+
+@mixin user-props-vertical-group() {
+  @include props-vertical-group();
+}
+
+@mixin user-props-vertical-group-button() {
+  @include props-vertical-group-button();
+}
+
+@mixin user-props-size-group($name, $value) {
   @include props-size-group($name, $value);
 }
 
-@mixin user-size-group-button($name, $value) {
+@mixin user-props-size-group-button($name, $value) {
   @include props-size-group-button($name, $value);
 }
 
-@mixin user-number-group($index) {
+@mixin user-props-number-group($index) {
   @include props-number-group($index);
 }
 
-@mixin user-number-group-button($index) {
+@mixin user-props-number-group-button($index) {
   @include props-number-group-button($index);
 }
 
-@mixin user-left-floated-group() {
+@mixin user-props-left-floated-group() {
   @include props-left-floated-group;
 }
 
-@mixin user-right-floated-group() {
+@mixin user-props-right-floated-group() {
   @include props-right-floated-group;
 }
 
-/* Color Variations */
-@mixin props-group-button-colorize($name, $color, $inverted) {
-  @extend #{selector-ui-color-button($name, $inverted)};
+@mixin user-props-group-colorize($name, $color) {
+  @include props-group-colorize($name, $color);
 }
 
-@mixin user-group-colorize($color-map) {
+@mixin user-props-group-button-colorize($name, $color) {
+  @include props-group-button-colorize($name, $color);
+}
 
-  $ui-group: selector-ui-group();
+@mixin user-props-inverted-group-colorize($name, $color) {
+  @include props-inverted-group-colorize($name, $color);
+}
 
-  @each $name, $color in $color-map {
+@mixin user-props-inverted-group-button-colorize($name, $color) {
+  @include props-inverted-group-button-colorize($name, $color);
+}
 
-	/* Colored Group */
-	#{$ui-group}.#{$name} {
-	  @include props-color-group($name, $color, false);
-	}
+/* Group */
+@mixin selector-group() {
 
-	/* Colored Group Button */
-	#{$ui-group}.#{$name} > .#{$c-button},
-	#{$ui-group} > .#{$c-button}.#{$name} {
-	  @include props-group-button-colorize($name, $color, false);
-	}
+  #{selector-ui-group()} {
 
-	/* Inverted Colored Group */
-	.#{$c-inverted} > #{$ui-group}.#{$name},
-	#{$ui-group}.#{$name}.#{$c-inverted} {
-	  @include props-color-group($name, $color, true);
-	}
+	@include user-props-group();
 
-	/* Inverted Colored Group Button */
-	.#{$c-inverted} > #{$ui-group}.#{$name} > .#{$c-button},
-	.#{$c-inverted} > #{$ui-group} > .#{$c-button}.#{$name},
-	#{$ui-group}.#{$name}.#{$c-inverted} > .#{$c-button},
-	#{$ui-group}.#{$c-inverted} > .#{$c-button}.#{$name}	{
-	  @include props-group-button-colorize($name, $color, true);
+	/* Group Button Type */
+	> .#{$c-button} {
+
+	  @include user-props-group-button();
+
+	  // States
+	  &:hover {
+		@include user-props-group-button-hover();
+	  }
+
+	  &:focus {
+		@include user-props-group-button-focus();
+	  }
+
+	  &:active {
+		@include user-props-group-button-down();
+	  }
+
+	  &.#{$c-disabled},
+	  &:disabled {
+		@include user-props-group-button-disabled();
+	  }
 	}
   }
+}
+
+@mixin selector-inverted-group() {
+
+  .#{$c-inverted} > #{selector-ui-group()},
+  #{selector-ui-group()}.#{$c-inverted} {
+
+	@include user-props-inverted-group();
+
+	/* Group Button Type */
+	> .#{$c-button} {
+
+	  @include user-props-inverted-group-button();
+
+	  // States
+	  &:hover {
+		@include user-props-inverted-group-button-hover();
+	  }
+
+	  &:focus {
+		@include user-props-inverted-group-button-focus();
+	  }
+
+	  &:active {
+		@include user-props-inverted-group-button-down();
+	  }
+
+	  &.#{$c-disabled},
+	  &:disabled {
+		@include user-props-inverted-group-button-disabled();
+	  }
+	}
+  }
+}
+
+/* Vertical Group */
+@mixin selector-vertical-group() {
+
+  #{selector-ui-group()}.#{$c-vertical} {
+
+	@include user-props-vertical-group();
+
+	/* Group Button Type */
+	> .#{$c-button} {
+
+	  @include user-props-vertical-group-button();
+	}
+  }
+}
+
+/* Sizes Variation */
+@mixin selector-size-group($name, $value) {
+
+  #{selector-ui-group()}.#{$name} {
+
+	@include user-props-size-group($name, $value);
+
+	> .#{$c-button} {
+	  @include user-props-size-group-button($name, $value);
+	}
+  }
+}
+
+/* Numbers */
+@mixin selector-number-group($i) {
+
+  #{selector-ui-group()}:not(.#{$c-vertical}).#{number-name($i)} {
+
+	@include user-props-number-group($i);
+
+	> .#{$c-button} {
+	  @include user-props-number-group-button($i)
+	}
+  }
+}
+
+/* Floated Group Variation */
+@mixin selector-floated-group() {
+
+  #{selector-ui-group()}.#{$c-floated} {
+
+	@include user-props-left-floated-group;
+  }
+
+  #{selector-ui-group()}#{selector-right-floated()} {
+
+	@include user-props-right-floated-group;
+  }
+}
+
+/* Colored Group */
+@mixin selector-group-colorize($name, $color) {
+
+  #{selector-ui-group()}.#{$name} {
+	@include props-group-colorize($name, $color);
+  }
+}
+
+/* Colored Group Button */
+@mixin selector-group-button-colorize($name, $color) {
+
+  #{selector-ui-group()}.#{$name} > .#{$c-button},
+  #{selector-ui-group()} > .#{$c-button}.#{$name} {
+	@include user-props-group-button-colorize($name, $color);
+  }
+}
+
+/* Inverted Colored Group */
+@mixin selector-inverted-group-colorize($name, $color) {
+
+  .#{$c-inverted} > #{selector-ui-group()}.#{$name},
+  #{selector-ui-group()}.#{$name}.#{$c-inverted} {
+	@include user-props-inverted-group-colorize($name, $color);
+  }
+}
+
+@mixin selector-inverted-group-button-colorize($name, $color) {
+
+  .#{$c-inverted} > #{selector-ui-group()}.#{$name} > .#{$c-button},
+  .#{$c-inverted} > #{selector-ui-group()} > .#{$c-button}.#{$name},
+  #{selector-ui-group()}.#{$name}.#{$c-inverted} > .#{$c-button},
+  #{selector-ui-group()}.#{$c-inverted} > .#{$c-button}.#{$name} {
+	@include user-props-inverted-group-button-colorize($name, $color);
+  }
+}
+
+@mixin user-selector-group {
+  @include selector-group;
+}
+
+@mixin user-selector-inverted-group {
+  @include selector-inverted-group;
+}
+
+@mixin user-selector-vertical-group {
+  @include selector-vertical-group;
+}
+
+@mixin user-selector-size-group($name, $value) {
+  @include selector-size-group($name, $value);
+}
+
+@mixin user-selector-number-group($i) {
+  @include selector-number-group($i);
+}
+
+@mixin user-selector-floated-group {
+  @include selector-floated-group;
+}
+
+@mixin user-selector-group-colorize($name, $color) {
+  @include selector-group-colorize($name, $color);
+}
+
+@mixin user-selector-inverted-group-colorize($name, $color) {
+  @include selector-inverted-group-colorize($name, $color);
+}
+
+@mixin user-selector-group-button-colorize($name, $color) {
+  @include selector-group-button-colorize($name, $color);
+}
+
+@mixin user-selector-inverted-group-button-colorize($name, $color) {
+  @include selector-inverted-group-button-colorize($name, $color);
+}
+
+@mixin user-group-colorize($name, $color) {
+
+  /* Colored Group */
+  @include user-selector-group-colorize($name, $color);
+
+  /* Colored Group Button */
+  @include user-selector-group-button-colorize($name, $color);
+
+  /* Inverted Colored Group */
+  @include user-selector-inverted-group-colorize($name, $color);
+
+  /* Inverted Colored Group Button */
+  @include user-selector-inverted-group-button-colorize($name, $color);
 }

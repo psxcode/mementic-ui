@@ -8,17 +8,19 @@
 
 /* Floated Variation */
 @include user-selector-floated-button;
-@include user-selector-right-floated-button;
 
 /* Color Variations */
 @mixin colorize($color-map) {
 
-  /* Default Button */
-  @include user-colorize($color-map);
+  @each $name, $color in $color-map {
 
-  /* Button Group */
-  @if mixin_exists(user-group-colorize) {
-	@include user-group-colorize($color-map);
+	/* Default Button */
+	@include user-colorize($name, $color);
+
+	/* Button Group */
+	@if mixin_exists(user-group-colorize) {
+	  @include user-group-colorize($name, $color);
+	}
   }
 }
 

@@ -1,84 +1,18 @@
-/* Selectors */
-$ui-group: selector-ui-group();
-
-/* Group */
-#{$ui-group} {
-
-  @include user-group;
-
-  /* Group Button Type */
-  > .#{$c-button} {
-
-	@include user-group-button;
-
-	// States
-	&:hover {
-	  @include user-group-button-hover;
-	}
-
-	&:focus {
-	  @include user-group-button-focus;
-	}
-
-	&:active {
-	  @include user-group-button-down;
-	}
-
-	&.#{$c-disabled},
-	&:disabled {
-	  @include user-group-button-disabled;
-	}
-  }
-}
-
-/* Vertical Group */
-#{$ui-group}.#{$c-vertical} {
-
-  @include user-vertical-group;
-
-  /* Group Button Type */
-  > .#{$c-button} {
-
-	@include user-vertical-group-button;
-  }
-}
+@include user-selector-group;
+@include user-selector-inverted-group;
+@include user-selector-vertical-group;
 
 /* Sizes Variation */
 @each $name, $value in $sizes {
-
-  #{$ui-group}.#{$name} {
-
-	@include user-size-group($name, $value);
-
-	> .#{$c-button} {
-	  @include user-size-group-button($name, $value);
-	}
-  }
+  @include user-selector-size-group($name, $value);
 }
 
 /* Numbers */
 @for $i from 2 through 16 {
-
-  #{$ui-group}:not(.#{$c-vertical}).#{number-name($i)} {
-
-	@include user-number-group($i);
-
-	> .#{$c-button} {
-	  @include user-number-group-button($i)
-	}
-  }
+  @include user-selector-number-group($i);
 }
 
-/* Floated Group Variation */
-#{$ui-group}.#{$c-floated} {
-
-  @include user-left-floated-group;
-}
-
-#{$ui-group}#{$right-floated} {
-
-  @include user-right-floated-group;
-}
+@include user-selector-floated-group;
 
 /* Inverted */
 
