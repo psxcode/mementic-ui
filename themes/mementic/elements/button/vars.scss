@@ -46,64 +46,72 @@ $vertical-align: baseline;
   @return unit-rem($border-radius-default);
 }
 
+@function border($inverted: false) {
+  @return if($inverted, 2px solid color-divider($inverted), none);
+}
+
+@function border-colorize($color, $inverted: false) {
+  @return if($inverted, 2px solid colorize-divider($color), none);
+}
+
 /* Background */
-@function background($inverted: false) {
+@function button-background($inverted: false) {
   @return if($inverted, transparent, #E0E1E2);
 }
 
-@function background-hover($inverted: false) {
+@function button-background-hover($inverted: false) {
   @return #CACBCD;
 }
 
-@function background-focus($inverted: false) {
+@function button-background-focus($inverted: false) {
   @return #CACBCD;
 }
 
-@function background-down($inverted: false) {
+@function button-background-down($inverted: false) {
   @return #BABBBC;
 }
 
-@function background-active($inverted: false) {
+@function button-background-active($inverted: false) {
   @return #C0C1C2;
 }
 
-@function background-active-hover($inverted: false) {
+@function button-background-active-hover($inverted: false) {
   @return #C0C1C2;
 }
 
-@function background-colorize($color, $inverted: false) {
+@function button-background-colorize($color, $inverted: false) {
   @return if($inverted, transparent, $color);
 }
 
-@function background-colorize-hover($color, $inverted: false) {
+@function button-background-colorize-hover($color, $inverted: false) {
   @return color-hover($color);
 }
 
-@function background-colorize-focus($color, $inverted: false) {
+@function button-background-colorize-focus($color, $inverted: false) {
   @return color-focus($color);
 }
 
-@function background-colorize-down($color, $inverted: false) {
+@function button-background-colorize-down($color, $inverted: false) {
   @return color-down($color);
 }
 
-@function background-colorize-active($color, $inverted: false) {
+@function button-background-colorize-active($color, $inverted: false) {
   @return color-active($color);
 }
 
-@function background-colorize-active-hover($color, $inverted: false) {
+@function button-background-colorize-active-hover($color, $inverted: false) {
   @return color-hover($color);
 }
 
 /* Shadows */
 $inverted-box-shadow-border: box-shadow-create(0, 0, 0, 2px, true);
-@function box-shadow($inverted: false) {
+@function button-box-shadow($inverted: false) {
   @return if($inverted,
 		  box-shadow-colorize($inverted-box-shadow-border, color-divider($inverted)),
 		  none);
 }
 
-@function colorize-box-shadow($color, $inverted: false) {
+@function button-box-shadow-colorize($color, $inverted: false) {
   @return if($inverted,
 		  box-shadow-colorize($inverted-box-shadow-border, colorize-divider($color)),
 		  none);

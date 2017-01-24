@@ -6,14 +6,14 @@ $ui-segment-group: selector-ui-segment-group();
 #{$ui-segment} {
 
   position: relative;
-  background: background();
+  background: button-background();
 
   margin: margin();
   padding: padding();
 
   border: border();
   border-radius: $border-radius;
-  box-shadow: box-shadow();
+  box-shadow: button-box-shadow();
 
   &:first-child {
 	margin-top: 0;
@@ -31,7 +31,7 @@ $ui-segment-group: selector-ui-segment-group();
 #{$ui-segment-group} > .#{$c-segment}.#{$c-inverted},
 #{$ui-segment}.#{$c-inverted} {
   color: color-text(true);
-  background: background(true);
+  background: button-background(true);
 
   border: none;
   box-shadow: none;
@@ -126,11 +126,11 @@ $ui-segment-group: selector-ui-segment-group();
   margin: margin();
   padding: 0;
 
-  background-color: background();
+  background-color: button-background();
 
   border: border();
   border-radius: $border-radius;
-  box-shadow: box-shadow();
+  box-shadow: button-box-shadow();
 
   /* Horizontal Segment */
   > .#{$c-segment} {

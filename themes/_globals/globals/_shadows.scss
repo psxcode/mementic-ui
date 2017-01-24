@@ -65,7 +65,7 @@
 /* Shadow var should be created with box-shadow-create */
 @function box-shadow-colorize($shadow, $color) {
   @if type-of($shadow) != 'list' {
-	@error 'box-shadow-colorize: invalid $shadow param, #{$shadow}';
+	@error 'box-shadow-colorize: invalid $shadow param, #{$shadow}. Should be type-of list';
   }
 
   @return set-nth($shadow, length($shadow), $color);
@@ -88,7 +88,7 @@
 /* Shadow var should be created with text-shadow-create */
 @function text-shadow-colorize($shadow, $color) {
   @if type-of($shadow) != 'list' {
-	@error 'text-shadow-colorize: invalid $shadow param, #{$shadow}';
+	@error 'text-shadow-colorize: invalid $shadow param, #{$shadow}. Should be type-of list';
   }
 
   @return set-nth($shadow, length($shadow), $color);

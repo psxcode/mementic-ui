@@ -17,11 +17,11 @@ $c-button-group: 'buttons' !default;
   @return $vertical-margin $horizontal-margin 0 0;
 }
 
-@function border($inverted) {
+@function group-button-border($inverted) {
   @return 2px solid color-divider($inverted);
 }
 
-@function border-colorize($name, $color, $inverted) {
+@function group-button-border-colorize($name, $color, $inverted) {
   @return 2px solid colorize-divider($color);
 }
 
@@ -29,42 +29,6 @@ $c-button-group: 'buttons' !default;
 
 	// use default button style
 	@include props-button-color($inverted);
-
-  //@if not $inverted {
-  //
-  //} @else {
-  //
-	//// colors
-	//color: color-text($inverted);
-	//background: background($inverted);
-  //
-	//// border
-	//box-shadow: none;
-	//border: border($inverted);
-	//&:not(:first-child) {
-	//  border-left: none;
-	//}
-  //}
-}
-
-@mixin props-vertical-group-button-color($inverted) {
-
-  @if not $inverted {
-
-	// use default button style
-	@include props-button-color(false);
-  } @else {
-
-	// colors
-	color: color-text($inverted);
-	background: background($inverted);
-
-	// border
-	border: border($inverted);
-	&:not(:first-child) {
-	  border-top: none;
-	}
-  }
 }
 
 @mixin props-group() {

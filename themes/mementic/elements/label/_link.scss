@@ -6,7 +6,7 @@ a#{$ui-label} {
 
   &:hover {
 	color: label-color-hover();
-	background: background-hover();
+	background: button-background-hover();
 
 	&::before {
 	  color: label-color-hover();
@@ -24,11 +24,11 @@ a#{$ui-label}.#{$c-active} {
 
   &:hover {
 	color: label-color-active-hover();
-	background: background-active-hover();
+	background: button-background-active-hover();
 
 	&::before {
 	  color: label-color-active-hover();
-	  background: background-active-hover();
+	  background: button-background-active-hover();
 	}
   }
 }

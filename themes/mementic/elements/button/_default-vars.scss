@@ -51,44 +51,120 @@
 }
 
 /* Color mixins */
-@mixin props-button-color($inverted) {
+%props-button-color {
 
   // colors
-  color: color-text($inverted);
-  background: background($inverted);
+  color: color-text();
+  background: button-background();
 
   // border
-  box-shadow: box-shadow($inverted);
+  border: border();
+}
+
+%props-inverted-button-color {
+
+  // colors
+  color: color-text(true);
+  background: button-background(true);
+
+  // border
+  border: border(true);
+}
+
+@mixin props-button-color($inverted) {
+
+  @if not $inverted {
+	@extend %props-button-color;
+  } @else {
+	@extend %props-inverted-button-color;
+  }
+}
+
+%props-button-color-hover {
+
+  // colors
+  color: color-text-hovered();
+  background: button-background-hover();
+
+  // border
+  border: none;
+}
+
+%props-inverted-button-color-hover {
+
+  // colors
+  color: color-text-hovered();
+  background: button-background-hover(true);
+
+  // border
+  border: none;
 }
 
 @mixin props-button-color-hover($inverted) {
 
+  @if not $inverted {
+	@extend %props-button-color-hover;
+  } @else {
+	@extend %props-inverted-button-color-hover;
+  }
+}
+
+%props-button-color-focus {
+
   // colors
-  color: color-text-hovered();
-  background: background-hover($inverted);
+  color: color-text-selected();
+  background: button-background-focus();
 
   // border
-  box-shadow: none;
+  border: none;
+}
+
+%props-inverted-button-color-focus {
+
+  // colors
+  color: color-text-selected();
+  background: button-background-focus(true);
+
+  // border
+  border: none;
 }
 
 @mixin props-button-color-focus($inverted) {
 
+  @if not $inverted {
+	@extend %props-button-color-focus;
+  } @else {
+	@extend %props-inverted-button-color-focus;
+  }
+}
+
+%props-button-color-down {
+
   // colors
-  color: color-text-selected();
-  background: background-focus($inverted);
+  color: color-text-pressed();
+  background: button-background-down();
 
   // border
-  box-shadow: none;
+  border: none;
+}
+
+%props-inverted-button-color-down {
+
+  // colors
+  color: color-text-pressed();
+  background: button-background-down(true);
+
+  // border
+  border: none;
 }
 
 @mixin props-button-color-down($inverted) {
 
-  // colors
-  color: color-text-pressed();
-  background: background-down($inverted);
-
-  // border
-  box-shadow: none;
+  @if not $inverted {
+	@extend %props-button-color-down;
+  } @else {
+	@extend %props-inverted-button-color-down;
+  }
 }
 
 @mixin props-button-color-disabled($inverted) {
@@ -98,10 +174,10 @@
 
   // color
   color: color-text(true);
-  background: background-colorize($color, $inverted);
+  background: button-background-colorize($color, $inverted);
 
   // border
-  box-shadow: colorize-box-shadow($color, $inverted);
+  border: border-colorize($color, $inverted);
 
   @content;
 }
@@ -110,10 +186,10 @@
 
   // color
   color: color-text-hovered(true);
-  background: background-colorize-hover($color, $inverted);
+  background: button-background-colorize-hover($color, $inverted);
 
   // border
-  box-shadow: none;
+  border: none;
 
   @content;
 }
@@ -122,10 +198,10 @@
 
   // color
   color: color-text-selected(true);
-  background: background-colorize-focus($color, $inverted);
+  background: button-background-colorize-focus($color, $inverted);
 
   // border
-  box-shadow: none;
+  border: none;
 
   @content;
 }
@@ -134,10 +210,10 @@
 
   // color
   color: color-text-pressed(true);
-  background: background-colorize-down($color, $inverted);
+  background: button-background-colorize-down($color, $inverted);
 
   // border
-  box-shadow: none;
+  border: none;
 
   @content;
 }

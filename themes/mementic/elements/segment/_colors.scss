@@ -17,7 +17,7 @@
 	#{$ui-segment-group} > .#{$c-segment}.#{$name}.#{$c-inverted},
 	#{$ui-segment}.#{$name}.#{$c-inverted} {
 	  color: color-text(true);
-	  background: background-colorize($color, true);
+	  background: button-background-colorize($color, true);
 	  border: none;
 	}
   }

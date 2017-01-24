@@ -49,7 +49,7 @@ $e-detail: selector-element-detail();
   display: inline-block;
 
   color: label-color();
-  background: background();
+  background: button-background();
 
   margin: margin();
   padding: padding();
@@ -79,11 +79,11 @@ $e-detail: selector-element-detail();
   /* Active Label */
   &.#{$c-active} {
 	color: label-color-active();
-	background: background-active();
+	background: button-background-active();
 
 	&::before {
 	  color: label-color-active();
-	  background: background-active();
+	  background: button-background-active();
 	}
   }
 
@@ -149,7 +149,7 @@ $e-detail: selector-element-detail();
 #{$ui-label}.#{$c-inverted} {
 
   color: label-color(true);
-  background: background(true);
+  background: button-background(true);
   border: border(true);
 
   > #{$e-icon} {
@@ -159,11 +159,11 @@ $e-detail: selector-element-detail();
   /* Active Label */
   &.#{$c-active} {
 	color: label-color-active(true);
-	background: background-active(true);
+	background: button-background-active(true);
 
 	&::before {
 	  color: label-color-active(true);
-	  background: background-active(true);
+	  background: button-background-active(true);
 	}
   }
 }

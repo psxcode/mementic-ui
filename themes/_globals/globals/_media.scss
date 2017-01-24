@@ -512,13 +512,24 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
 
 // Breakpoints
 // -------------------------------
-/* Breakpoints are defined as min-width values. Mobile is default */
+/* Breakpoints are defined as min-width values. Mobile First */
 $breakpoints: (
-		'mobile': -1, // first breakpoint for name
-		'tablet': 20em, // 320px
-		'desktop': 48em, // 768px
+
+  		// Extra small devices (portrait phones, less than ???px)
+  		// No media query since this is the default
+		'xsmall': -1, // first breakpoint for name only
+
+  		// Small devices (landscape phones, and up)
+		'small': 34em,
+
+  		// Medium devices (tablets, and up)
+		'medium': 48em,
+
+  		// Large devices (desktops, and up)
 		'large': 62em, // 992px
-		'widescreen': 75em // 1200px
+
+  		// Extra large devices (large desktops, 75em and up)
+		'xlarge': 75em // 1200px
 ) !default;
 
 $media-expressions: (

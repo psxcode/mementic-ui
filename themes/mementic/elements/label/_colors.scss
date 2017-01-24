@@ -10,7 +10,7 @@
 	#{$ui-label-group} > .#{$c-label}.#{$name},
 	#{$ui-label}.#{$name} {
 	  color: color-text(true);
-	  background: background-colorize($color);
+	  background: button-background-colorize($color);
 
 	  > #{$e-icon} {
 		color: color-text(true);
@@ -23,7 +23,7 @@
 	a.#{$name}#{$ui-label} {
 	  &:hover {
 		color: color-text-hovered(true);
-		background: background-colorize-hover($color);
+		background: button-background-colorize-hover($color);
 
 		> #{$e-icon} {
 		  color: color-text-hovered(true);

@@ -36,7 +36,7 @@ $ui-dimmer: selector-ui-dimmer();
 	border: shape-border();
 	border-color: shape-border-color();
 	border-radius: $border-radius-circular;
-	box-shadow: box-shadow();
+	box-shadow: button-box-shadow();
   }
 
   /* Inverted */
