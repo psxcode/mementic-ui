@@ -1,9 +1,9 @@
 (function (angular) {
 	'use strict';
 
-	angular.module('mean', ['ui.router']);
+	angular.module('mem', ['ui.router']);
 
-	angular.module('mean').controller('MainCtrl', [
+	angular.module('mem').controller('MainCtrl', [
 		'$scope',
 		'mementic',
 		function ($scope, mementic) {
@@ -13,7 +13,7 @@
 		}]);
 
 
-	angular.module('mean').factory('mementic', [
+	angular.module('mem').factory('mementic', [
 		function() {
 			var elements = [
 				'button',

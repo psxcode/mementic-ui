@@ -1,0 +1,97 @@
+@charset "UTF-8";
+@keyframes loader-animation{from{transform:rotate(.01deg)}
+to{transform:rotate(360deg)}
+}
+.buttons.ui::after{content:'';display:block;clear:both;height:0;visibility:hidden}
+.button.ui,.buttons.ui>.button{display:inline-block;margin:0 .25rem 0 0;padding:.78571em 1.5em;min-height:1em;font:700 1em/1.42857 "-apple-system","Helvetica Neue",Roboto,"Segoe UI",sans-serif;text-align:center;text-decoration:none;text-transform:none;vertical-align:baseline;border-radius:.2307rem;cursor:pointer;outline:0;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-transition:opacity .1s ease,background-color .1s ease,color .1s ease,box-shadow .1s ease,background .1s ease;-moz-transition:opacity .1s ease,background-color .1s ease,color .1s ease,box-shadow .1s ease,background .1s ease;-o-transition:opacity .1s ease,background-color .1s ease,color .1s ease,box-shadow .1s ease,background .1s ease;transition:opacity .1s ease,background-color .1s ease,color .1s ease,box-shadow .1s ease,background .1s ease;color:rgba(0,0,0,.6);background:#E0E1E2;border:none}
+.button.ui.disabled,.button.ui:disabled,.buttons.ui>.button.disabled,.buttons.ui>.button:disabled{opacity:.5;cursor:default;pointer-events:none}
+.button.ui.floated,.buttons.ui.floated{float:left;margin-left:0;margin-right:.25em}
+.button.ui[class*="right floated"],.buttons.ui[class*="right floated"]{float:right;margin-right:0;margin-left:.25em}
+.button.ui.inverted,.buttons.ui.inverted>.button,.inverted>.button.ui,.inverted>.buttons.ui>.button{color:#fff;background:0 0;border:2px solid rgba(255,255,255,.3)}
+.button.ui.inverted:hover,.button.ui:hover,.buttons.ui.inverted>.button:hover,.buttons.ui>.button:hover,.inverted>.button.ui:hover,.inverted>.buttons.ui>.button:hover{color:rgba(0,0,0,.54);background:#CACBCD;border:none}
+.button.ui.inverted:focus,.button.ui:focus,.buttons.ui.inverted>.button:focus,.buttons.ui>.button:focus,.inverted>.button.ui:focus,.inverted>.buttons.ui>.button:focus{color:rgba(0,0,0,.672);background:#CACBCD;border:none}
+.button.ui.inverted:active,.button.ui:active,.buttons.ui.inverted>.button:active,.buttons.ui>.button:active,.inverted>.button.ui:active,.inverted>.buttons.ui>.button:active{color:rgba(0,0,0,.63);background:#BABBBC;border:none}
+.buttons.ui.eight:not(.vertical),.buttons.ui.eleven:not(.vertical),.buttons.ui.fifteen:not(.vertical),.buttons.ui.five:not(.vertical),.buttons.ui.four:not(.vertical),.buttons.ui.fourteen:not(.vertical),.buttons.ui.nine:not(.vertical),.buttons.ui.seven:not(.vertical),.buttons.ui.six:not(.vertical),.buttons.ui.sixteen:not(.vertical),.buttons.ui.ten:not(.vertical),.buttons.ui.thirteen:not(.vertical),.buttons.ui.three:not(.vertical),.buttons.ui.twelve:not(.vertical),.buttons.ui.two:not(.vertical){display:flex}
+.buttons.ui:not(.vertical).eight>.button,.buttons.ui:not(.vertical).eleven>.button,.buttons.ui:not(.vertical).fifteen>.button,.buttons.ui:not(.vertical).five>.button,.buttons.ui:not(.vertical).four>.button,.buttons.ui:not(.vertical).fourteen>.button,.buttons.ui:not(.vertical).nine>.button,.buttons.ui:not(.vertical).seven>.button,.buttons.ui:not(.vertical).six>.button,.buttons.ui:not(.vertical).sixteen>.button,.buttons.ui:not(.vertical).ten>.button,.buttons.ui:not(.vertical).thirteen>.button,.buttons.ui:not(.vertical).three>.button,.buttons.ui:not(.vertical).twelve>.button,.buttons.ui:not(.vertical).two>.button{flex:1 1 0}
+.button.ui.mini,.buttons.ui.mini>.button{font-size:.78571em}
+.button.ui.tiny,.buttons.ui.tiny>.button{font-size:.85714em}
+.button.ui.small,.buttons.ui.small>.button{font-size:.92857em}
+.button.ui.medium,.buttons.ui.medium>.button{font-size:1em}
+.button.ui.large,.buttons.ui.large>.button{font-size:1.14286em}
+.button.ui.big,.buttons.ui.big>.button{font-size:1.28571em}
+.button.ui.huge,.buttons.ui.huge>.button{font-size:1.42857em}
+.button.ui.massive,.buttons.ui.massive>.button{font-size:1.71429em}
+.button.ui.positive,.buttons.ui.positive>.button,.buttons.ui>.button.positive{color:#fff;background:#2185D0;border:none}
+.button.ui.positive:hover,.buttons.ui.positive>.button:hover,.buttons.ui>.button.positive:hover{color:rgba(255,255,255,.9);background:#1378c5;border:none}
+.button.ui.positive:focus,.buttons.ui.positive>.button:focus,.buttons.ui>.button.positive:focus{color:#fff;background:#0771c1;border:none}
+.button.ui.positive:active,.buttons.ui.positive>.button:active,.buttons.ui>.button.positive:active{color:#fff;background:#0d79ca;border:none}
+.button.ui.positive.inverted,.buttons.ui.inverted>.button.positive,.buttons.ui.positive.inverted>.button,.buttons.ui.positive>.inverted.button,.buttons.ui>.inverted.button.positive,.inverted>.button.ui.positive,.inverted>.buttons.ui.positive>.button,.inverted>.buttons.ui>.button.positive{color:#fff;background:0 0;border:2px solid #2185d0}
+.button.ui.positive.inverted:hover,.buttons.ui.inverted>.button.positive:hover,.buttons.ui.positive.inverted>.button:hover,.buttons.ui.positive>.inverted.button:hover,.buttons.ui>.inverted.button.positive:hover,.inverted>.button.ui.positive:hover,.inverted>.buttons.ui.positive>.button:hover,.inverted>.buttons.ui>.button.positive:hover{color:rgba(255,255,255,.9);background:#1378c5;border:none}
+.button.ui.positive.inverted:focus,.buttons.ui.inverted>.button.positive:focus,.buttons.ui.positive.inverted>.button:focus,.buttons.ui.positive>.inverted.button:focus,.buttons.ui>.inverted.button.positive:focus,.inverted>.button.ui.positive:focus,.inverted>.buttons.ui.positive>.button:focus,.inverted>.buttons.ui>.button.positive:focus{color:#fff;background:#0771c1;border:none}
+.button.ui.positive.inverted:active,.buttons.ui.inverted>.button.positive:active,.buttons.ui.positive.inverted>.button:active,.buttons.ui.positive>.inverted.button:active,.buttons.ui>.inverted.button.positive:active,.inverted>.button.ui.positive:active,.inverted>.buttons.ui.positive>.button:active,.inverted>.buttons.ui>.button.positive:active{color:#fff;background:#0d79ca;border:none}
+.button.ui.negative,.buttons.ui.negative>.button,.buttons.ui>.button.negative{color:#fff;background:#ef473a;border:none}
+.button.ui.negative:hover,.buttons.ui.negative>.button:hover,.buttons.ui>.button.negative:hover{color:rgba(255,255,255,.9);background:#f92716;border:none}
+.button.ui.negative:focus,.buttons.ui.negative>.button:focus,.buttons.ui>.button.negative:focus{color:#fff;background:#ff1301;border:none}
+.button.ui.negative:active,.buttons.ui.negative>.button:active,.buttons.ui>.button.negative:active{color:#fff;background:#f21;border:none}
+.button.ui.negative.inverted,.buttons.ui.inverted>.button.negative,.buttons.ui.negative.inverted>.button,.buttons.ui.negative>.inverted.button,.buttons.ui>.inverted.button.negative,.inverted>.button.ui.negative,.inverted>.buttons.ui.negative>.button,.inverted>.buttons.ui>.button.negative{color:#fff;background:0 0;border:2px solid #ef473a}
+.button.ui.negative.inverted:hover,.buttons.ui.inverted>.button.negative:hover,.buttons.ui.negative.inverted>.button:hover,.buttons.ui.negative>.inverted.button:hover,.buttons.ui>.inverted.button.negative:hover,.inverted>.button.ui.negative:hover,.inverted>.buttons.ui.negative>.button:hover,.inverted>.buttons.ui>.button.negative:hover{color:rgba(255,255,255,.9);background:#f92716;border:none}
+.button.ui.negative.inverted:focus,.buttons.ui.inverted>.button.negative:focus,.buttons.ui.negative.inverted>.button:focus,.buttons.ui.negative>.inverted.button:focus,.buttons.ui>.inverted.button.negative:focus,.inverted>.button.ui.negative:focus,.inverted>.buttons.ui.negative>.button:focus,.inverted>.buttons.ui>.button.negative:focus{color:#fff;background:#ff1301;border:none}
+.button.ui.negative.inverted:active,.buttons.ui.inverted>.button.negative:active,.buttons.ui.negative.inverted>.button:active,.buttons.ui.negative>.inverted.button:active,.buttons.ui>.inverted.button.negative:active,.inverted>.button.ui.negative:active,.inverted>.buttons.ui.negative>.button:active,.inverted>.buttons.ui>.button.negative:active{color:#fff;background:#f21;border:none}
+.button.ui.success,.buttons.ui.success>.button,.buttons.ui>.button.success{color:#fff;background:#2185D0;border:none}
+.button.ui.success:hover,.buttons.ui.success>.button:hover,.buttons.ui>.button.success:hover{color:rgba(255,255,255,.9);background:#1378c5;border:none}
+.button.ui.success:focus,.buttons.ui.success>.button:focus,.buttons.ui>.button.success:focus{color:#fff;background:#0771c1;border:none}
+.button.ui.success:active,.buttons.ui.success>.button:active,.buttons.ui>.button.success:active{color:#fff;background:#0d79ca;border:none}
+.button.ui.success.inverted,.buttons.ui.inverted>.button.success,.buttons.ui.success.inverted>.button,.buttons.ui.success>.inverted.button,.buttons.ui>.inverted.button.success,.inverted>.button.ui.success,.inverted>.buttons.ui.success>.button,.inverted>.buttons.ui>.button.success{color:#fff;background:0 0;border:2px solid #2185d0}
+.button.ui.success.inverted:hover,.buttons.ui.inverted>.button.success:hover,.buttons.ui.success.inverted>.button:hover,.buttons.ui.success>.inverted.button:hover,.buttons.ui>.inverted.button.success:hover,.inverted>.button.ui.success:hover,.inverted>.buttons.ui.success>.button:hover,.inverted>.buttons.ui>.button.success:hover{color:rgba(255,255,255,.9);background:#1378c5;border:none}
+.button.ui.success.inverted:focus,.buttons.ui.inverted>.button.success:focus,.buttons.ui.success.inverted>.button:focus,.buttons.ui.success>.inverted.button:focus,.buttons.ui>.inverted.button.success:focus,.inverted>.button.ui.success:focus,.inverted>.buttons.ui.success>.button:focus,.inverted>.buttons.ui>.button.success:focus{color:#fff;background:#0771c1;border:none}
+.button.ui.success.inverted:active,.buttons.ui.inverted>.button.success:active,.buttons.ui.success.inverted>.button:active,.buttons.ui.success>.inverted.button:active,.buttons.ui>.inverted.button.success:active,.inverted>.button.ui.success:active,.inverted>.buttons.ui.success>.button:active,.inverted>.buttons.ui>.button.success:active{color:#fff;background:#0d79ca;border:none}
+.button.ui.fail,.buttons.ui.fail>.button,.buttons.ui>.button.fail{color:#fff;background:#ef473a;border:none}
+.button.ui.fail:hover,.buttons.ui.fail>.button:hover,.buttons.ui>.button.fail:hover{color:rgba(255,255,255,.9);background:#f92716;border:none}
+.button.ui.fail:focus,.buttons.ui.fail>.button:focus,.buttons.ui>.button.fail:focus{color:#fff;background:#ff1301;border:none}
+.button.ui.fail:active,.buttons.ui.fail>.button:active,.buttons.ui>.button.fail:active{color:#fff;background:#f21;border:none}
+.button.ui.fail.inverted,.buttons.ui.fail.inverted>.button,.buttons.ui.fail>.inverted.button,.buttons.ui.inverted>.button.fail,.buttons.ui>.inverted.button.fail,.inverted>.button.ui.fail,.inverted>.buttons.ui.fail>.button,.inverted>.buttons.ui>.button.fail{color:#fff;background:0 0;border:2px solid #ef473a}
+.button.ui.fail.inverted:hover,.buttons.ui.fail.inverted>.button:hover,.buttons.ui.fail>.inverted.button:hover,.buttons.ui.inverted>.button.fail:hover,.buttons.ui>.inverted.button.fail:hover,.inverted>.button.ui.fail:hover,.inverted>.buttons.ui.fail>.button:hover,.inverted>.buttons.ui>.button.fail:hover{color:rgba(255,255,255,.9);background:#f92716;border:none}
+.button.ui.fail.inverted:focus,.buttons.ui.fail.inverted>.button:focus,.buttons.ui.fail>.inverted.button:focus,.buttons.ui.inverted>.button.fail:focus,.buttons.ui>.inverted.button.fail:focus,.inverted>.button.ui.fail:focus,.inverted>.buttons.ui.fail>.button:focus,.inverted>.buttons.ui>.button.fail:focus{color:#fff;background:#ff1301;border:none}
+.button.ui.fail.inverted:active,.buttons.ui.fail.inverted>.button:active,.buttons.ui.fail>.inverted.button:active,.buttons.ui.inverted>.button.fail:active,.buttons.ui>.inverted.button.fail:active,.inverted>.button.ui.fail:active,.inverted>.buttons.ui.fail>.button:active,.inverted>.buttons.ui>.button.fail:active{color:#fff;background:#f21;border:none}
+.button.ui.info,.buttons.ui.info>.button,.buttons.ui>.button.info{color:#fff;background:#63c5d8;border:none}
+.button.ui.info:hover,.buttons.ui.info>.button:hover,.buttons.ui>.button.info:hover{color:rgba(255,255,255,.9);background:#44c5de;border:none}
+.button.ui.info:focus,.buttons.ui.info>.button:focus,.buttons.ui>.button.info:focus{color:#fff;background:#2bc9e7;border:none}
+.button.ui.info:active,.buttons.ui.info>.button:active,.buttons.ui>.button.info:active{color:#fff;background:#3ec9e3;border:none}
+.button.ui.info.inverted,.buttons.ui.info.inverted>.button,.buttons.ui.info>.inverted.button,.buttons.ui.inverted>.button.info,.buttons.ui>.inverted.button.info,.inverted>.button.ui.info,.inverted>.buttons.ui.info>.button,.inverted>.buttons.ui>.button.info{color:#fff;background:0 0;border:2px solid #63c5d8}
+.button.ui.info.inverted:hover,.buttons.ui.info.inverted>.button:hover,.buttons.ui.info>.inverted.button:hover,.buttons.ui.inverted>.button.info:hover,.buttons.ui>.inverted.button.info:hover,.inverted>.button.ui.info:hover,.inverted>.buttons.ui.info>.button:hover,.inverted>.buttons.ui>.button.info:hover{color:rgba(255,255,255,.9);background:#44c5de;border:none}
+.button.ui.info.inverted:focus,.buttons.ui.info.inverted>.button:focus,.buttons.ui.info>.inverted.button:focus,.buttons.ui.inverted>.button.info:focus,.buttons.ui>.inverted.button.info:focus,.inverted>.button.ui.info:focus,.inverted>.buttons.ui.info>.button:focus,.inverted>.buttons.ui>.button.info:focus{color:#fff;background:#2bc9e7;border:none}
+.button.ui.info.inverted:active,.buttons.ui.info.inverted>.button:active,.buttons.ui.info>.inverted.button:active,.buttons.ui.inverted>.button.info:active,.buttons.ui>.inverted.button.info:active,.inverted>.button.ui.info:active,.inverted>.buttons.ui.info>.button:active,.inverted>.buttons.ui>.button.info:active{color:#fff;background:#3ec9e3;border:none}
+.button.ui.warning,.buttons.ui.warning>.button,.buttons.ui>.button.warning{color:#fff;background:#ffa35c;border:none}
+.button.ui.warning:hover,.buttons.ui.warning>.button:hover,.buttons.ui>.button.warning:hover{color:rgba(255,255,255,.9);background:#ff9543;border:none}
+.button.ui.warning:focus,.buttons.ui.warning>.button:focus,.buttons.ui>.button.warning:focus{color:#fff;background:#ff8c33;border:none}
+.button.ui.warning:active,.buttons.ui.warning>.button:active,.buttons.ui>.button.warning:active{color:#fff;background:#ff9543;border:none}
+.button.ui.warning.inverted,.buttons.ui.inverted>.button.warning,.buttons.ui.warning.inverted>.button,.buttons.ui.warning>.inverted.button,.buttons.ui>.inverted.button.warning,.inverted>.button.ui.warning,.inverted>.buttons.ui.warning>.button,.inverted>.buttons.ui>.button.warning{color:#fff;background:0 0;border:2px solid #ffa35c}
+.button.ui.warning.inverted:hover,.buttons.ui.inverted>.button.warning:hover,.buttons.ui.warning.inverted>.button:hover,.buttons.ui.warning>.inverted.button:hover,.buttons.ui>.inverted.button.warning:hover,.inverted>.button.ui.warning:hover,.inverted>.buttons.ui.warning>.button:hover,.inverted>.buttons.ui>.button.warning:hover{color:rgba(255,255,255,.9);background:#ff9543;border:none}
+.button.ui.warning.inverted:focus,.buttons.ui.inverted>.button.warning:focus,.buttons.ui.warning.inverted>.button:focus,.buttons.ui.warning>.inverted.button:focus,.buttons.ui>.inverted.button.warning:focus,.inverted>.button.ui.warning:focus,.inverted>.buttons.ui.warning>.button:focus,.inverted>.buttons.ui>.button.warning:focus{color:#fff;background:#ff8c33;border:none}
+.button.ui.warning.inverted:active,.buttons.ui.inverted>.button.warning:active,.buttons.ui.warning.inverted>.button:active,.buttons.ui.warning>.inverted.button:active,.buttons.ui>.inverted.button.warning:active,.inverted>.button.ui.warning:active,.inverted>.buttons.ui.warning>.button:active,.inverted>.buttons.ui>.button.warning:active{color:#fff;background:#ff9543;border:none}
+.button.ui.error,.buttons.ui.error>.button,.buttons.ui>.button.error{color:#fff;background:#ef473a;border:none}
+.button.ui.error:hover,.buttons.ui.error>.button:hover,.buttons.ui>.button.error:hover{color:rgba(255,255,255,.9);background:#f92716;border:none}
+.button.ui.error:focus,.buttons.ui.error>.button:focus,.buttons.ui>.button.error:focus{color:#fff;background:#ff1301;border:none}
+.button.ui.error:active,.buttons.ui.error>.button:active,.buttons.ui>.button.error:active{color:#fff;background:#f21;border:none}
+.button.ui.error.inverted,.buttons.ui.error.inverted>.button,.buttons.ui.error>.inverted.button,.buttons.ui.inverted>.button.error,.buttons.ui>.inverted.button.error,.inverted>.button.ui.error,.inverted>.buttons.ui.error>.button,.inverted>.buttons.ui>.button.error{color:#fff;background:0 0;border:2px solid #ef473a}
+.button.ui.error.inverted:hover,.buttons.ui.error.inverted>.button:hover,.buttons.ui.error>.inverted.button:hover,.buttons.ui.inverted>.button.error:hover,.buttons.ui>.inverted.button.error:hover,.inverted>.button.ui.error:hover,.inverted>.buttons.ui.error>.button:hover,.inverted>.buttons.ui>.button.error:hover{color:rgba(255,255,255,.9);background:#f92716;border:none}
+.button.ui.error.inverted:focus,.buttons.ui.error.inverted>.button:focus,.buttons.ui.error>.inverted.button:focus,.buttons.ui.inverted>.button.error:focus,.buttons.ui>.inverted.button.error:focus,.inverted>.button.ui.error:focus,.inverted>.buttons.ui.error>.button:focus,.inverted>.buttons.ui>.button.error:focus{color:#fff;background:#ff1301;border:none}
+.button.ui.error.inverted:active,.buttons.ui.error.inverted>.button:active,.buttons.ui.error>.inverted.button:active,.buttons.ui.inverted>.button.error:active,.buttons.ui>.inverted.button.error:active,.inverted>.button.ui.error:active,.inverted>.buttons.ui.error>.button:active,.inverted>.buttons.ui>.button.error:active{color:#fff;background:#f21;border:none}
+.buttons.ui{display:inline-flex;flex-direction:row;vertical-align:baseline;margin:0 .25rem 0 0;border-radius:.2307rem}
+.buttons.ui>.button{flex:1 0 auto;margin:0;border-radius:0}
+.buttons.ui>.button:first-child{border-top-left-radius:.2307rem;border-bottom-left-radius:.2307rem}
+.buttons.ui>.button:last-child{border-top-right-radius:.2307rem;border-bottom-right-radius:.2307rem}
+.buttons.ui.vertical{flex-direction:column}
+.buttons.ui.vertical>.button{display:block;border-radius:0}
+.buttons.ui.vertical>.button:first-child{border-top-left-radius:.2307rem;border-top-right-radius:.2307rem}
+.buttons.ui.vertical>.button:last-child{border-bottom-right-radius:.2307rem;border-bottom-left-radius:.2307rem}
+.example,.example.container{display:block;padding:2em}
+.dimmer,.example::after{content:''}
+.example::after{display:block;clear:both;height:0;visibility:hidden}
+.relative{position:relative}
+.example.container{margin:auto;width:768px;max-width:100%}
+.example.inverted{background-color:#1B1C1D}
+.example.inverted>h1,.example.inverted>h2,.example.inverted>h3,.example.inverted>h4,.example.inverted>h5,.example.inverted>h6,.example.inverted>p{color:#fff}
+.example.list>.item{display:inline-block;margin:.5em;padding:1em;border:thin solid gray;border-radius:.2em;cursor:pointer;text-transform:uppercase}
+.dimmer{position:absolute;top:0;bottom:0;left:0;right:0;z-index:100;background-color:rgba(0,0,0,.75)}
+.dimmer.inverted{background-color:rgba(255,255,255,.75)}

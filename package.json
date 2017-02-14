@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run build && gulp serve",
+    "start": "npm run build && gulp start",
     "clean": "gulp clean",
-    "build": "gulp build-install"
+    "build": "gulp build"
   },
   "author": {
     "name": "Alex Feinstein",
@@ -20,35 +20,22 @@
     "url": "git+https://github.com/psxcode/node-fsxu"
   },
   "dependencies": {
-    "fsxu": "^0.0.4",
-    "gulp": "^3.9.1",
-    "gulp-clean": "^0.3.2",
-    "gulp-clean-css": "^2.0.12",
-    "gulp-concat": "^2.6.0",
-    "gulp-inject": "^4.1.0",
-    "gulp-inject-string": "^1.1.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-replace": "^0.5.4",
-    "gulp-sass": "^2.3.2",
-    "lodash": "^4.15.0",
-    "ordered-merge-stream": "^1.0.0",
-    "run-sequence": "^1.2.2"
-  },
-  "peerDependencies": {
     "fsxu": "*",
     "gulp": "*",
+    "gulp-clean": "*",
+    "gulp-clean-css": "*",
+    "gulp-concat": "*",
     "gulp-inject": "*",
     "gulp-inject-string": "*",
-    "gulp-concat": "*",
     "gulp-rename": "*",
-    "gulp-clean-css": "*",
     "gulp-replace": "*",
     "gulp-sass": "*",
+    "lodash": "*",
     "ordered-merge-stream": "*",
-    "lodash": "*"
+    "run-sequence": "*"
   },
   "devDependencies": {
-    "browser-sync": "^2.17.6",
-    "gulp-angular-templatecache": "^2.0.0"
+    "browser-sync": "*",
+    "gulp-angular-templatecache": "*"
   }
 }

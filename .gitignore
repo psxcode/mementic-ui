@@ -1,7 +1,7 @@
 .idea/
 node_modules/
-public/
-!public/favicon.ico
-client/lib/
+/static
+!/static/favicon.ico
+/client/lib/
 
-npm-debug.log
+*.log

@@ -1,79 +1,81 @@
 "use strict";
 
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var cleanCss = require('gulp-clean-css');
-var merge = require('ordered-merge-stream');
-var concat = require('gulp-concat');
-var rename = require('gulp-rename');
-var templates = require('gulp-angular-templatecache');
-var inject = require('gulp-inject');
-var path = require('path');
-var clean = require('gulp-clean');
-var run = require('run-sequence');
+var gulp = require('gulp'),
+	sass = require('gulp-sass'),
+	clean = require('gulp-clean'),
+	concat = require('gulp-concat'),
+	rename = require('gulp-rename'),
+	templates = require('gulp-angular-templatecache'),
+	inject = require('gulp-inject'),
+	merge = require('ordered-merge-stream');
 
 // Require Mem-UI
-var ui = require('./index');
+var ui = require('./index')({
+	themeDir: 'client',
+	output: {
+		'preload.css': {
+			'mem': '*'
+		},
+		'style.css': {
+			'mementic': ['button']
+		}
+	}
+});
 
-gulp.task('serve', function () {
-	var bs = require('browser-sync').create();
+gulp.task('start', function () {
 
-	bs.init({
+	require('browser-sync').create().init({
 		port: 3000,
 		server: {
-			baseDir: './public'
+			baseDir: './static'
 		},
-		files: ['./public/*']
+		files: ['./static/*']
 	});
 
 	// scss
-	gulp.watch(['./themes/**/*', 'client/site/**/*'], ['css']);
+	gulp.watch(['./themes/**/*', 'client/css/**/*'], ['css']);
 
 	// js
 	gulp.watch(['./client/js/**/*', './client/views/**/*'], ['js']);
 });
 
-gulp.task('build-install', function (done) {
-	run('clean', 'html', 'install-public', done);
+gulp.task('build', function (done) {
+	require('run-sequence')('clean', 'build', 'index.html', done);
 });
 
 gulp.task('clean', function () {
-	return gulp.src(['./public/**/*', '!./public/favicon.ico'], {read: false})
-		.pipe(clean());
+	return gulp.src(['./static/**/*', '!./static/favicon.ico'], {read: false}).pipe(clean());
 });
 
-gulp.task('install-public', function () {
-	//stream public files
-	var uiPublicStream = ui.streamPublic()
-		.pipe(gulp.dest('./public'));
+gulp.task('build', function () {
+	return install(merge([streamJs(), streamCss(), streamStatic()]));
 });
 
-gulp.task('html', ['css', 'js'], function () {
-	//inject minified files into index.html
-	var indexHtmlStream = gulp.src('./client/views/index.html')
-		.pipe(inject(gulp.src(['./public/*.css', './public/*.js'], {read: false}), {ignorePath: 'public'}))
-		.pipe(gulp.dest('./public'));
+gulp.task('index.html', function () {
+	return install(gulp.src('./client/views/index.html')
+		.pipe(inject(gulp.src(['./static/*.css', './static/*.js'], {read: false}), {ignorePath: 'static'})));
 });
 
-gulp.task('js', function () {
-	var js = gulp.src([
-		'./client/lib/jquery/dist/jquery.js',
-		'./client/lib/angular/angular.js',
-		'./client/lib/angular-ui-router/release/angular-ui-router.js',
-		'./client/js/**/*.js'
-	]);
+function install(stream) {
+	return stream.pipe(gulp.dest('./static'));
+}
 
-	var tmps = gulp.src('./client/views/templates/**/*.html')
-		.pipe(templates('tmps.js', {module: 'mean'}));
+function streamJs() {
+	return merge([
+		gulp.src([
+			'./client/lib/jquery/dist/jquery.js',
+			'./client/lib/angular/angular.js',
+			'./client/lib/angular-ui-router/release/angular-ui-router.js',
+			'./client/js/**/*.js'
+		]),
+		gulp.src('./client/views/templates/**/*.html').pipe(templates('templates.js', {module: 'mem'}))
+	]).pipe(concat('app.js'));
+}
 
-	return merge([js, tmps])
-		.pipe(concat('app.js'))
-		.pipe(gulp.dest('./public'));
-});
+function streamCss() {
+	return ui.streamCss();
+}
 
-gulp.task('css', function () {
-
-	ui({deps: ['client/site']});
-
-	return ui.streamCss().pipe(gulp.dest('./public'));
-});
+function streamStatic() {
+	return ui.streamStatic().pipe(gulp.dest('./public'));
+}

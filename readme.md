@@ -1,3 +1,13 @@
+##Goals
+- **Simple and Thin**  
+Output code is clean and minimal
+- **Modular**  
+Build system allows to import only necessary modules into any amount of output files.
+- **Override and Extend**  
+Anything can be overridden or extended
+- **Design Skeleton**  
+Provides minimal design skeletons, which you can extend to your needs
+
 ##Different levels of abstraction
 - **Variables**:  
 User changes values of variables which affects different aspects of system during compilation.

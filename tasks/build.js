@@ -1,25 +1,26 @@
 "use strict";
 
-var gulp = require('gulp');
-var inject = require('gulp-inject');
-var injectString = require('gulp-inject-string');
-var sass = require('gulp-sass');
-var cleanCss = require('gulp-clean-css');
-var merge = require('ordered-merge-stream');
-var concat = require('gulp-concat');
-var rename = require('gulp-rename');
-var replace = require('gulp-replace');
+var gulp = require('gulp'),
+	inject = require('gulp-inject'),
+	injectString = require('gulp-inject-string'),
+	sass = require('gulp-sass'),
+	cleanCss = require('gulp-clean-css'),
+	concat = require('gulp-concat'),
+	rename = require('gulp-rename'),
+	replace = require('gulp-replace');
+
 var config = require('./config');
+var merge = require('ordered-merge-stream');
 var _ = require('lodash');
 
-module.exports = function (userConfig) {
-	config(userConfig);
-
-	return module.exports;
+module.exports = function (conf) {
+	exports.config = _.assign(Object.create(null), conf);
+	return exports;
 };
 
-module.exports.streamCss = streamCss;
-module.exports.streamPublic = streamPublic;
+exports.streamCss = streamCss;
+exports.streamStatic = streamStatic;
+exports.install = install;
 
 function streamCss() {
 	var streams = [];
@@ -38,14 +39,16 @@ function streamCss() {
 	function streamModule(moduleName, modulePathInTheme) {
 		return gulp.src(config.paths.sassModuleFilepath)
 			.pipe(inject(gulp.src(config.getModulePaths(moduleName, modulePathInTheme), {read: false}), config.injectOpts))
-			.pipe(sass())
+			.pipe(sass()).pipe(replace(/@charset.*/g, ''))
 			.pipe(cleanCss({keepBreaks: true, advanced: true}))
-			.pipe(replace(/@charset.*/g, ''))
 			;
 	}
 }
 
-function streamPublic() {
+function streamStatic() {
 	return gulp.src(config.getPublicPaths());
 }
 
+function install(path) {
+	return merge([streamCss(), streamStatic()]).pipe(gulp.dest(path));
+}
