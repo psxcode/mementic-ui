@@ -2,9 +2,7 @@
 
 module.exports = {
 	imports: {
-		'mementic': ['button']
+		'mementic': ['button', '!button.rounded']
 	},
-	exports: {
-		'.': 'example'
-	}
+	exports: ['./']
 };

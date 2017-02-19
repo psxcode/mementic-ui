@@ -4,16 +4,18 @@ var path = require('path');
 var fsxu = require('fsxu');
 var _ = require('lodash');
 
-var themeDirKeys = ['themeDir', 'themeDirs', 'themedir', 'themedirs'];
 var rootdir = fsxu.findUpSync('package.json', __dirname);
 var srcdir = path.join(rootdir, 'themes');
+var themeDirsProp = require('./helpers').prop.bind(null, ['themeDir', 'themeDirs', 'themedir', 'themedirs']);
 
 var constConfig = {
 	rootdir: rootdir,
 	srcdir: srcdir,
 	sassModuleFilepath: path.join(srcdir, 'module.scss'),
-	themeConfigFilename: 'mem.js',
-	globalsName: 'globals'
+	themeConfigFilenames: ['mem.js', 'mem.json'],
+	themeConfigExportKeys: ['export', 'exports'],
+	themeGlobalsDirname: 'globals',
+	themeGlobalsComponentNames: ['vars', 'fonts', 'reset']
 };
 
 var defaultConfig = {
@@ -30,42 +32,29 @@ var defaultConfig = {
 	}
 };
 
-module.exports = config;
-config();
+var config = configure(defaultConfig);
 
-function config(conf) {
+module.exports = configure;
 
-	var c = {
-		themeDirs: [srcdir]
-	};
+function configure(conf) {
+
+	if (!_.isObject(conf)) return config;
 
 	// get user dependency paths
-	var userThemeDirs = getPropertyByKeys(conf, themeDirKeys);
-	if (_.isArray(userThemeDirs)) {
-		_.forEach(userThemeDirs, pushUniqueThemeDir);
-	} else if (_.isString(userThemeDirs) && userThemeDirs.length > 0) {
-		pushUniqueThemeDir(userThemeDirs);
-	}
+	var userThemeDirs = themeDirsProp(conf);
+	if (userThemeDirs == null) userThemeDirs = [];
+	if (!_.isArray(userThemeDirs)) userThemeDirs = [userThemeDirs];
+	userThemeDirs.unshift(srcdir);
 
-	return _.assign(module.exports, defaultConfig, c, constConfig);
+	// output
+	var output = conf.hasOwnProperty('output') ? conf.output : {};
 
-	function pushUniqueThemeDir(dir) {
-		var dirAbs = path.resolve(dir);
-		if (!fsxu.isDirSync(dirAbs)) {
-			throw new Error('Theme Dir is invalid: ' + dir + '. resolved to: ' + dirAbs);
-		}
-
-		if (_.indexOf(c.themeDirs, dir) < 0) {
-			c.themeDirs.push(dirAbs);
-		}
-	}
-}
-
-function getPropertyByKeys(obj, keys) {
-	for (var i = 0; i < keys.length; ++i) {
-		if (obj.hasOwnProperty(keys[i])) {
-			return obj[keys[i]];
-		}
-	}
+	return config = _.assign(
+		Object.create(null),
+		defaultConfig, {
+			themeDirs: userThemeDirs,
+			output: output
+		}, constConfig
+	);
 }
 

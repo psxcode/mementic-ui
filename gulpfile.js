@@ -13,11 +13,14 @@ var gulp = require('gulp'),
 var ui = require('./index')({
 	themeDir: 'client',
 	output: {
-		'preload.css': {
-			'mem': '*'
-		},
-		'style.css': {
-			'mementic': ['button']
+		path: '',
+		files: {
+			'preload.css': {
+				'mementic': ['button.default']
+			},
+			'style.css': {
+				'mementic': ['button']
+			}
 		}
 	}
 });
