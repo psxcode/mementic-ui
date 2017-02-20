@@ -4,98 +4,102 @@ var path = require('path');
 var _ = require('lodash');
 var fsxu = require('./fsxu');
 
+var getComponentTypeName = require('./helpers').getComponentTypeName;
+var isComponentTypeFilenameValid = require('./helpers').isComponentTypeFilenameValid;
+var isComponentFilenameValid = require('./helpers').isComponentFilenameValid;
+
 module.exports = function () {
 	var config = require('./config')();
 
-	// get valid theme directory objects
-	var themes = resolveThemeDirs(config);
+	// get valid module directory objects
+	var modules = resolveModuleDirs(config);
 
-	_.forEach(themes, function (theme) {
-		theme.components = resolveThemeComponents(config, theme);
+	_.forEach(modules, function (module) {
+		module.components = resolveModuleComponents(config, module);
 
-		_.forEach(theme.components, function(comp) {
-			comp.subcomponents = resolveComponentSubcomponents(comp);
+		_.forEach(module.components, function(comp) {
+			comp.types = resolveComponentTypes(comp);
 		});
 	});
 };
 
-function resolveThemeDirs(config) {
-	var themeConfigFilenames = config.themeConfigFilenames,
-		configThemeDirs = config.themeDirs;
+function resolveModuleDirs(config) {
+	var moduleConfigFilenames = config.moduleConfigFilenames,
+		configModuleDirs = config.moduleDirs;
 
-	return configThemeDirs
+	return configModuleDirs
 
 	// resolve dirs
-		.map(function (dirname) {
+		.map(function (name) {
 			return {
-				name: dirname,
-				path: path.resolve(dirname)
+				name: name,
+				path: path.resolve(name)
 			}
 		})
 
-		// filter out invalid theme dirs
-		.filter(function (dirObj) {
-			return fsxu.isDirSync(dirObj.name);
+		// filter out invalid module dirs
+		.filter(function (dir) {
+			return fsxu.isDirSync(dir.name);
 		})
 
-		.reduce(function (themesObj, dirObj) {
+		.reduce(function (modules, dirObj) {
 
 			return fsxu.listDirDirnamesSync(dirObj.path)
 
 			// ignore special dir names
-				.filter(function (themeName) {
-					var ignored = _.startsWith(themeName, '_') && themeName !== '_globals';
+				.filter(function (moduleName) {
+					var ignored = _.startsWith(moduleName, '_') && moduleName !== '_globals';
 					return !ignored;
 				})
 
-				// resolve themes
-				.map(function (themeName) {
-					var themePath = path.resolve(path.join(dirObj.path, themeName)),
-						themeConfigFilepaths = themeConfigFilenames.map(function (filename) {
-							return path.join(themePath, filename);
+				// resolve modules
+				.map(function (moduleName) {
+					var modulePath = path.resolve(path.join(dirObj.path, moduleName)),
+						moduleConfigFilepaths = moduleConfigFilenames.map(function (filename) {
+							return path.join(modulePath, filename);
 						}),
-						themeConfigFilepath = _.find(themeConfigFilepaths, function (filepath) {
+						moduleConfigFilepath = _.find(moduleConfigFilepaths, function (filepath) {
 							return fsxu.isFileSync(filepath);
 						});
 
 					return {
-						themeName: themeName,
-						themePath: themePath,
-						configFilepath: themeConfigFilepath
+						moduleName: moduleName,
+						modulePath: modulePath,
+						configFilepath: moduleConfigFilepath
 					}
 				})
 
-				// filter out invalid themes
-				.filter(function (themeObj) {
-					return themeObj.configFilepath != null;
+				// filter out invalid modules
+				.filter(function (module) {
+					return module.configFilepath != null;
 				})
 
 				// add config file
-				.map(function (themeObj) {
-					themeObj.config = resolveThemeConfigFile(themeObj.configFilepath);
-					return themeObj;
+				.map(function (module) {
+					module.config = resolveModuleConfigFile(module.configFilepath);
+					return module;
 				})
 
-				// filter out themes with invalid config files
-				.filter(function (themeObj) {
-					return themeObj.config != null;
+				// filter out modules with invalid config files
+				.filter(function (module) {
+					return module.config != null;
 				})
 
-				// push themes
-				.reduce(function (allThemes, themeObj) {
-					allThemes[themeObj.themeName] = themeObj;
-					return allThemes;
-				}, themesObj);
+				// push modules
+				.reduce(function (allModules, module) {
+					allModules[module.moduleName] = module;
+					return allModules;
+				}, modules);
 
 		}, {});
 }
 
-function resolveThemeComponents(config, themeConfig) {
-	var themeConfigExportKeys = config.themeConfigExportKeys,
-		themeGlobalsComponentNames = config.themeGlobalsComponentNames,
-		exportPaths = resolveThemeExportPaths(themeConfigExportKeys, themeConfig),
+function resolveModuleComponents(config, module) {
+	var moduleConfigExportKeys = config.moduleConfigExportKeys,
+		moduleGlobalsComponentNames = config.moduleGlobalsComponentNames,
+		exportPaths = resolveModuleExportPaths(moduleConfigExportKeys, module),
 		components = {
-			globals: resolveThemeGlobalComponents(themeGlobalsComponentNames, themeConfig)
+			globals: resolveModuleGlobalComponents(moduleGlobalsComponentNames, module)
 		};
 
 	return exportPaths
@@ -105,7 +109,8 @@ function resolveThemeComponents(config, themeConfig) {
 
 			// filter out ignored components
 				.filter(function (compName) {
-					var ignored = _.startsWith(compName, '_') || compName === themeGlobalsComponentNames;
+					var ignored = _.startsWith(compName, '_') ||
+						compName === moduleGlobalsComponentNames;
 					return !ignored;
 				})
 
@@ -129,37 +134,37 @@ function resolveThemeComponents(config, themeConfig) {
 		}, components);
 }
 
-function resolveComponentSubcomponents(componentConfig) {
+function resolveComponentTypes(component) {
 
-	var subcomps = fsxu.listDirFilenamesSync(componentConfig.path)
+	var componentTypes = fsxu.listDirFilenamesSync(component.path)
 
 	// filter out ignored
-		.filter(function (subcompFilename) {
-			var ignored = !isSubComponentFilenameValid(componentConfig.name, subcompFilename);
+		.filter(function (compTypeFilename) {
+			var ignored = !isComponentTypeFilenameValid(component.name, compTypeFilename);
 			return !ignored;
 		})
 
-		.map(function (subcompFilename) {
-			var subcompName = getSubComponentName(componentConfig.name, subcompFilename);
+		.map(function (compTypeFilename) {
+			var compTypeName = getComponentTypeName(component.name, compTypeFilename);
 
 			return {
-				name: subcompName,
-				path: componentConfig.path,
-				mainFilepath: resolveSubcomponentFilepath(componentConfig.path, subcompName),
-				varsFilepath: resolveSubcomponentVarsFilepath(componentConfig.path, subcompName)
+				name: compTypeName,
+				path: component.path,
+				mainFilepath: resolveComponentTypeFilepath(component.path, compTypeName),
+				varsFilepath: resolveComponentTypeVarsFilepath(component.path, compTypeName)
 			}
 		})
 
-		.reduce(function (subcomps, subcompFilename) {
-
+		.reduce(function (allTypes, compType) {
+			allTypes[compType.name] = compType;
 		}, {});
 
-	return subcomps;
+	return componentTypes;
 }
 
-function resolveThemeGlobalComponents(themeGlobalsComponentNames, themeObj) {
-	return _.reduce(themeGlobalsComponentNames, function (obj, compName) {
-		var compFilepath = path.join(themeObj.themePath, compName + '.scss');
+function resolveModuleGlobalComponents(moduleGlobalsComponentNames, module) {
+	return _.reduce(moduleGlobalsComponentNames, function (obj, compName) {
+		var compFilepath = path.join(module.modulePath, compName + '.scss');
 
 		// add valid component path
 		if (fsxu.isFileSync(compFilepath)) {
@@ -170,16 +175,16 @@ function resolveThemeGlobalComponents(themeGlobalsComponentNames, themeObj) {
 	}, {});
 }
 
-function resolveThemeExportPaths(themeConfigExportKeys, themeConfig) {
-	var themePath = themeConfig.themePath,
-		themeExportDirnames = _.find(themeConfigExportKeys, function (exportKey) {
-				return themeConfig.hasOwnProperty(exportKey);
+function resolveModuleExportPaths(moduleConfigExportKeys, module) {
+	var modulePath = module.modulePath,
+		moduleExportDirnames = _.find(moduleConfigExportKeys, function (exportKey) {
+				return module.hasOwnProperty(exportKey);
 			}) || [];
 
 	// get export directories
-	return themeExportDirnames
+	return moduleExportDirnames
 		.map(function (dirname) {
-			var dirpath = path.join(themePath, dirname);
+			var dirpath = path.join(modulePath, dirname);
 
 			return {
 				name: dirname,
@@ -193,7 +198,7 @@ function resolveThemeExportPaths(themeConfigExportKeys, themeConfig) {
 		});
 }
 
-function resolveThemeConfigFile(filepath) {
+function resolveModuleConfigFile(filepath) {
 	try {
 		var config = require(filepath);
 	} catch (e) {
@@ -215,45 +220,14 @@ function resolveComponentVarsFilepath(path, name) {
 	], fsxu.isFileSync)
 }
 
-function resolveSubcomponentFilepath(path, name) {
+function resolveComponentTypeFilepath(path, name) {
 	return _.find([
 		path.join(path, name + '.scss')
 	], fsxu.isFileSync);
 }
 
-function resolveSubcomponentVarsFilepath(path, name) {
+function resolveComponentTypeVarsFilepath(path, name) {
 	return _.find([
 		path.join(path, name + '.vars.scss')
 	], fsxu.isFileSync)
-}
-
-function getSubComponentNameEnd(compName) {
-	return '.' + compName;
-}
-
-function getSubComponentFilenameEnd(compName) {
-	return getSubComponentNameEnd(compName) + '.scss';
-}
-
-function getSubComponentName(compName, subCompFilename) {
-	if (!isSubComponentFilenameValid(compName, subCompFilename)) {
-		return null;
-	}
-
-	var compNameEnd = getSubComponentFilenameEnd(compName),
-		compNameIndex = subCompFilename.indexOf(compNameEnd);
-
-	if (compNameIndex <= 0) {
-		return null;
-	}
-
-	return subCompFilename.substr(0, compNameIndex);
-}
-
-function isSubComponentFilenameValid(compName, subCompFilename) {
-	return isComponentFilenameValid(subCompFilename) && _.endsWith(subCompFilename, getSubComponentFilenameEnd(compName));
-}
-
-function isComponentFilenameValid(compFilename) {
-	return !_.startsWith(compFilename, '_') && _.endsWith(compFilename, '.scss');
 }
