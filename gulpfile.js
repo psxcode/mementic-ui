@@ -10,20 +10,7 @@ var gulp = require('gulp'),
 	merge = require('ordered-merge-stream');
 
 // Require Mem-UI
-var ui = require('./index')({
-	themeDir: 'client',
-	output: {
-		path: '',
-		files: {
-			'preload.css': {
-				'mementic': ['button.default']
-			},
-			'style.css': {
-				'mementic': ['button']
-			}
-		}
-	}
-});
+var ui = require('./index')(require('./client/mem-config'));
 
 gulp.task('start', function () {
 
