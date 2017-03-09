@@ -1,5 +1,6 @@
 /.idea/
 /node_modules/
+/coverage/
 !/static/favicon.ico
 /static/
 /client/lib/

@@ -1,15 +1,25 @@
 "use strict";
 
-var path = require('path');
-var _ = require('lodash');
-var fsxu = require('./fsxu');
+const path = require('path'),
+	_ = require('lodash');
 
-var getComponentTypeName = require('./helpers').getComponentTypeName;
-var isComponentTypeFilenameValid = require('./helpers').isComponentTypeFilenameValid;
-var isComponentFilenameValid = require('./helpers').isComponentFilenameValid;
+const {
+	isFileSync,
+	isDirSync,
+	listDirNamesSync,
+	listFileNamesSync
+} = require('fsxu');
+
+const {
+	getComponentTypeName,
+	isValidModuleName,
+	isValidComponentName,
+	isValidComponentFilename,
+	isValidComponentTypeFilename
+} = require('./helpers');
 
 module.exports = function () {
-	var config = require('./config')();
+	const config = require('./config')();
 
 	// get valid module directory objects
 	var exported = resolveModuleDirs(config);
@@ -24,116 +34,73 @@ module.exports = function () {
 };
 
 function resolveModuleDirs(config) {
-	var moduleConfigFilenames = config.moduleConfigFilenames,
+	const moduleConfigFilenames = config.moduleConfigFilenames,
 		configModuleDirs = config.moduleDirs;
 
-	return configModuleDirs
+	return _.chain(resolveDirectories('./', configModuleDirs))
 
-	// resolve dirs
-		.map(function (name) {
-			return {
-				name: name,
-				path: path.resolve(name)
-			}
-		})
-
-		// filter out invalid module dirs
-		.filter(function (dir) {
-			return fsxu.isDirSync(dir.name);
-		})
-
-		.reduce(function (modules, dirObj) {
-
-			return fsxu.listDirDirnamesSync(dirObj.path)
+	// resolve modules
+		.reduce((modules, dirObj) => _.chain(listDirNamesSync(dirObj.path))
 
 			// ignore special dir names
-				.filter(function (moduleName) {
-					var ignored = _.startsWith(moduleName, '_') && moduleName !== '_globals';
-					return !ignored;
-				})
-
-				// resolve modules
-				.map(function (moduleName) {
-					var modulePath = path.resolve(path.join(dirObj.path, moduleName)),
-						moduleConfigFilepaths = moduleConfigFilenames.map(function (filename) {
-							return path.join(modulePath, filename);
-						}),
-						moduleConfigFilepath = _.find(moduleConfigFilepaths, function (filepath) {
-							return fsxu.isFileSync(filepath);
-						});
-
-					return {
-						moduleName: moduleName,
-						modulePath: modulePath,
-						configFilepath: moduleConfigFilepath
-					}
-				})
-
-				// filter out invalid modules
-				.filter(function (module) {
-					return module.configFilepath != null;
-				})
-
-				// add config file
-				.map(function (module) {
-					module.config = resolveModuleConfigFile(module.configFilepath);
-					return module;
-				})
-
-				// filter out modules with invalid config files
-				.filter(function (module) {
-					return module.config != null;
-				})
+				.filter(isValidModuleName)
 
 				// push modules
-				.reduce(function (allModules, module) {
-					allModules[module.moduleName] = module;
-					return allModules;
-				}, modules);
+				.reduce((allModules, moduleName) => {
+					const modulePath = path.resolve(dirObj.path, moduleName),
+						moduleConfigFilepaths = moduleConfigFilenames.map((filename) => path.resolve(modulePath, filename)),
+						moduleConfigFilepath = _.find(moduleConfigFilepaths, isFileSync),
+						moduleConfig = resolveModuleConfigFile(moduleConfigFilepath);
 
-		}, {});
+					// push only valid modules
+					if (moduleConfig != null) {
+						allModules[moduleName] = {
+							moduleName: moduleName,
+							modulePath: modulePath,
+							config: moduleConfig
+						};
+					}
+
+					return allModules;
+				}, modules)
+
+			, Object.create(null));
 }
 
 function resolveModuleComponents(config, module) {
-	var moduleConfigExportKeys = config.moduleConfigExportKeys,
+	const moduleConfigExportKeys = config.moduleConfigExportKeys,
 		moduleGlobalsComponentNames = config.moduleGlobalsComponentNames,
 
 		// resolve module components for all exported directories
-		components = resolveModuleExportPaths(moduleConfigExportKeys, module)
-			.reduce(function (components, pathWithComponents) {
+		components = _.chain(resolveModuleExportPaths(moduleConfigExportKeys, module))
+			.reduce((components, pathWithComponents) =>
+					// list all possible component directories
+					_.chain(listDirNamesSync(pathWithComponents))
 
-				// list all possible component directories
-				return fsxu.listDirDirnamesSync(pathWithComponents)
+					// filter out invalid component names
+						.filter(isValidComponentName)
 
-				// filter out invalid component names
-					.filter(function (compName) {
-						var ignored = _.startsWith(compName, '_') ||
-							compName === moduleGlobalsComponentNames;
-						return !ignored;
-					})
+						// resolve components
+						.reduce((allComponents, compName) => {
+							const compPath = path.resolve(pathWithComponents, compName),
+								compMainFilepath = resolveComponentMainFilepath(compPath, compName),
+								compVarsFilepath = resolveComponentVarsFilepath(compPath, compName),
+								component = {
+									name: compName,
+									path: compPath,
+									types: resolveComponentTypes(compName, compPath)
+								};
 
-					// resolve components
-					.reduce(function (allComponents, compName) {
-						var compPath = path.resolve(path.join(pathWithComponents, compName)),
-							compMainFilepath = resolveComponentMainFilepath(compPath, compName),
-							compVarsFilepath = resolveComponentVarsFilepath(compPath, compName),
-
-							component = {
-								name: compName,
-								path: compPath,
-								types: resolveComponentTypes(compName, compPath)
+							// add component's main file
+							component.types._main = {
+								mainFilepath: compMainFilepath,
+								varsFilepath: compVarsFilepath
 							};
 
-						// add component's main file
-						component.types._main = {
-							mainFilepath: compMainFilepath,
-							varsFilepath: compVarsFilepath
-						};
+							return allComponents[compName] = component, allComponents;
+						}, components)
 
-						return allComponents[compName] = component, allComponents;
-					}, components);
-
-			}, Object.create(null));
+				, Object.create(null));
 
 	// add module globals component
 	components._globals = resolveModuleGlobalComponents(moduleGlobalsComponentNames, module);
@@ -144,17 +111,14 @@ function resolveModuleComponents(config, module) {
 function resolveComponentTypes(compName, compPath) {
 
 	// list all possible component-type files
-	var componentTypes = fsxu.listDirFilenamesSync(compPath)
+	const componentTypes = _.chain(listFileNamesSync(compPath))
 
 	// filter out invalid type filenames
-		.filter(function (compTypeFilename) {
-			var ignored = !isComponentTypeFilenameValid(compName, compTypeFilename);
-			return !ignored;
-		})
+		.filter(compTypeFilename => isValidComponentTypeFilename(compName, compTypeFilename))
 
 		// resolve component-types
-		.reduce(function (allTypes, compTypeFilename) {
-			var compTypeName = getComponentTypeName(compName, compTypeFilename),
+		.reduce((allTypes, compTypeFilename) => {
+			const compTypeName = getComponentTypeName(compName, compTypeFilename),
 				compType = {
 					mainFilepath: resolveComponentTypeFilepath(compPath, compTypeName),
 					varsFilepath: resolveComponentTypeVarsFilepath(compPath, compTypeName)
@@ -167,71 +131,66 @@ function resolveComponentTypes(compName, compPath) {
 }
 
 function resolveModuleGlobalComponents(moduleGlobalsComponentNames, module) {
-	return _.reduce(moduleGlobalsComponentNames, function (globals, compName) {
-		var compFilepath = path.join(module.modulePath, compName + '.scss');
+	return _.chain(moduleGlobalsComponentNames)
 
-		// add valid component path
-		if (fsxu.isFileSync(compFilepath)) {
-			globals[compName] = compFilepath;
-		}
+		.reduce((globals, compName) => {
+			const compFilepath = path.resolve(module.modulePath, compName + '.scss');
 
-		return globals;
-	}, {});
+			// add valid component path
+			if (isFileSync(compFilepath)) {
+				globals[compName] = compFilepath;
+			}
+
+			return globals;
+		}, Object.create(null));
 }
 
 function resolveModuleExportPaths(moduleConfigExportKeys, module) {
-	var modulePath = module.modulePath,
-		moduleExportDirnames = _.find(moduleConfigExportKeys, function (exportKey) {
-				return module.hasOwnProperty(exportKey);
-			}) || [];
+	const modulePath = module.modulePath,
+		moduleExportDirnames = _.find(moduleConfigExportKeys, exportKey => module.hasOwnProperty(exportKey)) || [];
 
 	// get export directories
-	return moduleExportDirnames
-		.map(function (dirname) {
-			var dirpath = path.join(modulePath, dirname);
+	return resolveDirectories(modulePath, moduleExportDirnames);
+}
 
-			return {
-				name: dirname,
-				path: dirpath
-			};
-		})
-
-		// filter out invalid export dirs
-		.filter(function (dir) {
-			return fsxu.isDirSync(dir.path);
-		});
+function resolveDirectories(path, dirnames) {
+	return _.chain(dirnames)
+		.map(name => ({
+			name: name,
+			path: path.resolve(path, name)
+		}))
+		.filter(dir => isDirSync(dir.path));
 }
 
 function resolveModuleConfigFile(filepath) {
 	try {
-		var config = require(filepath);
+		return require(filepath);
 	} catch (e) {
-		return null;
 	}
-	return config;
+	return null;
 }
 
 function resolveComponentMainFilepath(path, name) {
 	return _.find([
-		path.join(path, name + '.scss')
-	], fsxu.isFileSync);
+		path.resolve(path, name + '.scss')
+	], isFileSync);
 }
 
 function resolveComponentVarsFilepath(path, name) {
 	return _.find([
-		path.join(path, 'vars.scss'),
-		path.join(path, name + '.vars.scss')
-	], fsxu.isFileSync);
+		path.resolve(path, 'vars.scss'),
+		path.resolve(path, name + '.vars.scss')
+	], isFileSync);
 }
 
 function resolveComponentTypeFilepath(path, name) {
 	return _.find([
-		path.join(path, name + '.scss')
-	], fsxu.isFileSync);
+		path.resolve(path, name + '.scss')
+	], isFileSync);
 }
 
 function resolveComponentTypeVarsFilepath(path, name) {
 	return _.find([
-		path.join(path, name + '.vars.scss')
-	], fsxu.isFileSync);
+		path.resolve(path, name + '.vars.scss')
+	], isFileSync);
 }

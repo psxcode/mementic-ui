@@ -6,7 +6,7 @@ var _ = require('lodash');
 
 var rootdir = fsxu.findUpSync('package.json', __dirname);
 var srcdir = path.join(rootdir, 'themes');
-var moduleDirsProp = require('./helpers').prop.bind(null, ['moduleDir', 'moduleDirs', 'moduledir', 'moduledirs']);
+var moduleDirsProp = require('./helpers').prop.bind(null, ['from']);
 
 var constConfig = {
 	rootdir: rootdir,

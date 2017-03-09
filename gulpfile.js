@@ -7,7 +7,8 @@ var gulp = require('gulp'),
 	rename = require('gulp-rename'),
 	templates = require('gulp-angular-templatecache'),
 	inject = require('gulp-inject'),
-	merge = require('ordered-merge-stream');
+	merge = require('ordered-merge-stream'),
+	mocha = require('gulp-spawn-mocha');
 
 // Require Mem-UI
 var ui = require('./index')(require('./client/mem-config'));
@@ -44,6 +45,13 @@ gulp.task('build', function () {
 gulp.task('index.html', function () {
 	return install(gulp.src('./client/views/index.html')
 		.pipe(inject(gulp.src(['./static/*.css', './static/*.js'], {read: false}), {ignorePath: 'static'})));
+});
+
+gulp.task('test', function () {
+	return gulp.src(['./test/*.test.js'], {read: false})
+		.pipe(mocha({
+			istanbul: true
+		}));
 });
 
 function install(stream) {

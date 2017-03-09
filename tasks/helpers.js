@@ -1,59 +1,41 @@
-var _ = require('lodash');
+const _ = require('lodash');
 
-exports.prop = getPropertyByKeys;
-exports.getComponentTypeName = getComponentTypeName;
-exports.isComponentTypeFilenameValid = isComponentTypeFilenameValid;
-exports.isComponentFilenameValid = isComponentFilenameValid;
+module.exports = {
+	getPropertyByKeys,
+	getComponentTypeName,
+	isValidModuleName,
+	isValidComponentName,
+	isValidComponentFilename,
+	isValidComponentTypeFilename
+};
 
 function getPropertyByKeys(keys, obj) {
-	for (var i = 0; i < keys.length; ++i) {
-		if (obj.hasOwnProperty(keys[i])) {
-			return obj[keys[i]];
-		}
-	}
+	return obj[_.find(keys, k => obj[k])];
 }
-
-// Array.prototype.map = function(func) {
-// 	return _.map(this, func);
-// };
-//
-// Array.prototype.filter = function(func) {
-// 	return _.filter(this, func);
-// };
-//
-// Array.prototype.reduce = function(func) {
-// 	return _.reduce(this, func);
-// };
-//
-// Array.prototype.forEach = function(func) {
-// 	_.forEach(this, func);
-// };
-//
-// Array.prototype.mod = function(func) {
-// 	return _.forEach(this, func), this;
-// };
 
 function getComponentTypeName(compName, compTypeFilename) {
-	if (!isComponentTypeFilenameValid(compName, compTypeFilename)) {
-		return null;
-	}
-
-	var compTypeNameEnd = getComponentTypeFilenameEnd(compName),
+	const compTypeNameEnd = getComponentTypeFilenameEnd(compName),
 		compNameIndex = compTypeFilename.indexOf(compTypeNameEnd);
 
-	if (compNameIndex <= 0) {
-		return null;
-	}
-
-	return compTypeFilename.substr(0, compNameIndex);
+	return compNameIndex <= 0 ? null : compTypeFilename.substr(0, compNameIndex);
 }
 
-function isComponentTypeFilenameValid(compName, compTypeFilename) {
-	return isComponentFilenameValid(compTypeFilename) && _.endsWith(compTypeFilename, getComponentTypeFilenameEnd(compName));
+function isValidComponentTypeFilename(compName, compTypeFilename) {
+	return isValidComponentFilename(compTypeFilename) && _.endsWith(compTypeFilename, getComponentTypeFilenameEnd(compName));
 }
 
-function isComponentFilenameValid(name) {
-	return !_.startsWith(name, '_') && _.endsWith(name, '.scss');
+function isValidComponentFilename(name) {
+	return !/^[_\W]/.test(name) && /\.scss$/.test(name);
+}
+
+function isValidComponentName(name) {
+	// test restricted pattern
+	return !/^[_\W]/.test(name);
+}
+
+function isValidModuleName(name) {
+	// test allowed pattern, then test restricted
+	return /^_globals$/.test(name) || !/^[_\W]/.test(name);
 }
 
 function getComponentTypeNameEnd(compName) {
