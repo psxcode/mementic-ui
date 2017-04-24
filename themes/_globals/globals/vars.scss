@@ -34,8 +34,8 @@ $line-height-context: 20;
   @return (strip-unit($px) / $font-context) * 1rem;
 }
 
-$font-family-sans-serif: '-apple-system', "Helvetica Neue", "Roboto", "Segoe UI", sans-serif !default;
-$font-family-sans-serif-light: '-apple-system', "HelveticaNeue-Light", "Roboto-Light", "Segoe UI-Light", sans-serif-light, sans-serif !default;
+$font-family-sans-serif: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !default;
+$font-family-sans-serif-light: -apple-system, system-ui, BlinkMacSystemFont, "HelveticaNeue-Light", "Roboto-Light", "Segoe UI-Light", sans-serif-light, sans-serif !default;
 
 @function font-family() {
   @return $font-family-sans-serif;
