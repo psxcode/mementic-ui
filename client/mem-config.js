@@ -36,6 +36,7 @@ module.exports = {
 		entry_7: [{'mementic': '*'}, 'fonts-google'],
 		vendor: [{'mementic': '*'}, 'fonts-google']
 	},
+
 	output: {
 		path: '../static',
 		filename: '[name].css'

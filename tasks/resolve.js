@@ -1,6 +1,6 @@
 "use strict";
 
-const path = require('path'),
+const {resolve} = require('path'),
 	_ = require('lodash');
 
 const {
@@ -47,8 +47,8 @@ function resolveModuleDirs(config) {
 
 				// push modules
 				.reduce((allModules, moduleName) => {
-					const modulePath = path.resolve(dirObj.path, moduleName),
-						moduleConfigFilepaths = moduleConfigFilenames.map((filename) => path.resolve(modulePath, filename)),
+					const modulePath = resolve(dirObj.path, moduleName),
+						moduleConfigFilepaths = moduleConfigFilenames.map((filename) => resolve(modulePath, filename)),
 						moduleConfigFilepath = _.find(moduleConfigFilepaths, isFileSync),
 						moduleConfig = resolveModuleConfigFile(moduleConfigFilepath);
 
@@ -82,8 +82,8 @@ function resolveModuleComponents(config, module) {
 
 						// resolve components
 						.reduce((allComponents, compName) => {
-							const compPath = path.resolve(pathWithComponents, compName),
-								compMainFilepath = resolveComponentMainFilepath(compPath, compName),
+							const compPath = resolve(pathWithComponents, compName),
+								compMainFilepath = resolveComponentFilepath(compPath, compName),
 								compVarsFilepath = resolveComponentVarsFilepath(compPath, compName),
 								component = {
 									name: compName,
@@ -134,7 +134,7 @@ function resolveModuleGlobalComponents(moduleGlobalsComponentNames, module) {
 	return _.chain(moduleGlobalsComponentNames)
 
 		.reduce((globals, compName) => {
-			const compFilepath = path.resolve(module.modulePath, compName + '.scss');
+			const compFilepath = resolve(module.modulePath, 'globals', compName + '.scss');
 
 			// add valid component path
 			if (isFileSync(compFilepath)) {
@@ -157,7 +157,7 @@ function resolveDirectories(path, dirnames) {
 	return _.chain(dirnames)
 		.map(name => ({
 			name: name,
-			path: path.resolve(path, name)
+			path: resolve(path, name)
 		}))
 		.filter(dir => isDirSync(dir.path));
 }
@@ -170,27 +170,27 @@ function resolveModuleConfigFile(filepath) {
 	return null;
 }
 
-function resolveComponentMainFilepath(path, name) {
+function resolveComponentFilepath(path, name) {
 	return _.find([
-		path.resolve(path, name + '.scss')
+		resolve(path, name + '.scss')
 	], isFileSync);
 }
 
 function resolveComponentVarsFilepath(path, name) {
 	return _.find([
-		path.resolve(path, 'vars.scss'),
-		path.resolve(path, name + '.vars.scss')
+		resolve(path, 'vars.scss'),
+		resolve(path, name + '.vars.scss')
 	], isFileSync);
 }
 
 function resolveComponentTypeFilepath(path, name) {
 	return _.find([
-		path.resolve(path, name + '.scss')
+		resolve(path, name + '.scss')
 	], isFileSync);
 }
 
 function resolveComponentTypeVarsFilepath(path, name) {
 	return _.find([
-		path.resolve(path, name + '.vars.scss')
+		resolve(path, name + '.vars.scss')
 	], isFileSync);
 }

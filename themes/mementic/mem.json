@@ -1,5 +1,5 @@
 {
-  "exports": [
+  "export": [
 	"./elements",
 	"./collections",
 	"./views"
