@@ -14,10 +14,10 @@
     "url": "https://github.com/psxcode"
   },
   "license": "MIT",
-  "homepage": "https://github.com/psxcode/node-fsxu",
+  "homepage": "https://github.com/psxcode/mementic-ui",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/psxcode/node-fsxu"
+    "url": "git+https://github.com/psxcode/mementic-ui"
   },
   "dependencies": {
     "fsxu": "*",
