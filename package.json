@@ -36,12 +36,12 @@
   },
   "devDependencies": {
     "browser-sync": "*",
-    "chai": "^3.5.0",
+    "chai": "^4.1.2",
     "chai-fs": "^1.0.0",
     "gulp-angular-templatecache": "*",
-    "gulp-spawn-mocha": "^3.1.0",
+    "gulp-spawn-mocha": "^4.0.1",
     "istanbul": "^0.4.5",
-    "mocha": "^3.2.0",
+    "mocha": "^4.0.1",
     "mock-fs": "^4.1.0"
   }
 }
